@@ -1,0 +1,96 @@
+# Makefile for `recode' sources.
+# Copyright © 1991,92,93,94,95,96,97,98,99 Free Software Foundation, Inc.
+# François Pinard <pinard@iro.umontreal.ca>, 1988.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+AUTOMAKE_OPTIONS = gnits ansi2knr
+bin_PROGRAMS = recode
+#noinst_PROGRAMS = d.recode
+lib_LTLIBRARIES = librecode.la
+include_HEADERS = recode.h recodext.h
+
+noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
+fr-charname.h hash.h inisteps.h rfc1345.h $(H_FALLBACKS) $(H_SURFACES)
+EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.awk
+
+C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
+debug.c ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c \
+ucs.c utf16.c utf7.c utf8.c varia.c $(C_FALLBACKS) $(C_SURFACES)
+OLD_C_STEPS = next.c
+L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
+
+H_FALLBACKS =
+C_FALLBACKS = flat.c html.c lat1ltex.c lat1texi.c lat1txte.c rfc1345.c
+L_FALLBACKS = ltexlat1.l txtelat1.l
+
+H_SURFACES = base64.h
+C_SURFACES = base64.c dump.c endline.c permut.c quoted.c
+L_SURFACES =
+
+recode_SOURCES = main.c freeze.c mixed.c
+recode_LDADD = librecode.la ../lib/libreco.a @INTLLIBS@
+#d_recode = main.c
+#d_recode_LDADD = librecode.la ../lib/libreco.la @INTLLIBS@
+#d_recode_LDFLAGS = -static
+
+librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
+hash.c merged.c names.c outer.c recode.c request.c strip-pool.c task.c \
+$(C_STEPS)
+librecode_la_LDFLAGS = -version-info 0:0:0
+
+INCLUDES = -I.. -I../intl -I$(srcdir) -I$(top_srcdir)/lib
+
+ETAGS_ARGS = $(L_STEPS)
+TAGS_DEPENDENCIES = $(L_STEPS)
+
+localedir = $(prefix)/@DATADIRNAME@/locale
+
+# These CFLAGS values are not auto-configured:
+# -DDIFF_HASH		For using GNU diff's hash algorithm instead.
+# -DHASH_STATS		For printing a one-liner hash statistics.
+
+AWK = @AWK@
+LEX = @LEX@
+
+$(srcdir)/decsteps.h $(srcdir)/inisteps.h: stamp-steps
+stamp-steps: $(C_STEPS) merged.c
+	@echo "Updating decsteps.h and inisteps.h"
+	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS) merged.c ) \
+	    | sed 's/ .*//' > liste.tmp
+	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/p' \
+	    liste.tmp > decsteps.tmp
+	@sed 's/\(.*\)/  if (!\1 (outer)) return false;/' \
+	    liste.tmp > inisteps.tmp
+	@rm liste.tmp
+	@if cmp -s $(srcdir)/decsteps.h decsteps.tmp; then rm decsteps.tmp; \
+	else mv decsteps.tmp $(srcdir)/decsteps.h; fi
+	@if cmp -s $(srcdir)/inisteps.h inisteps.tmp; then rm inisteps.tmp; \
+	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
+	@echo timestamp > $(srcdir)/stamp-steps
+
+main.o: main.c ../config.status common.h recode.h
+	$(COMPILE) -DLOCALEDIR=\"$(localedir)\" -c $<
+
+outer.o: stamp-steps
+
+$(srcdir)/merged.c: mergelex.awk $(L_STEPS)
+	(cd $(srcdir) \
+	  && $(AWK) -f mergelex.awk $(L_STEPS) \
+	  && rm merged1.tmp merged2.tmp merged3.tmp) > merged.tm1
+	$(LEX) -t8 merged.tm1 > merged.tm2
+	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
+	rm merged.tm1 merged.tm2

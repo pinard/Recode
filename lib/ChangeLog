@@ -1,0 +1,49 @@
+1998-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* argmatch.c, argmatch.h, hash.c, hash.h: Moved away, into src.
+	* Makefile.am: Adjusted.
+
+1998-10-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* strtol.c, strtoul.c: New files, from elsewhere.
+	* Makefile.am (libreco_a_SOURCES): Include strtoul.c.
+	(EXTRA_DIST): Include strtol.c.
+
+1998-10-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* hash.h, hash.c: New version, with tuning parameters.
+
+1998-10-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* hash.c, hash.h: New, from elsewhere.
+	* Makefile.am: Adjusted.
+
+1998-09-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (noinst_HEADERS): Include argmatch.h.
+
+1998-03-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am: Rename xmalloc.h to xalloc.h.
+
+1997-10-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* xmalloc.h, xstring.h: New files, from elsewhere.
+	* Makefile.am (noinst_HEADERS): Distribute them.
+
+1997-02-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am: Adjusted for Automake 1.1l.
+
+1996-08-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (noinst_HEADERS): Distribute error.h.
+
+1996-08-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am: New file, replacing Makefile.in.
+
+1995-07-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	Distribution unflattened, for using GNU gettext.
+	* Makefile.in: New file.

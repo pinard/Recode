@@ -1,0 +1,112 @@
+This is a port of GNU Recode 3.4 to MSDOS/DJGPP.
+
+Installation
+============
+
+Just unzip the binary distribution from the top DJGPP installation
+directory, If you aren't familiar with the package, read the info docs.
+If you run the programs from plain DOS (not Windows), you will need
+to install a DPMI host.  A free DPMI host is available as csdpmi3b.zip
+from the peer directory ../v2misc at the same place you got the recode
+package from.  Note that the man pages are not included in the binary
+distribution, since they are no longer maintained by the GNU project;
+use the Info documentation instead.
+
+Features
+========
+
+This package has already been ported to the MSODS environment with Borland
+Turbo C as the target compiler.  This made the porting process to DJGPP
+extremely simple.
+
+The file DIFFS in the source distribution describes the changes against
+the original package.
+
+The GNU Gettext package is supported in the ported version, so you could
+expect the programs to talk to you in any language not just English.
+
+Required tools
+==============
+
+If you want to recompile the package, you will need the DJGPP development
+environment (GCC, header files and the libraries) and DJGPP ports of the
+following tools:
+
+	- GNU Make 3.75 or later
+	- Bash (or some other Unix-like shell)
+	- GNU Sed
+	- GNU Fileutils
+	- GNU Textutils
+	- GNU Sh-utils
+	- GNU Grep (only if you need to run DJGPP\CONFIG.BAT)
+	- GNU Diffutils (only if you run the test suite)
+	- Perl (only if you need to change the test scripts)
+
+These should be available from the DJGPP sites.  There are a few more
+programs invoked during the build process, but they are all part of a
+standard DJGPP installation and should be already installed on your system.
+
+The package should be built with the latest port of Make 3.75.  Previous
+versions of Make ported to DJGPP didn't support Unix shells, and the
+Makefiles for this package won't work without a Unix shell.
+
+
+How to build
+============
+
+Unzip the distribution.  The package is already configured for DJGPP
+v2.01, so if you only want to compile it, just call BUILD.BAT from the
+main subdirectory:
+
+		build
+
+This invokes Make.  When Make finishes, you can install the package:
+
+		make install
+
+If you make a change in some of the programs, it is a good idea to run
+the test suite, so you know you didn't break anything:
+
+		make check
+
+This will run for a while and should print 'All checks completed
+successfully' after all tests have been performed.
+
+If you build Recode with DJGPP release other than 2.01, or if you want
+to change the configuration options (e.g. add National Language Support
+once it becomes available), you will have to reconfigure the package.
+The CONFIG.BAT batch file sets a few environment variables, then calls
+BASH to run the configure script, so you should run CONFIG.BAT, then make:
+
+		config
+		make
+
+The configure script run by CONFIG.BAT supports a few options.  Run "sh
+./configure --help" to see all the options recognized by the script.
+
+
+How to patch the original source
+================================
+
+You need the original sources of the GNU recode-3.4.1 package.
+Ungzip and untar the sources, they'll be located in the directory named
+'recode-3.4.1'.  Change the name of that directory to 'recode.341', and
+create and empty directory named 'recode-3.4.1'.  In the parent directory
+place the files 'update.bat' and 'diffs'.  Run update bat, this will
+patch the original sources now located in 'recode.341' producing ready to
+compile sources.  Remove files, whose names start with '`' and delete the
+'recode-3.4.1' direcory.
+
+
+Example of use
+==============
+
+To figure it out how to use Recode a sample PLCONV.BAT file is provided.
+This file shows how to convert a file from IBM 852 code page to ISO 8859-2
+code page.  Further details could be found in the Info documentation file.
+
+		Enjoy,
+
+	Wojciech Galazka <wgalazka@chem.uw.edu.pl>
+
+Based on the original text by Eli Zaretskii <eliz@is.elta.co.il>

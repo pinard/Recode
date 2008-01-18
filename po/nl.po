@@ -1,0 +1,652 @@
+# Dutch messages for GNU recode.
+# Copyright (C) 1996 Free Software Foundation, Inc.
+# Erick Branderhorst <branderh@debian.org>, 1996.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recode 3.4.2\n"
+"POT-Creation-Date: 1999-05-18 08:46-0400\n"
+"PO-Revision-Date: 1996-10-07 10:05 MET DST\n"
+"Last-Translator: Erick Branderhorst <branderh@debian.org>\n"
+"Language-Team: Dutch <nl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#. Dump all characters.
+#: src/debug.c:287
+msgid ""
+"UCS2   Mne   Description\n"
+"\n"
+msgstr ""
+
+#: src/main.c:140
+msgid "No error"
+msgstr ""
+
+#: src/main.c:143
+msgid "Non canonical input"
+msgstr ""
+
+#: src/main.c:146
+#, fuzzy
+msgid "Ambiguous output"
+msgstr "Dubbelzinnig format `%s'"
+
+#: src/main.c:149
+msgid "Untranslatable input"
+msgstr ""
+
+#: src/main.c:152
+msgid "Invalid input"
+msgstr ""
+
+#: src/main.c:155
+msgid "System detected problem"
+msgstr ""
+
+#: src/main.c:158
+msgid "Misuse of recoding library"
+msgstr ""
+
+#: src/main.c:161
+msgid "Internal recoding bug"
+msgstr ""
+
+#: src/main.c:206
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2, or (at your option)\n"
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+msgstr ""
+"Dit programma is vrije software; het mag gedistribueerd en/of\n"
+"veranderd worden onder de voorwaarden van de GNU General Public\n"
+"License zoals gepubliceerd door de Free Software Foundation; versie 2,\n"
+"of (als je daar voor kiest) enig latere versie.\n"
+"\n"
+"Dit programma is gedistribueerd in de hoop dat het bruikbaar is, maar\n"
+"ZONDER ENIGE GARANTIE; zelfs zonder de geompliceerde garantie van\n"
+"MERCHANTABILITY of GESCHIKTHEID VOOR EEN SPECIFIEK GEBRUIKSDOEL.  Zie\n"
+"de GNU General Public License voor verdere details.\n"
+"\n"
+"Samen met dit programma heb je een copie ontvangen van de GNU General\n"
+"Public License; zo niet, schrijf dan naar de Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+
+#: src/main.c:231
+#, c-format
+msgid "Try `%s %s' for more information.\n"
+msgstr "Probeer `%s %s' voor meer informatie.\n"
+
+#: src/main.c:235
+msgid ""
+"Free `recode' converts files between various character sets and surfaces.\n"
+msgstr ""
+
+#: src/main.c:239
+#, fuzzy, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+msgstr ""
+"\n"
+"Gebruik: %s [OPTIE]... [KARAKTERSET]\n"
+
+#: src/main.c:242
+msgid ""
+"\n"
+"If a long option shows an argument as mandatory, then it is mandatory\n"
+"for the equivalent short option also.  Similarly for optional arguments.\n"
+msgstr ""
+
+#: src/main.c:248
+msgid ""
+"\n"
+"Listings:\n"
+"  -l, --list[=FORMAT]        list one or all known charsets\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
+"list\n"
+"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
+"  -F, --freeze-tables        write out a C module holding all tables\n"
+"  -T, --find-subsets         report all charsets being subset of others\n"
+"  -C, --copyright            display Copyright and copying conditions\n"
+"      --help                 display this help and exit\n"
+"      --version              output version information and exit\n"
+msgstr ""
+
+#: src/main.c:261
+msgid ""
+"\n"
+"Operation modes:\n"
+"  -v, --verbose           explain sequence of steps and report progress\n"
+"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+"  -f, --force             force recodings even when not reversible\n"
+"  -t, --touch             touch the recoded files after replacement\n"
+"  -i, --sequence=files    use intermediate files for sequencing passes\n"
+"      --sequence=memory   use memory buffers for sequencing passes\n"
+msgstr ""
+
+#: src/main.c:273
+msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
+msgstr ""
+"  -p, --sequence=pipe     gebruik pipe machinery for sequencing passes "
+"(FIXME)\n"
+
+#: src/main.c:278
+#, fuzzy
+msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
+msgstr "  -p, --sequence=pipe     zelfde als -o (op dit systeem)\n"
+
+#: src/main.c:283
+#, fuzzy
+msgid ""
+"\n"
+"Fine tuning:\n"
+"  -s, --strict           use strict mappings, even loose characters\n"
+"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
+"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
+"  -c, --colons           use colons instead of double quotes for diaeresis\n"
+"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
+"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+msgstr ""
+"\n"
+"  -c, --colons            gebruik punt in plaats van dubbele kwoots \n"
+"                          voor diakritische tekens\n"
+"  -d, --diacritics        limiteer conversie naar diakritische tekens of "
+"zoals \n"
+"                          voor LaTeX\n"
+"  -f, --force             forceer omzetting zelfs als deze niet omkeerbaar "
+"is\n"
+"                          (LET OP: in deze versie, wordt altijd -f "
+"gebruikt)\n"
+"  -g, --graphics          benadering IBMPC lijnen met ASCII grafische "
+"tekens\n"
+"  -h, --header[=NAAM]     schrijf C code met tabel NAAM naar "
+"standaarduitvoer\n"
+"  -i, --sequence=files    gebruik tussen bestanden voor achtereenvolgende \n"
+"                          sessies\n"
+
+#: src/main.c:294
+msgid ""
+"\n"
+"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
+"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+msgstr ""
+
+#: src/main.c:302
+#, c-format
+msgid ""
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n"
+msgstr ""
+
+#: src/main.c:308
+msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
+msgstr ""
+
+#: src/main.c:313
+msgid ""
+"With -k, possible before charsets are listed for the given after CHARSET,\n"
+"both being tabular charsets, with PAIRS of the form "
+"`BEF1:AFT1,BEF2:AFT2,...'\n"
+"and BEFs and AFTs being codes are given as decimal numbers.\n"
+msgstr ""
+
+#: src/main.c:318
+msgid ""
+"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
+msgstr ""
+
+#: src/main.c:321
+msgid ""
+"\n"
+"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is "
+"ENCODING[..ENCODING]...\n"
+"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like "
+"BEFORE..AFTER,\n"
+"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
+"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; a "
+"/\n"
+"with an empty surface name means no surfaces at all.  See the manual.\n"
+msgstr ""
+
+#: src/main.c:329
+msgid ""
+"\n"
+"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
+"Each FILE is recoded over itself, destroying the original.  If no\n"
+"FILE is specified, then act as a filter and recode stdin to stdout.\n"
+msgstr ""
+
+#: src/main.c:335
+#, fuzzy
+msgid ""
+"\n"
+"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"Meld fouten via <recode-bugs@gnu.ai.mit.edu>.\n"
+
+#: src/main.c:431
+#, c-format
+msgid "Ambiguous sequence `%s'"
+msgstr "Dubbelzinnig `sequence' `%s'"
+
+#: src/main.c:435
+#, c-format
+msgid "Unknown sequence `%s'"
+msgstr "Onbekende `sequence' `%s' (FIXME)"
+
+#: src/main.c:465 src/main.c:523
+#, c-format
+msgid "Ambiguous language `%s'"
+msgstr "Dubbelzinnige taal `%s'"
+
+#. -1
+#: src/main.c:469 src/main.c:527
+#, c-format
+msgid "Unknown language `%s'"
+msgstr "Onbekende taal `%s'"
+
+#: src/main.c:561
+#, c-format
+msgid "Ambiguous format `%s'"
+msgstr "Dubbelzinnig format `%s'"
+
+#: src/main.c:565
+#, c-format
+msgid "Unknown format `%s'"
+msgstr "Onbekende format `%s'"
+
+#: src/main.c:622
+#, fuzzy
+msgid ""
+"\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+msgstr ""
+"\n"
+"Copyright (C) 1990, 1992, 1993, 1994, 1996 Free Software Foundation, Inc.\n"
+
+#: src/main.c:626
+msgid ""
+"This is free software; see the source for copying conditions.  There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr ""
+"Dit is vrije programmatuur; zie de broncode voor kopieer condities.\n"
+"Er is GEEN garantie; zelfs niet voor VERKOOPBAARHEID of GESCHIKTHEID\n"
+"VOOR EEN BEPAALDE TOEPASSING.\n"
+
+#: src/main.c:630
+msgid ""
+"\n"
+"Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"Geschreven door François Pinard <pinard@iro.umontreal.ca>.\n"
+
+#: src/main.c:775
+#, c-format
+msgid "Deprecated syntax, please prefer `%s'"
+msgstr ""
+
+#: src/main.c:781
+#, c-format
+msgid "Erroneous request `%s'"
+msgstr ""
+
+#: src/main.c:878
+#, c-format
+msgid "Recoding %s..."
+msgstr "Omzetten %s..."
+
+#: src/main.c:888
+msgid " done\n"
+msgstr " klaar\n"
+
+#: src/main.c:924
+#, c-format
+msgid " failed: %s in %s..%s\n"
+msgstr ""
+
+#: src/main.c:931
+#, c-format
+msgid "%s failed: %s in %s..%s"
+msgstr ""
+
+#: src/main.c:954
+#, fuzzy, c-format
+msgid "%s in %s..%s"
+msgstr "%svoor reeks %s.%s"
+
+#: src/names.c:317
+#, c-format
+msgid "Charset %s already exists and is not %s"
+msgstr "Karakterset %s bestaat reeds en is niet %s"
+
+#: src/names.c:819
+#, fuzzy, c-format
+msgid "Cannot list `%s', no names available for this charset"
+msgstr ""
+"Kan `%s' niet tonen, geen RFC 1345 namen beschikbaar voor deze karakterset"
+
+#. code counter
+#. expected value for code counter
+#. UCS-2 translation
+#. insert a while line before printing
+#. Print the long table according to explode data.
+#: src/names.c:974 src/names.c:1020
+#, fuzzy, c-format
+msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
+msgstr "dec  oct hex    ch   %s\n"
+
+#: src/names.c:1039
+#, fuzzy, c-format
+msgid "Sorry, no names available for `%s'"
+msgstr "Sorry, geen RFC 1345 namen beschikbaar voor `%s'"
+
+#: src/outer.c:95
+#, c-format
+msgid "Resurfacer set more than once for `%s'"
+msgstr ""
+
+#: src/outer.c:102
+#, c-format
+msgid "Unsurfacer set more than once for `%s'"
+msgstr ""
+
+#: src/recode.c:115 src/recode.c:127
+msgid "Virtual memory exhausted"
+msgstr ""
+
+#: src/recode.c:155
+#, c-format
+msgid "Codes %3d and %3d both recode to %3d"
+msgstr "Code %3d en %3d beide omgezet naar %3d"
+
+#: src/recode.c:169
+#, c-format
+msgid "No character recodes to %3d"
+msgstr "Geen karakter omzetting naar %3d"
+
+#: src/recode.c:170
+msgid "Cannot invert given one-to-one table"
+msgstr "Kan een-op-een tabel niet inverteren"
+
+#: src/recode.c:224 src/recode.c:236
+#, c-format
+msgid "Following diagnostics for `%s' to `%s'"
+msgstr "Volg diagnostiek (FIXME) van `%s' naar `%s'"
+
+#: src/recode.c:229 src/recode.c:241
+#, fuzzy, c-format
+msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
+msgstr "Paar nummer %d: { %3d, %3d } conflictueerd met { %3d, %3d }"
+
+#: src/recode.c:272
+msgid "Cannot complete table from set of known pairs"
+msgstr "Kan tabel niet compleet maken uit set van bekende paren"
+
+#: src/recode.c:492
+msgid "Identity recoding, not worth a table"
+msgstr "Codering is identiek, geen tabel waardig"
+
+#: src/recode.c:499
+msgid "Recoding is too complex for a mere table"
+msgstr "Omzetting is te complex voor een mere tabel (FIXME)"
+
+#. Print the header of the header file.
+#: src/recode.c:531
+#, fuzzy, c-format
+msgid "%sConversion table generated mechanically by Free `%s' %s"
+msgstr "%sConversietabel mechanisch gegenereerd door GNU %s %s"
+
+#: src/recode.c:533
+#, c-format
+msgid "%sfor sequence %s.%s"
+msgstr "%svoor reeks %s.%s"
+
+#: src/recode.c:724
+msgid "No table to print"
+msgstr "Geen tabel om te tonen"
+
+#: src/request.c:35
+msgid "reversible"
+msgstr "omkeerbaar"
+
+#: src/request.c:37
+#, fuzzy, c-format
+msgid "%s to %s"
+msgstr "%svoor reeks %s.%s"
+
+#: src/request.c:38 src/request.c:40
+msgid "byte"
+msgstr ""
+
+#: src/request.c:39 src/request.c:41
+msgid "ucs2"
+msgstr ""
+
+#: src/request.c:39 src/request.c:41
+#, fuzzy
+msgid "variable"
+msgstr "omkeerbaar"
+
+#: src/request.c:112
+msgid "*Unachievable*"
+msgstr "*Onmogelijk*"
+
+#: src/request.c:114
+msgid "*mere copy*"
+msgstr "*gewone kopie*"
+
+#: src/request.c:244
+msgid "Virtual memory exhausted!"
+msgstr ""
+
+#: src/request.c:263
+msgid "Step initialisation failed"
+msgstr ""
+
+#: src/request.c:270
+msgid "Step initialisation failed (unprocessed options)"
+msgstr ""
+
+#: src/request.c:566
+#, c-format
+msgid "Request: %s\n"
+msgstr ""
+
+#: src/request.c:702
+#, c-format
+msgid "Shrunk to: %s\n"
+msgstr ""
+
+#: src/request.c:806 src/request.c:912
+#, c-format
+msgid "Unrecognised surface name `%s'"
+msgstr ""
+
+#: src/request.c:884
+#, fuzzy, c-format
+msgid "No way to recode from `%s' to `%s'"
+msgstr "Geen mogelijkheid voor omzetting van %s naar %s"
+
+#: src/request.c:992
+msgid "Expecting `..' in request"
+msgstr ""
+
+#: src/task.c:751 src/task.c:915
+#, c-format
+msgid "Child process wait status is 0x%0.2x"
+msgstr "Wacht status proces kind is 0x%0.2x"
+
+#~ msgid "Hash stats: %d names using %d buckets out of %d\n"
+#~ msgstr "Hash stats: %d names using %d buckets out of %d (FIXME)\n"
+
+#~ msgid "Currently, -s is ignored when -g is selected"
+#~ msgstr "Op dit moment wordt -s genegeerd als -g is geselecteerd"
+
+#~ msgid "one to one"
+#~ msgstr "een op een"
+
+#~ msgid "one to many"
+#~ msgstr "een naar veel (FIXME)"
+
+#~ msgid "many to one"
+#~ msgstr "veel naar een (FIXME)"
+
+#~ msgid "many to many"
+#~ msgstr "veel te veel"
+
+#~ msgid "MAX_CHARSETS is too small"
+#~ msgstr "MAX_CHARSETS is te klein"
+
+#~ msgid "Ambiguous charset or encoding `%s'"
+#~ msgstr "Dubbelzinnige karakterset of codering `%s'"
+
+#~ msgid "Unknown charset or encoding `%s'"
+#~ msgstr "Onbekende karakterset of codering `%s'"
+
+#~ msgid "Simplified to: %s\n"
+#~ msgstr "Versimpeld naar: %s\n"
+
+#~ msgid "Unbalanced quotes in request"
+#~ msgstr "Niet overeenkomstige kwoots in vraag"
+
+#~ msgid "Illegal backslash"
+#~ msgstr "Ongeldige backslash"
+
+#~ msgid "Internal error - strategy undecided"
+#~ msgstr "Interne fout - besluiteloze strategie"
+
+#~ msgid "ONE to SAME"
+#~ msgstr "ONE naar SAME"
+
+#~ msgid "steps: %d"
+#~ msgstr "stappen: %d"
+
+#~ msgid ", %d saved by merging"
+#~ msgstr ", %d bewaard door samenvoegen"
+
+#~ msgid "  UNACHIEVABLE\n"
+#~ msgstr "  ONBEREIKBAAR\n"
+
+#~ msgid "Cannot auto check the ignored charset"
+#~ msgstr "Kan de genegeerde karakterset niet automatisch kontroleren"
+
+#~ msgid "Cannot auto check on %s"
+#~ msgstr "Kan %s niet automatisch kontroleren"
+
+#~ msgid ""
+#~ "Mandatory or optional arguments to long options are mandatory or optional\n"
+#~ "for short options too.\n"
+#~ "\n"
+#~ "  -C, --copyright       display Copyright and copying conditions\n"
+#~ "  -a, --auto-check      report about some or all recoding paths, then exit\n"
+#~ "  -l, --list[=FORMAT]   list one or all known charsets\n"
+#~ "  -k, --known=PAIRS     restrict charsets according to known PAIRS list\n"
+#~ "      --help            display this help and exit\n"
+#~ "      --version         output version information and exit\n"
+#~ "\n"
+#~ "FORMAT is a word among decimal, octal, hexadecimal or full (which may be\n"
+#~ "abbreviated to one of `dohf'), it defaults to just the canonical name.\n"
+#~ "With -k, possible before charsets are listed for the given after CHARSET,\n"
+#~ "both being RFC1345 charsets, with PAIRS of the form "
+#~ "`BEF1:AFT1,BEF2:AFT2,...\n"
+#~ "and BEFs and AFTs being codes.  All codes are given as decimal numbers.\n"
+#~ msgstr ""
+#~ "Verplichte of optionele argumenten bij lange opties, zijn ook\n"
+#~ "verplicht of optioneel bij korte opties.\n"
+#~ "\n"
+#~ "  -C, --copyright       toon Copyright en copieer kondities\n"
+#~ "  -a, --auto-check      bericht over sommige of alle omzettingstrajecten\n"
+#~ "  -l, --list[=FORMAT]   toon een of alle bekende karaktersets\n"
+#~ "  -k, --known=PAREN     beperk karaktersets volgens bekende PAREN lijst\n"
+#~ "      --help            toon hulp-tekst en bekindig programma\n"
+#~ "      --version         toon versie-informatie en bekindig programma\n"
+#~ "\n"
+#~ "FORMAT is een woord zoals decimaal, octaal, hexadecimaal of volledig\n"
+#~ "(full) (wat mag worden afgekort als een van `dohf'), gewoonlijk wordt\n"
+#~ "de standaardnaam gebruikt.\n"
+#~ "\n"
+#~ "(FIXME) With -k, possible before charsets are listed for the given\n"
+#~ "after CHARSET, both being RFC1345 charsets, with PAIRS of the form\n"
+#~ "`BEF1:AFT1,BEF2:AFT2,...  and BEFs and AFTs being codes.  All codes\n"
+#~ "are given as decimal numbers.\n"
+
+#~ msgid ""
+#~ "Option -l with no FORMAT nor CHARSET list all charsets, also see the "
+#~ "Texinfo\n"
+#~ "documentation.  My preferred charsets are (each user has preferences):\n"
+#~ "\n"
+#~ "  ascii-bs   ASCII (7-bit), using backspace to apply diacritics\n"
+#~ "  ibmpc      IBM-PC 8-bit characters, with proper newlines\n"
+#~ "  latex      LaTeX coding of foreign and diacriticized characters\n"
+#~ "  latin1     ISO Latin-1 8-bit extension of ASCII\n"
+#~ "  texte      Easy French convention for transmitting email messages\n"
+#~ msgstr ""
+#~ "Optie -l met geen FORMAT noch CHARSET laat alle karaktersets zien, zie\n"
+#~ "ook de Texinfo documentatie.  Mijn preferente karaktersets zijn (elke\n"
+#~ "gebruiker heeft voorkeuren):\n"
+#~ "\n"
+#~ "  ascii-bs   ASCII (7-bit), gebruik backspace to apply diacritics\n"
+#~ "  ibmpc      IBM-PC 8-bit karakter, met juiste nieuwe regels\n"
+#~ "  latex      LaTeX codering van vreemde en dia-kritische karrakters\n"
+#~ "  latin1     ISO Latin-1 8-bit uitbreiding van ASCII\n"
+#~ "  texte      Makkelijk franse conventie voor versturen email berichten\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "Usage: %s [OPTION]... [BEFORE]:[AFTER] [FILE]...\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Gebruik: %s [OPTIE]... [VOOR]:[NA] [BESTAND]...\n"
+
+#~ msgid ""
+#~ "  -o, --sequence=popen    use popen machinery for sequencing passes\n"
+#~ msgstr ""
+#~ "  -o, --sequence=popen    gebruiken popen machinery for sequencing passes "
+#~ "(FIXME)\n"
+
+#~ msgid "  -o, --sequence=popen    same as -i (on this system)\n"
+#~ msgstr "  -o, --sequence=popen    zelfde als -i (op dit systeem)\n"
+
+#~ msgid ""
+#~ "  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+#~ "  -s, --strict            use strict mappings, even loose characters\n"
+#~ "  -t, --touch             touch the recoded files after replacement\n"
+#~ "  -v, --verbose           explain sequence of steps and report progress\n"
+#~ "  -x, --ignore=CHARSET    ignore CHARSET while choosing a recoding path\n"
+#~ "\n"
+#~ "If none of -i, -o and -p are given, presume -p if no FILE, else -i.\n"
+#~ "Each FILE is recoded over itself, destroying the original.  If no\n"
+#~ "FILE is specified, then act as a filter and recode stdin to stdout.\n"
+#~ msgstr ""
+#~ "  -q, --quiet, --silent   laat meldingen over onomkeerbaarheid achterwege\n"
+#~ "  -s, --strict            gebruik strikte omzetting, zelfs voor loose chars\n"
+#~ "  -t, --touch             verander de tijd van omgezette bestanden\n"
+#~ "  -v, --verbose           laat zien wat er gebeurt\n"
+#~ "  -x, --ignore=CHARSET    negeer CHARSET bij kiezen van omzettingstraject\n"
+#~ "\n"
+#~ "Als geen van -i, -o en -p gegeven zijn, veronderstel -p als geen\n"
+#~ "BESTAND, anders -i.  Elk BESTAND is omgezet over zichzelf, het\n"
+#~ "origineel vernietigend.  Als geen BESTAND is gespecificeerd, werk dan\n"
+#~ "als een filter en zet standaardinvoer om naar standaarduitvoer.\n"
+
+#~ msgid "BEFORE and AFTER both default to `%s' when needed.\n"
+#~ msgstr "VOOR en NA beiden `%s' indien noodzakelijk.\n"
+
+#~ msgid "%s: Recoding is not reversible"
+#~ msgstr "%s: Omzetting is niet omkeerbaar"
+
+#~ msgid "Recoding is not reversible"
+#~ msgstr "Omzetting is niet omkeerbaar"

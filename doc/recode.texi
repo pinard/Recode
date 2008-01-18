@@ -1,0 +1,4190 @@
+\input texinfo
+@c %**start of header
+@setfilename recode.info
+@settitle The @code{recode} reference manual
+@finalout
+@c %**end of header
+
+@include version.texi
+
+@ifinfo
+@format
+START-INFO-DIR-ENTRY
+* recode: (recode).     Conversion between character sets and surfaces.
+END-INFO-DIR-ENTRY
+@end format
+@end ifinfo
+
+@ifinfo
+This file documents the @code{recode} command, which has the purpose of
+converting files between various character sets and surfaces.
+
+Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+@ignore
+Permission is granted to process this file through TeX and print the
+results, provided the printed document carries copying permission
+notice identical to this one except for the removal of this paragraph
+(this paragraph not being relevant to the printed manual).
+
+@end ignore
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end ifinfo
+
+@titlepage
+@title Free recode, version @value{VERSION}
+@subtitle The character set converter
+@subtitle Edition @value{EDITION}, @value{UPDATED}
+@author Fran@,{c}ois Pinard
+
+@page
+@vskip 0pt plus 1filll
+Copyright @copyright{} 1993, 94, 97, 98, 99 Free Software Foundation, Inc.
+
+Permission is granted to make and distribute verbatim copies of
+this manual provided the copyright notice and this permission notice
+are preserved on all copies.
+
+Permission is granted to copy and distribute modified versions of this
+manual under the conditions for verbatim copying, provided that the entire
+resulting derived work is distributed under the terms of a permission
+notice identical to this one.
+
+Permission is granted to copy and distribute translations of this manual
+into another language, under the above conditions for modified versions,
+except that this permission notice may be stated in a translation approved
+by the Foundation.
+@end titlepage
+
+@ifinfo
+@node Top, Tutorial, (dir), (dir)
+@top @code{recode}
+
+@c @item @b{@code{recode}} @value{hfillkludge} (UtilT, SrcCD)
+@c
+This recoding library converts files between various coded character
+sets and surface encodings.  When this cannot be achieved exactly, it
+may get rid of the offending characters or fall back on approximations.
+The library recognises or produces nearly 150 different character sets and
+is able to convert files between almost any pair.  Most @w{RFC 1345} character
+sets are supported.  The @code{recode} program is a handy front-end to
+the library.
+
+The current @code{recode} release is @value{VERSION}.
+
+@menu
+* Tutorial::            Quick Tutorial
+* Introduction::        Terminology and purpose
+* Invoking recode::     How to use this program
+* Library::             A recoding library
+* Universal::           The universal charset
+* Tabular::             Tabular sources (@w{RFC 1345})
+* ASCII misc::          ASCII and some derivatives
+* IBM and MS::          Some IBM or Microsoft charsets
+* CDC::                 Charsets for CDC machines
+* Micros::              Other micro-computer charsets
+* Miscellaneous::       Various other charsets
+* Surfaces::            All about surfaces
+* Internals::           Internal aspects
+
+@detailmenu
+ --- The Detailed Node Listing ---
+
+Terminology and purpose
+
+* Charset overview::    Overview of charsets
+* Surface overview::    Overview of surfaces
+* Contributing::        Contributions and bug reports
+
+How to use this program
+
+* Synopsis::            Synopsis of @code{recode} call
+* Requests::            The @var{request} parameter
+* Listings::            Asking for various lists
+* Recoding::            Controlling how files are recoded
+* Reversibility::       Reversibility issues
+* Sequencing::          Selecting sequencing methods
+* Mixed::               Using mixed charset input
+* Emacs::               Using @code{recode} within Emacs
+
+A recoding library
+
+* Outer level::         Outer level functions
+* Request level::       Request level functions
+* Task level::          Task level functions
+* Charset level::       Charset level functions
+* Errors::              Handling errors
+
+The universal charset
+
+* UCS-2::               Universal Character Set, 2 bytes
+* UCS-4::               Universal Character Set, 4 bytes
+* UTF-7::               Universal Transformation Format, 7 bits
+* UTF-8::               Universal Transformation Format, 8 bits
+* UTF-16::              Universal Transformation Format, 16 bits
+* count-characters::    Frequency count of characters
+* dump-with-names::     Fully interpreted UCS dump
+
+ASCII and some derivatives
+
+* ASCII::               Usual ASCII
+* ISO 8859::            ASCII extended by Latin Alphabets
+* ASCII-BS::            ASCII 7-bits, @kbd{BS} to overstrike
+* flat::                ASCII without diacritics nor underline
+
+Some IBM or Microsoft charsets
+
+* EBCDIC::              EBCDIC codes
+* IBM-PC::              IBM's PC code
+* Icon-QNX::            Unisys' Icon code
+
+Charsets for CDC machines
+
+* Display Code::        Control Data's Display Code
+* CDC-NOS::             ASCII 6/12 from NOS
+* Bang-Bang::           ASCII ``bang bang''
+
+Other micro-computer charsets
+
+* Apple-Mac::           Apple's Macintosh code
+* AtariST::             Atari ST code
+
+Various other charsets
+
+* HTML::                World Wide Web representations
+* LaTeX::               La@TeX{} macro calls
+* Texinfo::             GNU project documentation files
+* African::             African charsets
+* Cyrillic::            Cyrillic charsets
+* Texte::               Easy French conventions
+* Mule::                Mule as a multiplexed charset
+
+All about surfaces
+
+* Permutations::        Permuting groups of bytes
+* End lines::           Representation for end of lines
+* MIME::                MIME contents encodings
+* Dump::                Interpreted character dumps
+* Debugging::           Artificial data
+
+Internal aspects
+
+* Main flow::           Overall organisation
+* New charsets::        Adding new charsets
+* New surfaces::        Adding new surfaces
+* Design::              Comments on the library design
+
+@end detailmenu
+@end menu
+
+@end ifinfo
+
+@node Tutorial, Introduction, Top, Top
+@chapter Quick Tutorial
+
+So, really, you just are in a hurry to use @code{recode}, and do not
+feel like studying this manual?  Even reading this paragraph slows you down?
+We might have a problem, as you will have to do some guess work, and might
+not become very proficient unless you have a very solid intuition@dots{}.
+
+Let me use here, as a quick tutorial, an actual reply of mine to a
+@code{recode} user, who writes:
+
+@quotation
+My situation is this---I occasionally get email with special characters
+in it.  Sometimes this mail is from a user using IBM software and sometimes
+it is a user using Mac software.  I myself am on a SPARC Solaris machine.
+@end quotation
+
+Your situation is similar to mine, except that I @emph{often} receive
+email needing recoding, that is, much more than @emph{occasionally}!
+The usual recodings I do are Mac to @w{Latin-1}, IBM page codes to @w{Latin-1},
+Easy-French to @w{Latin-1}, remove Quoted-Printable, remove Base64.  These are
+so frequent that I made myself a few two-keystroke Emacs commands to filter
+the Emacs region.  This is very convenient for me.  I also resort to many
+other email conversions, yet more rarely than the frequent cases above.
+
+@quotation
+It @emph{seems} like this should be doable using @code{recode}.  However,
+when I try something like @samp{grecode mac macfile.txt} I get nothing
+out---no error, no output, nothing.
+@end quotation
+
+Presuming you are using some recent version of @code{recode}, the command:
+
+@example
+recode mac macfile.txt
+@end example
+
+@noindent
+is a request for recoding @file{macfile.txt} over itself, overwriting the
+original, from Macintosh usual character code and Macintosh end of lines,
+to @w{Latin-1} and Unix end of lines.  This is overwrite mode.  If you want
+to use @code{recode} as a filter, which is probably what you need, rather do:
+
+@example
+recode mac
+@end example
+
+@noindent
+and give your Macintosh file as standard input, you'll get the @w{Latin-1}
+file on standard output.  The above command is an abbreviation for any of:
+
+@example
+recode mac..
+recode mac..l1
+recode mac..Latin-1
+recode mac/CR..Latin-1/
+recode Macintosh..ISO_8859-1
+recode Macintosh/CR..ISO_8859-1/
+@end example
+
+That is, a @code{CR} surface, encoding newlines with ASCII @key{CR}, is
+first to be removed (this is a default surface for @samp{mac}), then the
+Macintosh charset is converted to @w{Latin-1} and no surface is added to the
+result (there is no default surface for @samp{l1}).  If you want @samp{mac}
+code converted, but you know that newlines are already coded the Unix way,
+just do:
+
+@example
+recode mac/
+@end example
+
+@noindent
+the slash then overriding the default surface with empty, that is, none.
+Here are other easy recipes:
+
+@example
+recode pc          to filter IBM-PC code and CR-LF (default) to Latin-1
+recode pc/         to filter IBM-PC code to Latin-1
+recode 850         to filter code page 850 and CR-LF (default) to Latin-1
+recode 850/        to filter code page 850 to Latin-1
+recode /qp         to remove quoted printable
+@end example
+
+The last one is indeed equivalent to any of:
+
+@example
+recode /qp..
+recode l1/qp..l1/
+recode ISO_8859-1/Quoted-Printable..ISO_8859-1/
+@end example
+
+Here are some reverse recipes:
+
+@example
+recode ..mac       to filter Latin-1 to Macintosh code and CR (default)
+recode ..mac/      to filter Latin-1 to Macintosh code
+recode ..pc        to filter Latin-1 to IBM-PC code and CR-LF (default)
+recode ..pc/       to filter Latin-1 to IBM-PC code
+recode ..850       to filter Latin-1 to code page 850 and CR-LF (default)
+recode ..850/      to filter Latin-1 to code page 850
+recode ../qp       to force quoted printable
+@end example
+
+In all the above calls, replace @samp{recode} by @samp{recode -f} if you
+want to proceed despite recoding errors.  If you do not use @samp{-f}
+and there is an error, the recoding output will be interrupted after first
+error in filter mode, or the file will not be replaced by a recoded copy
+in overwrite mode.
+
+You may use @samp{recode -l} to get a list of available charsets and
+surfaces, and @samp{recode --help} to get a quick summary of options.
+The above output is meant for those having already read this manual, so
+let me dare a suggestion: why could not you find a few more minutes in
+your schedule to peek further down, right into the following chapters!
+
+@node Introduction, Invoking recode, Tutorial, Top
+@chapter Terminology and purpose
+
+A few terms are used over and over in this manual, our wise reader will
+learn their meaning right away.  Both ISO (International Organization for
+Standardisation) and IETF (Internet Engineering Task Force) have their
+own terminology, this document does not try to stick to either one in a
+strict way, while it does not want to throw more confusion in the field.
+On the other hand, it would not be efficient using paraphrases all the time,
+so @code{recode} coins a few short words, which are explained below.
+
+A @dfn{charset}, in the context of @code{recode}, is a particular association
+between computer codes on one side, and a repertoire of intended characters
+on the other side.  Codes are usually taken from a set of consecutive
+small integers, starting at 0.  Some characters have a graphical appearance
+(glyph) or displayable effect, others have special uses like, for example,
+to control devices or to interact with neighbouring codes to specify them
+more precisely.  So, a @emph{charset} is roughly one of those tables,
+giving a meaning to each of the codes from the set of allowable values.
+MIME also uses the term charset with approximately the same meaning.
+It does @emph{not} exactly corresponds to what ISO calls a @dfn{coded
+character set}, that is, a set of characters with an encoding for them.
+An coded character set does not necessarily use all available code positions,
+while a MIME charset usually tries to specify them all.  A MIME charset
+might be the union of a few disjoint coded character sets.
+
+A @dfn{surface} is a term used in @code{recode} only, and is a short for
+surface transformation of a charset stream.  This is any kind of mapping,
+usually reversible, which associates physical bits in some medium for
+a stream of characters taken from one or more charsets (usually one).
+A surface is a kind of varnish added over a charset so it fits in actual
+bits and bytes.  How end of lines are exactly encoded is not really
+pertinent to the charset, and so, there is surface for end of lines.
+@code{Base64} is also a surface, as we may encode any charset in it.
+Other examples would @code{DES} enciphering, or @code{gzip} compression
+(even if @code{recode} does not offer them currently): these are ways to give
+a real life to theoretical charsets.  The @dfn{trivial} surface consists
+into putting characters into fixed width little chunks of bits, usually
+eight such bits per character.  But things are not always that simple.
+
+This @code{recode} library, and the program by that name, have the purpose
+of converting files between various charsets and surfaces.  When this
+cannot be done in exact ways, as it is often the case, the program may
+get rid of the offending characters or fall back on approximations.
+This library recognises or produces around 175 such charsets under 500
+names, and handle a dozen surfaces.  Since it can convert each charset to
+almost any other one, many thousands of different conversions are possible.
+
+The @code{recode} program and library do not usually know how to split and
+sort out textual and non-textual information which may be mixed in a single
+input file.  For example, there is no surface which currently addresses the
+problem of how lines are blocked into physical records, when the blocking
+information is added as binary markers or counters within files.  So,
+@code{recode} should be given textual streams which are rather @emph{pure}.
+
+This tool pays special attention to superimposition of diacritics for some
+French representations.  This orientation is mostly historical, it does
+not impair the usefulness, generality or extensibility of the program.
+
+The program @code{recode} has been written by Fran@,{c}ois Pinard.
+With time, it got to reuse works from other contributors, and notably,
+those of Keld Simonsen.
+
+@menu
+* Charset overview::    Overview of charsets
+* Surface overview::    Overview of surfaces
+* Contributing::        Contributions and bug reports
+@end menu
+
+@node Charset overview, Surface overview, Introduction, Introduction
+@section Overview of charsets
+
+Recoding is currently possible between many charsets, the bulk of which
+is described by @w{RFC 1345} tables.  @xref{Tabular}.  The @code{recode}
+library also handles some charsets in some specialised ways.  These are:
+
+@itemize @bullet
+
+@item
+6-bit charsets based on CDC display code: 6/12 code from NOS; bang-bang
+code from Universit@'e de Montr@'eal;
+
+@item
+7-bit ASCII: without any diacritics, or else: using backspace for
+overstriking; Unisys' Icon convention; @TeX{}/La@TeX{} coding; easy
+French conventions for electronic mail;
+
+@item
+8-bit extensions to ASCII: ISO @w{Latin-1}, Atari ST code, IBM's code for
+the PC, Apple's code for the Macintosh;
+
+@item
+8-bit non-ASCII codes: three flavours of EBCDIC;
+
+@item
+16-bit or 31-bit universal characters, and their transfer encodings.
+
+@end itemize
+
+The introduction of @w{RFC 1345} in @code{recode} has brought with it a few
+charsets having the functionality of older ones, but yet being different
+in subtle ways.  The effects have not been fully investigated yet, so for
+now, clashes are avoided, the old and new charsets are kept well separate.
+
+@node Surface overview, Contributing, Charset overview, Introduction
+@section Overview of surfaces
+
+For various practical considerations, it sometimes happens that the codes
+making up a text, written in a particular charset, cannot simply be put
+out in a file one after another without creating problems or breaking
+other things.  Sometimes, 8-bit codes cannot be written on a 7-bit medium,
+variable length codes need kind of envelopes, newlines require special
+treatment, etc.  We sometimes have to apply @dfn{surfaces} to a stream
+of codes, which surfaces are kind of tricks used to fit the charset into
+those practical constraints.  Moreover, similar surfaces or tricks may
+be useful for many unrelated charsets, and many surfaces can be used at
+once over a single charset.
+
+So, @code{recode} has machinery to describe a combination of a charset with
+surfaces used over it in a file.  We would use the expression @dfn{pure
+charset} for referring to a charset free of any surface, that is, the
+conceptual association between integer codes and character intents.
+
+It is not always clear if some transformation will yield a charset or a
+surface, especially for those transformations which are only meaningful
+over a single charset.  The @code{recode} library is not overly picky as
+identifying surfaces as such: when it is practical to consider a specialised
+surface as if it were a charset, this is preferred, and done.
+
+@node Contributing, , Surface overview, Introduction
+@section Contributions and bug reports
+
+Even being the @code{recode} author and current maintainer, I am no
+specialist in charset standards.  I only made @code{recode} along the
+years to solve my own needs, but felt it was applicable for the needs
+of others.  Some FSF people liked the program structure and suggested
+to make it more widely available.  I often rely on @code{recode} users
+suggestions to decide what is best to be done next.
+
+Properly protecting @code{recode} about possible copyright fights is a
+pain for me and for contributors, but we cannot avoid addressing the issue
+in the long run.  Besides, the Free Software Foundation, which mandates
+the GNU project, is very sensible to this matter.  GNU standards suggest
+that we stay cautious before looking at copyrighted code.  The safest and
+simplest way for me is to gather ideas and reprogram them anew, even if
+this might slow me down considerably.  For contributions going beyond a
+few lines of code here and there, the FSF definitely requires employer
+disclaimers and copyright assignments in writing.
+
+When you contribute something to @code{recode}, @emph{please} explain what
+it is about.  Do not take for granted that I know those charsets which
+are familiar to you.  Once again, I'm no expert, and you have to help me.
+Your explanations could well find their way into this documentation, too.
+Also, for contributing new charsets or new surfaces, as much as possible,
+please provide good, solid, verifiable references for the tables you
+used@footnote{I'm not prone at accepting a charset you just invented,
+and which nobody uses yet: convince your friends and community first!}.
+
+Many users contributed to @code{recode} already, I am grateful to them for
+their interest and involvement.  Some suggestions can be integrated quickly
+while some others have to be delayed, I have to draw a line somewhere when
+time comes to make a new release, about what would go in it and what would
+go in the next.
+
+Please send suggestions, documentation errors and bug reports to
+@email{recode-bugs@@iro.umontreal.ca} or, if you prefer, directly to
+Fran@,{c}ois Pinard@footnote{Use @email{pinard@@iro.umontreal.ca}
+to reach me}.  Do not be afraid to report details, because this program
+is the mere aggregation of hundreds of details.
+
+@node Invoking recode, Library, Introduction, Top
+@chapter How to use this program
+
+With the synopsis of the @code{recode} call, we stress the difference
+between using this program as a file filter, or recoding many files
+at once.  The first parameter of any call states the recoding request,
+and this deserves a section on its own.  Options are then presented,
+but somewhat grouped according to the related functionalities they
+control.
+
+@menu
+* Synopsis::            Synopsis of @code{recode} call
+* Requests::            The @var{request} parameter
+* Listings::            Asking for various lists
+* Recoding::            Controlling how files are recoded
+* Reversibility::       Reversibility issues
+* Sequencing::          Selecting sequencing methods
+* Mixed::               Using mixed charset input
+* Emacs::               Using @code{recode} within Emacs
+@end menu
+
+@node Synopsis, Requests, Invoking recode, Invoking recode
+@section Synopsis of @code{recode} call
+
+The general format of the program call is one of:
+
+@example
+recode [@var{option}]@dots{} [@var{charset} | @var{request} [@var{file}]@dots{} ]
+@end example
+
+Some calls are used only to obtain lists produced by @code{recode} itself,
+without actually recoding any file.  They are recognised through the
+usage of listing options, and these options decide what meaning should
+be given to an optional @var{charset} parameter.  @xref{Listings}.
+
+In other calls, the first parameter (@var{request}) always explains which
+transformations are expected on the files.  There are many variations to
+the aspect of this parameter.  We will discuss more complex situations
+later (@pxref{Requests}), but for many simple cases, this parameter
+merely looks like@footnote{In previous versions or @code{recode}, a single
+colon @samp{:} was used instead of the two dots @samp{..} for separating
+charsets, but this was creating problems because colons are allowed in
+official charset names.  The old request syntax is still recognised for
+compatibility purposes, but is deprecated.}:
+
+@example
+@var{before}..@var{after}
+@end example
+
+@noindent
+where @var{before} and @var{after} each gives the name of a charset.  Each
+@var{file} will be read assuming it is coded with charset @var{before}, it
+will be recoded over itself so to use the charset @var{after}.  If there
+is no @var{file} on the @code{recode} command, the program rather acts
+as a Unix filter and transforms standard input onto standard output.
+
+The capability of recoding many files at once is very convenient.
+For example, one could easily prepare a distribution from @w{Latin-1} to MSDOS,
+this way:
+
+@example
+mkdir package
+cp -p Makefile *.[ch] package
+recode Latin-1..MSDOS package/*
+zoo ah package.zoo package/*
+rm -rf package
+@end example
+
+@noindent
+(In this example, the non-mandatory @samp{-p} option to @code{cp} is for
+preserving timestamps, and the @code{zoo} program is an archiver from
+Rahul Dhesi which once was quite popular.)
+
+The filter operation is especially useful when the input files should
+not be altered.  Let us make an example to illustrate this point.
+Suppose that someone has a file named @file{datum.txt}, which is almost
+a @TeX{} file, except that diacriticised characters are written using
+@w{Latin-1}.  To complete the recoding of the diacriticised characters
+@emph{only} and produce a file @file{datum.tex}, without destroying
+the original, one could do:
+
+@example
+cp -p datum.txt datum.tex
+recode -d l1..tex datum.tex
+@end example
+
+However, using @code{recode} as a filter will achieve the same goal more
+neatly:
+
+@example
+recode -d l1..tex <datum.txt >datum.tex
+@end example
+
+This example also shows that @code{l1} could be used instead of
+@code{Latin-1}; charset names often have such aliases.
+
+@node Requests, Listings, Synopsis, Invoking recode
+@section The @var{request} parameter
+
+In the case where the @var{request} is merely written as
+@var{before}..@var{after}, then @var{before} and @var{after} specify the
+start charset and the goal charset for the recoding.
+
+For @code{recode}, charset names may contain any character, besides a
+comma, a forward slash, or two periods in a row.  But in practice, charset
+names are currently limited to alphabetic letters (upper or lower case),
+digits, hyphens, underlines, periods, colons or round parentheses.
+
+The complete syntax for allowable @var{request} allows for unusual
+things, which might surprise at first.  (Do not pay too much attention
+to these facilities on a first reading.)  For example, @var{request}
+may also contain intermediary charsets, like in:
+
+@example
+@var{before}..@var{interim1}..@var{interim2}..@var{after}
+@end example
+
+@noindent
+meaning that @code{recode} should internally produce the @var{interim1}
+charset from the start charset, then work out of this @var{interim1}
+charset to internally produce @var{interim2}, and from there towards the
+goal charset.  In fact, @code{recode} internally combines recipes and
+automatically uses interim charsets, when there is no direct recipe for
+transforming @var{before} into @var{after}.  But there might be many ways
+to do it.  When many routes are possible, the above @dfn{chaining} syntax
+may be used to more precisely force the program towards a particular route,
+which it might not have naturally selected otherwise.  On the other hand,
+because @code{recode} tries to choose good routes, chaining is only needed
+to achieve some rare, unusual effects.
+
+Moreover, many such requests (sub-requests, more precisely) may be
+separated with commas (but no spaces at all), indicating a sequence
+of recodings, where the output of one has to serve as the input of the
+following one.  For example, the two following requests are equivalent:
+
+@example
+@var{before}..@var{interim1}..@var{interim2}..@var{after}
+@var{before}..@var{interim1},@var{interim1}..@var{interim2},@var{interim2}..@var{after}
+@end example
+
+@noindent
+In this example, the charset input for any recoding sub-request is identical
+to the charset output by the preceding sub-request.  But it does not have
+to be in the general case.  One might wonder what would be the meaning
+of declaring the charset input for a recoding sub-request of being of
+different nature than the charset output by a preceding sub-request, when
+recodings are chained in this way.  These strange usages might have a
+meaning and be useful for the @code{recode} expert, but they are quite
+uncommon in practice.
+
+More useful is the distinction between the concept of charset, and
+the concept of surfaces.  An encoded charset is represented by:
+
+@example
+@var{pure-charset}/@var{surface1}/@var{surface2}@dots{}
+@end example
+
+@noindent
+using slashes to introduce surfaces, if any.  The order of application
+of surfaces is usually important, they cannot be freely commuted.  In the
+given example, @var{surface1} is first applied over the @var{pure-charset},
+then @var{surface2} is applied over the result.  Given this request:
+
+@example
+@var{before}/@var{surface1}/@var{surface2}..@var{after}/@var{surface3}
+@end example
+
+@noindent
+the @code{recode} program will understand that the input files should
+have @var{surface2} removed first (because it was applied last), then
+@var{surface1} should be removed.  The next step will be to translate the
+codes from charset @var{before} to charset @var{after}, prior to applying
+@var{surface3} over the result.
+
+Some charsets have one or more @emph{implied} surfaces.  In this case, the
+implied surfaces are automatically handled merely by naming the charset,
+without any explicit surface to qualify it.  Let's take an example to
+illustrate this feature.  The request @samp{pc..l1} will indeed decode MS-DOS
+end of lines prior to converting IBM-PC codes to @w{Latin-1}, because @samp{pc}
+is the name of a charset@footnote{More precisely, @code{pc} is an alias for
+the charset @code{IBM-PC}.} which has @code{CR-LF} for its usual surface.
+The request @samp{pc/..l1} will @emph{not} decode end of lines, since
+the slash introduces surfaces, and even if the surface list is empty, it
+effectively defeats the automatic removal of surfaces for this charset.
+So, empty surfaces are useful, indeed!
+
+Both charsets and surfaces may have predefined alternate names, or aliases.
+However, and this is rather important to understand, implied surfaces
+are attached to individual aliases rather than on genuine charsets.
+Consequently, the official charset name and all of its aliases do not
+necessarily share the same implied surfaces.  The charset and all its
+aliases may each have its own different set of implied surfaces.
+
+Charset names, surface names, or their aliases may always be abbreviated
+to any unambiguous prefix.  Internally in @code{recode}, disambiguating
+tables are kept separate for charset names and surface names.
+
+While recognising a charset name or a surface name (or aliases thereof),
+@code{recode} ignores all characters besides letters and digits, so for
+example, the hyphens and underlines being part of an official charset
+name may safely be omitted (no need to un-confuse them!).  There is also
+no distinction between upper and lower case for charset or surface names.
+
+One of the @var{before} or @var{after} keywords may be omitted.  If the
+double dot separator is omitted too, then the charset is interpreted as
+the @var{before} charset.@footnote{Both @var{before} and @var{after} may
+be omitted, in which case the double dot separator may not.  This would
+not be very meaningful, as the recoding reduces to a mere copy in that case.}
+
+When a charset name is omitted or left empty, the value of the
+@code{DEFAULT_CHARSET} variable in the environment is used instead.  If this
+variable is not defined, the @code{recode} library uses an @emph{usual
+charset} which is installation dependent.  When this variable is defined but
+has an empty value, charset names may just not be omitted.  Unless overriden
+when @code{recode} was installed, this usual charset is @code{Latin-1} for
+Unix systems or @code{IBM-PC} for MS-DOS machines.
+
+If the charset name is omitted but followed by surfaces, the surfaces
+then qualify the usual or default charset.  For example, the request
+@samp{../x} is sufficient for applying an hexadecimal surface to the input
+text@footnote{MS-DOS is one of those systems for which the default charset
+has implied surfaces, @code{CR-LF} here.  Such surfaces are automatically
+removed or applied whenever the default charset is read or written,
+exactly as it would go for any other charset.  In the example above, on
+such systems, the hexadecimal surface would then @emph{replace} the implied
+surfaces.  For @emph{adding} an hexadecimal surface without removing any,
+one should write the request as @samp{/../x}.}.
+
+The allowable values for @var{before} or @var{after} charsets, and various
+surfaces, are described in the remainder of this document.
+
+@node Listings, Recoding, Requests, Invoking recode
+@section Asking for various lists
+
+Many options control listing output generated by @code{recode} itself,
+they are not meant to accompany actual file recodings.  These options are:
+
+@table @samp
+
+@item --version
+The program merely prints its version numbers on standard output, and
+exits without doing anything else.
+
+@item --help
+The program merely prints a page of help on standard output, and exits
+without doing any recoding.
+
+@item -C
+@itemx --copyright
+Given this option, all other parameters and options are ignored.  The
+program prints briefly the copyright and copying conditions.  See the
+file @file{COPYING} in the distribution for full statement of the
+Copyright and copying conditions.
+
+@item -h[@var{language}/][@var{name}]
+@itemx --header[=[@var{language}/][@var{name}]]
+Instead of recoding files, @code{recode} writes a @var{language} source
+file on standard output and exits.  This source is meant to be included
+in a regular program written in the same programming @var{language}:
+its purpose is to declare and initialise an array, named @var{name},
+which represents the requested recoding.  The only acceptable values for
+@var{language} are @samp{c} or @samp{perl}, and may may be abbreviated.
+If @var{language} is not specified, @samp{c} is assumed.  If @var{name}
+is not specified, then it defaults to @samp{@var{before}_@var{after}}.
+Strings @var{before} and @var{after} are cleaned before being used according
+to the syntax of @var{language}.
+
+Even if @code{recode} tries its best, this option does not always succeed in
+producing the requested source table.  It will however, provided the recoding
+can be internally represented by only one step after the optimisation phase,
+and if this merged step conveys a one-to-one or a one-to-many explicit
+table.  Also, when attempting to produce sources tables, @code{recode}
+relaxes its checking a tiny bit: it ignores the algorithmic part of some
+tabular recodings, it also avoids the processing of implied surfaces.
+But this is all fairly technical.  Better try and see!
+
+Beware that other options might affect the produced source tables, these
+are: @code{-d}, @code{-g} and, particularly, @code{-s}.
+
+@item -k @var{pairs}
+@itemx --known=@var{pairs}
+
+This particular option is meant to help identifying an unknown charset,
+using as hints some already identified characters of the charset.  Some
+examples will help introducing the idea.
+
+Let's presume here that @code{recode} is run on Unix, where @w{Latin-1} is the
+usual charset, and that @code{DEFAULT_CHARSET} is unset in the environment.
+Suppose you have guessed that code 130 (decimal) of the unknown charset
+represents a lower case @samp{e} with an acute accent.  That is to say
+that this code should map to code 233 (decimal) in the usual charset.
+By executing:
+
+@example
+recode -k 130:233
+@end example
+
+@noindent
+you should obtain a listing similar to:
+
+@example
+AtariST atarist
+CWI cphu cwi cwi2
+IBM437 437 cp437 ibm437
+IBM850 850 cp850 ibm850
+IBM851 851 cp851 ibm851
+IBM852 852 cp852 ibm852
+IBM857 857 cp857 ibm857
+IBM860 860 cp860 ibm860
+IBM861 861 cp861 cpis ibm861
+IBM863 863 cp863 ibm863
+IBM865 865 cp865 ibm865
+@end example
+
+You can give more than one clue at once, to restrict the list further.
+Suppose you have @emph{also} guessed that code 211 of the unknown
+charset represents an upper case @samp{E} with diaeresis, that is, code
+203 in the usual charset.  By requesting:
+
+@example
+recode -k 130:233,211:203
+@end example
+
+@noindent
+you should obtain:
+
+@example
+IBM850 850 cp850 ibm850
+IBM852 852 cp852 ibm852
+IBM857 857 cp857 ibm857
+@end example
+
+The usual charset may be overridden by specifying one non-option argument.
+For example, to request the list of charsets for which code 130 maps to
+code 142 for the Macintosh, you may ask:
+
+@example
+recode -k 130:142 mac
+@end example
+
+@noindent
+and get:
+
+@example
+AtariST atarist
+CWI cphu cwi cwi2
+IBM437 437 cp437 ibm437
+IBM850 850 cp850 ibm850
+IBM851 851 cp851 ibm851
+IBM852 852 cp852 ibm852
+IBM857 857 cp857 ibm857
+IBM860 860 cp860 ibm860
+IBM861 861 cp861 cpis ibm861
+IBM863 863 cp863 ibm863
+IBM865 865 cp865 ibm865
+@end example
+
+@noindent
+which, of course, is identical to the result of the first example, since
+the code 142 for the Macintosh is a small @samp{e} with acute.
+
+More formally, option @samp{-k} lists all possible @emph{before}
+charsets for the @emph{after} charset given as the sole non-option
+argument to @code{recode}, but subject to restrictions given in
+@var{pairs}.  If there is no non-option argument, the @emph{after}
+charset is taken to be the default charset for this @code{recode}.
+
+The restrictions are given as a comma separated list of pairs, each pair
+consisting of two numbers separated by a colon.  The numbers are taken
+as decimal when the initial digit is between @samp{1} and @samp{9};
+@samp{0x} starts an hexadecimal number, or else @samp{0} starts an
+octal number.  The first number is a code in any @emph{before} charset,
+while the second number is a code in the specified @emph{after} charset.
+If the first number would not be transformed into the second number by
+recoding from some @emph{before} charset to the @emph{after} charset,
+then this @emph{before} charset is rejected.  A @emph{before} charset is
+listed only if it is not rejected by any pair.  The program will only test
+those @emph{before} charsets having a tabular style internal description
+(@pxref{Tabular}), so should be the selected @emph{after} charset.
+
+The produced list is in fact a subset of the list produced by the
+option @samp{-l}.  As for option @samp{-l}, the non-option argument
+is interpreted as a charset name, possibly abbreviated to any non
+ambiguous prefix.
+
+@item -l[@var{format}]
+@itemx --list[=@var{format}]
+This option asks for information about all charsets, or about one
+particular charset.  No file will be recoded.
+
+If there is no non-option arguments, @code{recode} ignores the @var{format}
+value of the option, it writes a sorted list of charset names on standard
+output, one per line.  When a charset name have aliases or synonyms,
+they follow the true charset name on its line, sorted from left to right.
+Each charset or alias is followed by its implied surfaces, if any.  This list
+is over two hundred lines.  It is best used with @samp{grep -i}, as in:
+
+@example
+recode -l | grep -i greek
+@end example
+
+There might be one non-option argument, in which case it is interpreted
+as a charset name, possibly abbreviated to any non ambiguous prefix.
+This particular usage of the @code{-l} option is obeyed @emph{only} for
+charsets having a tabular style internal description (@pxref{Tabular}).
+Even if most charsets have this property, some do not, then option
+@code{-l} cannot be used to detail these particular charsets.  For knowing
+if a particular charset can be listed this way, you should merely try
+and see if this works.  The @var{format} value of the option is a keyword
+from the following list.  Keywords may be abbreviated by dropping suffix
+letters, and even reduced to the first letter only:
+
+@table @samp
+
+@item decimal
+This format asks for the production on standard output of a concise
+tabular display of the charset, in which character code values are
+expressed in decimal.
+
+@item octal
+This format uses octal instead of decimal in the concise tabular display
+of the charset.
+
+@item hexadecimal
+This format uses hexadecimal instead of decimal in the concise tabular
+display of the charset.
+
+@item full
+This format requests an extensive display of the charset on standard output,
+using one line per character showing its decimal, hexadecimal, octal and
+@code{UCS-2} code values, and also a descriptive comment which should be
+the 10646 name for the character.
+
+The descriptive comment is given in English and ASCII, yet if the English
+description is not available but a French one is, then the French description
+is given instead, using @w{Latin-1}.  However, if the @code{LANGUAGE}
+or @code{LANG} environment variable begins with the letters @samp{fr},
+then listing preference goes to French when both descriptions are available.
+
+@end table
+
+When option @code{-l} is used together with a @var{charset} argument,
+the @var{format} defaults to @code{decimal}.
+
+@item -T
+@itemx --find-subsets
+
+This option is a maintainer tool for evaluating the redundancy of those
+charsets, in @code{recode}, which are internally represented by an @code{UCS-2}
+data table.  After the listing has been produced, the program exits
+without doing any recoding.  The output of is meant to be sorted, like
+this: @w{@samp{recode -T | sort}}.  The option triggers @code{recode} into
+comparing all pairs of charsets, seeking those which are subsets of others.
+The concept and results are better explained through a few examples.
+Consider these three sample lines from @code{-T} output:
+
+@example
+[  0] IBM891 == IBM903
+[  1] IBM1004 < CP1252
+[ 12] INVARIANT < CSA_Z243.4-1985-1
+@end example
+
+@noindent
+The first line means that @code{IBM891} and @code{IBM903} are completely
+identical as far as @code{recode} is concerned, so one is fully redundant
+to the other.  The second line says that @code{IBM1004} is wholly
+contained within @code{CP1252}, yet there is a single character which is
+in @code{CP1252} without being in @code{IBM1004}.  The third line says
+that @code{INVARIANT} is wholly contained within @code{CSA_Z243.4-1985-1},
+but twelve characters are in @code{CSA_Z243.4-1985-1} without being in
+@code{INVARIANT}.  The whole output might most probably be reduced and
+made more significant through a transitivity study.
+
+@end table
+
+@node Recoding, Reversibility, Listings, Invoking recode
+@section Controlling how files are recoded
+
+The following options have the purpose of giving the user some fine
+grain control over the recoding operation themselves.
+
+@table @samp
+
+@item -c
+@itemx --colons
+With @code{Texte} Easy French conventions, use the column @kbd{:}
+instead of the double-quote @kbd{"} for marking diaeresis.
+@xref{Texte}.
+
+@item -g
+@itemx --graphics
+This option is only meaningful while getting @emph{out} of the
+@code{IBM-PC} charset.  In this charset, characters 176 to 223 are used
+for constructing rulers and boxes, using simple or double horizontal or
+vertical lines.  This option forces the automatic selection of ASCII
+characters for approximating these rulers and boxes, at cost of making
+the transformation irreversible.  Option @code{-g} implies @code{-f}.
+
+@item -t
+@itemx --touch
+The @emph{touch} option is meaningful only when files are recoded over
+themselves.  Without it, the time-stamps associated with files are
+preserved, to reflect the fact that changing the code of a file does not
+really alter its informational contents.  When the user wants the
+recoded files to be time-stamped at the recoding time, this option
+inhibits the automatic protection of the time-stamps.
+
+@item -v
+@itemx --verbose
+Before doing any recoding, the program will first print on @file{stderr}
+the list of all intermediate charsets planned for recoding, starting
+with the @var{before} charset and ending with the @var{after} charset.
+It also prints an indication of the recoding quality, as one of the word
+@samp{reversible}, @samp{one to one}, @samp{one to many}, @samp{many to
+one} or @samp{many to many}.
+
+This information will appear once or twice.  It is shown a second time
+only when the optimisation and step merging phase succeeds in replacing
+many single steps by a new one.
+
+This option also has a second effect.  The program will print on
+@file{stderr} one message per @var{file} recoded, so to keep the user
+informed of the progress of its command.
+
+An easy way to know beforehand the sequence or quality of a recoding is
+by using the command such as:
+
+@example
+recode -v @var{before}..@var{after} < /dev/null
+@end example
+
+@noindent
+also using the fact that, in @code{recode}, an empty input file produces
+an empty output file.
+
+@item -x @var{charset}
+@itemx --ignore=@var{charset}
+This option tells the program to ignore any recoding path through the
+specified @var{charset}, so disabling any single step using this charset
+as a start or end point.  This may be used when the user wants to force
+@code{recode} into using an alternate recoding path (yet using chained
+requests offers a finer control, @pxref{Requests}).
+
+@var{charset} may be abbreviated to any unambiguous prefix.
+
+@end table
+
+@node Reversibility, Sequencing, Recoding, Invoking recode
+@section Reversibility issues
+
+The following options are somewhat related to reversibility issues:
+
+@table @samp
+
+@item -f
+@itemx --force
+With this option, irreversible or otherwise erroneous recodings are run
+to completion, and @code{recode} does not exit with a non-zero status if
+it would be only because irreversibility matters.  @xref{Reversibility}.
+
+Without this option, @code{recode} tries to protect you against recoding
+a file irreversibly over itself@footnote{There are still some cases of
+ambiguous output which are rather difficult to detect, and for which
+the protection is not active.}.  Whenever an irreversible recoding is
+met, or any other recoding error, @code{recode} produces a warning on
+standard error.  The current input file does not get replaced by its
+recoded version, and @code{recode} then proceeds with the recoding of
+the next file.
+
+When the program is merely used as a filter, standard output will have
+received a partially recoded copy of standard input, up to the first
+error point.  After all recodings have been done or attempted, and if
+some recoding has been aborted, @code{recode} exits with a non-zero status.
+
+In releases of @code{recode} prior to version 3.5, this option was always
+selected, so it was rather meaningless.  Nevertheless, users were invited
+to start using @samp{-f} right away in scripts calling @code{recode}
+whenever convenient, in preparation for the current behaviour.
+
+@item -q
+@itemx --quiet
+@itemx --silent
+This option has the sole purpose of inhibiting warning messages about
+irreversible recodings, and other such diagnostics.  It has no other
+effect, in particular, it does @emph{not} prevent recodings to be aborted
+or @code{recode} to return a non-zero exit status when irreversible
+recodings are met.
+
+This option is set automatically for the children processes, when recode
+splits itself in many collaborating copies.  Doing so, the diagnostic is
+issued only once by the parent.  See option @code{-p}.
+
+@item -s
+@itemx --strict
+By using this option, the user requests that @code{recode} be very strict
+while recoding a file, merely losing in the transformation any character
+which is not explicitly mapped from a charset to another.  Such a loss is
+not reversible and so, will bring @code{recode} to fail, unless the option
+@code{-f} is also given as a kind of counter-measure.
+
+Using @code{-s} without @code{-f} might render the @code{recode} program
+very susceptible to the slighest file abnormalities.  Despite it might be
+irritating to some users, such paranoia is sometimes wanted and useful.
+
+@end table
+
+Even if @code{recode} tries hard at keeping the recodings reversible,
+you should not develop an unconditional confidence in its ability to
+do so.  You @emph{ought} to keep only reasonable expectations about
+reverse recodings.  In particular, consider:
+
+@itemize @bullet
+
+@item
+Most transformations are fully reversible for all inputs, but lose this
+property whenever @code{-s} is specified.
+
+@item
+A few transformations are not meant to be reversible, by design.
+
+@item
+Reversibility sometimes depends on actual file contents and cannot
+be ascertained beforehand, without reading the file.
+
+@item
+Reversibility is never absolute across successive versions of this
+program.  Even correcting a small bug in a mapping could induce slight
+discrepancies later.
+
+@item
+Reversibility is easily lost by merging.  This is best explained through
+an example.  If you reversibly recode a file from charset @var{A} to
+charset @var{B}, then you reversibly recode the result from charset
+@var{B} to charset @var{C}, you cannot expect to recover the original
+file by merely recoding from charset @var{C} directly to charset @var{A}.
+You will instead have to recode from charset @var{C} back to charset
+@var{B}, and only then from charset @var{B} to charset @var{A}.
+
+@item
+Faulty files create a particular problem.  Consider an example, recoding
+from @code{IBM-PC} to @code{Latin-1}.  End of lines are represented as
+@samp{\r\n} in @code{IBM-PC} and as @samp{\n} in @code{Latin-1}.  There
+is no way by which a faulty @code{IBM-PC} file containing a @samp{\n}
+not preceded by @samp{\r} be translated into a @code{Latin-1} file, and
+then back.
+
+@item
+There is another difficulty arising from code equivalences.  For
+example, in a @code{LaTeX} charset file, the string @samp{\^\i@{@}}
+could be recoded back and forth through another charset and become
+@samp{\^@{\i@}}.  Even if the resulting file is equivalent to the
+original one, it is not identical.
+
+@end itemize
+
+Unless option @code{-s} is used, @code{recode} automatically tries to
+fill mappings with invented correspondences, often making them fully
+reversible.  This filling is not made at random.  The algorithm tries to
+stick to the identity mapping and, when this is not possible, it prefers
+generating many small permutation cycles, each involving only a few
+codes.
+
+For example, here is how @code{IBM-PC} code 186 gets translated to
+@kbd{control-U} in @code{Latin-1}.  @kbd{Control-U} is 21.  Code 21 is the
+@code{IBM-PC} section sign, which is 167 in @code{Latin-1}.  @code{recode}
+cannot reciprocate 167 to 21, because 167 is the masculine ordinal indicator
+within @code{IBM-PC}, which is 186 in @code{Latin-1}.  Code 186 within
+@code{IBM-PC} has no @code{Latin-1} equivalent; by assigning it back to 21,
+@code{recode} closes this short permutation loop.
+
+As a consequence of this map filling, @code{recode} may sometimes produce
+@emph{funny} characters.  They may look annoying, they are nevertheless
+helpful when one changes his (her) mind and wants to revert to the prior
+recoding.  If you cannot stand these, use option @code{-s}, which asks
+for a very strict recoding.
+
+This map filling sometimes has a few surprising consequences, which
+some users wrongly interpreted as bugs.  Here are two examples.
+
+@enumerate
+@item
+In some cases, @code{recode} seems to copy a file without recoding it.
+But in fact, it does.  Consider you requested:
+
+@example
+recode l1..us < File-Latin1 > File-ASCII
+cmp File-Latin1 File-ASCII
+@end example
+
+@noindent
+then @code{cmp} will not report any difference.  This is quite normal.
+@w{Latin-1} gets correctly recoded to ASCII for charsets commonalities
+(which are the first 128 characters, in this case).  The remaining last
+128 @w{Latin-1} characters have no ASCII correspondent.  Instead of losing
+them, recode elects to map them to unspecified characters of ASCII, so
+making the recoding reversible.  The simplest way of achieving this is
+merely to keep those last 128 characters unchanged.  The overall effect
+is copying the file verbatim.
+
+If you feel this behaviour is too generous and if you do not wish to
+care about reversibility, simply use option @code{-s}.  By doing so,
+@code{recode} will strictly map only those @w{Latin-1} characters which have
+an ASCII equivalent, and will merely drop those which do not.  Then,
+there is more chance that you will observe a difference between the
+input and the output file.
+
+@item
+Recoding the wrong way could sometimes give the false impression that
+recoding has @emph{almost} been done properly.  Consider you request:
+
+@example
+recode 437..l1 < File-Latin1 > Temp1
+recode 437..l1 < Temp1 > Temp2
+@end example
+
+@noindent
+so declaring wrongly @file{File-Latin1} to be an IBM-PC file, and
+recoding to Latin1.  This is surely ill defined and not meaningful.
+Yet, if you repeat this step a second time, you might notice that
+many (not all) characters in @file{Temp2} are identical to those in
+@file{File-Latin1}.  A few people try to discover how @code{recode}
+works by experimenting a little at random, rather than reading and
+understanding the documentation; such results are surely confusing,
+as they provide a feel to those people that they understood something.
+
+Reversible codings have this property that, if applied several times
+in the same direction, they will eventually bring any character back
+to its original value.  Since @code{recode} seeks small permutation
+cycles when creating reversible codings, besides characters unchanged
+by the recoding, most permutation cycles will be of length 2, and
+fewer of length 3, etc.  So, it is just expectable that applying the
+recoding twice in the same direction will recover most characters,
+but will fail to recover those participating in permutation cycles of
+length 3.  On the other end, recoding six times in the same direction
+would recover all characters in cycles of length 1, 2, 3 or 6.
+
+@end enumerate
+
+@node Sequencing, Mixed, Reversibility, Invoking recode
+@section Selecting sequencing methods
+
+This program uses a few techniques when it is discovered that many
+passes are needed to comply with the @var{request}.  For example,
+suppose that four elementary steps were selected at recoding path
+optimisation time.  Then @code{recode} will split itself into four
+different interconnected tasks, logically equivalent to:
+
+@example
+@var{step1} <@var{input} | @var{step2} | @var{step3} | @var{step4} >@var{output}
+@end example
+
+The splitting into subtasks is often done using Unix pipes.
+But the splitting may also be completely avoided, and rather
+simulated by using memory buffer, or intermediate files.  The various
+@samp{--sequence=@var{strategy}} options gives you control over the flow
+methods, by replacing @var{strategy} with @samp{memory}, @samp{pipe}
+or @samp{files}.  So, these options may be used to override the default
+behaviour, which is also explained below.
+
+@table @samp
+
+@item --sequence=memory
+When the recoding requires a combination of two or more elementary
+recoding steps, this option forces many passes over the data, using
+in-memory buffers to hold all intermediary results.
+@c This should be the default behaviour when
+@c files to be recoded are @emph{small} enough.
+
+@item -i
+@itemx --sequence=files
+When the recoding requires a combination of two or more elementary
+recoding steps, this option forces many passes over the data, using
+intermediate files between passes.  This is the default behaviour when
+files are recoded over themselves.  If this option is selected in filter
+mode, that is, when the program reads standard input and writes standard
+output, it might take longer for programs further down the pipe chain to
+start receiving some recoded data.
+
+@item -p
+@itemx --sequence=pipe
+When the recoding requires a combination of two or more elementary
+recoding steps, this option forces the program to fork itself into a few
+copies interconnected with pipes, using the @code{pipe(2)} system call.
+All copies of the program operate in parallel.  This is the default
+behaviour in filter mode.  If this option is used when files are recoded
+over themselves, this should also save disk space because some temporary
+files might not be needed, at cost of more system overhead.
+
+If, at installation time, the @code{pipe(2)} call is said to be
+unavailable, selecting option @code{-p} is equivalent to selecting
+option @code{-i}.
+
+@end table
+
+@node Mixed, Emacs, Sequencing, Invoking recode
+@section Using mixed charset input
+
+In real life and practice, textual files are often made up of many charsets
+at once.  Some parts of the file encode one charset, while other parts
+encode another charset, and so forth.  Usually, a file does not toggle
+between more than two or three charsets.  The means to distinguish
+which charsets are encoded at various places is not always easy.
+The @code{recode} program is able to handle only a few simple cases
+of mixed input.
+
+The default @code{recode} behaviour is to expect pure charset files, to
+be recoded as other pure charset files.  However, the following options
+allow for a few precise kinds of mixed charset files.
+
+@ignore
+Some notes on transliteration and substitution.
+
+Transliteration is still much study, discussion and work to come, but
+when generic transliteration will be added in @code{recode}, it will be
+added @emph{through} the @code{recode} library.
+
+However, I agree that it might be *convenient* that the `latin1..fi'
+conversion works by letting all ASCII characters through, but then, the
+result would be a mix of ASCII and `fi', it would not be pure `fi' anymore.
+It would be convenient because, in practice, people might write programs in
+ASCII, keeping comments or strings directly in `fi', all in the same file.
+The original files are indeed mixed, and people sometimes expect that
+`recode' will do mixed conversions.
+
+A conversion does not become *right* because it is altered to be more
+convenient.  And recode is not *wrong* because it does not offer some
+conveniences people would like to have.  As long as `recode' main job is
+producing `fi', than '[' is just not representable in `fi', and recode is
+rather right in not letting `[' through.  It has to do something special
+about it.  The character might be thrown away, transliterated or replaced
+by a substitute, or mapped to some other code for reversibility purposes.
+
+Transliteration or substitution are currently not implemented in `recode',
+yet for the last few years, I've been saving documentation about these
+phenomena.  The transliteration which you are asking for, here, is that the
+'[' character in @w{Latin-1}, for example, be transliterated to A-umlaut in
+`fi', which is a bit non-meaningful.  Remember, there is no `[' in `fi'.
+@end ignore
+
+@table @samp
+
+@item -d
+@itemx --diacritics
+While converting to or from one of @code{HTML} or @code{LaTeX}
+charset, limit conversion to some subset of all characters.
+For @code{HTML}, limit conversion to the subset of all non-ASCII
+characters.  For @code{LaTeX}, limit conversion to the subset of all
+non-English letters.  This is particularly useful, for example, when
+people create what would be valid @code{HTML}, @TeX{} or La@TeX{}
+files, if only they were using provided sequences for applying
+diacritics instead of using the diacriticised characters directly
+from the underlying character set.
+
+While converting to @code{HTML} or @code{LaTeX} charset, this option
+assumes that characters not in the said subset are properly coded
+or protected already, @code{recode} then transmit them literally.
+While converting the other way, this option prevents translating back
+coded or protected versions of characters not in the said subset.
+@xref{HTML}.  @xref{LaTeX}.
+
+@ignore
+@item -M
+@itemx --message
+Option -M would be for messages, it would ideally process @w{RFC 1522} inserts
+in ASCII headers, converting them to the goal code, rewriting some MIME
+header line too, and stopping its special work at the first empty line.
+A special combination of both capabilities would be for the recoding of
+PO files, in which the header, and @code{msgid} and @code{msgstr} strings, might
+all use different charsets.  Recoding some PO files currently looks like
+a nightmare, which I would like @code{recode} to repair.
+@end ignore
+
+@item -S[@var{language}]
+@itemx --source[=@var{language}]
+The bulk of the input file is expected to be written in @code{ASCII},
+except for parts, like comments and string constants, which are written
+using another charset than @code{ASCII}.  When @var{language} is @samp{c},
+the recoding will proceed only with the contents of comments or strings,
+while everything else will be copied without recoding.  When @var{language}
+is @samp{po}, the recoding will proceed only within translator comments
+(those having whitespace immediately following the initial @samp{#})
+and with the contents of @code{msgstr} strings.
+
+For the above things to work, the non-@code{ASCII} encoding of the comment
+or string should be such that an @code{ASCII} scan will successfully find
+where the comment or string ends.
+
+Even if @code{ASCII} is the usual charset for writing programs, some
+compilers are able to directly read other charsets, like @code{UTF-8} say.
+There is currently no provision in @code{recode} for reading mixed charset
+sources which are not based on @code{ASCII}.  It is probable that the need
+for mixed recoding is not as pressing in such cases.
+
+For example, after one does:
+
+@example
+recode -Spo pc/..u8 < @var{input}.po > @var{output}.po
+@end example
+
+@noindent
+file @file{@var{output}.po} holds a copy of @file{@var{input}.po} in which
+translator comments and the contents of @code{msgstr} strings @emph{only}
+have been recoded from the @code{IBM-PC} charset to pure @code{UTF-8},
+without attempting conversion of end-of-lines.  Machine generated comments
+and original @code{msgid} strings are not to be touched by this recoding.
+
+If @var{language} is not specified, @samp{c} is assumed.
+
+@end table
+
+@node Emacs, , Mixed, Invoking recode
+@section Using @code{recode} within Emacs
+
+The fact @code{recode} is a filter makes it quite easy to use from
+within GNU Emacs.  For example, recoding the whole buffer from
+the IBM-PC charset to current charset (@w{Latin-1} on Unix) is easily
+done with:
+
+@example
+C-x h C-u M-| recode ibmpc RET
+@end example
+
+@noindent
+The @samp{C-x h} selects the whole buffer, and @samp{C-u M-|} filters and
+replaces the current region through the given shell command.  Here is
+another example, binding the keys @w{@samp{C-c T}} to the recoding of
+the current region from Easy French to @w{Latin-1} (on Unix) and the key
+@w{@samp{C-u C-c T}} from @w{Latin-1} (on Unix) to Easy French:
+
+@example
+(global-set-key "\C-cT" 'recode-texte)
+
+(defun recode-texte (flag)
+  (interactive "P")
+  (shell-command-on-region
+   (region-beginning) (region-end)
+   (concat "recode " (if flag "..txte" "txte")) t)
+  (exchange-point-and-mark))
+@end example
+
+@node Library, Universal, Invoking recode, Top
+@chapter A recoding library
+
+The program named @code{recode} is just an application of its recoding
+library.  The recoding library is available separately for other C
+programs.  A good way to acquire some familiarity with the recoding
+library is to get acquainted with the @code{recode} program itself.
+
+To use the recoding library once it is installed, a C program needs to
+have a line:
+
+@example
+#include <recode.h>
+@end example
+
+@noindent
+near its beginning, and the user should have @samp{-lrecode} on the
+linking call, so modules from the recoding library are found.
+
+The library is still under development.  As it stands, it contains four
+identifiable sets of routines: the outer level functions, the request
+level functions, the task level functions and the charset level functions.
+There are discussed in separate sections.
+
+For effectively using the recoding library in most applications, it should
+be rarely needed to study anything beyond the main initialisation function
+at outer level, and then, various functions at request level.
+
+@menu
+* Outer level::         Outer level functions
+* Request level::       Request level functions
+* Task level::          Task level functions
+* Charset level::       Charset level functions
+* Errors::              Handling errors
+@end menu
+
+@node Outer level, Request level, Library, Library
+@section Outer level functions
+
+The outer level functions mainly prepare the whole recoding library for
+use, or do actions which are unrelated to specific recodings.  Here is
+an example of a program which does not really make anything useful.
+
+@example
+@group
+#include <stdbool.h>
+#include <recode.h>
+
+int
+main ()
+@{
+  RECODE_OUTER outer = recode_new_outer (true);
+
+  recode_delete_outer (outer);
+  exit (0);
+@}
+@end group
+@end example
+
+The header file @file{<recode.h>} declares an opaque @code{RECODE_OUTER}
+structure, which the programmer should use for allocating a variable in
+his program (let's assume the programmer is a male, here, no prejudice
+intended).  This @samp{outer} variable is given as a first argument to
+all outer level functions.
+
+The @file{<recode.h>} header file uses the Boolean type setup by the
+system header file @file{<stdbool.h>}.  But this header file is still
+fairly new in C standards, and likely does not exist everywhere.  If you
+system does not offer this system header file yet, the proper compilation
+of the @file{<recode.h>} file could be guaranteed through the replacement
+of the inclusion line by:
+
+@example
+typedef enum @{false = 0, true = 1@} bool;
+@end example
+
+People wanting wider portability, or Autoconf lovers, might arrange their
+@file{configure.in} for being able to write something more general, like:
+
+@example
+@group
+#if STDC_HEADERS
+# include <stdlib.h>
+#endif
+
+/* Some systems do not define EXIT_*, even with STDC_HEADERS.  */
+#ifndef EXIT_SUCCESS
+# define EXIT_SUCCESS 0
+#endif
+#ifndef EXIT_FAILURE
+# define EXIT_FAILURE 1
+#endif
+/* The following test is to work around the gross typo in systems like Sony
+   NEWS-OS Release 4.0C, whereby EXIT_FAILURE is defined to 0, not 1.  */
+#if !EXIT_FAILURE
+# undef EXIT_FAILURE
+# define EXIT_FAILURE 1
+#endif
+
+#if HAVE_STDBOOL_H
+# include <stdbool.h>
+#else
+typedef enum @{false = 0, true = 1@} bool;
+#endif
+
+#include <recode.h>
+
+int
+main ()
+@{
+  RECODE_OUTER outer = recode_new_outer (true);
+
+  recode_term_outer (outer);
+  exit (EXIT_SUCCESS);
+@}
+@end group
+@end example
+
+@noindent
+but we will not insist on such details in the examples to come.
+
+@itemize @bullet
+@item Initialisation functions
+
+@example
+RECODE_OUTER recode_new_outer (@var{auto_abort});
+bool recode_delete_outer (@var{outer});
+@end example
+
+The recoding library absolutely needs to be initialised before being used,
+and @code{recode_new_outer} has to be called once, first.  Besides the
+@var{outer} it is meant to initialise, the function accepts a Boolean
+argument whether or not the library should automatically issue diagnostics
+on standard and abort the whole program on errors.  When @var{auto_abort}
+is @code{true}, the library later conveniently issues diagnostics itself,
+and aborts the calling program on errors.  This is merely a convenience,
+because if this parameter was @code{false}, the calling program should always
+take care of checking the return value of all other calls to the recoding
+library functions, and when any error is detected, issue a diagnostic and
+abort processing itself.
+
+Regardless of the setting of @var{auto_abort}, all recoding library
+functions return a success status.  Most functions are geared for returning
+@code{false} for an error, and @code{true} if everything went fine.
+Functions returning structures or strings return @code{NULL} instead
+of the result, when the result cannot be produced.  If @var{auto_abort}
+is selected, functions either return @code{true}, or do not return at all.
+
+As in the example above, @code{recode_new_outer} is called only once in
+most cases.  Calling @code{recode_new_outer} implies some overhead, so
+calling it more than once should preferably be avoided.
+
+The termination function @code{recode_delete_outer} reclaims the memory
+allocated by @code{recode_new_outer} for a given @var{outer} variable.
+Calling @code{recode_delete_outer} prior to program termination is more
+aesthetic then useful, as all memory resources are automatically reclaimed
+when the program ends.  You may spare this terminating call if you prefer.
+
+@end itemize
+
+@node Request level, Task level, Outer level, Library
+@section Request level functions
+
+The request level functions are meant to cover most recoding needs
+programmers may have; they should provide all usual functionality.
+Their API is almost stable by now.  To get started with request level
+functions, here is a full example of a program which sole job is to filter
+@code{ibmpc} code on its standard input into @code{latin1} code on its
+standard output.
+
+@example
+@group
+#include <stdio.h>
+#include <stdbool.h>
+#include <recode.h>
+
+int
+main ()
+@{
+  RECODE_OUTER outer = recode_new_outer (true);
+  RECODE_REQUEST request = recode_new_request (outer);
+  bool success;
+
+  recode_scan_request (request, "ibmpc..latin1");
+
+  success = recode_file_to_file (request, stdin, stdout);
+
+  recode_delete_request (request);
+  recode_delete_outer (outer);
+
+  exit (success ? 0 : 1);
+@}
+@end group
+@end example
+
+The header file @file{<recode.h>} declares a @code{RECODE_REQUEST} structure,
+which the programmer should use for allocating a variable in his program.
+This @var{request} variable is given as a first argument to all request
+level functions, and in most cases, may be considered as opaque.
+
+@itemize @bullet
+@item Initialisation functions
+
+@example
+RECODE_REQUEST recode_new_request (@var{outer});
+bool recode_delete_request (@var{request});
+@end example
+
+No @var{request} variable may not be used in other request level
+functions of the recoding library before having been initialised by
+@code{recode_new_request}.  There may be many such @var{request}
+variables, in which case, they are independent of one another and
+they all need to be initialised separately.  To avoid memory leaks, a
+@var{request} variable should not be initialised a second time without
+calling @code{recode_delete_request} to ``un-initialise'' it.
+
+Like for @code{recode_delete_outer}, calling @code{recode_delete_request}
+prior to program termination, in the example above, may be left out.
+
+@item Fields of @code{struct recode_request}
+
+Here are the fields of a @code{struct recode_request} which may be
+meaningfully changed, once a @var{request} has been initialised by
+@code{recode_new_request}, but before it gets used.  It is not very frequent,
+in practice, that these fields need to be changed.  To access the fields,
+you need to include @file{recodext.h} @emph{instead} of @file{recode.h},
+in which case there also is a greater chance that you need to recompile
+your programs if a new version of the recoding library gets installed.
+
+@table @code
+
+@item verbose_flag
+This field is initially @code{false}.  When set to @code{true}, the
+library will echo to stderr the sequence of elementary recoding steps
+needed to achieve the requested recoding.
+
+@item diaeresis_char
+This field is initially the ASCII value of a double quote @kbd{"},
+but it may also be the ASCII value of a colon @kbd{:}.  In @code{texte}
+charset, some countries use double quotes to mark diaeresis, while other
+countries prefer colons.  This field contains the diaeresis character
+for the @code{texte} charset.
+
+@item make_header_flag
+This field is initially @code{false}.  When set to @code{true}, it
+indicates that the program is merely trying to produce a recoding table in
+source form rather than completing any actual recoding.  In such a case,
+the optimisation of step sequence can be attempted much more aggressively.
+If the step sequence cannot be reduced to a single step, table production
+will fail.
+
+@item diacritics_only
+This field is initially @code{false}.  For @code{HTML} and @code{LaTeX}
+charset, it is often convenient to recode the diacriticized characters
+only, while just not recoding other HTML code using ampersands or angular
+brackets, or La@TeX{} code using backslashes.  Set the field to @code{true}
+for getting this behaviour.  In the other charset, one can edit text as
+well as HTML or La@TeX{} directives.
+
+@item ascii_graphics
+This field is initially @code{false}, and relate to characters 176 to
+223 in the @code{ibmpc} charset, which are use to draw boxes.  When set
+to @code{true}, while getting out of @code{ibmpc}, ASCII characters are
+selected so to graphically approximate these boxes.
+
+@end table
+
+@item Study of request strings
+
+@example
+bool recode_scan_request (@var{request}, "@var{string}");
+@end example
+
+The main role of a @var{request} variable is to describe a set of
+recoding transformations.  Function @code{recode_scan_request} studies
+the given @var{string}, and stores an internal representation of it into
+@var{request}.  Note that @var{string} may be a full-fledge @code{recode}
+request, possibly including surfaces specifications, intermediary
+charsets, sequences, aliases or abbreviations (@pxref{Requests}).
+
+The internal representation automatically receives some pre-conditioning
+and optimisation, so the @var{request} may then later be used many times
+to achieve many actual recodings.  It would not be efficient calling
+@code{recode_scan_request} many times with the same @var{string}, it is
+better having many @var{request} variables instead.
+
+@item Actual recoding jobs
+
+Once the @var{request} variable holds the description of a recoding
+transformation, a few functions use it for achieving an actual recoding.
+Either input or output of a recoding may be string, an in-memory buffer,
+or a file.
+
+Functions with names like
+@code{recode_@var{input-type}_to_@var{output-type}} request an actual
+recoding, and are described below.  It is easy to remember which arguments
+each function accepts, once grasped some simple principles for each
+possible @var{type}.  However, one of the recoding function escapes these
+principles and is discussed separately, first.
+
+@example
+recode_string (@var{request}, @var{string});
+@end example
+
+The function @code{recode_string} recodes @var{string} according
+to @var{request}, and directly returns the resulting recoded string
+freshly allocated, or @code{NULL} if the recoding could not succeed for
+some reason.  When this function is used, it is the responsibility of
+the programmer to ensure that the memory used by the returned string is
+later reclaimed.
+
+@example
+char *recode_string_to_buffer (@var{request},
+  @var{input_string},
+  &@var{output_buffer}, &@var{output_length}, &@var{output_allocated});
+bool recode_string_to_file (@var{request},
+  @var{input_file},
+  @var{output_file});
+bool recode_buffer_to_buffer (@var{request},
+  @var{input_buffer}, @var{input_length},
+  &@var{output_buffer}, &@var{output_length}, &@var{output_allocated});
+bool recode_buffer_to_file (@var{request},
+  @var{input_buffer}, @var{input_length},
+  @var{output_file});
+bool recode_file_to_buffer (@var{request},
+  @var{input_file},
+  &@var{output_buffer}, &@var{output_length}, &@var{output_allocated});
+bool recode_file_to_file (@var{request},
+  @var{input_file},
+  @var{output_file});
+@end example
+
+All these functions return a @code{bool} result, @code{false} meaning that
+the recoding was not successful, often because of reversibility issues.
+The name of the function well indicates on which types it reads and which
+type it produces.  Let's discuss these three types in turn.
+
+@table @asis
+@item string
+
+A string is merely an in-memory buffer which is terminated by a @code{NUL}
+character (using as many bytes as needed), instead of being described
+by a byte length.  For input, a pointer to the buffer is given through
+one argument.
+
+It is notable that there is no @code{to_string} functions.  Only one
+function recodes into a string, and it is @code{recode_string}, which
+has already been discussed separately, above.
+
+@item buffer
+
+A buffer is a sequence of bytes held in computer memory.  For input, two
+arguments provide a pointer to the start of the buffer and its byte size.
+Note that for charsets using many bytes per character, the size is given
+in bytes, not in characters.
+
+For output, three arguments provide the address of three variables, which
+will receive the buffer pointer, the used buffer size in bytes, and the
+allocated buffer size in bytes.  If at the time of the call, the buffer
+pointer is @code{NULL}, then the allocated buffer size should also be zero,
+and the buffer will be allocated afresh by the recoding functions.  However,
+if the buffer pointer is not @code{NULL}, it should be already allocated,
+the allocated buffer size then gives its size.  If the allocated size
+gets exceeded while the recoding goes, the buffer will be automatically
+reallocated bigger, probably elsewhere, and the allocated buffer size will
+be adjusted accordingly.
+
+The second variable, giving the in-memory buffer size, will receive the
+exact byte size which was needed for the recoding.  A @code{NUL} character
+is guaranteed at the end of the produced buffer, but is not counted in the
+byte size of the recoding.  Beyond that @code{NUL}, there might be some
+extra space after the recoded data, extending to the allocated buffer size.
+
+@item file
+
+A file is a sequence of bytes held outside computer memory, but
+buffered through it.  For input, one argument provides a pointer to a
+file already opened for read.  The file is then read and recoded from its
+current position until the end of the file, effectively swallowing it in
+memory if the destination of the recoding is a buffer.  For reading a file
+filtered through the recoding library, but only a little bit at a time, one
+should rather use @code{recode_filter_open} and @code{recode_filter_close}
+(these two functions are not yet available).
+
+For output, one argument provides a pointer to a file already opened
+for write.  The result of the recoding is written to that file starting
+at its current position.
+
+@end table
+
+@end itemize
+
+The following special function is still subject to change:
+
+@example
+void recode_format_table (@var{request}, @var{language}, "@var{name}");
+@end example
+
+@noindent
+and is not documented anymore for now.
+
+@node Task level, Charset level, Request level, Library
+@section Task level functions
+
+The task level functions are used internally by the request level
+functions, they allow more explicit control over files and memory
+buffers holding input and output to recoding processes.  The interface
+specification of task level functions is still subject to change a bit.
+
+To get started with task level functions, here is a full example of a
+program which sole job is to filter @code{ibmpc} code on its standard input
+into @code{latin1} code on its standard output.  That is, this program has
+the same goal as the one from the previous section, but does its things
+a bit differently.
+
+@example
+@group
+#include <stdio.h>
+#include <stdbool.h>
+#include <recodext.h>
+
+int
+main ()
+@{
+  RECODE_OUTER outer = recode_new_outer (false);
+  RECODE_REQUEST request = recode_new_request (outer);
+  RECODE_TASK task;
+  bool success;
+
+  recode_scan_request (request, "ibmpc..latin1");
+
+  task = recode_new_task (request);
+  task->input.file = "";
+  task->output.file = "";
+  success = recode_perform_task (task);
+
+  recode_delete_task (task);
+  recode_delete_request (request);
+  recode_delete_outer (outer);
+
+  exit (success ? 0 : 1);
+@}
+@end group
+@end example
+
+The header file @file{<recode.h>} declares a @code{RECODE_TASK}
+structure, which the programmer should use for allocating a variable in
+his program.  This @samp{task} variable is given as a first argument to
+all task level functions.  The programmer ought to change and possibly
+consult a few fields in this structure, using special functions.
+
+@itemize @bullet
+
+@item Initialisation functions
+
+@example
+RECODE_TASK recode_new_task (@var{request});
+bool recode_delete_task (@var{task});
+@end example
+
+No @var{task} variable may be used in other task level functions
+of the recoding library without having first been initialised with
+@code{recode_new_task}.  There may be many such @var{task} variables,
+in which case, they are independent of one another and they all need to be
+initialised separately.  To avoid memory leaks, a @var{task} variable should
+not be initialised a second time without calling @code{recode_delete_task} to
+``un-initialise'' it.  This function also accepts a @var{request} argument
+and associates the request to the task.  In fact, a task is essentially
+a set of recoding transformations with the specification for its current
+input and its current output.
+
+The @var{request} variable may be scanned before or after the call to
+@code{recode_new_task}, it does not matter so far.  Immediately after
+initialisation, before further changes, the @var{task} variable associates
+@var{request} empty in-memory buffers for both input and output.
+The output buffer will later get allocated automatically on the fly,
+as needed, by various task processors.
+
+Even if a call to @code{recode_delete_task} is not strictly mandatory
+before ending the program, it is cleaner to always include it.  Moreover,
+in some future version of the recoding library, it might become required.
+
+@item Fields of @code{struct task_request}
+
+Here are the fields of a @code{struct task_request} which may be meaningfully
+changed, once a @var{task} has been initialised by @code{recode_new_task}.
+In fact, fields are expected to change.  Once again, to access the fields,
+you need to include @file{recodext.h} @emph{instead} of @file{recode.h},
+in which case there also is a greater chance that you need to recompile
+your programs if a new version of the recoding library gets installed.
+
+@table @code
+
+@item request
+
+The field @code{request} points to the current recoding request, but may
+be changed as needed between recoding calls, for example when there is
+a need to achieve the construction of a resulting text made up of many
+pieces, each being recoded differently.
+
+@item input.name
+@itemx input.file
+
+If @code{input.name} is not @code{NULL} at start of a recoding, this is
+a request that a file by that name be first opened for reading and later
+automatically closed once the whole file has been read. If the file name is
+not @code{NULL} but an empty string, it means that standard input is to
+be used.  The opened file pointer is then held into @code{input.file}.
+
+If @code{input.name} is @code{NULL} and @code{input.file} is not, than
+@code{input.file} should point to a file already opened for read, which
+is meant to be recoded.
+
+@item input.buffer
+@itemx input.cursor
+@itemx input.limit
+
+When both @code{input.name} and @code{input.file} are @code{NULL}, three
+pointers describe an in-memory buffer containing the text to be recoded.
+The buffer extends from @code{input.buffer} to @code{input.limit},
+yet the text to be recoded only extends from @code{input.cursor} to
+@code{input.limit}.  In most situations, @code{input.cursor} starts with
+the value that @code{input.buffer} has.  (Its value will internally advance
+as the recoding goes, until it reaches the value of @code{input.limit}.)
+
+@item output.name
+@itemx output.file
+
+If @code{output.name} is not @code{NULL} at start of a recoding, this
+is a request that a file by that name be opened for write and later
+automatically closed after the recoding is done.  If the file name is
+not @code{NULL} but an empty string, it means that standard output is to
+be used.  The opened file pointer is then held into @code{output.file}.
+If several passes with intermediate files are needed to produce the
+recoding, the @code{output.name} file is opened only for the final pass.
+
+If @code{output.name} is @code{NULL} and @code{output.file} is not, then
+@code{output.file} should point to a file already opened for write, which
+will receive the result of the recoding.
+
+@item output.buffer
+@itemx output.cursor
+@itemx output.limit
+
+When both @code{output.name} and @code{output.file} are @code{NULL}, three
+pointers describe an in-memory buffer meant to receive the text, once it
+is recoded.  The buffer is already allocated from @code{output.buffer}
+to @code{output.limit}.  In most situations, @code{output.cursor} starts
+with the value that @code{output.buffer} has.  Once the recoding is done,
+@code{output.cursor} will point at the next free byte in the buffer,
+just after the recoded text, so another recoding could be called without
+changing any of these three pointers, for appending new information to it.
+The number of recoded bytes in the buffer is the difference between
+@code{output.cursor} and @code{output.buffer}.
+
+Each time @code{output.cursor} reaches @code{output.limit}, the buffer
+is reallocated bigger, possibly at a different location in memory, always
+held up-to-date in @code{output.buffer}.  It is still possible to call a
+task level function with no output buffer at all to start with, in which
+case all three fields should have @code{NULL} as a value.  This is the
+situation immediately after a call to @code{recode_new_task}.
+
+@item strategy
+This field, which is of type @code{enum recode_sequence_strategy}, tells
+how various recoding steps (passes) will be interconnected.  Its initial
+value is @code{RECODE_STRATEGY_UNDECIDED}, which is a constant defined in
+the header file @file{<recodext.h>}.  Other possible values are:
+
+@table @code
+@item RECODE_SEQUENCE_IN_MEMORY
+Keep intermediate recodings in memory.
+@item RECODE_SEQUENCE_WITH_FILES
+Do not fork, use intermediate files.
+@item RECODE_SEQUENCE_WITH_PIPE
+Fork processes connected with @code{pipe(2)}.
+@end table
+
+@c FIXME
+The best for now is to leave this field alone, and let the recoding
+library decide its strategy, as many combinations have not been tested yet.
+
+@item byte_order_mark
+This field, which is preset to @code{true}, indicates that a byte order
+mark is to be expected at the beginning of any canonical @code{UCS-2}
+or @code{UTF-16} text, and that such a byte order mark should be also
+produced for these charsets.
+
+@item fail_level
+This field, which is of type @code{enum recode_error} (@pxref{Errors}),
+sets the error level at which task level functions should report a failure.
+If an error being detected is equal or greater than @code{fail_level},
+the function will eventually return @code{false} instead of @code{true}.
+The preset value for this field is @code{RECODE_NOT_CANONICAL}, that means
+that if not reset to another value, the library will report failure on
+@emph{any} error.
+
+@item abort_level
+This field, which is of type @code{enum recode_error} (@pxref{Errors}), sets
+the error level at which task level functions should immediately interrupt
+their processing.  If an error being detected is equal or greater than
+@code{abort_level}, the function returns immediately, but the returned
+value (@code{true} or @code{false}) is still is decided from the setting
+of @code{fail_level}, not @code{abort_level}.  The preset value for this
+field is @code{RECODE_MAXIMUM_ERROR}, that means that is not reset to
+another value, the library will never interrupt a recoding task.
+
+@item error_so_far
+This field, which is of type @code{enum recode_error} (@pxref{Errors}),
+maintains the maximum error level met so far while the recoding task
+was proceeding.  The preset value is @code{RECODE_NO_ERROR}.
+
+@end table
+
+@item Task execution
+
+@example
+recode_perform_task (@var{task});
+recode_filter_open (@var{task}, @var{file});
+recode_filter_close (@var{task});
+@end example
+
+The function @code{recode_perform_task} reads as much input as possible,
+and recode all of it on prescribed output, given a properly initialised
+@var{task}.
+
+Functions @code{recode_filter_open} and @code{recode_filter_close} are
+only planned for now.  They are meant to read input in piecemeal ways.
+Even if functionality already exists informally in the library, it has
+not been made available yet through such interface functions.
+
+@end itemize
+
+@node Charset level, Errors, Task level, Library
+@section Charset level functions
+
+Many functions are internal to the recoding library.  Some of them
+have been made external and available, for the @code{recode} program
+had to retain all its previous functionality while being transformed
+into a mere application of the recoding library.  These functions are
+not really documented here for the time being, as we hope that many of
+them will vanish over time.  When this set of routines will stabilise,
+it would be convenient to document them as an API for handling charset
+names and contents.
+
+@example
+RECODE_CHARSET find_charset (@var{name}, @var{cleaning-type});
+bool list_all_charsets (@var{charset});
+bool list_concise_charset (@var{charset}, @var{list-format});
+bool list_full_charset (@var{charset});
+@end example
+
+@node Errors, , Charset level, Library
+@section Handling errors
+
+The @code{recode} program, while using the @code{recode} library, needs to
+control whether recoding problems are reported or not, and then reflect
+these in the exit status.  The program should also instruct the library
+about if the recoding should be abruptly interrupted when an error is
+met (so sparing processing when it is known in advance that a wrong
+result would be discarded anyway), or if it should proceed nevertheless.
+Here is how the library groups errors into levels, listed here in order
+of increasing severity.
+
+@table @code
+
+@item RECODE_NO_ERROR
+
+No error was met on previous library calls.
+
+@item RECODE_NOT_CANONICAL
+
+The input text was using one of the many alternative codings for some
+phenomenon, but not the one @code{recode} would have canonically generated.
+So, if the reverse recoding is later attempted, it would produce a text
+having the same @emph{meaning} as the original text, yet not being byte
+identical.
+
+For example, a @code{Base64} block in which end-of-lines appear elsewhere
+that at every 76 characters is not canonical.  An e-circumflex in @TeX{}
+which is coded @samp{\^@{e@}} instead of @samp{\^e} is not canonical.
+
+@item RECODE_AMBIGUOUS_OUTPUT
+
+It has been discovered that if the reverse recoding was attempted on
+the text output by this recoding, we would not obtain the original text,
+only because an ambiguity was generated by accident in the output text.
+This ambiguity would then cause the wrong interpretation to be taken.
+
+Here are a few examples.  If the @code{Latin-1} sequence @samp{e^}
+is converted to Easy French and back, the result will be interpreted
+as e-circumflex and so, will not reflect the intent of the original two
+characters.  Recoding an @code{IBM-PC} text to @code{Latin-1} and back,
+where the input text contained an isolated @kbd{LF}, will have a spurious
+@kbd{CR} inserted before the @kbd{LF}.
+
+Currently, there are many cases in the library where the production of
+ambiguous output is not properly detected, as it is sometimes a difficult
+problem to accomplish this detection, or to do it speedily.
+
+@item RECODE_UNTRANSLATABLE
+
+One or more input character could not be recoded, because there is just
+no representation for this character in the output charset.
+
+Here are a few examples.  Non-strict mode often allows @code{recode} to
+compute on-the-fly mappings for unrepresentable characters, but strict
+mode prohibits such attribution of reversible translations: so strict
+mode might often trigger such an error.  Most @code{UCS-2} codes used to
+represent Asian characters cannot be expressed in various Latin charsets.
+
+@item RECODE_INVALID_INPUT
+
+The input text does comply with the coding it is declared to hold.  So,
+there is no way by which a reverse recoding would reproduce this text,
+because @code{recode} should never produce invalid output.
+
+Here are a few examples.  In strict mode, @code{ASCII} text just may
+not contain characters with the eight bit set.  @code{UTF-8} encodings
+ought to be minimal@footnote{The minimality of an @code{UTF-8} encoding
+is guaranteed on output, but currently, it is not checked on input.}.
+
+@item RECODE_SYSTEM_ERROR
+
+The underlying system reported an error while the recoding was going on,
+likely an input/output error.
+(This error symbol is currently unused in the library.)
+
+@item RECODE_USER_ERROR
+
+The programmer or user requested something the recoding library is unable
+to provide, or used the API wrongly.
+(This error symbol is currently unused in the library.)
+
+@item RECODE_INTERNAL_ERROR
+
+Something really wrong, which should normally never happen, was detected
+within the recoding library.  This might be due to genuine bugs in the
+library, or maybe also, by un-initialised or overwritten arguments to
+the API.
+(This error symbol is currently unused in the library.)
+
+@item RECODE_MAXIMUM_ERROR
+
+This error code should never be returned, it is only internally used as
+a sentinel over all possible error codes.
+
+@end table
+
+One should be able to set the error level threshold for returning failure
+at end of recoding, and also the threshold for immediate interruption.
+If many errors occur while the recoding proceed, which are not severe
+enough to interrupt the recoding, then the most severe error is retained,
+while others are forgotten@footnote{Another approach would have been
+to define the level symbols as masks instead, and to give masks to
+threshold setting routines, and to retain all errors---yet I never
+met myself such a need in practice, and so, fear it would be overkill.
+On the other hand, it might be interesting to maintain counters about
+how many times each kind of error occurred.}.  So, in case of an error,
+the possible actions currently are:
+
+@itemize @bullet
+@item do nothing and let go, returning success at end of recoding,
+@item just let go for now, but return failure at end of recoding,
+@item interrupt recoding right away and return failure now.
+@end itemize
+
+@noindent
+@xref{Task level}, and particularly the description of fields
+@code{fail_level}, @code{abort_level} and @code{error_so_far}, for more
+information about how errors are handled.
+
+@ignore
+@c FIXME: Take a look at these matters, indeed.
+
+A last topic around errors is where the error related fields are kept.
+To work nicely with threads, my feeling is that the main API levels (based
+on either of @code{struct recode_outer}, @code{struct recode_request}
+or @code{struct recode_task}) should each have their error thresholds,
+values, and last explicit message strings.  Thresholds would be inherited
+by requests from outers, and by tasks from requests.  Error values and
+strings would be automatically propagated out from tasks to requests,
+for these request level routines which internally set up and use recoding
+tasks.
+
+One simple way to avoid locking while sparing the initialisation of many
+identical requests, a programmer could prepare the common request before
+splitting threads, and merely @emph{copy} the @code{struct recode_request}
+so each thread has its own copy---either using a mere assignment or
+@code{memcpy}.  The same could be said for @code{struct recode_outer}
+or @code{struct recode_task} blocks, yet it makes less sense to me to do
+so in practice.
+@end ignore
+
+@node Universal, Tabular, Library, Top
+@chapter The universal charset
+
+Standard @w{ISO 10646} defines a universal character set, intended to encompass
+in the long run all languages written on this planet.  It is based on
+wide characters, and offer possibilities for two billion characters
+(@math{2^31}).
+
+This charset was to become available in @code{recode} under the name
+@code{UCS}, with many external surfaces for it.  But in the current
+version, only surfaces of @code{UCS} are offered, each presented as a
+genuine charset rather than a surface.  Such surfaces are only meaningful
+for the @code{UCS} charset, so it is not that useful to draw a line
+between the surfaces and the only charset to which they may apply.
+
+@code{UCS} stands for Universal Character Set.  @code{UCS-2} and
+@code{UCS-4} are fixed length encodings, using two or four bytes per
+character respectively.  @code{UTF} stands for @code{UCS} Transformation
+Format, and are variable length encodings dedicated to @code{UCS}.
+@code{UTF-1} was based on @w{ISO 2022}, it did not succeed@footnote{It is not
+probable that @code{recode} will support @code{UTF-1} ever.}.  @code{UTF-2}
+replaced it, it has been called @code{UTF-FSS} (File System Safe) in
+Unicode or Plan9 context, but is better known today as @code{UTF-8}.
+To complete the picture, there is @code{UTF-16} based on 16 bits bytes,
+and @code{UTF-7} which is meant for transmissions limited to 7-bit bytes.
+Most often, one might see @code{UTF-8} used for external storage, and
+@code{UCS-2} used for internal storage.
+
+When @code{recode} is producing any representation of @code{UCS},
+it uses the replacement character @code{U+FFFD} for any @emph{valid}
+character which is not representable in the goal charset@footnote{This
+is when the goal charset allows for 16-bits.  For shorter charsets,
+the @code{--strict} (@code{-s}) option decides what happens: either the
+character is dropped, or a reversible mapping is produced on the fly.}.
+This happens, for example, when @code{UCS-2} is not capable to echo a
+wide @code{UCS-4} character, or for a similar reason, an @code{UTF-8}
+sequence using more than three bytes.  The replacement character is
+meant to represent an existing character.  So, it is never produced to
+represent an invalid sequence or ill-formed character in the input text.
+In such cases, @code{recode} just get rid of the noise, while taking note
+of the error its usual ways.
+
+Even if @code{UTF-8} is an encoding, really, it is the encoding of a single
+character set, and nothing else.  It is useful to distinguish between an
+encoding (a @emph{surface} within @code{recode}) and a charset, but only
+when the surface may be applied to several charsets.  Specifying a charset
+is a bit simpler than specifying a surface in a @code{recode} request.
+There would not be a practical advantage at imposing a more complex syntax
+to @code{recode} users, when it is simple to assimilate @code{UTF-8} to
+a charset.  Similar considerations apply for @code{UCS-2}, @code{UCS-4},
+@code{UTF-16} and @code{UTF-7}.  These are all considered to be charsets.
+
+@menu
+* UCS-2::               Universal Character Set, 2 bytes
+* UCS-4::               Universal Character Set, 4 bytes
+* UTF-7::               Universal Transformation Format, 7 bits
+* UTF-8::               Universal Transformation Format, 8 bits
+* UTF-16::              Universal Transformation Format, 16 bits
+* count-characters::    Frequency count of characters
+* dump-with-names::     Fully interpreted UCS dump
+@end menu
+
+@node UCS-2, UCS-4, Universal, Universal
+@section Universal Character Set, 2 bytes
+
+One surface of @code{UCS} is usable for the subset defined by its first
+sixty thousand characters (in fact, @math{31 * 2^11} codes), and uses
+exactly two bytes per character.  It is a mere dump of the internal
+memory representation which is @emph{natural} for this subset and as such,
+conveys with it endianness problems.
+
+A non-empty @code{UCS-2} file normally begins with a so called @dfn{byte
+order mark}, having value @code{0xFEFF}.  The value @code{0xFFFE} is not an
+@code{UCS} character, so if this value is seen at the beginning of a file,
+@code{recode} reacts by swapping all pairs of bytes.  The library also
+properly reacts to other occurrences of @code{0xFEFF} or @code{0xFFFE}
+elsewhere than at the beginning, because concatenation of @code{UCS-2}
+files should stay a simple matter, but it might trigger a diagnostic
+about non canonical input.
+
+By default, when producing an @code{UCS-2} file, @code{recode} always
+output the high order byte before the low order byte.  But this could be
+easily overridden through the @code{21-Permutation} surface.  For example,
+the command:
+
+@example
+recode u8..u2/21 < @var{input} > @var{output}
+@end example
+
+@noindent
+asks for an @code{UTF-8} to @code{UCS-2} conversion, with swapped byte
+output.
+
+Use it as a genuine charset.  This charset is available in @code{recode}
+under the name @code{ISO-10646-UCS-2}.  Accepted aliases are @code{UCS-2},
+@code{BMP}, @code{rune} and @code{u2}.
+
+The @code{recode} library is able to combine @code{UCS-2} some sequences
+of codes into single code characters, to represent a few diacriticized
+characters, ligatures or diphtongs which have been included to ease
+mapping with other existing charsets.  It is also able to explode
+such single code characters into the corresponding sequence of codes.
+The request syntax for triggering such operations is rudimentary and
+temporary.  The @code{combined-UCS-2} pseudo character set is a special
+form of @code{UCS-2} in which known combinings have been replaced by the
+simpler code.  Using @code{combined-UCS-2} instead of @code{UCS-2} in an
+@emph{after} position of a request forces a combining step, while using
+@code{combined-UCS-2} instead of @code{UCS-2} in a @emph{before} position
+of a request forces an exploding step.  For the time being, one has to
+resort to advanced request syntax to achieve other effects.  For example:
+
+@example
+recode u8..co,u2..u8 < @var{input} > @var{output}
+@end example
+
+@noindent
+copies an @code{UTF-8} @var{input} over @var{output}, still to be in
+@code{UTF-8}, yet merging combining characters into single codes whenever
+possible.
+
+@node UCS-4, UTF-7, UCS-2, Universal
+@section Universal Character Set, 4 bytes
+
+Another surface of @code{UCS} uses exactly four bytes per character, and is
+a mere dump of the internal memory representation which is @emph{natural}
+for the whole charset and as such, conveys with it endianness problems.
+
+Use it as a genuine charset.  This charset is available in @code{recode}
+under the name @code{ISO-10646-UCS-4}.  Accepted aliases are @code{UCS},
+@code{UCS-4}, @code{ISO_10646}, @code{10646} and @code{u4}.
+
+@node UTF-7, UTF-8, UCS-4, Universal
+@section Universal Transformation Format, 7 bits
+
+@code{UTF-7} comes from IETF rather than ISO, and is described by @w{RFC 1642},
+in the MIME series.  The @code{UTF-7} encoding is meant to fit @code{UCS-2}
+over channels limited to seven bits per byte.  It proceeds from a mix
+between the spirit of @code{Quoted-Printable} and methods of @code{Base64},
+adapted to Unicode contexts.
+
+This charset is available in @code{recode} under the name
+@code{UNICODE-1-1-UTF-7}.  Accepted aliases are @code{UTF-7}, @code{TF-7}
+and @code{u7}.
+
+@node UTF-8, UTF-16, UTF-7, Universal
+@section Universal Transformation Format, 8 bits
+
+Even if @code{UTF-8} does not originally come from IETF, there is now
+@w{RFC 2279} to describe it.  In letters sent on 1995-01-21 and 1995-04-20,
+Markus Kuhn writes:
+
+@quotation
+@code{UTF-8} is an @code{ASCII} compatible multi-byte encoding of
+the @w{ISO 10646} universal character set (@code{UCS}).  @code{UCS} is a
+31-bit superset of all other character set standards.  The first 256
+characters of @code{UCS} are identical to those of @w{ISO 8859-1} (@w{Latin-1}).
+The @code{UCS-2} encoding of UCS is a sequence of bigendian 16-bit
+words, the @code{UCS-4} encoding is a sequence of bigendian 32-bit words.
+The @code{UCS-2} subset of @w{ISO 10646} is also known as ``Unicode''.  As both
+@code{UCS-2} and @code{UCS-4} require heavy modifications to traditional
+@code{ASCII} oriented system designs (e.g. Unix), the @code{UTF-8}
+encoding has been designed for these applications.
+
+In @code{UTF-8}, only @code{ASCII} characters are encoded using bytes
+below 128.  All other non-ASCII characters are encoded as multi-byte
+sequences consisting only of bytes in the range 128-253.  This avoids
+critical bytes like @kbd{NUL} and @kbd{/} in @code{UTF-8} strings, which
+makes the @code{UTF-8} encoding suitable for being handled by the standard
+C string library and being used in Unix file names.  Other properties
+include the preserved lexical sorting order and that @code{UTF-8} allows
+easy self-synchronisation of software receiving @code{UTF-8} strings.
+@end quotation
+
+@code{UTF-8} is the most common external surface of @code{UCS}, each
+character uses from one to six bytes, and is able to encode all @math{2^31}
+characters of the @code{UCS}.  It is implemented as a charset, with the
+following properties.
+
+@itemize @bullet
+@item
+Strict 7-bit @code{ASCII} is completely invariant under @code{UTF-8},
+and those are the only one-byte characters.  @code{UCS} values and
+@code{ASCII} values coincide.  No multi-byte characters ever contain bytes
+less than 128.  @code{NUL} @emph{is} @code{NUL}.  A multi-byte character
+always starts with a byte of 192 or more, and is always followed by a
+number of bytes between 128 to 191.  That means that you may read at
+random on disk or memory, and easily discover the start of the current,
+next or previous character.  You can count, skip or extract characters
+with this only knowledge.
+
+@item
+If you read the first byte of a multi-byte character in binary, it contains
+many @samp{1} bits in successions starting with the most significant one
+(from the left), at least two.  The length of this @samp{1} sequence equals
+the byte size of the character.  All succeeding bytes start by @samp{10}.
+This is a lot of redundancy, making it fairly easy to guess that a file
+is valid @code{UTF-8}, or to safely state that it is not.
+
+@item
+In a multi-byte character, if you remove all leading @samp{1} bits of the
+first byte of a multi-byte character, and the initial @samp{10} bits of
+all remaining bytes (so keeping 6 bits per byte for those), the remaining
+bits concatenated are the UCS value.
+
+@end itemize
+
+@noindent
+These properties also have a few nice consequences.
+
+@itemize @bullet
+@item
+Conversion to/from values is algorithmically simple, and reasonably speedy.
+
+@item
+A sequence of @var{N} bytes can hold characters needing up to 2 + 5@var{N}
+bits in their @code{UCS} representation.  Here, @var{N} is a number between
+1 and 6.  So, @code{UTF-8} is most economical when mapping ASCII (1 byte),
+then @code{UCS-2} (1 to 3 bytes), then @code{UCS-4} (1 to 6 bytes).
+
+@item
+The lexicographic sorting order of @code{UCS} strings is preserved.
+
+@item
+Bytes with value 254 or 255 never appear, and because of that, these are
+sometimes used when escape mechanisms are needed.
+
+@end itemize
+
+In some case, when little processing is done on a lot of strings, one may
+choose for efficiency reasons to handle @code{UTF-8} strings directly even
+if variable length, as it is easy to get start of characters.  Character
+insertion or replacement might require moving the remainder of the string
+in either direction.  In most cases, it is faster and easier to convert
+from @code{UTF-8} to @code{UCS-2} or @code{UCS-4} prior to processing.
+
+This charset is available in @code{recode} under the name @code{UTF-8}.
+Accepted aliases are @code{UTF-2}, @code{UTF-FSS}, @code{FSS_UTF},
+@code{TF-8} and @code{u8}.
+
+@node UTF-16, count-characters, UTF-8, Universal
+@section Universal Transformation Format, 16 bits
+
+Another external surface of @code{UCS} is also variable length, each
+character using either two or four bytes.  It is usable for the subset
+defined by the first million characters (@math{17 * 2^16}) of @code{UCS}.
+
+Martin J. D@"urst writes (to @file{comp.std.internat}, on 1995-03-28):
+
+@quotation
+@code{UTF-16} is another method that reserves two times 1024 codepoints in
+Unicode and uses them to index around one million additional characters.
+@code{UTF-16} is a little bit like former multibyte codes, but quite
+not so, as both the first and the second 16-bit code clearly show what
+they are.  The idea is that one million codepoints should be enough for
+all the rare Chinese ideograms and historical scripts that do not fit
+into the Base Multilingual Plane of @w{ISO 10646} (with just about 63,000
+positions available, now that 2,000 are gone).
+@end quotation
+
+This charset is available in @code{recode} under the name @code{UTF-16}.
+Accepted aliases are @code{Unicode}, @code{TF-16} and @code{u6}.
+
+@node count-characters, dump-with-names, UTF-16, Universal
+@section Frequency count of characters
+
+A device may be used to obtain a list of characters in a file, and how many
+times each character appears.  Each count is followed by the @code{UCS-2}
+value of the character and, when known, the @w{RFC 1345} mnemonic for that
+character.
+
+This charset is available in @code{recode} under the name
+@code{count-characters}.
+
+This @code{count} feature has been implemented as a charset.  This may
+change in some later version, as it would sometimes be convenient to count
+original bytes, instead of their @code{UCS-2} equivalent.
+
+@node dump-with-names, , count-characters, Universal
+@section Fully interpreted UCS dump
+
+Another device may be used to get fully interpreted dumps of an @code{UCS-2}
+stream of characters, with one @code{UCS-2} character displayed on a full
+output line.  Each line receives the @w{RFC 1345} mnemonic for the character
+if it exists, the @code{UCS-2} value of the character, and a descriptive
+comment for that character.  As each input character produces its own
+output line, beware that the output file from this conversion may be much,
+much bigger than the input file.
+
+This charset is available in @code{recode} under the name
+@code{dump-with-names}.
+
+This @code{dump-with-names} feature has been implemented as a charset rather
+than a surface.  This is surely debatable.  The current implementation
+allows for dumping charsets other than @code{UCS-2}.  For example, the
+command @w{@samp{recode l2..full < @var{input}}} implies a necessary
+conversion from @code{Latin-2} to @code{UCS-2}, as @code{full-dump}
+is only connected out from @code{UCS-2}.  In such cases, @code{recode}
+does not display the original @code{Latin-2} codes in the dump, only the
+corresponding @code{UCS-2} values.  To give a simpler example, the command
+
+@example
+echo 'Hello, world!' | recode us..dump
+@end example
+
+@noindent
+produces the following output.
+
+@example
+Mne   UCS2   Description
+
+H     0048   latin capital letter h
+e     0065   latin small letter e
+l     006C   latin small letter l
+l     006C   latin small letter l
+o     006F   latin small letter o
+,     002C   comma
+SP    0020   space
+w     0077   latin small letter w
+o     006F   latin small letter o
+r     0072   latin small letter r
+l     006C   latin small letter l
+d     0064   latin small letter d
+!     0021   exclamation mark
+LF    000A   line feed (lf)
+@end example
+
+The descriptive comment is given in English and @code{ASCII},
+yet if the English description is not available but a French one is, then
+the French description is given instead, using @code{Latin-1}.  However,
+if the @code{LANGUAGE} or @code{LANG} environment variable begins with
+the letters @samp{fr}, then listing preference goes to French when both
+descriptions are available.
+
+Here is another example.  To get the long description of the code 237 in
+@w{Latin-5} table, one may use the following command.
+
+@example
+echo -n 237 | recode l5/d..dump
+@end example
+
+@noindent
+If your @code{echo} does not grok @samp{-n}, use @samp{echo 237\c} instead.
+Here is how to see what Unicode @code{U+03C6} means, while getting rid of
+the title lines.
+
+@example
+echo -n 0x03C6 | recode u2/x2..dump | tail +3
+@end example
+
+@node Tabular, ASCII misc, Universal, Top
+@chapter Tabular sources (@w{RFC 1345})
+
+An important part of the tabular charset knowledge in @code{recode}
+comes from @w{RFC 1345} or, alternatively, from the @code{chset} tools,
+both maintained by Keld Simonsen.  The @w{RFC 1345} document:
+
+@quotation
+``Character Mnemonics & Character Sets'', K. Simonsen, Request for
+Comments no. 1345, Network Working Group, June 1992.
+@end quotation
+
+@noindent
+defines many character mnemonics and character sets.  The @code{recode}
+library implements most of @w{RFC 1345}, however:
+
+@itemize @bullet
+@item
+It does not recognise those charsets which overload character positions:
+@code{dk-us} and @code{us-dk}.  However, see @ref{Mixed}.
+
+@item
+It does not recognise those charsets which combine two characters for
+representing a third: @code{ANSI_X3.110-1983}, @code{ISO_6937-2-add},
+@code{T.101-G2}, @code{T.61-8bit}, @code{iso-ir-90} and
+@code{videotex-suppl}.
+
+@item
+It does not recognise 16-bits charsets: @code{GB_2312-80},
+@code{JIS_C6226-1978}, @code{JIS_C6226-1983}, @code{JIS_X0212-1990} and
+@code{KS_C_5601-1987}.
+
+@item
+It interprets the charset @code{isoir91} as @code{NATS-DANO} (alias
+@code{iso-ir-9-1}), @emph{not} as @code{JIS_C6229-1984-a} (alias
+@code{iso-ir-91}).  It also interprets the charset @code{isoir92}
+as @code{NATS-DANO-ADD} (alias @code{iso-ir-9-2}), @emph{not} as
+@code{JIS_C6229-1984-b} (alias @code{iso-ir-92}).  It might be better
+just avoiding these two alias names.
+
+@end itemize
+
+Keld Simonsen @email{keld@@dkuug.dk} did most of @w{RFC 1345} himself, with
+some funding from Danish Standards and Nordic standards (INSTA) project.
+He also did the character set design work, with substantial input from
+Olle Jaernefors.  Keld typed in almost all of the tables, some have been
+contributed.  A number of people have checked the tables in various
+ways.  The RFC lists a number of people who helped.
+
+Keld and the @code{recode} maintainer have an arrangement by which any new
+discovered information submitted by @code{recode} users, about tabular
+charsets, is forwarded to Keld, eventually merged into Keld's work,
+and only then, reimported into @code{recode}.  Neither the @code{recode}
+program nor its library try to compete, nor even establish themselves as
+an alternate or diverging reference: @w{RFC 1345} and its new drafts stay the
+genuine source for most tabular information conveyed by @code{recode}.
+Keld has been more than collaborative so far, so there is no reason that
+we act otherwise.  In a word, @code{recode} should be perceived as the
+application of external references, but not as a reference in itself.
+
+Internally, @w{RFC 1345} associates which each character an unambiguous
+mnemonic of a few characters, taken from @w{ISO 646}, which is a minimal
+ASCII subset of 83 characters.  The charset made up by these mnemonics
+is available in @code{recode} under the name @code{RFC1345}.  It has
+@code{mnemonic} and @code{1345} for aliases.  As implemened, this charset
+exactly corresponds to @code{mnemonic+ascii+38}, using @w{RFC 1345}
+nomenclature.  Roughly said, @w{ISO 646} characters represent themselves,
+except for the ampersand (@kbd{&}) which appears doubled.  A prefix of a
+single ampersand introduces a mnemonic.  For mnemonics using two characters,
+the prefix is immediately by the mnemonic.  For longer mnemonics, the prefix
+is followed by an underline (@kbd{_}), the mmemonic, and another underline.
+Conversions to this charset are usually reversible.
+
+Currently, @code{recode} does not offer any of the many other possible
+variations of this family of representations.  They will likely be
+implemented in some future version, however.
+
+@table @code
+@include charset.texi
+
+@end table
+
+@node ASCII misc, IBM and MS, Tabular, Top
+@chapter ASCII and some derivatives
+
+@menu
+* ASCII::               Usual ASCII
+* ISO 8859::            ASCII extended by Latin Alphabets
+* ASCII-BS::            ASCII 7-bits, @kbd{BS} to overstrike
+* flat::                ASCII without diacritics nor underline
+@end menu
+
+@node ASCII, ISO 8859, ASCII misc, ASCII misc
+@section Usual ASCII
+
+This charset is available in @code{recode} under the name @code{ASCII}.
+In fact, it's true name is @code{ANSI_X3.4-1968} as per @w{RFC 1345},
+accepted aliases being @code{ANSI_X3.4-1986}, @code{ASCII},
+@code{IBM367}, @code{ISO646-US}, @code{ISO_646.irv:1991},
+@code{US-ASCII}, @code{cp367}, @code{iso-ir-6} and @code{us}.  The
+shortest way of specifying it in @code{recode} is @code{us}.
+
+This documentation used to include ASCII tables.  They have been removed
+since the @code{recode} program can now recreate these easily:
+
+@example
+recode -lf us                   for commented ASCII
+recode -ld us                   for concise decimal table
+recode -lo us                   for concise octal table
+recode -lh us                   for concise hexadecimal table
+@end example
+
+@node ISO 8859, ASCII-BS, ASCII, ASCII misc
+@section ASCII extended by Latin Alphabets
+
+There are many Latin charsets.  The following has been written by Tim
+Lasko @email{lasko@@video.dec.com}, a long while ago:
+
+@quotation
+ISO @w{Latin-1}, or more completely ISO Latin Alphabet No 1, is now
+an international standard as of February 1987 (IS 8859, Part 1).
+For those American USEnet'rs that care, the 8-bit ASCII standard, which
+is essentially the same code, is going through the final administrative
+processes prior to publication.  ISO @w{Latin-1} (IS 8859/1) is actually one
+of an entire family of eight-bit one-byte character sets, all having ASCII
+on the left hand side, and with varying repertoires on the right hand side:
+
+@itemize @bullet
+@item
+Latin Alphabet No 1 (caters to Western Europe - now approved).
+@item
+Latin Alphabet No 2 (caters to Eastern Europe - now approved).
+@item
+Latin Alphabet No 3 (caters to SE Europe + others - in draft ballot).
+@item
+Latin Alphabet No 4 (caters to Northern Europe - in draft ballot).
+@item
+Latin-Cyrillic alphabet (right half all Cyrillic - processing currently
+suspended pending USSR input).
+@item
+Latin-Arabic alphabet (right half all Arabic - now approved).
+@item
+Latin-Greek alphabet (right half Greek + symbols - in draft ballot).
+@item
+Latin-Hebrew alphabet (right half Hebrew + symbols - proposed).
+@end itemize
+
+@end quotation
+
+The ISO Latin Alphabet 1 is available as a charset in @code{recode} under
+the name @code{Latin-1}.  In fact, it's true name is @code{ISO_8859-1:1987}
+as per @w{RFC 1345}, accepted aliases being @code{CP819}, @code{IBM819},
+@code{ISO-8859-1}, @code{ISO_8859-1}, @code{iso-ir-100}, @code{l1}
+and @code{Latin-1}.  The shortest way of specifying it in @code{recode}
+is @code{l1}.
+
+It is an eight-bit code which coincides with ASCII for the lower half.
+This documentation used to include @w{Latin-1} tables.  They have been removed
+since the @code{recode} program can now recreate these easily:
+
+@example
+recode -lf l1                   for commented ISO Latin-1
+recode -ld l1                   for concise decimal table
+recode -lo l1                   for concise octal table
+recode -lh l1                   for concise hexadecimal table
+@end example
+
+@node ASCII-BS, flat, ISO 8859, ASCII misc
+@section ASCII 7-bits, @kbd{BS} to overstrike
+
+This charset is available in @code{recode} under the name
+@code{ASCII-BS}, with @code{BS} as an acceptable alias.
+
+The file is straight ASCII, seven bits only.  According to the definition
+of ASCII, diacritics are applied by a sequence of three characters: the
+letter, one @kbd{BS}, the diacritic mark.  We deviate slightly from this
+by exchanging the diacritic mark and the letter so, on a screen device, the
+diacritic will disappear and let the letter alone.  At recognition time,
+both methods are acceptable.
+
+The French quotes are coded by the sequences: @w{@kbd{< BS "}} or @w{@kbd{"
+BS <}} for the opening quote and @w{@kbd{> BS "}} or @w{@kbd{" BS >}}
+for the closing quote.  This artificial convention was inherited in
+straight @code{ASCII-BS} from habits around @code{Bang-Bang} entry, and
+is not well known.  But we decided to stick to it so that @code{ASCII-BS}
+charset will not lose French quotes.
+
+The @code{ASCII-BS} charset is independent of @code{ASCII}, and
+different.  The following examples demonstrate this, knowing at advance
+that @samp{!2} is the @code{Bang-Bang} way of representing an @kbd{e}
+with an acute accent.  Compare:
+
+@example
+% echo \!2 | recode -v bang..l1/d
+Request: Bang-Bang..ISO-8859-1/Decimal-1
+233,  10
+@end example
+
+@noindent
+with:
+
+@example
+% echo \!2 | recode -v bang..bs/d
+Request: Bang-Bang..ISO-8859-1..ASCII-BS/Decimal-1
+ 39,   8, 101,  10
+@end example
+
+In the first case, the @kbd{e} with an acute accent is merely
+transmitted by the @code{Latin-1..ASCII} mapping, not having a special
+recoding rule for it.  In the @code{Latin-1..ASCII-BS} case, the acute
+accent is applied over the @kbd{e} with a backspace: diacriticised
+characters have special rules.  For the @code{ASCII-BS} charset,
+reversibility is still possible, but there might be difficult cases.
+
+@node flat, , ASCII-BS, ASCII misc
+@section ASCII without diacritics nor underline
+
+This charset is available in @code{recode} under the name @code{flat}.
+
+This code is ASCII expunged of all diacritics and underlines, as long as
+they are applied using three character sequences, with @kbd{BS} in the
+middle.  Also, despite slightly unrelated, each control character is
+represented by a sequence of two or three graphic characters.  The newline
+character, however, keeps its functionality and is not represented.
+
+Note that charset @code{flat} is a terminal charset.  We can convert
+@emph{to} @code{flat}, but not @emph{from} it.
+
+@node IBM and MS, CDC, ASCII misc, Top
+@chapter Some IBM or Microsoft charsets
+
+The @code{recode} program provides various IBM or Microsoft code pages
+(@pxref{Tabular}).  An easy way to find them all at once out of the
+@code{recode} program itself is through the command:
+
+@example
+recode -l | egrep -i '(CP|IBM)[0-9]'
+@end example
+
+@noindent
+But also, see few special charsets presented in the incoming sections.
+
+@menu
+* EBCDIC::              EBCDIC codes
+* IBM-PC::              IBM's PC code
+* Icon-QNX::            Unisys' Icon code
+@end menu
+
+@node EBCDIC, IBM-PC, IBM and MS, IBM and MS
+@section EBCDIC code
+
+This charset is the IBM's External Binary Coded Decimal for Interchange
+Coding.  This is an eight bits code.  The following three variants were
+implemented in @code{recode} independently of @w{RFC 1345}:
+
+@table @code
+
+@item EBCDIC
+In @code{recode}, the @code{us..ebcdic} conversion is identical to @samp{dd
+conv=ebcdic} conversion, and @code{recode} @code{ebcdic..us} conversion is
+identical to @samp{dd conv=ascii} conversion.  This charset also represents
+the way Control Data Corporation relates EBCDIC to 8-bits ASCII.
+
+@item EBCDIC-CCC
+In @code{recode}, the @code{us..ebcdic-ccc} or @code{ebcdic-ccc..us}
+conversions represent the way Concurrent Computer Corporation (formerly
+Perkin Elmer) relates EBCDIC to 8-bits ASCII.
+
+@item EBCDIC-IBM
+In @code{recode}, the @code{us..ebcdic-ibm} conversion is @emph{almost}
+identical to the GNU @samp{dd conv=ibm} conversion.  Given the exact
+@samp{dd conv=ibm} conversion table, @code{recode} once said:
+
+@example
+Codes  91 and 213 both recode to 173
+Codes  93 and 229 both recode to 189
+No character recodes to  74
+No character recodes to 106
+@end example
+
+So I arbitrarily chose to recode 213 by 74 and 229 by 106.  This makes the
+@code{EBCDIC-IBM} recoding reversible, but this is not necessarily the best
+correction.  In any case, I think that GNU @code{dd} should be amended.
+@code{dd} and @code{recode} should ideally agree on the same correction.
+So, this table might change once again.
+
+@end table
+
+@w{RFC 1345} brings into @code{recode} 15 other EBCDIC charsets, and 21 other
+charsets having EBCDIC in at least one of their alias names.  You can
+get a list of all these by executing:
+
+@example
+recode -l | grep -i ebcdic
+@end example
+
+Note that @code{recode} may convert a pure stream of EBCDIC characters,
+but it does not know how to handle binary data between records which
+is sometimes used to delimit them and build physical blocks.  If end of
+lines are not marked, fixed record size may produce something readable,
+but @code{VB} or @code{VBS} blocking is likely to yield some garbage in
+the converted results.
+
+@node IBM-PC, Icon-QNX, EBCDIC, IBM and MS
+@section IBM's PC code
+
+This charset is available in @code{recode} under the name @code{IBM-PC},
+with @code{dos}, @code{MSDOS} and @code{pc} as acceptable aliases.
+The shortest way of specifying it in @code{recode} is @code{pc}.
+
+The charset is aimed towards a PC microcomputer from IBM or any compatible.
+This is an eight-bit code.  This charset is fairly old in @code{recode},
+its tables were produced a long while ago by mere inspection of a printed
+chart of the IBM-PC codes and glyph.
+
+It has @code{CR-LF} as its implied surface.  This means that, if the original
+end of lines have to be preserved while going out of @code{IBM-PC}, they
+should currently be added back through the usage of a surface on the other
+charset, or better, just never removed.  Here are examples for both cases:
+
+@example
+recode pc..l2/cl < @var{input} > @var{output}
+recode pc/..l2 < @var{input} > @var{output}
+@end example
+
+@w{RFC 1345} brings into @code{recode} 44 @samp{IBM} charsets or code pages,
+and also 8 other code pages.  You can get a list of these all these by
+executing:@footnote{On DOS/Windows, stock shells do not know that apostrohes
+quote special characters like @kbd{|}, so one need to use double quotes
+instead of apostrophes.}
+
+@example
+recode -l | egrep -i '(CP|IBM)[0-9]'
+@end example
+
+@noindent
+All charset or aliases beginning with letters @samp{CP} or @samp{IBM}
+also have @code{CR-LF} as their implied surface.  The same is true for a
+purely numeric alias in the same family.  For example, all of @code{819},
+@code{CP819} and @code{IBM819} imply @code{CR-LF} as a surface.  Note that
+@code{ISO-8859-1} does @emph{not} imply a surface, despite it shares the
+same tabular data as @code{819}.
+
+There are a few discrepancies between this @code{IBM-PC} charset and the
+very similar @w{RFC 1345} charset @code{ibm437}, which have not been analysed
+yet, so the charsets are being kept separate for now.  This might change in
+the future, and the @code{IBM-PC} charset might disappear.  Wizards would
+be interested in comparing the output of these two commands:
+
+@example
+recode -vh IBM-PC..Latin-1
+recode -vh IBM437..Latin-1
+@end example
+
+@noindent
+The first command uses the charset prior to @w{RFC 1345} introduction.
+Both methods give different recodings.  These differences are annoying,
+the fuzziness will have to be explained and settle down one day.
+
+@node Icon-QNX, , IBM-PC, IBM and MS
+@section Unisys' Icon code
+
+This charset is available in @code{recode} under the name
+@code{Icon-QNX}, with @code{QNX} as an acceptable alias.
+
+The file is using Unisys' Icon way to represent diacritics with code 25
+escape sequences, under the system QNX.  This is a seven-bit code, even
+if eight-bit codes can flow through as part of IBM-PC charset.
+
+@node CDC, Micros, IBM and MS, Top
+@chapter Charsets for CDC machines
+
+What is now @code{recode} evolved out, through many transformations
+really, from a set of programs which were originally written in Control
+Data Corporation's assembler (@code{COMPASS}), with bits in FORTRAN,
+and later, rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
+fact some old CDC charsets are still supported.
+
+The @code{recode} author used to be familiar with CDC Scope-NOS/BE and
+Kronos-NOS, and many CDC formats.  Reading CDC tapes directly on other
+machines is often a challenge, and @code{recode} does not always solve
+it.  It helps having tapes created in coded mode instead of binary mode,
+and using @code{S} (Stranger) tapes instead of @code{I} (Internal) tapes.
+ANSI labels and multi-file tapes might be the source of trouble.  There are
+ways to handle a few Cyber Record Manager formats, but some of them might
+be quite difficult to decode properly after the transfer is done.
+
+The @code{recode} program is usable only for a small subset of NOS text
+formats, and surely not with binary textual formats, like @code{UPDATE}
+or @code{MODIFY} sources, for example.  @code{recode} is not especially
+suited for reading 8/12 or 56/60 packing, yet this could easily arranged
+if there was a demand for it.  It does not have the ability to translate
+Display Code directly, as the ASCII conversion implied by tape drivers
+or FTP does the initial approximation.  @code{recode} can decode 6/12
+caret notation over Display Code already mapped to ASCII.
+
+@menu
+* Display Code::        Control Data's Display Code
+* CDC-NOS::             ASCII 6/12 from NOS
+* Bang-Bang::           ASCII ``bang bang''
+@end menu
+
+@node Display Code, CDC-NOS, CDC, CDC
+@section Control Data's Display Code
+
+This code is not available in @code{recode}, but repeated here for
+reference.  This is a 6-bit code used on CDC mainframes.
+
+@example
+Octal display code to graphic       Octal display code to octal ASCII
+
+00  :    20  P    40  5   60  #     00 072  20 120  40 065  60 043
+01  A    21  Q    41  6   61  [     01 101  21 121  41 066  61 133
+02  B    22  R    42  7   62  ]     02 102  22 122  42 067  62 135
+03  C    23  S    43  8   63  %     03 103  23 123  43 070  63 045
+04  D    24  T    44  9   64  "     04 104  24 124  44 071  64 042
+05  E    25  U    45  +   65  _     05 105  25 125  45 053  65 137
+06  F    26  V    46  -   66  !     06 106  26 126  46 055  66 041
+07  G    27  W    47  *   67  &     07 107  27 127  47 052  67 046
+10  H    30  X    50  /   70  '     10 110  30 130  50 057  70 047
+11  I    31  Y    51  (   71  ?     11 111  31 131  51 050  71 077
+12  J    32  Z    52  )   72  <     12 112  32 132  52 051  72 074
+13  K    33  0    53  $   73  >     13 113  33 060  53 044  73 076
+14  L    34  1    54  =   74  @@     14 114  34 061  54 075  74 100
+15  M    35  2    55      75  \     15 115  35 062  55 040  75 134
+16  N    36  3    56  ,   76  ^     16 116  36 063  56 054  76 136
+17  O    37  4    57  .   77  ;     17 117  37 064  57 056  77 073
+@end example
+
+In older times, @kbd{:} used octal 63, and octal 0 was not a character.
+The table above shows the ASCII glyph interpretation of codes 60 to 77,
+yet these 16 codes were once defined differently.
+
+There is no explicit end of line in Display Code, and the Cyber Record
+Manager introduced many new ways to represent them, the traditional end of
+lines being reachable by setting @code{RT} to @samp{Z}.  If 6-bit bytes
+in a file are sequentially counted from 1, a traditional end of line
+does exist if bytes 10*@var{n}+9 and 10@var{n}+10 are both zero for a
+given @var{n}, in which case these two bytes are not to be interpreted as
+@kbd{::}.  Also, up to 9 immediately preceeding zero bytes, going backward,
+are to be considered as part of the end of line and not interpreted as
+@kbd{:}@footnote{This convention replaced an older one saying that up to 4
+immediately preceeding @emph{pairs} of zero bytes, going backward, are to
+be considered as part of the end of line and not interpreted as @kbd{::}.}.
+
+@node CDC-NOS, Bang-Bang, Display Code, CDC
+@section ASCII 6/12 from NOS
+
+This charset is available in @code{recode} under the name
+@code{CDC-NOS}, with @code{NOS} as an acceptable alias.
+
+This is one of the charset in use on CDC Cyber NOS systems to represent
+ASCII, sometimes named @dfn{NOS 6/12} code for coding ASCII.  This code is
+also known as @dfn{caret ASCII}.  It is based on a six bits character set
+in which small letters and control characters are coded using a @kbd{^}
+escape and, sometimes, a @kbd{@@} escape.
+
+The routines given here presume that the six bits code is already expressed
+in ASCII by the communication channel, with embedded ASCII @kbd{^} and
+@kbd{@@} escapes.
+
+Here is a table showing which characters are being used to encode each
+ASCII character.
+
+@example
+000  ^5  020  ^#  040     060  0  100 @@A  120  P  140  @@G  160  ^P
+001  ^6  021  ^[  041  !  061  1  101  A  121  Q  141  ^A  161  ^Q
+002  ^7  022  ^]  042  "  062  2  102  B  122  R  142  ^B  162  ^R
+003  ^8  023  ^%  043  #  063  3  103  C  123  S  143  ^C  163  ^S
+004  ^9  024  ^"  044  $  064  4  104  D  124  T  144  ^D  164  ^T
+005  ^+  025  ^_  045  %  065  5  105  E  125  U  145  ^E  165  ^U
+006  ^-  026  ^!  046  &  066  6  106  F  126  V  146  ^F  166  ^V
+007  ^*  027  ^&  047  '  067  7  107  G  127  W  147  ^G  167  ^W
+010  ^/  030  ^'  050  (  070  8  110  H  130  X  150  ^H  170  ^X
+011  ^(  031  ^?  051  )  071  9  111  I  131  Y  151  ^I  171  ^Y
+012  ^)  032  ^<  052  *  072 @@D  112  J  132  Z  152  ^J  172  ^Z
+013  ^$  033  ^>  053  +  073  ;  113  K  133  [  153  ^K  173  ^0
+014  ^=  034  ^@@  054  ,  074  <  114  L  134  \  154  ^L  174  ^1
+015  ^   035  ^\  055  -  075  =  115  M  135  ]  155  ^M  175  ^2
+016  ^,  036  ^^  056  .  076  >  116  N  136 @@B  156  ^N  176  ^3
+017  ^.  037  ^;  057  /  077  ?  117  O  137  _  157  ^O  177  ^4
+@end example
+
+@node Bang-Bang, , CDC-NOS, CDC
+@section ASCII ``bang bang''
+
+This charset is available in @code{recode} under the name @code{Bang-Bang}.
+
+This code, in use on Cybers at Universit@'e de Montr@'eal mainly, served
+to code a lot of French texts.  The original name of this charset is
+@dfn{ASCII cod@'e Display}.  This code is also known as @dfn{Bang-bang}.
+It is based on a six bits character set in which capitals, French
+diacritics and a few others are coded using an @kbd{!} escape followed
+by a single character, and control characters using a double @kbd{!}
+escape followed by a single character.
+
+The routines given here presume that the six bits code is already expressed
+in ASCII by the communication channel, with embedded ASCII @kbd{!}
+escapes.
+
+Here is a table showing which characters are being used to encode each
+ASCII character.
+
+@example
+000 !!@@  020 !!P  040    060 0  100 @@   120 !P  140 !@@ 160 P
+001 !!A  021 !!Q  041 !" 061 1  101 !A  121 !Q  141 A  161 Q
+002 !!B  022 !!R  042 "  062 2  102 !B  122 !R  142 B  162 R
+003 !!C  023 !!S  043 #  063 3  103 !C  123 !S  143 C  163 S
+004 !!D  024 !!T  044 $  064 4  104 !D  124 !T  144 D  164 T
+005 !!E  025 !!U  045 %  065 5  105 !E  125 !U  145 E  165 U
+006 !!F  026 !!V  046 &  066 6  106 !F  126 !V  146 F  166 V
+007 !!G  027 !!W  047 '  067 7  107 !G  127 !W  147 G  167 W
+010 !!H  030 !!X  050 (  070 8  110 !H  130 !X  150 H  170 X
+011 !!I  031 !!Y  051 )  071 9  111 !I  131 !Y  151 I  171 Y
+012 !!J  032 !!Z  052 *  072 :  112 !J  132 !Z  152 J  172 Z
+013 !!K  033 !![  053 +  073 ;  113 !K  133 [   153 K  173 ![
+014 !!L  034 !!\  054 ,  074 <  114 !L  134 \   154 L  174 !\
+015 !!M  035 !!]  055 -  075 =  115 !M  135 ]   155 M  175 !]
+016 !!N  036 !!^  056 .  076 >  116 !N  136 ^   156 N  176 !^
+017 !!O  037 !!_  057 /  077 ?  117 !O  137 _   157 O  177 !_
+@end example
+
+@node Micros, Miscellaneous, CDC, Top
+@chapter Other micro-computer charsets
+
+The @code{NeXT} charset, which use to be especially provided in releases of
+@code{recode} before 3.5, has been integrated since as one @w{RFC 1345} table.
+
+@menu
+* Apple-Mac::           Apple's Macintosh code
+* AtariST::             Atari ST code
+@end menu
+
+@node Apple-Mac, AtariST, Micros, Micros
+@section Apple's Macintosh code
+
+This charset is available in @code{recode} under the name @code{Apple-Mac}.
+The shortest way of specifying it in @code{recode} is @code{ap}.
+
+The charset is aimed towards a Macintosh micro-computer from Apple.
+This is an eight bit code.  The file is the data fork only.  This charset
+is fairly old in @code{recode}, its tables were produced a long while ago
+by mere inspection of a printed chart of the Macintosh codes and glyph.
+
+It has @code{LF} as its implied surface.  This means that, if the original
+end of lines have to be preserved while going out of @code{Apple-Mac}, they
+should currently be added back through the usage of a surface on the other
+charset, or better, just never removed.  Here are examples for both cases:
+
+@example
+recode ap..l2/cl < @var{input} > @var{output}
+recode ap/..l2 < @var{input} > @var{output}
+@end example
+
+@w{RFC 1345} brings into @code{recode} 2 other Macintosh charsets.  You can
+discover them by using @code{grep} over the output of @samp{recode -l}:
+
+@example
+recode -l | grep -i mac
+@end example
+
+@noindent
+Charsets @code{macintosh} and @code{macintosh_ce}, as well as their aliases
+@code{mac} and @code{macce} also have @code{CR} as their implied surface.
+
+There are a few discrepancies between the @code{Apple-Mac} charset and
+the very similar @w{RFC 1345} charset @code{macintosh}, which have not been
+analysed yet, so the charsets are being kept separate for now.  This might
+change in the future, and the @code{Apple-Mac} charset might disappear.
+Wizards would be interested in comparing the output of these two commands:
+
+@example
+recode -vh Apple-Mac..Latin-1
+recode -vh macintosh..Latin-1
+@end example
+
+@noindent
+The first command use the charset prior to @w{RFC 1345} introduction.
+Both methods give different recodings.  These differences are annoying,
+the fuzziness will have to be explained and settle down one day.
+
+As a side note, some people ask if there is a Macintosh port of the
+@code{recode} program.  I'm not aware of any.  I presume that if the tool
+fills a need for Macintosh users, someone will port it one of these days?
+
+@node AtariST, , Apple-Mac, Micros
+@section Atari ST code
+
+This charset is available in @code{recode} under the name @code{AtariST}.
+
+This is the character set used on the Atari ST/TT/Falcon.  This is similar
+to @code{IBM-PC}, but differs in some details: it includes some more accented
+characters, the graphic characters are mostly replaced by Hebrew characters,
+and there is a true German @kbd{sharp s} different from Greek @kbd{beta}.
+
+About the end-of-line conversions: the canonical end-of-line on the
+Atari is @samp{\r\n}, but unlike @code{IBM-PC}, the OS makes no
+difference between text and binary input/output; it is up to the
+application how to interpret the data.  In fact, most of the libraries
+that come with compilers can grok both @samp{\r\n} and @samp{\n} as end
+of lines.  Many of the users who also have access to Unix systems prefer
+@samp{\n} to ease porting Unix utilities.  So, for easing reversibility,
+@code{recode} tries to let @samp{\r} undisturbed through recodings.
+
+@node Miscellaneous, Surfaces, Micros, Top
+@chapter Various other charsets
+
+Even if these charsets were originally added to @code{recode} for
+handling texts written in French, they find other uses.  We did use them
+lot for writing French diacriticised texts in the past, so @code{recode}
+knows how to handle these particularly well for French texts.
+
+@menu
+* HTML::                World Wide Web representations
+* LaTeX::               LaTeX macro calls
+* Texinfo::             GNU project documentation files
+* African::             African charsets
+* Cyrillic::            Cyrillic charsets
+* Texte::               Easy French conventions
+* Mule::                Mule as a multiplexed charset
+@end menu
+
+@node HTML, LaTeX, Miscellaneous, Miscellaneous
+@section World Wide Web representations
+
+This charset is available in @code{recode} under the name @code{HTML},
+with @code{h4} as an acceptable alias.
+@c FIXME - untrue
+
+HTML texts used by World Wide Web often use special sequences, beginning with
+an ampersand @kbd{&} and ending with a semicolon @kbd{;}, for representing
+characters.  The sequence may itself start with a number sigh @kbd{#} and be
+followed by digits, so forming a @dfn{numeric character reference}, or else
+be an alphabetic identifier, so forming a @dfn{character entity reference}.
+
+Printable characters from @w{Latin-1} may be used directly in an HTML text.
+However, partly because people have deficient keyboards, partly because
+people want to transmit HTML texts over non 8-bit clean channels while not
+using MIME, it is common (yet debatable) to use character entity references
+even for @w{Latin-1} characters, when they fall outside ASCII (that is,
+when they have the 8th bit set).
+
+When you recode from another charset to @code{HTML}, beware that all
+occurrences of double quotes, ampersands, and left or right angle brackets
+are translated into special sequences.  However, in practice, people often
+use ampersands and angle brackets in the other charset for introducing
+HTML commands, compromising it: it is not pure HTML, not it is pure
+other charset.  These particular translations can be rather inconvenient,
+they may be specifically inhibited through the command option @code{-d}
+(@pxref{Mixed}).
+
+Codes not having a mnemonic entity are output by @code{recode} using the
+@samp{&#@var{nnn};} notation, where @var{nnn} is a decimal representation
+of the UCS code value.  When there is an entity name for a character, it
+is always preferred over a numeric character reference.  ASCII printable
+characters are always generated directly.  So is the newline.  While reading
+HTML, @code{recode} supports numeric character reference as alternate
+writings, even when written as hexadecimal numbers, as in @samp{&#xfffd}.
+This is documented in:
+
+@example
+http://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.3
+@end example
+
+About levels of HTML, François Yergeau @email{yergeau@@alis.com} writes:
+
+@itemize @bullet
+@item
+HTML 1.0 was never really documented.
+
+@item
+HTML 2.0 entities are listed in @w{RFC 1866}.  Basically, there is an entity
+for each @emph{alphabetical} character in the right part of @w{ISO 8859-1}.
+In addition, there are four entities for syntax-significant ASCII characters:
+@samp{&amp;}, @samp{&gt;}, @samp{&lt;} and @samp{&quot;}.
+
+@item
+@w{RFC 2070} (HTML-i18n) added entities to cover the whole right
+part of @w{ISO 8859-1}.  The list is conveniently accessible at
+@url{http://www.alis.com:8085/ietf/html/html-latin1.sgml}.  In addition,
+four i18n-related entities were added: @samp{&zwnj;} (@samp{&#8204;}),
+@samp{&zwj;} (@samp{&#8205;}), @samp{&lrm;} (@samp{&#8206}) and @samp{&rlm;}
+(@samp{&#8207;}).
+
+@item
+HTML 3.2 (@url{http://www.w3.org/TR/REC-html32.html}) took up the full
+@w{Latin-1} list but not the i18n-related entities from @w{RFC 2070}.
+
+@item
+HTML 4.0 (@url{http://www.w3.org/TR/REC-html40/}) has the whole @w{Latin-1} list,
+a set of entities for symbols, mathematical symbols, and Greek letters,
+and another set for markup-significant and internationalization characters
+comprising the 4 ASCII entities, the 4 i18n-related from @w{RFC 2070} plus
+some more.
+
+@end itemize
+
+When @code{recode} translates to HTML, the translation occurs according
+to @url{http://www.w3.org/TR/REC-html40/sgml/entities.html}.
+@c Previously: http://www.uni-passau.de/~ramsch/iso8859-1.html
+It is also assumed that @w{RFC 1866} has an equivalent contents.  When
+translating @emph{from} HTML, @code{recode} accepts some alternative
+special sequences, to be forgiving when files use older HTML tables.
+
+The @code{recode} program can be used to @emph{normalise} an HTML file using
+oldish conventions.  For example, it accepts @samp{&AE;}, as this once was a
+valid writing, somewhere.  However, it should always produce @samp{&AElig;}
+instead of @samp{&AE;}.  Yet, this is not completely true.  If one does:
+
+@example
+recode h3..h3 < @var{input}
+@end example
+
+@noindent
+the operation will be optimised into a mere copy, and you can get @samp{&AE;}
+this way, if you had some in your input file.  But if you explicitly defeat
+the optimisation, like this maybe:
+
+@example
+recode h3..u2,u2..h3 < @var{input}
+@end example
+
+@noindent
+then @samp{&AE;} should be normalised into @samp{&AElig;} by the operation.
+
+@node LaTeX, Texinfo, HTML, Miscellaneous
+@section La@TeX{} macro calls
+
+This charset is available in @code{recode} under the name @code{LaTeX}
+and has @code{ltex} as an alias.  It is used for ASCII files coded to be
+read by La@TeX{} or, in certain cases, by @TeX{}.
+
+Whenever you recode from another charset to @code{LaTeX}, beware that all
+occurrences of backslashes @kbd{\} are translated into the string
+@samp{\backslash@{@}}.  However, in practice, people often use backslashes
+in the other charset for introducing @TeX{} commands, compromising it:
+it is not pure @TeX{}, nor it is pure other charset.  This translation
+of backslashes into @samp{\backslash@{@}} can be rather inconvenient,
+it may be inhibited through the command option @code{-d} (@pxref{Mixed}).
+
+@node Texinfo, African, LaTeX, Miscellaneous
+@section GNU project documentation files
+
+This charset is available in @code{recode} under the name @code{Texinfo}
+and has @code{texi} and @code{ti} for aliases.  It is used by the GNU
+project for its documentation.  Texinfo files may be converted into Info
+files by the @code{makeinfo} program and into nice printed manuals by
+the @TeX{} system.
+
+Even if @code{recode} may transform other charsets to Texinfo, it may
+not read Texinfo files yet.  In these times, usages are also changing
+between versions of Texinfo, and @code{recode} only partially succeeds
+in correctly following these changes.  So, for now, Texinfo support in
+@code{recode} should be considered as work still in progress (!).
+
+@node African, Cyrillic, Texinfo, Miscellaneous
+@section African charsets
+
+Some African character sets are available for a few languages, when these
+are heavily used in countries where French is also currently spoken.
+
+One African charset is usable for Bambara, Ewondo and Fulfude, as well
+as for French.  This charset is available in @code{recode} under the name
+@code{AFRFUL-102-BPI_OCIL}.  Accepted aliases are @code{bambara}, @code{bra},
+@code{ewondo} and @code{fulfude}.  Transliterated forms of the same are
+available under the name @code{AFRFUL-103-BPI_OCIL}.  Accepted aliases
+are @code{t-bambara}, @code{t-bra}, @code{t-ewondo} and @code{t-fulfude}.
+
+Another African charset is usable for Lingala, Sango and Wolof, as well
+as for French.  This charset is available in @code{recode} under the
+name @code{AFRLIN-104-BPI_OCIL}.  Accepted aliases are @code{lingala},
+@code{lin}, @code{sango} and @code{wolof}.  Transliterated forms of the same
+are available under the name @code{AFRLIN-105-BPI_OCIL}.  Accepted aliases
+are @code{t-lingala}, @code{t-lin}, @code{t-sango} and @code{t-wolof}.
+
+To ease exchange with @code{ISO-8859-1}, there is a charset conveying
+transliterated forms for @w{Latin-1} in a way which is compatible with the other
+African charsets in this series.  This charset is available in @code{recode}
+under the name @code{AFRL1-101-BPI_OCIL}.  Accepted aliases are @code{t-fra}
+and @code{t-francais}.
+
+@node Cyrillic, Texte, African, Miscellaneous
+@section Cyrillic charsets
+
+The following Cyrillic charsets are already available in @code{recode}
+through @w{RFC 1345} tables: @code{CP1251} with aliases @code{1251}, @code{
+ms-cyrl} and @code{windows-1251}; @code{CSN_369103} with aliases
+@code{ISO-IR-139} and @code{KOI8_L2}; @code{ECMA-cyrillic} with aliases
+@code{ECMA-113}, @code{ECMA-113:1986} and @code{iso-ir-111}, @code{IBM880}
+with aliases @code{880}, @code{CP880} and @code{EBCDIC-Cyrillic};
+@code{INIS-cyrillic} with alias @code{iso-ir-51}; @code{ISO-8859-5} with
+aliases @code{cyrillic}, @code{ ISO-8859-5:1988} and @code{iso-ir-144};
+@code{KOI-7}; @code{KOI-8} with alias @code{GOST_19768-74}; @code{KOI8-R};
+@code{KOI8-RU} and finally @code{KOI8-U}.
+
+There seems to remain some confusion in Cyrillic charsets, and because a few
+users requested it repeatedly, @code{recode} now offers special services
+in that area.  Consider these charsets as experimental and debatable, as
+the extraneous tables describing them are still a bit fuzzy or non-standard.
+Hopefully, in the long run, Cyrillic will be covered in Keld Simonsen's works
+to the satisfaction of everybody, and this section will merely disappear.
+
+@table @code
+@item KEYBCS2
+This charset is available under the name @code{KEYBCS2}, with
+@code{Kamenicky} as an accepted alias.
+
+@item CORK
+This charset is available under the name @code{CORK}, with @code{T1}
+as an accepted alias.
+
+@item KOI-8_CS2
+This charset is available under the name @code{KOI-8_CS2}.
+
+@end table
+
+@node Texte, Mule, Cyrillic, Miscellaneous
+@section Easy French conventions
+
+This charset is available in @code{recode} under the name @code{Texte}
+and has @code{txte} for an alias.  It is a seven bits code, identical
+to @code{ASCII-BS}, save for French diacritics which are noted using a
+slightly different convention.
+
+At text entry time, these conventions provide a little speed up.  At read
+time, they slightly improve the readability over a few alternate ways
+of coding diacritics.  Of course, it would better to have a specialised
+keyboard to make direct eight bits entries and fonts for immediately
+displaying eight bit ISO @w{Latin-1} characters.  But not everybody is so
+fortunate.  In a few mailing environments, and sadly enough, it still
+happens that the eight bit is often willing-fully destroyed.
+
+Easy French has been in use in France for a while.  I only slightly
+adapted it (the diaeresis option) to make it more comfortable to several
+usages in Qu@'ebec originating from Universit@'e de Montr@'eal.  In fact,
+the main problem for me was not to necessarily to invent Easy French, but
+to recognise the ``best'' convention to use, (best is not being defined,
+here) and to try to solve the main pitfalls associated with the selected
+convention.  Shortly said, we have:
+
+@table @kbd
+@item e'
+for @kbd{e} (and some other vowels) with an acute accent,
+@item e`
+for @kbd{e} (and some other vowels) with a grave accent,
+@item e^
+for @kbd{e} (and some other vowels) with a circumflex accent,
+@item e"
+for @kbd{e} (and some other vowels) with a diaeresis,
+@item c,
+for @kbd{c} with a cedilla.
+@end table
+
+@noindent
+There is no attempt at expressing the @kbd{ae} and @kbd{oe} diphthongs.
+French also uses tildes over @kbd{n} and @kbd{a}, but seldomly, and this
+is not represented either.  In some countries, @kbd{:} is used instead
+of @kbd{"} to mark diaeresis.  @code{recode} supports only one convention
+per call, depending on the @code{-c} option of the @code{recode} command.
+French quotes (sometimes called ``angle quotes'') are noted the same way
+English quotes are noted in @TeX{}, @emph{id est} by @kbd{``} and @kbd{''}.
+No effort has been put to preserve Latin ligatures (@kbd{ae}, @kbd{oe})
+which are representable in several other charsets.  So, these ligatures
+may be lost through Easy French conventions.
+
+The convention is prone to losing information, because the diacritic
+meaning overloads some characters that already have other uses.  To
+alleviate this, some knowledge of the French language is boosted into
+the recognition routines.  So, the following subtleties are systematically
+obeyed by the various recognisers.
+
+@enumerate
+@item
+A comma which follows a @kbd{c} is interpreted as a cedilla only if it is
+followed by one of the vowels @kbd{a}, @kbd{o} or @kbd{u}.
+
+@item
+A single quote which follows a @kbd{e} does not necessarily means an acute
+accent if it is followed by a single other one.  For example:
+
+@table @kbd
+@item e'
+will give an @kbd{e} with an acute accent.
+@item e''
+will give a simple @kbd{e}, with a closing quotation mark.
+@item e'''
+will give an @kbd{e} with an acute accent, followed by a closing quotation
+mark.
+@end table
+
+There is a problem induced by this convention if there are English
+quotations with a French text.  In sentences like:
+
+@example
+There's a meeting at Archie's restaurant.
+@end example
+
+the single quotes will be mistaken twice for acute accents.  So English
+contractions and suffix possessives could be mangled.
+
+@item
+A double quote or colon, depending on @code{-c} option, which follows a
+vowel is interpreted as diaeresis only if it is followed by another letter.
+But there are in French several words that @emph{end} with a diaeresis,
+and the @code{recode} library is aware of them.  There are words ending in
+``igue'', either feminine words without a relative masculine (besaigu@"e
+and cigu@"e), or feminine words with a relative masculine@footnote{There
+are supposed to be seven words in this case.  So, one is missing.}
+(aigu@"e, ambigu@"e, contigu@"e, exigu@"e, subaigu@"e and suraigu@"e).
+There are also words not ending in ``igue'', but instead, either ending by
+``i''@footnote{Look at one of the following sentences (the second has to
+be interpreted with the @code{-c} option):
+
+@example
+"Ai"e!  Voici le proble`me que j'ai"
+Ai:e!  Voici le proble`me que j'ai:
+@end example
+
+There is an ambiguity between an
+@tex
+a\"\i,
+@end tex
+@ifinfo
+ai",
+@end ifinfo
+@ignore
+a@"{@dotless{i}},
+@end ignore
+the small animal, and the indicative future of @emph{avoir} (first person
+singular), when followed by what could be a diaeresis mark.  Hopefully,
+the case is solved by the fact that an apostrophe always precedes the
+verb and almost never the animal.}
+@tex
+(a\"\i, conga\"\i, go\"\i, ha\"\i ka\"\i, inou\"\i, sa\"\i, samura\"\i,
+tha\"\i{} and toka\"\i),
+@end tex
+@ifinfo
+(ai", congai", goi", hai"kai", inoui", sai", samurai", thai" and tokai"),
+@end ifinfo
+@ignore
+(a@"{@dotless{i}}, conga@"{@dotless{i}}, go@"{@dotless{i}},
+ha@"{@dotless{i}}ka@"{@dotless{i}}, inou@"{@dotless{i}}, sa@"{@dotless{i}},
+samura@"{@dotless{i}}, tha@"{@dotless{i}} and toka@"{@dotless{i}}),
+@end ignore
+ending by ``e'' (cano@"e) or ending by ``u''@footnote{I did not pay
+attention to proper nouns, but this one showed up as being fairly evident.}
+(Esa@"u).
+
+Just to complete this topic, note that it would be wrong to make a rule
+for all words ending in ``igue'' as needing a diaerisis, as there are
+counter-examples (becfigue, b@`esigue, bigue, bordigue, bourdigue, brigue,
+contre-digue, digue, d'intrigue, fatigue, figue, garrigue, gigue, igue,
+intrigue, ligue, prodigue, sarigue and zigue).
+
+@end enumerate
+
+@node Mule, , Texte, Miscellaneous
+@section Mule as a multiplexed charset
+
+This version of @code{recode} barely starts supporting multiplexed or
+super-charsets, that is, those encoding methods by which a single text
+stream may contain a combination of more than one constituent charset.
+The only multiplexed charset in @code{recode} is @code{Mule}, and even
+then, it is only very partially implemented: the only correspondence
+available is with @code{Latin-1}.  The author fastly implemented this
+only because he needed this for himself.  However, it is intended that
+Mule support to become more real in subsequent releases of @code{recode}.
+
+Multiplexed charsets are not to be confused with mixed charset texts
+(@pxref{Mixed}).  For mixed charset input, the rules allowing to distinguish
+which charset is current, at any given place, are kind of informal, and
+driven from the semantics of what the file contains.  On the other side,
+multiplexed charsets are @emph{designed} to be interpreted fairly precisely,
+and quite independently of any informational context.
+
+The spelling @code{Mule} originally stands for @cite{@emph{mul}tilingual
+@emph{e}nhancement to GNU Emacs}, it is the result of a collective
+effort orchestrated by Handa Ken'ishi since 1993.  When @code{Mule} got
+rewritten in the main development stream of GNU Emacs 20, the FSF renamed
+it @code{MULE}, meaning @cite{@emph{mul}tilingual @emph{e}nvironment
+in GNU Emacs}.  Even if the charset @code{Mule} is meant to stay
+internal to GNU Emacs, it sometimes breaks loose in external files,
+and as a consequence, a recoding tool is sometimes needed.  Within Emacs,
+@code{Mule} comes with @code{leim}, which stands for @cite{@emph{l}ibraries
+of @emph{e}macs @emph{i}nput @emph{m}ethods}.  One of these libraries is
+named @code{quail}@footnote{Usually, quail means quail egg in Japanese,
+while egg alone is usually chicken egg.  Both quail egg and chicken
+egg are popular food in Japan.  The @code{quail} input system has
+been named because it is smaller that the previous @code{EGG} system.
+As for @code{EGG}, it is the translation of @code{TAMAGO}.  This word
+comes from the Japanese sentence @cite{@emph{ta}kusan @emph{ma}tasete
+@emph{go}mennasai}, meaning @cite{sorry to have let you wait so long}.
+Of course, the publication of @code{EGG} has been delayed many times@dots{}
+(Story by Takahashi Naoto)}.
+
+@node Surfaces, Internals, Miscellaneous, Top
+@chapter All about surfaces
+
+The @dfn{trivial surface} consists into using a fixed number of bits
+(often eight) for each character, the bits together hold the integer
+value of the index for the character in its charset table.  There are
+many kinds of surfaces, beyond the trivial one, all having the purpose
+of increasing selected qualities for the storage or transmission.
+For example, surfaces might increase the resistance to channel limits
+(@code{Base64}), the transmission speed (@code{gzip}), the information
+privacy (@code{DES}), the conformance to operating system conventions
+(@code{CR-LF}), the blocking into records (@code{VB}), and surely other
+things as well@footnote{These are mere examples to explain the concept,
+@code{recode} only has @code{Base64} and @code{CR-LF}, actually.}.
+Many surfaces may be applied to a stream of characters from a charset,
+the order of application of surfaces is important, and surfaces
+should be removed in the reverse order of their application.
+
+Even if surfaces may generally be applied to various charsets, some
+surfaces were specifically designed for a particular charset, and would
+not make much sense if applied to other charsets.  In such cases, these
+conceptual surfaces have been implemented as @code{recode} charsets,
+instead of as surfaces.  This choice yields to cleaner syntax
+and usage.  @xref{Universal}.
+
+Surfaces are implemented within @code{recode} as special charsets which may
+only transform to or from the @code{data} special charset.  Clever users
+may use this knowledge for writing surface names in requests exactly as if
+they were pure charsets, when the only need is to change surfaces without
+any kind of recoding between real charsets.  In such contexts, @code{data}
+may also be used as if it were some kind of generic, anonymous charset:
+the request @samp{data..@var{surface}} merely adds the given @var{surface},
+while the request @samp{@var{surface}..data} removes it.
+
+We are only beginning to experiment with surfaces in @code{recode}, but
+the concept opens the doors to many avenues, it is not clear yet which
+ones are worth pursuing, and which should be abandoned.  This chapter
+presents all surfaces currently available.
+
+@menu
+* Permutations::        Permuting groups of bytes
+* End lines::           Representation for end of lines
+* MIME::                MIME contents encodings
+* Dump::                Interpreted character dumps
+* Debugging::           Artificial data
+@end menu
+
+@node Permutations, End lines, Surfaces, Surfaces
+@section Permuting groups of bytes
+
+A permutation is a surface transformation which reorders groups of
+eight-bit bytes.  A @emph{21} permutation exchanges pairs of successive
+bytes.  If the text contains an odd number of bytes, the last byte is
+merely copied.  An @emph{4321} permutation inverts the order of quadruples
+of bytes.  If the text does not contains a multiple of four bytes, the
+remaining bytes are nevertheless permuted as @emph{321} if there are
+three bytes, @emph{21} if there are two bytes, or merely copied otherwise.
+
+@table @code
+@item 21
+This surface is available in @code{recode} under the name
+@code{21-Permutation} and has @code{swabytes} for an alias.
+
+@item 4321
+This surface is available in @code{recode} under the name
+@code{4321-Permutation}.
+
+@end table
+
+@node End lines, MIME, Permutations, Surfaces
+@section Representation for end of lines
+
+The same charset might slightly differ, from one system to another, for
+the single fact that end of lines are not represented identically on all
+systems.  The representation for an end of line within @code{recode}
+is the @code{ASCII} or @code{UCS} code with value 10, or @kbd{LF}.  Other
+conventions for representing end of lines are available through surfaces.
+
+@table @code
+@item CR
+This convention is popular on Apple's Macintosh machines.  When this
+surface is applied, each line is terminated by @kbd{CR}, which has
+@code{ASCII} value 13.  Unless the library is operating in strict mode,
+adding or removing the surface will in fact @emph{exchange} @kbd{CR} and
+@kbd{LF}, for better reversibility.  However, in strict mode, the exchange
+does not happen, any @kbd{CR} will be copied verbatim while applying
+the surface, and any @kbd{LF} will be copied verbatim while removing it.
+
+This surface is available in @code{recode} under the name @code{CR},
+it does not have any aliases.  This is the implied surface for the Apple
+Macintosh related charsets.
+
+@item CR-LF
+This convention is popular on Microsoft systems running on IBM PCs and
+compatible.  When this surface is applied, each line is terminated by
+a sequence of two characters: one @kbd{CR} followed by one @kbd{LF},
+in that order.
+
+For compatibility with oldish MS-DOS systems, removing a @code{CR-LF}
+surface will discard the first encountered @kbd{C-z}, which has
+@code{ASCII} value 26, and everything following it in the text.
+Adding this surface will not, however, append a @kbd{C-z} to the result.
+
+This surface is available in @code{recode} under the name @code{CR-LF}
+and has @code{cl} for an alias.  This is the implied surface for the IBM
+or Microsoft related charsets or code pages.
+
+@end table
+
+Some other charsets might have their own representation for an end of
+line, which is different from @kbd{LF}.  For example, this is the case
+of various @code{EBCDIC} charsets, or @code{Icon-QNX}.  The recoding of
+end of lines is intimately tied into such charsets, it is not available
+separately as surfaces.
+
+@node MIME, Dump, End lines, Surfaces
+@section MIME contents encodings
+
+@w{RFC 1521} defines two 7-bit surfaces, meant to prepare 8-bit messages for
+transmission.  Base64 is especially usable for binary entities, while
+Quoted-Printable is especially usable for text entities, in those case
+the lower 128 characters of the underlying charset coincide with ASCII.
+
+@table @code
+@item Base64
+This surface is available in @code{recode} under the name @code{Base64},
+with @code{b64} and @code{64} as acceptable aliases.
+
+@item Quoted-Printable
+This surface is available in @code{recode} under the name
+@code{Quoted-Printable}, with @code{quote-printable} and @code{QP} as
+acceptable aliases.
+
+@end table
+
+Note that @code{UTF-7}, which may be also considered as a MIME surface,
+is provided as a genuine charset instead, as it necessary relates to
+@code{UCS-2} and nothing else.  @xref{UTF-7}.
+
+A little historical note, also showing the three levels of acceptation of
+Internet standards.  MIME changed from a ``Proposed Standard'' to a ``Draft
+Standard'' in 1993, and only became a ``Full Standard'' during 1996-12.
+
+@node Dump, Debugging, MIME, Surfaces
+@section Interpreted character dumps
+
+Dumps are surfaces meant to express, in ways which are a bit more readable,
+the bit patterns used to represent characters.  They allow the inspection
+or debugging of character streams, but also, they may assist a bit the
+production of C source code which, once compiled, would hold in memory a
+copy of the original coding.  However, @code{recode} does not attempt, in
+any way, to produce complete C source files in dumps.  User hand editing
+or @file{Makefile} trickery is still needed for adding missing lines.
+Dumps may be given in decimal, hexadecimal and octal, and be based over
+chunks of either one, two or four eight-bit bytes.  Formatting has been
+chosen to respect the C language syntax for number constants, with commas
+and newlines inserted appropriately.
+
+However, when dumping two or four byte chunks, the last chunk may be
+incomplete.  This is observable through the usage of narrower expression
+for that last chunk only.  Such a shorter chunk would not be compiled
+properly within a C initialiser, as all members of an array share a single
+type, and so, have identical sizes.
+
+@table @code
+@item Octal-1
+This surface corresponds to an octal expression of each input byte.
+
+It is available in @code{recode} under the name @code{Octal-1},
+with @code{o1} and @code{o} as acceptable aliases.
+
+@item Octal-2
+This surface corresponds to an octal expression of each pair of
+input bytes, except for the last pair, which may be short.
+
+It is available in @code{recode} under the name @code{Octal-2}
+and has @code{o2} for an alias.
+
+@item Octal-4
+This surface corresponds to an octal expression of each quadruple of
+input bytes, except for the last quadruple, which may be short.
+
+It is available in @code{recode} under the name @code{Octal-4}
+and has @code{o4} for an alias.
+
+@item Decimal-1
+This surface corresponds to an decimal expression of each input byte.
+
+It is available in @code{recode} under the name @code{Decimal-1},
+with @code{d1} and @code{d} as acceptable aliases.
+
+@item Decimal-2
+This surface corresponds to an decimal expression of each pair of
+input bytes, except for the last pair, which may be short.
+
+It is available in @code{recode} under the name @code{Decimal-2}
+and has @code{d2} for an alias.
+
+@item Decimal-4
+This surface corresponds to an decimal expression of each quadruple of
+input bytes, except for the last quadruple, which may be short.
+
+It is available in @code{recode} under the name @code{Decimal-4}
+and has @code{d4} for an alias.
+
+@item Hexadecimal-1
+This surface corresponds to an hexadecimal expression of each input byte.
+
+It is available in @code{recode} under the name @code{Hexadecimal-1},
+with @code{x1} and @code{x} as acceptable aliases.
+
+@item Hexadecimal-2
+This surface corresponds to an hexadecimal expression of each pair of
+input bytes, except for the last pair, which may be short.
+
+It is available in @code{recode} under the name @code{Hexadecimal-2},
+with @code{x2} for an alias.
+
+@item Hexadecimal-4
+This surface corresponds to an hexadecimal expression of each quadruple of
+input bytes, except for the last quadruple, which may be short.
+
+It is available in @code{recode} under the name @code{Hexadecimal-4},
+with @code{x4} for an alias.
+
+@end table
+
+When removing a dump surface, that is, when reading a dump results back
+into a sequence of bytes, the narrower expression for a short last chunk
+is recognised, so dumping is a fully reversible operation.  However, in
+case you want do produce dumps by other means than through @code{recode},
+beware that for decimal dumps, the library has to rely on the number of
+spaces to establish the original byte size of the chunk.
+
+Despite the library might report reversibility errors, removing a dump
+surface is a rather forgiving process: one may mix bases, group more or
+less numbers per source line, or use shorter chunks elsewhere than at the
+far end.  Also, source lines not beginning with a number are skipped.  So,
+@code{recode} should often be able to read a whole C header file, wrapping
+the results of a previous dump, and regenerate the original byte string.
+
+@node Debugging, , Dump, Surfaces
+@section Artificial data
+
+A few pseudo-surfaces exist to generate debugging data out of thin air.
+These surfaces are only meant for the expert @code{recode} user, and are
+only useful in a few contexts, like for generating binary permutations
+from the recoding or acting on them.
+
+Debugging surfaces, @emph{when removed}, insert their generated data
+at the beginning of the output stream, and copy all the input stream
+after the generated data, unchanged.  This strange removal constraint
+comes from the fact that debugging surfaces are usually specified in the
+@emph{before} position instead of the @emph{after} position within a request.
+With debugging surfaces, one often recodes file @file{/dev/null} in filter
+mode.  Specifying many debugging surfaces at once has an accumulation
+effect on the output, and since surfaces are removed from right to left,
+each generating its data at the beginning of previous output, the net
+effect is an @emph{impression} that debugging surfaces are generated from
+left to right, each appending to the result of the previous.  In any case,
+any real input data gets appended after what was generated.
+
+@table @code
+@item test7
+When removed, this surface produces 128 single bytes, the first having
+value 0, the second having value 1, and so forth until all 128 values have
+been generated.
+
+@item test8
+When removed, this surface produces 256 single bytes, the first having
+value 0, the second having value 1, and so forth until all 256 values have
+been generated.
+
+@item test15
+When removed, this surface produces 64509 double bytes, the first having
+value 0, the second having value 1, and so forth until all values have been
+generated, but excluding risky @code{UCS-2} values, like all codes from
+the surrogate @code{UCS-2} area (for @code{UTF-16}), the byte order mark,
+and values known as invalid @code{UCS-2}.
+
+@item test16
+When removed, this surface produces 65536 double bytes, the first having
+value 0, the second having value 1, and so forth until all 65536 values
+have been generated.
+
+@end table
+
+For an example, the command @samp{recode l5/test8..dump < /dev/null} is a
+convoluted way to produce an output similar to @samp{recode -lf l5}.  It says
+to generate all possible 256 bytes and interpret them as @code{ISO-8859-9}
+codes, while converting them to @code{UCS-2}.  Resulting @code{UCS-2}
+characters are dumped one per line, accompanied with their explicative name.
+
+@node Internals, , Surfaces, Top
+@chapter Internal aspects
+
+The incoming explanations of the internals of @code{recode} should
+help people who want to dive into @code{recode} sources for adding new
+charsets.  Adding new charsets does not require much knowledge about
+the overall organisation of @code{recode}.  You can rather concentrate
+of your new charset, letting the remainder of the @code{recode}
+mechanics take care of interconnecting it with all others charsets.
+
+If you intend to play seriously at modifying @code{recode}, beware that
+you may need some other GNU tools which were not required when you first
+installing @code{recode}.  If you modify or create any @file{.l} file,
+then you need Flex, and some better @code{awk} like @code{mawk},
+GNU @code{awk}, or @code{nawk}.  If you modify the documentation (and
+you should!), you need @code{makeinfo}.  If you are really audacious,
+you may also want Perl for modifying tabular processing, then @code{m4},
+Autoconf, Automake and @code{libtool} for adjusting configuration matters.
+
+@menu
+* Main flow::           Overall organisation
+* New charsets::        Adding new charsets
+* New surfaces::        Adding new surfaces
+* Design::              Comments on the library design
+@end menu
+
+@node Main flow, New charsets, Internals, Internals
+@section Overall organisation
+
+The @code{recode} mechanics slowly evolved for many years, and it
+would be tedious to explain all problems I met and mistakes I did all
+along, yielding the current behaviour.  Surely, one of the key choices
+was to stop trying to do all conversions in memory, one line or one
+buffer at a time.  It has been fruitful to use the character stream
+paradigm, and the elementary recoding steps now convert a whole stream
+to another.  Most of the control complexity in @code{recode} exists
+so that each elementary recoding step stays simple, making easier
+to add new ones.  The whole point of @code{recode}, as I see it, is
+providing a comfortable nest for growing new charset conversions.
+
+The main @code{recode} driver constructs, while initialising all
+conversion modules, a table giving all the conversion routines
+available (@dfn{single step}s) and for each, the starting charset and
+the ending charset.  If we consider these charsets as being the nodes
+of a directed graph, each single step may be considered as oriented
+arc from one node to the other.  A cost is attributed to each arc:
+for example, a high penalty is given to single steps which are prone
+to losing characters, a lower penalty is given to those which need
+studying more than one input character for producing an output
+character, etc.
+
+Given a starting code and a goal code, @code{recode} computes the most
+economical route through the elementary recodings, that is, the best
+sequence of conversions that will transform the input charset into the
+final charset.  To speed up execution, @code{recode} looks for
+subsequences of conversions which are simple enough to be merged, it
+then dynamically creates new single steps to represent these mergings.
+
+A @dfn{double step} in @code{recode} is a special concept representing a
+sequence of two single steps, the output of the first single step being the
+special charset @code{UCS-2}, the input of the second single step being
+also @code{UCS-2}.  Special @code{recode} machinery dynamically produces
+efficient, reversible, merge-able single steps out of these double steps.
+
+I made some statistics about how many internal recoding steps are required
+between any two charsets chosen at random.  The initial recoding layout,
+before optimisation, always uses between 1 and 6 steps.  Optimisation could
+sometimes produce mere copies, which are counted as no steps at all.
+In other cases, optimisation is unable to save any step.  The number of
+steps after optimisation is currently between 0 and 6 steps.  Of course,
+the @emph{expected} number of steps is affected by optimisation: it
+drops from 2.2 to 0.9.@footnote{The above numbers were for @code{recode}
+version 3.4.  After UCS additions, it drops from 2.3 to 1.1.} This means
+that @code{recode} uses a theoretical average of a bit less than one step
+per recoding job.  This looks good.  This was computed using reversible
+recodings.  In strict mode, optimisation might be defeated somewhat.
+Number of steps run between 1 and 6, both before and after optimisation,
+and the expected number of steps decreases by a lesser amount, going from
+2.2 to 1.3.  This is still manageable.
+
+@node New charsets, New surfaces, Main flow, Internals
+@section Adding new charsets
+
+The main part of @code{recode} is written in C, as are most single
+steps.  A few single steps need to recognise sequences of multiple
+characters, they are often better written in Flex.  It is easy for a
+programmer to add a new charset to @code{recode}.  All it requires
+is making a few functions kept in a single @file{.c} file,
+adjusting @file{Makefile.am} and remaking @code{recode}.
+
+One of the function should convert from any previous charset to the
+new one.  Any previous charset will do, but try to select it so you will
+not lose too much information while converting.  The other function should
+convert from the new charset to any older one.  You do not have to select
+the same old charset than what you selected for the previous routine.
+Once again, select any charset for which you will not lose too much
+information while converting.
+
+If, for any of these two functions, you have to read multiple bytes of the
+old charset before recognising the character to produce, you might prefer
+programming it in Flex in a separate @file{.l} file.  Prototype your
+C or Flex files after one of those which exist already, so to keep the
+sources uniform.  Besides, at @code{make} time, all @file{.l} files are
+automatically merged into a single big one by the script @file{mergelex.awk}.
+
+There are a few hidden rules about how to write new @code{recode}
+modules, for allowing the automatic creation of @file{decsteps.h}
+and @file{initsteps.h} at @code{make} time, or the proper merging of
+all Flex files.  Mimetism is a simple approach which relieves me of
+explaining all these rules!  Start with a module closely resembling
+what you intend to do.  Here is some advice for picking up a model.
+First decide if your new charset module is to be be driven by algorithms
+rather than by tables.  For algorithmic recodings, see @file{iconqnx.c} for
+C code, or @file{txtelat1.l} for Flex code.  For table driven recodings,
+see @file{ebcdic.c} for one-to-one style recodings, @file{lat1html.c}
+for one-to-many style recodings, or @file{atarist.c} for double-step
+style recodings.  Just select an example from the style that better fits
+your application.
+
+Each of your source files should have its own initialisation function,
+named @code{module_@var{charset}}, which is meant to be executed
+@emph{quickly} once, prior to any recoding.  It should declare the
+name of your charsets and the single steps (or elementary recodings)
+you provide, by calling @code{declare_step} one or more times.
+Besides the charset names, @code{declare_step} expects a description
+of the recoding quality (see @file{recodext.h}) and two functions you
+also provide.
+
+The first such function has the purpose of allocating structures,
+pre-conditioning conversion tables, etc.  It is also the way of further
+modifying the @code{STEP} structure.  This function is executed if and
+only if the single step is retained in an actual recoding sequence.
+If you do not need such delayed initialisation, merely use @code{NULL}
+for the function argument.
+
+The second function executes the elementary recoding on a whole file.
+There are a few cases when you can spare writing this function:
+
+@itemize @bullet
+
+@item
+Some single steps do nothing else than a pure copy of the input onto the
+output, in this case, you can use the predefined function
+@code{file_one_to_one}, while having a delayed initialisation for
+presetting the @code{STEP} field @code{one_to_one} to the predefined
+value @code{one_to_same}.
+
+@item
+Some single steps are driven by a table which recodes one character into
+another; if the recoding does nothing else, you can use the predefined
+function @code{file_one_to_one}, while having a delayed initialisation
+for presetting the @code{STEP} field @code{one_to_one} with your table.
+
+@item
+Some single steps are driven by a table which recodes one character into
+a string; if the recoding does nothing else, you can use the predefined
+function @code{file_one_to_many}, while having a delayed initialisation
+for presetting the @code{STEP} field @code{one_to_many} with your table.
+
+@end itemize
+
+If you have a recoding table handy in a suitable format but do not use
+one of the predefined recoding functions, it is still a good idea to use
+a delayed initialisation to save it anyway, because @code{recode} option
+@code{-h} will take advantage of this information when available.
+
+Finally, edit @file{Makefile.am} to add the source file name of your routines
+to the @code{C_STEPS} or @code{L_STEPS} macro definition, depending on
+the fact your routines is written in C or in Flex.
+
+@node New surfaces, Design, New charsets, Internals
+@section Adding new surfaces
+
+Adding a new surface is technically quite similar to adding a new charset.
+@xref{New charsets}.  A surface is provided as a set of two
+transformations: one from the predefined special charset @code{data} to
+the new surface, meant to apply the surface, the other from the new surface
+to the predefined special charset @code{data}, meant to remove the surface.
+
+Internally in @code{recode}, function @code{declare_step} especially
+recognises when a charset is so related to @code{data}, and then takes
+appropriate actions so that charset gets indeed installed as a surface.
+
+@node Design, , New surfaces, Internals
+@section Comments on the library design
+
+@itemize @bullet
+@item Why a shared library?
+
+There are many different approaches to reduce system requirements to
+handle all tables needed in the @code{recode} library.  One of them is to
+have the tables in an external format and only read them in on demand.
+After having pondered this for a while, I finally decided against it,
+mainly because it involves its own kind of installation complexity, and
+it is not clear to me that it would be as interesting as I first imagined.
+
+It looks more efficient to see all tables and algorithms already mapped
+into virtual memory from the start of the execution, yet not loaded in
+actual memory, than to go through many disk accesses for opening various
+data files once the program is already started, as this would be needed
+with other solutions.  Using a shared library also has the indirect effect
+of making various algorithms handily available, right in the same modules
+providing the tables.  This alleviates much the burden of the maintenance.
+
+Of course, I would like to later make an exception for only a few tables,
+built locally by users for their own particular needs once @code{recode}
+is installed.  @code{recode} should just go and fetch them.  But I do not
+perceive this as very urgent, yet useful enough to be worth implementing.
+
+Currently, all tables needed for recoding are precompiled into binaries,
+and all these binaries are then made into a shared library.  As an initial
+step, I turned @code{recode} into a main program and a non-shared library,
+this allowed me to tidy up the API, get rid of all global variables, etc.
+It required a surprising amount of program source massaging.  But once
+this cleaned enough, it was easy to use Gordon Matzigkeit's @code{libtool}
+package, and take advantage of the Automake interface to neatly turn the
+non-shared library into a shared one.
+
+Sites linking with the @code{recode} library, while their system does not
+support any form of shared libraries, might end up with bulky executables.
+Surely, the @code{recode} library will have to be used statically, and
+might not very nicely usable on such systems.  It seems that progress
+has a price for those being slow at it.
+
+There is a locality problem I did not address yet.  Currently, the
+@code{recode} library takes many cycles to initialise itself, calling
+each module in turn for it to set up associated knowledge about charsets,
+aliases, elementary steps, recoding weights, etc.  @emph{Then}, the
+recoding sequence is decided out of the command given.  I would not be
+surprised if initialisation was taking a perceivable fraction of a second
+on slower machines.  One thing to do, most probably not right in version
+3.5, but the version after, would have @code{recode} to pre-load all tables
+and dump them at installation time.  The result would then be compiled and
+added to the library.  This would spare many initialisation cycles, but more
+importantly, would avoid calling all library modules, scattered through the
+virtual memory, and so, possibly causing many spurious page exceptions each
+time the initialisation is requested, at least once per program execution.
+
+@item Why not a central charset?
+
+It would be simpler, and I would like, if something like @w{ISO 10646} was
+used as a turning template for all charsets in @code{recode}.  Even if
+I think it could help to a certain extent, I'm still not fully sure it
+would be sufficient in all cases.  Moreover, some people disagree about
+using @w{ISO 10646} as the central charset, to the point I cannot totally
+ignore them, and surely, @code{recode} is not a mean for me to force my
+own opinions on people.  I would like that @code{recode} be practical
+more than dogmatic, and reflect usage more than religions.
+
+Currently, if you ask @code{recode} to go from @var{charset1} to
+@var{charset2} chosen at random, it is highly probable that the best path
+will be quickly found as:
+
+@example
+@var{charset1}..@code{UCS-2}..@var{charset2}
+@end example
+
+That is, it will almost always use the @code{UCS} as a trampoline between
+charsets.  However, @code{UCS-2} will be immediately be optimised out,
+and @var{charset1}..@var{charset2} will often be performed in a single
+step through a permutation table generated on the fly for the circumstance
+@footnote{If strict mapping is requested, another efficient device will
+be used instead of a permutation.}.
+
+In those few cases where @code{UCS-2} is not selected as a conceptual
+intermediate, I plan to study if it could be made so.  But I guess some cases
+will remain where @code{UCS-2} is not a proper choice.  Even if @code{UCS} is
+often the good choice, I do not intend to forcefully restrain @code{recode}
+around @code{UCS-2} (nor @code{UCS-4}) for now.  We might come to that
+one day, but it will come out of the natural evolution of @code{recode}.
+It will then reflect a fact, rather than a preset dogma.
+
+@item Why not @code{iconv}?
+
+The @code{iconv} routine and library allows for converting characters
+from an input buffer to an input buffer, synchronously advancing both
+buffer cursors.  If the output buffer is not big enough to receive
+all of the conversion, the routine returns with the input cursor set at
+the position where the conversion could later be resumed, and the output
+cursor set to indicate until where the output buffer has been filled.
+Despite this scheme is simple and nice, the @code{recode} library does
+not offer it currently.  Why not?
+
+When long sequences of decodings, stepwise recodings, and re-encodings
+are involved, as it happens in true life, synchronising the input buffer
+back to where it should have stopped, when the output buffer becomes full,
+is a difficult problem.  Oh, we could make it simpler at the expense of
+loosing space or speed: by inserting markers between each input character
+and counting them at the output end; by processing only one character in a
+time through the whole sequence; by repeatedly attempting to recode various
+subsets of the input buffer, binary searching on their length until the
+output just fits.  The overhead of such solutions looks fully prohibitive
+to me, and the gain very minimal.  I do not see a real advantage, nowadays,
+imposing a fixed length to an output buffer.  It makes things so much
+simpler and efficient to just let the output buffer size float a bit.
+
+Of course, if the above problem was solved, the @code{iconv} library
+should be easily emulated, given that @code{recode} has similar knowledge
+about charsets, of course.  This either solved or not, the @code{iconv}
+program remains trivial (given similar knowledge about charsets).
+I also presume that the @code{genxlt} program would be easy too, but
+I do not have enough detailed specifications of it to be sure.
+
+A lot of years ago, @code{recode} was using a similar scheme, and I found
+it rather hard to manage for some cases.  I rethought the overall structure
+of @code{recode} for getting away from that scheme, and never regretted it.
+I perceive @code{iconv} as an artificial solution which surely has some
+elegances and virtues, but I do not find it really useful as it stands: one
+always has to wrap @code{iconv} into something more refined, extending it
+for real cases.  From past experience, I think it is unduly hard to fully
+implement this scheme.  It would be awkward that we do contortions for
+the sole purpose of implementing exactly its specification, without real,
+fairly sounded reasons (other then the fact some people once thought it
+was worth standardising).  It is much better to immediately aim for the
+refinement we need, without uselessly forcing us into the dubious detour
+@code{iconv} represents.
+
+Some may argue that if @code{recode} was using a comprehensive charset
+as a turning template, as discussed in a previous point, this would make
+@code{iconv} easier to implement.  Some may be tempted to say that the
+cases which are hard to handle are not really needed, nor interesting,
+anyway.  I feel and fear a bit some pressure wanting that @code{recode}
+be split into the part that well fits the @code{iconv} model, and the part
+that does not fit, considering this second part less important, with the
+idea of dropping it one of these days, maybe.  My guess is that users of
+the @code{recode} library, whatever its form, would not like to have such
+arbitrary limitations.  In the long run, we should not have to explain
+to our users that some recodings may not be made available just because
+they do not fit the simple model we had in mind when we did it.  Instead,
+we should try to stay opened to the difficulties of real life.  There is
+still a lot of complex needs for Asian people, say, that @code{recode}
+does not currently address, while it should.  Not only the doors should
+stay opened, but we should force them wider!
+
+@end itemize
+
+@contents
+@bye
+
+@c Local Variables:
+@c texinfo-column-for-description: 24
+@c End:

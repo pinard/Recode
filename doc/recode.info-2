@@ -1,0 +1,1076 @@
+This is Info file recode.info, produced by Makeinfo version 1.68 from
+the input file recode.texi.
+
+START-INFO-DIR-ENTRY
+* recode: (recode).     Conversion between character sets and surfaces.
+END-INFO-DIR-ENTRY
+
+   This file documents the `recode' command, which has the purpose of
+converting files between various character sets and surfaces.
+
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
+Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+File: recode.info,  Node: Sequencing,  Next: Mixed,  Prev: Reversibility,  Up: Invoking recode
+
+Selecting sequencing methods
+============================
+
+   This program uses a few techniques when it is discovered that many
+passes are needed to comply with the REQUEST.  For example, suppose
+that four elementary steps were selected at recoding path optimisation
+time.  Then `recode' will split itself into four different
+interconnected tasks, logically equivalent to:
+
+     STEP1 <INPUT | STEP2 | STEP3 | STEP4 >OUTPUT
+
+   The splitting into subtasks is often done using Unix pipes.  But the
+splitting may also be completely avoided, and rather simulated by using
+memory buffer, or intermediate files.  The various
+`--sequence=STRATEGY' options gives you control over the flow methods,
+by replacing STRATEGY with `memory', `pipe' or `files'.  So, these
+options may be used to override the default behaviour, which is also
+explained below.
+
+`--sequence=memory'
+     When the recoding requires a combination of two or more elementary
+     recoding steps, this option forces many passes over the data, using
+     in-memory buffers to hold all intermediary results.
+
+`-i'
+`--sequence=files'
+     When the recoding requires a combination of two or more elementary
+     recoding steps, this option forces many passes over the data, using
+     intermediate files between passes.  This is the default behaviour
+     when files are recoded over themselves.  If this option is
+     selected in filter mode, that is, when the program reads standard
+     input and writes standard output, it might take longer for
+     programs further down the pipe chain to start receiving some
+     recoded data.
+
+`-p'
+`--sequence=pipe'
+     When the recoding requires a combination of two or more elementary
+     recoding steps, this option forces the program to fork itself into
+     a few copies interconnected with pipes, using the `pipe(2)' system
+     call.  All copies of the program operate in parallel.  This is the
+     default behaviour in filter mode.  If this option is used when
+     files are recoded over themselves, this should also save disk
+     space because some temporary files might not be needed, at cost of
+     more system overhead.
+
+     If, at installation time, the `pipe(2)' call is said to be
+     unavailable, selecting option `-p' is equivalent to selecting
+     option `-i'.
+
+
+File: recode.info,  Node: Mixed,  Next: Emacs,  Prev: Sequencing,  Up: Invoking recode
+
+Using mixed charset input
+=========================
+
+   In real life and practice, textual files are often made up of many
+charsets at once.  Some parts of the file encode one charset, while
+other parts encode another charset, and so forth.  Usually, a file does
+not toggle between more than two or three charsets.  The means to
+distinguish which charsets are encoded at various places is not always
+easy.  The `recode' program is able to handle only a few simple cases
+of mixed input.
+
+   The default `recode' behaviour is to expect pure charset files, to
+be recoded as other pure charset files.  However, the following options
+allow for a few precise kinds of mixed charset files.
+
+`-d'
+`--diacritics'
+     While converting to or from one of `HTML' or `LaTeX' charset,
+     limit conversion to some subset of all characters.  For `HTML',
+     limit conversion to the subset of all non-ASCII characters.  For
+     `LaTeX', limit conversion to the subset of all non-English
+     letters.  This is particularly useful, for example, when people
+     create what would be valid `HTML', TeX or LaTeX files, if only
+     they were using provided sequences for applying diacritics instead
+     of using the diacriticised characters directly from the underlying
+     character set.
+
+     While converting to `HTML' or `LaTeX' charset, this option assumes
+     that characters not in the said subset are properly coded or
+     protected already, `recode' then transmit them literally.  While
+     converting the other way, this option prevents translating back
+     coded or protected versions of characters not in the said subset.
+     *Note HTML::.  *Note LaTeX::.
+
+`-S[LANGUAGE]'
+`--source[=LANGUAGE]'
+     The bulk of the input file is expected to be written in `ASCII',
+     except for parts, like comments and string constants, which are
+     written using another charset than `ASCII'.  When LANGUAGE is `c',
+     the recoding will proceed only with the contents of comments or
+     strings, while everything else will be copied without recoding.
+     When LANGUAGE is `po', the recoding will proceed only within
+     translator comments (those having whitespace immediately following
+     the initial `#') and with the contents of `msgstr' strings.
+
+     For the above things to work, the non-`ASCII' encoding of the
+     comment or string should be such that an `ASCII' scan will
+     successfully find where the comment or string ends.
+
+     Even if `ASCII' is the usual charset for writing programs, some
+     compilers are able to directly read other charsets, like `UTF-8'
+     say.  There is currently no provision in `recode' for reading
+     mixed charset sources which are not based on `ASCII'.  It is
+     probable that the need for mixed recoding is not as pressing in
+     such cases.
+
+     For example, after one does:
+
+          recode -Spo pc/..u8 < INPUT.po > OUTPUT.po
+
+     file `OUTPUT.po' holds a copy of `INPUT.po' in which translator
+     comments and the contents of `msgstr' strings *only* have been
+     recoded from the `IBM-PC' charset to pure `UTF-8', without
+     attempting conversion of end-of-lines.  Machine generated comments
+     and original `msgid' strings are not to be touched by this
+     recoding.
+
+     If LANGUAGE is not specified, `c' is assumed.
+
+
+File: recode.info,  Node: Emacs,  Prev: Mixed,  Up: Invoking recode
+
+Using `recode' within Emacs
+===========================
+
+   The fact `recode' is a filter makes it quite easy to use from within
+GNU Emacs.  For example, recoding the whole buffer from the IBM-PC
+charset to current charset (Latin-1 on Unix) is easily done with:
+
+     C-x h C-u M-| recode ibmpc RET
+
+The `C-x h' selects the whole buffer, and `C-u M-|' filters and
+replaces the current region through the given shell command.  Here is
+another example, binding the keys `C-c T' to the recoding of the
+current region from Easy French to Latin-1 (on Unix) and the key
+`C-u C-c T' from Latin-1 (on Unix) to Easy French:
+
+     (global-set-key "\C-cT" 'recode-texte)
+     
+     (defun recode-texte (flag)
+       (interactive "P")
+       (shell-command-on-region
+        (region-beginning) (region-end)
+        (concat "recode " (if flag "..txte" "txte")) t)
+       (exchange-point-and-mark))
+
+
+File: recode.info,  Node: Library,  Next: Universal,  Prev: Invoking recode,  Up: Top
+
+A recoding library
+******************
+
+   The program named `recode' is just an application of its recoding
+library.  The recoding library is available separately for other C
+programs.  A good way to acquire some familiarity with the recoding
+library is to get acquainted with the `recode' program itself.
+
+   To use the recoding library once it is installed, a C program needs
+to have a line:
+
+     #include <recode.h>
+
+near its beginning, and the user should have `-lrecode' on the linking
+call, so modules from the recoding library are found.
+
+   The library is still under development.  As it stands, it contains
+four identifiable sets of routines: the outer level functions, the
+request level functions, the task level functions and the charset level
+functions.  There are discussed in separate sections.
+
+   For effectively using the recoding library in most applications, it
+should be rarely needed to study anything beyond the main
+initialisation function at outer level, and then, various functions at
+request level.
+
+* Menu:
+
+* Outer level::         Outer level functions
+* Request level::       Request level functions
+* Task level::          Task level functions
+* Charset level::       Charset level functions
+* Errors::              Handling errors
+
+
+File: recode.info,  Node: Outer level,  Next: Request level,  Prev: Library,  Up: Library
+
+Outer level functions
+=====================
+
+   The outer level functions mainly prepare the whole recoding library
+for use, or do actions which are unrelated to specific recodings.  Here
+is an example of a program which does not really make anything useful.
+
+     #include <stdbool.h>
+     #include <recode.h>
+     
+     int
+     main ()
+     {
+       RECODE_OUTER outer = recode_new_outer (true);
+     
+       recode_delete_outer (outer);
+       exit (0);
+     }
+
+   The header file `<recode.h>' declares an opaque `RECODE_OUTER'
+structure, which the programmer should use for allocating a variable in
+his program (let's assume the programmer is a male, here, no prejudice
+intended).  This `outer' variable is given as a first argument to all
+outer level functions.
+
+   The `<recode.h>' header file uses the Boolean type setup by the
+system header file `<stdbool.h>'.  But this header file is still fairly
+new in C standards, and likely does not exist everywhere.  If you
+system does not offer this system header file yet, the proper
+compilation of the `<recode.h>' file could be guaranteed through the
+replacement of the inclusion line by:
+
+     typedef enum {false = 0, true = 1} bool;
+
+   People wanting wider portability, or Autoconf lovers, might arrange
+their `configure.in' for being able to write something more general,
+like:
+
+     #if STDC_HEADERS
+     # include <stdlib.h>
+     #endif
+     
+     /* Some systems do not define EXIT_*, even with STDC_HEADERS.  */
+     #ifndef EXIT_SUCCESS
+     # define EXIT_SUCCESS 0
+     #endif
+     #ifndef EXIT_FAILURE
+     # define EXIT_FAILURE 1
+     #endif
+     /* The following test is to work around the gross typo in systems like Sony
+        NEWS-OS Release 4.0C, whereby EXIT_FAILURE is defined to 0, not 1.  */
+     #if !EXIT_FAILURE
+     # undef EXIT_FAILURE
+     # define EXIT_FAILURE 1
+     #endif
+     
+     #if HAVE_STDBOOL_H
+     # include <stdbool.h>
+     #else
+     typedef enum {false = 0, true = 1} bool;
+     #endif
+     
+     #include <recode.h>
+     
+     int
+     main ()
+     {
+       RECODE_OUTER outer = recode_new_outer (true);
+     
+       recode_term_outer (outer);
+       exit (EXIT_SUCCESS);
+     }
+
+but we will not insist on such details in the examples to come.
+
+   * Initialisation functions
+
+          RECODE_OUTER recode_new_outer (AUTO_ABORT);
+          bool recode_delete_outer (OUTER);
+
+     The recoding library absolutely needs to be initialised before
+     being used, and `recode_new_outer' has to be called once, first.
+     Besides the OUTER it is meant to initialise, the function accepts
+     a Boolean argument whether or not the library should automatically
+     issue diagnostics on standard and abort the whole program on
+     errors.  When AUTO_ABORT is `true', the library later conveniently
+     issues diagnostics itself, and aborts the calling program on
+     errors.  This is merely a convenience, because if this parameter
+     was `false', the calling program should always take care of
+     checking the return value of all other calls to the recoding
+     library functions, and when any error is detected, issue a
+     diagnostic and abort processing itself.
+
+     Regardless of the setting of AUTO_ABORT, all recoding library
+     functions return a success status.  Most functions are geared for
+     returning `false' for an error, and `true' if everything went fine.
+     Functions returning structures or strings return `NULL' instead of
+     the result, when the result cannot be produced.  If AUTO_ABORT is
+     selected, functions either return `true', or do not return at all.
+
+     As in the example above, `recode_new_outer' is called only once in
+     most cases.  Calling `recode_new_outer' implies some overhead, so
+     calling it more than once should preferably be avoided.
+
+     The termination function `recode_delete_outer' reclaims the memory
+     allocated by `recode_new_outer' for a given OUTER variable.
+     Calling `recode_delete_outer' prior to program termination is more
+     aesthetic then useful, as all memory resources are automatically
+     reclaimed when the program ends.  You may spare this terminating
+     call if you prefer.
+
+
+File: recode.info,  Node: Request level,  Next: Task level,  Prev: Outer level,  Up: Library
+
+Request level functions
+=======================
+
+   The request level functions are meant to cover most recoding needs
+programmers may have; they should provide all usual functionality.
+Their API is almost stable by now.  To get started with request level
+functions, here is a full example of a program which sole job is to
+filter `ibmpc' code on its standard input into `latin1' code on its
+standard output.
+
+     #include <stdio.h>
+     #include <stdbool.h>
+     #include <recode.h>
+     
+     int
+     main ()
+     {
+       RECODE_OUTER outer = recode_new_outer (true);
+       RECODE_REQUEST request = recode_new_request (outer);
+       bool success;
+     
+       recode_scan_request (request, "ibmpc..latin1");
+     
+       success = recode_file_to_file (request, stdin, stdout);
+     
+       recode_delete_request (request);
+       recode_delete_outer (outer);
+     
+       exit (success ? 0 : 1);
+     }
+
+   The header file `<recode.h>' declares a `RECODE_REQUEST' structure,
+which the programmer should use for allocating a variable in his
+program.  This REQUEST variable is given as a first argument to all
+request level functions, and in most cases, may be considered as opaque.
+
+   * Initialisation functions
+
+          RECODE_REQUEST recode_new_request (OUTER);
+          bool recode_delete_request (REQUEST);
+
+     No REQUEST variable may not be used in other request level
+     functions of the recoding library before having been initialised by
+     `recode_new_request'.  There may be many such REQUEST variables,
+     in which case, they are independent of one another and they all
+     need to be initialised separately.  To avoid memory leaks, a
+     REQUEST variable should not be initialised a second time without
+     calling `recode_delete_request' to "un-initialise" it.
+
+     Like for `recode_delete_outer', calling `recode_delete_request'
+     prior to program termination, in the example above, may be left
+     out.
+
+   * Fields of `struct recode_request'
+
+     Here are the fields of a `struct recode_request' which may be
+     meaningfully changed, once a REQUEST has been initialised by
+     `recode_new_request', but before it gets used.  It is not very
+     frequent, in practice, that these fields need to be changed.  To
+     access the fields, you need to include `recodext.h' *instead* of
+     `recode.h', in which case there also is a greater chance that you
+     need to recompile your programs if a new version of the recoding
+     library gets installed.
+
+    `verbose_flag'
+          This field is initially `false'.  When set to `true', the
+          library will echo to stderr the sequence of elementary
+          recoding steps needed to achieve the requested recoding.
+
+    `diaeresis_char'
+          This field is initially the ASCII value of a double quote `"',
+          but it may also be the ASCII value of a colon `:'.  In `texte'
+          charset, some countries use double quotes to mark diaeresis,
+          while other countries prefer colons.  This field contains the
+          diaeresis character for the `texte' charset.
+
+    `make_header_flag'
+          This field is initially `false'.  When set to `true', it
+          indicates that the program is merely trying to produce a
+          recoding table in source form rather than completing any
+          actual recoding.  In such a case, the optimisation of step
+          sequence can be attempted much more aggressively.  If the
+          step sequence cannot be reduced to a single step, table
+          production will fail.
+
+    `diacritics_only'
+          This field is initially `false'.  For `HTML' and `LaTeX'
+          charset, it is often convenient to recode the diacriticized
+          characters only, while just not recoding other HTML code
+          using ampersands or angular brackets, or LaTeX code using
+          backslashes.  Set the field to `true' for getting this
+          behaviour.  In the other charset, one can edit text as well
+          as HTML or LaTeX directives.
+
+    `ascii_graphics'
+          This field is initially `false', and relate to characters 176
+          to 223 in the `ibmpc' charset, which are use to draw boxes.
+          When set to `true', while getting out of `ibmpc', ASCII
+          characters are selected so to graphically approximate these
+          boxes.
+
+   * Study of request strings
+
+          bool recode_scan_request (REQUEST, "STRING");
+
+     The main role of a REQUEST variable is to describe a set of
+     recoding transformations.  Function `recode_scan_request' studies
+     the given STRING, and stores an internal representation of it into
+     REQUEST.  Note that STRING may be a full-fledge `recode' request,
+     possibly including surfaces specifications, intermediary charsets,
+     sequences, aliases or abbreviations (*note Requests::.).
+
+     The internal representation automatically receives some
+     pre-conditioning and optimisation, so the REQUEST may then later
+     be used many times to achieve many actual recodings.  It would not
+     be efficient calling `recode_scan_request' many times with the
+     same STRING, it is better having many REQUEST variables instead.
+
+   * Actual recoding jobs
+
+     Once the REQUEST variable holds the description of a recoding
+     transformation, a few functions use it for achieving an actual
+     recoding.  Either input or output of a recoding may be string, an
+     in-memory buffer, or a file.
+
+     Functions with names like `recode_INPUT-TYPE_to_OUTPUT-TYPE'
+     request an actual recoding, and are described below.  It is easy
+     to remember which arguments each function accepts, once grasped
+     some simple principles for each possible TYPE.  However, one of
+     the recoding function escapes these principles and is discussed
+     separately, first.
+
+          recode_string (REQUEST, STRING);
+
+     The function `recode_string' recodes STRING according to REQUEST,
+     and directly returns the resulting recoded string freshly
+     allocated, or `NULL' if the recoding could not succeed for some
+     reason.  When this function is used, it is the responsibility of
+     the programmer to ensure that the memory used by the returned
+     string is later reclaimed.
+
+          char *recode_string_to_buffer (REQUEST,
+            INPUT_STRING,
+            &OUTPUT_BUFFER, &OUTPUT_LENGTH, &OUTPUT_ALLOCATED);
+          bool recode_string_to_file (REQUEST,
+            INPUT_FILE,
+            OUTPUT_FILE);
+          bool recode_buffer_to_buffer (REQUEST,
+            INPUT_BUFFER, INPUT_LENGTH,
+            &OUTPUT_BUFFER, &OUTPUT_LENGTH, &OUTPUT_ALLOCATED);
+          bool recode_buffer_to_file (REQUEST,
+            INPUT_BUFFER, INPUT_LENGTH,
+            OUTPUT_FILE);
+          bool recode_file_to_buffer (REQUEST,
+            INPUT_FILE,
+            &OUTPUT_BUFFER, &OUTPUT_LENGTH, &OUTPUT_ALLOCATED);
+          bool recode_file_to_file (REQUEST,
+            INPUT_FILE,
+            OUTPUT_FILE);
+
+     All these functions return a `bool' result, `false' meaning that
+     the recoding was not successful, often because of reversibility
+     issues.  The name of the function well indicates on which types it
+     reads and which type it produces.  Let's discuss these three types
+     in turn.
+
+    string
+          A string is merely an in-memory buffer which is terminated by
+          a `NUL' character (using as many bytes as needed), instead of
+          being described by a byte length.  For input, a pointer to
+          the buffer is given through one argument.
+
+          It is notable that there is no `to_string' functions.  Only
+          one function recodes into a string, and it is
+          `recode_string', which has already been discussed separately,
+          above.
+
+    buffer
+          A buffer is a sequence of bytes held in computer memory.  For
+          input, two arguments provide a pointer to the start of the
+          buffer and its byte size.  Note that for charsets using many
+          bytes per character, the size is given in bytes, not in
+          characters.
+
+          For output, three arguments provide the address of three
+          variables, which will receive the buffer pointer, the used
+          buffer size in bytes, and the allocated buffer size in bytes.
+          If at the time of the call, the buffer pointer is `NULL',
+          then the allocated buffer size should also be zero, and the
+          buffer will be allocated afresh by the recoding functions.
+          However, if the buffer pointer is not `NULL', it should be
+          already allocated, the allocated buffer size then gives its
+          size.  If the allocated size gets exceeded while the recoding
+          goes, the buffer will be automatically reallocated bigger,
+          probably elsewhere, and the allocated buffer size will be
+          adjusted accordingly.
+
+          The second variable, giving the in-memory buffer size, will
+          receive the exact byte size which was needed for the
+          recoding.  A `NUL' character is guaranteed at the end of the
+          produced buffer, but is not counted in the byte size of the
+          recoding.  Beyond that `NUL', there might be some extra space
+          after the recoded data, extending to the allocated buffer
+          size.
+
+    file
+          A file is a sequence of bytes held outside computer memory,
+          but buffered through it.  For input, one argument provides a
+          pointer to a file already opened for read.  The file is then
+          read and recoded from its current position until the end of
+          the file, effectively swallowing it in memory if the
+          destination of the recoding is a buffer.  For reading a file
+          filtered through the recoding library, but only a little bit
+          at a time, one should rather use `recode_filter_open' and
+          `recode_filter_close' (these two functions are not yet
+          available).
+
+          For output, one argument provides a pointer to a file already
+          opened for write.  The result of the recoding is written to
+          that file starting at its current position.
+
+   The following special function is still subject to change:
+
+     void recode_format_table (REQUEST, LANGUAGE, "NAME");
+
+and is not documented anymore for now.
+
+
+File: recode.info,  Node: Task level,  Next: Charset level,  Prev: Request level,  Up: Library
+
+Task level functions
+====================
+
+   The task level functions are used internally by the request level
+functions, they allow more explicit control over files and memory
+buffers holding input and output to recoding processes.  The interface
+specification of task level functions is still subject to change a bit.
+
+   To get started with task level functions, here is a full example of a
+program which sole job is to filter `ibmpc' code on its standard input
+into `latin1' code on its standard output.  That is, this program has
+the same goal as the one from the previous section, but does its things
+a bit differently.
+
+     #include <stdio.h>
+     #include <stdbool.h>
+     #include <recodext.h>
+     
+     int
+     main ()
+     {
+       RECODE_OUTER outer = recode_new_outer (false);
+       RECODE_REQUEST request = recode_new_request (outer);
+       RECODE_TASK task;
+       bool success;
+     
+       recode_scan_request (request, "ibmpc..latin1");
+     
+       task = recode_new_task (request);
+       task->input.file = "";
+       task->output.file = "";
+       success = recode_perform_task (task);
+     
+       recode_delete_task (task);
+       recode_delete_request (request);
+       recode_delete_outer (outer);
+     
+       exit (success ? 0 : 1);
+     }
+
+   The header file `<recode.h>' declares a `RECODE_TASK' structure,
+which the programmer should use for allocating a variable in his
+program.  This `task' variable is given as a first argument to all task
+level functions.  The programmer ought to change and possibly consult a
+few fields in this structure, using special functions.
+
+   * Initialisation functions
+
+          RECODE_TASK recode_new_task (REQUEST);
+          bool recode_delete_task (TASK);
+
+     No TASK variable may be used in other task level functions of the
+     recoding library without having first been initialised with
+     `recode_new_task'.  There may be many such TASK variables, in
+     which case, they are independent of one another and they all need
+     to be initialised separately.  To avoid memory leaks, a TASK
+     variable should not be initialised a second time without calling
+     `recode_delete_task' to "un-initialise" it.  This function also
+     accepts a REQUEST argument and associates the request to the task.
+     In fact, a task is essentially a set of recoding transformations
+     with the specification for its current input and its current
+     output.
+
+     The REQUEST variable may be scanned before or after the call to
+     `recode_new_task', it does not matter so far.  Immediately after
+     initialisation, before further changes, the TASK variable
+     associates REQUEST empty in-memory buffers for both input and
+     output.  The output buffer will later get allocated automatically
+     on the fly, as needed, by various task processors.
+
+     Even if a call to `recode_delete_task' is not strictly mandatory
+     before ending the program, it is cleaner to always include it.
+     Moreover, in some future version of the recoding library, it might
+     become required.
+
+   * Fields of `struct task_request'
+
+     Here are the fields of a `struct task_request' which may be
+     meaningfully changed, once a TASK has been initialised by
+     `recode_new_task'.  In fact, fields are expected to change.  Once
+     again, to access the fields, you need to include `recodext.h'
+     *instead* of `recode.h', in which case there also is a greater
+     chance that you need to recompile your programs if a new version
+     of the recoding library gets installed.
+
+    `request'
+          The field `request' points to the current recoding request,
+          but may be changed as needed between recoding calls, for
+          example when there is a need to achieve the construction of a
+          resulting text made up of many pieces, each being recoded
+          differently.
+
+    `input.name'
+    `input.file'
+          If `input.name' is not `NULL' at start of a recoding, this is
+          a request that a file by that name be first opened for
+          reading and later automatically closed once the whole file
+          has been read. If the file name is not `NULL' but an empty
+          string, it means that standard input is to be used.  The
+          opened file pointer is then held into `input.file'.
+
+          If `input.name' is `NULL' and `input.file' is not, than
+          `input.file' should point to a file already opened for read,
+          which is meant to be recoded.
+
+    `input.buffer'
+    `input.cursor'
+    `input.limit'
+          When both `input.name' and `input.file' are `NULL', three
+          pointers describe an in-memory buffer containing the text to
+          be recoded.  The buffer extends from `input.buffer' to
+          `input.limit', yet the text to be recoded only extends from
+          `input.cursor' to `input.limit'.  In most situations,
+          `input.cursor' starts with the value that `input.buffer' has.
+          (Its value will internally advance as the recoding goes,
+          until it reaches the value of `input.limit'.)
+
+    `output.name'
+    `output.file'
+          If `output.name' is not `NULL' at start of a recoding, this
+          is a request that a file by that name be opened for write and
+          later automatically closed after the recoding is done.  If
+          the file name is not `NULL' but an empty string, it means
+          that standard output is to be used.  The opened file pointer
+          is then held into `output.file'.  If several passes with
+          intermediate files are needed to produce the recoding, the
+          `output.name' file is opened only for the final pass.
+
+          If `output.name' is `NULL' and `output.file' is not, then
+          `output.file' should point to a file already opened for
+          write, which will receive the result of the recoding.
+
+    `output.buffer'
+    `output.cursor'
+    `output.limit'
+          When both `output.name' and `output.file' are `NULL', three
+          pointers describe an in-memory buffer meant to receive the
+          text, once it is recoded.  The buffer is already allocated
+          from `output.buffer' to `output.limit'.  In most situations,
+          `output.cursor' starts with the value that `output.buffer'
+          has.  Once the recoding is done, `output.cursor' will point
+          at the next free byte in the buffer, just after the recoded
+          text, so another recoding could be called without changing
+          any of these three pointers, for appending new information to
+          it.  The number of recoded bytes in the buffer is the
+          difference between `output.cursor' and `output.buffer'.
+
+          Each time `output.cursor' reaches `output.limit', the buffer
+          is reallocated bigger, possibly at a different location in
+          memory, always held up-to-date in `output.buffer'.  It is
+          still possible to call a task level function with no output
+          buffer at all to start with, in which case all three fields
+          should have `NULL' as a value.  This is the situation
+          immediately after a call to `recode_new_task'.
+
+    `strategy'
+          This field, which is of type `enum recode_sequence_strategy',
+          tells how various recoding steps (passes) will be
+          interconnected.  Its initial value is
+          `RECODE_STRATEGY_UNDECIDED', which is a constant defined in
+          the header file `<recodext.h>'.  Other possible values are:
+
+         `RECODE_SEQUENCE_IN_MEMORY'
+               Keep intermediate recodings in memory.
+
+         `RECODE_SEQUENCE_WITH_FILES'
+               Do not fork, use intermediate files.
+
+         `RECODE_SEQUENCE_WITH_PIPE'
+               Fork processes connected with `pipe(2)'.
+
+          The best for now is to leave this field alone, and let the
+          recoding library decide its strategy, as many combinations
+          have not been tested yet.
+
+    `byte_order_mark'
+          This field, which is preset to `true', indicates that a byte
+          order mark is to be expected at the beginning of any
+          canonical `UCS-2' or `UTF-16' text, and that such a byte
+          order mark should be also produced for these charsets.
+
+    `fail_level'
+          This field, which is of type `enum recode_error' (*note
+          Errors::.), sets the error level at which task level
+          functions should report a failure.  If an error being
+          detected is equal or greater than `fail_level', the function
+          will eventually return `false' instead of `true'.  The preset
+          value for this field is `RECODE_NOT_CANONICAL', that means
+          that if not reset to another value, the library will report
+          failure on *any* error.
+
+    `abort_level'
+          This field, which is of type `enum recode_error' (*note
+          Errors::.), sets the error level at which task level
+          functions should immediately interrupt their processing.  If
+          an error being detected is equal or greater than
+          `abort_level', the function returns immediately, but the
+          returned value (`true' or `false') is still is decided from
+          the setting of `fail_level', not `abort_level'.  The preset
+          value for this field is `RECODE_MAXIMUM_ERROR', that means
+          that is not reset to another value, the library will never
+          interrupt a recoding task.
+
+    `error_so_far'
+          This field, which is of type `enum recode_error' (*note
+          Errors::.), maintains the maximum error level met so far
+          while the recoding task was proceeding.  The preset value is
+          `RECODE_NO_ERROR'.
+
+   * Task execution
+
+          recode_perform_task (TASK);
+          recode_filter_open (TASK, FILE);
+          recode_filter_close (TASK);
+
+     The function `recode_perform_task' reads as much input as possible,
+     and recode all of it on prescribed output, given a properly
+     initialised TASK.
+
+     Functions `recode_filter_open' and `recode_filter_close' are only
+     planned for now.  They are meant to read input in piecemeal ways.
+     Even if functionality already exists informally in the library, it
+     has not been made available yet through such interface functions.
+
+
+File: recode.info,  Node: Charset level,  Next: Errors,  Prev: Task level,  Up: Library
+
+Charset level functions
+=======================
+
+   Many functions are internal to the recoding library.  Some of them
+have been made external and available, for the `recode' program had to
+retain all its previous functionality while being transformed into a
+mere application of the recoding library.  These functions are not
+really documented here for the time being, as we hope that many of them
+will vanish over time.  When this set of routines will stabilise, it
+would be convenient to document them as an API for handling charset
+names and contents.
+
+     RECODE_CHARSET find_charset (NAME, CLEANING-TYPE);
+     bool list_all_charsets (CHARSET);
+     bool list_concise_charset (CHARSET, LIST-FORMAT);
+     bool list_full_charset (CHARSET);
+
+
+File: recode.info,  Node: Errors,  Prev: Charset level,  Up: Library
+
+Handling errors
+===============
+
+   The `recode' program, while using the `recode' library, needs to
+control whether recoding problems are reported or not, and then reflect
+these in the exit status.  The program should also instruct the library
+about if the recoding should be abruptly interrupted when an error is
+met (so sparing processing when it is known in advance that a wrong
+result would be discarded anyway), or if it should proceed nevertheless.
+Here is how the library groups errors into levels, listed here in order
+of increasing severity.
+
+`RECODE_NO_ERROR'
+     No error was met on previous library calls.
+
+`RECODE_NOT_CANONICAL'
+     The input text was using one of the many alternative codings for
+     some phenomenon, but not the one `recode' would have canonically
+     generated.  So, if the reverse recoding is later attempted, it
+     would produce a text having the same *meaning* as the original
+     text, yet not being byte identical.
+
+     For example, a `Base64' block in which end-of-lines appear
+     elsewhere that at every 76 characters is not canonical.  An
+     e-circumflex in TeX which is coded `\^{e}' instead of `\^e' is not
+     canonical.
+
+`RECODE_AMBIGUOUS_OUTPUT'
+     It has been discovered that if the reverse recoding was attempted
+     on the text output by this recoding, we would not obtain the
+     original text, only because an ambiguity was generated by accident
+     in the output text.  This ambiguity would then cause the wrong
+     interpretation to be taken.
+
+     Here are a few examples.  If the `Latin-1' sequence `e^' is
+     converted to Easy French and back, the result will be interpreted
+     as e-circumflex and so, will not reflect the intent of the
+     original two characters.  Recoding an `IBM-PC' text to `Latin-1'
+     and back, where the input text contained an isolated `LF', will
+     have a spurious `CR' inserted before the `LF'.
+
+     Currently, there are many cases in the library where the
+     production of ambiguous output is not properly detected, as it is
+     sometimes a difficult problem to accomplish this detection, or to
+     do it speedily.
+
+`RECODE_UNTRANSLATABLE'
+     One or more input character could not be recoded, because there is
+     just no representation for this character in the output charset.
+
+     Here are a few examples.  Non-strict mode often allows `recode' to
+     compute on-the-fly mappings for unrepresentable characters, but
+     strict mode prohibits such attribution of reversible translations:
+     so strict mode might often trigger such an error.  Most `UCS-2'
+     codes used to represent Asian characters cannot be expressed in
+     various Latin charsets.
+
+`RECODE_INVALID_INPUT'
+     The input text does comply with the coding it is declared to hold.
+     So, there is no way by which a reverse recoding would reproduce
+     this text, because `recode' should never produce invalid output.
+
+     Here are a few examples.  In strict mode, `ASCII' text just may
+     not contain characters with the eight bit set.  `UTF-8' encodings
+     ought to be minimal(1).
+
+`RECODE_SYSTEM_ERROR'
+     The underlying system reported an error while the recoding was
+     going on, likely an input/output error.  (This error symbol is
+     currently unused in the library.)
+
+`RECODE_USER_ERROR'
+     The programmer or user requested something the recoding library is
+     unable to provide, or used the API wrongly.  (This error symbol is
+     currently unused in the library.)
+
+`RECODE_INTERNAL_ERROR'
+     Something really wrong, which should normally never happen, was
+     detected within the recoding library.  This might be due to
+     genuine bugs in the library, or maybe also, by un-initialised or
+     overwritten arguments to the API.  (This error symbol is currently
+     unused in the library.)
+
+`RECODE_MAXIMUM_ERROR'
+     This error code should never be returned, it is only internally
+     used as a sentinel over all possible error codes.
+
+   One should be able to set the error level threshold for returning
+failure at end of recoding, and also the threshold for immediate
+interruption.  If many errors occur while the recoding proceed, which
+are not severe enough to interrupt the recoding, then the most severe
+error is retained, while others are forgotten(2).  So, in case of an
+error, the possible actions currently are:
+
+   * do nothing and let go, returning success at end of recoding,
+
+   * just let go for now, but return failure at end of recoding,
+
+   * interrupt recoding right away and return failure now.
+
+*Note Task level::, and particularly the description of fields
+`fail_level', `abort_level' and `error_so_far', for more information
+about how errors are handled.
+
+   ---------- Footnotes ----------
+
+   (1) The minimality of an `UTF-8' encoding is guaranteed on output,
+but currently, it is not checked on input.
+
+   (2) Another approach would have been to define the level symbols as
+masks instead, and to give masks to threshold setting routines, and to
+retain all errors--yet I never met myself such a need in practice, and
+so, fear it would be overkill.  On the other hand, it might be
+interesting to maintain counters about how many times each kind of
+error occurred.
+
+
+File: recode.info,  Node: Universal,  Next: Tabular,  Prev: Library,  Up: Top
+
+The universal charset
+*********************
+
+   Standard ISO 10646 defines a universal character set, intended to
+encompass in the long run all languages written on this planet.  It is
+based on wide characters, and offer possibilities for two billion
+characters (2^31).
+
+   This charset was to become available in `recode' under the name
+`UCS', with many external surfaces for it.  But in the current version,
+only surfaces of `UCS' are offered, each presented as a genuine charset
+rather than a surface.  Such surfaces are only meaningful for the `UCS'
+charset, so it is not that useful to draw a line between the surfaces
+and the only charset to which they may apply.
+
+   `UCS' stands for Universal Character Set.  `UCS-2' and `UCS-4' are
+fixed length encodings, using two or four bytes per character
+respectively.  `UTF' stands for `UCS' Transformation Format, and are
+variable length encodings dedicated to `UCS'.  `UTF-1' was based on
+ISO 2022, it did not succeed(1).  `UTF-2' replaced it, it has been
+called `UTF-FSS' (File System Safe) in Unicode or Plan9 context, but is
+better known today as `UTF-8'.  To complete the picture, there is
+`UTF-16' based on 16 bits bytes, and `UTF-7' which is meant for
+transmissions limited to 7-bit bytes.  Most often, one might see
+`UTF-8' used for external storage, and `UCS-2' used for internal
+storage.
+
+   When `recode' is producing any representation of `UCS', it uses the
+replacement character `U+FFFD' for any *valid* character which is not
+representable in the goal charset(2).  This happens, for example, when
+`UCS-2' is not capable to echo a wide `UCS-4' character, or for a
+similar reason, an `UTF-8' sequence using more than three bytes.  The
+replacement character is meant to represent an existing character.  So,
+it is never produced to represent an invalid sequence or ill-formed
+character in the input text.  In such cases, `recode' just get rid of
+the noise, while taking note of the error its usual ways.
+
+   Even if `UTF-8' is an encoding, really, it is the encoding of a
+single character set, and nothing else.  It is useful to distinguish
+between an encoding (a *surface* within `recode') and a charset, but
+only when the surface may be applied to several charsets.  Specifying a
+charset is a bit simpler than specifying a surface in a `recode'
+request.  There would not be a practical advantage at imposing a more
+complex syntax to `recode' users, when it is simple to assimilate
+`UTF-8' to a charset.  Similar considerations apply for `UCS-2',
+`UCS-4', `UTF-16' and `UTF-7'.  These are all considered to be charsets.
+
+* Menu:
+
+* UCS-2::               Universal Character Set, 2 bytes
+* UCS-4::               Universal Character Set, 4 bytes
+* UTF-7::               Universal Transformation Format, 7 bits
+* UTF-8::               Universal Transformation Format, 8 bits
+* UTF-16::              Universal Transformation Format, 16 bits
+* count-characters::    Frequency count of characters
+* dump-with-names::     Fully interpreted UCS dump
+
+   ---------- Footnotes ----------
+
+   (1) It is not probable that `recode' will support `UTF-1' ever.
+
+   (2) This is when the goal charset allows for 16-bits.  For shorter
+charsets, the `--strict' (`-s') option decides what happens: either the
+character is dropped, or a reversible mapping is produced on the fly.
+
+
+File: recode.info,  Node: UCS-2,  Next: UCS-4,  Prev: Universal,  Up: Universal
+
+Universal Character Set, 2 bytes
+================================
+
+   One surface of `UCS' is usable for the subset defined by its first
+sixty thousand characters (in fact, 31 * 2^11 codes), and uses exactly
+two bytes per character.  It is a mere dump of the internal memory
+representation which is *natural* for this subset and as such, conveys
+with it endianness problems.
+
+   A non-empty `UCS-2' file normally begins with a so called "byte
+order mark", having value `0xFEFF'.  The value `0xFFFE' is not an `UCS'
+character, so if this value is seen at the beginning of a file,
+`recode' reacts by swapping all pairs of bytes.  The library also
+properly reacts to other occurrences of `0xFEFF' or `0xFFFE' elsewhere
+than at the beginning, because concatenation of `UCS-2' files should
+stay a simple matter, but it might trigger a diagnostic about non
+canonical input.
+
+   By default, when producing an `UCS-2' file, `recode' always output
+the high order byte before the low order byte.  But this could be
+easily overridden through the `21-Permutation' surface.  For example,
+the command:
+
+     recode u8..u2/21 < INPUT > OUTPUT
+
+asks for an `UTF-8' to `UCS-2' conversion, with swapped byte output.
+
+   Use it as a genuine charset.  This charset is available in `recode'
+under the name `ISO-10646-UCS-2'.  Accepted aliases are `UCS-2', `BMP',
+`rune' and `u2'.
+
+   The `recode' library is able to combine `UCS-2' some sequences of
+codes into single code characters, to represent a few diacriticized
+characters, ligatures or diphtongs which have been included to ease
+mapping with other existing charsets.  It is also able to explode such
+single code characters into the corresponding sequence of codes.  The
+request syntax for triggering such operations is rudimentary and
+temporary.  The `combined-UCS-2' pseudo character set is a special form
+of `UCS-2' in which known combinings have been replaced by the simpler
+code.  Using `combined-UCS-2' instead of `UCS-2' in an *after* position
+of a request forces a combining step, while using `combined-UCS-2'
+instead of `UCS-2' in a *before* position of a request forces an
+exploding step.  For the time being, one has to resort to advanced
+request syntax to achieve other effects.  For example:
+
+     recode u8..co,u2..u8 < INPUT > OUTPUT
+
+copies an `UTF-8' INPUT over OUTPUT, still to be in `UTF-8', yet
+merging combining characters into single codes whenever possible.
+
+
+File: recode.info,  Node: UCS-4,  Next: UTF-7,  Prev: UCS-2,  Up: Universal
+
+Universal Character Set, 4 bytes
+================================
+
+   Another surface of `UCS' uses exactly four bytes per character, and
+is a mere dump of the internal memory representation which is *natural*
+for the whole charset and as such, conveys with it endianness problems.
+
+   Use it as a genuine charset.  This charset is available in `recode'
+under the name `ISO-10646-UCS-4'.  Accepted aliases are `UCS', `UCS-4',
+`ISO_10646', `10646' and `u4'.
+
+
+File: recode.info,  Node: UTF-7,  Next: UTF-8,  Prev: UCS-4,  Up: Universal
+
+Universal Transformation Format, 7 bits
+=======================================
+
+   `UTF-7' comes from IETF rather than ISO, and is described by
+RFC 1642, in the MIME series.  The `UTF-7' encoding is meant to fit
+`UCS-2' over channels limited to seven bits per byte.  It proceeds from
+a mix between the spirit of `Quoted-Printable' and methods of `Base64',
+adapted to Unicode contexts.
+
+   This charset is available in `recode' under the name
+`UNICODE-1-1-UTF-7'.  Accepted aliases are `UTF-7', `TF-7' and `u7'.
+

@@ -1,0 +1,259 @@
+1999-04-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Do not use od in examples, recode can do it itself.
+
+1999-04-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Many tiny adjustments all over.
+	Reported by Laurent Bourbeau.
+
+1999-04-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Listings): Checking is somewhat relaxed when
+	generating source tables.
+
+1999-04-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (UTF-8): Change RFC2044 to RFC2279.
+	Reported by Steinar Bang.
+
+	* recode.texi (Requests): Aliases are not true and simple anymore.
+	Reported by Martin J. Dürst.
+
+1999-01-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl: Generate code to initialize implied surfaces.
+
+1999-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl (digest_french_names): Define translations for control
+	characters from U+0080 to U+009F.  Make U+007F work as expected.
+	Reported by Alain Labonté and Laurent Bourbeau.
+
+1999-01-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl (digest_french_names): Remove trailing asterisks.
+
+1999-01-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl: Generate struct strip_table instead of UCS2_DATA_TABLE.
+	Produce strip-pool.c and strip-data.c instead of pool.c and
+	tables.c.  Rename produce_tables_init and produce_tables_term with
+	produce_strip_init and produce_strip_term.  Rename tabular_flag to
+	strip_option.  Rename all other _flag variables into _option.
+	Replace SOMECHAR with REPLACEMENT_CHARACTER and NOCHAR with
+	NOT_A_CHARACTER.
+	* Makemore: Adjusted.
+
+1999-01-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl (digest_french_names): Handle translation of control
+	characters given an explicit table in the program.
+
+	* tables.pl (produce_texinfo): Avoid some spurious trailing space.
+
+1998-12-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* noms_juc_19981216.txt: New French name table.
+	* Makemore: Use it.
+	* tables.pl: Recognise new table despite semicolons.
+	Reported by Alain Labonté et François Yergeau.
+
+1998-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (fr-charnames.h, fr-charset.texi): New rules.
+	* tables.pl: Normalize style.
+	(digest_french_names): New routine.
+
+1998-11-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* help2man: New file, from elsewhere.
+	* Makefile.am (EXTRA_DIST, recode.1): Adjusted.
+
+1998-11-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* helptoman.pl: Comment a wrong line.  Remove parenthesese on
+	another.
+
+1998-11-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl: Use recode_ucs2 type.
+
+1998-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl (produce_tables_term): Use bool instead of int.
+	(declare_mnemonic): Return, instead of calling next.
+
+1998-10-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl: Adapt to use strict.
+	* Makemore: Use -w with Perl.
+
+1998-09-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* keld-email/mnemonics,ds: Patched to add Euro symbol.
+
+1998-09-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (CHARSETS_DEF, ISO10646_DEF, MNEMONICS_DS): New macros.
+	Use them.  For playing with some revised tables emailed by Keld.
+
+1997-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl (digest_iso10646_def, declare_mnemonic): New routines.
+
+1997-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.pl: New file, merging once separate scripts.
+	* charname.pl, charset.pl, rfc1345.pl: Deleted.
+	* Makefile.am, Makemore: Adjusted.
+
+1997-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore: Fetch and use mnemonic,ds instead of mnemonics.ds.
+
+1997-12-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (recode.1): Depend on src/main.c, not src/recode.c.
+	* helptoman.pl: Reset the accumulation flag even if the usage
+	clause is only one line long.
+
+	* charset.pl (digest_rfc1345): Capitalise the saved &rem and add
+	an ending period, as necessary, before writing it to charset.texi.
+
+1997-12-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl (digest_rfc1345): Diagnose if declarations for a
+	charset are not presented in the unofficial canonical order.
+	Reported by Keld Jørn Simonsen.
+
+1997-12-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (charset.texi): Handle chset31a/charsets.def, instead of
+	rfc1345.txt combined with a few Unicode maps.
+	(chset31a, charsets.def): New goals.
+	(all): Append dependencies to Makefile's all, automating them.
+	* charset.pl: Recognise simpler charsets.def format.
+	Reported by Keld Jørn Simonsen, Lukas Petrlik and Roman Czyborra.
+
+	* koi8-r and other cyrillic tables gets implemented through the
+	changes above.
+	Reported by Alexander L. Belikoff, Andries Brouwer and Roman
+	Czyborra.
+
+1997-12-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* rfc1345.pl: Generate an inverse table.
+
+1997-12-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Reorganise with one processor routine per type of
+	input file.  Add code to recognise input file types from contents,
+	and dispatch accordingly.  Add a routine to read Unicode maps.
+
+	* Makemore (charset.texi): Read mnemonics files before RFC 1345.
+	Fetch and process the Unicode format maps held in MAPS.
+	(cp1251.txt): New rule.  (MAPS): Adjusted.
+	Reported by Andreas Dietrich.
+
+	* Makemore (cp1250.txt): New rule.  (MAPS): Adjusted.
+	Reported by Branimir Dolicki, Frère Roy and Primoz Peterlin.
+
+	* Makemore (cp1252.txt): New rule.  (MAPS): Adjusted.
+	Reported by Hilmar Schlegel.
+
+1997-11-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charname.pl, charset.pl, rfc1345.pl: Insert the LGPL instead
+	of the GPL in generated sources.
+
+1997-10-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Generate global argument to module_tables, and
+	generate checking and return of initialisation success.
+
+1997-10-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* helptoman.pl: Have better headers and footers.
+	Reported by Thomas M. Ott.
+
+1997-10-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (i18n.txt, i18nrep.txt): New rules.
+
+	* All: Replace `and usages' by `and surfaces'.  Replace encoding
+	and ENCODING by surface and SURFACE.
+
+1997-09-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (rfc1345.txt): New rule.
+
+	* helptoman.pl: New file.
+	* Makefile.am: Prepare, install and distribute the man page.
+	Suggested by Harald Falkenberg.
+
+1997-09-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	Have most Perl generation done in this directory, with resulting
+	files moved into directories where they are most useful.
+	* Makemore: New file.
+	* Makefile.am: Simplified accordingly.
+	* charname.pl, rfc1345.pl: Moved over from src/.
+
+1997-09-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Use lc instead of y whenever appropriate.  Use
+	upcased hexadecimal for $SOMECHAR and $NOCHAR.  Rename %unicode to
+	%ucs2, and some of $code to $ucs2.  Rename UNICODE to MNEMONICS
+	and $UNICODE to MNEMONICS.  Implement a pool of for strips of UCS2
+	characters.  Do not split output anymore into charset1.c and
+	charset2.c; rather have all tables into tables.c and all strips
+	into pool.c.  Everything adjusted.
+
+	* Makefile.am (charset.texi): Manage so the script is executed in
+	the build directory, so diagnostics have $(srcdir) in references.
+
+1997-07-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Generated module_ routines need a parameter.
+
+1997-02-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mnemonic.ds2: Add three dozens of missing codes.
+
+1997-02-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Add charset1.c, charset2.c and
+	charset.texi, taken out of BUILT_SOURCES.
+
+1996-09-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Integrate charset.sed, accept rfc1345.txt as
+	argument, use hex.
+	* charset.sed: Deleted.
+	* Makefile.am: Adjusted.
+	Reported by Andreas Schwab.
+
+1996-08-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Use warn rather than print STDERR.
+
+1996-08-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Replace DOUBLE_TABLE by UCS2_DATA_TABLE.  Call
+	declare_ucs2_data instead of declare_double_step, and avoid
+	generating a third argument for size.  Replace SRC by SOURCE.
+
+	* Makefile.am: New, replaces Makefile.in.
+
+1995-07-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mnemonic.ds: Copied from ftp://dkuug.dk/i18n/mnemonic.ds.
+	* mnemonic.ds2: New file, edited from inspection of rfc1345.txt.
+	* Makefile.in (DISTFILES): Distribute them.
+	* charset.pl: Generate UCS2 in tables, instead of mnemonics.
+
+1995-07-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	Distribution unflattened, for using GNU gettext.
+	* Makefile.in: New file.

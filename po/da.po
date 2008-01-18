@@ -1,0 +1,531 @@
+# Danish message catalog for GNU recode.
+# Copyright (C) 1997 Free Software Foundation, Inc.
+# Niels Kristian Bech Jensen <nkbj@image.dk>, 1997.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recode 3.4r\n"
+"POT-Creation-Date: 1999-05-18 08:46-0400\n"
+"PO-Revision-Date: 1998-05-21 09:08+0200\n"
+"Last-Translator: Niels Kristian Bech Jensen <nkbj@image.dk>\n"
+"Language-Team: Danish <da@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#. Dump all characters.
+#: src/debug.c:287
+msgid ""
+"UCS2   Mne   Description\n"
+"\n"
+msgstr ""
+"UCS2   Mne   Beskrivelse\n"
+"\n"
+
+#: src/main.c:140
+msgid "No error"
+msgstr "Ingen fejl"
+
+#: src/main.c:143
+msgid "Non canonical input"
+msgstr "Ualmindelige inddata"
+
+#: src/main.c:146
+msgid "Ambiguous output"
+msgstr "Flertydige uddata"
+
+#: src/main.c:149
+msgid "Untranslatable input"
+msgstr "Uoversættelige inddata"
+
+#: src/main.c:152
+msgid "Invalid input"
+msgstr "Ugyldige inddata"
+
+#: src/main.c:155
+msgid "System detected problem"
+msgstr "Systemet fandt en fejl"
+
+#: src/main.c:158
+msgid "Misuse of recoding library"
+msgstr "Misbrug af oversættelsesbibliotek"
+
+#: src/main.c:161
+msgid "Internal recoding bug"
+msgstr "Intern oversættelsesfejl"
+
+#: src/main.c:206
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2, or (at your option)\n"
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+msgstr ""
+"Dette program er fri software; du må redistribuere det og/eller modificere\n"
+"det under betingelserne givet i GNU General Public License som publiceret "
+"af\n"
+"Free Software Foundation; enten version 2, eller (efter dit valg) en senere\n"
+"version.\n"
+"\n"
+"Dette program distribueres i håbet om, at det vil være nyttigt, men UDEN\n"
+"NOGEN GARANTI; end ikke en underforstået garanti for SALGBARHED eller\n"
+"ANVENDELIGHED TIL ET GIVET FORMÅL.  Se GNU General Public License for\n"
+"flere detaljer.\n"
+"\n"
+"Du skulle have modtaget en kopi af GNU General Public License sammen med\n"
+"dette program; hvis ikke, så skriv til Free Software Foundation, Inc.,\n"
+"59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+
+#: src/main.c:231
+#, c-format
+msgid "Try `%s %s' for more information.\n"
+msgstr "Prøv \"%s %s\" for mere information.\n"
+
+#: src/main.c:235
+msgid ""
+"Free `recode' converts files between various character sets and surfaces.\n"
+msgstr ""
+"Free \"recode\" konverterer filer mellem forskellige tegnsæt og pakninger.\n"
+
+#: src/main.c:239
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+msgstr ""
+"\n"
+"Anvendelse: %s [TILVALG]... [ [TEGNSÆT] | FORESPØRGSEL [FIL]... ]\n"
+
+#: src/main.c:242
+msgid ""
+"\n"
+"If a long option shows an argument as mandatory, then it is mandatory\n"
+"for the equivalent short option also.  Similarly for optional arguments.\n"
+msgstr ""
+"\n"
+"Hvis et langt tilvalg viser et argument som obligatorisk, så er det også\n"
+"obligatorisk for det tilsvarende korte tilvalg.  På samme måde for valgfri\n"
+"argumenter.\n"
+
+#: src/main.c:248
+msgid ""
+"\n"
+"Listings:\n"
+"  -l, --list[=FORMAT]        list one or all known charsets\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
+"list\n"
+"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
+"  -F, --freeze-tables        write out a C module holding all tables\n"
+"  -T, --find-subsets         report all charsets being subset of others\n"
+"  -C, --copyright            display Copyright and copying conditions\n"
+"      --help                 display this help and exit\n"
+"      --version              output version information and exit\n"
+msgstr ""
+"\n"
+"Oversigter:\n"
+"  -l, --list[=FORMAT]        vis oversigt over et eller alle kendte tegnsæt\n"
+"  -k, --known=PAR            begræns tegnsæt til liste af kendte PAR\n"
+"  -h, --header[=[SPR/]NAVN]  skriv tabel NAVN til std-ud i SPR og afslut\n"
+"  -F, --freeze-tables        udskriv et C-modul indeholdende alle tabeller\n"
+"  -T, --find-subsets         find alle tegnsæt, der er delmængder af andre\n"
+"  -C, --copyright            vis copyright- og kopieringsbetingelser\n"
+"      --help                 vis denne hjælp og afslut\n"
+"      --version              vis versionsnummer og afslut\n"
+
+#: src/main.c:261
+msgid ""
+"\n"
+"Operation modes:\n"
+"  -v, --verbose           explain sequence of steps and report progress\n"
+"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+"  -f, --force             force recodings even when not reversible\n"
+"  -t, --touch             touch the recoded files after replacement\n"
+"  -i, --sequence=files    use intermediate files for sequencing passes\n"
+"      --sequence=memory   use memory buffers for sequencing passes\n"
+msgstr ""
+"\n"
+"Operationsmåder:\n"
+"  -v, --verbose           vis rækkefølgen af gennemløb, og rapportér "
+"fremskridt\n"
+"  -q, --quiet, --silent   udelad meddelelser om irreversible oversættelser\n"
+"  -f, --force             gennemtving oversættelser, selv hvis de ikke er\n"
+"                          reversible\n"
+"  -t, --touch             giv den oversatte fil system-urets tid\n"
+"  -i, --sequence=files    brug midlertidige filer mellem gennemløbene\n"
+"      --sequence=memory   brug hukommelseslagre mellem gennemløbene\n"
+
+#: src/main.c:273
+msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
+msgstr ""
+"  -p, --sequence=pipe     brug \"pipe\"-mekanismen mellem gennemløbene\n"
+
+#: src/main.c:278
+msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
+msgstr "  -p, --sequence=pipe     samme som -i (på dette system)\n"
+
+#: src/main.c:283
+msgid ""
+"\n"
+"Fine tuning:\n"
+"  -s, --strict           use strict mappings, even loose characters\n"
+"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
+"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
+"  -c, --colons           use colons instead of double quotes for diaeresis\n"
+"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
+"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+msgstr ""
+"\n"
+"Fintuning:\n"
+"  -s, --strict           brug kun nøjagtige tegnsæt selvom der mistes tegn\n"
+"  -d, --diacritics       oversæt kun diakritiske/specielle tegn til "
+"HTML/LaTeX\n"
+"  -S, --source[=SPR]     begræns oversættelsen til strenge og kommentarer "
+"som\n"
+"                         til SPR\n"
+"  -c, --colons           brug koloner i stedet for anførselstegn som trema\n"
+"  -g, --graphics         tilnærm IBMPC linie- og kassetegn med ASCII grafik\n"
+"  -x, --ignore=TEGNSÆT   ignorér TEGNSÆT når oversættelsesvejen vælges\n"
+
+#: src/main.c:294
+msgid ""
+"\n"
+"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
+"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+msgstr ""
+"\n"
+"Tilvalg -l uden FORMAT eller TEGNSÆT viser en liste over alle tegnsæt og\n"
+"pakninger. FORMAT er et af ordene decimal, octal, hexadecimal eller full "
+"(eller\n"
+"et af bogstaverne d, o, h eller f).\n"
+
+#: src/main.c:302
+#, c-format
+msgid ""
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n"
+msgstr "Standard TEGNSÆT er \"%s\", hvis ikke DEFAULT_CHARSET er defineret.\n"
+
+#: src/main.c:308
+msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
+msgstr "Der findes ikke et standard TEGNSÆT, definer DEFAULT_CHARSET.\n"
+
+#: src/main.c:313
+msgid ""
+"With -k, possible before charsets are listed for the given after CHARSET,\n"
+"both being tabular charsets, with PAIRS of the form "
+"`BEF1:AFT1,BEF2:AFT2,...'\n"
+"and BEFs and AFTs being codes are given as decimal numbers.\n"
+msgstr ""
+"Med -k vises en liste over mulige før tegnsæt for det givne efter TEGNSÆT,\n"
+"begge tabellariske tegnsæt, med PAR af typen "
+"\"FØR1:EFTER1,FØR2:EFTER2,...\"\n"
+"hvor FØR'er og EFTER'e er tegnkoder givet efter titalssystemet.\n"
+
+#: src/main.c:318
+msgid ""
+"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
+msgstr ""
+"SPR er et programmeringssprog, det kan være \"c\", \"perl\" eller \"po\".\n"
+" \"c\" er standard.\n"
+
+#: src/main.c:321
+msgid ""
+"\n"
+"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is "
+"ENCODING[..ENCODING]...\n"
+"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like "
+"BEFORE..AFTER,\n"
+"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
+"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; a "
+"/\n"
+"with an empty surface name means no surfaces at all.  See the manual.\n"
+msgstr ""
+"\n"
+"FORESPØRGSEL er UNDERFORESPØRGSEL[,UNDERFORESPØRGSEL]...; UNDERFORESPØRGSEL "
+"er\n"
+"INDKODNING[..INDKODNING]...; INDKODNING er [TEGNSÆT][/[PAKNING]]...\n"
+"FORESPØRGSEL har ofte formen FØR..EFTER, hvor FØR og EFTER er tegnsæt.\n"
+"Hvis et TEGNSÆT udelades, anvendes det normale tegnsæt; hvis [/PAKNING]...\n"
+"udelades, anvendes den normale pakning af TEGNSÆT; / uden navnet på en\n"
+"pakning betyder ingen pakning.  Se manualen.\n"
+
+#: src/main.c:329
+msgid ""
+"\n"
+"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
+"Each FILE is recoded over itself, destroying the original.  If no\n"
+"FILE is specified, then act as a filter and recode stdin to stdout.\n"
+msgstr ""
+"\n"
+"Hvis ingen af -i eller -p er valgt, bruges -p hvis ingen FIL, ellers -i.\n"
+"Hver FIL bliver oversat oveni sig selv og overskriver originalen.  Hvis "
+"ingen\n"
+"FIL er valgt, er programmet et filter, der oversætter fra std-ind til "
+"std-ud.\n"
+
+#: src/main.c:335
+msgid ""
+"\n"
+"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"Rapportér fejl til <recode-bugs@iro.umontreal.ca>.\n"
+
+#: src/main.c:431
+#, c-format
+msgid "Ambiguous sequence `%s'"
+msgstr "Flertydig sekvens \"%s\""
+
+#: src/main.c:435
+#, c-format
+msgid "Unknown sequence `%s'"
+msgstr "Ukendt sekvens \"%s\""
+
+#: src/main.c:465 src/main.c:523
+#, c-format
+msgid "Ambiguous language `%s'"
+msgstr "Flertydigt sprog \"%s\""
+
+#. -1
+#: src/main.c:469 src/main.c:527
+#, c-format
+msgid "Unknown language `%s'"
+msgstr "Ukendt sprog \"%s\""
+
+#: src/main.c:561
+#, c-format
+msgid "Ambiguous format `%s'"
+msgstr "Flertydigt format \"%s\""
+
+#: src/main.c:565
+#, c-format
+msgid "Unknown format `%s'"
+msgstr "Ukendt format \"%s\""
+
+#: src/main.c:622
+msgid ""
+"\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+msgstr ""
+"\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+
+#: src/main.c:626
+msgid ""
+"This is free software; see the source for copying conditions.  There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr ""
+"Dette er fri software; se kopieringsbetingelserne i kildeteksten.  Der "
+"gives\n"
+"INGEN garanti; end ikke for SALGBARHED eller ANVENDELIGHED TIL ET GIVET "
+"FORMÅL.\n"
+
+#: src/main.c:630
+msgid ""
+"\n"
+"Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"Skrevet af François Pinard <pinard@iro.umontreal.ca>.\n"
+
+#: src/main.c:775
+#, c-format
+msgid "Deprecated syntax, please prefer `%s'"
+msgstr "Forældet syntaks, brug hellere \"%s\""
+
+#: src/main.c:781
+#, c-format
+msgid "Erroneous request `%s'"
+msgstr "Fejlagtig forespørgsel \"%s\""
+
+#: src/main.c:878
+#, c-format
+msgid "Recoding %s..."
+msgstr "Oversætter %s..."
+
+#: src/main.c:888
+msgid " done\n"
+msgstr " færdig\n"
+
+#: src/main.c:924
+#, c-format
+msgid " failed: %s in %s..%s\n"
+msgstr " fejlede: %s i %s..%s\n"
+
+#: src/main.c:931
+#, c-format
+msgid "%s failed: %s in %s..%s"
+msgstr "%s fejlede: %s i %s..%s"
+
+#: src/main.c:954
+#, c-format
+msgid "%s in %s..%s"
+msgstr "%s i %s..%s"
+
+#: src/names.c:317
+#, c-format
+msgid "Charset %s already exists and is not %s"
+msgstr "Tegnsæt %s findes allerede og er ikke %s"
+
+#: src/names.c:819
+#, c-format
+msgid "Cannot list `%s', no names available for this charset"
+msgstr "Kan ikke vise \"%s\", ingen navne tilgængelige for dette tegnsæt"
+
+#. code counter
+#. expected value for code counter
+#. UCS-2 translation
+#. insert a while line before printing
+#. Print the long table according to explode data.
+#: src/names.c:974 src/names.c:1020
+#, c-format
+msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
+msgstr "Dec  Okt Hex   UCS2  Mne  %s\n"
+
+#: src/names.c:1039
+#, c-format
+msgid "Sorry, no names available for `%s'"
+msgstr "Beklager, ingen navne tilgængelige for \"%s\""
+
+#: src/outer.c:95
+#, c-format
+msgid "Resurfacer set more than once for `%s'"
+msgstr "Repakker indstillet flere gange for \"%s\""
+
+#: src/outer.c:102
+#, c-format
+msgid "Unsurfacer set more than once for `%s'"
+msgstr "Udpakker indstillet flere gange for \"%s\""
+
+#: src/recode.c:115 src/recode.c:127
+msgid "Virtual memory exhausted"
+msgstr "Virtuel hukommelse opbrugt"
+
+#: src/recode.c:155
+#, c-format
+msgid "Codes %3d and %3d both recode to %3d"
+msgstr "Tegnkoderne %3d og %3d oversættes begge til %3d"
+
+#: src/recode.c:169
+#, c-format
+msgid "No character recodes to %3d"
+msgstr "Ingen tegn oversættes til %3d"
+
+#: src/recode.c:170
+msgid "Cannot invert given one-to-one table"
+msgstr "Kan ikke invertere denne en-til-en tabel"
+
+#: src/recode.c:224 src/recode.c:236
+#, c-format
+msgid "Following diagnostics for `%s' to `%s'"
+msgstr "Følgende fejl er for \"%s\" til \"%s\""
+
+#: src/recode.c:229 src/recode.c:241
+#, c-format
+msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
+msgstr "Par nr. %d: <%3d, %3d> er i konflikt med <%3d, %3d>"
+
+#: src/recode.c:272
+msgid "Cannot complete table from set of known pairs"
+msgstr "Kan ikke fuldende tabellen udfra mængden af kendte par"
+
+#: src/recode.c:492
+msgid "Identity recoding, not worth a table"
+msgstr "Triviel oversættelse, ikke værd at bruge en tabel"
+
+#: src/recode.c:499
+msgid "Recoding is too complex for a mere table"
+msgstr "Oversættelsen er for kompleks for en simpel tabel"
+
+#. Print the header of the header file.
+#: src/recode.c:531
+#, c-format
+msgid "%sConversion table generated mechanically by Free `%s' %s"
+msgstr "%sOversættelsestabellen er genereret automatisk af Free \"%s\" %s"
+
+#: src/recode.c:533
+#, c-format
+msgid "%sfor sequence %s.%s"
+msgstr "%sfor sekvensen %s.%s"
+
+#: src/recode.c:724
+msgid "No table to print"
+msgstr "Ingen tabel at udskrive"
+
+#: src/request.c:35
+msgid "reversible"
+msgstr "reversibel"
+
+#: src/request.c:37
+#, c-format
+msgid "%s to %s"
+msgstr "%s til %s"
+
+#: src/request.c:38 src/request.c:40
+msgid "byte"
+msgstr "byte"
+
+#: src/request.c:39 src/request.c:41
+msgid "ucs2"
+msgstr "ucs2"
+
+#: src/request.c:39 src/request.c:41
+msgid "variable"
+msgstr "variabel"
+
+#: src/request.c:112
+msgid "*Unachievable*"
+msgstr "*Uopnåelig*"
+
+#: src/request.c:114
+msgid "*mere copy*"
+msgstr "*ren kopi*"
+
+#: src/request.c:244
+msgid "Virtual memory exhausted!"
+msgstr "Virtuel hukommelse opbrugt!"
+
+#: src/request.c:263
+msgid "Step initialisation failed"
+msgstr "Trininitialiseringen fejlede"
+
+#: src/request.c:270
+msgid "Step initialisation failed (unprocessed options)"
+msgstr "Trininitialiseringen fejlede (ubearbejdede tilvalg)"
+
+#: src/request.c:566
+#, c-format
+msgid "Request: %s\n"
+msgstr "Forespørgsel: %s\n"
+
+#: src/request.c:702
+#, c-format
+msgid "Shrunk to: %s\n"
+msgstr "Formindsket til: %s\n"
+
+#: src/request.c:806 src/request.c:912
+#, c-format
+msgid "Unrecognised surface name `%s'"
+msgstr "Ukendt pakkenavn \"%s\""
+
+#: src/request.c:884
+#, c-format
+msgid "No way to recode from `%s' to `%s'"
+msgstr "Umuligt at oversætte fra \"%s\" til \"%s\""
+
+#: src/request.c:992
+msgid "Expecting `..' in request"
+msgstr "Forventer \"..\" i forespørgsel"
+
+#: src/task.c:751 src/task.c:915
+#, c-format
+msgid "Child process wait status is 0x%0.2x"
+msgstr "Underprocessens ventestatus er 0x%0.2x"

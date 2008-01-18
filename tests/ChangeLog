@@ -1,0 +1,240 @@
+1999-05-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am:
+
+1999-04-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (check-local): Warn if recode library already installed.
+
+	* utf8.m4: Ensure that file has permissions to be rewritten.
+
+1999-04-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for the co alias.
+
+1999-03-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* combine.m4: New file.
+	* Makefile.am, suite.m4: Adjusted.
+
+1999-01-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for implied surfaces.
+
+1999-01-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* utf8.m4: New file.
+	* Makefile.am, suite.m4: Adjusted.
+
+1999-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for name changes.
+
+1999-01-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted capitalisation of Kamenicky.
+
+	* lists.m4: Adjusted for slight modifications in output format.
+	* names.m4: Adjusted for new charsets and surfaces.
+
+	* debug.m4: New file.
+	* Makefile.am, suite.m4: Adjusted.
+
+1999-01-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for new output format, sorted and capitalized.
+
+	* Makefile.am (clean-local): Remove debug-*.sh, not FAIL-*.sh.
+
+1999-01-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted, as afrsort was deleted.
+
+1998-12-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for fulldump.
+	Reported by Jim Meyering and Larry W. Virden.
+
+1998-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for revised african, deleted HTML aliases and
+	combined UCS-2.
+
+1998-12-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lists.m4, names.m4: Adjusted for the renaming of ISO_8859-1 to
+	ISO-8859-1.  Use the expout mechanics, to avoid long shell quotes.
+
+1998-11-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* suite.m4: New name for testsuite.m4.
+	* test-one: Adjusted.
+	* Makefile.am: Adjusted.
+
+1998-11-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* dumps.m4: Make the copy of dumps-data writeable.
+
+	* names.m4: Adjusted for new HTML charsets, yet if temporarily.
+
+1998-10-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.m4, dumps.m4, quoted.m4: Make test files writeable after
+	copying them from the distribution, which may be read-only.  Also,
+	avoid trailing .. in requests, as before position is implied.
+
+1998-10-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Distribute testsuite.m4.
+	Reported by Jim Meyering.
+
+1998-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* african.m4: New file.
+	* testsuite.m4: Use it.
+	* Makefile.am (SUITE): Adjusted.
+	From Laurent Bourbeau.
+
+1998-10-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Do not expect h, h1, h2, h4, w3 or www.
+	* dumps.m4, quoted.m4, utf7.c: Use /x or /XN rather than /h or /hN.
+
+1998-10-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* test-one: Renamed from test-one.in.  New version, from elsewhere.
+	* atgeneral.m4: New version, from elsewhere.
+	* atconfig.in: New file, from elsewhere.
+	* Makefile.am: Adjusted.  Use testsuite from srcdir.
+	* testsuite.m4: Remove second argment to AT_INIT.
+	* base64.m4, dumps.m4, methods.m4, quoted.m4, utf7.m4: Replace
+	AT_srcdir and AT_top_srcdir by $at_srcdir and $at_top_srcdir.
+
+	* bigauto.sh: Do not source file preset, it does not exist anymore.
+
+1998-10-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Distribute quoted-data.
+	Reported by Jim Meyering.
+
+1998-10-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* atgeneral.m4, test-one.in, testsuite.m4: New files.
+	* preset.in, before, after: Deleted.
+	* names.m4: Made out from list-l and findsubs.
+	* lists.m4: Made out from list-ld, list-lh, list-lo and list-lf.
+	* dumps.m4, dumps-data: Made out from dump-d1, dump-d2, dump-d4,
+	dump-h1, dump-h2, dump-h4, dump-o1, dump-o2 and dump-o4.
+	* base64.m4: Made out from base64.
+	* quoted.m4, quoted-data: Made out from quoted.
+	* utf7.m4, utf7-data: Made out from utf7.
+	* methods.m4: Made out from 0s-tt-mf, 0s-tt-ms, 0s-tt-ff,
+	0s-tt-fs, 0s-tt-pf, 0s-tt-ps, 1s-tl-mf, 1s-tl-ms, 1s-tl-ff,
+	1s-tl-fs, 1s-tl-pf, 1s-tl-ps, 2s-tb-mf, 2s-tb-ms, 2s-tb-ff,
+	2s-tb-fs, 2s-tb-pf, 2s-tb-ps, 2s-ti-mf, 2s-ti-ms, 2s-ti-ff,
+	2s-ti-fs, 2s-ti-pf, 2s-ti-ps, 3s-ti-mf, 3s-ti-ms, 3s-ti-ff,
+	3s-ti-fs, 3s-ti-pf, 3s-ti-ps, 4s-ae-mf, 4s-ae-ms, 4s-ae-ff,
+	4s-ae-fs, 4s-ae-pf and 4s-ae-ps.
+	* All previous tests: Deleted.
+	* Makefile.am: Revised.
+
+1998-09-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* list-l, findsubs: Updated.
+	* list-ld, list-lo, list-lh, list-lf: At became @.
+
+1998-02-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (clean-local): Instead of a kludgey CLEANFILES.
+	Reported by Tom Tromey.
+
+1998-01-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* findsubs, list-l: Updated.
+
+1997-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* findsubs: New file.
+	* Makefile.am: Adjusted.
+
+	* Makefile.am (CLEANFILES): Use -r and add tmp-[0-9]*.
+
+1997-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* list-l: List updated.
+
+1997-12-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* bigauto.sh: Remove the space after flat, in the egrep call.
+	Reported by Eric Backus.
+
+	* list-l, list-ld, list-lh, list-lo, list-lf: New files.
+	* Makefile.am: Adjusted.
+
+1997-12-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (TESTS): List bigauto first, so the associated
+	warning will be issued early in test results.
+
+1997-12-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (bigtest, bigtest-strict): Write $$PATH, not $PATH.
+	Reported by Eric Backus.
+
+1997-12-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* bigauto, bigauto.sh, bitauto.pl: New files.
+	* Makefile.am: Adjusted.
+	(bigtest, bigtest-strict): New goals.
+
+1997-11-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* dump-d1, dump-d2, dump-d4, dump-h1, dump-h2, dump-h4, dump-o1,
+	dump-o2, dump-o4, quoted, utf7: New files.
+	* Makefile.am: Adjusted.
+
+1997-11-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.sh: New.
+	* Makefile.am: Adjusted.
+
+1997-10-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* filter.inc, squash.inc, 0s-tt-mf.sh, 0s-tt-ms.sh, 0s-tt-ff.sh,
+	0s-tt-fs.sh, 0s-tt-pf.sh, 0s-tt-ps.sh, 1s-tl-mf.sh, 1s-tl-ms.sh,
+	1s-tl-ff.sh, 1s-tl-fs.sh, 1s-tl-pf.sh, 1s-tl-ps.sh, 2s-tb-mf.sh,
+	2s-tb-ms.sh, 2s-tb-ff.sh, 2s-tb-fs.sh, 2s-tb-pf.sh, 2s-tb-ps.sh,
+	2s-ti-mf.sh, 2s-ti-ms.sh, 2s-ti-ff.sh, 2s-ti-fs.sh, 2s-ti-pf.sh,
+	2s-ti-ps.sh, 3s-ti-mf.sh, 3s-ti-ms.sh, 3s-ti-ff.sh, 3s-ti-fs.sh,
+	3s-ti-pf.sh, 3s-ti-ps.sh, 4s-ae-mf.sh, 4s-ae-ms.sh, 4s-ae-ff.sh,
+	4s-ae-fs.sh, 4s-ae-pf.sh, 4s-ae-ps.sh: New files.
+	* checkit.inc, 0step-tt.sh, 1step-tl.sh, 2step-tb.sh, 2step-ti.sh,
+	3step-ti.sh, 4step-ae.sh: Deleted.
+	* Makefile.am: Adjusted.
+
+	* preset.in, before, after: Add a -d option to ease debugging.
+
+1997-09-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* before, after: New files, from elsewhere.
+	* 0step-tt.sh: Adapted from checkit1.sh.
+	* 1step-tl.sh: Adapted from checkit2.sh.
+	* 2step-ti.sh: Adapted from checkit3.sh.
+	* 3step-ti.sh: Adapted from checkit4.sh.
+	* 2step-tb.sh: Adapted from checkit5.sh.
+	* 4step-ae.sh: Adapted from checkit6.sh.
+	* checkit.inc: Simplified from checkit, sourced instead of called.
+	* Makefile.am: Adjusted.
+
+	* checkit: Remove popen support.
+
+1997-07-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* checkit: Use .. instead of : in syntax.
+
+1996-09-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ChangeLog, Makefile.am: New files.
+	* checkit: New file, moved from src/.  Change ./recode to recode.
+	Change minimal verbosity so it is completely silent.
+	* preset.in, version.sh, checkit[1-6].sh, bigauto.sh: New files.

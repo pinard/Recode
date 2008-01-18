@@ -1,49 +1,57 @@
 # Configure template for GNU recode.
-# Copyright (C) 1994 Free Software Foundation, Inc.
+# Copyright (C) 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT(recode.c)
-AC_CONFIG_HEADER(config.h)
-AC_ARG_PROGRAM
-
-PRODUCT=recode
-VERSION=3.4
-AC_DEFINE_UNQUOTED(PRODUCT, "$PRODUCT")
-AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
-AC_SUBST(PRODUCT)
-AC_SUBST(VERSION)
+AC_INIT(src/recode.c)
+AC_PREREQ(2.12)
+AM_CONFIG_HEADER(config.h)
+AM_INIT_AUTOMAKE(recode, 3.5)
+AT_CONFIG(../src)
+ALL_LINGUAS="da de es fr nl pl pt sl sv"
 
 AC_PROG_AWK
 AC_PROG_CC
-AC_PROG_INSTALL
-AC_PROG_RANLIB
-
 AC_AIX
-AC_ISC_POSIX
 AC_MINIX
-fp_C_PROTOTYPES
-AC_C_CONST
+AM_PROG_LIBTOOL
 
-AC_PROG_LEX
-test "$LEX" = flex || AC_WARN(flex not found, so do not modify .l files)
+AC_ISC_POSIX
+AM_C_PROTOTYPES
+AC_C_CONST
+AC_C_INLINE
+AM_PROG_LEX
+test "$LEX" = flex || AC_MSG_WARN([flex not found, so do not modify .l files])
 
 AC_HEADER_STDC
-AC_CHECK_HEADERS(limits.h string.h)
+AC_CHECK_HEADERS(limits.h string.h stdbool.h unistd.h utime.h)
 AC_TYPE_SIGNAL
 
-AC_CHECK_FUNCS(dup2 pipe popen rename strerror)
+AC_CHECK_FUNCS(dup2 rename strerror)
 AC_FUNC_VPRINTF
 
+fp_OS_MICROSOFT
 AC_MSG_CHECKING(the default charset)
-if test -n "$DEFAULT_CHARSET"; then
+if test -n "${DEFAULT_CHARSET+set}"; then
   AC_MSG_RESULT($DEFAULT_CHARSET)
   AC_DEFINE_UNQUOTED(DEFAULT_CHARSET, "$DEFAULT_CHARSET")
-else
+elif test "$fp_cv_os_microsoft" = no; then
   AC_MSG_RESULT(Latin-1)
   AC_DEFINE(DEFAULT_CHARSET, "Latin-1")
+else
+  AC_MSG_RESULT(IBM-PC)
+  AC_DEFINE(DEFAULT_CHARSET, "IBM-PC")
 fi
 
-fp_WITH_DMALLOC
+jm_FUNC_MALLOC
+jm_FUNC_REALLOC
+AM_WITH_DMALLOC
 
-AC_OUTPUT(Makefile,
-[test -z "$CONFIG_HEADERS" || date > stamp-h])
+AM_GNU_GETTEXT
+
+LTALLOCA=`echo "$ALLOCA" | sed 's/\.o/.lo/g'`
+AC_SUBST(LTALLOCA)
+LTLIBOBJS=`echo "$LIBOBJS" | sed 's/\.o/.lo/g'`
+AC_SUBST(LTLIBOBJS)
+
+AC_OUTPUT(Makefile contrib/Makefile doc/Makefile intl/Makefile lib/Makefile
+m4/Makefile po/Makefile.in src/Makefile tests/Makefile tests/atconfig)

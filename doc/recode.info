@@ -1,0 +1,104 @@
+This is Info file recode.info, produced by Makeinfo version 1.68 from
+the input file recode.texi.
+
+START-INFO-DIR-ENTRY
+* recode: (recode).     Conversion between character sets and surfaces.
+END-INFO-DIR-ENTRY
+
+   This file documents the `recode' command, which has the purpose of
+converting files between various character sets and surfaces.
+
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
+Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+Indirect:
+recode.info-1: 1083
+recode.info-2: 50085
+recode.info-3: 96346
+recode.info-4: 144563
+recode.info-5: 189680
+
+Tag Table:
+(Indirect)
+Node: Top1083
+Node: Tutorial5119
+Node: Introduction9355
+Node: Charset overview13381
+Node: Surface overview14601
+Node: Contributing16068
+Node: Invoking recode18469
+Node: Synopsis19376
+Node: Requests22106
+Node: Listings28760
+Node: Recoding38681
+Node: Reversibility41492
+Node: Sequencing50085
+Node: Mixed52473
+Node: Emacs55855
+Node: Library56812
+Node: Outer level58165
+Node: Request level62436
+Node: Task level72833
+Node: Charset level83184
+Node: Errors84021
+Node: Universal89314
+Node: UCS-292717
+Node: UCS-495217
+Node: UTF-795754
+Node: UTF-896346
+Node: UTF-16100642
+Node: count-characters101787
+Node: dump-with-names102455
+Node: Tabular105002
+Node: ASCII misc127064
+Node: ASCII127428
+Node: ISO 8859128244
+Node: ASCII-BS130539
+Node: flat132373
+Node: IBM and MS133041
+Node: EBCDIC133614
+Node: IBM-PC135723
+Node: Icon-QNX137997
+Node: CDC138419
+Node: Display Code140120
+Node: CDC-NOS142607
+Node: Bang-Bang144563
+Node: Micros146488
+Node: Apple-Mac146869
+Node: AtariST148917
+Node: Miscellaneous149900
+Node: HTML150648
+Node: LaTeX154891
+Node: Texinfo155661
+Node: African156431
+Node: Cyrillic157779
+Node: Texte159186
+Node: Mule164389
+Node: Surfaces166689
+Node: Permutations169201
+Node: End lines170039
+Node: MIME172239
+Node: Dump173349
+Node: Debugging177529
+Node: Internals179985
+Node: Main flow181199
+Node: New charsets184454
+Node: New surfaces188989
+Node: Design189680
+
+End Tag Table

@@ -1,0 +1,198 @@
+This is Info file recode.info, produced by Makeinfo version 1.68 from
+the input file recode.texi.
+
+START-INFO-DIR-ENTRY
+* recode: (recode).     Conversion between character sets and surfaces.
+END-INFO-DIR-ENTRY
+
+   This file documents the `recode' command, which has the purpose of
+converting files between various character sets and surfaces.
+
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
+Inc.
+
+   Permission is granted to make and distribute verbatim copies of this
+manual provided the copyright notice and this permission notice are
+preserved on all copies.
+
+   Permission is granted to copy and distribute modified versions of
+this manual under the conditions for verbatim copying, provided that
+the entire resulting derived work is distributed under the terms of a
+permission notice identical to this one.
+
+   Permission is granted to copy and distribute translations of this
+manual into another language, under the above conditions for modified
+versions, except that this permission notice may be stated in a
+translation approved by the Foundation.
+
+
+File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
+
+Comments on the library design
+==============================
+
+   * Why a shared library?
+
+     There are many different approaches to reduce system requirements
+     to handle all tables needed in the `recode' library.  One of them
+     is to have the tables in an external format and only read them in
+     on demand.  After having pondered this for a while, I finally
+     decided against it, mainly because it involves its own kind of
+     installation complexity, and it is not clear to me that it would
+     be as interesting as I first imagined.
+
+     It looks more efficient to see all tables and algorithms already
+     mapped into virtual memory from the start of the execution, yet
+     not loaded in actual memory, than to go through many disk accesses
+     for opening various data files once the program is already
+     started, as this would be needed with other solutions.  Using a
+     shared library also has the indirect effect of making various
+     algorithms handily available, right in the same modules providing
+     the tables.  This alleviates much the burden of the maintenance.
+
+     Of course, I would like to later make an exception for only a few
+     tables, built locally by users for their own particular needs once
+     `recode' is installed.  `recode' should just go and fetch them.
+     But I do not perceive this as very urgent, yet useful enough to be
+     worth implementing.
+
+     Currently, all tables needed for recoding are precompiled into
+     binaries, and all these binaries are then made into a shared
+     library.  As an initial step, I turned `recode' into a main
+     program and a non-shared library, this allowed me to tidy up the
+     API, get rid of all global variables, etc.  It required a
+     surprising amount of program source massaging.  But once this
+     cleaned enough, it was easy to use Gordon Matzigkeit's `libtool'
+     package, and take advantage of the Automake interface to neatly
+     turn the non-shared library into a shared one.
+
+     Sites linking with the `recode' library, while their system does
+     not support any form of shared libraries, might end up with bulky
+     executables.  Surely, the `recode' library will have to be used
+     statically, and might not very nicely usable on such systems.  It
+     seems that progress has a price for those being slow at it.
+
+     There is a locality problem I did not address yet.  Currently, the
+     `recode' library takes many cycles to initialise itself, calling
+     each module in turn for it to set up associated knowledge about
+     charsets, aliases, elementary steps, recoding weights, etc.
+     *Then*, the recoding sequence is decided out of the command given.
+     I would not be surprised if initialisation was taking a
+     perceivable fraction of a second on slower machines.  One thing to
+     do, most probably not right in version 3.5, but the version after,
+     would have `recode' to pre-load all tables and dump them at
+     installation time.  The result would then be compiled and added to
+     the library.  This would spare many initialisation cycles, but more
+     importantly, would avoid calling all library modules, scattered
+     through the virtual memory, and so, possibly causing many spurious
+     page exceptions each time the initialisation is requested, at
+     least once per program execution.
+
+   * Why not a central charset?
+
+     It would be simpler, and I would like, if something like ISO 10646
+     was used as a turning template for all charsets in `recode'.  Even
+     if I think it could help to a certain extent, I'm still not fully
+     sure it would be sufficient in all cases.  Moreover, some people
+     disagree about using ISO 10646 as the central charset, to the
+     point I cannot totally ignore them, and surely, `recode' is not a
+     mean for me to force my own opinions on people.  I would like that
+     `recode' be practical more than dogmatic, and reflect usage more
+     than religions.
+
+     Currently, if you ask `recode' to go from CHARSET1 to CHARSET2
+     chosen at random, it is highly probable that the best path will be
+     quickly found as:
+
+          CHARSET1..`UCS-2'..CHARSET2
+
+     That is, it will almost always use the `UCS' as a trampoline
+     between charsets.  However, `UCS-2' will be immediately be
+     optimised out, and CHARSET1..CHARSET2 will often be performed in a
+     single step through a permutation table generated on the fly for
+     the circumstance (1).
+
+     In those few cases where `UCS-2' is not selected as a conceptual
+     intermediate, I plan to study if it could be made so.  But I guess
+     some cases will remain where `UCS-2' is not a proper choice.  Even
+     if `UCS' is often the good choice, I do not intend to forcefully
+     restrain `recode' around `UCS-2' (nor `UCS-4') for now.  We might
+     come to that one day, but it will come out of the natural
+     evolution of `recode'.  It will then reflect a fact, rather than a
+     preset dogma.
+
+   * Why not `iconv'?
+
+     The `iconv' routine and library allows for converting characters
+     from an input buffer to an input buffer, synchronously advancing
+     both buffer cursors.  If the output buffer is not big enough to
+     receive all of the conversion, the routine returns with the input
+     cursor set at the position where the conversion could later be
+     resumed, and the output cursor set to indicate until where the
+     output buffer has been filled.  Despite this scheme is simple and
+     nice, the `recode' library does not offer it currently.  Why not?
+
+     When long sequences of decodings, stepwise recodings, and
+     re-encodings are involved, as it happens in true life,
+     synchronising the input buffer back to where it should have
+     stopped, when the output buffer becomes full, is a difficult
+     problem.  Oh, we could make it simpler at the expense of loosing
+     space or speed: by inserting markers between each input character
+     and counting them at the output end; by processing only one
+     character in a time through the whole sequence; by repeatedly
+     attempting to recode various subsets of the input buffer, binary
+     searching on their length until the output just fits.  The
+     overhead of such solutions looks fully prohibitive to me, and the
+     gain very minimal.  I do not see a real advantage, nowadays,
+     imposing a fixed length to an output buffer.  It makes things so
+     much simpler and efficient to just let the output buffer size
+     float a bit.
+
+     Of course, if the above problem was solved, the `iconv' library
+     should be easily emulated, given that `recode' has similar
+     knowledge about charsets, of course.  This either solved or not,
+     the `iconv' program remains trivial (given similar knowledge about
+     charsets).  I also presume that the `genxlt' program would be easy
+     too, but I do not have enough detailed specifications of it to be
+     sure.
+
+     A lot of years ago, `recode' was using a similar scheme, and I
+     found it rather hard to manage for some cases.  I rethought the
+     overall structure of `recode' for getting away from that scheme,
+     and never regretted it.  I perceive `iconv' as an artificial
+     solution which surely has some elegances and virtues, but I do not
+     find it really useful as it stands: one always has to wrap `iconv'
+     into something more refined, extending it for real cases.  From
+     past experience, I think it is unduly hard to fully implement this
+     scheme.  It would be awkward that we do contortions for the sole
+     purpose of implementing exactly its specification, without real,
+     fairly sounded reasons (other then the fact some people once
+     thought it was worth standardising).  It is much better to
+     immediately aim for the refinement we need, without uselessly
+     forcing us into the dubious detour `iconv' represents.
+
+     Some may argue that if `recode' was using a comprehensive charset
+     as a turning template, as discussed in a previous point, this
+     would make `iconv' easier to implement.  Some may be tempted to
+     say that the cases which are hard to handle are not really needed,
+     nor interesting, anyway.  I feel and fear a bit some pressure
+     wanting that `recode' be split into the part that well fits the
+     `iconv' model, and the part that does not fit, considering this
+     second part less important, with the idea of dropping it one of
+     these days, maybe.  My guess is that users of the `recode'
+     library, whatever its form, would not like to have such arbitrary
+     limitations.  In the long run, we should not have to explain to
+     our users that some recodings may not be made available just
+     because they do not fit the simple model we had in mind when we
+     did it.  Instead, we should try to stay opened to the difficulties
+     of real life.  There is still a lot of complex needs for Asian
+     people, say, that `recode' does not currently address, while it
+     should.  Not only the doors should stay opened, but we should
+     force them wider!
+
+   ---------- Footnotes ----------
+
+   (1) If strict mapping is requested, another efficient device will be
+used instead of a permutation.
+
+

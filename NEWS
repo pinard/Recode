@@ -1,80 +1,215 @@
-GNU recode NEWS - User visible changes.
-Copyright (C) 1993, 1994 Free Software Foundation, Inc.
+Free recode NEWS - User visible changes.	-*- outline -*- (allout)
+Copyright © 1993, 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 
-Version 3.4 - November 1994, by Franc,ois Pinard
+* Version 3.5 - François Pinard, 1999-05.
 
-* Charset HTML is new, it handles `&...;' sequences for Latin-1.
-* Charset AtariST handling is more general, --list may be used with it.
-* Charset ASCII-BS overstriking has been extended, mainly for German.
-* Charset RFC1345 may be a goal, to debug or study RFC 1345 short names.
-* Charset names have been revised.  Note that nextstep is now NeXT.
-* Option --force (-f) is accepted, but does not yet protect reversibility.
-* Option --quiet or --silent (-q) silences irreversible recoding messages.
-* Option --known=PAIRS (-k) helps searching through recodings.
-* Option --sequence=pipe (-p) does not fall back on -o anymore.
-* Option --auto-check may narrow its study around one particular charset.
-* An MSDOS port is available, check ftp.iro.umontreal.ca in pub/gnuish.
-* Compilation should now succeed on OS/2 EMX.  Thanks to Kai Uwe Rommel.
-* Program initialization is almost three times faster on average.
-* Corrected reported bugs, added small improvements, some aesthetic.
-
-Version 3.3 - December 1993, by Franc,ois Pinard
+.* Incompatible changes
+. + A double dot `..' should now be used instead of a colon `:'.
+. + Option --force (-f) is needed to pursue recoding despite errors.
+. + There is no more quoting for special characters within charsets names.
+. + Auto check (`-a') and popen (`-o') options have been withdrawn.
+. + Some charsets and aliases were deleted, see `Charsets & aliases' below.
 
-* Charsets atarist, ebcdic-ccc, ebcdic-ibm and nextstep have been added.
-* Also, most RFC 1345 charsets and aliases are handled.  That's a bunch!
-* Old ascii disappears because of RFC 1345's ascii, use ascii-bs instead.
-* Old maci disappears because of RFC 1345's macintosh, use applemac instead.
-* Charsets cccascii and cdcascii disappear, use ebcdic-ccc and ebcdic instead.
-* Recoding between latin1, ibmpc and applemac is (almost) reversible.
-* The texinfo documentation has been reorganized, this to be continued.
-* Long options are accepted, charset names may be abbreviated.
-* Option --list (-l) displays charsets, aliases and contents in many formats.
-* Option --strict (-s) asks for stricter, non-reversible recodings.
-* Option --graphics (-g) approximates ibmpc rulers with ASCII graphics.
-* Option --header (-h) produces C source for many recoding tables.
-* Option --auto-check (-a) reports about all possible recodings.
-* Option --ignore (-x) prevents a charset from being selected.
-* Execution has been sped up through step merging, hashing for charset names.
-* Many various buglets have been eradicated, portability increased.
-* Charsets may be edited out by modifying the Makefile only.
-* Configuration is made through the use of an external config.h file.
+.* Extended features
+. + Program messages are available in localised form for many languages.
+. + Long character names are available in French, if LANGUAGE is set to `fr'.
+. + A new request syntax allows for recode chaining, and for surfaces.
+. + Option --header-file (-h) accepts a language parameter, and Perl is new.
+. + Full charset listings now show the UCS-2 value for characters.
+. + Option --known=PAIRS (-k) also accepts octal and hexadecimal numbers.
+. + Option --list (-l) better sorts charsets and aliases, also fully written.
+. + Charset `RFC1345' implements mnemonic+ascii+38, and is now reversible.
+. + HTML is not limited anymore to Latin-1, HTML 4.0 entities are supported.
 
-Version 3.2.4 - October 1992, by Franc,ois Pinard
+.* New features
+. + Euro support.
+. + Updated RFC 1345 set of tables, from Keld Simonsen.
+. + Some African charsets and transliterated forms.
+. + Conversions for ISO 10646 and Unicode.
+. + Combining or explosion of UCS-2 diacriticized characters and ligatures.
+. + Implementation of surfaces, see `Surfaces & aliases' below.
+. + Mixed mode for recoding only comments and strings in C sources or PO files.
+. + A stand-alone recoding library gets installed, often as a shared library.
+. + Option --find-subsets (-T) lists charsets which are subsets of another.
+. + The library may generate testing data, and study character frequencies.
 
-* None.
+.* Charsets & aliases
 
-Version 3.2.3 - September 1992, by Franc,ois Pinard
+. + New ISO 10646 and Unicode charsets
+.  - combined-UCS-2: pseudo-charset.
+.  - count-characters: pseudo-charset.
+.  - dump-with-names: pseudo-charset.
+.  - ISO-10646-UCS-2: aliases are UNICODE-1-1, BMP, rune and u2.
+.  - ISO-10646-UCS-4: aliases are 10646, ISO-10646, UCS-4 and u4.
+.  - UNICODE-1-1-UTF-7: aliases are TF-7 and u7.
+.  - UTF-8: aliases are UTF-2, UTF-FSS, FSS_UTF, TF-8 and u8.
+.  - UTF-16: aliases are Unicode, TF-16 and u6.
 
-* New -d `diacritics_only' option for LaTeX.
-* A few bugs have been corrected.
-* Documentation reorganization and improvements.
-* Increased portability, now uses Autoconf.
-* A few bugs solved.
+. + RFC 1345.bis matters
+.  - Deleted charsets
+     dk-us, us-dk (because of &duplicate which `recode' does not handle yet).
+.  - New charsets
+     baltic (alias is iso-ir-179); CP1250 (1250, ms-ee, windows-1250);
+     CP1251 (1251, ms-cyrl, windows-1251); CP1252 (1252, ms-ansi, windows-1252);
+     CP1253 (1253, ms-greek, windows-1253);
+     CP1254 (1254, ms-turk, windows-1254); CP1255 (1255, ms-hebr, windows-1255);
+     CP1256 (1256, ms-arab, windows-1256);
+     CP1257 (1257, WinBaltRim, windows-1257);
+     CWI (CWI-2, cp-hu); EBCDIC-IS-FRISS (friss);
+     GOST_19768-87 with aliases of previous GOST_19768-74;
+     IBM256 (256, CP256, EBCDIC-INT1); IBM875 (875, CP875, EBCDIC-Greek);
+     IBM1004 (1004, CP1004, os2latin1); IBM1047 (1047, CP1047);
+     ISO-8859-13 (ISO_8859-13:1998, iso-baltic, iso-ir-179a, l7, latin7);
+     ISO-8859-14 (ISO_8859-14:1998, iso-celtic, iso-ir-199, l8, latin8);
+     ISO-8859-15 (ISO_8859-15:1998, iso-ir-203, l9, latin9);
+     KOI-7; KOI-8 (GOST_19768-74); KOI8-R; KOI8-RU; KOI8-U;
+     macintosh_ce (macce); mac-is;
+     NeXTSTEP (next) yet previous `recode' had it outside RFC 1345.
+.  - Alias promoted to charset (with previous charset becoming alias)
+     ISO-646.basic (with ISO-646.basic:1983); ISO-646.irv (ISO-646.irv:1983);
+     ISO_5427-ext (ISO_5427:1981); ISO_5428 (ISO_5428:1980);
+     ISO-8859-1 (ISO_8859-1:1987); ISO-8859-2 (ISO_8859-2:1987);
+     ISO-8859-3 (ISO_8859-3:1988); ISO-8859-4 (ISO_8859-4:1988);
+     ISO-8859-5 (ISO_8859-5:1988); ISO-8859-6 (ISO_8859-6:1987);
+     ISO-8859-7 (ISO_8859-7:1987); ISO-8859-8 (ISO_8859-8:1988);
+     ISO-8859-9 (ISO_8859-9:1989); ISO-8859-10 (latin6);
+     NC_NC00-10 (NC_NC00-10:81); sami (latin-lap).
+.  - New aliases
+     037 (for charset IBM037); 038 (IBM038); 273 (IBM273); 274 (IBM274);
+     275 (IBM275); 278 (IBM278); 280 (IBM280); 281 (IBM281); 284 (IBM284);
+     285 (IBM285); 290 (IBM290); 297 (IBM297); 367 (ANSI_X3.4-1968);
+     420 (IBM420); 423 (IBM423); 424 (IBM424); 500, 500V1 (IBM500);
+     819 (ISO-8859-1); 864 (IBM864); 868 (IBM868); 870 (IBM870);
+     871 (IBM871); 880 (IBM880); 891 (IBM891); 903 (IBM903); 905 (IBM905);
+     912, CP912, IBM912 (ISO-8859-2); 918 (IBM918); 1026 (IBM1026);
+     ECMA-113, ECMA-113:1986 (ECMA-Cyrillic); GOST_19768-74 (KOI8);
+     ISO_8859-N (ISO-8859-N) for N = 1 through 10 and 13 through 15;
+     ISO_8859-10:1993 (ISO-8869-10); iso-ir-170 (INVARIANT);
+     KOI8_L2 (CSN_369103); pclatin2, pcl2 (IBM852); SS636127 (SEN_850200_B).
 
-Version 3.2 - October 1991, by Franc,ois Pinard
+. + New African charsets
+.  - AFRL1-101-BPI_OCIL: aliases are t-francais and t-fra.
+.  - AFRFUL-102-BPI_OCIL: aliases are bambara, bra, ewondo and fulfulde.
+.  - AFRFUL-103-BPI_OCIL: aliases are t-bambara, t-bra, t-ewondo and t-fulfulde.
+.  - AFRLIN-104-BPI_OCIL: aliases are lingala, lin, sango and wolof.
+.  - AFRLIN-105-BPI_OCIL: aliases are t-lingala, t-lin, t-sango and t-wolof.
 
-* MSDOS port redone.
-* New check goal at installation time.
-* Add -v option for verbose processing, remove old -q.
-* Add -i, -o and -p for letting the user control the strategy.
-* A few bugs corrected.
-* Embedded NULs should now be transmitted.
+. + Extra miscellaneous charsets
+.  - KEYBCS2, Kamenicky.
+.  - CORK, T1.
+.  - KOI-8_CS2.
 
-Version 3.1 - March 1990, by Franc,ois Pinard
+. + New HTML pseudo-charsets
+.  - HTML_1.1: alias is h1.
+.  - HTML_2.0: aliases are RFC 1866, 1866 and h2.
+.  - HTML-i18n: alias is RFC 2070.
+.  - HTML_3.2: reimplemented; alias is h3.
+.  - HTML_4.0: aliases are h4, HTML and h.
+.  - Deleted aliases: HTF, 8859, ISO 8859, Entities, SGML, WWW, w3.
 
-* Rename -V to -C for showing Copyright.
-* Calling sequence changed, said files now recoded on themselves.
-* Add -t option for touching files.
-* Better on-line help.
+.* Surfaces & aliases
 
-Version 3.0.1 - February 1990, by Franc,ois Pinard
+. + New MIME encoding surfaces
+.  - Base64: aliases are 64 and b64.
+.  - Quoted-Printable: aliases are qp and Quote-Printable.
 
-* Add -q option for quiet processing.
-* Executable file now considerably smaller, also speedier.
-* A few bugs corrected.
+. + New permutation surfaces
+.  - 21-Permutation: alias is swabytes.
+.  - 4321-Permutation.
 
-Version 3.0 - October 1989, by Franc,ois Pinard
-* New Text to Latin1 processing, should be faster.
-* A few bugs corrected.
+. + New end of line surfaces
+.  - CR.
+.  - CR-LF: alias is cl.
 
-For prior history down to 1980, see at the end of the ChangeLog.
+. + New (fully reversible) dump surfaces
+.  - Decimal-1: aliases are d and d1.
+.  - Decimal-2: alias is d2.
+.  - Decimal-4: alias is d4.
+.  - Hexadecimal-1: aliases are x and x1.
+.  - Hexadecimal-2: alias is x2.
+.  - Hexadecimal-4: alias is x4.
+.  - Octal-1: aliases are o and o1.
+.  - Octal-2: alias is o2.
+.  - Octal-4: alias is o4.
+
+. + New miscellaneous surfaces.
+.  - data, test7, test8, test15, test16.
+
+* Version 3.4 - François Pinard, 1994-11.
+
+.* Charset HTML is new, it handles `&...;' sequences for Latin-1.
+.* Charset AtariST handling is more general, --list may be used with it.
+.* Charset ASCII-BS overstriking has been extended, mainly for German.
+.* Charset RFC1345 may be a goal, to debug or study RFC 1345 short names.
+.* Charset names have been revised.  Note that nextstep is now NeXT.
+.* Option --force (-f) is accepted, but does not yet protect reversibility.
+.* Option --quiet or --silent (-q) silences irreversible recoding messages.
+.* Option --known=PAIRS (-k) helps searching through recodings.
+.* Option --sequence=pipe (-p) does not fall back on -o anymore.
+.* Option --auto-check may narrow its study around one particular charset.
+.* An MSDOS port is available, check ftp.iro.umontreal.ca in pub/gnuish.
+.* Compilation should now succeed on OS/2 EMX.  Thanks to Kai Uwe Rommel.
+.* Program initialization is almost three times faster on average.
+.* Corrected reported bugs, added small improvements, some aesthetic.
+
+* Version 3.3 - François Pinard, 1993-12.
+
+.* Charsets atarist, ebcdic-ccc, ebcdic-ibm and nextstep have been added.
+.* Also, most RFC 1345 charsets and aliases are handled.  That's a bunch!
+.* Old ascii disappears because of RFC 1345's ascii, use ascii-bs instead.
+.* Old maci disappears because of RFC 1345's macintosh, use applemac instead.
+.* Charsets cccascii and cdcascii disappear, use ebcdic-ccc and ebcdic instead.
+.* Recoding between latin1, ibmpc and applemac is (almost) reversible.
+.* The texinfo documentation has been reorganized, this to be continued.
+.* Long options are accepted, charset names may be abbreviated.
+.* Option --list (-l) displays charsets, aliases and contents in many formats.
+.* Option --strict (-s) asks for stricter, non-reversible recodings.
+.* Option --graphics (-g) approximates ibmpc rulers with ASCII graphics.
+.* Option --header (-h) produces C source for many recoding tables.
+.* Option --auto-check (-a) reports about all possible recodings.
+.* Option --ignore (-x) prevents a charset from being selected.
+.* Execution has been sped up through step merging, hashing for charset names.
+.* Many various buglets have been eradicated, portability increased.
+.* Charsets may be edited out by modifying the Makefile only.
+.* Configuration is made through the use of an external config.h file.
+
+* Version 3.2.4 - François Pinard, 1992-10.
+
+.* None.
+
+* Version 3.2.3 - François Pinard, 1992-09.
+
+.* New -d `diacritics_only' option for LaTeX.
+.* A few bugs have been corrected.
+.* Documentation reorganization and improvements.
+.* Increased portability, now uses Autoconf.
+.* A few bugs solved.
+
+* Version 3.2 - François Pinard, 1991-10.
+
+.* MSDOS port redone.
+.* New check goal at installation time.
+.* Add -v option for verbose processing, remove old -q.
+.* Add -i, -o and -p for letting the user control the strategy.
+.* A few bugs corrected.
+.* Embedded NULs should now be transmitted.
+
+* Version 3.1 - François Pinard, 1990-03.
+
+.* Rename -V to -C for showing Copyright.
+.* Calling sequence changed, said files now recoded on themselves.
+.* Add -t option for touching files.
+.* Better on-line help.
+
+* Version 3.0.1 - François Pinard, 1990-02.
+
+.* Add -q option for quiet processing.
+.* Executable file now considerably smaller, also speedier.
+.* A few bugs corrected.
+
+* Version 3.0 - François Pinard, 1989-10.
+
+.* New Text to Latin1 processing, should be faster.
+.* A few bugs corrected.
+
+* For prior history down to 1980, see at the end of the ChangeLog.

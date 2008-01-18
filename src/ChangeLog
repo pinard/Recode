@@ -1,0 +1,2962 @@
+1999-04-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* request.c (scan_charset): Ignore implied surfaces when the only
+	goal is making headers.
+	Reported by Laurent Bourbeau.
+
+1999-04-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Update copyright years.
+	Reported by Laurent Bourbeau.
+
+1999-04-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* combine.c: Document from a message.
+
+1999-03-29  Andreas Schwab  <schwab@issan.cs.uni-dortmund.de>
+
+	* atarist.c: Fix encoding table based on Omega (extended TeX with
+	Unicode) translation tables.
+
+1999-03-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ucs.c (module_ucs): Declare co as an alias for combined, so the
+	manual stays true.  count-characters was making it ambiguous.
+
+1999-03-16  Andreas Schwab  <schwab@issan.cs.uni-dortmund.de>
+
+	* combine.c (init_explode, init_combine): Return early if there is
+	no step table.
+
+1999-03-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* debug.c (produce_count): Use hash_insert as per last hash.[ch].
+	* combine.c (init_explode, prepare_shifted_state): Idem.
+	* html.c (init_ucs2_html, init_html_ucs2): Idem.
+	* names.c (find_symbol, declare_alias): Idem.
+	* recode.c (init_ucs2_to_byte): Idem.
+
+1999-03-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h: Work around EXIT_FAILURE being defined to zero on Sony
+	NEWS-OS Release 4.0C.
+	Reported by Akim Demaille.
+
+1999-01-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.c (list_all_charsets): Include implied surfaces in listing.
+	(compare_struct_symbol): Sort charsets before aliases.
+
+1999-01-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h: Rename struct recode_entry to recode_symbol, and
+	recode_outer field entry_table to symbol_table.  Also introduce
+	typedefs RECODE_SYMBOL and RECODE_CONST_SYMBOL.
+	* names.c: Adjusted.  Rename name_hasher to symbol_hasher,
+	name_comparator to symbol_comparator, prepare_for_names to
+	prepare_for_symbols, compare_struct_name to compare_struct_symbol,
+	many variables from entry to symbol.
+	* outer.c: Adjusted.
+
+	* recodext.h: Move field usual_surfaces from struct recode_charset
+	to struct recode_symbol, renaming it implied_surfaces.  Rename
+	function find_charset to find_symbol, enum charset_find_type to
+	symbol_find_type, CHARSET_ constants to SYMBOL_ constants, then
+	SYMBOL_FIND_OR_CREATE to SYMBOL_CREATE_CHARSET.
+	* request.c, main.c, names.c, outer.c, request.c: Adjusted.
+
+	* names.c (declare_implied_surface): Rename declare_usual_surface.
+	Directly accept a symbol and a surface instead of names.
+	* recodext.h: Adjusted.  Add crlf_surface and cr_surface to struct
+	recode_outer.
+	* outer.c: Initialize them.
+	* applemac.c, freeze.c, ibmpc.c, request.c: Adjusted.  Use them.
+
+1999-01-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ucs.c (get_ucs2): Skip byte order marks, and never return them to
+	the application.  Also skip swapped byte order marks once processed.
+	Only the initial byte order mark, swapped or not, was skipped.
+	* task.c (perform_memory_sequence, perform_pass_sequence): Reset the
+	swap_input field of subtask to RECODE_SWAP_UNDECIDED between passes.
+
+	* utf8.c (transform_utf8_ucs4): Parenthesize masking expressions,
+	because the & operator has less priority than ==.
+	Reported by Dominique Schmit.
+
+1999-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* debug.c (module_debug): Rename count to count-characters, and
+	full-dump to dump-with-names.
+	* ucs.c (module_ucs): Rename combined to combined-UCS-2.
+
+1999-01-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h (enum recode_step_type): Add RECODE_COMBINE_EXPLODE.
+	(struct recode_single): Add initial_step_table.
+	* outer.c (new_single_step): Initialise initial_step_table to NULL.
+	(declare_explode_data): Save the explode data in both created
+	single steps.  Do not save it to the charset, unless data is for
+	UCS-2 conversions.  Otherwise, two different exploding steps over
+	the same charset might compete while saving their data.
+	* request.c (add_to_sequence): Set step_table to initial_step_table.
+	If not NULL, set type to RECODE_COMBINE_EXPLODE.
+	* combine.c (init_combine, init_explode): Obtain the raw data from
+	the step structure, instead of from the before or after charset.
+	Reported by Laurent Bourbeau.
+
+	* recode.h: Typedef RECODE_OUTER, RECODE_REQUEST, RECODE_TASK,
+	RECODE_CONST_CHARSET and RECODE_CONST_REQUEST.  Rename _init_
+	functions to _new_, which return freshly allocated structures
+	instead of modifying statically allocated ones. Rename _term_
+	functions to _delete_, which free their argument.
+	* recodext.h: New installable include file for external programs
+	wanting to dynamically add new internal steps. Typedef
+	RECODE_CHARSET, RECODE_STEP, RECODE_OPTION_LIST,
+	RECODE_CONST_OUTER, RECODE_CONST_STEP, RECODE_CONST_TASK and
+	RECODE_CONST_OPTION_LIST.  Move all recode specific internal
+	definitions over from recode.h and common.h.
+	* common.h: Declare bool or include stdbool.h, now that recode.h
+	does not do it anymore.  Include redodext.h instead of recode.h.
+	* All: Adjusted to use the above changes, or comply with them.
+	* Makefile.am: Distribute and install recodext.h.
+
+	* debug.c (compare_item): Use const at proper level.
+
+	* varia.c: New name for cyrillic.c, as the contained tables
+	are not that Cyrillic, after all! :-)
+	(module_varia): New name for module_cyrillic.  Add LUKAS and
+	MARTIN parametrisation.  Use Kamenicky instead of KAMENICKY.
+
+1999-01-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* outer.c (declare_explode_data): New function.
+	* combine.c (init_explode, init_combine): Adjusted.
+	* ucs.c (init_combined_ucs2): Adjusted.
+	* common.h, african.c, cyrillic.c: Adjusted.
+
+	* debug.c: New name for fulldump.c.  Add test-7, test-8, test-15
+	and test-16 pseudo-surfaces.  Add count pseudo-charset.
+	* Makefile.am: Adjusted.
+
+1999-01-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* cyrillic.c: New file.
+	* combine.c (init_combine): Handle empty expansions.
+	* Makefile.am: Adjusted.
+	Reported by Lukas Petrlik and Martin Mares.
+
+	* outer.c (register_explode_data): New routine.
+	* african.c (module_african): Use it.
+	* names.c (list_full_charset_line): New function.
+	(list_full_charset): Use it.  Handle RECODE_EXPLODE_DATA case.
+
+	* Makefile.am: Adjusted to handle strip-pool.c and strip-data.c
+	instead of pool.c and tables.c.
+
+	* html.c: Some code was missing for HTML to UCS-2 recoding to work.
+	Reported by Ricard Torres.
+
+	* recode.h: Add enum recode_step_type.  Replace byte_to_byte and
+	byte_to_variable step fields with step_type and step_table.
+	* bangbang.c, cdcnos.c, ebcdic.c, ibmpc.c, lat1asci.c, lat1ltex.c,
+	lat1texi.c, lat1txte.c, recode.c, request.c, task.c: Adjusted.
+	* request.c (table_type): Rewritten to use the new enum
+	recode_step_type, instead of a local enum table_type.
+	* combine.c: Use step_table instead of local, in step fields.
+
+	* recode.h: Rename struct known_pair to recode_known_pair and enum
+	swap_input to recode_swap_input.  Rename struct ucs2_data_table to
+	strip_data, field table in recode_charset field to
+	charset_data, function declare_ucs2_data to declare_strip_data.
+	Delete the KNOWN_PAIR and UCS2_DATA_TABLE typedefs.
+	* applemac.c, atarist.c, common.h, freeze.c, ibmpc.c, names.c,
+	outer.c, recode.c, recode.h, request.c: Adjusted.
+
+	* names.c (name_for_argmatch): New name for cleanup_charset_name.
+	(disambiguate_name): New name for clean_charset_name, make it static.
+	* recode.h: Do not declare clean_charset_name.
+
+	* utf8.c (transform_ucs4_utf8) [!HANDLE_32_BITS]: If bit 2^31 is
+	set, output nothing, as invalid input is not a character.
+	[HANDLE_32_BITS]: Output a 7 byte UTF-8 like sequence.
+	(transform_utf8_ucs4): Do not infloop on invalid byte.
+	Reorganise code so output may be inhibited on invalid input.
+	Reported by Andreas Schwab.
+
+1999-01-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_outer): Parallel the argmatch arrays
+	with realname arrays.
+	* names.c (make_argmatch_walker_2): Build realname arrays as well.
+	(make_argmatch_arrays): Free argmatch items, allocate realname arrays.
+	(find_charset): When creating, save the real name, not the argmatch.
+	(declare_alias): Save the real name, not the argmatch.
+	(clean_charset_name): Return the real name instead of the argmatch.
+
+	* names.c (compare_strings): New function.
+	(compare_struct_name): Use it.
+	(list_all_charsets): Do not print charset names in list of aliases.
+	Reported by Laurent Bourbeau.
+
+	* html.c: Remove included space within RFC1866 and RFC2070 aliases.
+
+1999-01-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* african.c, fulldump.c, html.c, outer.c, rfc1345.c, ucs.c, utf16.c,
+	utf7.c, utf8.c: Use ISO-10646-UCS-2 and ISO-10646-UCS-4, previous
+	UCS-2 and UCS-4 become aliases.
+	* utf7.c: Use UNICODE-1-1-UTF-7, previous UTF-7 becomes an alias.
+	* ucs.c: Add UNICODE-1-1 as an alias for UCS-2.
+
+1998-12-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (outer.o): Depend on stamp-steps, so parallel makes
+	rebuild decsteps.h and inisteps.h in time for compiling outer.c.
+
+	* names.c (clean_charset_name): Use DEFAULT_CHARSET in environment.
+	* main.c (usage): Tells about DEFAULT_CHARSET.
+
+1998-12-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* afrsort.c: Deleted, the experiment is driven elsewhere.
+	* Makefile.am (C_STEPS): Adjusted.
+
+1998-12-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (task_perror): Correct typo in message.
+	Reported by Martin Mares.
+
+1998-12-25  Andreas Schwab  <schwab@issan.cs.uni-dortmund.de>
+
+	* combine.c (combine_byte_byte): Read bytes, not UCS2 codes.
+
+1998-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* fulldump.c: New module.
+	* Makefile.am: Adjusted.
+	Reported by Roman Czyborra.
+
+	* names.c (list_full_charset): Select language for charname output.
+	* fr-charname.c: New module, adapated from charname.c.
+	* Makefile.am, common.h: Adjusted.
+
+1998-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.c (make_argmatch_arrays): Free previous arrays if any.
+
+1998-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* html.c: Delete HTF and Entities as aliases.
+
+	* recode.c (recode_error): Deleted; then new name for recode_warn.
+	(recode_perror): New function.
+	* common.h: Adjusted.  Delete RECODE_IO_DEBUG related code.
+	(PERROR, PERROR1, PERROR2): Deleted, as recode_perror now exists.
+	* mixed.c, recode.c, request.c, task.c: Adjusted.
+	* main.c (main): Directly call error, rather than PERROR macros.
+	(error_print_prefix): Deleted, and so for error_{file,line}_reference.
+
+	* argmatch.c, argmatch.h, hash.c, hash.h: Moved in from lib, so
+	the recode library has these.
+	* Makefile.am: Adjusted.
+
+1998-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* african.c: Rewritten to take better advantage of combining UCS-2.
+	* afrtran.c: Also part of rewriting to handle transliterations.
+	* afrsort.c: New file, this is for some unrelated experiments.
+	* african.h, afrful.l, afrl1.l, afrlin.l: Deleted.
+	* Makefile.am: Adjusted.
+
+	* main.c (main): Properly follow the chain of singles when
+	strict mode gets installed, so avoiding an infinite loop.
+
+1998-12-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (long_options): Recognise --find-subsets, it was missing.
+
+	* combine.c: New file.
+	* Makefile.am, common.h: Adjusted.
+	* ucs.c: Declare combining_data.
+	(init_combined_ucs2, init_ucs2_combined): New functions.
+	(module_ucs): Introduce combined as a charset.
+
+	* common.h: Rename GET_BYTE and PUT_BYTE to get_byte and put_byte.
+	* All callers adjusted.
+
+1998-12-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* outer.c (register_all_modules): Write ISO-8859-1 instead of
+	ISO_8859-1, so the -l sorted listing looks better.
+	* afrl1.l (module_l1): Idem.
+	* african.h (declare_jucas): Idem.
+	Reported by Laurent Bourbeau.
+
+1998-11-24  Eli Zaretskii  <eliz@is.elta.co.il>
+
+	* main.c (main) [DOSWIN_OR_OS2]: Use getpid to construct temporary
+	file name in the DJGPP version.
+
+	* task.c (perform_memory_sequence): Copy error information from
+	the subtask to the parent task.
+	(perform_pass_sequence): Likewise.
+	(L_tmpnam): Define only if not defined, e.g., by <stdio.h>.
+	(DOSWIN_OR_OS2): Letter-case change (was DOSWIN_or_OS2).
+	[DOSWIN]: Include headers that declare O_BINARY and friends.
+	(recode_perform_task) [DOSWIN_OR_OS2]: Don't switch console device
+	to binary mode.  Move case RECODE_SEQUENCE_WITH_PIPE before
+	RECODE_SEQUENCE_WITH_FILES, so that system which do not HAVE_PIPE
+	fall back on files.
+
+1998-11-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Implement --source=PO.
+	(transform_c_source): Moved into mixed.c.
+	(usage): Adjusted to mention PO as a possible language.
+	* mixed.c: New file.
+	(transform_po_source): New function.
+	* common.h: Add prototypes for mixed.c.
+	* Makefile.am (recode_SOURCES): Add mixed.c.
+
+1998-11-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h: Define DOSWIN and DOSWIN_OR_OS2 appropriately.
+	* task.c: Change MSDOS to DOSWIN and MSDOS_OR_OS2 to DOSWIN_OR_OS2.
+	* main.c: Idem.  Also remove old Borland compatibility code.
+	Reported by Eli Zaretskii.
+
+1998-11-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h: Do not use pipes on Amiga.
+	Reported by Stefan Haubenthal.
+
+	* common.h: Declare recode_freeze_tables.
+	Reported by Stefan Haubenthal.
+
+1998-11-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h: Declare errno.  Use error.h instead of prototypes.
+	* main.c, recode.c: Do not declare errno.
+
+	* outer.c, request.c, task.c: New files from parts of recode.c.
+	* Makefile.am, common.h, recode.c: Adjusted.
+
+1998-11-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.c: New name for charset.c.
+	* Makefile.am: Adjusted.
+	* names.c (prepare_for_names): New name for
+	prepare_charset_initialisation.
+	* common.h, recode.c (register_all_modules): Adjusted.
+
+	* recode.h: Declare recode_ucs2, use it.
+	* african.c, african.h, atarist.c, charname.h, charset.c,
+	common.h, freeze.c, html.c, recode.c, rfc1345.c: Use recode_ucs2.
+	Rename fields from ucs2 to code whenever possible.
+
+	* html.c: Merge of ucs2html.c and htmlucs2.l.
+
+	* htmlucs2.l, ucs2html.c: Deleted.
+	* Makefile.am: Adjusted.
+	Add L_SURFACES, H_FALLBACKS, C_FALLBACKS and L_FALLBACKS. Use them.
+
+1998-11-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ucs2html.c: Define V11, V20, V27, V32, V40 and ENTRY macros.
+	Use them while defining HTML initialisation tables.
+	(init_ucs2_html): Add a mask argument, use it.
+	(init_ucs2_html_v11, init_ucs2_html_v20, init_ucs2_html_v27,
+	init_ucs2_html_v32, init_ucs2_html_v40): New functions.
+	(module_ucs2_html): Declare various HTML levels and related aliases.
+
+	* applemac.c, bangbang.c, cdcnos.c, ebcdic.c, ibmpc.c, lat1asci.c,
+	lat1ltex.c, lat1texi.c, lat1txte.c, recode.c, ucs2html.c: Rename
+	before and after to before_options and after_options.
+
+	* recode.c (edit_sequence): Allow printing data as charset.
+
+	* recode.h (struct recode_step): Add term_routine.
+
+	* recode.c (scan_charset, scan_unsurfacers): Diagnose unrecognised
+	surface names.
+
+1998-10-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (decode_known_pairs): Revised to use strtoul, so
+	allowing octal and hexadecimal input, not only decimal.
+
+1998-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_outer): Add quality_byte_to_ucs2,
+	quality_ucs2_to_byte, quality_ucs2_to_variable and
+	quality_variable_to_ucs2.
+	* recode.c (recode_init_outer): Adjusted.
+
+	* recode.c (ucs2_to_byte_hash, ucs2_to_byte_compare): New routines.
+	(init_ucs2_to_byte): New routine, preparing an hash table.
+	(transform_ucs2_to_byte): Hash lookups instead of linear searches.
+	(declare_ucs2_data): Manage so init_ucs2_to_byte will be called.
+
+	* All modules: Prefer unsigned, bool or size_t, try to avoid int.
+
+	* recode.h: Rename all variables names having one_to_one in them
+	to corresponding names with byte_to_byte, one_to_many to
+	byte_to_variable, many_to_one to variable_to_byte, many_to_many to
+	variable_to_variable, reversible to byte_reversible.  Similarily for
+	enum constants by such names, but capitalised.
+	* All modules: Adjusted.
+
+	* ucs2html.c: Use local in step, instead of a static variable.
+
+	* Makefile.am (main.o): Explicitly depend on common.h and
+	recode.h, as using an explicit rule defeats Automake dependencies.
+
+	* recode.h: Split struct recode_step into struct recode_single and
+	struct recode_step.  In recode_request, have the sequence array to
+	contain actual steps, instead of pointers to steps.
+	* main.c, recode.c: Adjusted.
+
+1998-10-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (scan_charset): Return options in the before charset.
+	(scan_request): Save returned options and reinject them.
+	Add some more error detection and reporting.
+
+	* recode.c (reversibility): New function, a dummy.
+	(new_single_step): Initialise fallback_routine.
+	* common.h: Declare reversibility.
+	* recode.h: Use typedefs for methods.
+	(recode_step): Declare fallback_routine.
+	(recode_outer): Add auto_reversibility, with the reverse meaning
+	of strict_mapping, which gets deleted.
+	* atarist.c, applemac.c, dynamic.c, endline.c, ibmpc.c, main.c:
+	Adjusted.
+
+	* recode.h (struct recode_outer): Rename hash_table to entry_table.
+	* recode.c (recode_term_outer): Adjusted.
+	* recode.h (struct recode_entry): New name for struct recode_hash.
+	Remove next field since new hash routines handle overflow entries.
+	* charset.c: Use new hash routines.  Old hashing code deleted.
+	(find_and_report_subsets):
+
+	* htmlucs2.l (module_html_ucs2), ucs2html.c (module_ucs2_html):
+	Remove www and w3 as aliases for html.
+	* dump.c (module_dump): Remove /h and /h1 as aliases for /x.
+	Remove /h2 as an alias for /x2.  Remove /h4 as an alias for /x4.
+
+1998-10-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Implement option -F, for experimenting.
+	* dynamic.c: New file.
+	* Makefile.am: Adjusted.
+
+1998-10-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mule.c: Implement Latin-2 correspondence, not only Latin-1.
+
+1998-10-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (main.o): Depend on config.status, for version.
+
+1998-10-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ucs2html.c: Corrected a comment from hybar to hibar.
+	Reported by Wiel Seuskens.
+
+	* htmlucs2.l: Accept &#XNNNN as well as &#xNNNN.
+	Reported by Martin J. Dürst.
+
+1998-10-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ucs2html.c: New file, adapted from lat1html.c.
+	Also generate decimal &NNNN; notation whenever needed.
+	* htmlucs2.l: New file, adapted from htmllat1.l.
+	Also accept the hexadecimal &#xNNNN; notation.
+	* lat1html.c, htmllat1.l: Deleted.
+	* Makefile.am: Adjusted.
+	Reported by Christian Rolland, Florian Oelmaier, Markus Kuhn and
+	Martin J. Dürst and Wiel Seuskens.
+
+1998-09-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* african.c (transform_juca_to_translit): Use get_ucs2, for
+	handling possible byte order marks in input stream.
+
+	* main.c: Do not let --strict imply --force anymore.
+	Unless --strict, ignore lack of canonicity.
+
+	* common.h: Include xalloc.h.
+	* main.c: Do not include xmalloc.h.
+
+	* recode.c (recode_init_task): Save task for later diagnostic.
+	* main.c (main): Change format for reporting task being in error.
+	(task_perror): Capitalize task error messages.
+
+1998-03-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* endline.c (transform_cr_data): Copy character after CR.
+
+1998-02-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (usage): Do not refer to -o, which does not exist anymore.
+	Reported by Laurent Bourbeau.
+
+1998-01-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mule.c (transform_mule_latin): Remove strings of prefixes which
+	occur in a row.  Emacs sometimes does such things, sadly enough.
+
+1998-01-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (task_perror): New function.
+	(main): Use it to explain the error more precisely.
+	* recode.h (struct recode_task): Add error_at_step field.
+	* ucs.c (get_ucs2, get_ucs4): Use a step argument.
+	* common.h: Prototypes adjusted.
+	(RETURN_IF_NOGO, SET_TASK_ERROR): Use a step argument.
+	* All callers changed.
+	Reported by Santiago Vila Doncel.
+
+1998-01-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h, main.c: Check for the MSDOS define, not __DJGPP__.
+
+	* charset.c (find_charset): Initialise the usual_surfaces field.
+
+	* utf16.c (transform_utf16_ucs2): Write the replacement character
+	in two bytes, not four.
+
+1998-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* african.h, african.c, afrful.l, afrl1.l, afrlin.l: New files.
+	* Makefile.am: Adjusted.
+
+1997-12-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (BUFFER_SIZE): Make it 16K.  On the stack even for MSDOS.
+	* main.c (_stklen): Make it 64K.
+	* (main): Delete ftime related code for Borland C, as the
+	supported MSDOS port is now for DJGPP.
+	* common.h [!__DJGPP__]: Define HAVE_PIPE.  This was once
+	autoconfigured, but DJGPP astonishingly offers a dummy pipe!
+	Reported by Eli Zaretskii.
+
+1997-12-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (edit_sequence): Do not check if last printed charset
+	is a surface, when there is no such last printed charset.
+
+1997-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* rfc1345.c: Use initialiser functions, and a local structure
+	containing the intro character.
+
+	* recode.c (scan_identifier): New name for scan_name.
+	(scan_options): New function, returning an option list.
+	(scan_unsurfacers, scan_charset): Use it.
+	(declare_step): Change prototype of initialisation function, so
+	they accept two option lists, one for before and another for after.
+	* recode.h (struct recode_option_list): New structure.
+	(struct recode_step): Add a local field.
+	* common.h (declare_step): Prototype adjusted.
+	* applemac.c, bangbang.c, cdcnos.c, ebcdic.c, ibmpc.c, lat1asci.c,
+	lat1html.c, lat1ltex.c, lat1texi.c, lat1txte.c: Adjusted.
+
+	* ibmpc.c (module_ibmpc): Properly set transform routines while
+	declaring steps.  They wrongly became NULL somewhere before 3.4f.
+
+1997-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (compare_struct_hash): Use if-tests for checking
+	packed bools, as doing arithmetic on them is not portable.
+	Reported by Eric Backus.
+
+	* charset.c (find_and_report_subsets): Ensure end of lines.
+	Reported by Andreas Schwab.
+
+1997-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h: Declare get_byte_helper and put_byte_helper, not
+	get_byte and put_byte, and get_byte_helper only when USE_HELPERS.
+	Reported by Eric Backus.
+
+1997-12-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (usage): Revise.
+
+	* main.c (main): Implement -f.  If not selected while recoding a
+	file over itself, abort recoding on first error, then discard the
+	temporary output file.
+
+1997-12-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* dump.c (module_dump): Return true if nothing fails!
+	Reported by Eric Backus.
+
+1997-12-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (get_byte_helper): New function.
+	* common.h: Introduce the USE_HELPERS switch, which may be used to
+	trade some speed to gain a bit of code space.  Currently unused.
+
+	* dump.c: Remove semicolons after TRANSFORM calls.
+
+	* recode.h: Get rid of all int's in favour of unsigned or size_t.
+	Reorganise structures a bit.
+
+1997-12-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mule.c: New file, implementing Latin-1 correspondence only.
+	* Makefile.am: Adjusted.
+
+	* recode.h: Replace enum recode_quality by a struct containing
+	two enum recode_size fields and a few flags.  Add preset qualities
+	in struct recode_outer to replace previous quality constants.
+	* All: Quality constants replaced to use the recode_outer fields.
+	* recode.c (estimate_step_cost): New function.
+	(recode_init_outer): Initialise preset qualities.
+
+1997-12-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_task, struct recode_step): For enum type
+	bitfields other than bool, allow one more bit for the sign, as the
+	HP/UX 10.20 compiler generates spurious sign extension.  Such
+	created negative values do not compare well with enum constants.
+	Reported by Eric Backus.
+
+	* ucs.c (get_ucs2): Read middle stream byte order marks as
+	perfectly valid, transmitted zero-width non-breaking spaces.
+	Reported by Martin J. Dürst.
+
+	* charset.c (find_and_report_subsets): New function.
+	* common.h: Add prototype.
+	* main.c: Implement --find-subsets option, also -T.
+
+1997-12-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Replace show_restricted_charsets, a flag, by the string
+	charset_restrictions, because decoding -k value should be delayed
+	to after the library has been initialised.  Remainder adjusted.
+
+	* main.c (transform_c_source): New function.
+	(main, long_options, usage): Implement --source option.
+	* recode.h (struct recode_task): Add byte_order_mark field.
+	* ucs.c (get_ucs2): Do not require an initial byte order mark
+	unless byte_order_mark is true.
+	* utf7.c (transform_utf7_utf16): Do not generate an initial byte
+	order mark unless byte_order_mark is true.
+	* utf16.c (transform_ucs4_utf16, transform_utf16_ucs2): Idem.
+	* recode.c (transform_one_to_ucs2): Idem.
+	(perform_memory_sequence, perform_pass_sequence): Let subtask
+	inherit byte_order_mark flag from task.
+	(recode_init_task): Initialise byte_order_mark to true.
+	Reported by Mikko Silvonen.
+
+1997-12-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_request): Delete force_flag.
+	* main.c (main): Raise error threshold if -f is specified.
+	Reported by David E. A. Wilson and Hilmar Schlegel.
+
+	* main.c (usage): Clarify the mandatory/optional clause.
+	Reported by Daniel Quinlan.
+
+	* recode.c (register_all_modules): Declare ISO-8859-1 instead as
+	ISO-8859-1:1987, the later now being an alias of the former.
+
+	* common.h: Include previous contents of ucs.h.
+	* recode.c, ucs.c, utf16.c, utf7.c, utf8.c: Do not include ucs.h.
+	* ucs.h: File deleted.
+	* Makefile.am: Adjusted.
+
+	* rfc1345.c (ucs2_to_rfc1345): Clean up.
+	(rfc1345_to_ucs2, transform_ucs2_to_rfc1345,
+	transform_rfc1345_to_ucs2, module_rfc1345): New routines.
+	* Makefile.am (C_STEPS): Include rfc1345.c.
+	Reported by Keld Jørn Simonsen and Roman Czyborra.
+
+1997-12-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Declare struct recode_surface_list, then add a
+	usual_surfaces field to struct recode_charset.
+	* recode.c (scan_request): Handle the usual_surfaces field.  Also,
+	if only a charset is given in a subrequest, without any .., then
+	imply a recoding to the default charset.
+	(scan_check_if_last_charset): Rewritten simpler.  Merely search
+	for a textual , or .. instead of really scanning the structure.
+	(edit_sequence): Append a slash after charsets which have usual
+	surfaces, when no surface is used for them.
+	* charset.c (declare_usual_surface): New function.
+	* common.h: Declare its prototype.
+	* applemac.c: Revise to depend on auto_cr, which is const to false.
+	* ibmpc.c: Revise to depend on auto_crlf, which is const to false.
+	Reported by Hennus Bergman.
+
+	* recode.c (simplify_sequence): Echo sequence before
+	simplification as well, not only after simplification.
+	(recode_scan_request): Do not echo the sequence, call
+	simplify_sequence instead.
+	(decode_request): Do not call simplify_sequence.
+
+	* main.c: Delete -a option and auto_check_flag.
+	* recode.c (print_truncated_charset_name, recode_auto_check_one,
+	recode_auto_check): Deleted.
+	* recode.h (recode_auto_check): Prototype deleted.
+
+	* charset.c (list_all_charsets): Exclude ignored charsets.
+
+1997-12-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (list_full_charset): Better align columns after
+	mnemonics.  Also give UCS-2 values in hexadecimal.
+	(list_concise_charset): Better align columns, and attempt some
+	elimination of trailing whitespace.  Handle missing values.
+
+	* common.h: Define __P to PARAMS if not defined.
+	Reported by Erick Branderhorst.
+
+1997-11-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* endline.c: New file.
+	* Makefile.am (C_SURFACES): Adjusted.
+	Reported by Hennus Bergman, Liisa R{ih{ and Ulrich Windl.
+
+	* dump.c (undump): Rename is_short to last_is_short, and rename
+	and inverse no_comma into comma_on_last.  Initialise it so empty
+	files will not be rejected as not canonical.
+
+	* ucs.h, ucs.c: New files.
+	* recode.c, utf7.c, utf8.c, utf16.c: Use them.
+	* recode.h (struct recode_task): Add swap_input enum and field.
+	* recode.c (recode_init_task): Initialise swap_input.
+	* common.h (SET_TASK_ERROR): New, to replace IS_NOGO.
+	* recode.c (transform_one_ucs2): Output BYTE_ORDER_MARK.
+	* utf7.c (transform_utf7_utf16): Output BYTE_ORDER_MARK.
+	* utf16.c (transform_ucs2_utf16, transform_ucs4_utf16,
+	transform_utf16_ucs2): Output BYTE_ORDER_MARK.
+	(module_utf16): Do not declare UCS-2 and UCS-4, now done in ucs.c.
+	* Makefile.am, common.h: Adjusted.
+	Reported by Duane Ellis.
+
+	* utf16.c (module_utf16): Make Unicode an alias for UTF-16 instead
+	of an alias for UCS-2.
+	Reported by Ulrich Drepper.
+
+1997-11-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* utf16.c (transform_ucs4_utf16): Report ambiguous output
+	rather than invalid input, when within reserved UTF-16 range.
+	(transform_utf16_ucs4): Report invalid chunks as such.
+	Reported by Keld Jørn Simonsen and Martin J. Dürst.
+
+	* utf16.c (transform_ucs2_utf16, transform_ucs2_utf16): New.
+	(module_utf16): Adjusted.  Declares aliases of UCS-2 and UCS-4.
+	* utf8.c (transform_utf8_ucs2): Deleted, to force through UTF-16.
+	(module_utf8): Adjusted.  Do not declare aliases of UCS-2 and UCS-4.
+	* utf7.c (transform_utf16_utf7, transform_utf7_utf16): New
+	names for transform_ucs2_ucs7 and transform_utf7_usc2.
+	(module_utf7): Manage though UTF-16, instead of through UCS-2, for
+	getting in or out of UTF-7.  However, allow UCS-2 in directly.
+
+	* All (main.c excepted): Use the LGPL instead of the GPL.
+	Reported by Ulrich Drepper.
+
+	* quoted.c (transform_data_quoted_printable): An incomplete last
+	line is not an error, just use `=' at end of last generated line.
+	Reported by Nathaniel Borenstein.
+
+1997-11-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Detect old syntax, then warn and rewrite the
+	request.  Move variables to local blocks, rename them for clarity.
+	* recode.c: Be stricter about syntax, do not check for the old one.
+
+	* permut.c: New file.
+	* Makefile.am: Adjusted.  Introduce H_SURFACES and C_SURFACES.
+
+1997-11-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* dump.c: New file.
+	* Makefile.am (C_STEPS): Adjusted.
+	Reported by Markus Kuhn.
+
+1997-11-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (enum recode_error): New.
+	(struct recode_task): Add fail_level, abort_level and error_level.
+	* common.h (IS_NOGO, TASK_RETURN, RETURN_IF_NOGO): New macros.
+	* All: Use them.
+
+1997-11-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.c: Rename char_to_value to base64_char_to_value, and make
+	it global, not static.  Declare and preset base64_char_to_value.
+	(transform_base64_data): Delete char_to_value and initialisation.
+	* base64.h, utf7.c: New files.
+	* Makefile.am: Adjusted.
+
+	* common.h: Define IS_ASCII.
+	* base64.c, flat.c: Use it.  Also use IS_BASE64.
+
+	* common.h: Define NUL.
+	* All: Use it instead of `\0'.
+
+1997-11-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (edit_sequence): Rewritten.
+	(recode_scan_request): Echo the full sequence.
+	(find_sequence): Don't, as the sequence is only partial.
+
+	* recode.h: Include <stdbool.h> or use a replacement.
+	* All, Makefile.am, mergelex.awk: Use bool, false and true.
+
+1997-11-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_outer):  Replace charset_array by
+	charset_list and single_step_array by step_list.  Delete
+	single_step_allocated.  Rename number_of_single_steps to
+	number_of_steps.
+	(struct recode_charset): Add next and ordinal fields.
+	(struct recode_step): Add a next field.
+	* charset.c: Delete MAX_CHARSETS and so, any preset maximum.
+	* charset.c, recode.c: Adjusted consequently.
+
+1997-11-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Introduce data_charset.
+	* recode.c (recode_declare_surface): Deleted.
+	* common.h: Adjusted.  (IS_CHARSET, IS_SURFACE): New macros.
+	* charset.c (make_argmatch_arrays, list_all_charsets): Use them.
+	* recode.c (recode_declare_step): Set charset_flag for both
+	charsets only if neither was data_charset.  Else, save the step as
+	the surfacer or unsurfacer of either charset, as appropriate.
+
+	* recode.c (scan_request): Diagnose if .. is missing in a request.
+	* main.c (main): Diagnose an undeciphered request.
+
+	* recode.c (perform_pipe_sequence): Use the MASK macro, instead of
+	its expansion.
+	* flat.c (transform_ascii_flat): Idem.
+
+1997-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (register_all_modules): Preset l1 to ISO_8859-1:1987,
+	in view of a few incoming African charsets.
+
+	* recode.c (table_type): New name for simplify_type, return an
+	enum instead of an int.  Callers ajusted.
+	(simplify_sequence): Initialise the permutation accumulator with
+	the first one-to-one table, not with zero.  Idem for step quality.
+
+1997-10-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* htmllat1.l (module_html_latin1), lat1html.c (module_latin1_html):
+	Delete 8879, ISO 8879 and SGML as aliases for HTML, as this is wrong.
+	Reported by Ulrich Drepper.
+
+	* recode.h: Implement a recode_outer structure.
+	* recode.c: Implement recode_warn and recode_error.
+	* common.h: Adjusted.  Also declare ALLOC and ALLOC_SIZE.
+	* All: Modified to use the above -- that's a lot of changes.  Get
+	most functions to return a failure indication, instead of aborting.
+	Reported by Ulrich Drepper.
+
+1997-10-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (complete_double_ucs2_step): qsort wants size_t for the
+	number of items to sort, so just declare the count that way.
+
+1997-10-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* All: Replace `and usages' by `and surfaces', then encoding and
+	decoding, the recode_charset fields, by resurfacer and unsurfacer.
+	Replace all other encoding and ENCODING by surface and SURFACE.
+
+1997-10-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (usage): Explain what the program does.
+
+1997-09-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Include errno.h to declare errno.
+	Reported by Andreas Mueller, Larry W. Virden, Santiago Vila Doncel
+	and Ulrich Drepper.
+
+1997-09-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct recode_charset): Use const for the table field.
+	* recode.c: Ajudsted.
+	* common.h: Adjusted.
+
+	* recode.h: Rename charset_clean to charset_find_type, then
+	CLEAN_ALREADY, CLEAN_AS_CHARSET, CLEAN_AS_ENCODING and
+	CLEAN_AS_EITHER respectively to CHARSET_FIND_OR_CREATE,
+	CHARSET_FIND_AS_CHARSET, CHARSET_FIND_AS_ENCODING and
+	CHARSET_FIND_AS_EITHER.  All usages adjusted.
+	* recode.c (scan_charset): find_charset may return NULL.
+
+1997-09-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c, recode.c, recode.h: Remove popen support.
+
+1997-09-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Add Task as a last argument to GET_BYTE, PUT_BYTE and
+	PUT_NON_DIACRITIC_BYTE, do not just imply task.  Callers changed!
+
+	* main.c (main): Report progress when in verbose mode.
+	* recode.c (recode_perform_task): Don't.
+
+	* recode.h: Move strategy from recode_request to recode_task.
+	* recode.c (recode_init_task, recode_term_task): New routines.
+	* main.c, recode.c: Adjusted.
+
+1997-09-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* common.h [INLINE_HARDER]: Replacement for !USE_FPUTC.
+
+	* recode.h: Better pack a few structures.
+
+1997-09-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charname.pl, rfc1345.pl: Moved over to doc/.
+	* Makefile.am: Simplified accordinly.  Perl now done in doc/.
+
+	* Makefile.am (decsteps.h, inisteps.h): Use $(srcdir) in goals, so
+	dependencies are triggered.
+
+1997-09-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Implement STRIP_SIZE and a local pool for each table.
+	* common.h: Declare ucs2_data_pool.
+	* charset.c (list_concise_charset): Use it.
+	* recode.c (complete_double_ucs2_step):  Use it.
+	* atarist.c, next.c: Use the new scheme.
+
+	* Makefile.am (pool.c, tables.c): Copy from $(srcdir)/doc, and use
+	them instead of older charset1.c and charset2.c, now obsolete.
+	Adjust remainder accordingly.
+	(rfc1345.h): Prefix goal by $(srcdir).
+
+	* charname.pl, rfc1345.pl: Read codes as hexadecimals, print them
+	that way.  Sort numerically instead of lexicographically.
+	Rename some of $code to $ucs2.
+
+1997-07-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Declare stamp_utime as struct utimbuf, instead
+	of an array of two time_t's.  Either include utime.h or declare
+	struct utimbuf.
+
+	* main.c (usage): Make it static.  Accept a list argument, instead
+	of relying on global decode_charset_flag, which disappears.
+	* charset.c (decode_known_pairs): Return an error status if any
+	decoding error, do not call usage directly.
+	(find_charset): Accept a clean argument.  All callers adjusted,
+	they do not anymore always call clean_charset_name explicitely.
+	(clean_charset_name): Accept a clean argument instead of an int.
+	Return NULL is clean does not succeeed, do not call usage directly.
+	All callers adjusted.
+	* main.c (main): Check the return status of decode_known_pairs and
+	issue an usage message if there were errors.
+	* common.h: Declarations adjusted.
+
+	* Makefile.am (stamp-steps): Replace stamp-init.  Now generate
+	decsteps.h for prototypes, then inisteps.h for calls, instead of
+	stepinit.h.  Distribute those new files.
+
+1997-07-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (recode_auto_check, recode_auto_check_one): Renamed
+	from perform_auto_check and perform_auto_check_one.
+	(recode_format_table): Renamed from output_header_file.
+	(recode_perform_task): Renamed from execute_sequence.
+	(perform_memory_sequence): New routine.
+	* Everywhere, renaming of file_ functions into transform_, renaming
+	of all fields bearing functions so they have a _routine suffix.
+
+	* recode.h: Add RECODE_SEQUENCE_IN_MEMORY.
+
+1997-07-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.awk: Do not define the output macro, it is unused.
+	* recode.h [FLEX_SCANNER]: Define a special PUT_BYTE version.
+
+	* main.c: Split out of recode.c, the later to go in librecode.a.
+	* common.h: Split out of recode.h, the later to be installed.
+	* Makefile.am: Ajust accordingly.
+	* Includers of recode.h now includes common.h instead, except
+	recode.c which includes only recode.h only, being a mere
+	application of the library.
+
+	* A lot of massaging everywhere for implementing new struct
+	recode_request, recode_input_text, recode_output_text and
+	recode_task.  Prefix many constants and tags by recode_ or
+	RECODE_ so they export more cleanly.
+
+	* recode.c (init_recode, term_recode, recode_init_request,
+	recode_term_request, recode_scan_request,
+	recode_buffer_to_buffer, recode_buffer_to_file,
+	recode_file_to_buffer, recode_file_to_file,
+	recode_string_to_buffer, recode_string_to_file,
+	recode_string_to_string): New functions.
+	* recode.h: Adjusted.
+
+	* recode.c, recode.h, bangbang.c, cdcnos.c, flat.c, iconqnx.c,
+	quoted.c, base64.c, utf16.c, utf8.c, ibmpc.c: Replace many
+	input_file and output_file collectively by task.
+	* mergelex.awk:  Modified accordingly.
+
+	* recode.c: Change syntax from : to .. for separating charsets.
+	(add_work_string_quoted): Deleted.
+
+	* charname.pl: Add backslashes into comments, because this is
+	how the name references look in tables.
+
+1997-06-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* utf8.c (module_utf8): Make rune an alias for UCS-2.
+
+1997-06-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* htmllat1.l, lat1html.c: Prefer &macr to &hybar, per RFC 1866.
+	Reported by Jacques Madelaine.
+
+1997-04-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Change bug reporting address.
+
+1997-04-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Add a missing quote in the help string.
+	Reported by Niels Kr. Bech Jensen.
+
+1997-02-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (list_full_charset): Correctly check the return value
+	of code_to_ucs2.
+	* rfc1345.pl: Normalise all hex codes to upper case, so they get
+	properly sorted in the generated table.
+	Reported by Andreas Schwab.
+
+	* Makefile.am (EXTRA_DIST): Also include what was BUILT_SOURCES.
+
+	* charname.pl: Introduce MAX_MNEMONIC_LENGTH and use it.  Renamed
+	UNICODE to MNEMONICS and unicode to ucs2. Correct bugs about the
+	merging continuation lines from rfc1345.txt.  Protect double
+	quotes in generated strings.
+	* rfc1345.pl: Introduce MAX_MNEMONIC_LENGTH and use it.  Renamed
+	UNICODE to MNEMONICS.
+
+1997-02-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Leave README-alpha to Automake 1.1l.
+	Add init-stamp, taken out of BUILT_SOURCES.
+	(LDADD): Use .o suffixes instead of $o.
+
+1996-10-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Update the localisation declaration block.
+	* recode.c (main): Update the localisation initialisation.
+	Reported by Erick Branderhorst, Niels Kr. Bech Jensen and Santiago
+	Vila Doncel.
+
+1996-09-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (find_sequence): Reset length_of_sequence to zero.
+	Reported by Andreas Schwab.
+
+	* atarist.c, next.c: Adjusted into using UCS-2 tables.
+	Reported by Andreas Schwab.
+
+	* charname.pl: Integrate charname.sed, accept rfc1345.txt as
+	argument, do not define f2 as florin, which f2 is not UCS-2.
+	* charname.sed: Deleted.
+	* Makefile.am: Adjusted.
+	Reported by Andreas Schwab.
+
+1996-09-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Add bug report address in --help output.
+	(decode_options): Add copyright and authors in --version output.
+
+	* recode.c (file_one_to_one): Use the table!
+
+1996-09-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1html.c (module_latin1_html): Declare RFC 1866 and 1866 as
+	aliases for HTML.
+	* htmllat1.l (module_html_latin1): Idem.
+	Reported by Arnaldo Mandel.
+
+1996-09-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (recode.o): Special rule for defining LOCALEDIR
+	flag, instead of having it defined on all compiles.
+
+1996-09-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am: Remove check related lines, moved over to tests/.
+
+1996-08-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (CHECKING): COPYING is in top_srcdir, not srcdir.
+	* checkit: Find config.h in some directory above.
+
+1996-08-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Declare enum programming_language.
+	* recode.c: Accept and decode a programming language with -h.
+	Only C and Perl are accepted so far.
+	(output_header_file): Adjusted accordingly.
+	Reported by Erwan Mas.
+
+	* recode.c: Rename a few variables from *_mode into *_flag.
+
+1996-08-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (register_all_modules): Initialise ucs2_charset instead
+	of rfc1345.  Do not halve the cost anymore, since ucs2 is now a
+	genuine, full-fledged charset (yet the optimisations are retained).
+	(simplify_sequence): Require a table with ucs2 before simplifying.
+
+1996-08-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (code_to_ucs2): Function replacing code_to_symbol.
+	* charname.pl: Adjusted to read mnemonic.ds and mnemonic.ds2 and
+	insert the UCS-2 value rather than the RFC1345 symbol, as key.
+	Also rename HDR to HEADER.
+	* rfc1345.c (ucs2_to_rfc1345): New file and function.
+	* rfc1345.pl: New file, for generating rfc1345.h.
+	* recode.h: Rename DOUBLE_TABLE to UCS2_DATA_TABLE.  Rename
+	declare_double_step to declare_ucs2_data and remove the third
+	argument giving mnemonic size.
+	* recode.c (init_recode_rfc1345): Revise to use UCS-2 values
+	instead of symbol strings.
+	* atarist.c: Rename USE_DOUBLE_STEP to USE_RFC1345_STEP.
+	* atarist.c, next.c: Rename DOUBLE_TABLE to RFC1345_DATA_TABLE.
+	* all files: Better document RFC 1345 out of ISO 10646.  Adjust to
+	all previous changes.
+
+	* charset.c (make_argmatch_arrays): Use the proper counters in
+	the second pass, to get consistent arrays and avoid memory mangling.
+
+	* charset.c (list_all_charsets): Reset list_flag prior to the
+	whole loop, rather than within the loop near its beginning.
+
+	* Makefile.am: New file, replacing Makefile.in.
+
+1996-08-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.c, quoted.c: New files.
+	* Makefile.in: Adjusted.
+	Reported by Alain Magloire, Marc Shapiro and Markus Kuhn.
+
+	* recode.h: Declare MASK.
+	* utf8.c, utf16.c: New files.
+	* Makefile.in: Adjusted.
+	Reported by Markus Kuhn.
+
+1996-08-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (decode_known_pairs): Better detect bad usages.
+	Reported by Thomas M. Ott.
+
+	* charset.c (list_all_charsets): Initialize list_flag properly.
+	Reported by Thomas M. Ott.
+
+1996-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Define GET_BYTE, PUT_BYTE and PUT_YYTEXT.
+	* bangbang.c, recode.c, cdcnos.c, flat.c, ibmpc.c, iconqnx.c:
+	Replace getc (input_file) by GET_BYTE, and putc (expr,
+	output_file) by PUT_BYTE (expr).
+	* mergelex.awk: Declare output_file as static variable, and
+	initialize it, as well as yyout, from the recoding routines.
+	* ascilat1.l, htmllat1.l, ltexlat1.l, txtelat1.l: Replace output
+	(expr) by PUT_BYTE (expr) and ECHO by PUT_YYTEXT.
+
+1995-12-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h, txtelat1.l, recode.c: Replace __P by
+	PARAMS, to respect ANSI C.
+
+1995-11-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c, recode.c: Uniformly write nonzero instead of
+	non-zero.
+	Reported by Karl Berry.
+
+1995-07-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	Distribution unflattened, for using GNU gettext.
+	* Makefile.in: New file.
+
+1995-06-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Relate -d to HTML in --help output.
+	Reported by Bert Schweitzer.
+
+	* pt.po: New, for Portuguese.
+	* configure.in (LINGUAS): Adjusted.
+	Reported by Vitor Duarte.
+
+1995-05-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (HASH): Capitalize macro arguments.
+	* cdcnos.c (file_cdcnos_ascii): Use comma operator when assignment
+	in test.
+
+1995-04-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* The trend of redefining many tables in recode around Unicode
+	will solve problems reported by a few users, listed here.
+	Reported by Juliusz Chroboczek (l2), Lukas Petrlik (l2).
+
+1995-03-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Quote AC_MSG_WARN argument.
+
+1995-03-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Remove GLOCALE, add LINGUAS, use fp_WITH_CATALOGS.
+	* Makefile.in: Modify accordingly.
+	* acconfig.h: Add description for WITH_CATALOGS.
+	* recode.h: Use WITH_CATALOGS to define _() differently.
+
+1995-03-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (decode_request, scan_request, scan_charset,
+	scan_decodings, scan_check_last_charset, scan_name,
+	edit_sequence): Rewritten to replace previous decode_before_after,
+	initialize_scan, terminate_scan and scan_charset, echo_sequence,
+	and the code in main establishing the sequence of recoding steps.
+
+	* recode.c (output_header_file): Clean up extra underscores, do
+	not use _to_ anymore.
+
+1995-02-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (struct charset): Add charset_flag, encoding and decoding.
+	* recode.h, recode.c (declare_encoding): New function.
+	* recode.c (perform_auto_check): Skip over encodings.
+	* recode.h, charset.c: Use plural for make_argmatch_array.
+	(clean_charset_name): Implement a second argument to flag that only
+	encodings are allowed.  All callers changed.
+	* charset.c: Replace argmatch_array by argmatch_charset_array, then
+	add argmatch_encoding_array, parallel to it.
+	(compare_struct_hash): Group all encodings together in sort.
+	(list_all_charsets): Prefix encodings with `/' or `[/]' in output.
+	(declare_alias): Copy the encoding flag to the created alias.
+
+	* recode.c: Rename sequence to sequence_array.
+
+	* recode.c (echo_sequence): Output syntax more similar to
+	acceptable input.  Escape spaces, colons and others.
+	(echo_charset_name): New function.
+
+	* recode.c (file_copy): Use fread and fwrite instead of getchar
+	and putchar, in hope of accelerating the routine a little.  Also
+	declare BUFFER_SIZE.
+
+	* recode.c: Get rid of MAX_SEQUENCE and MAX_SINGLE_STEPS.
+	(find_sequence): Reallocate sequence_array as needed.
+	(new_single_step): Reallocate single_step_array as needed.
+
+1995-02-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (declare_step): Let ansi2knr clean out functionnal
+	arguments, since it now can do it.
+
+1995-02-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in, Makefile.in: Replace `date' by `echo timestamp'.
+	Reported by Greg McGary and Jim Meyering.
+
+1995-02-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Support an ID file.  Do not distribute TAGS.
+	Reported by Greg McGary.
+
+1995-02-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (maintainer-clean): New name for realclean.
+
+1995-01-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (long_options): Add "known", which was forgotten.
+	Reported by Hennus Bergman and Thomas M. Ott.
+
+1995-01-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.awk: Use new Flex 2.5 start condition scopes; simplify
+	the script accordingly.  Generate %option noyywrap instead of an
+	yywrap routine.  Replace #ifdef by #if to test USE_FPUTC.
+	* mergelex.old: Saved version, for those having	Flex prior to 2.5.
+	* Makefile.in: Distribute it.
+
+	* mergelex.awk: Escape the period in the regexp which has the
+	purpose of removing the last period from step_name, so it will not
+	be any character.
+
+1994-12-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ibmpc.c (module_ibmpc): Accept dos, MSDOS and pc as new aliases
+	for the IBM-PC charset.
+
+1994-12-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* nl.tt: New, for Dutch.
+	Reported by Hennus Bergman.
+
+1994-12-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* de.tt: New, for German.
+	Reported by Ulrich Drepper.
+
+1994-12-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Do not unprotoize libintl.c, now done in sources.
+
+	* Makefile.in (realclean): Delete stamp-cod.
+
+	* recode.c (print_copyright): New routine from old code.  Print
+	copyright to stdout, not stderr.  Use fputs instead of printf.
+	(main): Use it for -C.
+
+1994-12-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Prerelease 3.4.1.
+
+	* configure.in, Makefile.in, acconfig.h, recode.c: Rename PRODUCT
+	to PACKAGE.
+
+	* configure.in, Makefile.in, recode.c, recode.h: Adjust for GNU
+	locale as per sharutils'.
+	* LOCALE, libintl.c, libintl.h: New files, from elsewhere.
+	* fr.tt: New file, for French.
+	* Makefile.in: Define SOURCEX and use it to prepare the .cod file,
+	because extract-msgs cannot grok Flex sources yet.
+
+1994-11-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h, recode.c, txtelat1.l: Rename _ to __P.
+	* recode.h: For now, declare _ as a macro returning its argument.
+	* recode.c, charset.c: Use _ macro over all localizable strings.
+
+1994-11-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1ltex.c, ltexlat1.l: Add \copyright{} and \pound{}.
+	Use !` and ?` instead of erroneous !' and ?'.
+	Reported by Christian Rolland and Ricard Torres.
+
+1994-11-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1html.c: Added "other" code 34, and "normal" codes 160-191.
+	Changed &([AEIOUaeiou])circu; to &\1circ;, &([AEIOUaeiouy])diaer;
+	to &\1uml;, &AE; to &AElig;, &ae; to &aelig;, &MULT; to &times;,
+	&DIVIS; to &divide;, &([Oo])stroke; to &\1slash; and &ssharp; to
+	&szlig;.
+	* htmllat1.l: Changed accordingly.  But accept previous codings as
+	well as new ones.  Accept &#NNN; where NNN is a Latin-1 code.
+	Accounting for HTF conventions: accept &brkbar; for &brvbar;, and
+	&Dstrok; for &ETH;.  Accounting for Emacs-w3 conventions: accept
+	&die; for &uml;, &hyphen; for &shy;, &macr; for &hibar;, and
+	&half; for &frac12;.  So, w3:l1 | l1:w3 could be used for
+	normalizing.
+
+	Reported by Arnaldo Mandel, Bernt Guldbrandtsen, Bert Schweitzer,
+	Christian Limpach, Christian Recktenwald, Christian Rolland, David
+	Mentre, Detlev Droege, Dominique Quatravaux, Françoise Audebrand,
+	Frederic Albrecht, Frère Roy, Gabriel P. Silva, Georg Haefele, Guy
+	Lapalme, Jacques Madelaine, Jens Quade, Jörg Höhle, Jose Joao
+	Almeida, Juergen Zeller, Kester Habermann, Kevin Stuckless, Farzad
+	Farid, Hennus Bergman, Martin J. Dùrst, Mikko Silvonen, Nicolas
+	Thiery, Olivier Tharan, Per Steinar Iversen, Povl H. Pedersen,
+	Richard Plasun, Saverio Pangoli, Sebastian Huebner, Slaven Rezic,
+	Sumit Bose, Thomas Gebhardt, Thomas Seeling, Walter Müller, Wiel
+	Seuskens, Wolfgang Boerner and Wolfgang Wander.
+
+	* htmllat1.l (module_html_latin1): Declare ISO_8879:1886 as the
+	official charset name, and HTML as an alias.  Add other aliases:
+	entity and SGML.
+	* lat1html.c (module_latin1_html): Idem.
+	Reported by Christian Rolland.
+
+1994-11-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.os2, config_h.dos: Updated.
+	Reported by Kai Uwe Rommel.
+
+	* configure.in: Check for <libintl.h> and <locale.h>.
+	* recode.h: Include <libintl.h> or declare gettext.
+	* recode.c: Possibly include <locale.h> and call setlocale.
+
+	* recode.c: Clean most #ifdef's into #if's.
+
+	* recode.h: Declare error_print_progname.
+	* recode.c: Initialize it.
+	(error_print_prefix): New routine.
+	PERROR, PERROR1: New macros, use them.
+
+	* recode.c (main): Abolish the distinction between program_name
+	and program_path.  Let program_name convey more information.
+
+1994-11-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (perform_auto_check): Avoid a NULL dereference.
+	Reported by Andreas Schwab, Colin Plumb, Harald Koenig, Julio
+	Sanchez, Hennus Bergman, Michael Schmidt, Nathanael Makarevitch,
+	Stefan Albertz, Wilhelm Zadrapa and Yves Arrouye.
+
+1994-11-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Define PERL as perl, and use it.
+	Reported by Michael Shields.
+
+	Remaking the MSDOS port:
+	* configdos: All revised.
+	* config_h.dos: Renamed from config.h.dos, and revised.
+	* Makefile.in (distdos): All revised.
+	(Makefile.tcc, libobjs.tcc, objects.tcc): New goals.
+	* dosfname: New Perl script.
+	* recode.c (setup_signals): Forget SIGPIPE if not defined.
+
+1994-11-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (stamp-vti): Use new -r option to date.
+
+	* charname.pl: Escape @ into \@, for Perl 5.
+	Reported by Eric Backus and Michael Shields.
+
+	* Makefile.in (merged.c): Little typo (a missing backslash).
+	Reported by Arnaldo Mandel, Bert Schweitzer, Christian Limpach,
+	Eric Backus, Farzad Farid, Gabriel P. Silva, Jacques Madelaine,
+	John van Krieken, Kester Habermann, Kevin Stuckless, Marc Gingold,
+	Phyllis Frankl, Povl H. Pedersen, Thomas Gebhardt and Wolfgang
+	Wander.
+
+	* recode.h: Move the typedef enum QUALITY declaration forward,
+	because of the HP-UX 9.01 compiler which needs it.
+	Reported by Daniel Taupin and Eric Backus.
+
+1994-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.4.
+
+	* Makefile.in (realclean): Also remove stamp-vti.
+
+	* recode.c (main): For now, inhibit -s with a warning, when -g.
+	This is only a temporary non-solution for a coredump problem.
+	Reported by David E. A. Wilson.
+
+	* recode.c (main): When diagnosing an irreversible recoding, do
+	not falsely say that the -f option was not specified.
+	(usage): Insist on the fact that -f is currently always selected.
+	Reported by David E. A. Wilson.
+
+1994-11-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Check for const only after having found possible
+	ANSIfying compiler flags, this is of no use to check it before.
+
+1994-10-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* unhexify.l: Deleted.  Not up to GNU standards for distribution.
+	* Makefile.in (BACKLOG): Goal deleted.  It was depending on files
+	which are not part of the distribution.
+	Reported by Jim Meyering.
+
+	* checkit: Force -f on most recode calls, to avoid diagnostics.
+
+	* Makefile.in: Clean up, following the one in GNU sharutils.  I
+	will not detail all the changes here.
+	* configure.in: Likewise.
+	* recode.c: Use PRODUCT and VERSION instead of version_string.
+	* acconfig.h: Document PRODUCT and VERSION.
+	* recode.h: Interface with dmalloc if WITH_DMALLOC.
+
+1994-10-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h, recode.c: Use #if rather than #ifdef to test __STDC__.
+
+1994-10-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.awk: Declare yywrap only if not already a preprocessor
+	symbol, because some versions of Flex define it.
+	Reported by David van Leeuwen.
+
+1994-10-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1asci.c: Implement O and o with stroke, y with diaeresis, and
+	german sharp s (as s overstroken with double quote).
+	* ascilat1.l: Corresponding changes.
+	Reported by Michael Gschwind.
+
+	* lat1txte.c (init_latin1_texte): Ensure diaeresis_char will be
+	used in the computed translation table.  It was ignored.
+	* txtelat1.l: Ensure diaresis_char is recognized where it should.
+
+	* ascilat1.l: Remove all references to diaeresis_char, because
+	backspaced ASCII was never meant to be sensible to option -c.
+
+1994-10-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Get rid of CONFIG_BROKETS.
+
+1994-09-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Use fputs instead of printf when possible.
+
+	* recode.c: Implement -k option for searching through recodings.
+	* charset.c (decode_known_pairs): New function.
+	(list_all_charsets): Accept a parameter and obey restrictions.
+	* recode.h: Declarations adjusted.
+	Reported by Ghislain Plamondon.
+
+	* acconfig.h: Document PROTOTYPES.  Strange enough: how did it
+	ever work without this?
+
+	* configure.in: Adjust for Autoconf 2.0.
+	* install-sh: New name for install.sh.
+	* Makefile.in: Put date in stamp files.
+	(DISTFILES): Adjust.
+
+1994-09-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (TAGS): Remove -t from etags call.
+
+1994-07-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ansi2knr.1: New file, from elsewhere.
+	* Makefile.in (DISTFILES): Distribute it.
+
+1994-06-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Spell `Texinfo' with a capital.
+
+1994-04-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (Makefile, etc.): Adapt for Autoconf 1.8.
+
+1994-03-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1asci.c (init_latin1_ascii): Do not allocate pool separately
+	from table, so they can be freed at once.
+	* lat1html.c (init_latin1_html): Idem.
+	* lat1ltex.c (init_latin1_latex): Idem.
+	* lat1txte.c (init_latin1_texte): Idem.
+
+	* recode.c (simplify_sequence): Despite not reversible, accept
+	producing RFC 1345 short mnemonics, outside any double step,
+	constructing a one-to-many table on the fly.  When exploring foreign
+	files, there might be no other easy choice.
+	* charset.c (init_table_for_rfc1345): New.
+	* recode.h: Declare it.
+	Reported by Roman Czyborra.
+
+1994-03-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1ltex.c: Recode 160 as `~', not as `\ '.
+	* ltexlat1.l: Recode `~' (instead of `\ ') to 160.
+	Reported by Nicolas Anquetil.
+
+	* ltexlat1.l: Ensure that recode does not match only part of the
+	identifier following `\'.  This was easily solved by adding a few
+	Flex rules at end and relying on the Flex longest match law.
+	For example, because Latin-1 misses the latin `oe' diphtong (!),
+	`\oe' was seen as the recodable `\o' followed by an isolated `e'.
+	Reported by Mac Pigman and Nicolas Anquetil.
+
+	* ltexlat1.l: Reformatted for a more uniform Flex quoting.
+
+	* recode.c (execute_popen_sequence): Ensure -d option is properly
+	transmitted to subprocesses.
+	Reported by David Kastrup.
+
+	* lat1html.c, htmllat1.l: New, for supporting HTML conversions.
+	* lat1ltex.c: Add a few static specifiers to tables.
+	* Makefile.in: Adjusted.
+	Reported by David Lebel.
+
+1994-02-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Avoid $(CFLAGS) while linking.
+
+	* configdos: Link to locally installed configdos.
+	* dosfn: Replaced by a link to locally installed dosfn.
+	* dosfn.pl: Deleted, included in installed configdos and dosfn.
+	* configdos.pl: Deleted.
+	* Makefile.in: Call dosfn and configdos as programs, provide -tcc
+	to configdos.  Do not distribute prepared DOS files anymore in the
+	tar file.  Prepare the DOS makefile directly in distdos goal, also
+	put in distdos the preparation of libobjs.lst and objects.lst.
+
+1994-02-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (file_one_to_many): When an irreversibility is found,
+	run recoding to completion instead of interrupting it, then return
+	whether it is reversible or not, disregarding force_option.
+	* bangbang.c (file_banbang_latin1): Idem.
+	* cdcnos.c (file_cdcnos_ascii): Idem.
+	* flat.c (file_ascii_flat): Idem.
+	* ibmpc.c (file_latin1_ibmpc, file_ibmpc_latin1): Idem.
+	* iconqnx.c (file_ibmpc_iconqnx, file_iconqnx_ibmpc): Idem.
+	* recode.h: Do not declare force_option anymore.
+
+1994-01-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (declare_step): Rewrite the prototype differently if
+	not __STDC__, because ansi2knr does not clean prototypes in
+	functionnal arguments.
+	* txtelat1.l: Declaring texte_latin1_diaeresis, use _((void)).
+	Reported by Rejean Payette.
+
+1994-01-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (main): With absolutely no arguments, imply --help.
+	Reported by Kai Uwe Rommel.
+
+1994-01-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Print the version string in --help.
+	Reported by Kai Uwe Rommel.
+
+	* recode.c: Ajust for easing OS/2 EMX port.
+	* Makefile.os2, config_h.os2: New files.
+	* Makefile.in: Distribute them.
+	Reported by Kai Uwe Rommel.
+
+	* recode.c (usage): Print a blank line after the first prototype.
+
+1994-01-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configdos.pl: Renaming GNUmakefile to makefile.gnu.
+
+	* recode.c (output_header_file): Use tabs instead of spaces before
+	generated comments.
+
+1994-01-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Condense "file = action(); if (file == NULL) ..." into
+	"if (file = action(), file == NULL) ..." consistently.
+
+1994-01-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Check AC_RETSIGTYPE.
+	* recode.c: Include <setjmp.h>, <signal.h>, define RETSIGTYPE.
+	(signal_handler, setup_signals): New.
+	(main): Call setup_signals.
+	(execute_pipe_sequence): Do not diagnose SIGPIPE as an unknown error.
+
+	* recode.c (main): Replace program_name by program_path.
+	Introduce program_name, receiving the basename of program_path.
+	(execute_popen_sequence): Use program_path instead of program_name.
+
+	* recode.c (dup2): New, for when HAVE_PIPE && !HAVE_DUP2.
+
+	* ebcdic.c: Connect to ASCII instead of to ASCII-BS.
+	* recode.c (register_all_modules): Alias to ASCII right away.
+
+	* recode.c (register_all_modules): Alias ASCII-BS to BS.
+	* cdcnos.c (module_cdcnos): Alias CDC-NOS to NOS.
+	* iconqnx.c (module_iconqnx): Alias Icon-QNX to QNX.
+	* lat1ltex.c (module_latin1_latex): Alias LaTeX to TeX.
+	* ltexlat1.l (module_latex_latin1): Alias LaTeX to TeX.
+
+1994-01-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.3.1, in the MSDOS world only.
+
+	* all: Everywhere, change charset names from latin1 to Latin-1,
+	latex to LaTeX and texte to Texte.  Change applemac to Apple-Mac,
+	ascii-bs to ASCII-BS, atarist to AtariST, bangbang to Bang-Bang,
+	cdcnos to CDC-NOS, ebcdic to EBCDIC, ebcdic-ccc to EBCDIC-CCC,
+	ebcdic-ibm to EBCDIC-IBM, ibmpc to IBM-PC and iconqnx to Icon-QNX.
+
+	* recode.c: For MSDOS, increase the stack length through _stklen.
+
+	* recode.c: Diagnose more precisely all errors involving errno,
+	while calling error.  In particular, include __FILE__:__LINE__.
+
+	* recode.c (main): Unless under MSDOS, use rec<PID>.tmp for the
+	file name of the temporary recoded file instead of recodeXX.TMP.
+
+	* recode.c: Rename optimize_sequence to simplify_sequence, and
+	optimizable_type to symplify_type.
+
+	* recode.c (execute_popen_sequence): Return 0 if the subprocess
+	fails, instead of exiting with a diagnostic.  Pass -f option to
+	subprocesses if selected.  Always pass -q to shut them down.
+	Construct the popen_command piecemeal instead of a big sprintf.
+	(main, usage): Implement option --quiet (-q, --silent).
+
+	* recode.c (execute_pass_sequence): Interrupt the current recoding
+	and return 0 if any step fails, if this happens, unlink a possibly
+	existing temporary file.
+
+	* recode.c (execute_pipe_sequence): Unconditionnaly close the
+	output file from the parent before waiting, instead of closing
+	it only if there was an output name.  Let the parent accumulate
+	the exit status of all children before returning its own.
+	* configure.in: Let HAVE_PIPE be defined.  This old bug ig gone!
+
+	* recode.c (perform_auto_check, perform_auto_check_one): Renamed
+	and split from function report_about_all_sequences.  Now accepts a
+	CHARSET	argument for limiting the search.
+	(main): Allows an optional command line argument to --auto.
+	(usage): Adjusted accordingly.
+
+	* recode.c (main): Diagnose extraneous arguments to --list.
+
+	* recode.c (compare_struct_item): New.
+	(init_recode_rfc1345): Partial rewrite for replacing the quadratic
+	pairing algorithm with a logarithmic-linear one, cleaning up a bit.
+
+1994-01-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* txtelat1.l: Undo the 1990-03-15 change.  If there is still a bug
+	in this area, I will let it show its nose again...
+
+	* mergelex.awk: Remove the X_ prefix for start condition names.
+
+	* configure.in: Remove all about LEXLIB, flexlib and LIBOBJS,
+	since flex (version 2.4.6) generated scanners are self contained.
+	* flexlib.c: Deleted.
+	* Makefile.in: Adjusted.
+
+	* recode.c (optimizable_type): New, from optimize_sequence.
+	(optimize_sequence): Use it.
+
+	* charset.c (clean_charset_name): Set decoding_charset_flag just
+	before calling usage instead of early, do not care resetting it.
+
+	* next.c: Renamed from nextstep.c.  NeXTSTEP changed to NeXT.  Add
+	f2 as florin (166) and '" as hungarian umlaut (205).  Remove
+	USE_DOUBLE_STEP by making the code permanent, remove older code.
+	* charname.pl: Especially define f2 as florin.
+	* Makefile.in: Adjusted.
+	Reported by Keld Jørn Simonsen.
+
+	* alloca.c: Deleted, not used anymore.
+	* configure.in: Remove AC_ALLOCA test.
+	* Makefile.in: Remove alloca.* references.
+
+	* configure.in: Read DEFAULT_CHARSET from environment if set.
+	Reported by Andreas Schwab.
+
+1994-01-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (.stamp-collect): Say when initstep.h altered.
+
+	* charset.pl: Now produce split charset1.c and charset2.c instead
+	of a single big charset.h.  This seems mandatory for MSDOS, even
+	with huge model.  Some Unix C compilers will crawl faster, too.
+	* Makefile.in: Adjusted.
+
+	* README.DOS: New file.
+	* configdos.pl: Much revised.  The script no longer have a
+	config.tcc input, now taking its information from Makefile.in.
+	* dosfn: New file, from elsewhere.
+	* dosfn.pl: New file, common between configdos.pl and dosfn.
+	* Makefile.in: Distribute configdos.pl again, together with
+	dosfn.pl and makefile.dos.  Adapt for MSDOS and configdos.pl.
+
+	* recode.c: Delete inactive code for selecting DEFAULT_CHARSET,
+	this being now done from configure or by already preset config.h.
+
+	* atarist.c: Rewritten for using a double step, instead of two
+	steps in and out latin1; the new code is triggered by defining
+	USE_DOUBLE_STEP, the old code will be kept for a little while.
+	Reported by Andreas Schwab.
+
+	* Makefile.in: Do not define LDFLAGS, use CFLAGS on link calls.
+	* configure.in: Remove LDEFS substitution, seemingly unused.
+	Reported by Richard Stallman.
+
+1994-01-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* flat.c: Transmit '\t' as is, it was erroneously changed to '\n'.
+
+1993-12-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	Begin work for implementing --force.  To be completed later.
+	* recode.c (file_one_to_one): Return 1 instead of void.
+	(file_one_to_many): Return a value saying if the recoding was
+	successful or not, instead of void.
+	(execute_pass_sequence): Return 1 (unfinished).
+	(execute_popen_sequence): Return 1 (unfinished).
+	(execute_pipe_sequence): Return 1 (unfinished).
+	(execute_sequence): Return the status got from execute_*_sequence,
+	use it to alter "done" into "DENIED" when using -v.
+	(declare_step): Adjust file_recode parameter declaration.
+	(main):  Have --graphics imply --force.
+	* recode.h: Adjust declarations.  Declare error, force_option.
+	* bangbang.c (file_bangbang_latin1): Similarily.  Also, do not
+	recode "!!J" or "!!j" into '\n' unless -f.
+	* cdcnos.c (file_cdcnos_ascii): Similarily.  Also, do not recode
+	"^)" into '\n' unless -f.
+	* flat.c (file_ascii_flat): Similarily.
+	* ibmpc.c (file_latin1_ibmpc, file_ibmpc_latin): Similarily.
+	Also, do not recode isolated '\n' or '^Z' unless -f.
+	* iconqnx.c (file_ibmpc_iconqnx, file_iconqnx_ibmpc): Similarily.
+	Also, check for preventing the production of a few sequences which
+	would might be recoded back differently, unless -f.
+	* mergelex.awk: Similarily for generated file_<step_name>
+	routines.  Return the yylex result.  At <<EOF>>, return 1.
+
+	* charset.c (make_argmatch_array): Print a line of hash statistics
+	if HASH_STATS is defined.
+
+	I used to have 408 names in 343/997 buckets, the following patch
+	gave 408 names in 332/997 buckets.  Being worse, I commented it.
+	* charset.c (hash_string): Replace hash algorithm by GNU diff's.
+	* recode.h: Include <limits.h> and ensure CHAR_BIT is defined.
+	* configure.in: Test for <limits.h>.
+
+	* recode.c (optimize_sequence): Delete a remaining single step if
+	it happens to be the identity recoding.
+	(echo_sequence): Better diagnose the trivial recoding.
+	(file_one_to_one): Remove detection of special one_to_same case.
+	(report_about_all_sequences): Simplify detection of one_to_same.
+
+	* Makefile.in: Distribute .stamp-collect and initstep.h.  This
+	should alleviate problems caused by some sh/sed combinations,
+	still unstudied, which are unable to make initstep.h properly.
+	Reported by Michael L. Dowling.
+
+1993-12-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* flat.c: Consider `~' as a diacritic character.
+	* File-Latin1: New file, intended to help testing/playing.
+	* Makefile.in: Distribute File-Latin1.
+	Reported by Martin Maechler.
+
+1993-12-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (merged.c): Split the pipe in parts, because
+	otherwise all status except the last of the pipe are lost for
+	make.  This is seemingly a feature of sh.
+	Reported by Vern Paxson.
+
+1993-12-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Check for vprintf and strerror, for error.c.
+
+	* recode.c (usage): Indicate that --help and --version exit.
+
+1993-12-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Remove all as dependency for uninstall.
+
+	* Makefile.in: Split HEADERS, giving also LIBHDRS.  Use it.
+
+1993-12-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.3.
+
+1993-12-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* *.c: Delete unused variables, add a few missing const's.
+
+	* nextstep.c: Rewritten for using a double step, instead of two
+	steps in and out latin1; the new code is triggered by defining
+	USE_DOUBLE_STEP, the old code will be kept for a little while.
+	This has two advantages: recode can obey various -l options for
+	NeXTSTEP, and I can remove the full style table from the
+	documentation.
+	Reported by Martin Maechler.
+
+	* Makefile.in (clean): Also delete unhexify.
+
+	* Makefile.in (tags): Include $(HEADERS).
+	(TAGS): Idem.  Also use -t on etags.
+
+1993-12-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c (hash_string): Cast unsigned to int before modulo.
+	* recode.c (print_truncated_charset_name): Cast strlen result to
+	int before using it in an arithmetic comparison.
+
+	* recode.c (complete_pairs): When a conflict is found, diagnose
+	which charsets are involved.
+	Reported by Bastian Schlueter.
+
+	* nextstep.c: Add pair {182, 182} for paragraph sign.
+	Reported by Bastian Schlueter.
+
+	* recode.c (main):  Replace long names --files, --popen and --pipe
+	by common --sequence=METHOD.
+	(usage): Document this.
+
+	* recode.c (decode_before_after): Use backslash as escape.
+	(execute_popen_sequence): Clean up charset names before popen.
+	Reported by Keld Jørn Simonsen.
+
+1993-12-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Send diagnostics to stderr instead of charset.LOG.
+
+	* charset.pl: Discard &duplicate lines without discarding the
+	associated charset.
+
+	* charset.pl: Canonalize names the same way charset.c does, detect
+	duplicate names or aliases based on canonical names.  Do not
+	discard a charset merely for an alias name clash.
+
+	*charset.pl: Delay the generation of charset.texi, sort the
+	@item's by charset name and, within each, sort aliases.
+
+	* recode.h: Add a size field to the charset structure, declare a
+	size parameter to declare_double_step.
+	* charset.pl: Handle charsets having more than 2 characters per
+	symbol, transmit measured size into declare_double_step calls.
+	* recode.c (declare_double_step): Accept and save a size parameter.
+	* charset.c (code_to_symbol): New routine for handling size field.
+	(list_full_charset, list_concise_charset): Adapt to using it.
+
+1993-12-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.c: Add cleanup_charset_name, use it in find_charset,
+	declare_alias and decode_charset_name.  Rename compare_hash_name
+	to compare_struct_hash.
+	(list_all_charsets): Repeat the name even if it is not alias,
+	because it has been cleaned up.
+	Reported by Keld Jørn Simonsen.
+
+1993-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* charset.pl: Generating charset.h instead of charset.c.
+	* charset.c: New.
+	* recode.c (prepare_charset_initialization): New.
+	(hash_string, find_charset, declare_alias, make_argmatch_array,
+	decode_charset_name, compare_hash_name, list_all_charsets,
+	list_full_charset, list_concise_charset): Moved into charset.c,
+	together with a few defines, struct hash and related declarations.
+	* Makefile.in: Adjusted.
+
+1993-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Renaming rfc1345.c into charset.c, rfc1345.pl into charset.pl,
+	rfc1345.sed into charset.sed and rfc1345.LOG into charset.LOG.
+	* Makefile.in, charset.pl: Adjusted.
+
+	* charname.c: New.
+	* charname.pl, charname.sed: New, for generating charname.h.
+	* Makefile.in: Adjusted.
+	* recode.h: Add declaration for charname_to_comment.
+	* recode.c: list_charsets renamed to list_all_charsets.
+	New functions list_full_charset and list_concise_charset, enum and
+	variable list_format.  Decode the list format, check for a charset
+	argument and switch to the proper listing function.
+
+	* acconfig.h: New, for holding DEFAULT_CHARSET.
+	* Makefile.in: Distribute it, have .stamp-h.in depend on it.
+	* configure.in: Substitute DEFAULT_CHARSET instead of DEFCHARSET.
+
+	* configure.in: Include $LEXLIB in $LIBS when $LEX is flex, so the
+	yy_flex_alloc test will not always fail, waiting for a version of
+	Autoconf which will do this itself.
+	* Makefile.in: Do not add @LEXLIB@ to LIBS anymore.
+	Reported by Andreas Schwab.
+
+	* checkit: Replace `+' by `*' in grep calls.
+	Reported by Andreas Schwab.
+
+	* recode.c (usage): Replace --include by --header in text.
+
+1993-12-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (list_charsets): Move all aliases of a charset after
+	the true charset name on its line, keeping lines sorted on the
+	true charset name and all alias in lexicographical order.  All
+	charset and aliases used to be sorted together, one per line.
+	(compare_hash_names): Sort accordingly.
+	Reported by Martin Maechler.
+
+	* recode.c: Add make_argmatch_array and decode_charset_name.  Use
+	them, simplifying decode_before_after.  Process ignored_charset
+	even for the -a option.  Add print_truncated_charset_name and use
+	it to simplify report_about_all_sequences, not reporting an
+	unachievable recoding when ignored_charset is specified.
+
+	* recode.c (find_sequence): Ensure verbose is executed even if no
+	path has been found, instead of returning early.
+
+	* recode.c (optimize_sequence): Remove the compute_arrays
+	parameter, because report_about_all_sequences now studies the
+	produced arrays.  Callers changed.
+
+	* recode.c (optimize_sequence): While merging rfc1345 steps, also
+	merge qualities instead of assuming REVERSIBLE.
+	Reported by Rejean Payette.
+
+	* recode.h: Declare strict_mapping.
+	* recode.c (complete_pairs): Do not set quality, this is done
+	elsewhere in all cases.  But do preset the file recoding routine.
+	* applemac.c, atarist.c, nextstep.c: In declare_step calls, lower
+	the recoding quality to some *_TO_MANY whenever strict mapping is
+	in use, also specify NULL as the file recoding routine because
+	complete_pairs now initializes it.
+	* ibmpc.c: Idem.  But override file_recode after complete_pairs.
+
+	* ibmpc.c (file_latin1_ibmpc, file_ibmpc_latin1): Repeat the
+	algorithm, but using the one_to_many table when strict mapping.
+
+	* recode.c (declare_double_step): Create both single steps without
+	the help of declare_step, this spares four probes in the charset
+	table per call.
+
+1993-12-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h: Add CHARSET and struct charset, use CHARSET *before
+	and after instead of int start_charset and goal_charset in STEP,
+	declare rfc1345 as CHARSET * instead of int, delete struct
+	double_link and rfc1345_link declaration and rather include the
+	DOUBLE_TABLE right in CHARSET, add a DOUBLE_TABLE parameter to
+	declare_double_step,
+	* recode.c: Make all necessary related changes.  Renaming of many
+	variables and cleanup, too numerous to report here.  Delete
+	name_from_value and ignored_array in favor of new CHARSET fields.
+
+	* recode.c: Change :rfc1345 to rfc1345.  Add `.' as an alias.
+	(report_about_all_sequences): Avoid rfc1345 instead of avoiding
+	names beginning with colon.
+
+	* applemac.c: Renamed (once again) from macintosh.c.  The codes
+	will be kept different until further study.  Comment out the
+	aliasing of applemac to macintosh.
+	* ibmpc.c: Comment out the aliasing of ibmpc to ibm437, because
+	making the codes equivalent requires further study.
+	* Makefile.in: Adjusted.
+
+	* recode.c: Implement --ignore (-x) option and ignored_array.
+	(find_charset): Progressively initialize ignored_array to zero.
+	(find_sequence): Ignore steps with an ignored start charset.
+	(decode_before_after): Process the ignored charset.
+
+	* recode.c (usage): Make the output little more legilable through
+	spacing.  Insist on -l, mention the Info documentation, propose a
+	few selected charsets.
+	Reported by Martin Maechler.
+
+	* recode.c: Rename make_include_mode into make_header_mode,
+	include_name into header_name, output_include_file into
+	output_header_file, turn --include option name into --header.
+
+	* recode.c: Add before_name and after_name, use them in
+	decode_before_after and in output_header_file.  This prevents
+	the spurious canonalization of alias charset names.
+
+	* recode.c: Implement --strict (-s) option.
+	(complete_pairs): Accept a step parameter and slip the generated
+	table in it instead of returning the table.  Adjust for --strict.
+	(init_recode_rfc1345): Adjust for complete_pairs.
+	* atarist.c, macintosh.c, nextstep.c: Idem.
+	* ibmpc.c: Idem.  Also rewrite code for --graphics (-g).
+
+	* recode.h: Declare ascii_graphics, diacritics_only and
+	diaeresis_char.
+	* ibmpc.c: Delete the ascii_graphics declaration.
+	* lat1ltex.c, ltexlat1.l: Delete the diacritics_only declaration.
+	* ascilat1.l, txtelat1.l: Delete the diaeresis_char declaration.
+	* mergelex.awk: Have it work when there is no %{ ... %}	part.
+
+	* recode.c (report_about_all_sequences): Report charsets which are
+	dynamically discoverd to recode identically by "ONE to SAME".
+
+	* recode.c: Declare HASH_TABLE_SIZE, hash_string.  Rewrite
+	find_charset and declare_alias to use hashing.  Also adjust
+	list_charsets and decode_before_after.
+
+1993-12-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Delete name_from_value function, replace with an
+	array of same name.  Delete field refer from struct charset,
+	initialize and use name_from_value instead.
+
+	* Makefile.in (clean): Remove *.a, for librec.a.
+	Reported by Pierre Gaumond.
+
+	* Makefile.in (clean): Move in *.o from mostlyclean.
+
+	* rfc1345.pl: Print progress on stderr, for entertaining me.
+	Document aliases in rfc1345.texi through English sentences.
+
+1993-12-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* flexlib.c: New, for -lfl does not work everywhere.
+	* mergelex.awk: Produce a yywrap function in section 3.
+	* configure.in: Configure flexlib.o in LIBOBJS if necessary.
+	* Makefile.in: Adjusted accordingly.
+
+	* recode.c (name_from_value): Renamed from true_charset_name.
+	(find_charset): Add a "create" parameter, merge in new_charset.
+	(new_charset): Deleted.  All callers changed.
+
+	* recode.h: If not __STDC__, have _() return (), not empty.
+	Reported by Pierre Gaumond.
+
+	* Makefile.in (distclean): Remove config.h.
+
+	* bangbang.c, cdcnos.c: Use "while (x = y, x != z)" instead of
+	"while ((x = y) != z)".
+
+	* install.sh: Attach execute permission to this file.
+	Reported by Pierre Girard.
+
+	* lat1ltex.c: Produce {\i} instead of \i{}.  It's nicer.
+	Reported by Pierre Girard.
+
+	* recode.c: Declare argmatch.  Default charsets were not obeyed.
+	(decode_before_after): When DEFAULT_CHARSET is defined, use it
+	instead of the empty string when calling argmatch.
+	(find_charset): Do not check for empty strings anymore.
+
+1993-12-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (install): Add recode.info in dependencies.
+
+	* recode.c: Use USE_TMPNAM to bracket out old tmpnam code out and
+	USE_TMPFILE to allow in new tmpfile code.
+	(execute_pass_sequence):  Use tmpfile instead of tmpnam.
+	Reported by Bastian Schlueter (suggests that -i => -o on NeXT).
+	Reported by Ronald C.F. Antony.
+	Reported by Andreas Schwab.
+
+	* recode.c (output_include_file): Ensure a valid C identifier for
+	the table name.  RFC 1345 uses bizarre names in that respect.
+
+	* recode.c (main): While moving the new file over the original,
+	properly diagnose any failure.
+	Reported by David Lebel.
+
+	* recode.c: Add decoding_charset_flag.
+	(usage): Print `Try recode --list' instead of `Try recode --help'
+	whenever decoding_charset_flag is true.
+	(decode_before_after): First set, then reset decoding_charset_flag.
+
+	* recode.c (echo_sequence): Use a shorter print format, now that
+	we have real long charset names...
+
+	* recode.c: Revert to using a `struct charset' to handle names and
+	alias.  Turn charset_name into true_charset_name and charset_value
+	into find_charset.
+
+	* Makefile.in (LIBOBJS): Put more on the second line, because if
+	@LIBOBJS@ is substituted empty, some make's barf at last `\'.
+	(recode.dvi): TEXI2DVI was mispelled.
+	Reported by Martin Maechler.
+
+	* recode.c: Implement --list (-l) to alleviate Usage message.
+	(compare_charset_names, list_charsets): New.
+
+1993-12-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* rfc1345.txt: New, from elsewhere.
+	* rfc1345.sed, rfc1345.pl: New.
+	* Makefile.in: Handle rfc1345.c, distribute all of these.
+	* recode.c (declare_double_step): New.
+	(optimize_sequence): Replace all double steps through :rfc1345 by
+	a single step which will properly initialize itself.  Diagnose any
+	remaining single step which uses :rfc1345 explicitely.
+	(register_all_modules): Make latin1 an alias for iso-8859-1-1987.
+	(report_about_all_sequences): Truncate the charset
+	names as needed, avoid considering charsets named `:*' alone.
+	(usage): Avoid printing `:*' steps as available.
+	* ascilat1.l, cdcnos.c, ebcdic.c, flat.c, lat1asci.c: Change name
+	of ascii charset to ascii-bs, keeping it separate from RFC 1345.
+	* ibmpc.c: Make ibmpc an alias for ibm437.
+	* Makefile.in (check): Adjusted for ascii-bs.
+
+	As a side result of all this, more charsets are supported.
+	Reported by Per ?: who wanted IBM codepages in recode.
+	Reported by Hermann Hueni: who wanted Roman8 in recode.
+
+	* Makefile: Merge C_STEPOBJS and L_STEPOBJS into STEPOBJS.
+
+	* recode.c: Make -h argument optionnal, it was mandatory.
+	* recode.c: Include the quality in -a and -v output, repeat -v
+	output after step optimization if this changed something.
+
+	* recode.h: Declare enum quality, QUALITY, quality_to_string and
+	merge_qualities.  From STEP, delete the multichar_input,
+	multichar_output, loosing and reversible fields.  Add one QUALITY
+	argument and two functionnal arguments to declare_step.
+	* all: Implement the preceeding changes.
+
+	* recode.h: Use the _((...)) device more systematically.
+	Declare xmalloc.
+
+1993-12-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ascilat1.l, bangbang.c, cdcnos.c, ibmpc.c, iconqnx.c,
+	lat1asci.c, lat1ltex.c, lat1txte.c, ltexlat1.l, macintosh.c,
+	txtelat1.l: Avoid using octal and hexadecimal, stick to using
+	decimal.  Define constants when this helps source readability.
+	* flat.c: Replace octal masks with "<<" expressions.
+	* unhexify.l: New file.
+	* Makefile.in: Distribute it.
+	(detecthex, unhexify): New goals.
+
+	* atarist.c: New charset.
+	* Makefile.in: Adjusted.
+	* recode.c: Use "atarist" as DEFAULT_CODE if atarist is defined.
+	Reported by Andreas Schwab.
+
+	* nextstep.c: New charset.
+	* Makefile.in: Adjusted.
+	Reported by Bastian Schlueter.
+	Reported by Ronald C.F. Antony.
+
+	* flat.c: Do not declare cccascii nor cdcascii.  Delete
+	file_drop_8th_bit.
+
+	* recode.c (complete_pairs): Produce better diagnostics.
+	Allow for NULs in known pairs, even if currently unused.
+
+1993-12-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Use .stamp-h.in to solve Autoconf problems.
+	Distribute mkinstalldirs and install.sh.  Use mkinstalldirs.
+	* mkinstalldirs: New, from elsewhere.
+	* install.sh: New, from elsewhere.
+
+	* Makefile.in (recode.info): On $(MAKEINFO) call, use
+	"-I$(srcdir)" instead of "-o recode.info".
+
+	* ebcdic.c: Inclusion of GNU dd's "ibm" recoding, with two
+	modifications so the recoding becomes reversible.  Removal of
+	static inverse tables, dynamically recreate them instead.
+	Replacement of cccascii and cdcascii by ascii, use ebcdic-ccc
+	instead of ebcdic in the context of disappearing cccascii.
+	* recode.c (invert_table): New.
+	* recode.h: Declare it.
+
+	* recode.c: Replace CHARSET struct and charset_array by
+	charset_name_array and charset_value_array, then make all
+	necessary changes.  Use argmatch for charsets.
+	* argmatch.c: New, from elsewhere.
+	* $(C_STEPS), $(L_STEPS):  Remove all four letter aliases, except
+	"ltex" for "latex" and "txte" for "texte".
+	* recode.c (register_all_modules): Declare "lat1" as an alias for
+	"latin1".
+	* macintosh.c: Renamed from old applemac.c.  Declare "macintosh"
+	as the charset name and "applemac" as an alias.
+	* Makefile.in: Adjusted.
+	(check): Write charsets in full.
+
+1993-12-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Add .stamp-collect for preventing initstep.h to be
+	uselessly touched, this was causing recode.c recompilations.
+
+	* recode.c: Implement output_include_file.
+
+	* recode.c: Extract file_mere_copy from execute_sequence, then
+	implement file_one_to_one, file_one_to_many, merge_steps and
+	optimize_sequence.
+	* recode.h: Declare these when not static.
+	* flat.c: Use file_mere_copy instead of NULL as file_recode.
+	* applemac.c, ebcdic.c: Use file_one_to_one.
+	* bangbang.c, cdcnos.c, lat1asci.c, lat1ltex.c, lat1txte.c: Use
+	file_one_to_many.
+
+	* recode.h: Rename STEP field recode_file to file_recode and make
+	it return void instead of int, add init_recode and one_to_one
+	fields, declare KNOWN_PAIR structure and complete_pairs function.
+	* recode.c, $(C_STEPS), $(L_STEPS), mergelex.awk: Adjust.
+	* recode.c (declare_step): Initialize new fields.
+	(find_sequence): Initialize planned steps when possible.
+	(complete_pairs): New, adapted from maketabl.c.
+	* applemac.c: Use initialization and include macilat1.mtb table.
+	* ibmpc.c: Use initialization and include ibmplat1.mtb table.
+	* macilat1.mtb, ibmplat1.mtb, maketabl.c: Deleted.
+	* Makefile.in: Adjusted.
+
+	* ltexlat1.l: Use {After} at more places, "accro\^\i tre" was not
+	recoded at all.
+
+1993-12-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c, all $(C_STEPS), all $(L_STEPS): Include "recode.h"
+	instead of "config.h".
+	* recode.h: New.
+
+	* all $(C_STEPS): Delete "#define STEP <name>", because STEP will
+	be a describing structure from now on.  Add module_<name> function
+	for initializing STEPs.  Rename void STEP() to static int
+	recode_file(), add a first parameter for transmitting STEP.
+	* all $(L_STEPS): Delete "#define STEP <name>" and instead, use
+	"/* Step name: <name>.  */".
+	* mergelax.awk: Do the proper thing with /* Step name: <name>.  */
+	* steps.h: Deleted.  Information which was contained there has
+	been spread out in modules instead, for adding flexibility.
+	* recode.c: Initialize all modules by including "initstep.h".
+	* Makefile.in: Dependencies for recode.h and initstep.h.
+	(initstep.h): Make it by extracting module_* lines from sources.
+
+	* recode.c: Rename MAX_CONVERSION into MAX_SEQUENCE.  Introduce
+	MAX_CHARSETS, MAX_SINGLE_STEPS, charset structure and array,
+	single_step array and related counters, functions declare_step
+	and declare_alias.  Many other renaming of variables, too
+	numerous for here.  Adapt all of the code so this works.
+	* xmalloc.c, xstrdup.c: New, from elsewhere.
+
+	* bangbang.c: Merged from lat1bang.c and banglat1.c.
+	* cdcnos.c: Merged from ascicdcn.c and cdcnasci.c.
+	* ebcdic.c: Merged from cccaebcd.c, cdcaebcd.c, ebcdccca.c and
+	ebcdcdca.c.
+	* flat.c: Merged from asc8asc7.c and asciflat.c.
+	* ibmpc.c: Merged from lat1ibmp.c and ibmplat1.c.
+	* iconqnx.c: Merged from ibmpicon.c and iconibmp.c.
+	* Makefile.in: Adjusted.
+
+	The net effect of all these changes is that charsets or their
+	single step methods are now easily configurable out of recode by
+	merely deleting them from C_STEPOBJS or L_STEPS in Makefile.
+	Reported by Claude Goutier.
+
+1993-12-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ltexlat1.l: Ensure \'{e} is recognized as \'e.
+	Reported by Pierre Girard.
+
+	* txteasci.l: Deleted for easing maintainance, there was too much
+	common code with txtelat1.l, and also, the "texte" charset is
+	prone to loosing characters, when used as an intermediate.
+	Reported by Claude Goutier.
+
+	* ascitxte.l: Deleted likewise, almost same functionnality is
+	available through lat1txte.c.
+	* ltexasci.l: Deleted for easing maintainance, there was too much
+	common code with ltexlat1.l.
+	* asciltex.l: Deleted likewise, almost same functionnality is
+	available through lat1ltex.c.
+	* lat1asci.c: New, so "ascii" charset is connected to others.
+	* ascilat1.l: New, for same reason.
+	* Makefile.in: Adjusted.
+
+	* Makefile.in (check): Diagnose unachievable recodings.
+	* recode: Implement --auto-check (-a) option.
+	(report_about_all_sequences): New.
+	(find_sequence): When recoding is not possible, return with a
+	negative value in length_of_sequence, do not call error.
+	(main): Call error if recoding is not possible.
+
+	* configure.in: Replace DEFAULTCODE by DEFCHARSET.
+	* Makefile.in: Same, plus replace DEFAULT_CODE by DEFAULT_CHARSET.
+	* recode.c: Same, plus replace [*_]code[_*] by [*_]charset[_*],
+	NUMBER_OF_KEYWORDS by NUMBER_OF_CHARSETS and keyword_index by
+	charset_index.
+	* steps.h: Same things.
+
+	* recode.c (usage): Tell which is the default code value.
+
+	* recode.c: Implement --graphics (-g) option, and ascii_graphics.
+	* ibmplat1.c: Rename graphics_mode to ascii_graphics, making it
+	external.  Use, document and revise CONVERT_GRAPHICS constant,
+	introducing "round" corners and more systematic principles.
+
+1993-11-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Process long options, then --help and --version.
+	Rename usage_and_exit() into usage(), accepting a parameter,
+	print a reminder about --help on stderr when in error, else
+	the longer usage message on stdout.  Adjust all calls.
+	(print_copyright): Deleted, use copyright_string instead.
+	(print_version): Deleted, use version_string instead.
+	* getopt1.c: New.
+	* Makefile.in: Take care of getopt1.c.
+
+	* HINTS: New file, to let README be smaller.
+
+	* steps.h: Remove ENUM_INT_BUG code.  The README did announce that
+	this code will disappear if nobody report it as necessary.
+
+	* banglat1.c: Add "!;" to \346 for "ae" and "!<" to \367 for "oe".
+	* lat1bang.c: Do the converse translatation.  "oe" is a kludge!
+	Reported by Pierre Gaumond.
+
+	* checkit: Always output "Checking" messages, regardless of -v.
+	Have those messages resembling more to the actual recode calls.
+	Remove now useless error identification messages.
+	Use "cmp -s" instead of "diff" for comparing files.
+	* Makefile.in: Use $(SHELL) instead of sh in CHECKTEST. Remove -v.
+
+1993-11-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (main): Declare argv as "char *const *argv" instead of
+	"const char *argv[]", for avoiding conflicts with some getopt().
+	Reported by Andreas Schwab and Stéphane Berubé.
+
+	* Makefile.in (Makefile): Use $(SHELL).
+	(config.status): Use "$(SHELL) config.status --recheck" instead	of
+	"configure --no-create".
+
+	* Makefile.in (LIBS): Include @LEXLIB@, Flex 2.4.1 needs this.
+	* configure.in: Test AC_ISC_POSIX earlier, AC_PROG_LEX needs it.
+
+	* txteasci.l: Move texte_ascii_diaeresis in section 3, because
+	Flex 2.4.1 does not get YY_CHAR defined for section 1.
+	* txtelat1.l: Move texte_latin1_diaeresis in section 3.
+	* mergelex.awk: Deeply revised.  Now able to merge Flex sources
+	having a non-empty section 3.  No more forward declarations for
+	yytext, yyleng, etc.  The output begins with a warning comment
+	saying this is a derived file, followed by the first block comment
+	found in any input file.  Produce an output cleaner for the eye.
+	* Makefile.in (merged.c): Remove synchronization directives, they
+	are useless for now.  Delete new temporary files merged[123].tmp.
+
+1993-06-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (dist): Replace "echo `pwd`" by a mere "pwd".
+	Adapt to the .gz change.
+
+1993-05-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* asciflat.c: Transmit TAB and BKS, instead of using ^I or ^H.
+	However, BKS for applying a diacritic will still disappear.
+	Reported by Marc Verreault.
+
+	* Makefile.in: Use $U prefix for defining the .o dependencies over
+	include files obtained through maketabl.
+	Reported by Claude Goutier.
+
+	* c-boxes.el, cccaebcd.c, ebcdccca.c, getopt.[ch], iconibmp.c,
+	maketabl.c, mergelex.awk, recode.c, recode.texi, steps.h,
+	txteasci.l: Remove spurious suffix whitespace.
+	Reported by Claude Goutier.
+
+1993-05-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (dist): Use a gzipping tar, not a compressing one.
+
+	* checkit: Make checkit.tmp writeable, so it can be removed.  It
+	is commonly obtained by cp'ing COPYING.
+
+1993-05-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (execute_pass_sequence): Reverse the test on
+	input_name, controlling the fclose (input_file).
+	Reported by Andreas Schwab and David Lebel.
+
+	* maketabl.c: New.
+	* Makefile.in: Distribute maketabl.c, use it for processing
+	ibmplat1.mtb and macilat1.mtb, take care of all dependencies.
+
+	* ibmplat1.mtb: New.
+	* ibmplat1.c: Use ibmplat1.h, while implementing graphics_mode.
+	This have the side effect of correcting the 1/2 symbol, which was
+	translated to 1/4, and the 1/4 symbol, which was translated to <<.
+	* lat1ibmp.c: Use lat1ibmp.h.
+	* steps.h: Replace LOOSE by EXACT for ibmp from/to lat1 entries.
+	Reported by Robert Joop.
+
+	* macilat1.mtb, macilat1.c, lat1maci.c: New.
+	* ibmpmaci.c, maciibmp.c: Deleted.
+	* steps.h: Remove old maci from/to ibmp, add new maci from/to lat1.
+	Reported by Joelle Stemp: copy of Macintosh character tables.
+	Reported by Jacques Richer: end of lines represented by 0x0d.
+
+1993-02-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: In dist goal, ensure 777 mode for directories, so
+	older tar's will restore file modes properly.
+
+	* asciflat.c: Remove old commented lex code.  Remove a useless
+	`case EOF:' from inner switch, the logic will work anyway.
+
+1993-01-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Put $(CFLAGS) after $(CPPFLAGS), so the installer
+	can override automatically configured choices.
+	Reported by Karl Berry.
+
+1993-01-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* checkit: Do not call recode in verbose mode on /dev/null prior
+	to the first "Checking" message.  Rather call recode in verbose
+	mode only once, combined within the first test in a series.
+
+1993-01-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Use AC_CONST.
+
+	* Makefile.in: Distribute getopt.h.  Add as getopt.o dependency.
+	Reported by Pierre Gaumond.
+
+1993-01-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Merge in version.c.
+	* version.c: Deleted.
+
+	* All .c, mergelex.awk: Conditionnally include config.h, and do
+	not include common.h anymore.  Update Copyright year lists.
+	* common.h: Deleted.
+	* Makefile.in: Do not distribute common.h, but do distribute
+	config.h.in.  Have all objects depend upon config.h.  Force -I. in
+	CPPFLAGS so config.h will be found whenever --srcdir is used.
+	Newer version of autoconf related goals.
+	* configure.in: Use AC_CONFIG_HEADER.
+	* checkit: Study config.h instead of config.status.
+
+	* Makefile.in: Use texi2dvi instead of tex.
+	Reported by Martin Maechler.
+
+	* Makefile.in: Cleanup and reorganization.  New info and dvi
+	goals.  Remove recode.info from all.  Define and use MAKEINFO and
+	TEXI2DVI.  Use ALLOCA, because of getopt.  Distribute THANKS file.
+	Rename HDRS, SRCS and OBJS into HEADERS, SOURCES and OBJECTS.
+	Merge LIBSRCS and MSDOS_OBJS, remove them.
+
+	* alloca.c: New, from elsewhere.
+	* configure.in: Use AC_ALLOCA.
+
+	* getopt.c: Use more recent version.
+	* getopt.h: New, from elsewhere.
+
+	* recode.c: Replace tempnam by tmpnam.  Always allocate the
+	temporary file names statically, because some tmpnam's require
+	this.  Also delay tmpnam until open time, for NeXT's.
+	* pathmax.h: New, from elsewhere.
+	* Makefile.in: Distribute pathmax.h.
+	Reported by Andreas Mueller.
+
+	* configure.in: Replace AC_USG by AC_HAVE_HEADERS(string.h).
+	* recode.c: Replace USG test by HAVE_STRING_H test.
+
+	* recode.c: Everywhere, use error instead of assert or perror.
+	Include errno.h and conditionnaly declare errno.  Reformulate
+	`if ((var = value) == test)' by `if (var = value, var == test)'.
+	Use error in place of `fprintf(stderr, ...); exit(EXIT_FAILURE)'.
+	* error.c: New, from elsewhere.
+	* Makefile.in: Use and distribute error.c.
+
+	* recode.c: Remove unnecessary system prototypes.
+
+1993-01-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Reinstate $(CPPFLAGS), use it.  Richard wants it
+	there.
+
+1992-11-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (clean, distclean): Remove ansi2knr rubbish.
+	Reported by Pierre Gaumond.
+
+	* Makefile.in: Remove all .PHONY's.
+
+1992-11-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Add definition for INSTALL.
+	Reported by Bastian Schlueter, Larry W. Virden and Ronald
+	C.F. Antony.
+
+1992-11-18  Jim Meyering  <meyering@idefix.comco.com>
+
+	* recode.c (most functions): Declare static.
+
+	* ascicdcn.c, cccaebcd.c, cdcaebcd.c, ebcdccca.c,
+	ebcdcdca.c, ibmplat1.c, ibmpmaci.c, lat1bang.c,
+	lat1ibmp.c, lat1ltex.c, lat1txte.c, maciibmp.c, recode.c,
+	steps.h: Declare with const attribute all static tables
+	and pointer variables that traverse them.
+
+	* recode.c: Declare `sequence' to be an array of const pointers.
+	(find_sequence): Declare the `step' field of critical_tree
+	with const attribute.
+
+	* steps.h [struct keyword_struct]: Separate type definition
+	and variable declaration.
+
+1992-11-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in (dist): chmod a+r before making the tar file.
+
+1992-11-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* aclocal.m4: Update FP_STDC_CHECK, replacing by FP_PROTOTYPES.
+	* configure.in: Adjust accordingly.
+
+1992-10-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.2.4 to alt.sources, and later on prep.
+
+1992-10-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Use exec_prefix.  Add `uninstall'.
+
+1992-09-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Define EXIT_SUCCESS and EXIT_FAILURE if not defined,
+	even after inclusion of <stdlib.h>, for SunOS 4.
+
+	* Makefile.in: Add a completion message to `make check'.
+
+	* configure.in: Make the `WARNING:' bigger if no Flex.
+
+1992-09-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.2.3.
+
+	* HINTS: New file, used to simplify README.
+	* Makefile.in: Distribute HINTS.
+
+	* configure.in: Remove tests for Apollo's and 286 systems.
+	* steps.h: Replace XENIX by ENUM_INT_BUG.
+	* HINTS: Tell about Apollo's and 286 systems installation hints.
+
+1992-09-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Write `Recoding...' instead of `recoding...'.
+
+	* asciflat.c: Insure looking one character ahead at all times.
+	This also solves a bug by which the second diacritic of a pair of
+	two diacritics in a row was not properly flattened out.
+
+1992-08-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ltexlat1.l: Given `*' is a diacritic operation, insure
+	swallowing '{}' in `\*\i{}'.  Recognize also `\*{\i}'.
+
+	* asciltex.l: Prefer `\c{c}' to `\c c'.
+	* lat1ltex.c: Idem.
+
+	* lat1ltex.c: Insure NULs will go through.
+
+	* recode.c: Implement the -d `diacritics_only' option for LaTeX.
+	* asciltex.l: Idem.
+	* lat1ltex.c: Idem.
+	* ltexasci.l: Idem.
+	* ltexlat1.l: Idem.
+
+1992-08-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Merging in some other separate documents.
+	* table.texi, DisplayCode: Deleted.
+	* Makefile.in: Adjusted.
+
+	* configure.in: Split FP_STDC_CHECK out into aclocal.m4.
+	* aclocal.m4: New.
+	* Makefile.in: Distribute aclocal.m4.
+
+	* version.c: Insure next version will be 3.2.3, skipping 3.2.1 and
+	3.2.2, jumping over parallel numbering at U. de Montre'al.
+
+1992-08-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ansi2knr: New, from Ghostscript distribution.
+	* configure.in: Check for __STDC__ and define U.
+	* Makefile.in: Use U and ansi2knr.
+	* All .c's: Remove many __STDC__ checks.
+	* mergelex.awk: Remove generation of __STDC__ checks.
+
+1992-07-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Use various clean goals according to latest GNU
+	standards.  Moreover, add a recode.dvi goal and a texclean goal.
+
+1992-07-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Changes for Autoconf 0.120.  Also test for popen,
+	even if almost any UNIX has it; so the user can later undefine it from
+	DEFS; avoid testing for pipe because of an old bug in this area.
+	* Makefile.in, recode.c, checkit, common.h: Replace all *_MISSING
+	by HAVE_*.
+
+1992-06-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Changes for Autoconf 0.118.  Use AWK and LEX
+	instead of GAWK and FLEX.
+
+1992-06-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Changes for Autoconf 0.115.  Use config.status to
+	recreate Makefile from Makefile.in.
+	* checkit: Retrieve DEFS value from config.status instead of
+	Makefile.
+
+1992-06-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in, configure.in: Changes for Autoconf 0.112.  Avoid
+	FP_PROG_MAKEINFO and use `makeinfo' directly.
+	* checkit: Get DEFS from Makefile instead of from config.status.
+
+1992-02-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (main): Returns int.
+
+1992-01-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in: Use new names for clean goals.
+
+1991-12-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* steps.h, recode.c: Removed comma at end of enum's.
+
+	* version.c: Added a few const's.
+
+1991-11-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Use EXIT_FAILURE and EXIT_SUCCESS; define them if not
+	STDC_HEADERS.
+
+	* recode.c: Prototypes added for fstat, getopt, link, perror,
+	unlink and utime, if __STDC__.
+
+1991-11-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Should now be TeXable.
+	* Makefile.in: Insure distributing texinfo.tex.
+
+	* ibmpicon.c, iconibmp.c: Use 0x1E for QNX end of lines, 0x0E was
+	wrong.
+
+	* configure.in: Take care of POSIXish ISC.
+
+1991-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in, Makefile.in: Do not absolutize $(srcdir), because
+	this could create problems with automounters.
+
+	* configure.in, Makefile.in: Remove IF_* devices, they were
+	solving a problem caused only by non timestamping shars, and
+	recode is now distributed in tar or zoo format.
+
+1991-11-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Get rid of the head program, using sed.  I would
+	also like, eventually, to get rid of file and grep programs too.
+
+1991-11-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (main): Use rename library routine if available.
+	* configure.in: Check for rename availability.
+
+	* Makefile.in: Insure gawk is executed in the source directory
+	while preparing merged.c.
+
+	* recode.c (execute_pipe_sequence): Close descriptor after dup2.
+	Still bugged.
+
+	* recode.c (code_index): Reject partial matches for keywords.
+	Reported by Laurent Bourbeau.
+
+1991-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: New.
+	* configure: Automatically regenerated from file configure.in
+	and David MacKenzie's autoconf.
+
+1991-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.2.
+
+	* all: Replace GPL version 1 by GPL version 2.
+
+	* Makefile.in: Use `sh checkit' instead of `./checkit'.  For an
+	unknown reason, the Sparc requires this.
+
+	* recode.c: Define str[r]chr to be [r]index if not USG.
+
+	* recode.c: Force binary mode on files for MSDOS.
+
+1991-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: MSDOS port.  tempnam(), utime(), link() and getopt()
+	were missing; replacements inspired from by Rahul Dhesi's flip.
+	* configdos.pl, config.tcc: New.
+	* getopt.c: New, AT&T freed code.
+	* Makefile.in: Adjustements for MSDOS port, dist.dos goal.
+
+1991-10-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (execute_popen_sequence, execute_pipe_sequence):
+	Accept non filter mode.
+	(execute_pipe_sequence): Wait for children.  Still bugged.
+
+	* configure: Test dup2.
+	* recode.c: Have DUP2_MISSING imply PIPE_MISSING, for now.
+
+	* checkit: New.
+	* Makefile.in: Use checkit in check goal.
+
+1991-10-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c: Revert back to -v instead of -q.  Give the user some
+	more control on the sequencing strategy through -i, -o and -p.
+	Get rid of any USE_FILE, USE_POPEN and USE_PIPE.  However, keep
+	POPEN_MISSING and PIPE_MISSING around, for MSDOS.  Segregating
+	between `popen' and `pipe' is only experimental, while trying to
+	have `pipe' working correctly.
+
+	* configure, Makefile.in: New.  Many new configuration features.
+	Among others, through IF_FLEX, be careful to never loose merged.c
+	on those systems which do not have the machinery to remake it.
+	* GNUmakefile, Makefile, Depends: deleted.
+
+1991-03-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.awk: remove exit() and read() definitions.
+
+1991-01-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ibmpicon.c, ibmplat1.c, ibmpmaci.c: Recognize old DOS end of
+	file (0x1A).
+
+1991-01-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* lat1bang.c, lat1txte.c: Have the no-break space converted to a
+	single space.
+
+1991-01-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* all: While/if ((var=exp) [test]) -> while/if (var=exp, var [test]),
+	switch (var=exp) -> var=exp; switch (var).
+
+	* recode.c (code_index): Use usage_and_exit ().  Moved.
+	* recode.c (echo_sequence): Print format changed.
+	* recode.c: Issue `recoding FILE ...done' messages, unless -q.
+
+	* ibmplat1.c, lat1ibmp.c, ibmpmaci, maciibmp.c, txteibmp.c:
+	While reading MS-DOS files, 0x0D followed by 0x0A is converted
+	to an end of line; while writing MS-DOS files, end of lines
+	are converted to 0x0D 0x0A.
+	* ibmpicon.c, iconibmp.c: While reading QNX files, 0x0E is
+	converted to 0x0D 0x0A; while writing QNX files, 0x0D followed
+	by 0x0A is converted to 0x0E.
+
+	* txteibmp.l: Deleted.
+	* steps.h: Remove references to texte_ibmpc.
+
+	* steps.h: Remove DONT_LEX conditionals; merged.c is always
+	available for installation.
+
+1990-07-04  François Pinard  <pinard@iro.umontreal.ca>
+
+	* all: Copyright directly assigned to the FSF.
+
+1990-03-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* txteasci.l, txteibmp.l, txtelat1.l: Change occurrences of a NUL
+	terminated cursor by a counter from 0 to yyleng-1.  This will
+	insure proper transmission of NULs through Flex, which can now
+	handle them.
+
+	* mergelex.awk: Make use of -8 option of Flex 2.2 alpha, adjust
+	documentation, insure proper pre-declarations of Flex variables
+	yytext, yyleng, yyint and yyout.
+
+1990-03-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (execute_popen_sequence): Get rid of unused variables.
+
+	* recode.c (code_index): Change index to counter, because on BSD
+	index is a library function.
+
+1990-03-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.1.
+
+1990-03-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* version.c, recode.c (usage_and_exit): Change -V to -C to give
+	the Copyright conditions, print version identification.
+
+	* txtelat1.l: Real strange bug aroud Flex.  I ought to blindly
+	remove the specific case of a capital A with a diaeresis to get
+	rid of a `NULL in input' Flex diagnostic.  Doing so, I introduce a
+	new bug to get rid of another :-(.
+
+	* all: Added missing prototypes declarations, missing void
+	specifications for functions, missing const; removed unused
+	variables.
+	* common.h: New.
+
+1990-02-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c, Makefile: If no files are specified, recode stdin on
+	stdout as before.  But if files are specified, each of them is now
+	recoded over itself, preserving its time stamps unless -t option
+	is used.  To make it work on BSD, split execute_sequence in three,
+	get rid of USE_FILES and hide USE_PIPE in the Makefile.  Also, see
+	the comment before execute_sequence routines, in recode.c.
+
+	* recode.c (main): Some code for -f, to be written later.
+
+	* recode.c (usage_and_exit): Rewritten.
+
+1990-02-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (usage): Added commas to improve readability.
+
+	* lat1bang.c: Have lower case output instead of upper case, this
+	is more readable.
+
+1990-02-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.0.1.
+
+	* recode.c: Corrected bugs related to USE_POPEN; recode step path
+	is now echoed once, and diaeresis selection is now propagated.
+
+1990-02-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.awk: Option USE_FPUTC, so to compile merged.c using
+	fputc instead of putc.  It will hopefully ease Apollo C compiler,
+	which litterally trashes on merged.c.
+
+1990-01-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* all: Adaptation for Flex.  A few yyleng problems short-circuited
+	here and there in some .l's.
+	* lexcom.c:  Eliminated.
+	* mergelex.awk: New, for merging all .l's into a single merged.l.
+	This results in a shorter a.out, by a factor of 2 in fact.
+	* asciltex.l, ascitxte.l: Slight adjustments needed to escape <'s
+	with backslashes.
+
+	* cdcnasci.c, banglat1.c: Too many putc's, simplified to shorten
+	the object modules.
+
+	* recode.c: Temporary files were improperly unlinked.  Addition of
+	a -q option (quiet), removal of -d (debug): by default, choosen
+	step path is printed on stderr.
+
+	* lat1bang.c: Replacement for disappearing ascibang.l.
+	* ascibang.l: Removed.
+
+1989-11-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* banglat1.c, lat1bang.c, iconibmp.c, cdcnasci.c, ascicdcn.c,
+	asciflat.c: Replacements for banglat1.l, ascibang.l, iconibmp.l,
+	cdcnasci.l, ascicdcn.l, asciflat.l.  I will get rid of some
+	simpler lex routines, to get speed and save space.
+	* steps.h, version.c: Various adjustments for the preceeding
+	changes.
+
+	* Most files: Removal of the dash to restrict each file name
+	into eight character, for MS-DOS.
+
+1989-11-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	* version.c: Added.
+
+	* recode.c: Provision for -V option.
+
+1989-10-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Version 3.0.
+
+	* txte-lat1.l, lat1-txte.c: Added.
+
+	* txte-ibmp.l: Capital E with acute accent now stays capital in
+	all cases.
+
+	* recode.c: Addition of USE_FILES feature for smaller machines.
+	PIPE_OUTSIDE renamed to USE_POPEN, PIPE_INSIDE to USE_PIPE.
+	Recognition of short keywords.
+
+	* ltex-asci.l, ltex-lat1.l: \$ now correctly translated into $.

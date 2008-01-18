@@ -1,0 +1,13 @@
+1998-10-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (AUTOMAKE_OPTIONS): Add --gnits.
+
+	* atconfig.m4: New, from elsewhere.
+	* echo.m4: Deleted.
+	* Makefile.am: Adjusted.
+
+1998-03-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* malloc.m4, realloc.m4: New files, from elsewhere.
+	* echo.m4, microsoft.m4, nls.m4: New, out of acinclude.m4.
+	* Makefile.am: New file.

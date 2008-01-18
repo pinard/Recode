@@ -1,0 +1,308 @@
+diff -urN recode-3.4.1-orig/Makefile.in recode.341/Makefile.in
+--- recode-3.4.1-orig/Makefile.in	Thu Dec  1 16:41:54 1994
++++ recode.341/Makefile.in	Sat Sep 20 10:22:50 1997
+@@ -107,7 +107,7 @@
+ DISTFILES = \
+ README AUTHORS BACKLOG COPYING INSTALL LOCALE NEWS THANKS TODO ChangeLog \
+ Makefile.in acconfig.h aclocal.m4 configure.in install-sh mkinstalldirs \
+-config.h.in configure stamp-h.in \
++config.h-in configure stamp-h.in \
+ recode.texi texinfo.tex stamp-vti version.texi charset.texi recode.info \
+ ansi2knr.c ansi2knr.1 c-boxes.el mergelex.awk \
+ $(HEADERS) $(SOURCES) $(LIBHDRS) $(LIBSRCS) checkit File-Latin1 \
+@@ -224,7 +224,7 @@
+ 
+ install: all
+ 	$(srcdir)/mkinstalldirs $(bindir) $(infodir)
+-	$(INSTALL_DATA) $(srcdir)/recode.info $(infodir)/recode.info
++	$(INSTALL_DATA) $(srcdir)/recode.info $(infodir)/recode.inf
+ 	$(INSTALL_PROGRAM) recode $(bindir)/`echo recode | sed '$(transform)'`
+ 	for name in $(CATALOGS); do \
+ 	  lang=`echo $$name | sed 's/.msg$$//'`; \
+@@ -234,7 +234,7 @@
+ 	done
+ 
+ uninstall:
+-	rm -f $(infodir)/recode.info
++	rm -f $(infodir)/recode.inf
+ 	rm -f $(bindir)/`echo recode | sed '$(transform)'`
+ 	for name in $(CATALOGS); do \
+ 	  lang=`echo $$name | sed 's/.msg$$//'`; \
+@@ -248,11 +248,12 @@
+ 
+ mostlyclean:
+ 	rm -f *.aux *.cp *.cps *.dvi *.fn *.fns *.ky *.log *.pg *.toc *.tp *.vr
+-	rm -f *.a *.o *._c *._o core core.*
++	rm -f *.exe *.a *.o *._c *._o core core.*
+ 	rm -f *.tmp yy.tab.*
+ 
+ clean: mostlyclean
+ 	rm -f recode
++	rm -f recode.exe
+ 
+ distclean: clean
+ 	rm -f ansi2knr
+@@ -328,10 +329,10 @@
+ 	cd $(srcdir) && autoconf
+ 
+ config.h: stamp-h
+-stamp-h: config.h.in config.status
++stamp-h: config.h-in config.status
+ 	CONFIG_FILES= CONFIG_HEADERS=config.h ./config.status
+ 	date > stamp-h
+-config.h.in: stamp-h.in
++config.h-in: stamp-h.in
+ stamp-h.in: configure.in aclocal.m4 acconfig.h
+ 	cd $(srcdir) && autoheader
+ 	date > $(srcdir)/stamp-h.in
+diff -urN recode-3.4.1-orig/build.bat recode.341/build.bat
+--- recode-3.4.1-orig/build.bat	Thu Jan  1 00:00:00 1970
++++ recode.341/build.bat	Sat May 24 21:27:24 1997
+@@ -0,0 +1,2 @@
++@echo off
++make
+diff -urN recode-3.4.1-orig/checkit.bat recode.341/checkit.bat
+--- recode-3.4.1-orig/checkit.bat	Thu Jan  1 00:00:00 1970
++++ recode.341/checkit.bat	Tue Sep 16 19:59:18 1997
+@@ -0,0 +1 @@
++bash ./checkit %1 %2 %3 %4 %5
+diff -urN recode-3.4.1-orig/config.bat recode.341/config.bat
+--- recode-3.4.1-orig/config.bat	Thu Jan  1 00:00:00 1970
++++ recode.341/config.bat	Sat Sep 20 11:34:22 1997
+@@ -0,0 +1,41 @@
++@echo off
++set CC=gcc
++set SYSROOT=c:
++set PATH_SEPARATOR=:
++set PATH_EXPAND=y
++if not "%HOSTNAME%" == "" goto hostdone
++if "%windir%" == "" goto msdos
++set OS=MS-Windows
++goto haveos
++:msdos
++set OS=DOS
++:haveos
++if not "%USERNAME%" == "" goto haveuname
++if not "%USER%" == "" goto haveuser
++echo No USERNAME and no USER found in the environment, using default values
++set HOSTNAME=Unknown PC
++:haveuser
++set HOSTNAME=%USER%'s PC
++goto userdone
++:haveuname
++set HOSTNAME=%USERNAME%'s PC
++:userdone
++set HOSTNAME=%HOSTNAME%, %OS%
++:hostdone
++set CONFIG_SHELL=bash.exe
++set INSTALL='${DJDIR}'/bin/ginstall -c
++if not exist configure.orig cp -f configure configure.orig
++bash ./configure --prefix='$(DJDIR)' 
++echo updating config.h and Makefiles for DJGPP...
++mv -f config.h config.tmp
++sed -f config.sed config.tmp > config.h
++touch config.h -r config.tmp
++rm -f config.tmp
++mv -f config.h config.tmp
++sed -e 's/#define HAVE_PIPE 1/\/* #define HAVE_PIPE 0 *\//g' config.tmp > config.h
++touch config.h -r config.tmp
++rm -f config.tmp
++mv -f Makefile Makefile.tmp
++sed -e 's/config\.h\.in/config.h-in/g' Makefile.tmp > Makefile
++touch Makefile -r Makefile.tmp
++rm -f Makefile.tmp
+diff -urN recode-3.4.1-orig/config.h-in recode.341/config.h-in
+--- recode-3.4.1-orig/config.h-in	Thu Jan  1 00:00:00 1970
++++ recode.341/config.h-in	Thu Dec  1 15:10:18 1994
+@@ -0,0 +1,76 @@
++/* config.h.in.  Generated automatically from configure.in by autoheader.  */
++
++/* Define if on AIX 3.
++   System headers sometimes define this.
++   We just want to avoid a redefinition error message.  */
++#ifndef _ALL_SOURCE
++#undef _ALL_SOURCE
++#endif
++
++/* Define to empty if the keyword does not work.  */
++#undef const
++
++/* Define if you don't have vprintf but do have _doprnt.  */
++#undef HAVE_DOPRNT
++
++/* Define if you have the vprintf function.  */
++#undef HAVE_VPRINTF
++
++/* Define if on MINIX.  */
++#undef _MINIX
++
++/* Define if the system does not provide POSIX.1 features except
++   with this defined.  */
++#undef _POSIX_1_SOURCE
++
++/* Define if you need to in order for stat and other things to work.  */
++#undef _POSIX_SOURCE
++
++/* Define as the return type of signal handlers (int or void).  */
++#undef RETSIGTYPE
++
++/* Define if you have the ANSI C header files.  */
++#undef STDC_HEADERS
++
++/* Default charset is `Latin-1' on UNIX, `IBM-PC' on MSDOS.  */
++#undef DEFAULT_CHARSET
++
++/* Define to the name of the distribution.  */
++#undef PACKAGE
++
++/* Define to 1 if ANSI function prototypes are usable.  */
++#undef PROTOTYPES
++
++/* Define to the version of the distribution.  */
++#undef VERSION
++
++/* Define to 1 for better use of the debugging malloc library.  See 
++   site ftp.antaire.com in antaire/src, file dmalloc/dmalloc.tar.gz.  */
++#undef WITH_DMALLOC
++
++/* Define if you have the dup2 function.  */
++#undef HAVE_DUP2
++
++/* Define if you have the pipe function.  */
++#undef HAVE_PIPE
++
++/* Define if you have the popen function.  */
++#undef HAVE_POPEN
++
++/* Define if you have the rename function.  */
++#undef HAVE_RENAME
++
++/* Define if you have the strerror function.  */
++#undef HAVE_STRERROR
++
++/* Define if you have the <libintl.h> header file.  */
++#undef HAVE_LIBINTL_H
++
++/* Define if you have the <limits.h> header file.  */
++#undef HAVE_LIMITS_H
++
++/* Define if you have the <locale.h> header file.  */
++#undef HAVE_LOCALE_H
++
++/* Define if you have the <string.h> header file.  */
++#undef HAVE_STRING_H
+diff -urN recode-3.4.1-orig/config.h.in recode.341/config.h.in
+--- recode-3.4.1-orig/config.h.in	Thu Dec  1 15:10:18 1994
++++ recode.341/config.h.in	Thu Jan  1 00:00:00 1970
+@@ -1,76 +0,0 @@
+-/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+-
+-/* Define if on AIX 3.
+-   System headers sometimes define this.
+-   We just want to avoid a redefinition error message.  */
+-#ifndef _ALL_SOURCE
+-#undef _ALL_SOURCE
+-#endif
+-
+-/* Define to empty if the keyword does not work.  */
+-#undef const
+-
+-/* Define if you don't have vprintf but do have _doprnt.  */
+-#undef HAVE_DOPRNT
+-
+-/* Define if you have the vprintf function.  */
+-#undef HAVE_VPRINTF
+-
+-/* Define if on MINIX.  */
+-#undef _MINIX
+-
+-/* Define if the system does not provide POSIX.1 features except
+-   with this defined.  */
+-#undef _POSIX_1_SOURCE
+-
+-/* Define if you need to in order for stat and other things to work.  */
+-#undef _POSIX_SOURCE
+-
+-/* Define as the return type of signal handlers (int or void).  */
+-#undef RETSIGTYPE
+-
+-/* Define if you have the ANSI C header files.  */
+-#undef STDC_HEADERS
+-
+-/* Default charset is `Latin-1' on UNIX, `IBM-PC' on MSDOS.  */
+-#undef DEFAULT_CHARSET
+-
+-/* Define to the name of the distribution.  */
+-#undef PACKAGE
+-
+-/* Define to 1 if ANSI function prototypes are usable.  */
+-#undef PROTOTYPES
+-
+-/* Define to the version of the distribution.  */
+-#undef VERSION
+-
+-/* Define to 1 for better use of the debugging malloc library.  See 
+-   site ftp.antaire.com in antaire/src, file dmalloc/dmalloc.tar.gz.  */
+-#undef WITH_DMALLOC
+-
+-/* Define if you have the dup2 function.  */
+-#undef HAVE_DUP2
+-
+-/* Define if you have the pipe function.  */
+-#undef HAVE_PIPE
+-
+-/* Define if you have the popen function.  */
+-#undef HAVE_POPEN
+-
+-/* Define if you have the rename function.  */
+-#undef HAVE_RENAME
+-
+-/* Define if you have the strerror function.  */
+-#undef HAVE_STRERROR
+-
+-/* Define if you have the <libintl.h> header file.  */
+-#undef HAVE_LIBINTL_H
+-
+-/* Define if you have the <limits.h> header file.  */
+-#undef HAVE_LIMITS_H
+-
+-/* Define if you have the <locale.h> header file.  */
+-#undef HAVE_LOCALE_H
+-
+-/* Define if you have the <string.h> header file.  */
+-#undef HAVE_STRING_H
+diff -urN recode-3.4.1-orig/config.sed recode.341/config.sed
+--- recode-3.4.1-orig/config.sed	Thu Jan  1 00:00:00 1970
++++ recode.341/config.sed	Sat May 24 21:36:46 1997
+@@ -0,0 +1,5 @@
++# Add a few DJGPP-specific lines to config.h
++$a\
++\
++#undef MSDOS \
++
+diff -urN recode-3.4.1-orig/configure recode.341/configure
+--- recode-3.4.1-orig/configure	Thu Dec  1 16:31:02 1994
++++ recode.341/configure	Tue Sep 16 20:51:28 1997
+@@ -1571,6 +1571,7 @@
+ for ac_file in .. $CONFIG_HEADERS; do if test "x$ac_file" != x..; then
+   # Support "outfile[:infile]", defaulting infile="outfile.in".
+   case "$ac_file" in
++  *.h) ac_file_in="${ac_file}-in" ;;
+   *:*) ac_file_in=`echo "$ac_file"|sed 's%.*:%%'`
+        ac_file=`echo "$ac_file"|sed 's%:.*%%'` ;;
+   *) ac_file_in="${ac_file}.in" ;;
+diff -urN recode-3.4.1-orig/plconv.bat recode.341/plconv.bat
+--- recode-3.4.1-orig/plconv.bat	Thu Jan  1 00:00:00 1970
++++ recode.341/plconv.bat	Sun May 11 23:04:24 1997
+@@ -0,0 +1 @@
++recode ibm852:latin2 %1
+diff -urN recode-3.4.1-orig/update.bat recode.341/update.bat
+--- recode-3.4.1-orig/update.bat	Thu Jan  1 00:00:00 1970
++++ recode.341/update.bat	Sun Jun  8 14:50:06 1997
+@@ -0,0 +1,6 @@
++patch < diffs
++cd recode.34
++touch config.status
++touch makefile
++touch config.h
++touch stamp-h

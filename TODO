@@ -1,32 +1,55 @@
-TODO file for GNU recode
+* TODO file for GNU recode
 
-Tell <pinard@iro.umontreal.ca> if you feel like volunteering for any
+Tell `mailto:recode-bugs@gnu.org' if you feel like volunteering for any
 of these ideas, listed more or less in decreasing order of priority.
+Some TODO items are implicit from received email.  See file BACKLOG.
+Significant contributions require written assignments and disclaimers.
 
-* Mechanics
-  - Get a single distribution, even for MSDOS.
-  - Intercept signals to cleanup the temporary files in any event.
-  - Revise --sequence=pipe thoroughly.
-  - Rewrite execute_pipe_sequence for having only one child per parent.
-  - Revise --force thoroughly.
-  - Rewrite .l converses for lat1{asci,ltex,txte}, for --force.
-  - Optimize/merge all one-to-many cases.
-  - Write a better `make check', not as partial and forgiving.
-  - Modify recode so I can get rid of diacrit.[ch] (elsewhere).
-  - Have -l know which output charset to use (Martin Maechler, 93-12-07).
-  - Take note that ->RFC1345 recodings are non reversible.
+.* Notes particulières
 
-* Charsets
-  - Integrate -c and -g into charsets.
-  - `recode -g ibmpc:ibmpc' is not that trivial, find something.
-  - Clean up applemac vs macintosh and ibmpc vs ibm437.
-  - Implement RFC1345 more fully.
-  - Generalize older charsets (latex, texte, etc.) to RFC 1345 mnemonics.
-  - Support VT320 support and related character sets.  (Alain Simon)
-  - Support @code{[nt]roff} diacritics.
-  - Support Universite de Montreal ``accent'' convention.
-
-Local Variables:
-mode: outline
-outline-regexp: " *[-+*.] \\|"
-End:
+. + Nouvelles tables RFC 1345
+. + Révision ORA
+. @ ~/libit/rmail/m4
+. @ ~/libit/rmail/gettext
+
+.@ ChangeLog
+
+.* Charsets
+. + Clean up applemac vs macintosh and ibmpc vs ibm437.
+. + Implement RFC1345 more fully.
+. + Generalize older charsets (latex, texte, etc.) to RFC 1345 mnemonics.
+. + Support VT320 support and related character sets.  (Alain Simon)
+. + Support @code{[nt]roff} diacritics.
+. + Support Universite de Montreal ``accent'' convention.
+
+.* Surfaces
+. + Implement some invbits over 8, 7 or 6 bits, maybe more.
+. + CR-LF, in ibmpc.c (implied by IBMPC?)
+. + CR, in applemac.c (implied by Apple-Mac?)
+. + Message headers [RFC 1342]
+. + Mnemonic and Mnemo (maybe?) [RFC 1345]
+. + Integrate -c and -g into charsets.
+. + Find something for `recode -g ibmpc:ibmpc' to do what it suggests
+. + Option -M (implying -i) to process MIME headers
+
+.* Mechanics
+. + Intercept signals to cleanup the temporary files in any event.
+. + Revise --sequence=pipe thoroughly.
+. + Rewrite execute_pipe_sequence for having only one child per parent.
+. + Revise --force thoroughly.
+. + Rewrite .l converses for lat1{asci,ltex,txte}, for --force.
+. + Optimize/merge all one-to-many cases.
+. + Write a better `make check', not as partial and forgiving.
+. + Modify recode so I can get rid of diacrit.[ch] (elsewhere).
+. + Have -l know which output charset to use (Martin Maechler, 93-12-07).
+. + Take note that ->RFC1345 recodings are non reversible.
+
+.* Notes about MSDOS port
+. + Un touch stamp-h a été nécessaire.
+. + @PRODUCT@ et @VERSION@ n'ont pas été substitués.
+. + Remplacer PRODUCT par PACKAGE dans config_h.*.
+. + On doit avoir -DHAVE_CONFIG_H=1 (le =1 est requis).
+. + charset.c:637: Maybe incorrect assignment in init_table_for_rfc1345().
+. + LIBINTL.OBJ et LOCALE.OBJ n'étaient pas compilés.
+. + La règle pour compiler LIBINTL.OBJ était absente.
+. + readme.tcc doit devenir README.DOS en cours de route.

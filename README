@@ -1,62 +1,180 @@
-GNU `recode' converts files between character sets and usages.  When
-exact transliterations are not possible, it may get rid of the
-offending characters or fall back on approximations.  This program
-recognizes or produces nearly 150 different character sets and is able
-to transliterate files between almost any pair.  Most RFC 1345
-character sets are supported.
+* README file for `recode'			allout -*- outline -*-
 
-GNU `recode' has been written by Franc,ois Pinard.  It is an evolving
-product, and specifications might change in future releases.
+  Here is version 3.5 for the Free `recode' program and library.  Glance
+  through this `README' file before starting configuration.  Make sure
+  you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
+  them already.
 
-Note that `-f' is not completely implemented.  If you modify or add
-an `.l' source file, you need `mawk', GNU `awk' or `nawk', and Flex
-2.4.6 or better for remaking `merged.c'.  Finally, see further down,
-below, for various installation hints on special systems.
+  The canonical distribution point for this version is either:
 
-See file `BACKLOG' for a summary of pending mail and articles.
-See file `COPYING' for copying conditions.
-See file `INSTALL' for compilation and installation instructions.
-See file `NEWS' for a list of major changes in the current release.
-See file `README.DOS' for notes about the MSDOS port.
-See file `THANKS' for a list of contributors.
-Use file `File-Latin1' to play with recode, if you feel like it.
+     http://www.iro.umontreal.ca/contrib/recode/recode-3.5.tar.gz
+     ftp://ftp.iro.umontreal.ca/pub/recode/recode-3.5.tar.gz
 
-Your feedback will help us to make a better and more portable
-product.  Mail suggestions and bug reports (including documentation
-errors) for this program to `bug-gnu-utils@prep.ai.mit.edu'.  If you
-develop new charsets, new methods, or anything along `recode', let
-me know and share your findings, at `pinard@iro.umontreal.ca'.
+  yet the second URL (the FTP one) might disappear one day.  GNU mirrors
+  usually hold a copy of non-pretest releases, the canonical distribution
+  point for the last such release is:
 
-.-------.
-| Hints |
-`-------'
+     ftp://ftp.gnu.org/pub/gnu/recode-3.4.tar.gz
 
-Here are a few hints which might help installing `recode' on some
-systems.  Most may be applied by temporary presetting environment
-variables while calling `./configure'.  File `INSTALL' explains this.
+.* Introduction
+   ------------
 
-* You may override DEFAULT_CHARSET while configuring.  For example, on
-an AtariST using `bash', one could do:
+. + Presentation
+
+    The `recode' library converts files between character sets and usages.
+    The library recognises or produces nearly 150 different character sets
+    and is able to transliterate files between almost any pair.  When exact
+    transliteration are not possible, it may get rid of the offending
+    characters or fall back on approximations.  Most RFC 1345 character sets
+    are supported.  The `recode' program is a handy front-end to the library.
+
+    The `recode' program and library have been written by François Pinard.
+    It is an evolving package, and specifications might change in future
+    releases.  Option `-f' is now fairly implemented, yet not fully.
+
+. + See files
+
+	ABOUT-NLS     how to customise this program to your language
+	BACKLOG       summary of pending mail and articles
+	COPYING       copying conditions for the program
+	COPYING.LIB   copying conditions for the library
+	INSTALL       compilation and installation instructions
+	NEWS          major changes in the current release
+	THANKS        partial list of contributors
+
+. + Configure options
+
+    Besides those configure options documented in files `INSTALL' and
+    `ABOUT-NLS', a few extra options may be accepted after `./configure':
+
+.  - `--disable-shared'
+.  - `--disable-static'
+
+     to inhibit the building of shared libraries or static libraries; the
+     default is to always build static libraries, and to attempt building
+     shared libraries if there is some known recipe for this.
+
+.  - `--with-gnu-ld'
+
+     to force the assomption that the C compiler uses GNU ld.
+
+.  - `--with-dmalloc'
+
+     to trigger a debugging feature for looking at memory management
+     problems, it pre-requires Gray Watson's package, which is available as
+     `ftp://ftp.letters.com/src/dmalloc/dmalloc.tar.gz'.
+
+. + Maintenance tools
+
+    For comprehensive modifications to `recode', you might need tools beyond
+    those used in simple installations.  If not done already, get:
+
+    autoconf	ftp://ftp.gnu.org/pub/gnu/autoconf/autoconf-2.13.tar.gz
+    automake	ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
+    flex	ftp://ftp.gnu.org/pub/gnu/flex-2.5.2.tar.gz
+    gawk	ftp://ftp.gnu.org/pub/gnu/gawk-3.0.3.tar.gz
+    gettext	ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
+    help2man	http://www.ozemail.com.au/~bod/help2man-1.008.tar.gz
+    libtool	ftp://ftp.gnu.org/pub/gnu/libtool/libtool-1.3.2.tar.gz
+    m4		ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4l.tar.gz
+    perl	ftp://ftp.gnu.org/pub/gnu/perl-5.003.tar.gz
+    tar		ftp://ftp.gnu.org/pub/gnu/tar-1.12.tar.gz
+
+    Make sure GNU `m4' is fully installed before you start installing
+    Autoconf.  Have Perl installed before Automake and `help2man'.
+
+    `mawk', GNU `awk' or `nawk', and also Flex 2.5 or better, are needed
+    for remaking `merged.c', after you modify or add an `.l' source file.
+
+. + Mailing lists and collaboration
+
+    If you feel like receiving releases and pretest announcements for the
+    `recode' package, send a message to mailto:majordomo@iro.umontreal.ca
+    having, in its body, a line saying:
+
+	subscribe recode-announce
+
+    If you rather want to participate actively in discussions, pretesting
+    and development for `recode', do just as above, but this time, use:
+
+	subscribe recode-forum
+
+    Look into `http://www.iro.umontreal.ca/contrib/recode' for various
+    releases, pretests, and related files.  In particular, subdirectory
+    `dist/' contains a weekly mirror of the current unpackaged work files,
+    while subdirectory `rmail/' contains saved or pending correspondence.
+
+    Please do _not_ widely redistribute releases having a letter after
+    the version numbers, as these are meant for pretesting only, and might
+    not be stable enough for other usages.
+
+. + Report addresses
+
+    Send bug reports to `mailto:recode-bugs@iro.umontreal.ca'.  A bug report
+    is an adequate description of the problem: your input, what you expected,
+    what you got, and why this is wrong.  Diffs are welcome, but they only
+    describe a solution, from which the problem might be uneasy to infer.
+    If needed, submit actual data files with your report.  Small data
+    files are preferred.  Big files may sometimes be necessary, but do
+    not send them on the mailing list; rather take special arrangement
+    with the maintainer.
+
+    Your feedback will help us to make a better and more portable
+    package.  Consider documentation errors as bugs, and report them
+    as such.  If you develop anything pertaining to `recode' or have
+    suggestions, let us know and share your findings by writing at
+    `mailto:recode-forum@iro.umontreal.ca'.
+
+.* Installation hints
+   ------------------
+
+   Here are a few hints which might help installing `recode' on some systems.
+   Many may be applied by temporary presetting environment variables while
+   calling `./configure'.  File `INSTALL' explains this.
+
+. + Default charset
+
+    You may override the usual charset while configuring.  The usual
+    charset is implied when a charset name is omitted or empty, and when
+    `DEFAULT_CHARSET' is unset in the environment at run time.  For example,
+    on an AtariST using `bash', one could do:
 
 	DEFAULT_CHARSET=AtariST ./configure
 
-* Some C compilers, like Apollo's, have a real hard time compiling
-merged.c.  If this is your case, first avoid compiler optimization.
-From within the Bourne shell, you may use:
+    If you prefer to not have any usual charset at all, then use:
 
-	CPPFLAGS=-DUSE_FPUTC CFLAGS= ./configure
+	DEFAULT_CHARSET= ./configure
 
-* For 80286 based systems, it has been reported that some compilers
-generate wrong code while optimizing for *small* models.  So, from
-within the Bourne shell, do:
+    that is, define `DEFAULT_CHARSET' to the empty string before configuring.
+    When installed this way, `recode' will not accept omitted charsets at
+    run time, unless `DEFAULT_CHARSET' is set to some value in the environment.
+
+. + Compilation time
+
+    Some C compilers, like Apollo's, have a real hard time compiling
+    `merged.c'.  If this is your case, avoid compiler optimisation.
+    From within the Bourne shell, you may use:
+
+	CFLAGS= ./configure
+
+    But if you want to give a hard time to your C optimiser on `merged.c',
+    for getting code that runs only a bit faster, just try:
+
+	CPPFLAGS=-DINLINE_HARDER ./configure
+
+. + Smallish systems
+
+    For 80286 based systems, it has been reported that some compilers
+    generate wrong code while optimising for *small* models.  So, from
+    within the Bourne shell, do:
 
 	CFLAGS=-Ml LDFLAGS=-Ml ./configure
 
-to force large memory model.  For 80286 Xenix compiler, the last time
-it was tried a while ago, one ought to use:
+    to force large memory model.  For 80286 Xenix compiler, the last time
+    it was tried a while ago, one ought to use:
 
 	CFLAGS='-Ml -F2000' LDFLAGS=-Ml ./configure
 
-* Some smallish systems have poor `popen' support or trash heavily
-when processes do fork.  In this case, just before doing `make', edit
-`config.h' and ensure HAVE_POPEN and HAVE_PIPE are *not* defined.
+    Other systems have poor `pipe'/`popen' support or trash heavily when
+    processes fork.  In this case, just before doing `make', edit `config.h'
+    and ensure `HAVE_PIPE' is *not* defined.

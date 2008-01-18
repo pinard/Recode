@@ -1,0 +1,68 @@
+From Martin Maechler <maechler@stat.math.ethz.ch>, on 1993-12-30.
+
+
+Here are ALL codes 128 - 255 [== OKTAL 200 - 377 ] 	you see ISO-Latin1
+----------------------------           ---------		----------
+
+To produce such a letter in Emacs, you type
+	  <ctrl>qNNN
+where <ctrl>q or "C-q" or "^q" is <CONTROL> and "Q" ,  and   NNN = OCTAL code
+
+BETTER: With 'iso-insert' [now in our default],
+------- type ([ C-x 8 " a ]) to get ä   --> C-x 8 C-h  gives bindings
+NUCH BETTER: with  "/u/sfs/emacs/international.el":
+===========  Alt + a =  A-a  |--> ä,   A-O  |--> Ö , etc.
+
+Note that \200 - \236  [the first 32,  128--160] are NOT ISO-latin1
+displayed:
+
+€‚ƒ„…†‡	|||	ˆ‰Š‹Œ
+‘’“”•–—	|||	˜™š›œ
+
+Note that \240 is VERY funny "invisible", makes things reversevideo../invisible
+depending on Emacs version.
+For this reason, I  OMIT it in the following [Enter it with ^Q240]:
+
+Dec Oct 		 Dec Oct
+	  ¡¢£¤¥¦§	 	    ¨©ª«¬­®¯
+160 240: 01234567	 168 250:   01234567
+
+         °±²³´µ¶·	            ¸¹º»¼½¾¿
+176 260: 01234567	 184 270:   01234567
+
+         ÀÁÂÃÄÅÆÇ	            ÈÉÊËÌÍÎÏ
+192 300: 01234567	 200 310:   01234567
+
+         ĞÑÒÓÔÕÖ×	            ØÙÚÛÜİŞß
+208 320: 01234567	 216 330:   01234567
+
+         àáâãäåæç	            èéêëìíîï
+224 340: 01234567	 232 350:   01234567
+
+         ğñòóôõö÷	            øùúûüışÿ
+240 360: 01234567	 248 370:   01234567
+
+--------------
+Ein paar Beispiele / some examples  [using OCT code]
+ ö <-|  366  - 40 = 326 |-> Ö
+ ä <-|  344  - 40 = 304 |-> Ä
+ ü <-|  374  - 40 = 334 |-> Ü
+
+Texte:
+
+Österreich ist für Zürcher und Zürcherinnen eigentlich näher als das
+Bärner Oberland, aber wer möchte wohl Kärnten mit einem Besuch beglücken ?
+
+Peter Bühlmann, Markus Hürzeler, Prof. Hansruedi Künsch, Frau Christina Künzli,
+ Martin Mächler -- alle hätten gerne ihre Namen mit Umlauten.
+
+Ob dies Markus Äbi wohl auch so sähe ?
+
+Pour Paul-André ou Étienne, c'est plustôt les accents aigus, grave et
+circonflexes, ça c'est clair.
+
+El Niño, das ist ein warmer Wind in der südlichen Hemisphäre...
+
+ «3·4 = 3 × 4 = 12»  oder «(¯2)² = 4»  oder « 1÷2 = ½ »
+
+ schreiben sich auch schöner...

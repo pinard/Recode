@@ -1,44 +1,139 @@
-GNU recode has originally been written by Franc,ois Pinard.  Other
-people contributed to GNU recode by reporting problems, suggesting
-various improvements or submitting actual code.  Here is a list of
-these people.  Help me keeping it complete and exempt of errors.
+Free recode has originally been written by François Pinard.  Other people
+contributed to Free recode by reporting problems, suggesting various
+improvements or submitting actual code.  Here is a list of these people.
+Help me keeping it complete and exempt of errors.  See various ChangeLogs
+for a detailed description of contributions.
 
+Akim Demaille		demaille@inf.enst.fr
+Alain Labonté		alb@riq.qc.ca
+Alain Magloire		alainm@macs.ee.mcgill.ca
+Alexander L. Belikoff	abel@bfr.co.il
+Andreas Dietrich	quasi@mathematik.uni-marburg.de
 Andreas Mueller		afm@othello.ch
-Andreas Schwab		schwab@ls5.informatik.uni-dortmund.de
+Andreas Schwab		schwab@issan.informatik.uni-dortmund.de
+Andries Brouwer		Andries.Brouwer@cwi.nl
+Arnaldo Mandel		am@ime.usp.br
 Bastian Schlueter	buzz@cs.tu-berlin.de
+Bernt Guldbrandtsen	bg@rs580.sh.dk
+Bert Schweitzer		b.schweitzer@tu-bs.de
+Branimir Dolicki	bdolicki@tel.hr
+Christian Limpach	Christian.Limpach@nice.ch
+Christian Recktenwald	chris@janus.citecs.de
+Christian Rolland	Christian.Rolland@irisa.fr
 Claude Goutier		goutier@jsp.umontreal.ca
+Colin Plumb		colin@nyx10.cs.du.edu
+Daniel Quinlan		quinlan@best.com
+Daniel Taupin		taupin@lps.u-psud.fr
 David E. A. Wilson	david@cs.uow.edu.au
 David Kastrup		dak@pool.informatik.rwth-aachen.de
 David Lebel		lebel@iro.umontreal.ca
+David Mentre		David.Mentre@enst-bretagne.fr
 David van Leeuwen	david@gandalf.tm.tno.nl
-Francois Pinard		pinard@iro.umontreal.ca
-Francois Robitaille	f_robita@crim.ca
+Detlev Droege		droege@informatik.uni-koblenz.de
+Dominique Quatravaux	quatrava@clipper.ens.fr
+Dominique Schmit	dschmit@tabarly.saclay.cea.fr
+Duane Ellis		duane@franklin.com
+Eli Zaretskii		eliz@is.elta.co.il
+Eric Backus		ericb@lsid.hp.com
+Erick Branderhorst	branderh@iaehv.nl
+Erwan Mas		emas@bondy.orstom.fr
+Farzad Farid		farzy@publicis.fr
+Florian Oelmaier	100265.2501@compuserve.com
+François Pinard		pinard@iro.umontreal.ca
+François Robitaille	f_robita@crim.ca
+François Yergeau	yergeau@alis.com
+Françoise Audebrand	audebran@ere.umontreal.ca
+Frederic Albrecht	fred@calvacom.fr
+Frère Roy		roy@taize.fr
+Gabriel P. Silva	gabriel@rio.cos.ufrj.br
 Ghislain Plamondon	gplamon@edupac.qc.ca
+Georg Haefele		haefele@atlas.gis.univie.ac.at
+Greg McGary		gkm@cstone.net
+Guy Lapalme		lapalme@iro.umontreal.ca
+Harald Falkenberg	harald.falkenberg@desy.de
+Harald Koenig		koenig@tat.physik.uni-tuebingen.de
 Hermann Hueni		hueni@iam.unibe.ch
+Hennus Bergman		hennus@sky.ow.nl
+Hilmar Schlegel		hs@semic.ag-berlin.mpg.de
+Jacques Madelaine	jacques@info.unicaen.fr
 Jacques Richer		richer@cerca.umontreal.ca
-Jim Meyering		meyering@acm.org
+Jan Djarv		jan.djarv@mbox200.swipnet.se
+Jean-Claude Nadeau	nadeau@jsp.umontreal.ca
+Jens Quade		jens@ronja.dinoco.de
+Jim Meyering		meyering@na-net.ornl.gov
 Joelle Stemp		stemp@ere.umontreal.ca
+John van Krieken	john@atcmp.nl
+Jörg Höhle		Joerg.Hoehle@gmd.de
+Jose Joao Almeida	jj@di.uminho.pt
+Julio Sanchez		jsanchez@gmv.es
+Juliusz Chroboczek	jch@clipper.ens.fr
+Juergen Zeller		zet@rupert.franken.de
 Kai Uwe Rommel		rommel@ars.muc.de
 Karl Berry		karl@cs.umb.edu
-Keld J|rn Simonsen	keld@dkuug.dk
-Laurent Bourbeau	bourbeau@condor.citi.doc.ca
-Larry Virden		lvirden@cas.org
+Keld Jørn Simonsen	keld@dkuug.dk
+Kester Habermann	kester@unix-ag.uni-kl.de
+Kevin Stuckless		kevins@rc.gc.ca
+Laurent Bourbeau	bourbeau@progiciels-bpi.ca
+Larry W. Virden		lvirden@cas.org
+Liisa R{ih{		lr@cs.uta.fi
 Loic Dachary		loic@design.axis.fr
+Lukas Petrlik		luki@scylla.zcu.cz
 Mac Pigman		gwp@dido.caltech.edu
+Marc Gingold		gingold@amoco.saclay.cea.fr
+Marc Shapiro		shapiro@prof.inria.fr
 Marc Verreault		vero@iro.umontreal.ca
+Mario Gay		mgay@ti-edu.ch
+Markus Kuhn		mskuhn@faui01.informatik.uni-erlangen.de
+Martin J. Dürst		mduerst@ifi.unizh.ch
 Martin Maechler		maechler@stat.math.ethz.ch
+Martin Mares		mj@ucw.cz
 Michael Gschwind	mike@vlsivie.tuwien.ac.at
 Michael L. Dowling	mike@mo.math.nat.tu-bs.de
+Michael Schmidt		mschmidt@koblenz.fh-rpl.de
+Michael Shields		shields@tembel.org
+Mikko Silvonen		Mikko.Silvonen@helsinki.fi
+Nathanael Makarevitch	Nathanael.MAKAREVITCH@ifp.fr
+Nathaniel Borenstein	nsb@aa.fv.com
 Nicolas Anquetil	anquetil@iro.umontreal.ca
+Nicolas Thiery		nthiery@clipper.ens.fr
+Niels Kr. Bech Jensen	nkbj@image.dk
+Olivier Tharan		tharan@galaxie.int-evry.fr
 Per Andersson		perand@stacken.kth.se
+Per Steinar Iversen	PerSteinar.Iversen@fi.uib.no
+Phyllis Frankl		phyllis@morph.poly.edu
 Pierre Gaumond		gaumondp@ere.umontreal.ca
 Pierre Girard		pierreg@crt.umontreal.ca
 Pierre Mathieu		mathieu@geod.emr.ca
+Povl H. Pedersen	pope@netguide.dk
+Primo.BŽ¾ Peterlin		peterlin@biofiz.mf.uni-lj.si
 Rejean Payette		rpayette@edupac.qc.ca
-Richard Stallman	rms@gnu.ai.mit.edu
+Ricard Torres		torres@upf.es
+Richard Plasun		plasun@iue.tuwien.ac.at
+Richard Stallman	rms@gnu.org
 Robert Joop		rj@rainbow.in-berlin.de
 Roman Czyborra		czyborra@cs.tu-berlin.de
 Ronald C.F. Antony	rcfa@cubiculum.com
+Santiago Vila Doncel	sanvila@unex.es
+Saverio Pangoli		saverio@mystere.sci.sns.it
+Sebastian Huebner	cyco@lili.uni-bielefeld.de
+Slaven Rezic		eserte@cs.tu-berlin.de
+Stefan Albertz		Stefan.Albertz@rus.uni-stuttgart.de
+Stefan Haubenthal	wwwsth@sx1.hrz.uni-dortmund.de
+Steinar Bang		sb@metis.no
 Stephane Berube		berube@iro.umontreal.ca
+Sumit Bose		bose@physik.tu-berlin.de
+Thomas Gebhardt		gebhardt@hrz.uni-marburg.de
+Thomas M. Ott		Labalutsch@aol.com
+Thomas Seeling		Thomas.Seeling@math.uni-giessen.de
+Tom Tromey		tromey@cygnus.com
+Ulrich Drepper		drepper@gnu.org
+Ulrich Windl		Ulrich.Windl@rz.uni-regensburg.de
 Vern Paxson		vern@ee.lbl.gov
+Vitor Duarte		vad@fct.unl.pt
+Walter M.AŽüller		walt@pi4.informatik.uni-mannheim.de
+Wiel Seuskens		wseuskens@siteways.nl
+Wilhelm Zadrapa		wfz@aon.at
 William Bader		wbader@scarecrow.csee.lehigh.edu
+Wolfgang Boerner	Wolfgang.Boerner@rz.uni-regensburg.de
+Wolfgang Wander		wwc@hermes.desy.de
+Yves Arrouye		Yves.Arrouye@imag.fr
