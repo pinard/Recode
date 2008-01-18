@@ -1,3 +1,20 @@
+1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Remove --with-libiconv test.
+	(AC_OUTPUT): Produce libiconv/Makefile.
+	* Makefile.am (SUBDIRS): Add libiconv.
+
+1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Version 3.5c.
+
+1999-12-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Version 3.5b.
+
+	* configure.in: Add --with-libiconv.
+	* acconfig.h: Document WITH_LIBICONV.
+
 1999-12-19  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (BABYL): Adjusted.
@@ -42,7 +59,7 @@
 1999-06-02  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5a.
-
+
 1999-05-31  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5.

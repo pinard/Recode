@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1997, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1997.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -21,70 +20,70 @@
 #include "common.h"
 
 static bool
-transform_latin_mule (RECODE_CONST_STEP step, RECODE_TASK task,
+transform_latin_mule (RECODE_SUBTASK subtask,
 		      unsigned prefix)
 {
   int character;
 
-  while (character = get_byte (task), character != EOF)
+  while (character = get_byte (subtask), character != EOF)
     {
       if (!IS_ASCII (character))
-	put_byte (prefix, task);
-      put_byte (character, task);
+	put_byte (prefix, subtask);
+      put_byte (character, subtask);
     }
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_mule_latin (RECODE_CONST_STEP step, RECODE_TASK task,
+transform_mule_latin (RECODE_SUBTASK subtask,
 		      unsigned prefix)
 {
   int character;
 
-  while (character = get_byte (task), character != EOF)
+  while (character = get_byte (subtask), character != EOF)
     if (IS_ASCII (character))
-      put_byte (character, task);
+      put_byte (character, subtask);
     else if ((character & MASK (8)) == prefix)
       {
-	character = get_byte (task);
+	character = get_byte (subtask);
 
 	while ((character & MASK (8)) == prefix)
 	  {
 	    /* This happens in practice, sometimes, that Emacs goes a bit
 	       berzerk and generates strings of prefix characters.  Remove
 	       all succeeding prefixes in a row.  This is irreversible.  */
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	    character = get_byte (task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	    character = get_byte (subtask);
 	  }
 
 	if (character == EOF)
 	  {
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	    break;
 	  }
 
 	if (IS_ASCII (character))
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	put_byte (character, task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	put_byte (character, subtask);
       }
     else
-      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
+      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 #define TRANSFORM_LATIN(To_mule, From_mule, Prefix) \
 									\
   static bool								\
-  To_mule (RECODE_CONST_STEP step, RECODE_TASK task)	\
+  To_mule (RECODE_SUBTASK subtask)	\
   {									\
-    return transform_latin_mule (step, task, Prefix);			\
+    return transform_latin_mule (subtask, Prefix);			\
   }									\
 									\
   static bool								\
-  From_mule (RECODE_CONST_STEP step, RECODE_TASK task)	\
+  From_mule (RECODE_SUBTASK subtask)	\
   {									\
-    return transform_mule_latin (step, task, Prefix);			\
+    return transform_mule_latin (subtask, Prefix);			\
   }
 
 TRANSFORM_LATIN (transform_latin1_mule, transform_mule_latin1, 129)

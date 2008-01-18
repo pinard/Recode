@@ -1,3 +1,11 @@
+1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for defaulted libiconv.
+
+1999-12-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for :libiconv:.
+
 1999-12-19  François Pinard  <pinard@iro.umontreal.ca>
 
 	* names.m4: Adjusted for vietnamese charsets.
@@ -29,7 +37,7 @@
 1999-06-02  François Pinard  <pinard@iro.umontreal.ca>
 
 	* atgeneral.m4 (at_usage): Typo.
-
+
 1999-06-01  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (check-local): Do not warn for installed library, as

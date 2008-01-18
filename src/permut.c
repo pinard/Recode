@@ -21,33 +21,33 @@
 #include "common.h"
 
 static bool
-permute_21 (RECODE_CONST_STEP step, RECODE_TASK task)
+permute_21 (RECODE_SUBTASK subtask)
 {
   int character1;
   int character2;
 
   while (true)
     {
-      character1 = get_byte (task);
+      character1 = get_byte (subtask);
       if (character1 == EOF)
 	break;
 
-      character2 = get_byte (task);
+      character2 = get_byte (subtask);
       if (character2 == EOF)
 	{
-	  put_byte (character1, task);
+	  put_byte (character1, subtask);
 	  break;
 	}
 
-      put_byte (character2, task);
-      put_byte (character1, task);
+      put_byte (character2, subtask);
+      put_byte (character1, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-permute_4321 (RECODE_CONST_STEP step, RECODE_TASK task)
+permute_4321 (RECODE_SUBTASK subtask)
 {
   int character1;
   int character2;
@@ -56,41 +56,41 @@ permute_4321 (RECODE_CONST_STEP step, RECODE_TASK task)
 
   while (true)
     {
-      character1 = get_byte (task);
+      character1 = get_byte (subtask);
       if (character1 == EOF)
 	break;
 
-      character2 = get_byte (task);
+      character2 = get_byte (subtask);
       if (character2 == EOF)
 	{
-	  put_byte (character1, task);
+	  put_byte (character1, subtask);
 	  break;
 	}
 
-      character3 = get_byte (task);
+      character3 = get_byte (subtask);
       if (character3 == EOF)
 	{
-	  put_byte (character2, task);
-	  put_byte (character1, task);
+	  put_byte (character2, subtask);
+	  put_byte (character1, subtask);
 	  break;
 	}
 
-      character4 = get_byte (task);
+      character4 = get_byte (subtask);
       if (character4 == EOF)
 	{
-	  put_byte (character3, task);
-	  put_byte (character2, task);
-	  put_byte (character1, task);
+	  put_byte (character3, subtask);
+	  put_byte (character2, subtask);
+	  put_byte (character1, subtask);
 	  break;
 	}
 
-      put_byte (character4, task);
-      put_byte (character3, task);
-      put_byte (character2, task);
-      put_byte (character1, task);
+      put_byte (character4, subtask);
+      put_byte (character3, subtask);
+      put_byte (character2, subtask);
+      put_byte (character1, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

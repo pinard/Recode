@@ -1,3 +1,47 @@
+1999-12-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mixed.c (struct mixed): Delete original_task.
+	(start_accumulation): New name for plumb_input_to_buffer.
+	(recode_accumulated): Merges previous plumb_buffer_to_output,
+	a call to recode_perform_task, and previous plumb_input_to_output.
+	Usages adjusted accordingly.
+
+1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* iconv.c: New file, from Bruno Haible's libiconv 0.2.
+	* libiconv.c: Now unconditional.  Do not include <iconv.h>.
+	* outer.c, request.c: Presume WITH_LIBICONV, do not test it.
+	* Makefile.am: Adjusted.
+	(INCLUDES): Include $(top_srcdir)/libiconv.
+
+1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h: Introduce RECODE_SUBTASK.
+	* All: Adapt everywhere to use subtask instead of step/task pairs.
+
+	* task.c (recode_if_nogo): New function.
+	* recodext.h: Declare it.
+	(SET_TASK_ERROR, RETURN_IF_NOGO): Use it.
+
+1999-12-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* vn.c (viscii_viqr_data, viscii_vni_data): Final DONE was missing.
+	(viscii_vni_data): Latin-1 characters were sign extended.
+	Reported by Nguyên-Ðai Quý.
+
+1999-12-20  François Pinard  <pinard@iro.umontreal.ca>
+
+	* libiconv.c: New file.
+	* outer.c (internal_iconv, declare_libiconv) [WITH_LIBICONV]:
+	New functions.
+	(register_all_modules): Initialise libiconv_pivot.
+	[WITH_LIBICONV]: Call module_iniconv.
+	* recodext.h: Declare transform_with_libiconv.
+	(struct recode_outer): Declare declare_libiconv and libiconv_pivot.
+	* request.c: Recognise and handle a double libiconv step.
+	* Makefile.am (librecode_la_SOURCES): Add libiconv.c.
+	(noinst_HEADERS): Add libiconv.h.
+
 1999-12-18  François Pinard  <pinard@iro.umontreal.ca>
 
 	* vn.c: New file.
@@ -75,7 +119,7 @@
 	(EXTRA_DIST): Include $(MANS).  This should force regeneration of
 	the man page with the correct version, in distributions.
 	Reported by Brendan O'Dea, Santiago Vila Doncel and Scott Schwartz.
-
+
 1999-04-18  François Pinard  <pinard@iro.umontreal.ca>
 
 	* request.c (scan_charset): Ignore implied surfaces when the only

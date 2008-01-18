@@ -1,14 +1,13 @@
 * README file for `recode'			allout -*- outline -*-
 
-  Here is version 3.5a for the Free `recode' program and library.  Glance
+  Here is version 3.5c for the Free `recode' program and library.  Glance
   through this `README' file before starting configuration.  Make sure
   you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
   them already.
 
-  The canonical distribution point for this version is either:
+  The canonical distribution point for this version is:
 
-     http://www.iro.umontreal.ca/contrib/recode/recode-3.5a.tar.gz
-     ftp://ftp.iro.umontreal.ca/pub/recode/recode-3.5a.tar.gz
+     http://www.iro.umontreal.ca/contrib/recode/recode-3.5c.tar.gz
 
   yet the second URL (the FTP one) might disappear one day.  GNU mirrors
   usually hold a copy of non-pretest releases, the canonical distribution

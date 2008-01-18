@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -356,33 +355,32 @@ complete_pairs (RECODE_OUTER outer, RECODE_STEP step,
 `-------------------------------------------------------------------------*/
 
 bool
-transform_byte_to_ucs2 (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_byte_to_ucs2 (RECODE_SUBTASK subtask)
 {
   int input_char;		/* current character */
   int output_value;		/* value being output */
 
-  if (input_char = get_byte (task), input_char != EOF)
+  if (input_char = get_byte (subtask), input_char != EOF)
     {
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (input_char != EOF)
 	{
-	  output_value = code_to_ucs2 (step->before, input_char);
+	  output_value = code_to_ucs2 (subtask->step->before, input_char);
 	  if (output_value < 0)
 	    {
-	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
-	      put_ucs2 (REPLACEMENT_CHARACTER, task);
+	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
+	      put_ucs2 (REPLACEMENT_CHARACTER, subtask);
 	    }
 	  else
-	    put_ucs2 (output_value, task);
+	    put_ucs2 (output_value, subtask);
 
-	  input_char = get_byte (task);
+	  input_char = get_byte (subtask);
 	}
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-------------------------------------------------------------------------.
@@ -441,25 +439,24 @@ init_ucs2_to_byte (RECODE_STEP step,
 }
 
 bool
-transform_ucs2_to_byte (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_ucs2_to_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->local;
+  Hash_table *table = subtask->step->local;
   struct ucs2_to_byte lookup;
   struct ucs2_to_byte *entry;
   unsigned input_value;		/* current UCS-2 character */
 
-  while (get_ucs2 (&input_value, step, task))
+  while (get_ucs2 (&input_value, subtask))
     {
       lookup.code = input_value;
       entry = hash_lookup (table, &lookup);
       if (entry)
-	put_byte (entry->byte, task);
+	put_byte (entry->byte, subtask);
       else
-	RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
+	RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /* Table editing on stdout.  */

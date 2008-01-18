@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -71,13 +70,13 @@ static char classification[128] =
    encoded into Base64 characters.  */
 
 static bool
-transform_utf16_utf7 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_utf16_utf7 (RECODE_SUBTASK subtask)
 {
   int character;
   unsigned value;
 
-  if (!get_ucs2 (&value, step, task))
-    TASK_RETURN (task);
+  if (!get_ucs2 (&value, subtask))
+    SUBTASK_RETURN (subtask);
 
   while (true)
 
@@ -85,15 +84,15 @@ transform_utf16_utf7 (RECODE_CONST_STEP step, RECODE_TASK task)
       {
 	/* Copy one direct character.  */
 
-	put_byte (value, task);
-	if (!get_ucs2 (&value, step, task))
-	  TASK_RETURN (task);
+	put_byte (value, subtask);
+	if (!get_ucs2 (&value, subtask))
+	  SUBTASK_RETURN (subtask);
       }
     else
       {
 	/* Copy a string of non-direct characters.  */
 
-	put_byte ('+', task);
+	put_byte ('+', subtask);
 
 	while (!IS_BODY_DIRECT (value))
 	  {
@@ -101,180 +100,180 @@ transform_utf16_utf7 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 	    /* Process first UCS-2 value of a triplet.  */
 
-	    put_byte (base64_value_to_char[MASK (6) & value >> 10], task);
-	    put_byte (base64_value_to_char[MASK (6) & value >> 4], task);
+	    put_byte (base64_value_to_char[MASK (6) & value >> 10], subtask);
+	    put_byte (base64_value_to_char[MASK (6) & value >> 4], subtask);
 	    split = (value & MASK (4)) << 2;
-	    if (!get_ucs2 (&value, step, task))
+	    if (!get_ucs2 (&value, subtask))
 	      {
-		put_byte (base64_value_to_char[split], task);
-		TASK_RETURN (task);
+		put_byte (base64_value_to_char[split], subtask);
+		SUBTASK_RETURN (subtask);
 	      }
 
 	    /* Process second UCS-2 value of a triplet.  */
 
 	    if (IS_BODY_DIRECT (value))
 	      {
-		put_byte (base64_value_to_char[split], task);
+		put_byte (base64_value_to_char[split], subtask);
 		break;
 	      }
 	    put_byte (base64_value_to_char[split | (MASK (2) & value >> 14)],
-		      task);
-	    put_byte (base64_value_to_char[MASK (6) & value >> 8], task);
-	    put_byte (base64_value_to_char[MASK (6) & value >> 2], task);
+		      subtask);
+	    put_byte (base64_value_to_char[MASK (6) & value >> 8], subtask);
+	    put_byte (base64_value_to_char[MASK (6) & value >> 2], subtask);
 	    split = (value & MASK (2)) << 4;
-	    if (!get_ucs2 (&value, step, task))
+	    if (!get_ucs2 (&value, subtask))
 	      {
-		put_byte (base64_value_to_char[split], task);
-		TASK_RETURN (task);
+		put_byte (base64_value_to_char[split], subtask);
+		SUBTASK_RETURN (subtask);
 	      }
 
 	    /* Process third UCS-2 value of a triplet.  */
 
 	    if (IS_BODY_DIRECT (value))
 	      {
-		put_byte (base64_value_to_char[split], task);
+		put_byte (base64_value_to_char[split], subtask);
 		break;
 	      }
 	    put_byte (base64_value_to_char[split | (MASK (4) & value >> 12)],
-		      task);
-	    put_byte (base64_value_to_char[MASK (6) & value >> 6], task);
-	    put_byte (base64_value_to_char[MASK (6) & value], task);
-	    if (!get_ucs2 (&value, step, task))
-	      TASK_RETURN (task);
+		      subtask);
+	    put_byte (base64_value_to_char[MASK (6) & value >> 6], subtask);
+	    put_byte (base64_value_to_char[MASK (6) & value], subtask);
+	    if (!get_ucs2 (&value, subtask))
+	      SUBTASK_RETURN (subtask);
 	  }
 
 	if (IS_BASE64 (value))
-	  put_byte ('-', task);
+	  put_byte ('-', subtask);
       }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_utf7_utf16 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_utf7_utf16 (RECODE_SUBTASK subtask)
 {
   int character;
   unsigned value;
   unsigned split;
 
-  character = get_byte (task);
+  character = get_byte (subtask);
 
-  if (character != EOF && task->byte_order_mark)
-    put_ucs2 (BYTE_ORDER_MARK, task);
+  if (character != EOF && subtask->task->byte_order_mark)
+    put_ucs2 (BYTE_ORDER_MARK, subtask);
 
   while (character != EOF)
     if (character == '+')
       {
-	character = get_byte (task);
+	character = get_byte (subtask);
 	while (IS_BASE64 (character))
 	  {
 	    /* Process first byte of first quadruplet.  */
 
 	    value = base64_char_to_value[character] << 10;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	    /* Process second byte of first quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    value |= base64_char_to_value[character] << 4;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	    /* Process third byte of first quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    split = base64_char_to_value[character];
 	    value |= split >> 2;
 	    if (IS_BODY_DIRECT (value))
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	    put_ucs2 (value, task);
-	    character = get_byte (task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	    put_ucs2 (value, subtask);
+	    character = get_byte (subtask);
 
 	    /* Process fourth byte of first quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
 		if (MASK (2) & split)
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    value = ((MASK (2) & split) << 14
 		     | base64_char_to_value[character] << 8);
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	    /* Process first byte of second quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    value |= base64_char_to_value[character] << 2;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	    /* Process second byte of second quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    split = base64_char_to_value[character];
 	    value |= split >> 4;
 	    if (IS_BODY_DIRECT (value))
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	    put_ucs2 (value, task);
-	    character = get_byte (task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	    put_ucs2 (value, subtask);
+	    character = get_byte (subtask);
 
 	    /* Process third byte of second quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
 		if (MASK (4) & split)
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    value = ((MASK (4) & split) << 12
 		     | base64_char_to_value[character] << 6);
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	    /* Process fourth byte of second quadruplet.  */
 
 	    if (!IS_BASE64 (character))
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    value |= base64_char_to_value[character];
 	    if (IS_BODY_DIRECT (value))
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	    put_ucs2 (value, task);
-	    character = get_byte (task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	    put_ucs2 (value, subtask);
+	    character = get_byte (subtask);
 	  }
 	if (character == '-')
 	  {
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	    if (!IS_BASE64 (character))
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	  }
       }
     else
       {
 	if (!IS_BODY_DIRECT (character))
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	put_byte (NUL, task);
-	put_byte (character, task);
-	character = get_byte (task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	put_byte (NUL, subtask);
+	put_byte (character, subtask);
+	character = get_byte (subtask);
       }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

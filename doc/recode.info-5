@@ -27,6 +27,108 @@ versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
 
 
+File: recode.info,  Node: New charsets,  Next: New surfaces,  Prev: Main flow,  Up: Internals
+
+Adding new charsets
+===================
+
+   The main part of `recode' is written in C, as are most single steps.
+A few single steps need to recognise sequences of multiple characters,
+they are often better written in Flex.  It is easy for a programmer to
+add a new charset to `recode'.  All it requires is making a few
+functions kept in a single `.c' file, adjusting `Makefile.am' and
+remaking `recode'.
+
+   One of the function should convert from any previous charset to the
+new one.  Any previous charset will do, but try to select it so you will
+not lose too much information while converting.  The other function
+should convert from the new charset to any older one.  You do not have
+to select the same old charset than what you selected for the previous
+routine.  Once again, select any charset for which you will not lose
+too much information while converting.
+
+   If, for any of these two functions, you have to read multiple bytes
+of the old charset before recognising the character to produce, you
+might prefer programming it in Flex in a separate `.l' file.  Prototype
+your C or Flex files after one of those which exist already, so to keep
+the sources uniform.  Besides, at `make' time, all `.l' files are
+automatically merged into a single big one by the script `mergelex.awk'.
+
+   There are a few hidden rules about how to write new `recode'
+modules, for allowing the automatic creation of `decsteps.h' and
+`initsteps.h' at `make' time, or the proper merging of all Flex files.
+Mimetism is a simple approach which relieves me of explaining all these
+rules!  Start with a module closely resembling what you intend to do.
+Here is some advice for picking up a model.  First decide if your new
+charset module is to be be driven by algorithms rather than by tables.
+For algorithmic recodings, see `iconqnx.c' for C code, or `txtelat1.l'
+for Flex code.  For table driven recodings, see `ebcdic.c' for
+one-to-one style recodings, `lat1html.c' for one-to-many style
+recodings, or `atarist.c' for double-step style recodings.  Just select
+an example from the style that better fits your application.
+
+   Each of your source files should have its own initialisation
+function, named `module_CHARSET', which is meant to be executed
+_quickly_ once, prior to any recoding.  It should declare the name of
+your charsets and the single steps (or elementary recodings) you
+provide, by calling `declare_step' one or more times.  Besides the
+charset names, `declare_step' expects a description of the recoding
+quality (see `recodext.h') and two functions you also provide.
+
+   The first such function has the purpose of allocating structures,
+pre-conditioning conversion tables, etc.  It is also the way of further
+modifying the `STEP' structure.  This function is executed if and only
+if the single step is retained in an actual recoding sequence.  If you
+do not need such delayed initialisation, merely use `NULL' for the
+function argument.
+
+   The second function executes the elementary recoding on a whole file.
+There are a few cases when you can spare writing this function:
+
+   * Some single steps do nothing else than a pure copy of the input
+     onto the output, in this case, you can use the predefined function
+     `file_one_to_one', while having a delayed initialisation for
+     presetting the `STEP' field `one_to_one' to the predefined value
+     `one_to_same'.
+
+   * Some single steps are driven by a table which recodes one
+     character into another; if the recoding does nothing else, you can
+     use the predefined function `file_one_to_one', while having a
+     delayed initialisation for presetting the `STEP' field
+     `one_to_one' with your table.
+
+   * Some single steps are driven by a table which recodes one
+     character into a string; if the recoding does nothing else, you
+     can use the predefined function `file_one_to_many', while having a
+     delayed initialisation for presetting the `STEP' field
+     `one_to_many' with your table.
+
+   If you have a recoding table handy in a suitable format but do not
+use one of the predefined recoding functions, it is still a good idea
+to use a delayed initialisation to save it anyway, because `recode'
+option `-h' will take advantage of this information when available.
+
+   Finally, edit `Makefile.am' to add the source file name of your
+routines to the `C_STEPS' or `L_STEPS' macro definition, depending on
+the fact your routines is written in C or in Flex.
+
+
+File: recode.info,  Node: New surfaces,  Next: Design,  Prev: New charsets,  Up: Internals
+
+Adding new surfaces
+===================
+
+   Adding a new surface is technically quite similar to adding a new
+charset.  *Note New charsets::.  A surface is provided as a set of two
+transformations: one from the predefined special charset `data' to the
+new surface, meant to apply the surface, the other from the new surface
+to the predefined special charset `data', meant to remove the surface.
+
+   Internally in `recode', function `declare_step' especially
+recognises when a charset is so related to `data', and then takes
+appropriate actions so that charset gets indeed installed as a surface.
+
+
 File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
 
 Comments on the library design
@@ -246,7 +348,7 @@ Concept Index
 * CR surface, in Macintosh charsets:     Apple-Mac.
 * CR-LF surface, in IBM-PC charsets:     IBM-PC.
 * Ctrl-Z, discarding:                    End lines.
-* Cyrillic charsets:                     Cyrillic.
+* Cyrillic charsets:                     Others.
 * debugging surfaces:                    Debugging.
 * default charset:                       Requests.
 * description of individual characters:  dump-with-names.
@@ -273,12 +375,14 @@ Concept Index
 * force recoding:                        Reversibility.
 * French description of charsets:        Listings.
 * guessing charsets:                     Listings.
+* Haible, Bruno:                         libiconv.
 * handling errors:                       Errors.
 * help page, printing:                   Listings.
 * HTML normalization:                    HTML.
 * IBM codepages:                         IBM and MS.
 * IBM graphics characters:               Recoding.
 * iconv:                                 Design.
+* iconv library:                         libiconv.
 * identifying subsets in charsets:       Listings.
 * ignore charsets:                       Recoding.
 * implied surfaces:                      Requests.
@@ -286,6 +390,7 @@ Concept Index
 * initialisation functions, outer:       Outer level.
 * initialisation functions, request:     Request level.
 * initialisation functions, task:        Task level.
+* interface, with iconv library:         libiconv.
 * intermediate charsets:                 Requests.
 * internal functions:                    Charset level.
 * internal recoding bug, error message:  Errors.
@@ -299,6 +404,8 @@ Concept Index
 * Latin charsets:                        ISO 8859.
 * Latin-1 table, recreating with recode: ISO 8859.
 * letter case, in charset and surface names: Requests.
+* libiconv:                              libiconv.
+* library, iconv:                        libiconv.
 * listing charsets:                      Listings.
 * Macintosh charset:                     Apple-Mac.
 * map filling:                           Reversibility.
@@ -378,6 +485,7 @@ Concept Index
 * untranslatable input, error message:   Errors.
 * valid characters in charset names:     Requests.
 * verbose operation:                     Recoding.
+* Vietnamese charsets:                   Vietnamese.
 
 
 File: recode.info,  Node: Option Index,  Next: Library Index,  Prev: Concept Index,  Up: Top

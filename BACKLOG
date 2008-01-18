@@ -1,5 +1,5 @@
-# Summary of pending email for Free recode 3.5a.
-# Last updated on 1999-12-20.
+# Summary of pending email for Free recode 3.5c.
+# Last updated on 1999-12-29.
 
 # This file summarises almost all pending email pertaining to this package.
 # I think users deserve to know where maintenance stands for what they use.
@@ -55,6 +55,131 @@
 11. 1998-07-21 Wiel: recode: lat1html.c
 12. 1998-12-27 François Pinard: recode - dynlibs
 
+../rmail/xx-config-compile
+ 1. 1998-11-09 Alain Magloire: recode on Solaris
+
+../rmail/xx-doc-hexa
+ 1. 1998-10-14 François Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+ 2. 1998-10-14 Francois Yergeau: Re: Pour ceux qui ont le temps de lire... Cadr
+ 3. 1998-10-23 François Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+ 4. 1998-10-23 François Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+
+../rmail/xx-doc-macintosh
+ 1. 1998-12-07 François Pinard: Re: Novice user of recode with question
+
+../rmail/xx-emacs-lisp
+ 1. 1998-05-12 François Pinard: Emacs 20.2.93 - lisp/format.el and recode
+ 2. 1998-05-13 Richard Stallman: Re: Emacs 20.2.93 - lisp/format.el and recode
+
+../rmail/xx-engine
+ 1. 1994-12-13 Ross Paterson: Re: can ISO-IR-*** be used as MIME charset?
+ 2. 1995-02-15 Francois Pinard: Re: recode 3.4 documentation
+ 3. 1997-08-06 Ulrich Drepper: Re: charset names
+ 4. 1997-12-03 François Pinard: Re: recode problem
+ 5. 1997-12-04 Ulrich Drepper: Re: recode problem
+ 6. 1997-12-09 François Pinard: Re: recode
+ 7. 1997-12-09 Milivoj Ivkovic: Re: recode
+ 8. 1998-02-15 Ulrich Drepper: Re: closing stdout
+ 9. 1998-02-15 Aharon Robbins: closing stdout
+10. 1998-02-16 Laurent Bourbeau: Full dans recode 3.4i
+11. 1998-07-01 Sam: Re: au secour!
+12. 1998-07-22 John Clews: (TC304.1897) Fallbacks/transformation
+
+../rmail/xx-legalese
+ 1. 1997-11-24 Richard Stallman: Re: License for recode
+
+../rmail/xx-library
+ 1. 1995-12-06 Per Bothner: Re: Internationalization resources?
+ 2. 1996-05-29 Ulrich Drepper: librecode, again
+ 3. 1997-10-14 Ulrich Drepper: Re: librecode
+
+../rmail/xx-list-admin
+ 1. 1996-12-29 Majordomo@IRO.UMontreal.CA: Majordomo results
+ 2. 1997-09-25 Mail Delivery Subsystem: Returned mail: User unknown
+ 3. 1997-09-24 Mail Delivery Subsystem: Returned mail: User unknown
+ 4. 1997-09-25 Mail Delivery Subsystem: Returned mail: User unknown
+ 5. 1997-09-25 Mail Delivery Subsystem: Returned mail: User unknown
+ 6. 1997-09-24 Mail Delivery Subsystem: Returned mail: User unknown
+ 7. 1997-12-10 Majordomo@IRO.UMontreal.CA: Majordomo results
+ 8. 1997-12-10 Mail Delivery Subsystem: Returned mail: Cannot send message with
+ 9. 1998-05-29 Majordomo@IRO.UMontreal.CA: Majordomo results
+10. 1998-06-12 Roman Czyborra: recode-pretest > recode-forum
+11. 1998-06-30 François Pinard: Re: recode-pretest > recode-forum
+12. 1998-06-12 Roman Czyborra: recode-pretest > recode-forum
+13. 1998-07-19 François Pinard: Re: [BIS] recode html
+14. 1998-09-14 Mail Delivery Subsystem: Returned mail: Service unavailable
+
+../rmail/xx-list-announce
+ 1. 1994-10-31 pinard@IRO.UMontreal.CA: Prerelease: GNU recode 3.3.2
+ 2. 1994-11-06 pinard@iro.umontreal.ca: Release: GNU recode 3.4
+ 3. 1994-12-01 pinard@IRO.UMontreal.CA: Prerelease: GNU recode 3.4.1
+ 4. 1996-09-20 François Pinard: Prerelease: GNU recode 3.4.2
+ 5. 1997-09-27 François Pinard: Prerelease: GNU recode 3.4c
+ 6. 1997-11-23 François Pinard: Prerelease: GNU recode 3.4d
+ 7. 1997-12-02 François Pinard: Prerelease: GNU recode 3.4e
+ 8. 1997-12-10 François Pinard: Prerelease: GNU recode 3.4f
+ 9. 1998-09-30 François Pinard: Prerelease: GNU recode 3.4i
+10. 1998-10-13 François Pinard: Prerelease: Free recode 3.4j
+11. 1998-10-28 François Pinard: Re: GNU Software Catalog: Current Software, @i
+12. 1998-10-28 François Pinard: Prerelease: Free recode 3.4k
+13. 1998-10-15 François Pinard: Prerelease: Free recode 3.4j
+14. 1998-10-13 François Pinard: Prerelease: Free recode 3.4j
+15. 1998-11-23 François Pinard: Prerelease: Free recode 3.4l
+16. 1998-12-13 François Pinard: Prerelease: Free recode 3.4m
+17. 1998-12-13 François Pinard: Prerelease: Free recode 3.4m
+18. 1999-12-20 François Pinard: Prerelease: Free recode 3.5a
+19. 1999-12-20 François Pinard: Prerelease: Free recode 3.5a
+20. 1999-12-23 François Pinard: Prerelease: Free recode 3.5b
+21. 1999-12-23 François Pinard: Prerelease: Free recode 3.5b
+
+../rmail/xx-messages
+ 1. 1992-11-23 mcgill-vision!corto.inria.fr!shapiro: recode
+ 2. 1994-12-19 Martin Wendel: ANNOUNCE: Emil-2.0 is available
+ 3. 1995-02-28 Francois Pinard: UUPC
+ 4. 1995-03-11 Scott Nelson: ISO-8859-X email test
+ 5. 1995-03-16 Martin Wendel: ANNOUNCE: emil-2.0.5 released
+ 6. 1995-07-05 François Pinard: Re: Retour !
+ 7. 1995-07-25 David Collier-Brown: Early announcement: Mime-witing library
+ 8. 1996-03-02 François Pinard: Re: Présentation de Ulrich Drepper!
+ 9. 1996-06-09 François Pinard: Re: About recode
+10. 1996-06-09 Roberto Alsina: Re: About recode
+11. 1997-10-30 =?iso-8859-1?Q?G=E9rald_St=2DArneault_=3Cstarneag=40grics.qc.ca=
+
+../rmail/xx-mixed
+ 1. 1998-12-01 François Pinard: Re: New -Spo option to `recode'
+
+../rmail/xx-msdos-port
+ 1. 1998-03-26 François Pinard: Re: find reco dos executable
+ 2. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
+ 3. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
+ 4. 1998-11-24 François Pinard: Re: recode for Amiga - 3.4k update
+ 5. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
+ 6. 1998-11-25 Eli Zaretskii: libtool+shell [was: Re: recode for Amiga - 3.4k u
+ 7. 1998-11-25 Eli Zaretskii: Perl [was: Re: recode for Amiga - 3.4k update]
+ 8. 1998-11-25 Eli Zaretskii: EOLs [was: Re: recode for Amiga - 3.4k update]
+ 9. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
+10. 1998-11-25 Eli Zaretskii: Intro [was: Re: recode for Amiga - 3.4k update]
+11. 1998-11-30 Eli Zaretskii: Re: New -Spo option to `recode'
+
+../rmail/xx-multext
+ 1. 1996-05-24 Jean Ve'ronis: Soft: MtScript (Multilingual editor)
+ 2. 1996-06-17 Jean Ve'ronis: Free Soft: MtStr - Multilingual string library
+ 3. 1996-06-20 Jean Ve'ronis: Free Soft: MtRecode - Character conversion progra
+ 4. 1996-08-29 Malek BOUALEM -- UNIVERSITE: Brief Introduction of the LPL
+ 5. 1996-09-05 Malek BOUALEM -- UNIVERSITE: Re: Introduction of LPL/MULTEXT/MTS
+ 6. 1997-12-10 Jean Veronis: Re: Citation de MtRecode
+
+../rmail/xx-op-backup
+ 1. 1994-03-09 Nicolas Anquetil: recode
+ 2. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
+
+../rmail/xx-op-list
+ 1. 1993-12-21 Martin Maechler: Re: Prerelease: GNU recode version 3.2.10
+ 2. 1993-12-21 Francois Pinard: Prerelease: GNU recode version 3.2.10
+ 3. 1993-02-10 Patrik F{ltstr|m: Re: transcription iso-8859-1 to us-ascii?
+ 4. 1998-10-29 Markus Kuhn: Free X11 Unicode terminal font available
+ 5. 1998-11-22 François Pinard: Re: Free X11 Unicode terminal font available
+
 ../admin/rmail/emacs
  1. 1998-05-12 François Pinard: Emacs 20.2.93 - lisp/format.el and recode
 
@@ -70,6 +195,13 @@
 ../admin/rmail/legalese
  1. 1997-11-24 Richard Stallman: Re: License for recode
  2. 1999-01-30 Richard Stallman: Why you shouldn't use the Library GPL for your
+ 3. 1999-12-21 Bruno Haible: Re: libiconv-0.2
+ 4. 1999-12-21 François Pinard: Checking for `recode' and `libiconv'
+ 5. 1999-09-08 Bruno Haible: Re: cjk.tgz
+ 6. 1999-09-15 François Pinard: Re: cjk.tgz
+ 7. 1999-12-06 François Pinard: Re: disclaimers
+ 8. 1999-12-06 Bruno Haible: Re: disclaimers
+ 9. 1999-12-06 assignments: Re: disclaimers
 
 ../admin/rmail/list-admin
  1. 1999-07-20 Mail Delivery Subsystem: Returned mail: Can't create output
@@ -326,32 +458,25 @@
  3. 1999-01-22 Andreas Schwab: Re: iconv changes
  4. 1999-05-06 Rick Jelliffe: Improvement to libc iconv for East Asian text: lo
  5. 1999-07-23 Changwoo Ryu: iconv() utf8 -> euc-kr bug.
- 6. 1999-12-10 Bruno Haible: iconv program produces invalid output
- 7. 1999-12-10 Ulrich Drepper: Re: iconv program produces invalid output
- 8. 1999-12-11 Andrew Clausen: iconv() and UCS4 endianness
- 9. 1999-12-11 Ulrich Drepper: Re: iconv() and UCS4 endianness
-10. 1999-12-11 Andrew Clausen: Re: iconv() and UCS4 endianness
-11. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
-12. 1999-12-09 François Pinard: Re: cjk.tgz, iconv, transliterations
-13. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
-14. 1999-12-09 François Pinard: Re: cjk.tgz, iconv, transliterations
-15. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
-16. 1999-12-06 François Pinard: Re: disclaimers
-17. 1999-12-06 assignments: Re: disclaimers
-18. 1999-12-06 assignments: Re: disclaimers
-19. 1999-12-12 François Pinard: Re: cjk.tgz, iconv, transliterations
-20. 1999-12-06 Bruno Haible: Re: disclaimers
-21. 1999-09-07 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
-22. 1999-09-07 François Pinard: Re: [loic@ceic.com] Unicode: Toward a standard
-23. 1999-09-08 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
-24. 1999-09-13 Bruno Haible: cjk.tgz
-25. 1999-09-08 François Pinard: Re: none
-26. 1999-09-08 Bruno Haible: Re: cjk.tgz
-27. 1999-09-15 François Pinard: Re: cjk.tgz
-28. 1999-12-13 Bruno Haible: Re: cjk.tgz, iconv, transliterations
-29. 1999-12-13 François Pinard: Re: cjk.tgz, iconv, transliterations
-30. 1999-12-13 Andrew Clausen: Memory leaks in iconv_open() / iconv_close()
-31. 1999-12-15 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+ 6. 1999-09-07 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
+ 7. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+ 8. 1999-12-13 Andrew Clausen: Memory leaks in iconv_open() / iconv_close()
+ 9. 1999-12-20 Bruno Haible: JOHAB encoder is incomplete
+10. 1999-12-20 Bruno Haible: problem with ISO-2022-KR encoder
+11. 1999-12-20 Bruno Haible: one more iconv alias
+12. 1999-12-20 Bruno Haible: more typos in gconv-modules
+13. 1999-12-20 Bruno Haible: iconv calling convention
+14. 1999-12-20 Bruno Haible: final iconv call is buggy
+15. 1999-12-20 Bruno Haible: gettext shall use iconv
+16. 1999-12-20 Ulrich Drepper: Re: problem with ISO-2022-KR encoder
+17. 1999-12-20 Ulrich Drepper: Re: one more iconv alias
+18. 1999-12-20 Ulrich Drepper: Re: more typos in gconv-modules
+19. 1999-12-21 Bruno Haible: Re: libiconv-0.2
+20. 1999-12-22 Bruno Haible: Re: libiconv et recode :-)
+21. 1999-12-22 François Pinard: Re: libiconv et recode :-)
+22. 1999-12-22 Bruno Haible: Re: libiconv et recode :-)
+23. 1999-12-24 François Pinard: recode et libiconv, =?iso-8859-1?q?r=E9flexions
+24. 1999-12-28 Ulrich Drepper: more conversion modules
 
 ../asian/rmail/japanese
  1. 1995-04-25 Ryutaro Susukita: Re: tar-1.11.2 SunOS-4.1.3 JLE-1.1.3 segmentai
@@ -914,6 +1039,11 @@
  5. 1999-12-16 François Pinard: Re: Release: Free recode 3.5
  6. 1999-12-19 Eli Zaretskii: Re: Release: Free recode 3.5
  7. 1999-12-19 François Pinard: Re: Release: Free recode 3.5
+ 8. 1999-12-20 Eli Zaretskii: Re: Release: Free recode 3.5
+ 9. 1999-12-20 Eli Zaretskii: Re: Release: Free recode 3.5
+10. 1999-12-20 François Pinard: Re: Release: Free recode 3.5
+11. 1999-12-20 Eli Zaretskii: Re: Release: Free recode 3.5
+12. 1999-12-21 Bruno Haible: Re: libiconv et recode :-)
 
 ../fallbacks/rmail/Arabic
  1. 1998-06-18 Roman Czyborra: Arabic renderer in four lines of Perl
@@ -1045,6 +1175,10 @@
 ../fallbacks/rmail/generic
  1. 1993-02-10 Markus Kuhn: Re: transcription iso-8859-1 to us-ascii?
 
+../fallbacks/rmail/guillemets
+ 1. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+ 2. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+
 ../fallbacks/rmail/mnemo
  1. 1995-02-28 Francois Pinard: UUPC
 
@@ -1149,6 +1283,7 @@
 16. 1998-11-10 Alain LaBonté: Ordering standard: to be sent for ballot unless t
 17. 1998-11-10 Alain LaBonté: Ordering standard: to be sent for ballot unless t
 18. 1999-04-29 Alain LaBonté : Re: Thai String Collation
+19. 1999-12-26 Ulrich Drepper: more new code
 
 ../iso/rmail/elot
  1. 1996-08-20 John Clews: Re: Transliteration and ISO
@@ -1398,11 +1533,20 @@
  6. 1999-12-18 Bruno Haible: Re: suggestion ridicule pour recode
  7. 1999-12-18 François Pinard: Re: renseignement concernant "recode"
  8. 1999-12-18 François Pinard: Contre-cotices (:-) dans `test.viqr'
- 9. 1999-12-18 François Pinard: Autres =?iso-8859-1?q?probl=E8mes?= VISCII
-10. 1999-12-18 François Pinard: TCVN
-11. 1999-12-18 François Pinard: VPS
-12. 1999-12-19 Nguyen-Dai Quy: recode & vietnamese
-13. 1999-12-19 François Pinard: Re: recode & vietnamese
+ 9. 1999-12-19 Nguyen-Dai Quy: recode & vietnamese
+10. 1999-12-19 François Pinard: Re: recode & vietnamese
+11. 1999-12-20 Nguyen-Dai Quy: Re: recode & vietnamese
+12. 1999-12-20 Bruno Haible: Re: suggestion ridicule pour recode
+13. 1999-12-20 François Pinard: Re: suggestion ridicule pour recode
+14. 1999-12-21 Nguyen-Dai Quy: recode-3.5a
+15. 1999-12-21 François Pinard: Re: recode-3.5a
+16. 1999-12-22 François Pinard: =?iso-8859-1?q?Probl=E8me?= VNI
+17. 1999-12-21 Nguyen-Dai Quy: bug report for recode-3.5a with vietnamese chars
+18. 1999-12-22 François Pinard: Inconsistance pour le VNI
+19. 1999-12-22 François Pinard: Re: bug report for recode-3.5a with vietnamese
+20. 1999-12-22 Nguyen-Dai Quy: recode-3.5a
+21. 1999-12-22 Nguyen-Dai Quy: recode-3.5a : VIQR..another_charset
+22. 1999-12-22 Nguyen-Dai Quy: Re: =?iso-8859-1?Q?Probl=E8me?= VNI
 
 ../charsets/mule/RMAIL
  1. 1993-08-12 Kenichi Handa: The official release of Mule Ver.1.0 (Patch Level

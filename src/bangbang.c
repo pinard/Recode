@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -298,18 +297,17 @@ init_latin1_bangbang (RECODE_STEP step,
 }
 
 static bool
-transform_bangbang_latin1 (RECODE_CONST_STEP step,
-			   RECODE_TASK task)
+transform_bangbang_latin1 (RECODE_SUBTASK subtask)
 {
   int input_char;		/* current character */
 
-  while (input_char = get_byte (task), input_char != EOF)
+  while (input_char = get_byte (subtask), input_char != EOF)
     {
       if (input_char >= 'A' && input_char <= 'Z')
         input_char += 'a' - 'A';
       else if (input_char == '!')
 	{
-	  input_char = get_byte (task);
+	  input_char = get_byte (subtask);
 	  if (input_char >= 'a' && input_char <= 'z')
 	    input_char += 'A' - 'a';
 	  else if (input_char < 'A' || input_char > 'Z')
@@ -340,9 +338,9 @@ transform_bangbang_latin1 (RECODE_CONST_STEP step,
 	      case '_': input_char = 127; break; /* del */
 
 	      case '!':
-	        input_char = get_byte (task);
+	        input_char = get_byte (subtask);
 		if (input_char == 'J' || input_char == 'j')
-		  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
 		/* FIXME: What is canonical?  Upper case or lower case?  */
 		if (input_char >= 'A' && input_char <= 'Z')
@@ -360,24 +358,24 @@ transform_bangbang_latin1 (RECODE_CONST_STEP step,
 		    case '_': input_char = 31; break;
 
 		    default:
-		      RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-		      put_byte ('!', task);
-		      put_byte ('!', task);
+		      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+		      put_byte ('!', subtask);
+		      put_byte ('!', subtask);
 		      if (input_char == EOF)
-		        TASK_RETURN (task);
+		        SUBTASK_RETURN (subtask);
 		    }
 		break;
 
 	      default:
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	        put_byte ('!', task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	        put_byte ('!', subtask);
 	        if (input_char == EOF)
-		  TASK_RETURN (task);
+		  SUBTASK_RETURN (subtask);
 	      }
 	}
-      put_byte (input_char, task);
+      put_byte (input_char, subtask);
     }
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -29,6 +28,7 @@ typedef struct recode_option_list * 		RECODE_OPTION_LIST;
 typedef struct recode_single *			RECODE_SINGLE;
 typedef struct recode_step *			RECODE_STEP;
 typedef struct recode_symbol *			RECODE_SYMBOL;
+typedef struct recode_subtask *			RECODE_SUBTASK;
 
 typedef const struct recode_option_list *	RECODE_CONST_OPTION_LIST;
 typedef const struct recode_outer * 		RECODE_CONST_OUTER;
@@ -36,34 +36,28 @@ typedef const struct recode_step *		RECODE_CONST_STEP;
 typedef const struct recode_symbol *		RECODE_CONST_SYMBOL;
 typedef const struct recode_task *		RECODE_CONST_TASK;
 
-/*------------------------------------------------------.
-| Maintain maximum of ERROR and current error in TASK.  |
-`------------------------------------------------------*/
+/*---------------------------------------------------------.
+| Maintain maximum of ERROR and current error in SUBTASK.  |
+`---------------------------------------------------------*/
 
-#define SET_TASK_ERROR(Error, Step, Task) \
-  if ((Error) > (Task)->error_so_far)				\
-    ((Task)->error_so_far = (Error),				\
-     (Task)->error_at_step = (Step));				\
-  else
+#define SET_SUBTASK_ERROR(Error, Subtask) \
+  recode_if_nogo (Error, Subtask)
 
-/*-----------------------------------------------------------------------.
-| Return from TASK with `false', if the failure level has been reached.  |
-`-----------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------.
+| Return from SUBTASK with `false', if the failure level has been reached.  |
+`--------------------------------------------------------------------------*/
 
-#define TASK_RETURN(Task) \
-  return (Task)->error_so_far < (Task)->fail_level
+#define SUBTASK_RETURN(Subtask) \
+  return (Subtask)->task->error_so_far < (Subtask)->task->fail_level
 
 /*-------------------------------------------------------------------------.
-| Maintain maximum of ERROR and current error in TASK.  If the abort level |
-| has been reached, then return immediately as with TASK_RETURN.           |
+| Maintain maximum of ERROR and current error in SUBTASK.  If the abort    |
+| level has been reached, then return immediately as with SUBTASK_RETURN.  |
 `-------------------------------------------------------------------------*/
 
-#define RETURN_IF_NOGO(Error, Step, Task) \
-  if ((Error) <= (Task)->error_so_far ? false			\
-      : ((Task)->error_so_far = (Error),			\
-	 (Task)->error_at_step = (Step),			\
-	 (Error) >= (Task)->abort_level))			\
-    TASK_RETURN (Task);						\
+#define RETURN_IF_NOGO(Error, Subtask) \
+  if (recode_if_nogo (Error, Subtask))				\
+    SUBTASK_RETURN (Subtask);					\
   else
 
 /* Various structure declarations.  */
@@ -160,6 +154,7 @@ struct recode_outer
   /* Preset charsets and surfaces.  */
   RECODE_CHARSET data_charset;/* special charset defining surfaces */
   RECODE_CHARSET ucs2_charset; /* UCS-2 */
+  RECODE_CHARSET libiconv_pivot; /* `libiconv' internal UCS */
   RECODE_CHARSET crlf_surface; /* for IBM PC machines */
   RECODE_CHARSET cr_surface; /* for Macintosh machines */
 
@@ -230,9 +225,8 @@ typedef bool (*Recode_init) PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST,
 				     RECODE_CONST_OPTION_LIST,
 				     RECODE_CONST_OPTION_LIST));
 typedef bool (*Recode_term) PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST));
-typedef bool (*Recode_transform) PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-typedef bool (*Recode_fallback) PARAMS ((RECODE_CONST_STEP, RECODE_TASK,
-					 unsigned));
+typedef bool (*Recode_transform) PARAMS ((RECODE_SUBTASK));
+typedef bool (*Recode_fallback) PARAMS ((RECODE_SUBTASK, unsigned));
 
 /* The `single' structure holds data needed to decide of sequences, and is
    invariant over actual requests.  The `step' structure holds data needed for
@@ -421,17 +415,46 @@ enum recode_swap_input
   RECODE_SWAP_YES		/* should swap incoming pair of bytes */
 };
 
-/*----------------------------------------------------------------------.
-| A recoding task associates a recoding sequence to a given input text, |
-| for producing a corresponding output text.                            |
-`----------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------.
+| A recoding subtask associates a particular recoding step to a given input |
+| text, for producing a corresponding output text.  It also holds error     |
+| related statistics for the execution of that step.                        |
+`--------------------------------------------------------------------------*/
+
+struct recode_subtask
+{
+  /* Task for which this subtask is an element.  */
+  RECODE_TASK task;
+
+  /* Step being executed by this subtask.  */
+  RECODE_CONST_STEP step;
+
+  /* Current input and output.  */
+  struct recode_read_only_text input;
+  struct recode_read_write_text output;
+
+  /* Line count and character count in last line, both zero-based.  */
+  unsigned newline_count;
+  unsigned character_count;
+};
+
+#define GOT_CHARACTER(Subtask) \
+  ((Subtask)->character_count++)
+
+#define GOT_NEWLINE(Subtask) \
+  ((Subtask)->newline_count++, (Subtask)->character_count = 0)
+
+/*--------------------------------------------------------------------------.
+| A recoding task associates a sequence of steps to a given input text, for |
+| producing a corresponding output text.  It holds an array of subtasks.    |
+`--------------------------------------------------------------------------*/
 
 struct recode_task
 {
   /* Associated request.  */
   RECODE_CONST_REQUEST request;
 
-  /* Current input and output.  */
+  /* Initial input and final output.  */
   struct recode_read_only_text input;
   struct recode_read_write_text output;
 
@@ -474,7 +497,6 @@ struct recode_known_pair
 | Various definitions.  |
 `----------------------*/
 
-/* FIXME!  Changer pour ucs2_t, peut-être?  */
 typedef unsigned short recode_ucs2;
 
 /* Double tables are generated as arrays of indices into a pool of strips,
@@ -541,11 +563,11 @@ unsigned char *invert_table PARAMS ((RECODE_OUTER, const unsigned char *));
 bool complete_pairs PARAMS ((RECODE_OUTER, RECODE_STEP,
 			     const struct recode_known_pair *, unsigned,
 			     bool, bool));
-bool transform_byte_to_ucs2 PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
+bool transform_byte_to_ucs2 PARAMS ((RECODE_SUBTASK));
 bool init_ucs2_to_byte PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST,
 				RECODE_CONST_OPTION_LIST,
 				RECODE_CONST_OPTION_LIST));
-bool transform_ucs2_to_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
+bool transform_ucs2_to_byte PARAMS ((RECODE_SUBTASK));
 
 /* charname.c and fr-charname.c.  */
 
@@ -588,22 +610,26 @@ bool decode_known_pairs PARAMS ((RECODE_OUTER, const char *));
 bool init_explode PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST,
 			   RECODE_CONST_OPTION_LIST,
 			   RECODE_CONST_OPTION_LIST));
-bool explode_byte_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool explode_ucs2_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool explode_byte_ucs2 PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool explode_ucs2_ucs2 PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
+bool explode_byte_byte PARAMS ((RECODE_SUBTASK));
+bool explode_ucs2_byte PARAMS ((RECODE_SUBTASK));
+bool explode_byte_ucs2 PARAMS ((RECODE_SUBTASK));
+bool explode_ucs2_ucs2 PARAMS ((RECODE_SUBTASK));
 
 bool init_combine PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST,
 			   RECODE_CONST_OPTION_LIST,
 			   RECODE_CONST_OPTION_LIST));
-bool combine_byte_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool combine_ucs2_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool combine_byte_ucs2 PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool combine_ucs2_ucs2 PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
+bool combine_byte_byte PARAMS ((RECODE_SUBTASK));
+bool combine_ucs2_byte PARAMS ((RECODE_SUBTASK));
+bool combine_byte_ucs2 PARAMS ((RECODE_SUBTASK));
+bool combine_ucs2_ucs2 PARAMS ((RECODE_SUBTASK));
 
 /* freeze.c.  */
 
 void recode_freeze_tables PARAMS ((RECODE_OUTER));
+
+/* libiconv.c.  */
+
+bool transform_with_libiconv PARAMS ((RECODE_SUBTASK));
 
 /* mixed.c.  */
 
@@ -612,13 +638,14 @@ bool transform_po_source PARAMS ((RECODE_TASK));
 
 /* outer.c.  */
 
-bool reversibility PARAMS ((RECODE_CONST_STEP, RECODE_TASK, unsigned));
+bool reversibility PARAMS ((RECODE_SUBTASK, unsigned));
 RECODE_SINGLE declare_single
   PARAMS ((RECODE_OUTER, const char *, const char *,
 	   struct recode_quality,
 	   bool (*) (RECODE_STEP, RECODE_CONST_REQUEST,
 		     RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST),
-	   bool (*) (RECODE_CONST_STEP, RECODE_TASK)));
+	   bool (*) (RECODE_SUBTASK)));
+bool declare_libiconv PARAMS ((RECODE_OUTER, const char *));
 bool declare_explode_data PARAMS ((RECODE_OUTER, const unsigned short *,
 				   const char *, const char *));
 bool declare_strip_data PARAMS ((RECODE_OUTER, struct strip_data *,
@@ -639,11 +666,12 @@ const char *ucs2_to_rfc1345 PARAMS ((recode_ucs2));
 /* task.c.  */
 
 #if USE_HELPERS
-int get_byte_helper PARAMS ((RECODE_TASK));
+int get_byte_helper PARAMS ((RECODE_SUBTASK));
 #endif
-void put_byte_helper PARAMS ((int, RECODE_TASK));
-bool transform_byte_to_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-bool transform_byte_to_variable PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
+void put_byte_helper PARAMS ((int, RECODE_SUBTASK));
+bool recode_if_nogo PARAMS ((enum recode_error, RECODE_SUBTASK));
+bool transform_byte_to_byte PARAMS ((RECODE_SUBTASK));
+bool transform_byte_to_variable PARAMS ((RECODE_SUBTASK));
 
 /* ucs.c.  */
 
@@ -659,10 +687,10 @@ bool transform_byte_to_variable PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
 /* Never an UCS-2 character.  */
 #define NOT_A_CHARACTER 0xFFFF
 
-bool get_ucs2 PARAMS ((unsigned *, RECODE_CONST_STEP, RECODE_TASK));
-bool get_ucs4 PARAMS ((unsigned *, RECODE_CONST_STEP, RECODE_TASK));
-bool put_ucs2 PARAMS ((unsigned, RECODE_TASK));
-bool put_ucs4 PARAMS ((unsigned, RECODE_TASK));
+bool get_ucs2 PARAMS ((unsigned *, RECODE_SUBTASK));
+bool get_ucs4 PARAMS ((unsigned *, RECODE_SUBTASK));
+bool put_ucs2 PARAMS ((unsigned, RECODE_SUBTASK));
+bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
 
 #ifdef __cplusplus
 }
@@ -675,27 +703,27 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_TASK));
 
 #if USE_HELPERS
 
-# define get_byte(Task) \
-    get_byte_helper ((Task))
+# define get_byte(Subtask) \
+    get_byte_helper ((Subtask))
 
-# define put_byte(Byte, Task) \
-    put_byte_helper ((Byte), (Task))
+# define put_byte(Byte, Subtask) \
+    put_byte_helper ((Byte), (Subtask))
 
 #else /* not USE_HELPERS */
 
-# define get_byte(Task) \
-    ((Task)->input.file						\
-     ? getc ((Task)->input.file)				\
-     : (Task)->input.cursor == (Task)->input.limit		\
+# define get_byte(Subtask) \
+    ((Subtask)->input.file					\
+     ? getc ((Subtask)->input.file)				\
+     : (Subtask)->input.cursor == (Subtask)->input.limit	\
      ? EOF							\
-     : (unsigned char) *(Task)->input.cursor++)
+     : (unsigned char) *(Subtask)->input.cursor++)
 
-# define put_byte(Byte, Task) \
-    ((Task)->output.file					\
-     ? (void) putc ((Byte), (Task)->output.file)		\
-     : (Task)->output.cursor == (Task)->output.limit		\
-     ? put_byte_helper ((int) (Byte), (Task))			\
-     : (void) (*(Task)->output.cursor++ = (Byte)))
+# define put_byte(Byte, Subtask) \
+    ((Subtask)->output.file					\
+     ? (void) putc ((Byte), (Subtask)->output.file)		\
+     : (Subtask)->output.cursor == (Subtask)->output.limit	\
+     ? put_byte_helper ((int) (Byte), (Subtask))		\
+     : (void) (*(Subtask)->output.cursor++ = (Byte)))
 
 #endif /* not USE_HELPERS */
 
@@ -704,23 +732,26 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_TASK));
 # if !INLINE_HARDER
 
 #  undef put_byte
-#  define put_byte(Byte, Task) \
-     put_byte_helper ((Byte), (Task))
+#  define put_byte(Byte, Subtask) \
+     put_byte_helper ((Byte), (Subtask))
 
 # endif
 
-# define PUT_NON_DIACRITIC_BYTE(Byte, Task) \
-    if (request->diacritics_only) ECHO; else put_byte ((Byte), (Task))
+# define PUT_NON_DIACRITIC_BYTE(Byte, Subtask) \
+    if (request->diacritics_only)				\
+      ECHO;							\
+    else							\
+      put_byte ((Byte), (Subtask))
 
-/* ECHO may not have a (Task) argument, because some ECHO without argument
+/* ECHO may not have a (Subtask) argument, because some ECHO without argument
    is generated by Flex -- yet Vern tells me it won't happen if I inhibit
-   the rule about default copying.  Happily enough, within Flex, Task is
-   `task' quite systematically, so it may be used as a constant, here.  */
+   the rule about default copying.  Happily enough, within Flex, Subtask is
+   `subtask' quite systematically, so it may be used as a constant, here.  */
 # define ECHO \
     do {							\
       const char *cursor = yytext; int counter = yyleng;	\
       for (; counter > 0; cursor++, counter--)			\
-	put_byte (*cursor, task);				\
+	put_byte (*cursor, subtask);				\
     } while (false)
 
 #endif /* FLEX_SCANNER */

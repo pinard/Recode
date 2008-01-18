@@ -16,7 +16,7 @@
   if (!module_utf7 (outer)) return false;
   if (!module_utf8 (outer)) return false;
   if (!module_varia (outer)) return false;
-  if (!module_viet (outer)) return false;
+  if (!module_vietnamese (outer)) return false;
   if (!module_flat (outer)) return false;
   if (!module_html (outer)) return false;
   if (!module_latin1_latex (outer)) return false;

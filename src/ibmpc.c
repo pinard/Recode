@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -168,119 +167,117 @@ static struct recode_known_pair known_pairs[] =
 #define NUMBER_OF_PAIRS (sizeof (known_pairs) / sizeof (struct recode_known_pair))
 
 static bool
-transform_latin1_ibmpc (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_latin1_ibmpc (RECODE_SUBTASK subtask)
 {
-  if (step->fallback_routine == reversibility)
+  if (subtask->step->fallback_routine == reversibility)
     {
-      const unsigned char *table = step->step_table;
+      const unsigned char *table = subtask->step->step_table;
       int input_char;
 
-      while (input_char = get_byte (task), input_char != EOF)
+      while (input_char = get_byte (subtask), input_char != EOF)
 	if (input_char == '\n')
 	  {
-	    put_byte (DOS_CR, task);
-	    put_byte (DOS_LF, task);
+	    put_byte (DOS_CR, subtask);
+	    put_byte (DOS_LF, subtask);
 	  }
 	else
-	  put_byte (table[input_char], task);
+	  put_byte (table[input_char], subtask);
     }
   else
     {
-      const char *const *table = step->step_table;
+      const char *const *table = subtask->step->step_table;
       int input_char;
 
-      while (input_char = get_byte (task), input_char != EOF)
+      while (input_char = get_byte (subtask), input_char != EOF)
 	if (input_char == '\n')
 	  {
-	    put_byte (DOS_CR, task);
-	    put_byte (DOS_LF, task);
+	    put_byte (DOS_CR, subtask);
+	    put_byte (DOS_LF, subtask);
 	  }
 	else if (table[input_char])
-	  put_byte (*table[input_char], task);
+	  put_byte (*table[input_char], subtask);
 	else
-	  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
+	  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
     }
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_ibmpc_latin1 (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_ibmpc_latin1 (RECODE_SUBTASK subtask)
 {
-  if (step->fallback_routine == reversibility)
+  if (subtask->step->fallback_routine == reversibility)
     {
-      const unsigned char *table = step->step_table;
-      int input_char = get_byte (task);
+      const unsigned char *table = subtask->step->step_table;
+      int input_char = get_byte (subtask);
 
       while (input_char != EOF)
 	switch (input_char)
 	  {
 	  case DOS_EOF:
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	    input_char = EOF;
 	    break;
 
 	  case DOS_CR:
-	    input_char = get_byte (task);
+	    input_char = get_byte (subtask);
 	    if (input_char == DOS_LF)
 	      {
-		put_byte ('\n', task);
-		input_char = get_byte (task);
+		put_byte ('\n', subtask);
+		input_char = get_byte (subtask);
 	      }
 	    else
-	      put_byte (table[DOS_CR], task);
+	      put_byte (table[DOS_CR], subtask);
 	    break;
 
 	  case DOS_LF:
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
 	    /* Fall through.  */
 
 	  default:
-	    put_byte (table[input_char], task);
-	    input_char = get_byte (task);
+	    put_byte (table[input_char], subtask);
+	    input_char = get_byte (subtask);
 	  }
     }
   else
     {
-      const char *const *table = step->step_table;
-      int input_char = get_byte (task);
+      const char *const *table = subtask->step->step_table;
+      int input_char = get_byte (subtask);
 
       while (input_char != EOF)
 	switch (input_char)
 	  {
 	  case DOS_EOF:
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	    input_char = EOF;
 	    break;
 
 	  case DOS_CR:
-	    input_char = get_byte (task);
+	    input_char = get_byte (subtask);
 	    if (input_char == DOS_LF)
 	      {
-		put_byte ('\n', task);
-		input_char = get_byte (task);
+		put_byte ('\n', subtask);
+		input_char = get_byte (subtask);
 	      }
 	    else if (table[DOS_CR])
-	      put_byte (*table[DOS_CR], task);
+	      put_byte (*table[DOS_CR], subtask);
 	    else
-	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
+	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
 	    break;
 
 	  case DOS_LF:
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
 	    /* Fall through.  */
 
 	  default:
 	    if (table[input_char])
-	      put_byte (*table[input_char], task);
+	      put_byte (*table[input_char], subtask);
 	    else
-	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
-	    input_char = get_byte (task);
+	      RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
+	    input_char = get_byte (subtask);
 	  }
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool

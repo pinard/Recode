@@ -92,6 +92,7 @@ The current @code{recode} release is @value{VERSION}.
 * Invoking recode::     How to use this program
 * Library::             A recoding library
 * Universal::           The universal charset
+* libiconv::            The @code{iconv} library
 * Tabular::             Tabular sources (@w{RFC 1345})
 * ASCII misc::          ASCII and some derivatives
 * IBM and MS::          Some IBM or Microsoft charsets
@@ -106,7 +107,6 @@ The current @code{recode} release is @value{VERSION}.
 * Charset and Surface Index::
 
 @detailmenu
-
  --- The Detailed Node Listing ---
 
 Terminology and purpose
@@ -171,10 +171,11 @@ Other micro-computer charsets
 Various other charsets
 
 * HTML::                World Wide Web representations
-* LaTeX::               La@TeX{} macro calls
+* LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
+* Vietnamese::          Vietnamese charsets
 * African::             African charsets
-* Cyrillic::            Cyrillic charsets
+* Others::              Cyrillic and other charsets
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 
@@ -448,7 +449,7 @@ over a single charset.  The @code{recode} library is not overly picky as
 identifying surfaces as such: when it is practical to consider a specialised
 surface as if it were a charset, this is preferred, and done.
 
-@node Contributing, , Surface overview, Introduction
+@node Contributing,  , Surface overview, Introduction
 @section Contributions and bug reports
 
 @cindex contributing charsets
@@ -1503,7 +1504,7 @@ and original @code{msgid} strings are not to be touched by this recoding.
 If @var{language} is not specified, @samp{c} is assumed.
 @end table
 
-@node Emacs, , Mixed, Invoking recode
+@node Emacs,  , Mixed, Invoking recode
 @section Using @code{recode} within Emacs
 
 The fact @code{recode} is a filter makes it quite easy to use from
@@ -2260,7 +2261,7 @@ bool list_concise_charset (@var{charset}, @var{list-format});
 bool list_full_charset (@var{charset});
 @end example
 
-@node Errors, , Charset level, Library
+@node Errors,  , Charset level, Library
 @section Handling errors
 @cindex error handling
 @cindex handling errors
@@ -2421,7 +2422,7 @@ or @code{struct recode_task} blocks, yet it makes less sense to me to do
 so in practice.
 @end ignore
 
-@node Universal, Tabular, Library, Top
+@node Universal, libiconv, Library, Top
 @chapter The universal charset
 
 @cindex ISO 10646
@@ -2730,7 +2731,7 @@ This @code{count} feature has been implemented as a charset.  This may
 change in some later version, as it would sometimes be convenient to count
 original bytes, instead of their @code{UCS-2} equivalent.
 
-@node dump-with-names, , count-characters, Universal
+@node dump-with-names,  , count-characters, Universal
 @section Fully interpreted UCS dump
 
 @tindex dump-with-names
@@ -2806,7 +2807,78 @@ the title lines.
 echo -n 0x03C6 | recode u2/x2..dump | tail +3
 @end example
 
-@node Tabular, ASCII misc, Universal, Top
+@node libiconv, Tabular, Universal, Top
+@chapter The @code{iconv} library
+
+@cindex @code{iconv} library
+@cindex library, @code{iconv}
+@cindex @code{libiconv}
+@cindex interface, with @code{iconv} library
+@cindex Haible, Bruno
+The @code{recode} library itself contains most code and tables from the
+portable @code{iconv} library, written by Bruno Haible.  In fact, many
+capabilities of the @code{recode} library are duplicated because of this
+merging, as the older @code{recode} and @code{iconv} libraries share many
+charsets.  We discuss, here, the issues related to this duplication, and
+other peculiarities specific to the @code{iconv} library.  The plan is to
+remove duplications and better merge specificities, as @code{recode} evolves.
+
+As implemented, if a recoding request can be satisfied by the @code{recode}
+library both with and without its @code{iconv} library part, it is likely
+that the @code{iconv} library will be used.  To sort out if the @code{iconv}
+is indeed used of not, just use the @samp{-v} or @samp{--verbose} option,
+@pxref{Recoding}.
+
+@tindex libiconv
+The @code{:libiconv:} charset represents a conceptual pivot charset
+within the @code{iconv} part of the @code{recode} library (in fact,
+this pivot exists, but is not directly reachable).  This charset has a
+mere @code{:} (a colon) for an alias.  It is not allowed to recode from
+or to this charset directly.  But when this charset is selected as an
+intermediate, usually by automatic means, then the @code{iconv} part
+of the @code{recode} library is called to handle the transformations.
+By using an @samp{--ignore=:libiconv:} option on the @code{recode} call
+or equivalently, but more simply, @samp{-x:}, @code{recode} is instructed
+to fully avoid this charset as an intermediate, with the consequence that
+the @code{iconv} part of the library is defeated.  Consider these two calls:
+
+@example
+recode l1..1250 < @var{input} > @var{output}
+recode -x: l1..1250 < @var{input} > @var{output}
+@end example
+
+@noindent
+Both should transform @var{input} from @code{ISO-8859-1} to @code{CP1250}
+on @var{output}.  The first call uses the @code{iconv} part of the library,
+while the second call avoids it.  Whatever the path used, the results should
+normally be identical.  However, there might be observable differences.
+Most of them might result from reversibility issues, as the @code{iconv}
+engine, which the @code{recode} library directly uses for the time being,
+does not address reversibility.  Even if much less likely, some differences
+might result from slight errors in the tables used, such differences should
+then be reported as bugs.
+
+Other irregularities might be seen in the area of error detection and
+recovery.  The @code{recode} library usually tries to detect canonicity
+errors in input, and production of ambiguous output, but the @code{iconv}
+part of the library currently does not.  Input is always validated, however.
+The @code{recode} library may not always react properly when its @code{iconv}
+part has no translation for a given character.
+
+Within a collection of names for a single charset, the @code{recode}
+library distinguishes one of them as being the genuine charset name,
+while the others are said to be aliases.  When @code{recode} lists all
+charsets, for example with the @samp{-l} or @samp{--list} option, the list
+integrates all @code{iconv} library charsets.  The selection of one of the
+aliases as the genuine charset name is an artifact added by @code{recode},
+it does not come from @code{iconv}.  Moreover, the @code{recode} library
+dynamically resolves some conflicts when it initialises itself at runtime.
+This might explain some discrepancies in the table below, as for what is
+the genuine charset name.
+
+@include libiconv.texi
+
+@node Tabular, ASCII misc, libiconv, Top
 @chapter Tabular sources (@w{RFC 1345})
 
 @cindex RFC 1345
@@ -2904,7 +2976,7 @@ variations of this family of representations.  They will likely be
 implemented in some future version, however.
 
 @table @code
-@include charset.texi
+@include rfc1345.texi
 @end table
 
 @node ASCII misc, IBM and MS, Tabular, Top
@@ -3052,7 +3124,7 @@ accent is applied over the @kbd{e} with a backspace: diacriticised
 characters have special rules.  For the @code{ASCII-BS} charset,
 reversibility is still possible, but there might be difficult cases.
 
-@node flat, , ASCII-BS, ASCII misc
+@node flat,  , ASCII-BS, ASCII misc
 @section ASCII without diacritics nor underline
 @tindex flat@r{, a charset}
 
@@ -3212,7 +3284,7 @@ The first command uses the charset prior to @w{RFC 1345} introduction.
 Both methods give different recodings.  These differences are annoying,
 the fuzziness will have to be explained and settle down one day.
 
-@node Icon-QNX, , IBM-PC, IBM and MS
+@node Icon-QNX,  , IBM-PC, IBM and MS
 @section Unisys' Icon code
 
 @tindex Icon-QNX@r{, and aliases}
@@ -3345,7 +3417,7 @@ ASCII character.
 017  ^.  037  ^;  057  /  077  ?  117  O  137  _  157  ^O  177  ^4
 @end example
 
-@node Bang-Bang, , CDC-NOS, CDC
+@node Bang-Bang,  , CDC-NOS, CDC
 @section ASCII ``bang bang''
 
 @tindex Bang-Bang
@@ -3457,7 +3529,7 @@ As a side note, some people ask if there is a Macintosh port of the
 @code{recode} program.  I'm not aware of any.  I presume that if the tool
 fills a need for Macintosh users, someone will port it one of these days?
 
-@node AtariST, , Apple-Mac, Micros
+@node AtariST,  , Apple-Mac, Micros
 @section Atari ST code
 
 @tindex AtariST
@@ -3489,8 +3561,9 @@ knows how to handle these particularly well for French texts.
 * HTML::                World Wide Web representations
 * LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
+* Vietnamese::
 * African::             African charsets
-* Cyrillic::            Cyrillic charsets
+* Others::
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 @end menu
@@ -3620,7 +3693,7 @@ it is not pure @TeX{}, nor it is pure other charset.  This translation
 of backslashes into @samp{\backslash@{@}} can be rather inconvenient,
 it may be inhibited through the command option @samp{-d} (@pxref{Mixed}).
 
-@node Texinfo, African, LaTeX, Miscellaneous
+@node Texinfo, Vietnamese, LaTeX, Miscellaneous
 @section GNU project documentation files
 
 @tindex Texinfo@r{, a charset}
@@ -3639,7 +3712,50 @@ between versions of Texinfo, and @code{recode} only partially succeeds
 in correctly following these changes.  So, for now, Texinfo support in
 @code{recode} should be considered as work still in progress (!).
 
-@node African, Cyrillic, Texinfo, Miscellaneous
+@node Vietnamese, African, Texinfo, Miscellaneous
+@section Vietnamese charsets
+
+@cindex Vietnamese charsets
+We are currently experimenting the implementation, in @code{recode}, of a few
+character sets and transliterated forms to handle the Vietnamese language.
+They are quite briefly summarised, here.
+
+@table @code
+@item TCVN
+@tindex TCVN@r{, for Vienamese}
+@tindex VN1@r{, maybe not available}
+@tindex VN2@r{, maybe not available}
+@tindex VN3@r{, maybe not available}
+The TCVN charset has an incomplete name.  It might be one of the three
+charset @code{VN1}, @code{VN2} or @code{VN3}.  Yes @code{VN2} might be a
+second version of @code{VISCII}.  To be clarified.
+
+@item VISCII
+@tindex VISCII
+This is an 8-bit character set which seems to be rather popular for
+writing Vietnamese.
+
+@item VPS
+@tindex VPS
+This is an 8-bit character set for Vietnamese.  No much reference.
+
+@item VIQR
+@tindex VIQR
+The VIQR convention is a 7-bit, @code{ASCII} transliteration for Vietnamese.
+
+@item VNI
+@tindex VNI
+The VNI convention is a 8-bit, @code{Latin-1} transliteration for Vietnamese.
+@end table
+
+@tindex 1129@r{, not available}
+@tindex CP1129@r{, not available}
+@tindex 1258@r{, not available}
+@tindex CP1258@r{, not available}
+Still lacking for Vietnamese in @code{recode}, are the charsets @code{CP1129}
+and @code{CP1258}.
+
+@node African, Others, Vietnamese, Miscellaneous
 @section African charsets
 
 @cindex African charsets
@@ -3689,8 +3805,8 @@ African charsets in this series.  This charset is available in @code{recode}
 under the name @code{AFRL1-101-BPI_OCIL}.  Accepted aliases are @code{t-fra}
 and @code{t-francais}.
 
-@node Cyrillic, Texte, African, Miscellaneous
-@section Cyrillic charsets
+@node Others, Texte, African, Miscellaneous
+@section Cyrillic and other charsets
 
 @cindex Cyrillic charsets
 The following Cyrillic charsets are already available in @code{recode}
@@ -3704,12 +3820,13 @@ aliases @code{cyrillic}, @code{ ISO-8859-5:1988} and @code{iso-ir-144};
 @code{KOI-7}; @code{KOI-8} with alias @code{GOST_19768-74}; @code{KOI8-R};
 @code{KOI8-RU} and finally @code{KOI8-U}.
 
-There seems to remain some confusion in Cyrillic charsets, and because a few
-users requested it repeatedly, @code{recode} now offers special services
-in that area.  Consider these charsets as experimental and debatable, as
-the extraneous tables describing them are still a bit fuzzy or non-standard.
-Hopefully, in the long run, Cyrillic will be covered in Keld Simonsen's works
-to the satisfaction of everybody, and this section will merely disappear.
+There seems to remain some confusion in Roman charsets for Cyrillic
+languages, and because a few users requested it repeatedly, @code{recode}
+now offers special services in that area.  Consider these charsets as
+experimental and debatable, as the extraneous tables describing them are
+still a bit fuzzy or non-standard.  Hopefully, in the long run, these
+charsets will be covered in Keld Simonsen's works to the satisfaction of
+everybody, and this section will merely disappear.
 
 @table @code
 @item KEYBCS2
@@ -3729,7 +3846,7 @@ as an accepted alias.
 This charset is available under the name @code{KOI-8_CS2}.
 @end table
 
-@node Texte, Mule, Cyrillic, Miscellaneous
+@node Texte, Mule, Others, Miscellaneous
 @section Easy French conventions
 
 @tindex Texte
@@ -3872,7 +3989,7 @@ contre-digue, digue, d'intrigue, fatigue, figue, garrigue, gigue, igue,
 intrigue, ligue, prodigue, sarigue and zigue).
 @end enumerate
 
-@node Mule, , Texte, Miscellaneous
+@node Mule,  , Texte, Miscellaneous
 @section Mule as a multiplexed charset
 
 @tindex Mule@r{, a charset}
@@ -4197,7 +4314,7 @@ far end.  Also, source lines not beginning with a number are skipped.  So,
 @code{recode} should often be able to read a whole C header file, wrapping
 the results of a previous dump, and regenerate the original byte string.
 
-@node Debugging, , Dump, Surfaces
+@node Debugging,  , Dump, Surfaces
 @section Artificial data
 
 A few pseudo-surfaces exist to generate debugging data out of thin air.
@@ -4449,7 +4566,7 @@ Internally in @code{recode}, function @code{declare_step} especially
 recognises when a charset is so related to @code{data}, and then takes
 appropriate actions so that charset gets indeed installed as a surface.
 
-@node Design, , New surfaces, Internals
+@node Design,  , New surfaces, Internals
 @section Comments on the library design
 
 @itemize @bullet
@@ -4624,7 +4741,7 @@ and variables in the @code{recode} library.
 
 @printindex fn
 
-@node Charset and Surface Index, , Library Index, Top
+@node Charset and Surface Index,  , Library Index, Top
 @unnumbered Charset and Surface Index
 
 This is an alphabetical list of all the charsets and surfaces supported

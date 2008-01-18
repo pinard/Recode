@@ -1,0 +1,661 @@
+/* Copyright (C) 1999 Free Software Foundation, Inc.
+   This file is part of the GNU ICONV Library.
+
+   The GNU ICONV Library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Library General Public License as
+   published by the Free Software Foundation; either version 2 of the
+   License, or (at your option) any later version.
+
+   The GNU ICONV Library is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   Library General Public License for more details.
+
+   You should have received a copy of the GNU Library General Public
+   License along with the GNU ICONV Library; see the file COPYING.LIB.  If not,
+   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+   Boston, MA 02111-1307, USA.  */
+
+/* The list of all user-visible encodings. */
+
+/* By convention, an encoding named FOOBAR or FOO_BAR or FOO-BAR is defined
+   in a file named "foobar.h" through the functions foobar_mbtowc and
+   foobar_wctomb (and possibly foobar_reset). */
+
+/* DEFENCODING(( name, alias1, ..., ),
+               xxx,
+               { xxx_mbtowc },
+               { xxx_wctomb, xxx_reset })
+   defines an encoding with the given name and aliases. (There is no
+   difference between a name and an alias. By convention, the name is chosen
+   as the preferred MIME name or the standard name.)
+   All names and aliases must be in ASCII and in UPPERCASE!
+   xxx is the name as used in the C code (lowercase).
+ */
+
+
+DEFENCODING(( "US-ASCII",
+              "ASCII",
+              "ISO646-US",
+              "ISO_646.IRV:1991",
+              "ISO-IR-6",
+              "ANSI_X3.4-1968",
+              "CP367",
+              "IBM367",
+              "US",
+              "CSASCII",
+            ),
+            ascii,
+            { ascii_mbtowc },             { ascii_wctomb, NULL })
+
+/* General multi-byte encodings */
+
+DEFENCODING(( "UTF-8",
+            ),
+            utf8,
+            { utf8_mbtowc },              { utf8_wctomb, NULL })
+
+DEFENCODING(( "UCS-2",
+              "ISO-10646-UCS-2",
+              "CSUNICODE",
+            ),
+            ucs2,
+            { ucs2_mbtowc },              { ucs2_wctomb, NULL })
+
+DEFENCODING(( "UCS-4",
+              "ISO-10646-UCS-4",
+              "CSUCS4",
+            ),
+            ucs4,
+            { ucs4_mbtowc },              { ucs4_wctomb, NULL })
+
+DEFENCODING(( "UTF-16",
+            ),
+            utf16,
+            { utf16_mbtowc },             { utf16_wctomb, NULL })
+
+DEFENCODING(( "UTF-7",
+              "UNICODE-1-1-UTF-7",
+              "CSUNICODE11UTF7",
+            ),
+            utf7,
+            { utf7_mbtowc },              { utf7_wctomb, utf7_reset })
+
+DEFENCODING(( "UCS-2-INTERNAL",
+            ),
+            ucs2internal,
+            { ucs2internal_mbtowc },      { ucs2internal_wctomb, NULL })
+
+DEFENCODING(( "UCS-2-SWAPPED",
+            ),
+            ucs2swapped,
+            { ucs2swapped_mbtowc },       { ucs2swapped_wctomb, NULL })
+
+DEFENCODING(( "UCS-2-BE",
+              "UNICODEBIG", /* glibc compatibility */
+            ),
+            ucs2be,
+            { ucs2be_mbtowc },            { ucs2be_wctomb, NULL })
+
+DEFENCODING(( "UCS-2-LE",
+              "UNICODELITTLE", /* glibc compatibility */
+            ),
+            ucs2le,
+            { ucs2le_mbtowc },            { ucs2le_wctomb, NULL })
+
+DEFENCODING(( "UCS-4-INTERNAL",
+            ),
+            ucs4internal,
+            { ucs4internal_mbtowc },      { ucs4internal_wctomb, NULL })
+
+DEFENCODING(( "UCS-4-SWAPPED",
+            ),
+            ucs4swapped,
+            { ucs4swapped_mbtowc },       { ucs4swapped_wctomb, NULL })
+
+DEFENCODING(( "UCS-4-BE",
+            ),
+            ucs4be,
+            { ucs4be_mbtowc },            { ucs4be_wctomb, NULL })
+
+DEFENCODING(( "UCS-4-LE",
+            ),
+            ucs4le,
+            { ucs4le_mbtowc },            { ucs4le_wctomb, NULL })
+
+DEFENCODING(( "JAVA",
+            ),
+            java,
+            { java_mbtowc },              { java_wctomb, NULL })
+
+/* Standard 8-bit encodings */
+
+DEFENCODING(( "ISO-8859-1",
+              "ISO_8859-1",
+              "ISO_8859-1:1987",
+              "ISO-IR-100",
+              "CP819",
+              "IBM819",
+              "LATIN1",
+              "L1",
+              "CSISOLATIN1",
+            ),
+            iso8859_1,
+            { iso8859_1_mbtowc },         { iso8859_1_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-2",
+              "ISO_8859-2",
+              "ISO_8859-2:1987",
+              "ISO-IR-101",
+              "LATIN2",
+              "L2",
+              "CSISOLATIN2",
+            ),
+            iso8859_2,
+            { iso8859_2_mbtowc },         { iso8859_2_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-3",
+              "ISO_8859-3",
+              "ISO_8859-3:1988",
+              "ISO-IR-109",
+              "LATIN3",
+              "L3",
+              "CSISOLATIN3",
+            ),
+            iso8859_3,
+            { iso8859_3_mbtowc },         { iso8859_3_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-4",
+              "ISO_8859-4",
+              "ISO_8859-4:1988",
+              "ISO-IR-110",
+              "LATIN4",
+              "L4",
+              "CSISOLATIN4",
+            ),
+            iso8859_4,
+            { iso8859_4_mbtowc },         { iso8859_4_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-5",
+              "ISO_8859-5",
+              "ISO_8859-5:1988",
+              "ISO-IR-144",
+              "CYRILLIC",
+              "CSISOLATINCYRILLIC",
+            ),
+            iso8859_5,
+            { iso8859_5_mbtowc },         { iso8859_5_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-6",
+              "ISO_8859-6",
+              "ISO_8859-6:1987",
+              "ISO-IR-127",
+              "ECMA-114",
+              "ASMO-708",
+              "ARABIC",
+              "CSISOLATINARABIC",
+            ),
+            iso8859_6,
+            { iso8859_6_mbtowc },         { iso8859_6_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-7",
+              "ISO_8859-7",
+              "ISO_8859-7:1987",
+              "ISO-IR-126",
+              "ECMA-118",
+              "ELOT_928",
+              "GREEK8",
+              "GREEK",
+              "CSISOLATINGREEK",
+            ),
+            iso8859_7,
+            { iso8859_7_mbtowc },         { iso8859_7_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-8",
+              "ISO_8859-8",
+              "ISO_8859-8:1988",
+              "ISO-IR-138",
+              "HEBREW",
+              "CSISOLATINHEBREW",
+            ),
+            iso8859_8,
+            { iso8859_8_mbtowc },         { iso8859_8_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-9",
+              "ISO_8859-9",
+              "ISO_8859-9:1989",
+              "ISO-IR-148",
+              "LATIN5",
+              "L5",
+              "CSISOLATIN5",
+            ),
+            iso8859_9,
+            { iso8859_9_mbtowc },         { iso8859_9_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-10",
+              "ISO_8859-10",
+              "ISO_8859-10:1992",
+              "ISO-IR-157",
+              "LATIN6",
+              "L6",
+              "CSISOLATIN6",
+            ),
+            iso8859_10,
+            { iso8859_10_mbtowc },        { iso8859_10_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-13",
+              "ISO_8859-13",
+              "ISO-IR-179",
+              "LATIN7",
+              "L7",
+            ),
+            iso8859_13,
+            { iso8859_13_mbtowc },        { iso8859_13_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-14",
+              "ISO_8859-14",
+              "ISO_8859-14:1998",
+              "LATIN8",
+              "L8",
+            ),
+            iso8859_14,
+            { iso8859_14_mbtowc },        { iso8859_14_wctomb, NULL })
+
+DEFENCODING(( "ISO-8859-15",
+              "ISO_8859-15",
+              "ISO_8859-15:1998",
+            ),
+            iso8859_15,
+            { iso8859_15_mbtowc },        { iso8859_15_wctomb, NULL })
+
+DEFENCODING(( "KOI8-R",
+              "CSKOI8R",
+            ),
+            koi8_r,
+            { koi8_r_mbtowc },            { koi8_r_wctomb, NULL })
+
+DEFENCODING(( "KOI8-U",
+            ),
+            koi8_u,
+            { koi8_u_mbtowc },            { koi8_u_wctomb, NULL })
+
+DEFENCODING(( "KOI8-RU",
+            ),
+            koi8_ru,
+            { koi8_ru_mbtowc },           { koi8_ru_wctomb, NULL })
+
+/* Windows 8-bit encodings */
+
+DEFENCODING(( "CP1250",
+              "WINDOWS-1250",
+              "MS-EE",
+            ),
+            cp1250,
+            { cp1250_mbtowc },            { cp1250_wctomb, NULL })
+
+DEFENCODING(( "CP1251",
+              "WINDOWS-1251",
+              "MS-CYRL",
+            ),
+            cp1251,
+            { cp1251_mbtowc },            { cp1251_wctomb, NULL })
+
+DEFENCODING(( "CP1252",
+              "WINDOWS-1252",
+              "MS-ANSI",
+            ),
+            cp1252,
+            { cp1252_mbtowc },            { cp1252_wctomb, NULL })
+
+DEFENCODING(( "CP1253",
+              "WINDOWS-1253",
+              "MS-GREEK",
+            ),
+            cp1253,
+            { cp1253_mbtowc },            { cp1253_wctomb, NULL })
+
+DEFENCODING(( "CP1254",
+              "WINDOWS-1254",
+              "MS-TURK",
+            ),
+            cp1254,
+            { cp1254_mbtowc },            { cp1254_wctomb, NULL })
+
+DEFENCODING(( "CP1255",
+              "WINDOWS-1255",
+              "MS-HEBR",
+            ),
+            cp1255,
+            { cp1255_mbtowc },            { cp1255_wctomb, NULL })
+
+DEFENCODING(( "CP1256",
+              "WINDOWS-1256",
+              "MS-ARAB",
+            ),
+            cp1256,
+            { cp1256_mbtowc },            { cp1256_wctomb, NULL })
+
+DEFENCODING(( "CP1257",
+              "WINDOWS-1257",
+              "WINBALTRIM",
+            ),
+            cp1257,
+            { cp1257_mbtowc },            { cp1257_wctomb, NULL })
+
+DEFENCODING(( "CP1258",
+              "WINDOWS-1258",
+            ),
+            cp1258,
+            { cp1258_mbtowc },            { cp1258_wctomb, NULL })
+
+/* DOS 8-bit encodings */
+
+DEFENCODING(( "CP850",
+              "IBM850",
+              "850",
+              "CSPC850MULTILINGUAL",
+            ),
+            cp850,
+            { cp850_mbtowc },             { cp850_wctomb, NULL })
+
+DEFENCODING(( "CP866",
+              "IBM866",
+              "866",
+              "CSIBM866",
+            ),
+            cp866,
+            { cp866_mbtowc },             { cp866_wctomb, NULL })
+
+/* Macintosh 8-bit encodings */
+
+DEFENCODING(( "MACROMAN",  /* This is the best table for MACINTOSH. The ones */
+              "MACINTOSH", /* in glibc and FreeBSD-iconv are bad quality. */
+            ),
+            mac_roman,
+            { mac_roman_mbtowc },         { mac_roman_wctomb, NULL })
+
+DEFENCODING(( "MACCENTRALEUROPE",
+            ),
+            mac_centraleurope,
+            { mac_centraleurope_mbtowc }, { mac_centraleurope_wctomb, NULL })
+
+DEFENCODING(( "MACICELAND",
+            ),
+            mac_iceland,
+            { mac_iceland_mbtowc },       { mac_iceland_wctomb, NULL })
+
+DEFENCODING(( "MACCROATIAN",
+            ),
+            mac_croatian,
+            { mac_croatian_mbtowc },      { mac_croatian_wctomb, NULL })
+
+DEFENCODING(( "MACROMANIA",
+            ),
+            mac_romania,
+            { mac_romania_mbtowc },       { mac_romania_wctomb, NULL })
+
+DEFENCODING(( "MACCYRILLIC",
+            ),
+            mac_cyrillic,
+            { mac_cyrillic_mbtowc },      { mac_cyrillic_wctomb, NULL })
+
+DEFENCODING(( "MACUKRAINE",
+            ),
+            mac_ukraine,
+            { mac_ukraine_mbtowc },       { mac_ukraine_wctomb, NULL })
+
+DEFENCODING(( "MACGREEK",
+            ),
+            mac_greek,
+            { mac_greek_mbtowc },         { mac_greek_wctomb, NULL })
+
+DEFENCODING(( "MACTURKISH",
+            ),
+            mac_turkish,
+            { mac_turkish_mbtowc },       { mac_turkish_wctomb, NULL })
+
+DEFENCODING(( "MACHEBREW",
+            ),
+            mac_hebrew,
+            { mac_hebrew_mbtowc },        { mac_hebrew_wctomb, NULL })
+
+DEFENCODING(( "MACARABIC",
+            ),
+            mac_arabic,
+            { mac_arabic_mbtowc },        { mac_arabic_wctomb, NULL })
+
+DEFENCODING(( "MACTHAI",
+            ),
+            mac_thai,
+            { mac_thai_mbtowc },          { mac_thai_wctomb, NULL })
+
+/* Other platform specific 8-bit encodings */
+
+DEFENCODING(( "HP-ROMAN8",
+              "ROMAN8",
+              "R8",
+              "CSHPROMAN8",
+            ),
+            hp_roman8,
+            { hp_roman8_mbtowc },         { hp_roman8_wctomb, NULL })
+
+DEFENCODING(( "NEXTSTEP",
+            ),
+            nextstep,
+            { nextstep_mbtowc },          { nextstep_wctomb, NULL })
+
+/* Regional 8-bit encodings used for a single language */
+
+DEFENCODING(( "ARMSCII-8",
+            ),
+            armscii_8,
+            { armscii_8_mbtowc },         { armscii_8_wctomb, NULL })
+
+DEFENCODING(( "GEORGIAN-ACADEMY",
+            ),
+            georgian_academy,
+            { georgian_academy_mbtowc },  { georgian_academy_wctomb, NULL })
+
+DEFENCODING(( "GEORGIAN-PS",
+            ),
+            georgian_ps,
+            { georgian_ps_mbtowc },       { georgian_ps_wctomb, NULL })
+
+DEFENCODING(( "MULELAO-1",
+            ),
+            mulelao,
+            { mulelao_mbtowc },           { mulelao_wctomb, NULL })
+
+DEFENCODING(( "CP1133",
+              "IBM-CP1133",
+            ),
+            cp1133,
+            { cp1133_mbtowc },            { cp1133_wctomb, NULL })
+
+DEFENCODING(( "TIS-620",
+              "TIS620",
+              "TIS620-0",
+              "TIS620.2529-1",
+              "TIS620.2533-0",
+              "TIS620.2533-1",
+              "ISO-IR-166",
+            ),
+            tis620,
+            { tis620_mbtowc },            { tis620_wctomb, NULL })
+
+DEFENCODING(( "CP874",
+              "WINDOWS-874",
+            ),
+            cp874,
+            { cp874_mbtowc },             { cp874_wctomb, NULL })
+
+DEFENCODING(( "VISCII",
+              "VISCII1.1-1",
+              "CSVISCII",
+            ),
+            viscii,
+            { viscii_mbtowc },            { viscii_wctomb, NULL })
+
+DEFENCODING(( "TCVN",
+              "TCVN-5712",
+              "TCVN5712-1",
+              "TCVN5712-1:1993",
+            ),
+            tcvn,
+            { tcvn_mbtowc },              { tcvn_wctomb, NULL })
+
+/* CJK character sets */
+
+DEFENCODING(( "JIS_X0201",
+              "JISX0201-1976",
+              "JISX0201.1976-0",
+              "X0201",
+              "CSHALFWIDTHKATAKANA",
+            ),
+            jisx0201,
+            { jisx0201_mbtowc },          { jisx0201_wctomb, NULL })
+
+DEFENCODING(( "JIS_X0208",
+              "JIS_X0208.1983-0",
+              "JIS_X0208.1983-1",
+              "JIS_X0208-1983",
+              "JIS_X0208-1990",
+              "JIS0208",
+            ),
+            jisx0208,
+            { jisx0208_mbtowc },          { jisx0208_wctomb, NULL })
+
+DEFENCODING(( "JIS_X0212",
+              "JIS_X0212.1990-0",
+              "JIS_X0212-1990",
+              "X0212",
+              "ISO-IR-159",
+              "CSISO159JISX02121990",
+            ),
+            jisx0212,
+            { jisx0212_mbtowc },          { jisx0212_wctomb, NULL })
+
+DEFENCODING(( "KSC_5601",
+              "KSC5601.1987-0",
+              "KS_C_5601-1987",
+              "KS_C_5601-1989",
+              "ISO-IR-149",
+              "CSKSC56011987",
+              "KOREAN",
+              "CP949",
+            ),
+            ksc5601,
+            { ksc5601_mbtowc },           { ksc5601_wctomb, NULL })
+
+/* CJK encodings */
+
+DEFENCODING(( "EUC-JP",
+              "EUCJP",
+              "EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE",
+              "CSEUCPKDFMTJAPANESE",
+            ),
+            euc_jp,
+            { euc_jp_mbtowc },            { euc_jp_wctomb, NULL })
+
+DEFENCODING(( "SJIS",
+              "SHIFT_JIS",
+              "SHIFT-JIS",
+              "MS_KANJI",
+              "CSSHIFTJIS",
+            ),
+            sjis,
+            { sjis_mbtowc },              { sjis_wctomb, NULL })
+
+DEFENCODING(( "CP932",
+            ),
+            cp932,
+            { cp932_mbtowc },             { cp932_wctomb, NULL })
+
+DEFENCODING(( "ISO-2022-JP",
+              "CSISO2022JP",
+            ),
+            iso2022_jp,
+            { iso2022_jp_mbtowc },        { iso2022_jp_wctomb, iso2022_jp_reset })
+
+DEFENCODING(( "ISO-2022-JP-1",
+            ),
+            iso2022_jp1,
+            { iso2022_jp1_mbtowc },       { iso2022_jp1_wctomb, iso2022_jp1_reset })
+
+DEFENCODING(( "ISO-2022-JP-2",
+              "CSISO2022JP2",
+            ),
+            iso2022_jp2,
+            { iso2022_jp2_mbtowc },       { iso2022_jp2_wctomb, iso2022_jp2_reset })
+
+DEFENCODING(( "EUC-CN",
+              "EUCCN",
+              "GB2312", /* yes, GB2312 as registered by IANA is actually EUC-CN */
+              "CSGB2312",
+            ),
+            euc_cn,
+            { euc_cn_mbtowc },            { euc_cn_wctomb, NULL })
+
+DEFENCODING(( "GBK",
+              "CP936",
+            ),
+            ces_gbk,
+            { ces_gbk_mbtowc },           { ces_gbk_wctomb, NULL })
+
+DEFENCODING(( "ISO-2022-CN",
+              "CSISO2022CN",
+            ),
+            iso2022_cn,
+            { iso2022_cn_mbtowc },        { iso2022_cn_wctomb, iso2022_cn_reset })
+
+DEFENCODING(( "ISO-2022-CN-EXT",
+            ),
+            iso2022_cn_ext,
+            { iso2022_cn_ext_mbtowc },    { iso2022_cn_ext_wctomb, iso2022_cn_ext_reset })
+
+DEFENCODING(( "HZ",
+              "HZ-GB-2312",
+            ),
+            hz,
+            { hz_mbtowc },                { hz_wctomb, hz_reset })
+
+DEFENCODING(( "EUC-TW",
+              "EUCTW",
+              "CSEUCTW",
+            ),
+            euc_tw,
+            { euc_tw_mbtowc },            { euc_tw_wctomb, NULL })
+
+DEFENCODING(( "BIG5",
+              "BIG-5",
+              "BIG-FIVE",
+              "BIGFIVE",
+              "CSBIG5",
+            ),
+            ces_big5,
+            { ces_big5_mbtowc },          { ces_big5_wctomb, NULL })
+
+DEFENCODING(( "CP950",
+            ),
+            cp950,
+            { cp950_mbtowc },             { cp950_wctomb, NULL })
+
+DEFENCODING(( "EUC-KR",
+              "EUCKR",
+              "CSEUCKR",
+            ),
+            euc_kr,
+            { euc_kr_mbtowc },            { euc_kr_wctomb, NULL })
+
+DEFENCODING(( "JOHAB",
+              "CP1361",
+            ),
+            johab,
+            { johab_mbtowc },             { johab_wctomb, NULL })
+
+DEFENCODING(( "ISO-2022-KR",
+              "CSISO2022KR",
+            ),
+            iso2022_kr,
+            { iso2022_kr_mbtowc },        { iso2022_kr_wctomb, iso2022_kr_reset })
+

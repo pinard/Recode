@@ -24,15 +24,12 @@
 
 struct mixed
 {
-  /* Original task descriptor.  */
-  RECODE_TASK original_task;
-
   /* File names saved from original task.  */
   const char *input_name;
   const char *output_name;
 
-  /* Task where plumbing takes place.  */
-  struct recode_task task;
+  /* Subtask, from input directly to either output or in memory buffer.  */
+  struct recode_subtask subtask;
 
   /* In memory buffer.  */
   struct recode_read_write_text buffer;
@@ -41,9 +38,10 @@ struct mixed
 static bool
 open_mixed (struct mixed *mixed, RECODE_TASK task)
 {
-  mixed->original_task = task;
   mixed->input_name = task->input.name;
   mixed->output_name = task->output.name;
+  task->strategy = RECODE_SEQUENCE_IN_MEMORY;
+  task->byte_order_mark = false;
 
   /* Open both files ourselves.  */
 
@@ -71,9 +69,10 @@ open_mixed (struct mixed *mixed, RECODE_TASK task)
 
   /* Prepare for dynamic plumbing copy.  */
 
-  mixed->task = *task;
-  mixed->task.strategy = RECODE_SEQUENCE_IN_MEMORY;
-  mixed->task.byte_order_mark = false;
+  memset (&mixed->subtask, 0, sizeof (struct recode_subtask));
+  mixed->subtask.task = task;
+  mixed->subtask.input = task->input;
+  mixed->subtask.output = task->output;
   memset (&mixed->buffer, 0, sizeof (struct recode_read_write_text));
 
   return true;
@@ -85,36 +84,37 @@ close_mixed (struct mixed *mixed)
   /* Clean up.  */
 
   if (*(mixed->input_name))
-    fclose (mixed->original_task->input.file);
+    fclose (mixed->subtask.task->input.file);
   if (*(mixed->output_name))
-    fclose (mixed->original_task->output.file);
+    fclose (mixed->subtask.task->output.file);
 }
 
 static inline void
-plumb_input_to_buffer (struct mixed *mixed)
+start_accumulation (struct mixed *mixed)
 {
-  /* Une only after plumb_input_to_output, or after initial state.  */
   mixed->buffer.cursor = mixed->buffer.buffer;
-  mixed->task.output = mixed->buffer;
+  mixed->subtask.output = mixed->buffer;
 }
 
-static inline void
-plumb_buffer_to_output (struct mixed *mixed)
+static inline bool
+recode_accumulated (struct mixed *mixed)
 {
-  /* Use only after plumb_input_to_buffer.  */
-  mixed->buffer = mixed->task.output;
-  mixed->task.output = mixed->original_task->output;
-  mixed->task.input.file = NULL;
-  mixed->task.input.buffer = mixed->buffer.buffer;
-  mixed->task.input.cursor = mixed->buffer.buffer;
-  mixed->task.input.limit = mixed->buffer.cursor;
-}
+  RECODE_TASK task = mixed->subtask.task;
+  struct recode_read_only_text saved_input = task->input;
+  bool status;
 
-static inline void
-plumb_input_to_output (struct mixed *mixed)
-{
-  /* Use only after plumb_buffer_to_output.  */
-  mixed->task.input = mixed->original_task->input;
+  mixed->buffer = mixed->subtask.output;
+
+  task->input.file = NULL;
+  task->input.buffer = mixed->buffer.buffer;
+  task->input.cursor = mixed->buffer.buffer;
+  task->input.limit = mixed->buffer.cursor;
+
+  status = recode_perform_task (task);
+
+  task->input = saved_input;
+  mixed->subtask.output = task->output;
+  return status;
 }
 
 /*-----------------------------------------------------------------------.
@@ -131,15 +131,15 @@ transform_c_source (RECODE_TASK task)
   if (!open_mixed (&mixed, task))
     return false;
 
-  character = get_byte (&mixed.task);
+  character = get_byte (&mixed.subtask);
   while (character != EOF)
     switch (character)
       {
       case '\'':
 	/* Skip character constant, while copying it untranslated.  */
 
-	put_byte ('\'', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('\'', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 
 	if (character == EOF)
 	  {
@@ -149,21 +149,21 @@ transform_c_source (RECODE_TASK task)
 
 	if (character == '\\')
 	  {
-	    put_byte ('\\', &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte ('\\', &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	    if (character == EOF)
 	      {
 		status = false;
 		break;
 	      }
-	    put_byte (character, &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte (character, &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 
 	if (character == '\'')
 	  {
-	    put_byte ('\'', &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte ('\'', &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 	else
 	  status = false;
@@ -172,19 +172,18 @@ transform_c_source (RECODE_TASK task)
       case '"':
 	/* Copy the string, translated.  */
 
-	put_byte ('"', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('"', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 
 	/* Read in string.  */
 
-	plumb_input_to_buffer (&mixed);
+	start_accumulation (&mixed);
 
 	while (true)
 	  {
 	    if (character == EOF)
 	      {
-		plumb_buffer_to_output (&mixed);
-		recode_perform_task (&mixed.task);
+		recode_accumulated (&mixed);
 		status = false;
 		break;
 	      }
@@ -193,76 +192,70 @@ transform_c_source (RECODE_TASK task)
 
 	    if (character == '\\')
 	      {
-		put_byte ('\\', &mixed.task);
-		character = get_byte (&mixed.task);
+		put_byte ('\\', &mixed.subtask);
+		character = get_byte (&mixed.subtask);
 		if (character == EOF)
 		  {
-		    plumb_buffer_to_output (&mixed);
-		    recode_perform_task (&mixed.task);
+		    recode_accumulated (&mixed);
 		    status = false;
 		    break;
 		  }
 	      }
-	    put_byte (character, &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte (character, &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 	if (character == EOF)
 	  break;
 
 	/* Translate string and dump it.  */
 
-	plumb_buffer_to_output (&mixed);
-	if (!recode_perform_task (&mixed.task))
+	if (!recode_accumulated (&mixed))
 	  status = false;
-	put_byte ('"', &mixed.task);
-
-	plumb_input_to_output (&mixed);
-	character = get_byte (&mixed.task);
+	put_byte ('"', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	break;
 
       case '/':
-	put_byte ('/', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('/', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character == EOF)
 	  break;
 	if (character == '*')
 	  {
 	    /* Copy the comment, translated.  */
 
-	    put_byte ('*', &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte ('*', &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 
 	    /* Read in comment.  */
 
-	    plumb_input_to_buffer (&mixed);
+	    start_accumulation (&mixed);
 	    while (true)
 	      {
 		if (character == EOF)
 		  {
-		    plumb_buffer_to_output (&mixed);
-		    recode_perform_task (&mixed.task);
+		    recode_accumulated (&mixed);
 		    status = false;
 		    break;
 		  }
 		if (character == '*')
 		  {
-		    character = get_byte (&mixed.task);
+		    character = get_byte (&mixed.subtask);
 		    if (character == EOF)
 		      {
-			plumb_buffer_to_output (&mixed);
-			recode_perform_task (&mixed.task);
+			recode_accumulated (&mixed);
 			status = false;
-			put_byte ('*', &mixed.task);
+			put_byte ('*', &mixed.subtask);
 			break;
 		      }
 		    if (character == '/')
 		      break;
-		    put_byte ('*', &mixed.task);
+		    put_byte ('*', &mixed.subtask);
 		  }
 		else
 		  {
-		    put_byte (character, &mixed.task);
-		    character = get_byte (&mixed.task);
+		    put_byte (character, &mixed.subtask);
+		    character = get_byte (&mixed.subtask);
 		  }
 	      }
 
@@ -271,20 +264,17 @@ transform_c_source (RECODE_TASK task)
 
 	    /* Translate comment and dump it.  */
 
-	    plumb_buffer_to_output (&mixed);
-	    if (!recode_perform_task (&mixed.task))
+	    if (!recode_accumulated (&mixed))
 	      status = false;
-	    put_byte ('*', &mixed.task);
-	    put_byte ('/', &mixed.task);
-
-	    plumb_input_to_output (&mixed);
-	    character = get_byte (&mixed.task);
+	    put_byte ('*', &mixed.subtask);
+	    put_byte ('/', &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 	break;
 
       default:
-	put_byte (character, &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte (character, &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	break;
       }
 
@@ -316,40 +306,38 @@ transform_po_source (RECODE_TASK task)
   if (!open_mixed (&mixed, task))
     return false;
 
-  character = get_byte (&mixed.task);
+  character = get_byte (&mixed.subtask);
   while (character != EOF)
     switch (character)
       {
       case '#':
 	/* Copy a comment, recoding only those written by translators.  */
 
-	put_byte ('#', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('#', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character == EOF)
 	  break;
 	recode = character == ' ' || character == '\t';
 
 	if (recode)
-	  plumb_input_to_buffer (&mixed);
+	  start_accumulation (&mixed);
 
 	while (character != '\n' && character != EOF)
 	  {
-	    put_byte (character, &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte (character, &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 
 	if (recode)
 	  {
-	    plumb_buffer_to_output (&mixed);
-	    if (!recode_perform_task (&mixed.task))
+	    if (!recode_accumulated (&mixed))
 	      status = false;
-	    plumb_input_to_output (&mixed);
 	  }
 
 	if (character == EOF)
 	  break;
-	put_byte ('\n', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('\n', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	break;
 
       case 'm':
@@ -357,28 +345,28 @@ transform_po_source (RECODE_TASK task)
 
 	msgstr = false;
 
-	put_byte ('m', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('m', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character != 's')
 	  break;
-	put_byte ('s', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('s', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character != 'g')
 	  break;
-	put_byte ('g', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('g', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character != 's')
 	  break;
-	put_byte ('s', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('s', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character != 't')
 	  break;
-	put_byte ('t', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('t', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	if (character != 'r')
 	  break;
-	put_byte ('r', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('r', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 
 	msgstr = true;
 	break;
@@ -386,12 +374,12 @@ transform_po_source (RECODE_TASK task)
       case '"':
 	/* Copy the string, translating only the `msgstr' ones.  */
 
-	put_byte ('"', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('"', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	recode = msgstr;
 
 	if (recode)
-	  plumb_input_to_buffer (&mixed);
+	  start_accumulation (&mixed);
 
 	while (true)
 	  {
@@ -399,8 +387,7 @@ transform_po_source (RECODE_TASK task)
 	      {
 		if (recode)
 		  {
-		    plumb_buffer_to_output (&mixed);
-		    recode_perform_task (&mixed.task);
+		    recode_accumulated (&mixed);
 		    status = false;
 		  }
 		break;
@@ -410,21 +397,20 @@ transform_po_source (RECODE_TASK task)
 
 	    if (character == '\\')
 	      {
-		put_byte ('\\', &mixed.task);
-		character = get_byte (&mixed.task);
+		put_byte ('\\', &mixed.subtask);
+		character = get_byte (&mixed.subtask);
 		if (character == EOF)
 		  {
 		    if (recode)
 		      {
-			plumb_buffer_to_output (&mixed);
-			recode_perform_task (&mixed.task);
+			recode_accumulated (&mixed);
 			status = false;
 		      }
 		    break;
 		  }
 	      }
-	    put_byte (character, &mixed.task);
-	    character = get_byte (&mixed.task);
+	    put_byte (character, &mixed.subtask);
+	    character = get_byte (&mixed.subtask);
 	  }
 
 	if (character == EOF)
@@ -432,19 +418,17 @@ transform_po_source (RECODE_TASK task)
 
 	if (recode)
 	  {
-	    plumb_buffer_to_output (&mixed);
-	    if (!recode_perform_task (&mixed.task))
+	    if (!recode_accumulated (&mixed))
 	      status = false;
-	    plumb_input_to_output (&mixed);
 	  }
 
-	put_byte ('"', &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte ('"', &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	break;
 
       default:
-	put_byte (character, &mixed.task);
-	character = get_byte (&mixed.task);
+	put_byte (character, &mixed.subtask);
+	character = get_byte (&mixed.subtask);
 	break;
       }
 

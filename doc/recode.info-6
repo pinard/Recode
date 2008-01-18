@@ -43,6 +43,7 @@ supported by `recode', and their aliases.
 * 1026:                                  Tabular.
 * 1047:                                  Tabular.
 * 10646:                                 UCS-4.
+* 1129, not available:                   Vietnamese.
 * 1250:                                  Tabular.
 * 1251:                                  Tabular.
 * 1252:                                  Tabular.
@@ -51,6 +52,7 @@ supported by `recode', and their aliases.
 * 1255:                                  Tabular.
 * 1256:                                  Tabular.
 * 1257:                                  Tabular.
+* 1258, not available:                   Vietnamese.
 * 1345:                                  Tabular.
 * 21-Permutation:                        Permutations.
 * 256:                                   Tabular.
@@ -74,7 +76,8 @@ supported by `recode', and their aliases.
 * 500V1:                                 Tabular.
 * 64:                                    MIME.
 * 819:                                   Tabular.
-* 850:                                   Tabular.
+* 850 <1>:                               Tabular.
+* 850:                                   libiconv.
 * 851:                                   Tabular.
 * 852:                                   Tabular.
 * 855:                                   Tabular.
@@ -85,6 +88,7 @@ supported by `recode', and their aliases.
 * 863:                                   Tabular.
 * 864:                                   Tabular.
 * 865:                                   Tabular.
+* 866:                                   libiconv.
 * 868:                                   Tabular.
 * 869:                                   Tabular.
 * 870:                                   Tabular.
@@ -103,16 +107,21 @@ supported by `recode', and their aliases.
 * AFRLIN-104-BPI_OCIL:                   African.
 * AFRLIN-105-BPI_OCIL:                   African.
 * ANSI_X3.110-1983, not recognised by recode: Tabular.
+* ANSI_X3.4-1968:                        libiconv.
 * ANSI_X3.4-1968, aliases and source:    Tabular.
 * ANSI_X3.4-1968, and its aliases:       ASCII.
 * ANSI_X3.4-1986:                        Tabular.
 * Apple-Mac:                             Apple-Mac.
 * arabic:                                Tabular.
+* ARABIC:                                libiconv.
 * arabic7:                               Tabular.
-* ASCII:                                 Tabular.
+* ARMSCII-8:                             libiconv.
+* ASCII <1>:                             Tabular.
+* ASCII:                                 libiconv.
 * ASCII, an alias for the ANSI_X3.4-1968 charset: ASCII.
 * ASCII-BS, and its aliases:             ASCII-BS.
-* ASMO-708:                              Tabular.
+* ASMO-708 <1>:                          Tabular.
+* ASMO-708:                              libiconv.
 * ASMO_449, aliases and source:          Tabular.
 * AtariST:                               AtariST.
 * b64:                                   MIME.
@@ -120,6 +129,10 @@ supported by `recode', and their aliases.
 * bambara:                               African.
 * Bang-Bang:                             Bang-Bang.
 * Base64:                                MIME.
+* BIG-5:                                 libiconv.
+* BIG-FIVE:                              libiconv.
+* BIG5, aliases:                         libiconv.
+* BIGFIVE:                               libiconv.
 * BMP:                                   UCS-2.
 * bra:                                   African.
 * BS, an alias for ASCII-BS charset:     ASCII-BS.
@@ -130,7 +143,7 @@ supported by `recode', and their aliases.
 * cl:                                    End lines.
 * cn:                                    Tabular.
 * combined-UCS-2:                        UCS-2.
-* CORK:                                  Cyrillic.
+* CORK:                                  Others.
 * count-characters:                      count-characters.
 * cp-ar:                                 Tabular.
 * cp-gr:                                 Tabular.
@@ -141,14 +154,27 @@ supported by `recode', and their aliases.
 * CP1004:                                Tabular.
 * CP1026:                                Tabular.
 * CP1047:                                Tabular.
+* CP1129, not available:                 Vietnamese.
+* CP1133, aliases:                       libiconv.
+* CP1250, aliases:                       libiconv.
 * CP1250, aliases and source:            Tabular.
+* CP1251, aliases:                       libiconv.
 * CP1251, aliases and source:            Tabular.
+* CP1252, aliases:                       libiconv.
 * CP1252, aliases and source:            Tabular.
+* CP1253, aliases:                       libiconv.
 * CP1253, aliases and source:            Tabular.
+* CP1254, aliases:                       libiconv.
 * CP1254, aliases and source:            Tabular.
+* CP1255, aliases:                       libiconv.
 * CP1255, aliases and source:            Tabular.
+* CP1256, aliases:                       libiconv.
 * CP1256, aliases and source:            Tabular.
+* CP1257, aliases:                       libiconv.
 * CP1257, aliases and source:            Tabular.
+* CP1258, aliases:                       libiconv.
+* CP1258, not available:                 Vietnamese.
+* CP1361:                                libiconv.
 * CP256:                                 Tabular.
 * CP273:                                 Tabular.
 * CP274:                                 Tabular.
@@ -161,14 +187,17 @@ supported by `recode', and their aliases.
 * CP290:                                 Tabular.
 * CP297:                                 Tabular.
 * cp367:                                 ASCII.
-* CP367:                                 Tabular.
+* CP367 <1>:                             Tabular.
+* CP367:                                 libiconv.
 * CP420:                                 Tabular.
 * CP423:                                 Tabular.
 * CP424:                                 Tabular.
 * CP437:                                 Tabular.
 * CP500:                                 Tabular.
-* CP819:                                 Tabular.
+* CP819 <1>:                             Tabular.
+* CP819:                                 libiconv.
 * CP850:                                 Tabular.
+* CP850, aliases:                        libiconv.
 * CP851:                                 Tabular.
 * CP852:                                 Tabular.
 * CP855:                                 Tabular.
@@ -179,10 +208,12 @@ supported by `recode', and their aliases.
 * CP863:                                 Tabular.
 * CP864:                                 Tabular.
 * CP865:                                 Tabular.
+* CP866, aliases:                        libiconv.
 * CP868:                                 Tabular.
 * CP869:                                 Tabular.
 * CP870:                                 Tabular.
 * CP871:                                 Tabular.
+* CP874, aliases:                        libiconv.
 * CP875:                                 Tabular.
 * CP880:                                 Tabular.
 * CP891:                                 Tabular.
@@ -191,6 +222,10 @@ supported by `recode', and their aliases.
 * CP905:                                 Tabular.
 * CP912:                                 Tabular.
 * CP918:                                 Tabular.
+* CP932:                                 libiconv.
+* CP936:                                 libiconv.
+* CP949:                                 libiconv.
+* CP950:                                 libiconv.
 * CR, a surface:                         End lines.
 * CR-LF, a surface:                      End lines.
 * csa7-1:                                Tabular.
@@ -198,11 +233,44 @@ supported by `recode', and their aliases.
 * CSA_Z243.4-1985-1, aliases and source: Tabular.
 * CSA_Z243.4-1985-2, aliases and source: Tabular.
 * CSA_Z243.4-1985-gr, aliases and source: Tabular.
+* CSASCII:                               libiconv.
+* CSBIG5:                                libiconv.
+* CSEUCKR:                               libiconv.
+* CSEUCPKDFMTJAPANESE:                   libiconv.
+* CSEUCTW:                               libiconv.
+* CSGB2312:                              libiconv.
+* CSHALFWIDTHKATAKANA:                   libiconv.
+* CSHPROMAN8:                            libiconv.
+* CSIBM866:                              libiconv.
+* CSISO159JISX02121990:                  libiconv.
+* CSISO2022CN:                           libiconv.
+* CSISO2022JP:                           libiconv.
+* CSISO2022JP2:                          libiconv.
+* CSISO2022KR:                           libiconv.
+* CSISOLATIN1:                           libiconv.
+* CSISOLATIN2:                           libiconv.
+* CSISOLATIN3:                           libiconv.
+* CSISOLATIN4:                           libiconv.
+* CSISOLATIN5:                           libiconv.
+* CSISOLATIN6:                           libiconv.
+* CSISOLATINARABIC:                      libiconv.
+* CSISOLATINCYRILLIC:                    libiconv.
+* CSISOLATINGREEK:                       libiconv.
+* CSISOLATINHEBREW:                      libiconv.
+* CSKOI8R:                               libiconv.
+* CSKSC56011987:                         libiconv.
 * CSN_369103, aliases and source:        Tabular.
+* CSPC850MULTILINGUAL:                   libiconv.
+* CSSHIFTJIS:                            libiconv.
+* CSUCS4:                                libiconv.
+* CSUNICODE:                             libiconv.
+* CSUNICODE11UTF7:                       libiconv.
+* CSVISCII:                              libiconv.
 * cuba:                                  Tabular.
 * CWI, aliases and source:               Tabular.
 * CWI-2:                                 Tabular.
 * cyrillic:                              Tabular.
+* CYRILLIC:                              libiconv.
 * d1:                                    Dump.
 * d2:                                    Dump.
 * d4:                                    Dump.
@@ -271,14 +339,26 @@ supported by `recode', and their aliases.
 * EBCDIC-UK, aliases and source:         Tabular.
 * EBCDIC-US, aliases and source:         Tabular.
 * ECMA-113:                              Tabular.
-* ECMA-113:1986:                         Tabular.
-* ECMA-114:                              Tabular.
-* ECMA-118:                              Tabular.
+* ECMA-113(1986):                        Tabular.
+* ECMA-114 <1>:                          Tabular.
+* ECMA-114:                              libiconv.
+* ECMA-118 <1>:                          Tabular.
+* ECMA-118:                              libiconv.
 * ECMA-cyrillic, aliases and source:     Tabular.
-* ELOT_928:                              Tabular.
+* ELOT_928 <1>:                          Tabular.
+* ELOT_928:                              libiconv.
 * ES, aliases and source:                Tabular.
 * ES2, aliases and source:               Tabular.
+* EUC-CN, aliases:                       libiconv.
+* EUC-JP, aliases:                       libiconv.
+* EUC-KR, aliases:                       libiconv.
+* EUC-TW, aliases:                       libiconv.
+* EUCCN:                                 libiconv.
+* EUCJP:                                 libiconv.
+* EUCKR:                                 libiconv.
+* EUCTW:                                 libiconv.
 * ewondo:                                African.
+* EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE: libiconv.
 * FI:                                    Tabular.
 * flat, a charset:                       flat.
 * fr:                                    Tabular.
@@ -286,22 +366,33 @@ supported by `recode', and their aliases.
 * FSS_UTF:                               UTF-8.
 * fulfude:                               African.
 * gb:                                    Tabular.
+* GB2312:                                libiconv.
 * GB_1988-80, aliases and source:        Tabular.
 * GB_2312-80, not recognised by recode:  Tabular.
+* GBK, aliases:                          libiconv.
+* Georgian-Academy:                      libiconv.
+* Georgian-PS:                           libiconv.
 * GOST_19768-74:                         Tabular.
 * GOST_19768-87, aliases and source:     Tabular.
 * greek:                                 Tabular.
+* GREEK:                                 libiconv.
 * greek-ccitt, aliases and source:       Tabular.
 * greek7, aliases and source:            Tabular.
 * greek7-old, aliases and source:        Tabular.
 * greek8:                                Tabular.
+* GREEK8:                                libiconv.
 * hebrew:                                Tabular.
+* HEBREW:                                libiconv.
 * Hexadecimal-1:                         Dump.
 * Hexadecimal-2:                         Dump.
 * Hexadecimal-4:                         Dump.
+* HP-ROMAN8, aliases:                    libiconv.
 * hp-roman8, aliases and source:         Tabular.
 * HTML, a charset:                       HTML.
 * hu:                                    Tabular.
+* HZ, aliases:                           libiconv.
+* HZ-GB-2312:                            libiconv.
+* IBM-CP1133:                            libiconv.
 * IBM-PC:                                IBM-PC.
 * IBM-PC charset, and CR-LF surface:     Requests.
 * IBM037, aliases and source:            Tabular.
@@ -322,15 +413,18 @@ supported by `recode', and their aliases.
 * IBM290, aliases and source:            Tabular.
 * IBM297, aliases and source:            Tabular.
 * IBM367 <1>:                            ASCII.
-* IBM367:                                Tabular.
+* IBM367 <2>:                            Tabular.
+* IBM367:                                libiconv.
 * IBM420, aliases and source:            Tabular.
 * IBM423, aliases and source:            Tabular.
 * IBM424, aliases and source:            Tabular.
 * ibm437:                                IBM-PC.
 * IBM437, aliases and source:            Tabular.
 * IBM500, aliases and source:            Tabular.
-* IBM819:                                Tabular.
+* IBM819 <1>:                            Tabular.
+* IBM819:                                libiconv.
 * IBM819, and CR-LF surface:             IBM-PC.
+* IBM850:                                libiconv.
 * IBM850, aliases and source:            Tabular.
 * IBM851, aliases and source:            Tabular.
 * IBM852, aliases and source:            Tabular.
@@ -342,6 +436,7 @@ supported by `recode', and their aliases.
 * IBM863, aliases and source:            Tabular.
 * IBM864, aliases and source:            Tabular.
 * IBM865, aliases and source:            Tabular.
+* IBM866:                                libiconv.
 * IBM868, aliases and source:            Tabular.
 * IBM869, aliases and source:            Tabular.
 * IBM870, aliases and source:            Tabular.
@@ -361,46 +456,77 @@ supported by `recode', and their aliases.
 * INIS-cyrillic, aliases and source:     Tabular.
 * INVARIANT, aliases and source:         Tabular.
 * irv:                                   Tabular.
+* ISO-10646-UCS-2:                       libiconv.
 * ISO-10646-UCS-2, and aliases:          UCS-2.
+* ISO-10646-UCS-4:                       libiconv.
 * ISO-10646-UCS-4, and aliases:          UCS-4.
+* ISO-2022-CN, aliases:                  libiconv.
+* ISO-2022-CN-EXT:                       libiconv.
+* ISO-2022-JP, aliases:                  libiconv.
+* ISO-2022-JP-1:                         libiconv.
+* ISO-2022-JP-2, aliases:                libiconv.
+* ISO-2022-KR, aliases:                  libiconv.
+* ISO-8859-1, aliases:                   libiconv.
 * ISO-8859-1, aliases and source:        Tabular.
+* ISO-8859-10, aliases:                  libiconv.
 * ISO-8859-10, aliases and source:       Tabular.
+* ISO-8859-13, aliases:                  libiconv.
 * ISO-8859-13, aliases and source:       Tabular.
+* ISO-8859-14, aliases:                  libiconv.
 * ISO-8859-14, aliases and source:       Tabular.
+* ISO-8859-15, aliases:                  libiconv.
 * ISO-8859-15, aliases and source:       Tabular.
+* ISO-8859-2, aliases:                   libiconv.
 * ISO-8859-2, aliases and source:        Tabular.
+* ISO-8859-3, aliases:                   libiconv.
 * ISO-8859-3, aliases and source:        Tabular.
+* ISO-8859-4, aliases:                   libiconv.
 * ISO-8859-4, aliases and source:        Tabular.
+* ISO-8859-5, aliases:                   libiconv.
 * ISO-8859-5, aliases and source:        Tabular.
+* ISO-8859-6, aliases:                   libiconv.
 * ISO-8859-6, aliases and source:        Tabular.
+* ISO-8859-7, aliases:                   libiconv.
 * ISO-8859-7, aliases and source:        Tabular.
+* ISO-8859-8, aliases:                   libiconv.
 * ISO-8859-8, aliases and source:        Tabular.
+* ISO-8859-9, aliases:                   libiconv.
 * ISO-8859-9, aliases and source:        Tabular.
 * iso-baltic:                            Tabular.
 * iso-celtic:                            Tabular.
 * iso-ir-10:                             Tabular.
 * iso-ir-100:                            Tabular.
+* ISO-IR-100:                            libiconv.
 * iso-ir-101:                            Tabular.
+* ISO-IR-101:                            libiconv.
 * iso-ir-102:                            Tabular.
 * iso-ir-109:                            Tabular.
+* ISO-IR-109:                            libiconv.
 * iso-ir-11:                             Tabular.
 * iso-ir-110:                            Tabular.
+* ISO-IR-110:                            libiconv.
 * iso-ir-111:                            Tabular.
 * iso-ir-121:                            Tabular.
 * iso-ir-122:                            Tabular.
 * iso-ir-123:                            Tabular.
 * iso-ir-126:                            Tabular.
+* ISO-IR-126:                            libiconv.
 * iso-ir-127:                            Tabular.
+* ISO-IR-127:                            libiconv.
 * iso-ir-13:                             Tabular.
 * iso-ir-138:                            Tabular.
+* ISO-IR-138:                            libiconv.
 * iso-ir-139:                            Tabular.
 * iso-ir-14:                             Tabular.
 * iso-ir-141:                            Tabular.
 * iso-ir-143:                            Tabular.
 * iso-ir-144:                            Tabular.
+* ISO-IR-144:                            libiconv.
 * iso-ir-146:                            Tabular.
 * iso-ir-147:                            Tabular.
 * iso-ir-148:                            Tabular.
+* ISO-IR-148:                            libiconv.
+* ISO-IR-149:                            libiconv.
 * iso-ir-15:                             Tabular.
 * iso-ir-150:                            Tabular.
 * iso-ir-151:                            Tabular.
@@ -409,11 +535,15 @@ supported by `recode', and their aliases.
 * iso-ir-154:                            Tabular.
 * iso-ir-155:                            Tabular.
 * iso-ir-157:                            Tabular.
+* ISO-IR-157:                            libiconv.
 * iso-ir-158:                            Tabular.
+* ISO-IR-159:                            libiconv.
 * iso-ir-16:                             Tabular.
+* ISO-IR-166:                            libiconv.
 * iso-ir-17:                             Tabular.
 * iso-ir-170:                            Tabular.
 * iso-ir-179:                            Tabular.
+* ISO-IR-179:                            libiconv.
 * iso-ir-179a:                           Tabular.
 * iso-ir-18:                             Tabular.
 * iso-ir-19:                             Tabular.
@@ -434,6 +564,7 @@ supported by `recode', and their aliases.
 * iso-ir-57:                             Tabular.
 * iso-ir-6 <1>:                          ASCII.
 * iso-ir-6:                              Tabular.
+* ISO-IR-6:                              libiconv.
 * iso-ir-60:                             Tabular.
 * iso-ir-61:                             Tabular.
 * iso-ir-69:                             Tabular.
@@ -475,54 +606,83 @@ supported by `recode', and their aliases.
 * ISO646-PT2:                            Tabular.
 * ISO646-SE:                             Tabular.
 * ISO646-SE2:                            Tabular.
-* ISO646-US:                             Tabular.
+* ISO646-US <1>:                         Tabular.
+* ISO646-US:                             libiconv.
 * ISO646-YU:                             Tabular.
 * ISO_10367-box, aliases and source:     Tabular.
 * ISO_10646:                             UCS-4.
 * ISO_2033-1983, aliases and source:     Tabular.
+* ISO_5427(1981):                        Tabular.
 * ISO_5427, aliases and source:          Tabular.
 * ISO_5427-ext, aliases and source:      Tabular.
-* ISO_5427:1981:                         Tabular.
+* ISO_5428(1980):                        Tabular.
 * ISO_5428, aliases and source:          Tabular.
-* ISO_5428:1980:                         Tabular.
+* ISO_646.basic(1983):                   Tabular.
 * ISO_646.basic, aliases and source:     Tabular.
-* ISO_646.basic:1983:                    Tabular.
+* ISO_646.irv(1983):                     Tabular.
+* ISO_646.irv(1991):                     Tabular.
+* ISO_646.IRV(1991):                     libiconv.
 * ISO_646.irv, aliases and source:       Tabular.
-* ISO_646.irv:1983:                      Tabular.
-* ISO_646.irv:1991:                      Tabular.
 * ISO_6937-2-25, aliases and source:     Tabular.
 * ISO_6937-2-add, not recognised by recode: Tabular.
-* ISO_8859-1:                            Tabular.
-* ISO_8859-10:                           Tabular.
-* ISO_8859-10:1993:                      Tabular.
-* ISO_8859-13:                           Tabular.
-* ISO_8859-13:1998:                      Tabular.
-* ISO_8859-14:                           Tabular.
-* ISO_8859-14:1998:                      Tabular.
-* ISO_8859-15:                           Tabular.
-* ISO_8859-15:1998:                      Tabular.
-* ISO_8859-1:1987:                       Tabular.
-* ISO_8859-2:                            Tabular.
-* ISO_8859-2:1987:                       Tabular.
-* ISO_8859-3:                            Tabular.
-* ISO_8859-3:1988:                       Tabular.
-* ISO_8859-4:                            Tabular.
-* ISO_8859-4:1988:                       Tabular.
-* ISO_8859-5:                            Tabular.
-* ISO_8859-5:1988:                       Tabular.
-* ISO_8859-6:                            Tabular.
-* ISO_8859-6:1987:                       Tabular.
-* ISO_8859-7:                            Tabular.
-* ISO_8859-7:1987:                       Tabular.
-* ISO_8859-8:                            Tabular.
-* ISO_8859-8:1988:                       Tabular.
-* ISO_8859-9:                            Tabular.
-* ISO_8859-9:1989:                       Tabular.
+* ISO_8859-1 <1>:                        Tabular.
+* ISO_8859-1:                            libiconv.
+* ISO_8859-1(1987) <1>:                  Tabular.
+* ISO_8859-1(1987):                      libiconv.
+* ISO_8859-10 <1>:                       Tabular.
+* ISO_8859-10:                           libiconv.
+* ISO_8859-10(1992):                     libiconv.
+* ISO_8859-10(1993):                     Tabular.
+* ISO_8859-13 <1>:                       Tabular.
+* ISO_8859-13:                           libiconv.
+* ISO_8859-13(1998):                     Tabular.
+* ISO_8859-14 <1>:                       Tabular.
+* ISO_8859-14:                           libiconv.
+* ISO_8859-14(1998) <1>:                 Tabular.
+* ISO_8859-14(1998):                     libiconv.
+* ISO_8859-15 <1>:                       Tabular.
+* ISO_8859-15:                           libiconv.
+* ISO_8859-15(1998) <1>:                 Tabular.
+* ISO_8859-15(1998):                     libiconv.
+* ISO_8859-2 <1>:                        Tabular.
+* ISO_8859-2:                            libiconv.
+* ISO_8859-2(1987) <1>:                  Tabular.
+* ISO_8859-2(1987):                      libiconv.
+* ISO_8859-3 <1>:                        Tabular.
+* ISO_8859-3:                            libiconv.
+* ISO_8859-3(1988) <1>:                  Tabular.
+* ISO_8859-3(1988):                      libiconv.
+* ISO_8859-4 <1>:                        Tabular.
+* ISO_8859-4:                            libiconv.
+* ISO_8859-4(1988) <1>:                  Tabular.
+* ISO_8859-4(1988):                      libiconv.
+* ISO_8859-5 <1>:                        Tabular.
+* ISO_8859-5:                            libiconv.
+* ISO_8859-5(1988) <1>:                  Tabular.
+* ISO_8859-5(1988):                      libiconv.
+* ISO_8859-6 <1>:                        Tabular.
+* ISO_8859-6:                            libiconv.
+* ISO_8859-6(1987) <1>:                  Tabular.
+* ISO_8859-6(1987):                      libiconv.
+* ISO_8859-7 <1>:                        Tabular.
+* ISO_8859-7:                            libiconv.
+* ISO_8859-7(1987) <1>:                  Tabular.
+* ISO_8859-7(1987):                      libiconv.
+* ISO_8859-8 <1>:                        Tabular.
+* ISO_8859-8:                            libiconv.
+* ISO_8859-8(1988) <1>:                  Tabular.
+* ISO_8859-8(1988):                      libiconv.
+* ISO_8859-9 <1>:                        Tabular.
+* ISO_8859-9:                            libiconv.
+* ISO_8859-9(1989) <1>:                  Tabular.
+* ISO_8859-9(1989):                      libiconv.
 * ISO_8859-supp, aliases and source:     Tabular.
 * ISO_9036:                              Tabular.
 * isoir91:                               Tabular.
 * isoir92:                               Tabular.
 * IT, aliases and source:                Tabular.
+* JAVA:                                  libiconv.
+* JIS0208:                               libiconv.
 * JIS_C6220-1969:                        Tabular.
 * JIS_C6220-1969-jp, aliases and source: Tabular.
 * JIS_C6220-1969-ro, aliases and source: Tabular.
@@ -533,8 +693,20 @@ supported by `recode', and their aliases.
 * JIS_C6229-1984-hand, aliases and source: Tabular.
 * JIS_C6229-1984-hand-add, aliases and source: Tabular.
 * JIS_C6229-1984-kana, aliases and source: Tabular.
+* JIS_X0201, aliases:                    libiconv.
 * JIS_X0201, aliases and source:         Tabular.
+* JIS_X0208, aliases:                    libiconv.
+* JIS_X0208-1983:                        libiconv.
+* JIS_X0208-1990:                        libiconv.
+* JIS_X0208.1983-0:                      libiconv.
+* JIS_X0208.1983-1:                      libiconv.
+* JIS_X0212, aliases:                    libiconv.
+* JIS_X0212-1990:                        libiconv.
 * JIS_X0212-1990, not recognised by recode: Tabular.
+* JIS_X0212.1990-0:                      libiconv.
+* JISX0201-1976:                         libiconv.
+* JISX0201.1976-0:                       libiconv.
+* JOHAB, aliases:                        libiconv.
 * jp:                                    Tabular.
 * jp-ocr-a:                              Tabular.
 * jp-ocr-b:                              Tabular.
@@ -545,27 +717,43 @@ supported by `recode', and their aliases.
 * JUS_I.B1.002, aliases and source:      Tabular.
 * JUS_I.B1.003-mac, aliases and source:  Tabular.
 * JUS_I.B1.003-serb, aliases and source: Tabular.
-* Kamenicky:                             Cyrillic.
+* Kamenicky:                             Others.
 * katakana:                              Tabular.
-* KEYBCS2:                               Cyrillic.
+* KEYBCS2:                               Others.
 * KOI-7, aliases and source:             Tabular.
 * KOI-8, aliases and source:             Tabular.
-* KOI-8_CS2:                             Cyrillic.
+* KOI-8_CS2:                             Others.
 * KOI-8_L2:                              Tabular.
+* KOI8-R, aliases:                       libiconv.
 * KOI8-R, aliases and source:            Tabular.
+* KOI8-RU:                               libiconv.
 * KOI8-RU, aliases and source:           Tabular.
+* KOI8-U:                                libiconv.
 * KOI8-U, aliases and source:            Tabular.
 * koi8l2:                                Tabular.
+* KOREAN:                                libiconv.
+* KS_C_5601-1987:                        libiconv.
 * KS_C_5601-1987, not recognised by recode: Tabular.
+* KS_C_5601-1989:                        libiconv.
+* KSC5601.1987-0:                        libiconv.
 * KSC5636, aliases and source:           Tabular.
+* KSC_5601, aliases:                     libiconv.
 * l1:                                    Tabular.
+* L1:                                    libiconv.
 * l2:                                    Tabular.
+* L2:                                    libiconv.
 * l3:                                    Tabular.
+* L3:                                    libiconv.
 * l4:                                    Tabular.
+* L4:                                    libiconv.
 * l5:                                    Tabular.
+* L5:                                    libiconv.
 * l6:                                    Tabular.
+* L6:                                    libiconv.
 * l7:                                    Tabular.
+* L7:                                    libiconv.
 * l8:                                    Tabular.
+* L8:                                    libiconv.
 * l9:                                    Tabular.
 * lap:                                   Tabular.
 * LaTeX, a charset:                      LaTeX.
@@ -574,46 +762,78 @@ supported by `recode', and their aliases.
 * Latin-greek-1, aliases and source:     Tabular.
 * latin-lap:                             Tabular.
 * latin1:                                Tabular.
+* LATIN1:                                libiconv.
 * latin1-2-5:                            Tabular.
 * latin2:                                Tabular.
+* LATIN2:                                libiconv.
 * latin3:                                Tabular.
+* LATIN3:                                libiconv.
 * latin4:                                Tabular.
+* LATIN4:                                libiconv.
 * latin5:                                Tabular.
+* LATIN5:                                libiconv.
 * latin6:                                Tabular.
+* LATIN6:                                libiconv.
 * latin7:                                Tabular.
+* LATIN7:                                libiconv.
 * latin8:                                Tabular.
+* LATIN8:                                libiconv.
 * latin9:                                Tabular.
+* libiconv:                              libiconv.
 * lin:                                   African.
 * lingala:                               African.
 * ltex:                                  LaTeX.
 * mac <1>:                               Apple-Mac.
 * mac:                                   Tabular.
 * mac-is, aliases and source:            Tabular.
+* MacArabic:                             libiconv.
 * macce <1>:                             Apple-Mac.
 * macce:                                 Tabular.
+* MacCentralEurope:                      libiconv.
+* MacCroatian:                           libiconv.
+* MacCyrillic:                           libiconv.
 * macedonian:                            Tabular.
+* MacGreek:                              libiconv.
+* MacHebrew:                             libiconv.
+* MacIceland:                            libiconv.
+* Macintosh:                             libiconv.
 * macintosh, a charset, and its aliases: Apple-Mac.
 * macintosh, aliases and source:         Tabular.
 * macintosh_ce, aliases and source:      Tabular.
 * macintosh_ce, and its aliases:         Apple-Mac.
+* MacRoman, aliases:                     libiconv.
+* MacRomania:                            libiconv.
+* MacThai:                               libiconv.
+* MacTurkish:                            libiconv.
+* MacUkraine:                            libiconv.
 * mnemonic, an alias for RFC1345 charset: Tabular.
 * ms-ansi:                               Tabular.
+* MS-ANSI:                               libiconv.
 * ms-arab:                               Tabular.
+* MS-ARAB:                               libiconv.
 * ms-cyrl:                               Tabular.
+* MS-CYRL:                               libiconv.
 * ms-ee:                                 Tabular.
+* MS-EE:                                 libiconv.
 * ms-greek:                              Tabular.
+* MS-GREEK:                              libiconv.
 * ms-hebr:                               Tabular.
+* MS-HEBR:                               libiconv.
 * ms-turk:                               Tabular.
+* MS-TURK:                               libiconv.
+* MS_KANJI:                              libiconv.
 * MSDOS:                                 IBM-PC.
 * MSZ_7795.3, aliases and source:        Tabular.
 * Mule, a charset:                       Mule.
+* MuleLao-1:                             libiconv.
 * NATS-DANO, aliases and source:         Tabular.
 * NATS-DANO-ADD, aliases and source:     Tabular.
 * NATS-SEFI, aliases and source:         Tabular.
 * NATS-SEFI-ADD, aliases and source:     Tabular.
+* NC_NC00-10(81):                        Tabular.
 * NC_NC00-10, aliases and source:        Tabular.
-* NC_NC00-10:81:                         Tabular.
 * next:                                  Tabular.
+* NEXTSTEP:                              libiconv.
 * NeXTSTEP, aliases and source:          Tabular.
 * NF_Z_62-010, aliases and source:       Tabular.
 * NF_Z_62-010_(1973), aliases and source: Tabular.
@@ -639,9 +859,11 @@ supported by `recode', and their aliases.
 * quote-printable:                       MIME.
 * Quoted-Printable:                      MIME.
 * r8:                                    Tabular.
+* R8:                                    libiconv.
 * ref:                                   Tabular.
 * RFC1345, a charset, and its aliases:   Tabular.
 * roman8:                                Tabular.
+* ROMAN8:                                libiconv.
 * rune:                                  UCS-2.
 * sami, aliases and source:              Tabular.
 * sango:                                 African.
@@ -650,6 +872,9 @@ supported by `recode', and their aliases.
 * SEN_850200_B, aliases and source:      Tabular.
 * SEN_850200_C, aliases and source:      Tabular.
 * serbian:                               Tabular.
+* SHIFT-JIS:                             libiconv.
+* SHIFT_JIS:                             libiconv.
+* SJIS, aliases:                         libiconv.
 * SS636127:                              Tabular.
 * ST_SEV_358-88:                         Tabular.
 * swabytes:                              Permutations.
@@ -666,7 +891,12 @@ supported by `recode', and their aliases.
 * T.101-G2, not recognised by recode:    Tabular.
 * T.61-7bit, aliases and source:         Tabular.
 * T.61-8bit, not recognised by recode:   Tabular.
-* T1:                                    Cyrillic.
+* T1:                                    Others.
+* TCVN, aliases:                         libiconv.
+* TCVN, for Vienamese:                   Vietnamese.
+* TCVN-5712:                             libiconv.
+* TCVN5712-1:                            libiconv.
+* TCVN5712-1(1993):                      libiconv.
 * test15:                                Debugging.
 * test16:                                Debugging.
 * test7:                                 Debugging.
@@ -678,6 +908,12 @@ supported by `recode', and their aliases.
 * TF-7:                                  UTF-7.
 * TF-8:                                  UTF-8.
 * ti:                                    Texinfo.
+* TIS-620, aliases:                      libiconv.
+* TIS620:                                libiconv.
+* TIS620-0:                              libiconv.
+* TIS620.2529-1:                         libiconv.
+* TIS620.2533-0:                         libiconv.
+* TIS620.2533-1:                         libiconv.
 * txte:                                  Texte.
 * u2:                                    UCS-2.
 * u4:                                    UCS-4.
@@ -686,33 +922,73 @@ supported by `recode', and their aliases.
 * u8:                                    UTF-8.
 * UCS:                                   Universal.
 * UCS-2:                                 UCS-2.
+* UCS-2, aliases:                        libiconv.
+* UCS-2-BE, aliases:                     libiconv.
+* UCS-2-INTERNAL:                        libiconv.
+* UCS-2-LE, aliases:                     libiconv.
+* UCS-2-SWAPPED:                         libiconv.
 * UCS-4:                                 UCS-4.
+* UCS-4, aliases:                        libiconv.
+* UCS-4-BE:                              libiconv.
+* UCS-4-INTERNAL:                        libiconv.
+* UCS-4-LE:                              libiconv.
+* UCS-4-SWAPPED:                         libiconv.
 * uk:                                    Tabular.
 * Unicode, an alias for UTF-16:          UTF-16.
+* UNICODE-1-1-UTF-7:                     libiconv.
 * UNICODE-1-1-UTF-7, and aliases:        UTF-7.
+* UNICODEBIG:                            libiconv.
+* UNICODELITTLE:                         libiconv.
 * us <1>:                                ASCII.
 * us:                                    Tabular.
+* US:                                    libiconv.
 * US-ASCII <1>:                          ASCII.
 * US-ASCII:                              Tabular.
+* US-ASCII, aliases:                     libiconv.
 * us-dk, not recognised by recode:       Tabular.
 * UTF-1:                                 Universal.
+* UTF-16:                                libiconv.
 * UTF-16, and aliases:                   UTF-16.
 * UTF-7:                                 UTF-7.
+* UTF-7, aliases:                        libiconv.
+* UTF-8 <1>:                             libiconv.
 * UTF-8:                                 UTF-8.
 * UTF-8, aliases:                        UTF-8.
 * UTF-FSS:                               UTF-8.
+* VIQR:                                  Vietnamese.
+* VISCII:                                Vietnamese.
+* VISCII, aliases:                       libiconv.
+* VISCII1.1-1:                           libiconv.
+* VN1, maybe not available:              Vietnamese.
+* VN2, maybe not available:              Vietnamese.
+* VN3, maybe not available:              Vietnamese.
+* VNI:                                   Vietnamese.
+* VPS:                                   Vietnamese.
 * WinBaltRim:                            Tabular.
+* WINBALTRIM:                            libiconv.
 * windows-1250:                          Tabular.
+* WINDOWS-1250:                          libiconv.
 * windows-1251:                          Tabular.
+* WINDOWS-1251:                          libiconv.
 * windows-1252:                          Tabular.
+* WINDOWS-1252:                          libiconv.
 * windows-1253:                          Tabular.
+* WINDOWS-1253:                          libiconv.
 * windows-1254:                          Tabular.
+* WINDOWS-1254:                          libiconv.
 * windows-1255:                          Tabular.
+* WINDOWS-1255:                          libiconv.
 * windows-1256:                          Tabular.
+* WINDOWS-1256:                          libiconv.
 * windows-1257:                          Tabular.
+* WINDOWS-1257:                          libiconv.
+* WINDOWS-1258:                          libiconv.
+* WINDOWS-874:                           libiconv.
 * wolof:                                 African.
-* X0201:                                 Tabular.
+* X0201 <1>:                             Tabular.
+* X0201:                                 libiconv.
 * x0201-7:                               Tabular.
+* X0212:                                 libiconv.
 * x1:                                    Dump.
 * x2:                                    Dump.
 * x4:                                    Dump.

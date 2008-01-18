@@ -40,7 +40,7 @@ and is able to convert files between almost any pair.  Most RFC 1345
 character sets are supported.  The `recode' program is a handy
 front-end to the library.
 
-   The current `recode' release is 3.5a.
+   The current `recode' release is 3.5c.
 
 * Menu:
 
@@ -49,6 +49,7 @@ front-end to the library.
 * Invoking recode::     How to use this program
 * Library::             A recoding library
 * Universal::           The universal charset
+* libiconv::            The `iconv' library
 * Tabular::             Tabular sources (RFC 1345)
 * ASCII misc::          ASCII and some derivatives
 * IBM and MS::          Some IBM or Microsoft charsets
@@ -61,7 +62,6 @@ front-end to the library.
 * Option Index::
 * Library Index::
 * Charset and Surface Index::
-
 
  --- The Detailed Node Listing ---
 
@@ -129,8 +129,9 @@ Various other charsets
 * HTML::                World Wide Web representations
 * LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
+* Vietnamese::          Vietnamese charsets
 * African::             African charsets
-* Cyrillic::            Cyrillic charsets
+* Others::              Cyrillic and other charsets
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 

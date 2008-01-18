@@ -37,6 +37,9 @@
 /* Define to the installation directory for locales.  */
 #undef LOCALEDIR
 
+/* Define to 1 when also using Bruno Haible `libiconv' library.  */
+#undef WITH_LIBICONV
+
 /* Define to rpl_malloc if the replacement function should be used.  */
 #undef malloc
 

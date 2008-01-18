@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -179,71 +178,70 @@ init_ascii_cdcnos (RECODE_STEP step,
 
 /* Previous obsolete lex code:
 
-@A			{ put_byte ('@', task); }
-@B			{ put_byte ('^', task); }
-@D			{ put_byte (':', task); }
-@G			{ put_byte ('`', task); }
+@A			{ put_byte ('@', subtask); }
+@B			{ put_byte ('^', subtask); }
+@D			{ put_byte (':', subtask); }
+@G			{ put_byte ('`', subtask); }
 
-\^" "			{ put_byte ( 13, task); }
-\^!			{ put_byte ( 22, task); }
-\^\"			{ put_byte ( 20, task); }
-\^#			{ put_byte ( 16, task); }
-\^$			{ put_byte ( 11, task); }
-\^\%			{ put_byte ( 19, task); }
-\^&			{ put_byte ( 23, task); }
-\^'			{ put_byte ( 24, task); }
-\^\(			{ put_byte (  9, task); }
-\^\)			{ put_byte ( 10, task); }
-\^\*			{ put_byte (  7, task); }
-\^\+			{ put_byte (  5, task); }
-\^\,			{ put_byte ( 14, task); }
-\^-			{ put_byte (  6, task); }
-\^\.			{ put_byte ( 15, task); }
-\^\/			{ put_byte (  8, task); }
+\^" "			{ put_byte ( 13, subtask); }
+\^!			{ put_byte ( 22, subtask); }
+\^\"			{ put_byte ( 20, subtask); }
+\^#			{ put_byte ( 16, subtask); }
+\^$			{ put_byte ( 11, subtask); }
+\^\%			{ put_byte ( 19, subtask); }
+\^&			{ put_byte ( 23, subtask); }
+\^'			{ put_byte ( 24, subtask); }
+\^\(			{ put_byte (  9, subtask); }
+\^\)			{ put_byte ( 10, subtask); }
+\^\*			{ put_byte (  7, subtask); }
+\^\+			{ put_byte (  5, subtask); }
+\^\,			{ put_byte ( 14, subtask); }
+\^-			{ put_byte (  6, subtask); }
+\^\.			{ put_byte ( 15, subtask); }
+\^\/			{ put_byte (  8, subtask); }
 
-\^0			{ put_byte ('{', task); }
-\^1			{ put_byte ('|', task); }
-\^2			{ put_byte ('}', task); }
-\^3			{ put_byte ('~', task); }
-\^4			{ put_byte (127, task); }
+\^0			{ put_byte ('{', subtask); }
+\^1			{ put_byte ('|', subtask); }
+\^2			{ put_byte ('}', subtask); }
+\^3			{ put_byte ('~', subtask); }
+\^4			{ put_byte (127, subtask); }
 
-\^5			{ put_byte (  0, task); }
-\^6			{ put_byte (  1, task); }
-\^7			{ put_byte (  2, task); }
-\^8			{ put_byte (  3, task); }
-\^9			{ put_byte (  4, task); }
+\^5			{ put_byte (  0, subtask); }
+\^6			{ put_byte (  1, subtask); }
+\^7			{ put_byte (  2, subtask); }
+\^8			{ put_byte (  3, subtask); }
+\^9			{ put_byte (  4, subtask); }
 
-\^;			{ put_byte ( 31, task); }
-\^<			{ put_byte ( 26, task); }
-\^=			{ put_byte ( 12, task); }
-\^>			{ put_byte ( 27, task); }
-\^?			{ put_byte ( 25, task); }
-\^@			{ put_byte ( 28, task); }
+\^;			{ put_byte ( 31, subtask); }
+\^<			{ put_byte ( 26, subtask); }
+\^=			{ put_byte ( 12, subtask); }
+\^>			{ put_byte ( 27, subtask); }
+\^?			{ put_byte ( 25, subtask); }
+\^@			{ put_byte ( 28, subtask); }
 
-\^[A-Z]			{ put_byte (yytext[1]-'A'+'a', task); }
+\^[A-Z]			{ put_byte (yytext[1]-'A'+'a', subtask); }
 
-\^\[			{ put_byte ( 17, task); }
-\^\\			{ put_byte ( 29, task); }
-\^]			{ put_byte ( 18, task); }
-\^\^			{ put_byte ( 30, task); }
-\^_			{ put_byte ( 21, task); }
+\^\[			{ put_byte ( 17, subtask); }
+\^\\			{ put_byte ( 29, subtask); }
+\^]			{ put_byte ( 18, subtask); }
+\^\^			{ put_byte ( 30, subtask); }
+\^_			{ put_byte ( 21, subtask); }
 
-\^[a-z]			{ put_byte (yytext[1], task); }
+\^[a-z]			{ put_byte (yytext[1], subtask); }
 
 */
 
 static bool
-transform_cdcnos_ascii (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_cdcnos_ascii (RECODE_SUBTASK subtask)
 {
   int input_char;		/* current character */
 
-  while (input_char = get_byte (task), input_char != EOF)
+  while (input_char = get_byte (subtask), input_char != EOF)
     {
       switch (input_char)
 	{
         case '@':
-	  switch (input_char = get_byte (task), input_char)
+	  switch (input_char = get_byte (subtask), input_char)
 	    {
 	    case 'A': case 'a': input_char = '@'; break;
 	    case 'B': case 'b': input_char = '^'; break;
@@ -251,15 +249,15 @@ transform_cdcnos_ascii (RECODE_CONST_STEP step,
 	    case 'G': case 'g': input_char = '`'; break;
 
 	    default:
-	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	      put_byte ('@', task);
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	      put_byte ('@', subtask);
 	      if (input_char == EOF)
-		TASK_RETURN (task);
+		SUBTASK_RETURN (subtask);
 	    }
 	  break;
 
 	case '^':
-	  input_char = get_byte (task);
+	  input_char = get_byte (subtask);
 	  if (input_char >= 'A' && input_char <= 'Z')
 	    input_char += 'a' - 'A';
 	  else if (input_char < 'a' || input_char > 'z')
@@ -276,7 +274,7 @@ transform_cdcnos_ascii (RECODE_CONST_STEP step,
 	      case '(': input_char = 9; break;
 
 	      case ')':
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 		input_char = '\n'; /* 10 */
 		break;
 
@@ -309,16 +307,16 @@ transform_cdcnos_ascii (RECODE_CONST_STEP step,
 	      case '_': input_char = 21; break;
 
 	      default:
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	        put_byte ('^', task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	        put_byte ('^', subtask);
 	        if (input_char == EOF)
-		  TASK_RETURN (task);
+		  SUBTASK_RETURN (subtask);
 	      }
 	  break;
 	}
-      put_byte (input_char, task);
+      put_byte (input_char, subtask);
     }
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

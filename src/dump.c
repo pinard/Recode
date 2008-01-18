@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1997, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1997.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -53,12 +52,12 @@ static unsigned per_line_table[3][5]
      { 0, 12, 8, 7, 6 }};
 
 static bool
-dump (RECODE_CONST_STEP step, RECODE_TASK task,
+dump (RECODE_SUBTASK subtask,
       enum base base, unsigned size)
 {
   unsigned per_line = per_line_table[base][size];
   unsigned column = 0;
-  int character = get_byte (task);
+  int character = get_byte (subtask);
 
   while (character != EOF)
     {
@@ -69,7 +68,7 @@ dump (RECODE_CONST_STEP step, RECODE_TASK task,
 
       for (byte_count = 1; byte_count < size; byte_count++)
 	{
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	  if (character == EOF)
 	    break;
 	  value = value << 8 | MASK (8) & character;
@@ -79,16 +78,16 @@ dump (RECODE_CONST_STEP step, RECODE_TASK task,
 
       if (column == per_line)
 	{
-	  put_byte (',', task);
-	  put_byte ('\n', task);
+	  put_byte (',', subtask);
+	  put_byte ('\n', subtask);
 	  column = 1;
 	}
       else if (column == 0)
 	column = 1;
       else
 	{
-	  put_byte (',', task);
-	  put_byte (' ', task);
+	  put_byte (',', subtask);
+	  put_byte (' ', subtask);
 	  column++;
 	}
 
@@ -96,25 +95,25 @@ dump (RECODE_CONST_STEP step, RECODE_TASK task,
 
       sprintf (buffer, format_table[base][byte_count], value);
       for (cursor = buffer; *cursor; cursor++)
-	put_byte (*cursor, task);
+	put_byte (*cursor, subtask);
 
       /* Prepare for next iteration.  */
 
       if (character != EOF)
-	character = get_byte (task);
+	character = get_byte (subtask);
     }
 
-  put_byte ('\n', task);
-  TASK_RETURN (task);
+  put_byte ('\n', subtask);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-undump (RECODE_CONST_STEP step, RECODE_TASK task,
+undump (RECODE_SUBTASK subtask,
 	enum base expected_base, unsigned expected_size)
 {
   unsigned per_line = per_line_table[expected_base][expected_size];
   unsigned column = 0;
-  int character = get_byte (task);
+  int character = get_byte (subtask);
   bool last_is_short = false;
   bool comma_on_last = character != EOF;
 
@@ -132,14 +131,14 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	  if (character == ' ')
 	    width++;
 	  else
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	}
       if (character == EOF)
 	{
 	  if (width != 0)
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	  break;
 	}
 
@@ -148,22 +147,22 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 
       if (character == '0')
 	{
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 
 	  if (character == 'x')
 	    {
 	      if (width != 0)
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      width = 0;
 	      base = HEXADECIMAL;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  else if (character >= '0' && character <= '9')
 	    {
 	      /* If followed by 8 or 9, declare it octal nevertheless.  It
 		 is the proper thing to do, a reject might occur below.  */
 	      if (width != 0)
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      width = 0;
 	      base = OCTAL;
 	    }
@@ -182,17 +181,17 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	     line.  FIXME: This should probably skip multi-line comments or
 	     string constants, so to not get fooled by them.  */
 
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	  while (character != '\n' && character != EOF)
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	  if (character == '\n')
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 
 	  continue;
 	}
 
       if (base != expected_base)
-	RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
       /* Decode one value.  */
 
@@ -203,7 +202,7 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	    {
 	      value = value << 3 | character - '0';
 	      width++;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  break;
 
@@ -212,7 +211,7 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	    {
 	      value = value * 10 + character - '0';
 	      width++;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  break;
 
@@ -222,19 +221,19 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	      {
 		value = value << 4 | character - '0';
 		width++;
-		character = get_byte (task);
+		character = get_byte (subtask);
 	      }
 	    else if (character >= 'A' && character <= 'F')
 	      {
 		value = value << 4 | character - 'A' + 10;
 		width++;
-		character = get_byte (task);
+		character = get_byte (subtask);
 	      }
 	    else if (character >= 'a' && character <= 'f')
 	      {
 		value = value << 4 | character - 'a' + 10;
 		width++;
-		character = get_byte (task);
+		character = get_byte (subtask);
 	      }
 	    else
 	      break;
@@ -246,14 +245,14 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	  /* If the observed width is greater than expected, the input is
 	     invalid, even if the value is in range.  */
 
-	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	}
       else
 	{
 	  if (last_is_short)
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	  if (!comma_on_last)
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 
 	  /* Decide how many bytes to produce.  */
 
@@ -269,7 +268,7 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 		  break;
 	      if (size == 4)
 		{
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		  continue;
 		}
 	    }
@@ -282,7 +281,7 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
 	    unsigned shift;
 
 	    for (shift = size * 8; shift != 0; shift -= 8)
-	      put_byte (MASK (8) & value >> shift - 8, task);
+	      put_byte (MASK (8) & value >> shift - 8, subtask);
 	  }
 	}
 
@@ -291,38 +290,38 @@ undump (RECODE_CONST_STEP step, RECODE_TASK task,
       comma_on_last = character == ',';
       if (!comma_on_last)
 	if (character == '\n')
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	else
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
       else
 	{
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	  if (character == ' ')
 	    {
 	      column++;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  else if (character == '\n')
 	    {
 	      if (column + 1!= per_line)
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      column = 0;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	}
     }
 
   if (comma_on_last)
-    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 #define TRANSFORM(Name, Service, Base, Size) \
   static bool								\
-  Name (RECODE_CONST_STEP step, RECODE_TASK task)	\
+  Name (RECODE_SUBTASK subtask)	\
   {									\
-    return Service (step, task, Base, Size);				\
+    return Service (subtask, Base, Size);				\
   }
 
 TRANSFORM (data_oct1, dump, OCTAL, 1)

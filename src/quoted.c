@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -55,20 +54,19 @@ static const char safe_char_bitnet[1 << 7] =
   do {								\
     unsigned nibble;							\
 								\
-    put_byte ('=', task);					\
+    put_byte ('=', subtask);					\
     nibble = MASK (4) & (Character) >> 4;			\
-    put_byte ((nibble < 10 ? '0' : 'A' - 10) + nibble, task);	\
+    put_byte ((nibble < 10 ? '0' : 'A' - 10) + nibble, subtask);	\
     nibble = MASK (4) & (Character);				\
-    put_byte ((nibble < 10 ? '0' : 'A' - 10) + nibble, task);	\
+    put_byte ((nibble < 10 ? '0' : 'A' - 10) + nibble, subtask);	\
   } while (false)
 
 static bool
-transform_data_quoted_printable (RECODE_CONST_STEP step,
-				 RECODE_TASK task)
+transform_data_quoted_printable (RECODE_SUBTASK subtask)
 {
   const char *safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
   unsigned available = MIME_LINE_LENGTH;
-  int character = get_byte (task);
+  int character = get_byte (subtask);
   int next_character;
 
   /* Proper maximum filling of quoted-printable lines, avoiding a line buffer
@@ -81,31 +79,31 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 
       if (available > 1)
 	{
-	  put_byte (character, task);
+	  put_byte (character, subtask);
 	  available--;
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	}
       else
 	{
-	  next_character = get_byte (task);
+	  next_character = get_byte (subtask);
 	  if (next_character == '\n')
 	    {
-	      put_byte (character, task);
-	      put_byte ('\n', task);
+	      put_byte (character, subtask);
+	      put_byte ('\n', subtask);
 	      available = MIME_LINE_LENGTH;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  else if (next_character == EOF)
 	    {
-	      put_byte (character, task);
+	      put_byte (character, subtask);
 	      available--;
 	      character = EOF;
 	    }
 	  else
 	    {
-	      put_byte ('=', task);
-	      put_byte ('\n', task);
-	      put_byte (character, task);
+	      put_byte ('=', subtask);
+	      put_byte ('\n', subtask);
+	      put_byte (character, subtask);
 	      available = MIME_LINE_LENGTH - 1;
 	      character = next_character;
 	    }
@@ -117,9 +115,9 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 
 	  /* Case of a newline.  */
 
-	  put_byte ('\n', task);
+	  put_byte ('\n', subtask);
 	  available = MIME_LINE_LENGTH;
-	  character = get_byte (task);
+	  character = get_byte (subtask);
 	  break;
 
 	case '\t':
@@ -127,25 +125,25 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 
 	  /* Case of a space character.  */
 
-	  next_character = get_byte (task);
+	  next_character = get_byte (subtask);
 	  if (next_character == '\n')
 	    {
 	      if (available < 3)
 		{
-		  put_byte ('=', task);
-		  put_byte ('\n', task);
+		  put_byte ('=', subtask);
+		  put_byte ('\n', subtask);
 		}
 	      PUT_QUOTED (character);
-	      put_byte ('\n', task);
+	      put_byte ('\n', subtask);
 	      available = MIME_LINE_LENGTH;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  else if (next_character == EOF)
 	    {
 	      if (available < 3)
 		{
-		  put_byte ('=', task);
-		  put_byte ('\n', task);
+		  put_byte ('=', subtask);
+		  put_byte ('\n', subtask);
 		  available = MIME_LINE_LENGTH;
 		}
 	      PUT_QUOTED (character);
@@ -156,11 +154,11 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 	    {
 	      if (available == 1)
 		{
-		  put_byte ('=', task);
-		  put_byte ('\n', task);
+		  put_byte ('=', subtask);
+		  put_byte ('\n', subtask);
 		  available = MIME_LINE_LENGTH;
 		}
-	      put_byte (character, task);
+	      put_byte (character, subtask);
 	      available--;
 	      character = next_character;
 	    }
@@ -174,17 +172,17 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 	    {
 	      PUT_QUOTED (character);
 	      available -= 3;
-	      character = get_byte (task);
+	      character = get_byte (subtask);
 	    }
 	  else
 	    {
-	      next_character = get_byte (task);
+	      next_character = get_byte (subtask);
 	      if (available == 3 && next_character == '\n')
 		{
 		  PUT_QUOTED (character);
-		  put_byte ('\n', task);
+		  put_byte ('\n', subtask);
 		  available = MIME_LINE_LENGTH;
-		  character = get_byte (task);
+		  character = get_byte (subtask);
 		}
 	      else if (next_character == EOF)
 		{
@@ -194,8 +192,8 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 		}
 	      else
 		{
-		  put_byte ('=', task);
-		  put_byte ('\n', task);
+		  put_byte ('=', subtask);
+		  put_byte ('\n', subtask);
 		  PUT_QUOTED (character);
 		  available = MIME_LINE_LENGTH - 3;
 		  character = next_character;
@@ -207,20 +205,19 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
     {
       /* The last line was incomplete.  */
 
-      put_byte ('=', task);
-      put_byte ('\n', task);
+      put_byte ('=', subtask);
+      put_byte ('\n', subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_quoted_printable_data (RECODE_CONST_STEP step,
-				 RECODE_TASK task)
+transform_quoted_printable_data (RECODE_SUBTASK subtask)
 {
   const char *safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
   unsigned counter = 0;
-  int character = get_byte (task);
+  int character = get_byte (subtask);
   char buffer[MIME_LINE_LENGTH + 1];
   char *cursor;
   unsigned value;
@@ -232,10 +229,10 @@ transform_quoted_printable_data (RECODE_CONST_STEP step,
 	/* Process hard line break.  */
 
 	if (counter > MIME_LINE_LENGTH)
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	counter = 0;
-	put_byte ('\n', task);
-	character = get_byte (task);
+	put_byte ('\n', subtask);
+	character = get_byte (subtask);
 	break;
 
       case ' ':
@@ -247,52 +244,52 @@ transform_quoted_printable_data (RECODE_CONST_STEP step,
 	  {
 	    if (cursor == buffer + MIME_LINE_LENGTH)
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		for (cursor = buffer;
 		     cursor < buffer + MIME_LINE_LENGTH;
 		     cursor++)
-		  put_byte (*cursor, task);
+		  put_byte (*cursor, subtask);
 	      }
 	    counter++;
 	    *cursor++ = character;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	  }
 	if (character == '\n' || character == EOF)
 	  {
-	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	    counter = 0;
 	    break;
 	  }
 	*cursor = '\0';
 	for (cursor = buffer; *cursor; cursor++)
-	  put_byte (*cursor, task);
+	  put_byte (*cursor, subtask);
 	break;
 
       case '=':
 	counter++;
-	character = get_byte (task);
+	character = get_byte (subtask);
 	if (character == ' ' || character == '\t' || character == '\n')
 	  {
 	    /* Process soft line break.  */
 
 	    if (character == ' ' || character == '\t')
 	      {
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 		while (character == ' ' || character == '\t')
 		  {
 		    counter++;
-		    character = get_byte (task);
+		    character = get_byte (subtask);
 		  }
 	      }
 	    if (character != '\n')
 	      {
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		break;
 	      }
 	    if (counter > MIME_LINE_LENGTH)
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	    counter = 0;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	    break;
 	  }
 
@@ -307,10 +304,10 @@ transform_quoted_printable_data (RECODE_CONST_STEP step,
 	  value = (character - 'A' + 10) << 4;
 	else
 	  {
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	    break;
 	  }
-	character = get_byte (task);
+	character = get_byte (subtask);
 	counter++;
 	if (character >= '0' && character <= '9')
 	  value |= character - '0';
@@ -320,14 +317,14 @@ transform_quoted_printable_data (RECODE_CONST_STEP step,
 	  value |= character - 'A' + 10;
 	else
 	  {
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	    break;
 	  }
 	if (!(value & (1 << 7)) && safe_char[value])
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
-	put_byte (value, task);
-	character = get_byte (task);
+	put_byte (value, subtask);
+	character = get_byte (subtask);
 	break;
 
       default:
@@ -335,16 +332,16 @@ transform_quoted_printable_data (RECODE_CONST_STEP step,
 
 	counter++;
 	if (character & (1 << 7) || !safe_char[character])
-	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	put_byte (character, task);
-	character = get_byte (task);
+	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	put_byte (character, subtask);
+	character = get_byte (subtask);
       }
 
   if (counter != 0)
     /* Last line is not terminated.  */
-    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

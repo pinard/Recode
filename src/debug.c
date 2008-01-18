@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1997.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -30,48 +29,48 @@
    requested from the `before' position in the request.  */
 
 static bool
-test7_data (RECODE_CONST_STEP step, RECODE_TASK task)
+test7_data (RECODE_SUBTASK subtask)
 {
   unsigned counter;
   int value;
 
   for (counter = 0; counter < 1 << 7; counter++)
-    put_byte (counter, task);
+    put_byte (counter, subtask);
 
   /* Copy the rest verbatim.  */
-  while (value = get_byte (task), value != EOF)
-    put_byte (value, task);
+  while (value = get_byte (subtask), value != EOF)
+    put_byte (value, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-test8_data (RECODE_CONST_STEP step, RECODE_TASK task)
+test8_data (RECODE_SUBTASK subtask)
 {
   unsigned counter;
   int value;
 
   for (counter = 0; counter < 1 << 8; counter++)
-    put_byte (counter, task);
+    put_byte (counter, subtask);
 
   /* Copy the rest verbatim.  */
-  while (value = get_byte (task), value != EOF)
-    put_byte (value, task);
+  while (value = get_byte (subtask), value != EOF)
+    put_byte (value, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-test15_data (RECODE_CONST_STEP step, RECODE_TASK task)
+test15_data (RECODE_SUBTASK subtask)
 {
   unsigned counter;
   unsigned value;
 
-  put_ucs2 (BYTE_ORDER_MARK, task);
+  put_ucs2 (BYTE_ORDER_MARK, subtask);
 
   /* Before surrogate area.  */
   for (counter = 0; counter < 0xDC00; counter++)
-    put_ucs2 (counter, task);
+    put_ucs2 (counter, subtask);
   /* After surrogate area.  */
   for (counter = 0xE000; counter < 1 << 16; counter++)
     switch (counter)
@@ -83,30 +82,30 @@ test15_data (RECODE_CONST_STEP step, RECODE_TASK task)
 	break;
 
       default:
-	put_ucs2 (counter, task);
+	put_ucs2 (counter, subtask);
       }
 
   /* Copy the rest verbatim.  */
-  while (value = get_byte (task), value != EOF)
-    put_byte (value, task);
+  while (value = get_byte (subtask), value != EOF)
+    put_byte (value, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-test16_data (RECODE_CONST_STEP step, RECODE_TASK task)
+test16_data (RECODE_SUBTASK subtask)
 {
   unsigned counter;
   unsigned value;
 
   for (counter = 0; counter < 1 << 16; counter++)
-    put_ucs2 (counter, task);
+    put_ucs2 (counter, subtask);
 
   /* Copy the rest verbatim.  */
-  while (value = get_byte (task), value != EOF)
-    put_byte (value, task);
+  while (value = get_byte (subtask), value != EOF)
+    put_byte (value, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-----------------------------------------------.
@@ -146,9 +145,9 @@ compare_item (const void *void_first, const void *void_second)
 }
 
 static bool
-produce_count (RECODE_CONST_STEP step, RECODE_TASK task)
+produce_count (RECODE_SUBTASK subtask)
 {
-  RECODE_OUTER outer = task->request->outer;
+  RECODE_OUTER outer = subtask->task->request->outer;
   Hash_table *table;		/* hash table for UCS-2 characters */
   unsigned character;		/* current character being counted */
   size_t size;			/* number of different characters */
@@ -162,7 +161,7 @@ produce_count (RECODE_CONST_STEP step, RECODE_TASK task)
 
   /* Count characters.  */
 
-  while (get_ucs2 (&character, step, task))
+  while (get_ucs2 (&character, subtask))
     {
       struct ucs2_to_count lookup;
       struct ucs2_to_count *entry;
@@ -254,7 +253,7 @@ produce_count (RECODE_CONST_STEP step, RECODE_TASK task)
   }
   hash_free (table);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*---------------------------.
@@ -262,7 +261,7 @@ produce_count (RECODE_CONST_STEP step, RECODE_TASK task)
 `---------------------------*/
 
 static bool
-produce_full_dump (RECODE_CONST_STEP step, RECODE_TASK task)
+produce_full_dump (RECODE_SUBTASK subtask)
 {
   unsigned character;		/* character to dump */
   const char *charname;		/* charname for code */
@@ -286,7 +285,7 @@ produce_full_dump (RECODE_CONST_STEP step, RECODE_TASK task)
 
   fputs (_("UCS2   Mne   Description\n\n"), stdout);
 
-  while (get_ucs2 (&character, step, task))
+  while (get_ucs2 (&character, subtask))
     {
       const char *mnemonic = ucs2_to_rfc1345 (character);
 
@@ -317,7 +316,7 @@ produce_full_dump (RECODE_CONST_STEP step, RECODE_TASK task)
       printf ("\n");
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-----------------------------------------.

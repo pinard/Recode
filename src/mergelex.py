@@ -29,7 +29,7 @@ section1 = ["\n"
             "%{\n"
             '#include "common.h"\n'
             "static RECODE_CONST_REQUEST request;\n"
-            "static RECODE_TASK task;\n"
+            "static RECODE_SUBTASK subtask;\n"
             "%}\n"]
 # Flex rules.
 section2 = ["%%\n"
@@ -58,14 +58,13 @@ while 1:
         section3.append(
             '\n'
             'static bool\n'
-            'transform_%s'
-            ' (RECODE_CONST_STEP step, RECODE_TASK task_argument)\n'
+            'transform_%s (RECODE_SUBTASK subtask_argument)\n'
             '{\n'
-            '  task = task_argument;\n'
-            '  request = task->request;\n'
+            '  subtask = subtask_argument;\n'
+            '  request = subtask->task->request;\n'
             '  yy_init = 1;\n'
-            '  yyin = task->input.file;\n'
-            '  yyout = task->output.file;\n'
+            '  yyin = subtask->input.file;\n'
+            '  yyout = subtask->output.file;\n'
             '  BEGIN %s;\n'
             '  return yylex ();\n'
             '}\n'

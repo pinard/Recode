@@ -124,7 +124,8 @@ l = @l@
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
 
-EXTRA_DIST = charset.texi File-Latin1 help2man Makemore	tables.py
+EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore tables.py
+
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -376,8 +377,8 @@ mostlyclean-generic distclean-generic clean-generic \
 maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
-recode.info: charset.texi
-recode.dvi: charset.texi
+recode.info: libiconv.texi rfc1345.texi
+recode.dvi: libiconv.texi rfc1345.texi
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

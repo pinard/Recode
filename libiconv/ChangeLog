@@ -1,0 +1,5 @@
+1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am: New file.
+	* encoding.def, all .h files: From Bruno Haible's libiconv 0.2.
+

@@ -1,11 +1,11 @@
-Free recode has originally been written by François Pinard.  Other people
+Free recode has originally been written by Frangois Pinard.  Other people
 contributed to Free recode by reporting problems, suggesting various
 improvements or submitting actual code.  Here is a list of these people.
 Help me keeping it complete and exempt of errors.  See various ChangeLogs
 for a detailed description of contributions.
 
 Akim Demaille		demaille@inf.enst.fr
-Alain Labonté		alb@riq.qc.ca
+Alain Labonti		alb@riq.qc.ca
 Alain Magloire		alainm@macs.ee.mcgill.ca
 Alan J. Flavell		flavell@a5.ph.gla.ac.uk
 Alexander L. Belikoff	abel@vallinor4.com
@@ -57,14 +57,14 @@ Erwan Mas		erwanmas@chez.com
 			http://www.chez.com/erwanmas/
 Farzad Farid
 Florian Oelmaier	100265.2501@compuserve.com
-François Pinard		pinard@iro.umontreal.ca
+Frangois Pinard		pinard@iro.umontreal.ca
 			http://www.iro.umontreal.ca/~pinard
-François Robitaille
-François Yergeau	yergeau@alis.com
+Frangois Robitaille
+Frangois Yergeau	yergeau@alis.com
 			http://www.alis.com/~yergeau/
-Françoise Audebrand	audebran@ere.umontreal.ca
+Frangoise Audebrand	audebran@ere.umontreal.ca
 Frederic Albrecht
-Frère Roy		roy@taize.fr
+Frhre Roy		roy@taize.fr
 			http://www.taize.fr
 Gabriel P. Silva	gpsilva@geocities.com
 			http://www.nce.ufrj.br/~gabriel
@@ -90,7 +90,7 @@ Jim Meyering		meyering@na-net.ornl.gov
 Joelle Stemp
 John van Krieken	John.van.Krieken@ATComputing.nl
 			http://www.ATComputing.nl/images/pasfotos/john.jpg
-Jörg Höhle		Joerg.Hoehle@gmd.de
+Jvrg Hvhle		Joerg.Hoehle@gmd.de
 			http://fit.gmd.de/~hoehle/
 Jose Joao Almeida	jj@di.uminho.pt
 			http://www.di.uminho.pt/~jj
@@ -100,7 +100,7 @@ Juergen Zeller		zet@rupert.franken.de
 Kai Uwe Rommel
 Karl Berry		karl@cs.umb.edu
 			http://www.cs.umb.edu/~karl/
-Keld Jørn Simonsen	keld@dkuug.dk
+Keld Jxrn Simonsen	keld@dkuug.dk
 Kester Habermann	kester@unix-ag.uni-kl.de
 			http://www.unix-ag.uni-kl.de/~kester/
 Kevin Stuckless		kevins@stuck.warped.com
@@ -120,7 +120,7 @@ Marc Verreault
 Mario Gay		mgay@ti-edu.ch
 Markus Kuhn		Markus.Kuhn@cl.cam.ac.uk
 			http://www.cl.cam.ac.uk/~mgk25/
-Martin J. Dürst		duerst@w3.org
+Martin J. D|rst		duerst@w3.org
 			http://www.w3.org/People/D%C3%BCrst
 Martin Maechler		maechler@stat.math.ethz.ch
 Martin Mares		mj@ucw.cz
@@ -137,6 +137,7 @@ Nathanael Makarevitch
 Nathaniel Borenstein	nsb@aa.fv.com
 Neal McBurnett		http://bcn.boulder.co.us/~neal/
 NguyŽên-ŽÐai QuŽý		daiquy.nguyen@ulg.ac.be
+			http://iris.rupt.ltas.ulg.ac.be/~quy
 Nicolas Anquetil
 Nicolas Thiery		Nicolas.Thiery@jonas.univ-lyon1.fr
 			http://www.lmd.univ-lyon1.fr/home/nthiery/

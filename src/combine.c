@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -120,12 +119,12 @@ init_explode (RECODE_STEP step,
 `------------------------------------*/
 
 bool
-explode_byte_byte (RECODE_CONST_STEP step, RECODE_TASK task)
+explode_byte_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->step_table;
+  Hash_table *table = subtask->step->step_table;
   unsigned value;
 
-  while (value = get_byte (task), value != EOF)
+  while (value = get_byte (subtask), value != EOF)
     {
       unsigned short lookup = value;
       unsigned short *result = hash_lookup (table, &lookup);
@@ -135,24 +134,24 @@ explode_byte_byte (RECODE_CONST_STEP step, RECODE_TASK task)
 	  result++;
 	  while (*result != DONE && *result != ELSE)
 	    {
-	      put_byte (*result, task);
+	      put_byte (*result, subtask);
 	      result++;
 	    }
 	}
       else
-	put_byte (value, task);
+	put_byte (value, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-explode_ucs2_byte (RECODE_CONST_STEP step, RECODE_TASK task)
+explode_ucs2_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->step_table;
+  Hash_table *table = subtask->step->step_table;
   unsigned value;
 
-  while (get_ucs2 (&value, step, task))
+  while (get_ucs2 (&value, subtask))
     {
       unsigned short lookup = value;
       unsigned short *result = hash_lookup (table, &lookup);
@@ -162,27 +161,27 @@ explode_ucs2_byte (RECODE_CONST_STEP step, RECODE_TASK task)
 	  result++;
 	  while (*result != DONE && *result != ELSE)
 	    {
-	      put_byte (*result, task);
+	      put_byte (*result, subtask);
 	      result++;
 	    }
 	}
       else
-	put_byte (value, task);
+	put_byte (value, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-explode_byte_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+explode_byte_ucs2 (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->step_table;
+  Hash_table *table = subtask->step->step_table;
   unsigned value;
 
-  if (value = get_byte (task), value != EOF)
+  if (value = get_byte (subtask), value != EOF)
     {
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	{
@@ -193,29 +192,29 @@ explode_byte_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	    {
 	      result++;
 	      while (*result != DONE && *result != ELSE)
-		put_ucs2 (*result++, task);
+		put_ucs2 (*result++, subtask);
 	    }
 	  else
-	    put_ucs2 (value, task);
+	    put_ucs2 (value, subtask);
 
-	  if (value = get_byte (task), value == EOF)
+	  if (value = get_byte (subtask), value == EOF)
 	    break;
 	}
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-explode_ucs2_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+explode_ucs2_ucs2 (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->step_table;
+  Hash_table *table = subtask->step->step_table;
   unsigned value;
 
-  if (get_ucs2 (&value, step, task))
+  if (get_ucs2 (&value, subtask))
     {
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	{
@@ -226,17 +225,17 @@ explode_ucs2_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	    {
 	      result++;
 	      while (*result != DONE && *result != ELSE)
-		put_ucs2 (*result++, task);
+		put_ucs2 (*result++, subtask);
 	    }
 	  else
-	    put_ucs2 (value, task);
+	    put_ucs2 (value, subtask);
 
-	  if (!get_ucs2 (&value, step, task))
+	  if (!get_ucs2 (&value, subtask))
 	    break;
 	}
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /* Combining.  */
@@ -429,27 +428,27 @@ init_combine (RECODE_STEP step,
    If we later find that it does, backtracing will have to be revisited.  */
 
 static void
-backtrack_byte (struct state *state,  RECODE_TASK task)
+backtrack_byte (struct state *state, RECODE_SUBTASK subtask)
 {
   if (state->result == NOT_A_CHARACTER)
     {
-      backtrack_byte (state->unshift, task);
-      put_byte (state->character, task);
+      backtrack_byte (state->unshift, subtask);
+      put_byte (state->character, subtask);
     }
   else
-    put_byte (state->result, task);
+    put_byte (state->result, subtask);
 }
 
 static void
-backtrack_ucs2 (struct state *state,  RECODE_TASK task)
+backtrack_ucs2 (struct state *state,  RECODE_SUBTASK subtask)
 {
   if (state->result == NOT_A_CHARACTER)
     {
-      backtrack_ucs2 (state->unshift, task);
-      put_ucs2 (state->character, task);
+      backtrack_ucs2 (state->unshift, subtask);
+      put_ucs2 (state->character, subtask);
     }
   else
-    put_ucs2 (state->result, task);
+    put_ucs2 (state->result, subtask);
 }
 
 /*------------------------------------.
@@ -457,185 +456,189 @@ backtrack_ucs2 (struct state *state,  RECODE_TASK task)
 `------------------------------------*/
 
 bool
-combine_byte_byte (RECODE_CONST_STEP step, RECODE_TASK task)
+combine_byte_byte (RECODE_SUBTASK subtask)
 {
   struct state *state = NULL;
   unsigned value;
 
-  if (value = get_byte (task), value != EOF)
+  if (value = get_byte (subtask), value != EOF)
     {
       while (true)
 	{
-	  struct state *shift = find_shifted_state (state, value, step);
+	  struct state *shift
+	    = find_shifted_state (state, value, subtask->step);
 
 	  if (shift)
 	    {
 	      state = shift;
-	      if (value = get_byte (task), value == EOF)
+	      if (value = get_byte (subtask), value == EOF)
 		break;
 	    }
 	  else if (state)
 	    {
 	      if (state->result == NOT_A_CHARACTER)
-		backtrack_byte (state, task);
+		backtrack_byte (state, subtask);
 	      else
-		put_byte (state->result, task);
+		put_byte (state->result, subtask);
 	      state = NULL;
 	    }
 	  else
 	    {
-	      put_byte (value, task);
-	      if (value = get_byte (task), value == EOF)
+	      put_byte (value, subtask);
+	      if (value = get_byte (subtask), value == EOF)
 		break;
 	    }
 	}
 
       if (state)
 	if (state->result == NOT_A_CHARACTER)
-	  backtrack_byte (state, task);
+	  backtrack_byte (state, subtask);
 	else
-	  put_byte (state->result, task);
+	  put_byte (state->result, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-combine_ucs2_byte (RECODE_CONST_STEP step, RECODE_TASK task)
+combine_ucs2_byte (RECODE_SUBTASK subtask)
 {
   struct state *state = NULL;
   unsigned value;
 
-  if (get_ucs2 (&value, step, task))
+  if (get_ucs2 (&value, subtask))
     {
       while (true)
 	{
-	  struct state *shift = find_shifted_state (state, value, step);
+	  struct state *shift
+	    = find_shifted_state (state, value, subtask->step);
 
 	  if (shift)
 	    {
 	      state = shift;
-	      if (!get_ucs2 (&value, step, task))
+	      if (!get_ucs2 (&value, subtask))
 		break;
 	    }
 	  else if (state)
 	    {
 	      if (state->result == NOT_A_CHARACTER)
-		backtrack_byte (state, task);
+		backtrack_byte (state, subtask);
 	      else
-		put_byte (state->result, task);
+		put_byte (state->result, subtask);
 	      state = NULL;
 	    }
 	  else
 	    {
-	      put_byte (value, task);
-	      if (!get_ucs2 (&value, step, task))
+	      put_byte (value, subtask);
+	      if (!get_ucs2 (&value, subtask))
 		break;
 	    }
 	}
 
       if (state)
 	if (state->result == NOT_A_CHARACTER)
-	  backtrack_byte (state, task);
+	  backtrack_byte (state, subtask);
 	else
-	  put_byte (state->result, task);
+	  put_byte (state->result, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-combine_byte_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+combine_byte_ucs2 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
-  if (value = get_byte (task), value != EOF)
+  if (value = get_byte (subtask), value != EOF)
     {
       struct state *state = NULL;
 
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	{
-	  struct state *shift = find_shifted_state (state, value, step);
+	  struct state *shift
+	    = find_shifted_state (state, value, subtask->step);
 
 	  if (shift)
 	    {
 	      state = shift;
-	      if (value = get_byte (task), value == EOF)
+	      if (value = get_byte (subtask), value == EOF)
 		break;
 	    }
 	  else if (state)
 	    {
 	      if (state->result == NOT_A_CHARACTER)
-		backtrack_ucs2 (state, task);
+		backtrack_ucs2 (state, subtask);
 	      else
-		put_ucs2 (state->result, task);
+		put_ucs2 (state->result, subtask);
 	      state = NULL;
 	    }
 	  else
 	    {
-	      put_ucs2 (value, task);
-	      if (value = get_byte (task), value == EOF)
+	      put_ucs2 (value, subtask);
+	      if (value = get_byte (subtask), value == EOF)
 		break;
 	    }
 	}
 
       if (state)
 	if (state->result == NOT_A_CHARACTER)
-	  backtrack_ucs2 (state, task);
+	  backtrack_ucs2 (state, subtask);
 	else
-	  put_ucs2 (state->result, task);
+	  put_ucs2 (state->result, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool
-combine_ucs2_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+combine_ucs2_ucs2 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
-  if (get_ucs2 (&value, step, task))
+  if (get_ucs2 (&value, subtask))
     {
       struct state *state = NULL;
 
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	{
-	  struct state *shift = find_shifted_state (state, value, step);
+	  struct state *shift
+	    = find_shifted_state (state, value, subtask->step);
 
 	  if (shift)
 	    {
 	      state = shift;
-	      if (!get_ucs2 (&value, step, task))
+	      if (!get_ucs2 (&value, subtask))
 		break;
 	    }
 	  else if (state)
 	    {
 	      if (state->result == NOT_A_CHARACTER)
-		backtrack_ucs2 (state, task);
+		backtrack_ucs2 (state, subtask);
 	      else
-		put_ucs2 (state->result, task);
+		put_ucs2 (state->result, subtask);
 	      state = NULL;
 	    }
 	  else
 	    {
-	      put_ucs2 (value, task);
-	      if (!get_ucs2 (&value, step, task))
+	      put_ucs2 (value, subtask);
+	      if (!get_ucs2 (&value, subtask))
 		break;
 	    }
 	}
 
       if (state)
 	if (state->result == NOT_A_CHARACTER)
-	  backtrack_ucs2 (state, task);
+	  backtrack_ucs2 (state, subtask);
 	else
-	  put_ucs2 (state->result, task);
+	  put_ucs2 (state->result, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }

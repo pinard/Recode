@@ -958,7 +958,7 @@ interesting to maintain counters about how many times each kind of
 error occurred.
 
 
-File: recode.info,  Node: Universal,  Next: Tabular,  Prev: Library,  Up: Top
+File: recode.info,  Node: Universal,  Next: libiconv,  Prev: Library,  Up: Top
 
 The universal charset
 *********************

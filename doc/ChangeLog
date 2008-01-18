@@ -1,3 +1,39 @@
+1999-12-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (libiconv): Adjust to reflect the merge.
+
+1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py (produce_libiconv): Declare libiconv functions.
+	* Makemore: Use encoding.def from the libiconv/ subdirectory.
+
+1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (libiconv): New name for iconv node.
+
+1999-12-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (iconv, Vietnamese): New nodes.
+
+	* Makemore: Change directory to distribution before calling
+	Python, so relative symlinks work better, here.
+
+	* tables.py (Input, Output): New classes, reorganising code.
+
+1999-12-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py: Tend to prefer string methods over re methods.
+	(begins): New function.  Use it.
+
+	* Makefile.am, Makemore, tables.py: Make libiconv.h, libiconv.texi
+	and fr-libiconv.texi.  Rename charset.texi to rfc1345.texi.
+
+1999-12-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py (produce_texinfo): Avoid colons in index references.
+	Change :NUMBER into (NUMBER).
+	Reported by Eli Zaretskii.
+
 1999-12-19  Eli Zaretskii  <eliz@is.elta.co.il>
 
 	* recode.texi: Add index references and print indices for
@@ -32,7 +68,7 @@
 1999-06-17  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi (Top): Use @ifnottex instead of @ifinfo.
-
+
 1999-04-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Do not use od in examples, recode can do it itself.

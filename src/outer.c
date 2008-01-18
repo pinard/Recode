@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -26,7 +25,7 @@
 `-----------------------------------------------------------------------*/
 
 bool
-reversibility (RECODE_CONST_STEP step, RECODE_TASK task, unsigned code)
+reversibility (RECODE_SUBTASK subtask, unsigned code)
 {
   return false;
 }
@@ -74,11 +73,13 @@ declare_single (RECODE_OUTER outer,
   if (!single)
     return NULL;
 
-  if (symbol = find_symbol (outer, before_name, SYMBOL_CREATE_CHARSET), !symbol)
+  if (symbol = find_symbol (outer, before_name, SYMBOL_CREATE_CHARSET),
+      !symbol)
     return NULL;
   single->before = symbol->charset;
 
-  if (symbol = find_symbol (outer, after_name, SYMBOL_CREATE_CHARSET), !symbol)
+  if (symbol = find_symbol (outer, after_name, SYMBOL_CREATE_CHARSET),
+      !symbol)
     {
 #if 0
       /* FIXME: We should delink from the list of charsets before freeing.
@@ -114,6 +115,51 @@ declare_single (RECODE_OUTER outer,
   single->transform_routine = transform_routine;
 
   return single;
+}
+
+/*---------------------------------------------------------------------------.
+| Declare a charset available through `libiconv', given the NAME of this     |
+| charset (which might already exist as an alias).  Make two single steps in |
+| and out of it.                                                             |
+`---------------------------------------------------------------------------*/
+
+static bool
+internal_iconv (RECODE_SUBTASK subtask)
+{
+  SET_SUBTASK_ERROR (RECODE_USER_ERROR, subtask);
+  SUBTASK_RETURN (subtask);
+}
+
+bool
+declare_libiconv (RECODE_OUTER outer, const char *name)
+{
+  RECODE_SYMBOL symbol;
+  RECODE_SINGLE single;
+
+  if (symbol = find_symbol (outer, name, SYMBOL_FIND_AS_EITHER),
+      !symbol)
+    if (symbol = find_symbol (outer, name, SYMBOL_CREATE_CHARSET),
+	!symbol)
+      return false;
+  symbol->charset->charset_flag = true;
+
+  if (single = new_single_step (outer), !single)
+    return false;
+  single->before = symbol->charset;
+  single->after = outer->libiconv_pivot;
+  single->quality = outer->quality_variable_to_variable;
+  single->init_routine = NULL;
+  single->transform_routine = internal_iconv;
+
+  if (single = new_single_step (outer), !single)
+    return false;
+  single->before = outer->libiconv_pivot;
+  single->after = symbol->charset;
+  single->quality = outer->quality_variable_to_variable;
+  single->init_routine = NULL;
+  single->transform_routine = internal_iconv;
+
+  return true;
 }
 
 #if 0
@@ -357,7 +403,16 @@ register_all_modules (RECODE_OUTER outer)
   if (symbol = find_symbol (outer, "ISO-10646-UCS-2", SYMBOL_CREATE_CHARSET),
       !symbol)
     return false;
+  symbol->charset->charset_flag = true;
   outer->ucs2_charset = symbol->charset;
+
+  if (symbol = find_symbol (outer, ":libiconv:", SYMBOL_CREATE_CHARSET),
+      !symbol)
+    return false;
+  symbol->charset->charset_flag = true;
+  outer->libiconv_pivot = symbol->charset;
+  if (!declare_alias (outer, ":", ":libiconv:"))
+    return false;
 
   if (symbol = find_symbol (outer, "CR-LF", SYMBOL_CREATE_CHARSET), !symbol)
     return false;
@@ -378,12 +433,18 @@ register_all_modules (RECODE_OUTER outer)
     return false;
   if (!declare_alias (outer, "Latin-1", "ISO-8859-1"))
     return false;
-
   /* Needed for compatibility with recode version 3.2.  */
   if (!declare_alias (outer, "lat1", "Latin-1"))
     return false;
 
 #include "inisteps.h"
+
+  /* Force this one last: it does not segregate between charsets and aliases,
+     confusing some other initialisations that would come after it.  */
+  if (!make_argmatch_arrays (outer))
+    return false;
+  if (!module_libiconv (outer))
+    return false;
 
   for (single = outer->single_list; single; single = single->next)
     estimate_single_cost (outer, single);

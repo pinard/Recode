@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 1999-12-19 23:12-0500\n"
+"POT-Creation-Date: 1999-12-29 11:11-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: ENCODING\n"
 
 #. Dump all characters.
-#: src/debug.c:287
+#: src/debug.c:286
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"
@@ -247,46 +247,46 @@ msgid ""
 "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr ""
 
-#: src/main.c:775
+#: src/main.c:777
 #, c-format
 msgid "Deprecated syntax, please prefer `%s'"
 msgstr ""
 
-#: src/main.c:781
+#: src/main.c:783
 #, c-format
 msgid "Erroneous request `%s'"
 msgstr ""
 
-#: src/main.c:879
+#: src/main.c:881
 #, c-format
 msgid "Recoding %s..."
 msgstr ""
 
-#: src/main.c:889
+#: src/main.c:891
 msgid " done\n"
 msgstr ""
 
-#: src/main.c:930
+#: src/main.c:932
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr ""
 
-#: src/main.c:937
+#: src/main.c:939
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr ""
 
-#: src/main.c:960
+#: src/main.c:962
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr ""
 
-#: src/names.c:317
+#: src/names.c:316
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr ""
 
-#: src/names.c:819
+#: src/names.c:818
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
@@ -296,147 +296,147 @@ msgstr ""
 #. UCS-2 translation
 #. insert a while line before printing
 #. Print the long table according to explode data.
-#: src/names.c:974 src/names.c:1020
+#: src/names.c:973 src/names.c:1019
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr ""
 
-#: src/names.c:1039
+#: src/names.c:1038
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr ""
 
-#: src/outer.c:95
+#: src/outer.c:96
 #, c-format
 msgid "Resurfacer set more than once for `%s'"
 msgstr ""
 
-#: src/outer.c:102
+#: src/outer.c:103
 #, c-format
 msgid "Unsurfacer set more than once for `%s'"
 msgstr ""
 
-#: src/recode.c:115 src/recode.c:127
+#: src/recode.c:114 src/recode.c:126
 msgid "Virtual memory exhausted"
 msgstr ""
 
-#: src/recode.c:155
+#: src/recode.c:154
 #, c-format
 msgid "Codes %3d and %3d both recode to %3d"
 msgstr ""
 
-#: src/recode.c:169
+#: src/recode.c:168
 #, c-format
 msgid "No character recodes to %3d"
 msgstr ""
 
-#: src/recode.c:170
+#: src/recode.c:169
 msgid "Cannot invert given one-to-one table"
 msgstr ""
 
-#: src/recode.c:224 src/recode.c:236
+#: src/recode.c:223 src/recode.c:235
 #, c-format
 msgid "Following diagnostics for `%s' to `%s'"
 msgstr ""
 
-#: src/recode.c:229 src/recode.c:241
+#: src/recode.c:228 src/recode.c:240
 #, c-format
 msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
 msgstr ""
 
-#: src/recode.c:272
+#: src/recode.c:271
 msgid "Cannot complete table from set of known pairs"
 msgstr ""
 
-#: src/recode.c:492
+#: src/recode.c:489
 msgid "Identity recoding, not worth a table"
 msgstr ""
 
-#: src/recode.c:499
+#: src/recode.c:496
 msgid "Recoding is too complex for a mere table"
 msgstr ""
 
 #. Print the header of the header file.
-#: src/recode.c:531
+#: src/recode.c:528
 #, c-format
 msgid "%sConversion table generated mechanically by Free `%s' %s"
 msgstr ""
 
-#: src/recode.c:533
+#: src/recode.c:530
 #, c-format
 msgid "%sfor sequence %s.%s"
 msgstr ""
 
-#: src/recode.c:724
+#: src/recode.c:721
 msgid "No table to print"
 msgstr ""
 
-#: src/request.c:35
+#: src/request.c:34
 msgid "reversible"
 msgstr ""
 
-#: src/request.c:37
+#: src/request.c:36
 #, c-format
 msgid "%s to %s"
 msgstr ""
 
-#: src/request.c:38 src/request.c:40
+#: src/request.c:37 src/request.c:39
 msgid "byte"
 msgstr ""
 
-#: src/request.c:39 src/request.c:41
+#: src/request.c:38 src/request.c:40
 msgid "ucs2"
 msgstr ""
 
-#: src/request.c:39 src/request.c:41
+#: src/request.c:38 src/request.c:40
 msgid "variable"
 msgstr ""
 
-#: src/request.c:112
+#: src/request.c:111
 msgid "*Unachievable*"
 msgstr ""
 
-#: src/request.c:114
+#: src/request.c:113
 msgid "*mere copy*"
 msgstr ""
 
-#: src/request.c:244
+#: src/request.c:243
 msgid "Virtual memory exhausted!"
 msgstr ""
 
-#: src/request.c:263
+#: src/request.c:262
 msgid "Step initialisation failed"
 msgstr ""
 
-#: src/request.c:270
+#: src/request.c:269
 msgid "Step initialisation failed (unprocessed options)"
 msgstr ""
 
-#: src/request.c:566
+#: src/request.c:565
 #, c-format
 msgid "Request: %s\n"
 msgstr ""
 
-#: src/request.c:702
+#: src/request.c:717
 #, c-format
 msgid "Shrunk to: %s\n"
 msgstr ""
 
-#: src/request.c:806 src/request.c:912
+#: src/request.c:821 src/request.c:927
 #, c-format
 msgid "Unrecognised surface name `%s'"
 msgstr ""
 
-#: src/request.c:884
+#: src/request.c:899
 #, c-format
 msgid "No way to recode from `%s' to `%s'"
 msgstr ""
 
-#: src/request.c:992
+#: src/request.c:1007
 msgid "Expecting `..' in request"
 msgstr ""
 
-#: src/task.c:751 src/task.c:915
+#: src/task.c:766 src/task.c:939
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr ""

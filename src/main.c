@@ -641,6 +641,8 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
   /* Register all modules and build internal tables.  */
 
   outer = recode_new_outer (true);
+  if (!outer)
+    abort ();
 
   if (freeze_tables)
     {

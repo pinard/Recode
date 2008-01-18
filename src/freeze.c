@@ -40,7 +40,6 @@ recode_freeze_tables (RECODE_OUTER outer)
 \n\
 /* Conversion of files between different charsets and surfaces.\n\
    Copyright © 1998 Free Software Foundation, Inc.\n\
-   This file is part of the GNU C Library.\n\
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1998.\n\
 \n\
    The `recode' Library is free software; you can redistribute it and/or\n\

@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -491,12 +490,12 @@ init_ucs2_html_v40 (RECODE_STEP step,
 `-----------------*/
 
 static bool
-transform_ucs2_html (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_ucs2_html (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = step->step_table;
+  Hash_table *table = subtask->step->step_table;
   unsigned value;
 
-  while (get_ucs2 (&value, step, task))
+  while (get_ucs2 (&value, subtask))
     {
       struct ucs2_to_string lookup;
       struct ucs2_to_string *entry;
@@ -507,34 +506,34 @@ transform_ucs2_html (RECODE_CONST_STEP step, RECODE_TASK task)
 	{
 	  const char *cursor = entry->string;
 
-	  put_byte ('&', task);
+	  put_byte ('&', subtask);
 	  while (*cursor)
 	    {
-	      put_byte (*cursor, task);
+	      put_byte (*cursor, subtask);
 	      cursor++;
 	    }
-	  put_byte (';', task);
+	  put_byte (';', subtask);
 	}
       else if (value < 32 && value != '\n' && value != '\t' || value >= 127)
 	{
 	  unsigned divider = 10000;
 
-	  put_byte ('&', task);
-	  put_byte ('#', task);
+	  put_byte ('&', subtask);
+	  put_byte ('#', subtask);
 	  while (divider > value)
 	    divider /= 10;
 	  while (divider)
 	    {
-	      put_byte ('0' + value / divider, task);
+	      put_byte ('0' + value / divider, subtask);
 	      divider /= 10;
 	    }
-	  put_byte (';', task);
+	  put_byte (';', subtask);
 	}
       else
-	put_byte(value, task);
+	put_byte(value, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /* HTML towards UCS-2.  */
@@ -542,10 +541,10 @@ transform_ucs2_html (RECODE_CONST_STEP step, RECODE_TASK task)
 #define ENTITY_BUFFER_LENGTH 20
 
 /*
-&quot;	{ if (request->diacritics_only) ECHO; else put_ucs2 (34, task); }
-&amp;	{ if (request->diacritics_only) ECHO; else put_ucs2 (38, task); }
-&lt;	{ if (request->diacritics_only) ECHO; else put_ucs2 (60, task); }
-&gt;	{ if (request->diacritics_only) ECHO; else put_ucs2 (62, task); }
+&quot;	{ if (request->diacritics_only) ECHO; else put_ucs2 (34, subtask); }
+&amp;	{ if (request->diacritics_only) ECHO; else put_ucs2 (38, subtask); }
+&lt;	{ if (request->diacritics_only) ECHO; else put_ucs2 (60, subtask); }
+&gt;	{ if (request->diacritics_only) ECHO; else put_ucs2 (62, subtask); }
 */
 
 /*-------------------------------------.
@@ -657,14 +656,14 @@ init_html_v40_ucs2 (RECODE_STEP step,
 `-----------------*/
 
 static bool
-transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_html_ucs2 (RECODE_SUBTASK subtask)
 {
-  RECODE_CONST_REQUEST request = task->request;
+  RECODE_CONST_REQUEST request = subtask->task->request;
   int input_char;
 
-  input_char = get_byte (task);
+  input_char = get_byte (subtask);
   if (input_char != EOF)
-    put_ucs2 (BYTE_ORDER_MARK, task);	/* FIXME: experimental */
+    put_ucs2 (BYTE_ORDER_MARK, subtask);	/* FIXME: experimental */
 
   while (input_char != EOF)
 
@@ -675,10 +674,10 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	bool valid = true;
 	bool echo = false;
 
-	input_char = get_byte (task);
+	input_char = get_byte (subtask);
 	if (input_char == '#')
 	  {
-	    input_char = get_byte (task);
+	    input_char = get_byte (subtask);
 	    if (input_char == 'x' || input_char == 'X')
 	      {
 		unsigned value = 0;
@@ -687,7 +686,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 		*cursor++ = '#';
 		*cursor++ = input_char;
-		input_char = get_byte (task);
+		input_char = get_byte (subtask);
 
 		while (valid)
 		  {
@@ -707,7 +706,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		    else
 		      {
 			*cursor++ = input_char;
-			input_char = get_byte (task);
+			input_char = get_byte (subtask);
 		      }
 		  }
 
@@ -719,9 +718,9 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		    }
 		  else
 		    {
-		      put_ucs2 (value, task);
+		      put_ucs2 (value, subtask);
 		      if (input_char == ';')
-			input_char = get_byte (task);
+			input_char = get_byte (subtask);
 		    }
 		else
 		  *cursor = '\0';
@@ -748,7 +747,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		    else
 		      {
 			*cursor++ = input_char;
-			input_char = get_byte (task);
+			input_char = get_byte (subtask);
 		      }
 		  }
 
@@ -760,9 +759,9 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		    }
 		  else
 		    {
-		      put_ucs2 (value, task);
+		      put_ucs2 (value, subtask);
 		      if (input_char == ';')
-			input_char = get_byte (task);
+			input_char = get_byte (subtask);
 		    }
 		else
 		  *cursor = '\0';
@@ -774,7 +773,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	    /* Scan &[A-Za-z][A-Za-z0-9]*; notation.  */
 
 	    *cursor++ = input_char;
-	    input_char = get_byte (task);
+	    input_char = get_byte (subtask);
 
 	    while (valid
 		   && input_char != EOF
@@ -786,7 +785,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	      else
 		{
 		  *cursor++ = input_char;
-		  input_char = get_byte (task);
+		  input_char = get_byte (subtask);
 		}
 	    *cursor = '\0';
 
@@ -796,12 +795,12 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		struct ucs2_to_string *entry;
 
 		lookup.string = buffer;
-		entry = hash_lookup (step->step_table, &lookup);
+		entry = hash_lookup (subtask->step->step_table, &lookup);
 		if (entry)
 		  {
-		    put_ucs2 (entry->code, task);
+		    put_ucs2 (entry->code, subtask);
 		    if (input_char == ';')
-		      input_char = get_byte (task);
+		      input_char = get_byte (subtask);
 		  }
 		else
 		  valid = false;
@@ -810,18 +809,18 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 	if (echo || !valid)
 	  {
-	    put_ucs2 ('&', task);
+	    put_ucs2 ('&', subtask);
 	    for (cursor = buffer; *cursor; cursor++)
-	      put_ucs2 (*cursor, task);
+	      put_ucs2 (*cursor, subtask);
 	  }
       }
     else
       {
-	put_ucs2 (input_char, task);
-	input_char = get_byte (task);
+	put_ucs2 (input_char, subtask);
+	input_char = get_byte (subtask);
       }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /* Module declaration.  */

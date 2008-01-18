@@ -7,7 +7,7 @@
 @tindex CP367
 @tindex IBM367
 @tindex ISO646-US
-@tindex ISO_646.irv:1991
+@tindex ISO_646.irv(1991)
 @tindex US-ASCII
 @tindex iso-ir-6
 @tindex us
@@ -230,7 +230,7 @@ Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 @item ECMA-cyrillic
 @tindex ECMA-cyrillic@r{, aliases and source}
 @tindex ECMA-113
-@tindex ECMA-113:1986
+@tindex ECMA-113(1986)
 @tindex iso-ir-111
 @code{ECMA-113}, @code{ECMA-113:1986} and @code{iso-ir-111} are aliases for this charset.
 Source: ISO 2375 registry.
@@ -645,7 +645,7 @@ Source: ISO 2375 registry.
 @tindex CP819
 @tindex IBM819
 @tindex ISO_8859-1
-@tindex ISO_8859-1:1987
+@tindex ISO_8859-1(1987)
 @tindex iso-ir-100
 @tindex l1
 @tindex latin1
@@ -655,7 +655,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-10
 @tindex ISO-8859-10@r{, aliases and source}
 @tindex ISO_8859-10
-@tindex ISO_8859-10:1993
+@tindex ISO_8859-10(1993)
 @tindex iso-ir-157
 @tindex l6
 @tindex latin6
@@ -665,7 +665,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-13
 @tindex ISO-8859-13@r{, aliases and source}
 @tindex ISO_8859-13
-@tindex ISO_8859-13:1998
+@tindex ISO_8859-13(1998)
 @tindex iso-baltic
 @tindex iso-ir-179a
 @tindex l7
@@ -676,7 +676,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-14
 @tindex ISO-8859-14@r{, aliases and source}
 @tindex ISO_8859-14
-@tindex ISO_8859-14:1998
+@tindex ISO_8859-14(1998)
 @tindex iso-celtic
 @tindex iso-ir-199
 @tindex l8
@@ -687,7 +687,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-15
 @tindex ISO-8859-15@r{, aliases and source}
 @tindex ISO_8859-15
-@tindex ISO_8859-15:1998
+@tindex ISO_8859-15(1998)
 @tindex iso-ir-203
 @tindex l9
 @tindex latin9
@@ -700,7 +700,7 @@ Source: ISO 2375 registry.
 @tindex CP912
 @tindex IBM912
 @tindex ISO_8859-2
-@tindex ISO_8859-2:1987
+@tindex ISO_8859-2(1987)
 @tindex iso-ir-101
 @tindex l2
 @tindex latin2
@@ -710,7 +710,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-3
 @tindex ISO-8859-3@r{, aliases and source}
 @tindex ISO_8859-3
-@tindex ISO_8859-3:1988
+@tindex ISO_8859-3(1988)
 @tindex iso-ir-109
 @tindex l3
 @tindex latin3
@@ -720,7 +720,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-4
 @tindex ISO-8859-4@r{, aliases and source}
 @tindex ISO_8859-4
-@tindex ISO_8859-4:1988
+@tindex ISO_8859-4(1988)
 @tindex iso-ir-110
 @tindex l4
 @tindex latin4
@@ -730,7 +730,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-5
 @tindex ISO-8859-5@r{, aliases and source}
 @tindex ISO_8859-5
-@tindex ISO_8859-5:1988
+@tindex ISO_8859-5(1988)
 @tindex cyrillic
 @tindex iso-ir-144
 @code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{cyrillic} and @code{iso-ir-144} are aliases for this charset.
@@ -741,7 +741,7 @@ Source: ISO 2375 registry.
 @tindex ASMO-708
 @tindex ECMA-114
 @tindex ISO_8859-6
-@tindex ISO_8859-6:1987
+@tindex ISO_8859-6(1987)
 @tindex arabic
 @tindex iso-ir-127
 @code{ASMO-708}, @code{ECMA-114}, @code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{arabic} and @code{iso-ir-127} are aliases for this charset.
@@ -752,7 +752,7 @@ Source: ISO 2375 registry.
 @tindex ECMA-118
 @tindex ELOT_928
 @tindex ISO_8859-7
-@tindex ISO_8859-7:1987
+@tindex ISO_8859-7(1987)
 @tindex greek
 @tindex greek8
 @tindex iso-ir-126
@@ -762,7 +762,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-8
 @tindex ISO-8859-8@r{, aliases and source}
 @tindex ISO_8859-8
-@tindex ISO_8859-8:1988
+@tindex ISO_8859-8(1988)
 @tindex hebrew
 @tindex iso-ir-138
 @code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{hebrew} and @code{iso-ir-138} are aliases for this charset.
@@ -771,7 +771,7 @@ Source: ISO 2375 registry.
 @item ISO-8859-9
 @tindex ISO-8859-9@r{, aliases and source}
 @tindex ISO_8859-9
-@tindex ISO_8859-9:1989
+@tindex ISO_8859-9(1989)
 @tindex iso-ir-148
 @tindex l5
 @tindex latin5
@@ -799,28 +799,28 @@ Source: ISO 2375 registry.
 
 @item ISO_5427-ext
 @tindex ISO_5427-ext@r{, aliases and source}
-@tindex ISO_5427:1981
+@tindex ISO_5427(1981)
 @tindex iso-ir-54
 @code{ISO_5427:1981} and @code{iso-ir-54} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_5428
 @tindex ISO_5428@r{, aliases and source}
-@tindex ISO_5428:1980
+@tindex ISO_5428(1980)
 @tindex iso-ir-55
 @code{ISO_5428:1980} and @code{iso-ir-55} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_646.basic
 @tindex ISO_646.basic@r{, aliases and source}
-@tindex ISO_646.basic:1983
+@tindex ISO_646.basic(1983)
 @tindex ref
 @code{ISO_646.basic:1983} and @code{ref} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_646.irv
 @tindex ISO_646.irv@r{, aliases and source}
-@tindex ISO_646.irv:1983
+@tindex ISO_646.irv(1983)
 @tindex irv
 @tindex iso-ir-2
 @code{ISO_646.irv:1983}, @code{irv} and @code{iso-ir-2} are aliases for this charset.
@@ -1002,7 +1002,7 @@ Source: ISO 2375 registry.
 @item NC_NC00-10
 @tindex NC_NC00-10@r{, aliases and source}
 @tindex ISO646-CU
-@tindex NC_NC00-10:81
+@tindex NC_NC00-10(81)
 @tindex cuba
 @tindex iso-ir-151
 @code{ISO646-CU}, @code{NC_NC00-10:81}, @code{cuba} and @code{iso-ir-151} are aliases for this charset.

@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1989.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -31,89 +30,89 @@ d			[:"]
 l			[a-zA-Z]
 %%
 
-``			{ put_byte (171, task); }
-''			{ put_byte (187, task); }
+``			{ put_byte (171, subtask); }
+''			{ put_byte (187, subtask); }
 
-A`			{ put_byte (192, task); }
-A^			{ put_byte (194, task); }
+A`			{ put_byte (192, subtask); }
+A^			{ put_byte (194, subtask); }
 A{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (196, task);
+			    put_byte (196, subtask);
 			  else
 			    ECHO;
 			}
-a`			{ put_byte (224, task); }
-a^			{ put_byte (226, task); }
+a`			{ put_byte (224, subtask); }
+a^			{ put_byte (226, subtask); }
 a{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (228, task);
+			    put_byte (228, subtask);
 			  else
 			    ECHO;
 			}
 
-C\,/[aAoOuU]		{ put_byte (199, task); }
-c\,/[aAoOuU]		{ put_byte (231, task); }
+C\,/[aAoOuU]		{ put_byte (199, subtask); }
+c\,/[aAoOuU]		{ put_byte (231, subtask); }
 
-E`			{ put_byte (200, task); }
-E'''			{ put_byte (201, task); put_byte (187, task); }
-E''			{ put_byte ('E', task); put_byte (187, task); }
-E'			{ put_byte (201, task); }
-E^			{ put_byte (202, task); }
+E`			{ put_byte (200, subtask); }
+E'''			{ put_byte (201, subtask); put_byte (187, subtask); }
+E''			{ put_byte ('E', subtask); put_byte (187, subtask); }
+E'			{ put_byte (201, subtask); }
+E^			{ put_byte (202, subtask); }
 E{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (203, task);
+			    put_byte (203, subtask);
 			  else
 			    ECHO;
 			}
-e`			{ put_byte (232, task); }
-e'''			{ put_byte (233, task); put_byte (187, task); }
-e''			{ put_byte ('e', task); put_byte (187, task); }
-e'			{ put_byte (233, task); }
-e^			{ put_byte (234, task); }
+e`			{ put_byte (232, subtask); }
+e'''			{ put_byte (233, subtask); put_byte (187, subtask); }
+e''			{ put_byte ('e', subtask); put_byte (187, subtask); }
+e'			{ put_byte (233, subtask); }
+e^			{ put_byte (234, subtask); }
 e{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (235, task);
+			    put_byte (235, subtask);
 			  else
 			    ECHO;
 			}
 
-I`			{ put_byte (204, task); }
-I^			{ put_byte (206, task); }
+I`			{ put_byte (204, subtask); }
+I^			{ put_byte (206, subtask); }
 I{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (207, task);
+			    put_byte (207, subtask);
 			  else
 			    ECHO;
 			}
-i`			{ put_byte (236, task); }
-i^			{ put_byte (238, task); }
+i`			{ put_byte (236, subtask); }
+i^			{ put_byte (238, subtask); }
 i{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (239, task);
+			    put_byte (239, subtask);
 			  else
 			    ECHO;
 			}
 
-O`			{ put_byte (210, task); }
-O^			{ put_byte (212, task); }
+O`			{ put_byte (210, subtask); }
+O^			{ put_byte (212, subtask); }
 O{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (214, task);
+			    put_byte (214, subtask);
 			  else
 			    ECHO;
 			}
-o`			{ put_byte (242, task); }
-o^			{ put_byte (244, task); }
+o`			{ put_byte (242, subtask); }
+o^			{ put_byte (244, subtask); }
 o{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (246, task);
+			    put_byte (246, subtask);
 			  else
 			    ECHO;
 			}
 
-U`			{ put_byte (217, task); }
-U^			{ put_byte (219, task); }
+U`			{ put_byte (217, subtask); }
+U^			{ put_byte (219, subtask); }
 U{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (220, task);
+			    put_byte (220, subtask);
 			  else
 			    ECHO;
 			}
-u`			{ put_byte (249, task); }
-u^			{ put_byte (251, task); }
+u`			{ put_byte (249, subtask); }
+u^			{ put_byte (251, subtask); }
 u{d}/{l}		{ if (yytext[1] == request->diaeresis_char)
-			    put_byte (252, task);
+			    put_byte (252, subtask);
 			  else
 			    ECHO;
 			}
@@ -158,23 +157,23 @@ texte_latin1_diaeresis (void)
 	       diagnostic in flex.  This astonishing bug has been hard to
 	       isolate, so I'll leave this comment around for a while.  */
 
-	  case 'A': put_byte (196, task); break;
-	  case 'E': put_byte (203, task); break;
-	  case 'I': put_byte (207, task); break;
-	  case 'O': put_byte (214, task); break;
-	  case 'U': put_byte (220, task); break;
-	  case 'a': put_byte (228, task); break;
-	  case 'e': put_byte (235, task); break;
-	  case 'i': put_byte (239, task); break;
-	  case 'o': put_byte (246, task); break;
-	  case 'u': put_byte (252, task); break;
-	  case 'y': put_byte (255, task); break;
-	  default:  put_byte (yytext[counter], task);
+	  case 'A': put_byte (196, subtask); break;
+	  case 'E': put_byte (203, subtask); break;
+	  case 'I': put_byte (207, subtask); break;
+	  case 'O': put_byte (214, subtask); break;
+	  case 'U': put_byte (220, subtask); break;
+	  case 'a': put_byte (228, subtask); break;
+	  case 'e': put_byte (235, subtask); break;
+	  case 'i': put_byte (239, subtask); break;
+	  case 'o': put_byte (246, subtask); break;
+	  case 'u': put_byte (252, subtask); break;
+	  case 'y': put_byte (255, subtask); break;
+	  default:  put_byte (yytext[counter], subtask);
 	  }
 	counter++;
       }
     else
-      put_byte (yytext[counter], task);
+      put_byte (yytext[counter], subtask);
 }
 
 bool

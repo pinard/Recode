@@ -24,7 +24,8 @@ man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
-fr-charname.h hash.h inisteps.h rfc1345.h $(H_FALLBACKS) $(H_SURFACES)
+fr-charname.h hash.h inisteps.h libiconv.h rfc1345.h $(H_FALLBACKS) \
+$(H_SURFACES)
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
@@ -43,16 +44,13 @@ L_SURFACES =
 
 recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
-#d_recode = main.c
-#d_recode_LDADD = librecode.la ../lib/libreco.la @INTLLIBS@
-#d_recode_LDFLAGS = -static
 
 librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
-hash.c merged.c names.c outer.c recode.c request.c strip-pool.c task.c \
-$(C_STEPS)
+hash.c iconv.c libiconv.c merged.c names.c outer.c recode.c request.c \
+strip-pool.c task.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
-INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
+INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
 
 ETAGS_ARGS = $(L_STEPS)
 TAGS_DEPENDENCIES = $(L_STEPS)

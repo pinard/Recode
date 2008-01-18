@@ -12,3 +12,15 @@ Disclaims work by François Pinard
 RECODE	Ulrich Drepper	Germany 1968	1996-03-25
 Assigns all past and future changes.
 drepper@gnu.ai.mit.edu
+
+RECODE  Bruno Haible    Germany/France 1965     1999-09-08
+Assigns past and future changes.
+haible@clisp.cons.org
+
+LIBUTF8 Bruno Haible    Germany/France 1965     1999-12-08
+Assigns program and future changes.
+haible@clisp.cons.org
+
+LIBICONV        Bruno Haible    Germany/France 1965     1999-12-08
+Assigns program and future changes.
+haible@clisp.cons.org

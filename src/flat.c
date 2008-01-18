@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -21,26 +20,26 @@
 #include "common.h"
 
 static bool
-transform_ascii_flat (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_ascii_flat (RECODE_SUBTASK subtask)
 {
   int input_char;		/* current character */
   int temp_char;		/* look ahead character */
 
-  input_char = get_byte (task);
+  input_char = get_byte (subtask);
   while (true)
     switch (input_char)
       {
       case EOF:
-	TASK_RETURN (task);
+	SUBTASK_RETURN (subtask);
 
       case '\n':
       case '\t':
-	put_byte (input_char, task);
-	input_char = get_byte (task);
+	put_byte (input_char, subtask);
+	input_char = get_byte (subtask);
 	break;
 
       case '\b':
-	input_char = get_byte (task);
+	input_char = get_byte (subtask);
 	switch (input_char)
 	  {
 	  case '\'':
@@ -50,12 +49,12 @@ transform_ascii_flat (RECODE_CONST_STEP step, RECODE_TASK task)
 	  case '~':
 	  case ',':
 	  case '_':
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-	    input_char = get_byte (task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+	    input_char = get_byte (subtask);
 	    break;
 
 	  default:
-	    put_byte ('\b', task);
+	    put_byte ('\b', subtask);
 	  }
 	break;
 
@@ -66,15 +65,15 @@ transform_ascii_flat (RECODE_CONST_STEP step, RECODE_TASK task)
       case '~':
       case ',':
       case '_':
-	temp_char = get_byte (task);
+	temp_char = get_byte (subtask);
 	if (temp_char == '\b')
 	  {
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-	    input_char = get_byte (task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+	    input_char = get_byte (subtask);
 	  }
 	else
 	  {
-	    put_byte (input_char, task);
+	    put_byte (input_char, subtask);
 	    input_char = temp_char;
 	  }
 	break;
@@ -82,19 +81,19 @@ transform_ascii_flat (RECODE_CONST_STEP step, RECODE_TASK task)
       default:
 	if (!IS_ASCII (input_char))
 	  {
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-	    put_byte ('M', task);
-	    put_byte ('-', task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+	    put_byte ('M', subtask);
+	    put_byte ('-', subtask);
 	    input_char &= MASK (7);
 	  }
 	if (input_char < ' ' || input_char == MASK (7))
 	  {
-	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-	    put_byte ('^', task);
+	    RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+	    put_byte ('^', subtask);
 	    input_char ^= (1 << 6);
 	  }
-	put_byte (input_char, task);
-	input_char = get_byte (task);
+	put_byte (input_char, subtask);
+	input_char = get_byte (subtask);
       }
 }
 

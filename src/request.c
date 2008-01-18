@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -567,7 +566,7 @@ simplify_sequence (RECODE_REQUEST request)
 
   saved_steps = 0;
 
-  /* See if there are some double UCS-2 steps to merge.  */
+  /* See if there are some double steps to merge.  */
 
   in = request->sequence_array;
   out = request->sequence_array;
@@ -580,6 +579,7 @@ simplify_sequence (RECODE_REQUEST request)
 	&& in[1].before == outer->ucs2_charset
 	&& in[1].after->charset_type == RECODE_STRIP_DATA)
       {
+	/* This is a double UCS-2 step.  */
 	out->before = in[0].before;
 	out->after = in[1].after;
 	out->quality = in[0].quality;
@@ -590,6 +590,21 @@ simplify_sequence (RECODE_REQUEST request)
 	   others.  */
 	if (!complete_double_ucs2_step (outer, out))
 	  return false;
+
+	in += 2;
+	saved_steps++;
+	out++;
+      }
+    else if (in < limit - 1
+	     && in[0].after == outer->libiconv_pivot
+	     && in[1].before == outer->libiconv_pivot)
+      {
+	/* This is a double `libiconv' step.  */
+	out->before = in[0].before;
+	out->after = in[1].after;
+	out->quality = in[0].quality;
+	merge_qualities (&out->quality, in[1].quality);
+	out->transform_routine = transform_with_libiconv;
 
 	in += 2;
 	saved_steps++;
@@ -1042,6 +1057,32 @@ decode_request (RECODE_REQUEST request, const char *string)
 | REQUEST level functions.  |
 `--------------------------*/
 
+/* Guarantee four NULs at the end of the output memory buffer for TASK, yet
+   not counting them as data.  The number of NULs should depend on the goal
+   charset: often one, but two for UCS-2 and four for UCS-4.  FIXME!  */
+
+static void
+guarantee_nul_terminator (RECODE_TASK task)
+{
+  if (task->output.cursor + 4 >= task->output.limit)
+    {
+      RECODE_OUTER outer = task->request->outer;
+      size_t old_size = task->output.limit - task->output.buffer;
+      size_t new_size = task->output.cursor + 4 - task->output.buffer;
+
+      /* FIXME: Rethink about how the error should be reported.  */
+      if (REALLOC (task->output.buffer, new_size, char))
+	{
+	  task->output.cursor = task->output.buffer + old_size;
+	  task->output.limit = task->output.buffer + new_size;
+	}
+    }
+  task->output.cursor[0] = NUL;
+  task->output.cursor[1] = NUL;
+  task->output.cursor[2] = NUL;
+  task->output.cursor[3] = NUL;
+}
+
 RECODE_REQUEST
 recode_new_request (RECODE_OUTER outer)
 {
@@ -1135,16 +1176,9 @@ recode_buffer_to_buffer (RECODE_CONST_REQUEST request,
 
   task->strategy = RECODE_SEQUENCE_IN_MEMORY;
   success = recode_perform_task (task);
-  /* FIXME: the number of NULs should depend on the goal charset.  Often
-     one, but two for UCS-2 and four for UCS-4.  Just play safe for now.
-     FIXME: rely on the fact it is known that the result is a buffer.  */
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-
+  guarantee_nul_terminator (task);
   *output_buffer_pointer = task->output.buffer;
-  *output_length_pointer = task->output.cursor - task->output.buffer - 4;
+  *output_length_pointer = task->output.cursor - task->output.buffer;
   *output_allocated_pointer = task->output.limit - task->output.buffer;
 
   recode_delete_task (task);
@@ -1195,16 +1229,9 @@ recode_file_to_buffer (RECODE_CONST_REQUEST request,
 
   task->strategy = RECODE_SEQUENCE_IN_MEMORY;
   success = recode_perform_task (task);
-  /* FIXME: the number of NULs should depend on the goal charset.  Often
-     one, but two for UCS-2 and four for UCS-4.  Just play safe for now.
-     FIXME: rely on the fact it is known that the result is a buffer.  */
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-  put_byte (NUL, task);
-
+  guarantee_nul_terminator (task);
   *output_buffer_pointer = task->output.buffer;
-  *output_length_pointer = task->output.cursor - task->output.buffer - 4;
+  *output_length_pointer = task->output.cursor - task->output.buffer;
   *output_allocated_pointer = task->output.limit - task->output.buffer;
 
   recode_delete_task (task);

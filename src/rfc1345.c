@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1993, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1993.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -91,52 +90,51 @@ struct local
 `-----------------------------------------------*/
 
 static bool
-transform_ucs2_rfc1345 (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_ucs2_rfc1345 (RECODE_SUBTASK subtask)
 {
-  struct local *local = step->local;
+  struct local *local = subtask->step->local;
   const char intro = local->intro;
   unsigned value;
 
-  while (get_ucs2 (&value, step, task))
+  while (get_ucs2 (&value, subtask))
     if (IS_ASCII (value))
       if (value == intro)
 	{
-	  put_byte (intro, task);
-	  put_byte (intro, task);
+	  put_byte (intro, subtask);
+	  put_byte (intro, subtask);
 	}
       else
-	put_byte (value, task);
+	put_byte (value, subtask);
     else
       {
 	const char *string = ucs2_to_rfc1345 (value);
 
 	if (!string || !string[0])
-	  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
+	  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
 	else if (!string[1])
-	  put_byte (string[0], task);
+	  put_byte (string[0], subtask);
 	else if (!string[2])
 	  {
-	    put_byte (intro, task);
-	    put_byte (string[0], task);
-	    put_byte (string[1], task);
+	    put_byte (intro, subtask);
+	    put_byte (string[0], subtask);
+	    put_byte (string[1], subtask);
 	  }
 	else
 	  {
 	    const char *cursor = string;
 
-	    put_byte (intro, task);
-	    put_byte ('_', task);
+	    put_byte (intro, subtask);
+	    put_byte ('_', subtask);
 	    while (*cursor)
 	      {
-		put_byte (*cursor, task);
+		put_byte (*cursor, subtask);
 		cursor++;
 	      }
-	    put_byte ('_', task);
+	    put_byte ('_', subtask);
 	  }
       }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-----------------------------------------------.
@@ -144,33 +142,32 @@ transform_ucs2_rfc1345 (RECODE_CONST_STEP step,
 `-----------------------------------------------*/
 
 static bool
-transform_rfc1345_ucs2 (RECODE_CONST_STEP step,
-			RECODE_TASK task)
+transform_rfc1345_ucs2 (RECODE_SUBTASK subtask)
 {
-  struct local *local = step->local;
+  struct local *local = subtask->step->local;
   const char intro = local->intro;
   int character;
 
-  while (character = get_byte (task), character != EOF)
+  while (character = get_byte (subtask), character != EOF)
 
     if (character == intro)
       {
-	character = get_byte (task);
+	character = get_byte (subtask);
 	if (character == EOF)
-	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 
 	if (character == intro)
-	  put_ucs2 (intro, task);
+	  put_ucs2 (intro, subtask);
 	else if (character == '_')
 	  {
 	    char buffer[MAX_MNEMONIC_LENGTH + 1];
 	    char *cursor = buffer;
 
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	    while (true)
 	      if (character == EOF)
 		{
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		  break;
 		}
 	      else if (character == '_')
@@ -180,20 +177,20 @@ transform_rfc1345_ucs2 (RECODE_CONST_STEP step,
 		  *cursor = NUL;
 		  value = rfc1345_to_ucs2 (buffer);
 		  if (value == NOT_A_CHARACTER)
-		    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		  else
-		    put_ucs2 (value, task);
+		    put_ucs2 (value, subtask);
 		  break;
 		}
 	      else if (cursor == buffer + MAX_MNEMONIC_LENGTH)
 		{
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		  break;
 		}
 	      else
 		{
 		  buffer[*cursor++] = character;
-		  character = get_byte (task);
+		  character = get_byte (subtask);
 		}
 	  }
 	else
@@ -202,27 +199,27 @@ transform_rfc1345_ucs2 (RECODE_CONST_STEP step,
 	    recode_ucs2 value;
 
 	    buffer[0] = character;
-	    character = get_byte (task);
+	    character = get_byte (subtask);
 	    if (character == EOF)
-	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	    buffer[1] = character;
 	    buffer[2] = NUL;
 
 	    value = rfc1345_to_ucs2 (buffer);
 	    if (value == NOT_A_CHARACTER)
-	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 	    else
 	      {
 		if (IS_ASCII (value))
-		  RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-		put_ucs2 (value, task);
+		  RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+		put_ucs2 (value, subtask);
 	      }
 	  }
       }
     else
-      put_ucs2 (character, task);
+      put_ucs2 (character, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-----------------------.

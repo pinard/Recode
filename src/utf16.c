@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -21,16 +20,16 @@
 #include "common.h"
 
 static bool
-transform_ucs4_utf16 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_ucs4_utf16 (RECODE_SUBTASK subtask)
 {
   int character;
   unsigned value;
   unsigned chunk;
 
-  if (get_ucs4 (&value, step, task))
+  if (get_ucs4 (&value, subtask))
     {
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	{
@@ -40,37 +39,37 @@ transform_ucs4_utf16 (RECODE_CONST_STEP step, RECODE_TASK task)
 		/* Double UCS-2 character.  */
 
 		value -= 1 << 16;
-		put_ucs2 (0xD800 | (MASK (10) & value >> 10), task);
-		put_ucs2 (0xDC00 | (MASK (10) & value), task);
+		put_ucs2 (0xD800 | (MASK (10) & value >> 10), subtask);
+		put_ucs2 (0xDC00 | (MASK (10) & value), subtask);
 	      }
 	    else
 	      {
-		RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
-		put_ucs2 (REPLACEMENT_CHARACTER, task);
+		RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
+		put_ucs2 (REPLACEMENT_CHARACTER, subtask);
 	      }
 	  else
 	    {
 	      /* Single UCS-2 character.  */
 
 	      if (value >= 0xD800 && value < 0xE000)
-		RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-	      put_ucs2 (value, task);
+		RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+	      put_ucs2 (value, subtask);
 	    }
 
-	  if (!get_ucs4 (&value, step, task))
+	  if (!get_ucs4 (&value, subtask))
 	    break;
 	}
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_utf16_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_utf16_ucs4 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
-  if (get_ucs2 (&value, step, task))
+  if (get_ucs2 (&value, subtask))
 
     while (true)
       if (value >= 0xD800 && value < 0xE000)
@@ -78,22 +77,22 @@ transform_utf16_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
 	  {
 	    unsigned chunk;
 
-	    if (!get_ucs2 (&chunk, step, task))
+	    if (!get_ucs2 (&chunk, subtask))
 	      break;
 
 	    if (chunk >= 0xDC00 && chunk < 0xE000)
 	      {
 		put_ucs4 ((((1 << 16) + ((value - 0xD800) << 10))
 			   | (chunk - 0xDC00)),
-			  task);
-		if (!get_ucs2 (&value, step, task))
+			  subtask);
+		if (!get_ucs2 (&value, subtask))
 		  break;
 	      }
 	    else
 	      {
 		/* Discard the first chunk if the pair is invalid.  */
 
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		value = chunk;
 	      }
 	  }
@@ -101,40 +100,40 @@ transform_utf16_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
 	  {
 	    /* Discard a second chunk when presented first.  */
 
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	    if (!get_ucs2 (&value, step, task))
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	    if (!get_ucs2 (&value, subtask))
 	      break;
 	  }
       else
 	{
-	  put_ucs4 (value, task);
-	  if (!get_ucs2 (&value, step, task))
+	  put_ucs4 (value, subtask);
+	  if (!get_ucs2 (&value, subtask))
 	    break;
 	}
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_ucs2_utf16 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_ucs2_utf16 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
   /* This function does nothing, besides checking that the number of input
      bytes is even, and that special UTF-16 values do not appear.  */
 
-  while (get_ucs2 (&value, step, task))
+  while (get_ucs2 (&value, subtask))
     {
       if (value >= 0xD800 && value < 0xE000)
-	RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, step, task);
-      put_ucs2 (value, task);
+	RETURN_IF_NOGO (RECODE_AMBIGUOUS_OUTPUT, subtask);
+      put_ucs2 (value, subtask);
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 static bool
-transform_utf16_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_utf16_ucs2 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
@@ -142,10 +141,10 @@ transform_utf16_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
      valid UTF-16, and replacing UTF-16 extended values with the replacement
      character.  */
 
-  if (get_ucs2 (&value, step, task))
+  if (get_ucs2 (&value, subtask))
     {
-      if (task->byte_order_mark)
-	put_ucs2 (BYTE_ORDER_MARK, task);
+      if (subtask->task->byte_order_mark)
+	put_ucs2 (BYTE_ORDER_MARK, subtask);
 
       while (true)
 	if (value >= 0xD800 && value < 0xE000)
@@ -153,21 +152,21 @@ transform_utf16_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	    {
 	      unsigned chunk;
 
-	      if (!get_ucs2 (&chunk, step, task))
+	      if (!get_ucs2 (&chunk, subtask))
 		break;
 
 	      if (chunk >= 0xDC00 && chunk < 0xE000)
 		{
-		  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, step, task);
-		  put_ucs2 (REPLACEMENT_CHARACTER, task);
-		  if (!get_ucs2 (&value, step, task))
+		  RETURN_IF_NOGO (RECODE_UNTRANSLATABLE, subtask);
+		  put_ucs2 (REPLACEMENT_CHARACTER, subtask);
+		  if (!get_ucs2 (&value, subtask))
 		    break;
 		}
 	      else
 		{
 		  /* Discard the first chunk if the pair is invalid.  */
 
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
 		  value = chunk;
 		}
 	    }
@@ -175,19 +174,19 @@ transform_utf16_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 	    {
 	      /* Discard a second chunk when presented first.  */
 
-	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
-	      if (!get_ucs2 (&value, step, task))
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	      if (!get_ucs2 (&value, subtask))
 		break;
 	    }
 	else
 	  {
-	    put_ucs2 (value, task);
-	    if (!get_ucs2 (&value, step, task))
+	    put_ucs2 (value, subtask);
+	    if (!get_ucs2 (&value, subtask))
 	      break;
 	  }
     }
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 bool

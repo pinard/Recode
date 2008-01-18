@@ -787,7 +787,7 @@ char *yytext;
 /* This file is generated automatically by `mergelex.py'.  */
 #include "common.h"
 static RECODE_CONST_REQUEST request;
-static RECODE_TASK task;
+static RECODE_SUBTASK subtask;
 #define ascii_latin1 1
 
 #define latex_latin1 2
@@ -1037,585 +1037,585 @@ case YY_STATE_EOF(texte_latin1):
 
 case 1:
 YY_RULE_SETUP
-{ put_byte (171, task); }
+{ put_byte (171, subtask); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-{ put_byte (187, task); }
+{ put_byte (187, subtask); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-{ put_byte (192, task); }
+{ put_byte (192, subtask); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-{ put_byte (193, task); }
+{ put_byte (193, subtask); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-{ put_byte (194, task); }
+{ put_byte (194, subtask); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-{ put_byte (195, task); }
+{ put_byte (195, subtask); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-{ put_byte (196, task); }
+{ put_byte (196, subtask); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-{ put_byte (199, task); }
+{ put_byte (199, subtask); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-{ put_byte (200, task); }
+{ put_byte (200, subtask); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-{ put_byte (201, task); }
+{ put_byte (201, subtask); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-{ put_byte (202, task); }
+{ put_byte (202, subtask); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-{ put_byte (203, task); }
+{ put_byte (203, subtask); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-{ put_byte (204, task); }
+{ put_byte (204, subtask); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-{ put_byte (205, task); }
+{ put_byte (205, subtask); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-{ put_byte (206, task); }
+{ put_byte (206, subtask); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-{ put_byte (207, task); }
+{ put_byte (207, subtask); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-{ put_byte (209, task); }
+{ put_byte (209, subtask); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-{ put_byte (210, task); }
+{ put_byte (210, subtask); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-{ put_byte (211, task); }
+{ put_byte (211, subtask); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-{ put_byte (212, task); }
+{ put_byte (212, subtask); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-{ put_byte (213, task); }
+{ put_byte (213, subtask); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-{ put_byte (214, task); }
+{ put_byte (214, subtask); }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-{ put_byte (216, task); }
+{ put_byte (216, subtask); }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-{ put_byte (217, task); }
+{ put_byte (217, subtask); }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-{ put_byte (218, task); }
+{ put_byte (218, subtask); }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-{ put_byte (219, task); }
+{ put_byte (219, subtask); }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-{ put_byte (220, task); }
+{ put_byte (220, subtask); }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-{ put_byte (221, task); }
+{ put_byte (221, subtask); }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-{ put_byte (223, task); }
+{ put_byte (223, subtask); }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-{ put_byte (224, task); }
+{ put_byte (224, subtask); }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-{ put_byte (225, task); }
+{ put_byte (225, subtask); }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-{ put_byte (226, task); }
+{ put_byte (226, subtask); }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-{ put_byte (227, task); }
+{ put_byte (227, subtask); }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-{ put_byte (228, task); }
+{ put_byte (228, subtask); }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-{ put_byte (231, task); }
+{ put_byte (231, subtask); }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-{ put_byte (232, task); }
+{ put_byte (232, subtask); }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-{ put_byte (233, task); }
+{ put_byte (233, subtask); }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-{ put_byte (234, task); }
+{ put_byte (234, subtask); }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-{ put_byte (235, task); }
+{ put_byte (235, subtask); }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-{ put_byte (236, task); }
+{ put_byte (236, subtask); }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-{ put_byte (237, task); }
+{ put_byte (237, subtask); }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-{ put_byte (238, task); }
+{ put_byte (238, subtask); }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-{ put_byte (239, task); }
+{ put_byte (239, subtask); }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-{ put_byte (241, task); }
+{ put_byte (241, subtask); }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-{ put_byte (242, task); }
+{ put_byte (242, subtask); }
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-{ put_byte (243, task); }
+{ put_byte (243, subtask); }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-{ put_byte (244, task); }
+{ put_byte (244, subtask); }
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-{ put_byte (245, task); }
+{ put_byte (245, subtask); }
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-{ put_byte (246, task); }
+{ put_byte (246, subtask); }
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-{ put_byte (248, task); }
+{ put_byte (248, subtask); }
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-{ put_byte (249, task); }
+{ put_byte (249, subtask); }
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-{ put_byte (250, task); }
+{ put_byte (250, subtask); }
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-{ put_byte (251, task); }
+{ put_byte (251, subtask); }
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-{ put_byte (252, task); }
+{ put_byte (252, subtask); }
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-{ put_byte (253, task); }
+{ put_byte (253, subtask); }
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-{ put_byte (255, task); }
+{ put_byte (255, subtask); }
 	YY_BREAK
 
 
 case 57:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('#', task); }
+{ PUT_NON_DIACRITIC_BYTE ('#', subtask); }
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('$', task); }
+{ PUT_NON_DIACRITIC_BYTE ('$', subtask); }
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('%', task); }
+{ PUT_NON_DIACRITIC_BYTE ('%', subtask); }
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('&', task); }
+{ PUT_NON_DIACRITIC_BYTE ('&', subtask); }
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('_', task); }
+{ PUT_NON_DIACRITIC_BYTE ('_', subtask); }
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('{', task); }
+{ PUT_NON_DIACRITIC_BYTE ('{', subtask); }
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('}', task); }
+{ PUT_NON_DIACRITIC_BYTE ('}', subtask); }
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE ('\\', task); }
+{ PUT_NON_DIACRITIC_BYTE ('\\', subtask); }
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (160, task); }
+{ PUT_NON_DIACRITIC_BYTE (160, subtask); }
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (161, task); }
+{ PUT_NON_DIACRITIC_BYTE (161, subtask); }
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (163, task); }
+{ PUT_NON_DIACRITIC_BYTE (163, subtask); }
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (167, task); }
+{ PUT_NON_DIACRITIC_BYTE (167, subtask); }
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (168, task); }
+{ PUT_NON_DIACRITIC_BYTE (168, subtask); }
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (169, task); }
+{ PUT_NON_DIACRITIC_BYTE (169, subtask); }
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (171, task); }
+{ PUT_NON_DIACRITIC_BYTE (171, subtask); }
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (172, task); }
+{ PUT_NON_DIACRITIC_BYTE (172, subtask); }
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (173, task); }
+{ PUT_NON_DIACRITIC_BYTE (173, subtask); }
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (176, task); }
+{ PUT_NON_DIACRITIC_BYTE (176, subtask); }
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (177, task); }
+{ PUT_NON_DIACRITIC_BYTE (177, subtask); }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (178, task); }
+{ PUT_NON_DIACRITIC_BYTE (178, subtask); }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (179, task); }
+{ PUT_NON_DIACRITIC_BYTE (179, subtask); }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (180, task); }
+{ PUT_NON_DIACRITIC_BYTE (180, subtask); }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (181, task); }
+{ PUT_NON_DIACRITIC_BYTE (181, subtask); }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (183, task); }
+{ PUT_NON_DIACRITIC_BYTE (183, subtask); }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (184, task); }
+{ PUT_NON_DIACRITIC_BYTE (184, subtask); }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (185, task); }
+{ PUT_NON_DIACRITIC_BYTE (185, subtask); }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (187, task); }
+{ PUT_NON_DIACRITIC_BYTE (187, subtask); }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (188, task); }
+{ PUT_NON_DIACRITIC_BYTE (188, subtask); }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (189, task); }
+{ PUT_NON_DIACRITIC_BYTE (189, subtask); }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (190, task); }
+{ PUT_NON_DIACRITIC_BYTE (190, subtask); }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-{ PUT_NON_DIACRITIC_BYTE (191, task); }
+{ PUT_NON_DIACRITIC_BYTE (191, subtask); }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-{ put_byte (192, task); }
+{ put_byte (192, subtask); }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-{ put_byte (193, task); }
+{ put_byte (193, subtask); }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-{ put_byte (194, task); }
+{ put_byte (194, subtask); }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-{ put_byte (195, task); }
+{ put_byte (195, subtask); }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-{ put_byte (196, task); }
+{ put_byte (196, subtask); }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-{ put_byte (197, task); }
+{ put_byte (197, subtask); }
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-{ put_byte (198, task); }
+{ put_byte (198, subtask); }
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-{ put_byte (199, task); }
+{ put_byte (199, subtask); }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-{ put_byte (200, task); }
+{ put_byte (200, subtask); }
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-{ put_byte (201, task); }
+{ put_byte (201, subtask); }
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-{ put_byte (202, task); }
+{ put_byte (202, subtask); }
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-{ put_byte (203, task); }
+{ put_byte (203, subtask); }
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-{ put_byte (204, task); }
+{ put_byte (204, subtask); }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-{ put_byte (205, task); }
+{ put_byte (205, subtask); }
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-{ put_byte (206, task); }
+{ put_byte (206, subtask); }
 	YY_BREAK
 case 103:
 YY_RULE_SETUP
-{ put_byte (207, task); }
+{ put_byte (207, subtask); }
 	YY_BREAK
 case 104:
 YY_RULE_SETUP
-{ put_byte (209, task); }
+{ put_byte (209, subtask); }
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-{ put_byte (210, task); }
+{ put_byte (210, subtask); }
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-{ put_byte (211, task); }
+{ put_byte (211, subtask); }
 	YY_BREAK
 case 107:
 YY_RULE_SETUP
-{ put_byte (212, task); }
+{ put_byte (212, subtask); }
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-{ put_byte (213, task); }
+{ put_byte (213, subtask); }
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-{ put_byte (214, task); }
+{ put_byte (214, subtask); }
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-{ put_byte (216, task); }
+{ put_byte (216, subtask); }
 	YY_BREAK
 case 111:
 YY_RULE_SETUP
-{ put_byte (217, task); }
+{ put_byte (217, subtask); }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-{ put_byte (218, task); }
+{ put_byte (218, subtask); }
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-{ put_byte (219, task); }
+{ put_byte (219, subtask); }
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-{ put_byte (220, task); }
+{ put_byte (220, subtask); }
 	YY_BREAK
 case 115:
 YY_RULE_SETUP
-{ put_byte (221, task); }
+{ put_byte (221, subtask); }
 	YY_BREAK
 case 116:
 YY_RULE_SETUP
-{ put_byte (223, task); }
+{ put_byte (223, subtask); }
 	YY_BREAK
 case 117:
 YY_RULE_SETUP
-{ put_byte (224, task); }
+{ put_byte (224, subtask); }
 	YY_BREAK
 case 118:
 YY_RULE_SETUP
-{ put_byte (225, task); }
+{ put_byte (225, subtask); }
 	YY_BREAK
 case 119:
 YY_RULE_SETUP
-{ put_byte (226, task); }
+{ put_byte (226, subtask); }
 	YY_BREAK
 case 120:
 YY_RULE_SETUP
-{ put_byte (227, task); }
+{ put_byte (227, subtask); }
 	YY_BREAK
 case 121:
 YY_RULE_SETUP
-{ put_byte (228, task); }
+{ put_byte (228, subtask); }
 	YY_BREAK
 case 122:
 YY_RULE_SETUP
-{ put_byte (229, task); }
+{ put_byte (229, subtask); }
 	YY_BREAK
 case 123:
 YY_RULE_SETUP
-{ put_byte (230, task); }
+{ put_byte (230, subtask); }
 	YY_BREAK
 case 124:
 YY_RULE_SETUP
-{ put_byte (231, task); }
+{ put_byte (231, subtask); }
 	YY_BREAK
 case 125:
 YY_RULE_SETUP
-{ put_byte (232, task); }
+{ put_byte (232, subtask); }
 	YY_BREAK
 case 126:
 YY_RULE_SETUP
-{ put_byte (233, task); }
+{ put_byte (233, subtask); }
 	YY_BREAK
 case 127:
 YY_RULE_SETUP
-{ put_byte (234, task); }
+{ put_byte (234, subtask); }
 	YY_BREAK
 case 128:
 YY_RULE_SETUP
-{ put_byte (235, task); }
+{ put_byte (235, subtask); }
 	YY_BREAK
 case 129:
 YY_RULE_SETUP
-{ put_byte (236, task); }
+{ put_byte (236, subtask); }
 	YY_BREAK
 case 130:
 YY_RULE_SETUP
-{ put_byte (237, task); }
+{ put_byte (237, subtask); }
 	YY_BREAK
 case 131:
 YY_RULE_SETUP
-{ put_byte (238, task); }
+{ put_byte (238, subtask); }
 	YY_BREAK
 case 132:
 YY_RULE_SETUP
-{ put_byte (239, task); }
+{ put_byte (239, subtask); }
 	YY_BREAK
 case 133:
 YY_RULE_SETUP
-{ put_byte (241, task); }
+{ put_byte (241, subtask); }
 	YY_BREAK
 case 134:
 YY_RULE_SETUP
-{ put_byte (242, task); }
+{ put_byte (242, subtask); }
 	YY_BREAK
 case 135:
 YY_RULE_SETUP
-{ put_byte (243, task); }
+{ put_byte (243, subtask); }
 	YY_BREAK
 case 136:
 YY_RULE_SETUP
-{ put_byte (244, task); }
+{ put_byte (244, subtask); }
 	YY_BREAK
 case 137:
 YY_RULE_SETUP
-{ put_byte (245, task); }
+{ put_byte (245, subtask); }
 	YY_BREAK
 case 138:
 YY_RULE_SETUP
-{ put_byte (246, task); }
+{ put_byte (246, subtask); }
 	YY_BREAK
 case 139:
 YY_RULE_SETUP
-{ put_byte (248, task); }
+{ put_byte (248, subtask); }
 	YY_BREAK
 case 140:
 YY_RULE_SETUP
-{ put_byte (249, task); }
+{ put_byte (249, subtask); }
 	YY_BREAK
 case 141:
 YY_RULE_SETUP
-{ put_byte (250, task); }
+{ put_byte (250, subtask); }
 	YY_BREAK
 case 142:
 YY_RULE_SETUP
-{ put_byte (251, task); }
+{ put_byte (251, subtask); }
 	YY_BREAK
 case 143:
 YY_RULE_SETUP
-{ put_byte (252, task); }
+{ put_byte (252, subtask); }
 	YY_BREAK
 case 144:
 YY_RULE_SETUP
-{ put_byte (253, task); }
+{ put_byte (253, subtask); }
 	YY_BREAK
 case 145:
 YY_RULE_SETUP
-{ put_byte (255, task); }
+{ put_byte (255, subtask); }
 	YY_BREAK
 case 146:
 YY_RULE_SETUP
@@ -1629,19 +1629,19 @@ YY_RULE_SETUP
 
 case 148:
 YY_RULE_SETUP
-{ put_byte (171, task); }
+{ put_byte (171, subtask); }
 	YY_BREAK
 case 149:
 YY_RULE_SETUP
-{ put_byte (187, task); }
+{ put_byte (187, subtask); }
 	YY_BREAK
 case 150:
 YY_RULE_SETUP
-{ put_byte (192, task); }
+{ put_byte (192, subtask); }
 	YY_BREAK
 case 151:
 YY_RULE_SETUP
-{ put_byte (194, task); }
+{ put_byte (194, subtask); }
 	YY_BREAK
 case 152:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1649,18 +1649,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (196, task);
+			    put_byte (196, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 153:
 YY_RULE_SETUP
-{ put_byte (224, task); }
+{ put_byte (224, subtask); }
 	YY_BREAK
 case 154:
 YY_RULE_SETUP
-{ put_byte (226, task); }
+{ put_byte (226, subtask); }
 	YY_BREAK
 case 155:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1668,7 +1668,7 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (228, task);
+			    put_byte (228, subtask);
 			  else
 			    ECHO;
 			}
@@ -1678,34 +1678,34 @@ case 156:
 yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-{ put_byte (199, task); }
+{ put_byte (199, subtask); }
 	YY_BREAK
 case 157:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
 yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
-{ put_byte (231, task); }
+{ put_byte (231, subtask); }
 	YY_BREAK
 case 158:
 YY_RULE_SETUP
-{ put_byte (200, task); }
+{ put_byte (200, subtask); }
 	YY_BREAK
 case 159:
 YY_RULE_SETUP
-{ put_byte (201, task); put_byte (187, task); }
+{ put_byte (201, subtask); put_byte (187, subtask); }
 	YY_BREAK
 case 160:
 YY_RULE_SETUP
-{ put_byte ('E', task); put_byte (187, task); }
+{ put_byte ('E', subtask); put_byte (187, subtask); }
 	YY_BREAK
 case 161:
 YY_RULE_SETUP
-{ put_byte (201, task); }
+{ put_byte (201, subtask); }
 	YY_BREAK
 case 162:
 YY_RULE_SETUP
-{ put_byte (202, task); }
+{ put_byte (202, subtask); }
 	YY_BREAK
 case 163:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1713,30 +1713,30 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (203, task);
+			    put_byte (203, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 164:
 YY_RULE_SETUP
-{ put_byte (232, task); }
+{ put_byte (232, subtask); }
 	YY_BREAK
 case 165:
 YY_RULE_SETUP
-{ put_byte (233, task); put_byte (187, task); }
+{ put_byte (233, subtask); put_byte (187, subtask); }
 	YY_BREAK
 case 166:
 YY_RULE_SETUP
-{ put_byte ('e', task); put_byte (187, task); }
+{ put_byte ('e', subtask); put_byte (187, subtask); }
 	YY_BREAK
 case 167:
 YY_RULE_SETUP
-{ put_byte (233, task); }
+{ put_byte (233, subtask); }
 	YY_BREAK
 case 168:
 YY_RULE_SETUP
-{ put_byte (234, task); }
+{ put_byte (234, subtask); }
 	YY_BREAK
 case 169:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1744,18 +1744,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (235, task);
+			    put_byte (235, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 170:
 YY_RULE_SETUP
-{ put_byte (204, task); }
+{ put_byte (204, subtask); }
 	YY_BREAK
 case 171:
 YY_RULE_SETUP
-{ put_byte (206, task); }
+{ put_byte (206, subtask); }
 	YY_BREAK
 case 172:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1763,18 +1763,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (207, task);
+			    put_byte (207, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 173:
 YY_RULE_SETUP
-{ put_byte (236, task); }
+{ put_byte (236, subtask); }
 	YY_BREAK
 case 174:
 YY_RULE_SETUP
-{ put_byte (238, task); }
+{ put_byte (238, subtask); }
 	YY_BREAK
 case 175:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1782,18 +1782,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (239, task);
+			    put_byte (239, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 176:
 YY_RULE_SETUP
-{ put_byte (210, task); }
+{ put_byte (210, subtask); }
 	YY_BREAK
 case 177:
 YY_RULE_SETUP
-{ put_byte (212, task); }
+{ put_byte (212, subtask); }
 	YY_BREAK
 case 178:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1801,18 +1801,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (214, task);
+			    put_byte (214, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 179:
 YY_RULE_SETUP
-{ put_byte (242, task); }
+{ put_byte (242, subtask); }
 	YY_BREAK
 case 180:
 YY_RULE_SETUP
-{ put_byte (244, task); }
+{ put_byte (244, subtask); }
 	YY_BREAK
 case 181:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1820,18 +1820,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (246, task);
+			    put_byte (246, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 182:
 YY_RULE_SETUP
-{ put_byte (217, task); }
+{ put_byte (217, subtask); }
 	YY_BREAK
 case 183:
 YY_RULE_SETUP
-{ put_byte (219, task); }
+{ put_byte (219, subtask); }
 	YY_BREAK
 case 184:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1839,18 +1839,18 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (220, task);
+			    put_byte (220, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 185:
 YY_RULE_SETUP
-{ put_byte (249, task); }
+{ put_byte (249, subtask); }
 	YY_BREAK
 case 186:
 YY_RULE_SETUP
-{ put_byte (251, task); }
+{ put_byte (251, subtask); }
 	YY_BREAK
 case 187:
 *yy_cp = yy_hold_char; /* undo effects of setting up yytext */
@@ -1858,7 +1858,7 @@ yy_c_buf_p = yy_cp = yy_bp + 2;
 YY_DO_BEFORE_ACTION; /* set up yytext again */
 YY_RULE_SETUP
 { if (yytext[1] == request->diaeresis_char)
-			    put_byte (252, task);
+			    put_byte (252, subtask);
 			  else
 			    ECHO;
 			}
@@ -2858,13 +2858,13 @@ int main()
 
 
 static bool
-transform_ascii_latin1 (RECODE_CONST_STEP step, RECODE_TASK task_argument)
+transform_ascii_latin1 (RECODE_SUBTASK subtask_argument)
 {
-  task = task_argument;
-  request = task->request;
+  subtask = subtask_argument;
+  request = subtask->task->request;
   yy_init = 1;
-  yyin = task->input.file;
-  yyout = task->output.file;
+  yyin = subtask->input.file;
+  yyout = subtask->output.file;
   BEGIN ascii_latin1;
   return yylex ();
 }
@@ -2881,7 +2881,6 @@ module_ascii_latin1 (RECODE_OUTER outer)
 }
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -2901,13 +2900,13 @@ module_ascii_latin1 (RECODE_OUTER outer)
 
 
 static bool
-transform_latex_latin1 (RECODE_CONST_STEP step, RECODE_TASK task_argument)
+transform_latex_latin1 (RECODE_SUBTASK subtask_argument)
 {
-  task = task_argument;
-  request = task->request;
+  subtask = subtask_argument;
+  request = subtask->task->request;
   yy_init = 1;
-  yyin = task->input.file;
-  yyout = task->output.file;
+  yyin = subtask->input.file;
+  yyout = subtask->output.file;
   BEGIN latex_latin1;
   return yylex ();
 }
@@ -2924,7 +2923,6 @@ NULL, transform_latex_latin1)
 }
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1989.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -2944,13 +2942,13 @@ NULL, transform_latex_latin1)
 
 
 static bool
-transform_texte_latin1 (RECODE_CONST_STEP step, RECODE_TASK task_argument)
+transform_texte_latin1 (RECODE_SUBTASK subtask_argument)
 {
-  task = task_argument;
-  request = task->request;
+  subtask = subtask_argument;
+  request = subtask->task->request;
   yy_init = 1;
-  yyin = task->input.file;
-  yyout = task->output.file;
+  yyin = subtask->input.file;
+  yyout = subtask->output.file;
   BEGIN texte_latin1;
   return yylex ();
 }
@@ -2969,23 +2967,23 @@ texte_latin1_diaeresis (void)
 	       diagnostic in flex.  This astonishing bug has been hard to
 	       isolate, so I'll leave this comment around for a while.  */
 
-	  case 'A': put_byte (196, task); break;
-	  case 'E': put_byte (203, task); break;
-	  case 'I': put_byte (207, task); break;
-	  case 'O': put_byte (214, task); break;
-	  case 'U': put_byte (220, task); break;
-	  case 'a': put_byte (228, task); break;
-	  case 'e': put_byte (235, task); break;
-	  case 'i': put_byte (239, task); break;
-	  case 'o': put_byte (246, task); break;
-	  case 'u': put_byte (252, task); break;
-	  case 'y': put_byte (255, task); break;
-	  default:  put_byte (yytext[counter], task);
+	  case 'A': put_byte (196, subtask); break;
+	  case 'E': put_byte (203, subtask); break;
+	  case 'I': put_byte (207, subtask); break;
+	  case 'O': put_byte (214, subtask); break;
+	  case 'U': put_byte (220, subtask); break;
+	  case 'a': put_byte (228, subtask); break;
+	  case 'e': put_byte (235, subtask); break;
+	  case 'i': put_byte (239, subtask); break;
+	  case 'o': put_byte (246, subtask); break;
+	  case 'u': put_byte (252, subtask); break;
+	  case 'y': put_byte (255, subtask); break;
+	  default:  put_byte (yytext[counter], subtask);
 	  }
 	counter++;
       }
     else
-      put_byte (yytext[counter], task);
+      put_byte (yytext[counter], subtask);
 }
 
 bool

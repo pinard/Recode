@@ -4,7 +4,7 @@
 
 	* gettext.m4: New file.  Have getcwd checked at configuration time.
 	* nls.m4: Deleted.
-
+
 1998-10-20  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Add --gnits.

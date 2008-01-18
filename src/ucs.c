@@ -1,6 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
-   This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
    The `recode' Library is free software; you can redistribute it and/or
@@ -375,8 +374,7 @@ static const unsigned short combining_data [] =
    the first, starting with a byte order mark, regardless of byte order.  */
 
 bool
-get_ucs2 (unsigned *value, RECODE_CONST_STEP step,
-	  RECODE_TASK task)
+get_ucs2 (unsigned *value, RECODE_SUBTASK subtask)
 {
   while (true)
     {
@@ -384,35 +382,35 @@ get_ucs2 (unsigned *value, RECODE_CONST_STEP step,
       int character2;
       unsigned chunk;
 
-      character1 = get_byte (task);
+      character1 = get_byte (subtask);
       if (character1 == EOF)
 	return false;
-      character2 = get_byte (task);
+      character2 = get_byte (subtask);
       if (character2 == EOF)
 	{
-	  SET_TASK_ERROR (RECODE_INVALID_INPUT, step, task);
+	  SET_SUBTASK_ERROR (RECODE_INVALID_INPUT, subtask);
 	  return false;
 	}
 
-      switch (task->swap_input)
+      switch (subtask->task->swap_input)
 	{
 	case RECODE_SWAP_UNDECIDED:
 	  chunk = (MASK (8) & character1) << 8 | MASK (8) & character2;
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
-	      task->swap_input = RECODE_SWAP_NO;
+	      subtask->task->swap_input = RECODE_SWAP_NO;
 	      break;
 
 	    case BYTE_ORDER_MARK_SWAPPED:
-	      task->swap_input = RECODE_SWAP_YES;
+	      subtask->task->swap_input = RECODE_SWAP_YES;
 	      break;
 
 	    default:
 	      *value = chunk;
-	      task->swap_input = RECODE_SWAP_NO;
-	      if (task->byte_order_mark)
-		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      subtask->task->swap_input = RECODE_SWAP_NO;
+	      if (subtask->task->byte_order_mark)
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      return true;
 	    }
 	  break;
@@ -422,12 +420,12 @@ get_ucs2 (unsigned *value, RECODE_CONST_STEP step,
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      break;
 
 	    case BYTE_ORDER_MARK_SWAPPED:
-	      task->swap_input = RECODE_SWAP_YES;
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      subtask->task->swap_input = RECODE_SWAP_YES;
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      break;
 
 	    default:
@@ -441,12 +439,12 @@ get_ucs2 (unsigned *value, RECODE_CONST_STEP step,
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      break;
 
 	    case BYTE_ORDER_MARK_SWAPPED:
-	      task->swap_input = RECODE_SWAP_NO;
-	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	      subtask->task->swap_input = RECODE_SWAP_NO;
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
 	      break;
 
 	    default:
@@ -463,10 +461,10 @@ get_ucs2 (unsigned *value, RECODE_CONST_STEP step,
 `-------------------------------*/
 
 bool
-put_ucs2 (unsigned value, RECODE_TASK task)
+put_ucs2 (unsigned value, RECODE_SUBTASK subtask)
 {
-  put_byte (MASK (8) & value >> 8, task);
-  put_byte (MASK (8) & value, task);
+  put_byte (MASK (8) & value >> 8, subtask);
+  put_byte (MASK (8) & value, subtask);
   return true;
 }
 
@@ -477,37 +475,36 @@ put_ucs2 (unsigned value, RECODE_TASK task)
 `-------------------------------*/
 
 bool
-get_ucs4 (unsigned *value, RECODE_CONST_STEP step,
-	  RECODE_TASK task)
+get_ucs4 (unsigned *value, RECODE_SUBTASK subtask)
 {
   int character;
   unsigned chunk;
 
-  character = get_byte (task);
+  character = get_byte (subtask);
   if (character == EOF)
     return false;
   chunk = (MASK (8) & character) << 24;
 
-  character = get_byte (task);
+  character = get_byte (subtask);
   if (character == EOF)
     {
-      SET_TASK_ERROR (RECODE_INVALID_INPUT, step, task);
+      SET_SUBTASK_ERROR (RECODE_INVALID_INPUT, subtask);
       return false;
     }
   chunk |= (MASK (8) & character) << 16;
 
-  character = get_byte (task);
+  character = get_byte (subtask);
   if (character == EOF)
     {
-      SET_TASK_ERROR (RECODE_INVALID_INPUT, step, task);
+      SET_SUBTASK_ERROR (RECODE_INVALID_INPUT, subtask);
       return false;
     }
   chunk |= (MASK (8) & character) << 8;
 
-  character = get_byte (task);
+  character = get_byte (subtask);
   if (character == EOF)
     {
-      SET_TASK_ERROR (RECODE_INVALID_INPUT, step, task);
+      SET_SUBTASK_ERROR (RECODE_INVALID_INPUT, subtask);
       return false;
     }
   chunk |= MASK (8) & character;
@@ -521,12 +518,12 @@ get_ucs4 (unsigned *value, RECODE_CONST_STEP step,
 `-------------------------------*/
 
 bool
-put_ucs4 (unsigned value, RECODE_TASK task)
+put_ucs4 (unsigned value, RECODE_SUBTASK subtask)
 {
-  put_byte (MASK (8) & value >> 24, task);
-  put_byte (MASK (8) & value >> 16, task);
-  put_byte (MASK (8) & value >> 8, task);
-  put_byte (MASK (8) & value, task);
+  put_byte (MASK (8) & value >> 24, subtask);
+  put_byte (MASK (8) & value >> 16, subtask);
+  put_byte (MASK (8) & value >> 8, subtask);
+  put_byte (MASK (8) & value, subtask);
   return true;
 }
 
@@ -563,14 +560,14 @@ init_ucs2_combined (RECODE_STEP step,
 `-----------------------------*/
 
 static bool
-transform_latin1_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_latin1_ucs4 (RECODE_SUBTASK subtask)
 {
   int character;
 
-  while (character = get_byte (task), character != EOF)
-    put_ucs4 (MASK (8) & character, task);
+  while (character = get_byte (subtask), character != EOF)
+    put_ucs4 (MASK (8) & character, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*---------------------------.
@@ -578,14 +575,14 @@ transform_latin1_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
 `---------------------------*/
 
 static bool
-transform_ucs2_ucs4 (RECODE_CONST_STEP step, RECODE_TASK task)
+transform_ucs2_ucs4 (RECODE_SUBTASK subtask)
 {
   unsigned value;
 
-  while (get_ucs2 (&value, step, task))
-    put_ucs4 (value, task);
+  while (get_ucs2 (&value, subtask))
+    put_ucs4 (value, subtask);
 
-  TASK_RETURN (task);
+  SUBTASK_RETURN (subtask);
 }
 
 /*-----------------------------------------------------------------.

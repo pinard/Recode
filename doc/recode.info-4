@@ -27,6 +27,198 @@ versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
 
 
+File: recode.info,  Node: IBM-PC,  Next: Icon-QNX,  Prev: EBCDIC,  Up: IBM and MS
+
+IBM's PC code
+=============
+
+   This charset is available in `recode' under the name `IBM-PC', with
+`dos', `MSDOS' and `pc' as acceptable aliases.  The shortest way of
+specifying it in `recode' is `pc'.
+
+   The charset is aimed towards a PC microcomputer from IBM or any
+compatible.  This is an eight-bit code.  This charset is fairly old in
+`recode', its tables were produced a long while ago by mere inspection
+of a printed chart of the IBM-PC codes and glyph.
+
+   It has `CR-LF' as its implied surface.  This means that, if the
+original end of lines have to be preserved while going out of `IBM-PC',
+they should currently be added back through the usage of a surface on
+the other charset, or better, just never removed.  Here are examples
+for both cases:
+
+     recode pc..l2/cl < INPUT > OUTPUT
+     recode pc/..l2 < INPUT > OUTPUT
+
+   RFC 1345 brings into `recode' 44 `IBM' charsets or code pages, and
+also 8 other code pages.  You can get a list of these all these by
+executing:(1)
+
+     recode -l | egrep -i '(CP|IBM)[0-9]'
+
+All charset or aliases beginning with letters `CP' or `IBM' also have
+`CR-LF' as their implied surface.  The same is true for a purely
+numeric alias in the same family.  For example, all of `819', `CP819'
+and `IBM819' imply `CR-LF' as a surface.  Note that `ISO-8859-1' does
+_not_ imply a surface, despite it shares the same tabular data as `819'.
+
+   There are a few discrepancies between this `IBM-PC' charset and the
+very similar RFC 1345 charset `ibm437', which have not been analysed
+yet, so the charsets are being kept separate for now.  This might
+change in the future, and the `IBM-PC' charset might disappear.
+Wizards would be interested in comparing the output of these two
+commands:
+
+     recode -vh IBM-PC..Latin-1
+     recode -vh IBM437..Latin-1
+
+The first command uses the charset prior to RFC 1345 introduction.
+Both methods give different recodings.  These differences are annoying,
+the fuzziness will have to be explained and settle down one day.
+
+   --------- Notes en bas de page ---------
+
+   (1) On DOS/Windows, stock shells do not know that apostrophes quote
+special characters like `|', so one need to use double quotes instead
+of apostrophes.
+
+
+File: recode.info,  Node: Icon-QNX,  Prev: IBM-PC,  Up: IBM and MS
+
+Unisys' Icon code
+=================
+
+   This charset is available in `recode' under the name `Icon-QNX',
+with `QNX' as an acceptable alias.
+
+   The file is using Unisys' Icon way to represent diacritics with code
+25 escape sequences, under the system QNX.  This is a seven-bit code,
+even if eight-bit codes can flow through as part of IBM-PC charset.
+
+
+File: recode.info,  Node: CDC,  Next: Micros,  Prev: IBM and MS,  Up: Top
+
+Charsets for CDC machines
+*************************
+
+   What is now `recode' evolved out, through many transformations
+really, from a set of programs which were originally written in
+"COMPASS", Control Data Corporation's assembler, with bits in FORTRAN,
+and later rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
+fact some old CDC charsets are still supported.
+
+   The `recode' author used to be familiar with CDC Scope-NOS/BE and
+Kronos-NOS, and many CDC formats.  Reading CDC tapes directly on other
+machines is often a challenge, and `recode' does not always solve it.
+It helps having tapes created in coded mode instead of binary mode, and
+using `S' (Stranger) tapes instead of `I' (Internal) tapes.  ANSI
+labels and multi-file tapes might be the source of trouble.  There are
+ways to handle a few Cyber Record Manager formats, but some of them
+might be quite difficult to decode properly after the transfer is done.
+
+   The `recode' program is usable only for a small subset of NOS text
+formats, and surely not with binary textual formats, like `UPDATE' or
+`MODIFY' sources, for example.  `recode' is not especially suited for
+reading 8/12 or 56/60 packing, yet this could easily arranged if there
+was a demand for it.  It does not have the ability to translate Display
+Code directly, as the ASCII conversion implied by tape drivers or FTP
+does the initial approximation.  `recode' can decode 6/12 caret
+notation over Display Code already mapped to ASCII.
+
+* Menu:
+
+* Display Code::        Control Data's Display Code
+* CDC-NOS::             ASCII 6/12 from NOS
+* Bang-Bang::           ASCII ``bang bang''
+
+
+File: recode.info,  Node: Display Code,  Next: CDC-NOS,  Prev: CDC,  Up: CDC
+
+Control Data's Display Code
+===========================
+
+   This code is not available in `recode', but repeated here for
+reference.  This is a 6-bit code used on CDC mainframes.
+
+     Octal display code to graphic       Octal display code to octal ASCII
+     
+     00  :    20  P    40  5   60  #     00 072  20 120  40 065  60 043
+     01  A    21  Q    41  6   61  [     01 101  21 121  41 066  61 133
+     02  B    22  R    42  7   62  ]     02 102  22 122  42 067  62 135
+     03  C    23  S    43  8   63  %     03 103  23 123  43 070  63 045
+     04  D    24  T    44  9   64  "     04 104  24 124  44 071  64 042
+     05  E    25  U    45  +   65  _     05 105  25 125  45 053  65 137
+     06  F    26  V    46  -   66  !     06 106  26 126  46 055  66 041
+     07  G    27  W    47  *   67  &     07 107  27 127  47 052  67 046
+     10  H    30  X    50  /   70  '     10 110  30 130  50 057  70 047
+     11  I    31  Y    51  (   71  ?     11 111  31 131  51 050  71 077
+     12  J    32  Z    52  )   72  <     12 112  32 132  52 051  72 074
+     13  K    33  0    53  $   73  >     13 113  33 060  53 044  73 076
+     14  L    34  1    54  =   74  @     14 114  34 061  54 075  74 100
+     15  M    35  2    55      75  \     15 115  35 062  55 040  75 134
+     16  N    36  3    56  ,   76  ^     16 116  36 063  56 054  76 136
+     17  O    37  4    57  .   77  ;     17 117  37 064  57 056  77 073
+
+   In older times, `:' used octal 63, and octal 0 was not a character.
+The table above shows the ASCII glyph interpretation of codes 60 to 77,
+yet these 16 codes were once defined differently.
+
+   There is no explicit end of line in Display Code, and the Cyber
+Record Manager introduced many new ways to represent them, the
+traditional end of lines being reachable by setting `RT' to `Z'.  If
+6-bit bytes in a file are sequentially counted from 1, a traditional
+end of line does exist if bytes 10*N+9 and 10N+10 are both zero for a
+given N, in which case these two bytes are not to be interpreted as
+`::'.  Also, up to 9 immediately preceeding zero bytes, going backward,
+are to be considered as part of the end of line and not interpreted as
+`:'(1).
+
+   --------- Notes en bas de page ---------
+
+   (1) This convention replaced an older one saying that up to 4
+immediately preceeding _pairs_ of zero bytes, going backward, are to be
+considered as part of the end of line and not interpreted as `::'.
+
+
+File: recode.info,  Node: CDC-NOS,  Next: Bang-Bang,  Prev: Display Code,  Up: CDC
+
+ASCII 6/12 from NOS
+===================
+
+   This charset is available in `recode' under the name `CDC-NOS', with
+`NOS' as an acceptable alias.
+
+   This is one of the charsets in use on CDC Cyber NOS systems to
+represent ASCII, sometimes named "NOS 6/12" code for coding ASCII.
+This code is also known as "caret ASCII".  It is based on a six bits
+character set in which small letters and control characters are coded
+using a `^' escape and, sometimes, a `@' escape.
+
+   The routines given here presume that the six bits code is already
+expressed in ASCII by the communication channel, with embedded ASCII
+`^' and `@' escapes.
+
+   Here is a table showing which characters are being used to encode
+each ASCII character.
+
+     000  ^5  020  ^#  040     060  0  100 @A  120  P  140  @G  160  ^P
+     001  ^6  021  ^[  041  !  061  1  101  A  121  Q  141  ^A  161  ^Q
+     002  ^7  022  ^]  042  "  062  2  102  B  122  R  142  ^B  162  ^R
+     003  ^8  023  ^%  043  #  063  3  103  C  123  S  143  ^C  163  ^S
+     004  ^9  024  ^"  044  $  064  4  104  D  124  T  144  ^D  164  ^T
+     005  ^+  025  ^_  045  %  065  5  105  E  125  U  145  ^E  165  ^U
+     006  ^-  026  ^!  046  &  066  6  106  F  126  V  146  ^F  166  ^V
+     007  ^*  027  ^&  047  '  067  7  107  G  127  W  147  ^G  167  ^W
+     010  ^/  030  ^'  050  (  070  8  110  H  130  X  150  ^H  170  ^X
+     011  ^(  031  ^?  051  )  071  9  111  I  131  Y  151  ^I  171  ^Y
+     012  ^)  032  ^<  052  *  072 @D  112  J  132  Z  152  ^J  172  ^Z
+     013  ^$  033  ^>  053  +  073  ;  113  K  133  [  153  ^K  173  ^0
+     014  ^=  034  ^@  054  ,  074  <  114  L  134  \  154  ^L  174  ^1
+     015  ^   035  ^\  055  -  075  =  115  M  135  ]  155  ^M  175  ^2
+     016  ^,  036  ^^  056  .  076  >  116  N  136 @B  156  ^N  176  ^3
+     017  ^.  037  ^;  057  /  077  ?  117  O  137  _  157  ^O  177  ^4
+
+
 File: recode.info,  Node: Bang-Bang,  Prev: CDC-NOS,  Up: CDC
 
 ASCII "bang bang"
@@ -170,8 +362,9 @@ knows how to handle these particularly well for French texts.
 * HTML::                World Wide Web representations
 * LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
+* Vietnamese::
 * African::             African charsets
-* Cyrillic::            Cyrillic charsets
+* Others::
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 
@@ -284,7 +477,7 @@ backslashes into `\backslash{}' can be rather inconvenient, it may be
 inhibited through the command option `-d' (*note Mixed::).
 
 
-File: recode.info,  Node: Texinfo,  Next: African,  Prev: LaTeX,  Up: Miscellaneous
+File: recode.info,  Node: Texinfo,  Next: Vietnamese,  Prev: LaTeX,  Up: Miscellaneous
 
 GNU project documentation files
 ===============================
@@ -301,7 +494,40 @@ correctly following these changes.  So, for now, Texinfo support in
 `recode' should be considered as work still in progress (!).
 
 
-File: recode.info,  Node: African,  Next: Cyrillic,  Prev: Texinfo,  Up: Miscellaneous
+File: recode.info,  Node: Vietnamese,  Next: African,  Prev: Texinfo,  Up: Miscellaneous
+
+Vietnamese charsets
+===================
+
+   We are currently experimenting the implementation, in `recode', of a
+few character sets and transliterated forms to handle the Vietnamese
+language.  They are quite briefly summarised, here.
+
+`TCVN'
+     The TCVN charset has an incomplete name.  It might be one of the
+     three charset `VN1', `VN2' or `VN3'.  Yes `VN2' might be a second
+     version of `VISCII'.  To be clarified.
+
+`VISCII'
+     This is an 8-bit character set which seems to be rather popular for
+     writing Vietnamese.
+
+`VPS'
+     This is an 8-bit character set for Vietnamese.  No much reference.
+
+`VIQR'
+     The VIQR convention is a 7-bit, `ASCII' transliteration for
+     Vietnamese.
+
+`VNI'
+     The VNI convention is a 8-bit, `Latin-1' transliteration for
+     Vietnamese.
+
+   Still lacking for Vietnamese in `recode', are the charsets `CP1129'
+and `CP1258'.
+
+
+File: recode.info,  Node: African,  Next: Others,  Prev: Vietnamese,  Up: Miscellaneous
 
 African charsets
 ================
@@ -331,10 +557,10 @@ other African charsets in this series.  This charset is available in
 `t-fra' and `t-francais'.
 
 
-File: recode.info,  Node: Cyrillic,  Next: Texte,  Prev: African,  Up: Miscellaneous
+File: recode.info,  Node: Others,  Next: Texte,  Prev: African,  Up: Miscellaneous
 
-Cyrillic charsets
-=================
+Cyrillic and other charsets
+===========================
 
    The following Cyrillic charsets are already available in `recode'
 through RFC 1345 tables: `CP1251' with aliases `1251', ` ms-cyrl' and
@@ -346,13 +572,13 @@ with aliases `cyrillic', ` ISO-8859-5:1988' and `iso-ir-144'; `KOI-7';
 `KOI-8' with alias `GOST_19768-74'; `KOI8-R'; `KOI8-RU' and finally
 `KOI8-U'.
 
-   There seems to remain some confusion in Cyrillic charsets, and
-because a few users requested it repeatedly, `recode' now offers
-special services in that area.  Consider these charsets as experimental
-and debatable, as the extraneous tables describing them are still a bit
-fuzzy or non-standard.  Hopefully, in the long run, Cyrillic will be
-covered in Keld Simonsen's works to the satisfaction of everybody, and
-this section will merely disappear.
+   There seems to remain some confusion in Roman charsets for Cyrillic
+languages, and because a few users requested it repeatedly, `recode'
+now offers special services in that area.  Consider these charsets as
+experimental and debatable, as the extraneous tables describing them are
+still a bit fuzzy or non-standard.  Hopefully, in the long run, these
+charsets will be covered in Keld Simonsen's works to the satisfaction of
+everybody, and this section will merely disappear.
 
 `KEYBCS2'
      This charset is available under the name `KEYBCS2', with
@@ -366,7 +592,7 @@ this section will merely disappear.
      This charset is available under the name `KOI-8_CS2'.
 
 
-File: recode.info,  Node: Texte,  Next: Mule,  Prev: Cyrillic,  Up: Miscellaneous
+File: recode.info,  Node: Texte,  Next: Mule,  Prev: Others,  Up: Miscellaneous
 
 Easy French conventions
 =======================
@@ -929,106 +1155,4 @@ from 2.2 to 1.3.  This is still manageable.
 
    (1) The above numbers were for `recode' version 3.4.  After UCS
 additions, it drops from 2.3 to 1.1.
-
-
-File: recode.info,  Node: New charsets,  Next: New surfaces,  Prev: Main flow,  Up: Internals
-
-Adding new charsets
-===================
-
-   The main part of `recode' is written in C, as are most single steps.
-A few single steps need to recognise sequences of multiple characters,
-they are often better written in Flex.  It is easy for a programmer to
-add a new charset to `recode'.  All it requires is making a few
-functions kept in a single `.c' file, adjusting `Makefile.am' and
-remaking `recode'.
-
-   One of the function should convert from any previous charset to the
-new one.  Any previous charset will do, but try to select it so you will
-not lose too much information while converting.  The other function
-should convert from the new charset to any older one.  You do not have
-to select the same old charset than what you selected for the previous
-routine.  Once again, select any charset for which you will not lose
-too much information while converting.
-
-   If, for any of these two functions, you have to read multiple bytes
-of the old charset before recognising the character to produce, you
-might prefer programming it in Flex in a separate `.l' file.  Prototype
-your C or Flex files after one of those which exist already, so to keep
-the sources uniform.  Besides, at `make' time, all `.l' files are
-automatically merged into a single big one by the script `mergelex.awk'.
-
-   There are a few hidden rules about how to write new `recode'
-modules, for allowing the automatic creation of `decsteps.h' and
-`initsteps.h' at `make' time, or the proper merging of all Flex files.
-Mimetism is a simple approach which relieves me of explaining all these
-rules!  Start with a module closely resembling what you intend to do.
-Here is some advice for picking up a model.  First decide if your new
-charset module is to be be driven by algorithms rather than by tables.
-For algorithmic recodings, see `iconqnx.c' for C code, or `txtelat1.l'
-for Flex code.  For table driven recodings, see `ebcdic.c' for
-one-to-one style recodings, `lat1html.c' for one-to-many style
-recodings, or `atarist.c' for double-step style recodings.  Just select
-an example from the style that better fits your application.
-
-   Each of your source files should have its own initialisation
-function, named `module_CHARSET', which is meant to be executed
-_quickly_ once, prior to any recoding.  It should declare the name of
-your charsets and the single steps (or elementary recodings) you
-provide, by calling `declare_step' one or more times.  Besides the
-charset names, `declare_step' expects a description of the recoding
-quality (see `recodext.h') and two functions you also provide.
-
-   The first such function has the purpose of allocating structures,
-pre-conditioning conversion tables, etc.  It is also the way of further
-modifying the `STEP' structure.  This function is executed if and only
-if the single step is retained in an actual recoding sequence.  If you
-do not need such delayed initialisation, merely use `NULL' for the
-function argument.
-
-   The second function executes the elementary recoding on a whole file.
-There are a few cases when you can spare writing this function:
-
-   * Some single steps do nothing else than a pure copy of the input
-     onto the output, in this case, you can use the predefined function
-     `file_one_to_one', while having a delayed initialisation for
-     presetting the `STEP' field `one_to_one' to the predefined value
-     `one_to_same'.
-
-   * Some single steps are driven by a table which recodes one
-     character into another; if the recoding does nothing else, you can
-     use the predefined function `file_one_to_one', while having a
-     delayed initialisation for presetting the `STEP' field
-     `one_to_one' with your table.
-
-   * Some single steps are driven by a table which recodes one
-     character into a string; if the recoding does nothing else, you
-     can use the predefined function `file_one_to_many', while having a
-     delayed initialisation for presetting the `STEP' field
-     `one_to_many' with your table.
-
-   If you have a recoding table handy in a suitable format but do not
-use one of the predefined recoding functions, it is still a good idea
-to use a delayed initialisation to save it anyway, because `recode'
-option `-h' will take advantage of this information when available.
-
-   Finally, edit `Makefile.am' to add the source file name of your
-routines to the `C_STEPS' or `L_STEPS' macro definition, depending on
-the fact your routines is written in C or in Flex.
-
-
-File: recode.info,  Node: New surfaces,  Next: Design,  Prev: New charsets,  Up: Internals
-
-Adding new surfaces
-===================
-
-   Adding a new surface is technically quite similar to adding a new
-charset.  *Note New charsets::.  A surface is provided as a set of two
-transformations: one from the predefined special charset `data' to the
-new surface, meant to apply the surface, the other from the new surface
-to the predefined special charset `data', meant to remove the surface.
-
-   Internally in `recode', function `declare_step' especially
-recognises when a charset is so related to `data', and then takes
-appropriate actions so that charset gets indeed installed as a surface.
 

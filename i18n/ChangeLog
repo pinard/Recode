@@ -1,25 +1,25 @@
-1999-12-14  Fran.AŽçois Pinard  <pinard@iro.umontreal.ca>
+1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: New file.
 	* Makefile.in.in, POTFILES.in, cat-id-tbl.c, stamp-cat-id: Deleted.
 
-1999-12-13  FranŽçois Pinard  <pinard@iro.umontreal.ca>
+1999-12-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* de.po, pl.po, sv.po: Updated.
 
-1999-11-27  FranŽçois Pinard  <pinard@iro.umontreal.ca>
+1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	* it.po: New file.
 
-1999-06-22  FranŽçois Pinard  <pinard@iro.umontreal.ca>
+1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	* el.po: New file.
 
-1999-06-14  FranŽçois Pinard  <pinard@iro.umontreal.ca>
+1999-06-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* de.po: Updated.
-
-1999-06-01  FranŽçois Pinard  <pinard@iro.umontreal.ca>
+
+1999-06-01  François Pinard  <pinard@iro.umontreal.ca>
 
 	* da.po, es.po, fr.po: Updated.
 

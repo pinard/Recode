@@ -1,5 +1,5 @@
 # Special Makefile for `recode' tables.			-*- Makefile -*-
-# Copyright © 1997, 1998, 1999 Free Software Foundation, Inc.
+# Copyright © 1997, 1998, 1999 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1997.
 
 # This program is free software; you can redistribute it and/or modify
@@ -37,62 +37,79 @@ include Makefile
 ## I do not want to commit myself at maintaining the derivation stuff
 ## at the same level as for the the remainder of `recode'.
 
-MNEMONICS_DS = mnemonic,ds
 CHSET = chset32a
+LIBICONV =
+MAPURL = ftp://ftp.unicode.org/MAPPINGS
+
+MNEMONICS_DS = mnemonic,ds
 ISO10646_DEF = $(CHSET)/iso10646.def
 CHARSETS_DEF = $(CHSET)/charsets.def
+ENCODINGS_DEF = $(top_srcdir)/libiconv/encodings.def
 MNEMONICS_DS = keld-email/mnemonics,ds
 CHARSETS_DEF = keld-email/charsets.def
 NOMS_CARACS = noms_juc_19981216.txt
 
-MAPURL = ftp://ftp.unicode.org/MAPPINGS
 PYTHON = python
 SURF = netscape
 WGET = wget
 
 # Merely add our things to standard `all' goal.
-all: $(srcdir)/charset.texi $(srcdir)/fr-charset.texi \
-$(top_srcdir)/src/charname.h $(top_srcdir)/src/fr-charname.h \
-$(top_srcdir)/src/rfc1345.h
+all: $(srcdir)/libiconv.texi $(srcdir)/rfc1345.texi \
+$(srcdir)/fr-libiconv.texi $(srcdir)/fr-rfc1345.texi \
+$(top_srcdir)/src/libiconv.h $(top_srcdir)/src/rfc1345.h \
+$(top_srcdir)/src/charname.h $(top_srcdir)/src/fr-charname.h
 
-# The next rule, when written:
-#charset.texi pool.c tables.c: ...
+doc-check: all
+	-cd $(top_srcdir)/src && diff -u charname.h{-,}
+	-cd $(top_srcdir)/src && diff -u fr-charname.h{-,}
+	-cd $(top_srcdir)/src && diff -u rfc1345.h{-,}
+	-cd $(top_srcdir)/src && diff -u strip-data.c{-,}
+	-cd $(top_srcdir)/src && diff -u strip-pool.c{-,}
+	-cd $(srcdir) && diff -u libiconv.texi{-,}
+	-cd $(srcdir) && diff -u fr-libiconv.texi{-,}
+	-cd $(srcdir) && diff -u rfc1345.texi{-,}
+	-cd $(srcdir) && diff -u fr-rfc1345.texi{-,}
+
+# The next rules, when written, for example:
+#rfc1345.texi pool.c tables.c: ...
 # may launch many parallel occurrences of the action.  This is bad.
 # Any idea, someone?  For now, just list one of them.
 
-$(srcdir)/charset.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
-	$(PYTHON) $(srcdir)/tables.py -pt \
-	  $(srcdir)/$(MNEMONICS_DS) $(srcdir)/$(CHARSETS_DEF)
-	test $(srcdir) = . || mv charset.texi $@
-	mv strip-pool.c $(top_srcdir)/src/strip-pool.c
-	mv strip-data.c $(top_srcdir)/src/strip-data.c
-
 $(top_srcdir)/src/charname.h: tables.py $(MNEMONICS_DS) rfc1345.txt
-	$(PYTHON) $(srcdir)/tables.py -n \
-	  $(srcdir)/$(MNEMONICS_DS) $(srcdir)/rfc1345.txt
-	mv charname.h $@
-
-$(top_srcdir)/src/rfc1345.h: tables.py $(MNEMONICS_DS)
-	$(PYTHON) $(srcdir)/tables.py -m $(srcdir)/$(MNEMONICS_DS)
-	mv rfc1345.h $@
-
-$(srcdir)/fr-charset.texi: tables.py $(CHARSETS_DEF)
-	$(PYTHON) $(srcdir)/tables.py -Ft $(srcdir)/$(CHARSETS_DEF)
-	test $(srcdir) = . || mv fr-charset.texi $@
+	cd $(srcdir) && $(PYTHON) tables.py -n $(MNEMONICS_DS) rfc1345.txt
+	mv $(srcdir)/charname.h $@
 
 $(top_srcdir)/src/fr-charname.h: tables.py $(NOMS_CARACS)
-	$(PYTHON) $(srcdir)/tables.py -Fn $(srcdir)/$(NOMS_CARACS)
-	mv fr-charname.h $@
+	cd $(srcdir) && $(PYTHON) tables.py -Fn $(NOMS_CARACS)
+	mv $(srcdir)/fr-charname.h $@
+
+$(top_srcdir)/src/libiconv.h: tables.py $(ENCODINGS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -l $(ENCODINGS_DEF)
+	mv $(srcdir)/libiconv.h $@
+
+$(top_srcdir)/src/rfc1345.h: tables.py $(MNEMONICS_DS)
+	cd $(srcdir) && $(PYTHON) tables.py -m $(MNEMONICS_DS)
+	mv $(srcdir)/rfc1345.h $@
+
+$(srcdir)/libiconv.texi: tables.py $(ENCODINGS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -s $(ENCODINGS_DEF)
+
+$(srcdir)/fr-libiconv.texi: tables.py $(ENCODINGS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -Fs $(ENCODINGS_DEF)
+
+$(srcdir)/rfc1345.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -pt $(MNEMONICS_DS) $(CHARSETS_DEF)
+	mv $(srcdir)/strip-pool.c $(top_srcdir)/src/strip-pool.c
+	mv $(srcdir)/strip-data.c $(top_srcdir)/src/strip-data.c
+
+$(srcdir)/fr-rfc1345.texi: tables.py $(CHARSETS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -Ft $(CHARSETS_DEF)
 
 # -----------------------------------#
 # External files built into recode.  #
 # -----------------------------------#
 
-$(srcdir)/rfc1345.txt:
-	$(WGET) ftp://nic.ddn.mil/rfc/rfc1345.txt
-	test $(srcdir) = . || mv rfc1345.txt $@
-
-$(srcdir)/$(CHSET)/charsets.def: $(srcdir)/$(CHSET)
+$(srcdir)/$(CHARSET_DEFS): $(srcdir)/$(CHSET)
 
 $(srcdir)/$(CHSET):
 	mkdir $@-tmp
@@ -105,6 +122,10 @@ $(srcdir)/$(CHSET):
 $(srcdir)/mnemonic,ds:
 	$(WGET) ftp://dkuug.dk/i18n/WG15-collection/repertoiremaps/mnemonic,ds
 	test $(srcdir) = . || mv mnemonic,ds $@
+
+$(srcdir)/rfc1345.txt:
+	$(WGET) ftp://nic.ddn.mil/rfc/rfc1345.txt
+	test $(srcdir) = . || mv rfc1345.txt $@
 
 # -------------------------------------------------#
 # Useful external files, but unbuilt into recode.  #

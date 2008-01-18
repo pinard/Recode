@@ -221,7 +221,334 @@ lines.
      echo -n 0x03C6 | recode u2/x2..dump | tail +3
 
 
-File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: Universal,  Up: Top
+File: recode.info,  Node: libiconv,  Next: Tabular,  Prev: Universal,  Up: Top
+
+The `iconv' library
+*******************
+
+   The `recode' library itself contains most code and tables from the
+portable `iconv' library, written by Bruno Haible.  In fact, many
+capabilities of the `recode' library are duplicated because of this
+merging, as the older `recode' and `iconv' libraries share many
+charsets.  We discuss, here, the issues related to this duplication, and
+other peculiarities specific to the `iconv' library.  The plan is to
+remove duplications and better merge specificities, as `recode' evolves.
+
+   As implemented, if a recoding request can be satisfied by the
+`recode' library both with and without its `iconv' library part, it is
+likely that the `iconv' library will be used.  To sort out if the
+`iconv' is indeed used of not, just use the `-v' or `--verbose' option,
+*note Recoding::.
+
+   The `:libiconv:' charset represents a conceptual pivot charset
+within the `iconv' part of the `recode' library (in fact, this pivot
+exists, but is not directly reachable).  This charset has a mere `:' (a
+colon) for an alias.  It is not allowed to recode from or to this
+charset directly.  But when this charset is selected as an
+intermediate, usually by automatic means, then the `iconv' part of the
+`recode' library is called to handle the transformations.  By using an
+`--ignore=:libiconv:' option on the `recode' call or equivalently, but
+more simply, `-x:', `recode' is instructed to fully avoid this charset
+as an intermediate, with the consequence that the `iconv' part of the
+library is defeated.  Consider these two calls:
+
+     recode l1..1250 < INPUT > OUTPUT
+     recode -x: l1..1250 < INPUT > OUTPUT
+
+Both should transform INPUT from `ISO-8859-1' to `CP1250' on OUTPUT.
+The first call uses the `iconv' part of the library, while the second
+call avoids it.  Whatever the path used, the results should normally be
+identical.  However, there might be observable differences.  Most of
+them might result from reversibility issues, as the `iconv' engine,
+which the `recode' library directly uses for the time being, does not
+address reversibility.  Even if much less likely, some differences
+might result from slight errors in the tables used, such differences
+should then be reported as bugs.
+
+   Other irregularities might be seen in the area of error detection and
+recovery.  The `recode' library usually tries to detect canonicity
+errors in input, and production of ambiguous output, but the `iconv'
+part of the library currently does not.  Input is always validated,
+however.  The `recode' library may not always react properly when its
+`iconv' part has no translation for a given character.
+
+   Within a collection of names for a single charset, the `recode'
+library distinguishes one of them as being the genuine charset name,
+while the others are said to be aliases.  When `recode' lists all
+charsets, for example with the `-l' or `--list' option, the list
+integrates all `iconv' library charsets.  The selection of one of the
+aliases as the genuine charset name is an artifact added by `recode',
+it does not come from `iconv'.  Moreover, the `recode' library
+dynamically resolves some conflicts when it initialises itself at
+runtime.  This might explain some discrepancies in the table below, as
+for what is the genuine charset name.
+
+   * General character sets
+    `US-ASCII'
+          `ASCII', `ISO646-US', `ISO_646.IRV:1991', `ISO-IR-6',
+          `ANSI_X3.4-1968', `CP367', `IBM367', `US' and `CSASCII' are
+          aliases for this charset.
+
+   * General multi-byte encodings
+    `UTF-8'
+
+    `UCS-2'
+          `ISO-10646-UCS-2' and `CSUNICODE' are aliases for this
+          charset.
+
+    `UCS-4'
+          `ISO-10646-UCS-4' and `CSUCS4' are aliases for this charset.
+
+    `UTF-16'
+
+    `UTF-7'
+          `UNICODE-1-1-UTF-7' and `CSUNICODE11UTF7' are aliases for
+          this charset.
+
+    `UCS-2-INTERNAL'
+
+    `UCS-2-SWAPPED'
+
+    `UCS-2-BE'
+          `UNICODEBIG' is an alias for this charset.
+
+    `UCS-2-LE'
+          `UNICODELITTLE' is an alias for this charset.
+
+    `UCS-4-INTERNAL'
+
+    `UCS-4-SWAPPED'
+
+    `UCS-4-BE'
+
+    `UCS-4-LE'
+
+    `JAVA'
+   * Standard 8-bit encodings
+    `ISO-8859-1'
+          `ISO_8859-1', `ISO_8859-1:1987', `ISO-IR-100', `CP819',
+          `IBM819', `LATIN1', `L1' and `CSISOLATIN1' are aliases for
+          this charset.
+
+    `ISO-8859-2'
+          `ISO_8859-2', `ISO_8859-2:1987', `ISO-IR-101', `LATIN2', `L2'
+          and `CSISOLATIN2' are aliases for this charset.
+
+    `ISO-8859-3'
+          `ISO_8859-3', `ISO_8859-3:1988', `ISO-IR-109', `LATIN3', `L3'
+          and `CSISOLATIN3' are aliases for this charset.
+
+    `ISO-8859-4'
+          `ISO_8859-4', `ISO_8859-4:1988', `ISO-IR-110', `LATIN4', `L4'
+          and `CSISOLATIN4' are aliases for this charset.
+
+    `ISO-8859-5'
+          `ISO_8859-5', `ISO_8859-5:1988', `ISO-IR-144', `CYRILLIC' and
+          `CSISOLATINCYRILLIC' are aliases for this charset.
+
+    `ISO-8859-6'
+          `ISO_8859-6', `ISO_8859-6:1987', `ISO-IR-127', `ECMA-114',
+          `ASMO-708', `ARABIC' and `CSISOLATINARABIC' are aliases for
+          this charset.
+
+    `ISO-8859-7'
+          `ISO_8859-7', `ISO_8859-7:1987', `ISO-IR-126', `ECMA-118',
+          `ELOT_928', `GREEK8', `GREEK' and `CSISOLATINGREEK' are
+          aliases for this charset.
+
+    `ISO-8859-8'
+          `ISO_8859-8', `ISO_8859-8:1988', `ISO-IR-138', `HEBREW' and
+          `CSISOLATINHEBREW' are aliases for this charset.
+
+    `ISO-8859-9'
+          `ISO_8859-9', `ISO_8859-9:1989', `ISO-IR-148', `LATIN5', `L5'
+          and `CSISOLATIN5' are aliases for this charset.
+
+    `ISO-8859-10'
+          `ISO_8859-10', `ISO_8859-10:1992', `ISO-IR-157', `LATIN6',
+          `L6' and `CSISOLATIN6' are aliases for this charset.
+
+    `ISO-8859-13'
+          `ISO_8859-13', `ISO-IR-179', `LATIN7' and `L7' are aliases
+          for this charset.
+
+    `ISO-8859-14'
+          `ISO_8859-14', `ISO_8859-14:1998', `LATIN8' and `L8' are
+          aliases for this charset.
+
+    `ISO-8859-15'
+          `ISO_8859-15' and `ISO_8859-15:1998' are aliases for this
+          charset.
+
+    `KOI8-R'
+          `CSKOI8R' is an alias for this charset.
+
+    `KOI8-U'
+
+    `KOI8-RU'
+   * Windows 8-bit encodings
+    `CP1250'
+          `WINDOWS-1250' and `MS-EE' are aliases for this charset.
+
+    `CP1251'
+          `WINDOWS-1251' and `MS-CYRL' are aliases for this charset.
+
+    `CP1252'
+          `WINDOWS-1252' and `MS-ANSI' are aliases for this charset.
+
+    `CP1253'
+          `WINDOWS-1253' and `MS-GREEK' are aliases for this charset.
+
+    `CP1254'
+          `WINDOWS-1254' and `MS-TURK' are aliases for this charset.
+
+    `CP1255'
+          `WINDOWS-1255' and `MS-HEBR' are aliases for this charset.
+
+    `CP1256'
+          `WINDOWS-1256' and `MS-ARAB' are aliases for this charset.
+
+    `CP1257'
+          `WINDOWS-1257' and `WINBALTRIM' are aliases for this charset.
+
+    `CP1258'
+          `WINDOWS-1258' is an alias for this charset.
+
+   * DOS 8-bit encodings
+    `CP850'
+          `IBM850', `850' and `CSPC850MULTILINGUAL' are aliases for
+          this charset.
+
+    `CP866'
+          `IBM866', `866' and `CSIBM866' are aliases for this charset.
+
+   * Macintosh 8-bit encodings
+    `MacRoman'
+          `Macintosh' is an alias for this charset.
+
+    `MacCentralEurope'
+
+    `MacIceland'
+
+    `MacCroatian'
+
+    `MacRomania'
+
+    `MacCyrillic'
+
+    `MacUkraine'
+
+    `MacGreek'
+
+    `MacTurkish'
+
+    `MacHebrew'
+
+    `MacArabic'
+
+    `MacThai'
+   * Other platform specific 8-bit encodings
+    `HP-ROMAN8'
+          `ROMAN8', `R8' and `CSHPROMAN8' are aliases for this charset.
+
+    `NEXTSTEP'
+   * Regional 8-bit encodings used for a single language
+    `ARMSCII-8'
+
+    `Georgian-Academy'
+
+    `Georgian-PS'
+
+    `MuleLao-1'
+
+    `CP1133'
+          `IBM-CP1133' is an alias for this charset.
+
+    `TIS-620'
+          `TIS620', `TIS620-0', `TIS620.2529-1', `TIS620.2533-0',
+          `TIS620.2533-1' and `ISO-IR-166' are aliases for this charset.
+
+    `CP874'
+          `WINDOWS-874' is an alias for this charset.
+
+    `VISCII'
+          `VISCII1.1-1' and `CSVISCII' are aliases for this charset.
+
+    `TCVN'
+          `TCVN-5712', `TCVN5712-1' and `TCVN5712-1:1993' are aliases
+          for this charset.
+
+   * CJK character sets
+    `JIS_X0201'
+          `JISX0201-1976', `JISX0201.1976-0', `X0201' and
+          `CSHALFWIDTHKATAKANA' are aliases for this charset.
+
+    `JIS_X0208'
+          `JIS_X0208.1983-0', `JIS_X0208.1983-1', `JIS_X0208-1983',
+          `JIS_X0208-1990' and `JIS0208' are aliases for this charset.
+
+    `JIS_X0212'
+          `JIS_X0212.1990-0', `JIS_X0212-1990', `X0212', `ISO-IR-159'
+          and `CSISO159JISX02121990' are aliases for this charset.
+
+    `KSC_5601'
+          `KSC5601.1987-0', `KS_C_5601-1987', `KS_C_5601-1989',
+          `ISO-IR-149', `CSKSC56011987', `KOREAN' and `CP949' are
+          aliases for this charset.
+
+   * CJK encodings
+    `EUC-JP'
+          `EUCJP', `EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE' and
+          `CSEUCPKDFMTJAPANESE' are aliases for this charset.
+
+    `SJIS'
+          `SHIFT_JIS', `SHIFT-JIS', `MS_KANJI' and `CSSHIFTJIS' are
+          aliases for this charset.
+
+    `CP932'
+
+    `ISO-2022-JP'
+          `CSISO2022JP' is an alias for this charset.
+
+    `ISO-2022-JP-1'
+
+    `ISO-2022-JP-2'
+          `CSISO2022JP2' is an alias for this charset.
+
+    `EUC-CN'
+          `EUCCN', `GB2312' and `CSGB2312' are aliases for this charset.
+
+    `GBK'
+          `CP936' is an alias for this charset.
+
+    `ISO-2022-CN'
+          `CSISO2022CN' is an alias for this charset.
+
+    `ISO-2022-CN-EXT'
+
+    `HZ'
+          `HZ-GB-2312' is an alias for this charset.
+
+    `EUC-TW'
+          `EUCTW' and `CSEUCTW' are aliases for this charset.
+
+    `BIG5'
+          `BIG-5', `BIG-FIVE', `BIGFIVE' and `CSBIG5' are aliases for
+          this charset.
+
+    `CP950'
+
+    `EUC-KR'
+          `EUCKR' and `CSEUCKR' are aliases for this charset.
+
+    `JOHAB'
+          `CP1361' is an alias for this charset.
+
+    `ISO-2022-KR'
+          `CSISO2022KR' is an alias for this charset.
+
+
+File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: libiconv,  Up: Top
 
 Tabular sources (RFC 1345)
 **************************
@@ -1129,196 +1456,4 @@ sometimes used to delimit them and build physical blocks.  If end of
 lines are not marked, fixed record size may produce something readable,
 but `VB' or `VBS' blocking is likely to yield some garbage in the
 converted results.
-
-
-File: recode.info,  Node: IBM-PC,  Next: Icon-QNX,  Prev: EBCDIC,  Up: IBM and MS
-
-IBM's PC code
-=============
-
-   This charset is available in `recode' under the name `IBM-PC', with
-`dos', `MSDOS' and `pc' as acceptable aliases.  The shortest way of
-specifying it in `recode' is `pc'.
-
-   The charset is aimed towards a PC microcomputer from IBM or any
-compatible.  This is an eight-bit code.  This charset is fairly old in
-`recode', its tables were produced a long while ago by mere inspection
-of a printed chart of the IBM-PC codes and glyph.
-
-   It has `CR-LF' as its implied surface.  This means that, if the
-original end of lines have to be preserved while going out of `IBM-PC',
-they should currently be added back through the usage of a surface on
-the other charset, or better, just never removed.  Here are examples
-for both cases:
-
-     recode pc..l2/cl < INPUT > OUTPUT
-     recode pc/..l2 < INPUT > OUTPUT
-
-   RFC 1345 brings into `recode' 44 `IBM' charsets or code pages, and
-also 8 other code pages.  You can get a list of these all these by
-executing:(1)
-
-     recode -l | egrep -i '(CP|IBM)[0-9]'
-
-All charset or aliases beginning with letters `CP' or `IBM' also have
-`CR-LF' as their implied surface.  The same is true for a purely
-numeric alias in the same family.  For example, all of `819', `CP819'
-and `IBM819' imply `CR-LF' as a surface.  Note that `ISO-8859-1' does
-_not_ imply a surface, despite it shares the same tabular data as `819'.
-
-   There are a few discrepancies between this `IBM-PC' charset and the
-very similar RFC 1345 charset `ibm437', which have not been analysed
-yet, so the charsets are being kept separate for now.  This might
-change in the future, and the `IBM-PC' charset might disappear.
-Wizards would be interested in comparing the output of these two
-commands:
-
-     recode -vh IBM-PC..Latin-1
-     recode -vh IBM437..Latin-1
-
-The first command uses the charset prior to RFC 1345 introduction.
-Both methods give different recodings.  These differences are annoying,
-the fuzziness will have to be explained and settle down one day.
-
-   --------- Notes en bas de page ---------
-
-   (1) On DOS/Windows, stock shells do not know that apostrophes quote
-special characters like `|', so one need to use double quotes instead
-of apostrophes.
-
-
-File: recode.info,  Node: Icon-QNX,  Prev: IBM-PC,  Up: IBM and MS
-
-Unisys' Icon code
-=================
-
-   This charset is available in `recode' under the name `Icon-QNX',
-with `QNX' as an acceptable alias.
-
-   The file is using Unisys' Icon way to represent diacritics with code
-25 escape sequences, under the system QNX.  This is a seven-bit code,
-even if eight-bit codes can flow through as part of IBM-PC charset.
-
-
-File: recode.info,  Node: CDC,  Next: Micros,  Prev: IBM and MS,  Up: Top
-
-Charsets for CDC machines
-*************************
-
-   What is now `recode' evolved out, through many transformations
-really, from a set of programs which were originally written in
-"COMPASS", Control Data Corporation's assembler, with bits in FORTRAN,
-and later rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
-fact some old CDC charsets are still supported.
-
-   The `recode' author used to be familiar with CDC Scope-NOS/BE and
-Kronos-NOS, and many CDC formats.  Reading CDC tapes directly on other
-machines is often a challenge, and `recode' does not always solve it.
-It helps having tapes created in coded mode instead of binary mode, and
-using `S' (Stranger) tapes instead of `I' (Internal) tapes.  ANSI
-labels and multi-file tapes might be the source of trouble.  There are
-ways to handle a few Cyber Record Manager formats, but some of them
-might be quite difficult to decode properly after the transfer is done.
-
-   The `recode' program is usable only for a small subset of NOS text
-formats, and surely not with binary textual formats, like `UPDATE' or
-`MODIFY' sources, for example.  `recode' is not especially suited for
-reading 8/12 or 56/60 packing, yet this could easily arranged if there
-was a demand for it.  It does not have the ability to translate Display
-Code directly, as the ASCII conversion implied by tape drivers or FTP
-does the initial approximation.  `recode' can decode 6/12 caret
-notation over Display Code already mapped to ASCII.
-
-* Menu:
-
-* Display Code::        Control Data's Display Code
-* CDC-NOS::             ASCII 6/12 from NOS
-* Bang-Bang::           ASCII ``bang bang''
-
-
-File: recode.info,  Node: Display Code,  Next: CDC-NOS,  Prev: CDC,  Up: CDC
-
-Control Data's Display Code
-===========================
-
-   This code is not available in `recode', but repeated here for
-reference.  This is a 6-bit code used on CDC mainframes.
-
-     Octal display code to graphic       Octal display code to octal ASCII
-     
-     00  :    20  P    40  5   60  #     00 072  20 120  40 065  60 043
-     01  A    21  Q    41  6   61  [     01 101  21 121  41 066  61 133
-     02  B    22  R    42  7   62  ]     02 102  22 122  42 067  62 135
-     03  C    23  S    43  8   63  %     03 103  23 123  43 070  63 045
-     04  D    24  T    44  9   64  "     04 104  24 124  44 071  64 042
-     05  E    25  U    45  +   65  _     05 105  25 125  45 053  65 137
-     06  F    26  V    46  -   66  !     06 106  26 126  46 055  66 041
-     07  G    27  W    47  *   67  &     07 107  27 127  47 052  67 046
-     10  H    30  X    50  /   70  '     10 110  30 130  50 057  70 047
-     11  I    31  Y    51  (   71  ?     11 111  31 131  51 050  71 077
-     12  J    32  Z    52  )   72  <     12 112  32 132  52 051  72 074
-     13  K    33  0    53  $   73  >     13 113  33 060  53 044  73 076
-     14  L    34  1    54  =   74  @     14 114  34 061  54 075  74 100
-     15  M    35  2    55      75  \     15 115  35 062  55 040  75 134
-     16  N    36  3    56  ,   76  ^     16 116  36 063  56 054  76 136
-     17  O    37  4    57  .   77  ;     17 117  37 064  57 056  77 073
-
-   In older times, `:' used octal 63, and octal 0 was not a character.
-The table above shows the ASCII glyph interpretation of codes 60 to 77,
-yet these 16 codes were once defined differently.
-
-   There is no explicit end of line in Display Code, and the Cyber
-Record Manager introduced many new ways to represent them, the
-traditional end of lines being reachable by setting `RT' to `Z'.  If
-6-bit bytes in a file are sequentially counted from 1, a traditional
-end of line does exist if bytes 10*N+9 and 10N+10 are both zero for a
-given N, in which case these two bytes are not to be interpreted as
-`::'.  Also, up to 9 immediately preceeding zero bytes, going backward,
-are to be considered as part of the end of line and not interpreted as
-`:'(1).
-
-   --------- Notes en bas de page ---------
-
-   (1) This convention replaced an older one saying that up to 4
-immediately preceeding _pairs_ of zero bytes, going backward, are to be
-considered as part of the end of line and not interpreted as `::'.
-
-
-File: recode.info,  Node: CDC-NOS,  Next: Bang-Bang,  Prev: Display Code,  Up: CDC
-
-ASCII 6/12 from NOS
-===================
-
-   This charset is available in `recode' under the name `CDC-NOS', with
-`NOS' as an acceptable alias.
-
-   This is one of the charsets in use on CDC Cyber NOS systems to
-represent ASCII, sometimes named "NOS 6/12" code for coding ASCII.
-This code is also known as "caret ASCII".  It is based on a six bits
-character set in which small letters and control characters are coded
-using a `^' escape and, sometimes, a `@' escape.
-
-   The routines given here presume that the six bits code is already
-expressed in ASCII by the communication channel, with embedded ASCII
-`^' and `@' escapes.
-
-   Here is a table showing which characters are being used to encode
-each ASCII character.
-
-     000  ^5  020  ^#  040     060  0  100 @A  120  P  140  @G  160  ^P
-     001  ^6  021  ^[  041  !  061  1  101  A  121  Q  141  ^A  161  ^Q
-     002  ^7  022  ^]  042  "  062  2  102  B  122  R  142  ^B  162  ^R
-     003  ^8  023  ^%  043  #  063  3  103  C  123  S  143  ^C  163  ^S
-     004  ^9  024  ^"  044  $  064  4  104  D  124  T  144  ^D  164  ^T
-     005  ^+  025  ^_  045  %  065  5  105  E  125  U  145  ^E  165  ^U
-     006  ^-  026  ^!  046  &  066  6  106  F  126  V  146  ^F  166  ^V
-     007  ^*  027  ^&  047  '  067  7  107  G  127  W  147  ^G  167  ^W
-     010  ^/  030  ^'  050  (  070  8  110  H  130  X  150  ^H  170  ^X
-     011  ^(  031  ^?  051  )  071  9  111  I  131  Y  151  ^I  171  ^Y
-     012  ^)  032  ^<  052  *  072 @D  112  J  132  Z  152  ^J  172  ^Z
-     013  ^$  033  ^>  053  +  073  ;  113  K  133  [  153  ^K  173  ^0
-     014  ^=  034  ^@  054  ,  074  <  114  L  134  \  154  ^L  174  ^1
-     015  ^   035  ^\  055  -  075  =  115  M  135  ]  155  ^M  175  ^2
-     016  ^,  036  ^^  056  .  076  >  116  N  136 @B  156  ^N  176  ^3
-     017  ^.  037  ^;  057  /  077  ?  117  O  137  _  157  ^O  177  ^4
 
