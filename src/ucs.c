@@ -620,3 +620,8 @@ module_ucs (RECODE_OUTER outer)
 
     && declare_alias (outer, "co", "combined-UCS-2");
 }
+
+void
+delmodule_ucs (RECODE_OUTER outer)
+{
+}

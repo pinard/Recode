@@ -767,6 +767,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 
   {
     const char *user_request = argv[optind++];
+    char *rewritten_request = NULL;
     const char *colon = strchr (user_request, ':');
 
     /* Try to detect old syntax, that is, no `..' and a single `:'.  In such
@@ -782,10 +783,10 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 
 	if (!*cursor)
 	  {
-	    char *rewritten_request = (char *)
-	      xmalloc (strlen (user_request) + 2);
-	    char *cursor2 = rewritten_request;
+	    char *cursor2;
 
+	    rewritten_request = (char *) xmalloc (strlen (user_request) + 2);
+	    cursor2 = rewritten_request;
 	    for (cursor = user_request; *cursor != ':'; cursor++)
 	      *cursor2++ = *cursor;
 	    *cursor2++ = '.';
@@ -803,6 +804,8 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 
     if (!recode_scan_request (request, user_request))
       error (EXIT_FAILURE, 0, _("Request `%s' is erroneous"), user_request);
+    if (rewritten_request)
+      free (rewritten_request);
   }
 
   /* If we merely want source code, do it and get out.  */

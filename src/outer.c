@@ -432,6 +432,7 @@ estimate_single_cost (RECODE_OUTER outer, RECODE_SINGLE single)
 
 #include "decsteps.h"
 bool module_libiconv PARAMS ((struct recode_outer *));
+void delmodule_libiconv PARAMS ((struct recode_outer *));
 
 
 static bool
@@ -513,6 +514,12 @@ register_all_modules (RECODE_OUTER outer)
 
   return true;
 }
+
+void static
+unregister_all_modules (RECODE_OUTER outer)
+{
+#include "tersteps.h"
+}
 
 /* Library interface.  */
 
@@ -584,6 +591,7 @@ recode_new_outer (bool auto_abort)
 bool
 recode_delete_outer (RECODE_OUTER outer)
 {
+  unregister_all_modules (outer);
   /* FIXME: Pawel Krawczyk reports that calling new_outer ... delete_outer
      20000 times in a program has the effect of consuming all virtual memory.
      So there might be memory leaks should to track down and resolve.  */
@@ -606,13 +614,11 @@ recode_delete_outer (RECODE_OUTER outer)
   if (outer->pair_restriction)
     free (outer->pair_restriction);
   if (outer->alias_table)
-    free (outer->alias_table);
+    hash_free (outer->alias_table);
   if (outer->argmatch_charset_array)
     free (outer->argmatch_charset_array);
-#if 0
   if (outer->one_to_same)
-    free (outer->one_to_same);
-#endif
+    free ((void *) outer->one_to_same);
   free (outer);
   return true;
 }

@@ -1,3 +1,55 @@
+2000-08-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* html.c: Add XML-standalone, and h0 for an alias.
+	Reported by Frederic Gobry.
+
+2000-08-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* html.c (transform_ucs2_html): Correctly encode decimal values.
+	Reported by Daniel Taupin.
+
+2000-07-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Free the rewritten request after decoding it.
+
+	* task.c (recode_new_task): Return NULL, not false.
+	Reported by Jim Meyering.
+
+2000-06-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* libiconv.c (transform_with_libiconv): Allocate a second iconv_t,
+	converting to UTF-8.  Pass it to wrapped_transform.
+	(wrapped_transform): Add a conversion_to_utf8 argument.  Set
+	transliteration off at the beginning, and enable it when
+	necessary.  Add assertions.  Better EILSEQ treatment.  Implement
+	E2BIG and EINVAL treatment.  In case of unknown error, complain
+	with RECODE_SYSTEM_ERROR, not RECODE_INVALID_INPUT.  At EOF, don't
+	forget to drain the buffers and return to the initial state.
+
+2000-06-29  François Pinard  <pinard@iro.umontreal.ca>
+
+	Prepare for further plugging of memory leaks.
+	* outer.c (unregister_all_modules): New function.
+	(recode_delete_outer): Call it.
+	* afrtran.c, african.c, cdcnos.c, bangbang.c, testdump.c,
+	rfc1345.c, libiconv.c, flat.c, base64.c, dump.c, ebcdic.c, ucs.c,
+	utf7.c, atarist.c, lat1ltex.c, texinfo.c, iconqnx.c, lat1txte.c,
+	mule.c, applemac.c, ibmpc.c, lat1asci.c, varia.c, html.c,
+	endline.c, utf8.c, vn.c, utf16.c, permut.c, quoted.c, txtelat1.l,
+	ltexlat1.l, ascilat1.l: Add delmodule_* functions, all empty for now.
+	* Makefile.am (stamp-steps): Prepare tersteps.h, adjust decsteps.h.
+
+2000-06-29  Andreas Schwab  <schwab@suse.de>
+
+	Plug some of the memory leaks in the library.
+	* combine.c (state_free): New function.
+	(init_combine): Use it to free hash table entries after use.
+	* names.c (prepare_for_names): Free hash table entries after use.
+	* outer.c (recode_delete_outer): Fix clean-up code.
+	* recode.c (init_ucs2_to_byte): Free hash table after use.
+	* testdump.c (produce_count): Free hash table entries and the table
+	itself after use.  Fix clean-up code.
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* task.c: Insert union wait portability from GNU make.
@@ -147,7 +199,7 @@
 	(recode_accumulated): Merges previous plumb_buffer_to_output,
 	a call to recode_perform_task, and previous plumb_input_to_output.
 	Usages adjusted accordingly.
-
+
 1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconv.c: New file, from Bruno Haible's libiconv 0.2.

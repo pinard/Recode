@@ -108,7 +108,7 @@ prepare_for_aliases (RECODE_OUTER outer)
   outer->number_of_symbols = 0;
 
   outer->alias_table
-    = hash_initialize (800, NULL, alias_hasher, alias_comparator, NULL);
+    = hash_initialize (800, NULL, alias_hasher, alias_comparator, free);
   if (!outer->alias_table)
     return false;
 

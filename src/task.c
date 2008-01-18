@@ -1048,7 +1048,7 @@ recode_new_task (RECODE_CONST_REQUEST request)
   RECODE_TASK task;
 
   if (!ALLOC (task, 1, struct recode_task))
-    return false;
+    return NULL;
 
   memset (task, 0, sizeof (struct recode_task));
   task->request = request;

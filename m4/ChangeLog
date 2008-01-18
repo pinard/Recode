@@ -12,7 +12,7 @@
 2000-01-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* lcmessage.m4: New, from elsewhere.
-
+
 1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: Adapt to the gettext scheme used in wdiff.

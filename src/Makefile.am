@@ -63,20 +63,26 @@ LEX = @LEX@
 PERL = perl
 PYTHON = python
 
-$(srcdir)/decsteps.h $(srcdir)/inisteps.h: stamp-steps
+$(srcdir)/decsteps.h: stamp-steps
 stamp-steps: $(C_STEPS) merged.c
-	@echo "Updating decsteps.h and inisteps.h"
+	@echo "Updating {dec,ini,ter}steps.h"
 	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS) merged.c ) \
 	    | sed 's/ .*//' > liste.tmp
 	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/' \
 	    liste.tmp > decsteps.tmp
+	@sed 's/\(.*\)/void del\1 PARAMS ((struct recode_outer *));/' \
+	    liste.tmp >> decsteps.tmp
 	@sed 's/\(.*\)/  if (!\1 (outer)) return false;/' \
 	    liste.tmp > inisteps.tmp
+	@sed 's/\(.*\)/  del\1 (outer);/' \
+	    liste.tmp > tersteps.tmp
 	@rm liste.tmp
 	@if cmp -s $(srcdir)/decsteps.h decsteps.tmp; then rm decsteps.tmp; \
 	else mv decsteps.tmp $(srcdir)/decsteps.h; fi
 	@if cmp -s $(srcdir)/inisteps.h inisteps.tmp; then rm inisteps.tmp; \
 	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
+	@if cmp -s $(srcdir)/tersteps.h tersteps.tmp; then rm tersteps.tmp; \
+	else mv tersteps.tmp $(srcdir)/tersteps.h; fi
 	@echo timestamp > $(srcdir)/stamp-steps
 
 main.o: main.c ../config.status

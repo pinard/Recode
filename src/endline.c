@@ -168,3 +168,8 @@ module_endline (RECODE_OUTER outer)
 
     && declare_alias (outer, "cl", "CR-LF");
 }
+
+void
+delmodule_endline (RECODE_OUTER outer)
+{
+}
