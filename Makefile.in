@@ -1,0 +1,273 @@
+# Makefile for GNU recode.
+# Copyright (C) 1991, 1992, 1993, 1994 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1988.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+PRODUCT = @PRODUCT@
+VERSION = @VERSION@
+
+SHELL = /bin/sh
+srcdir = @srcdir@
+VPATH = @srcdir@
+
+# These CFLAGS values are not auto-configured:
+# -DDIFF_HASH		For using GNU diff's hash algorithm instead.
+# -DHASH_STATS		For printing a one-liner hash statistics.
+
+MSDOS_PROGS = recode
+MSDOS_CC = tcc -v -N -mh
+ZOOFILE = rec332as.zoo
+
+AR = ar
+AWK = @AWK@
+CC = @CC@
+CFLAGS = @CFLAGS@
+CPPFLAGS = @CPPFLAGS@
+DEFS = @DEFS@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+LDFLAGS = @LDFLAGS@
+LEX = @LEX@
+LIBS = @LIBS@
+MAKEINFO = makeinfo
+RANLIB = @RANLIB@
+TEXI2DVI = texi2dvi
+
+prefix = @prefix@
+exec_prefix = @exec_prefix@
+transform = @program_transform_name@
+bindir = $(exec_prefix)/bin
+infodir = $(prefix)/info
+
+COMPILE = $(CC) -c $(DEFS) $(INCLUDES) $(CPPFLAGS) $(CFLAGS)
+LINK = $(CC) $(LDFLAGS) -o $@
+
+.SUFFIXES:
+.SUFFIXES: .c .o
+.c.o:
+	$(COMPILE) $<
+
+ANSI2KNR = @ANSI2KNR@
+O = .@U@o
+
+.SUFFIXES: ._c ._o
+.c._c:
+	./ansi2knr $< > $@
+._c._o:
+	@echo $(COMPILE) $<
+	@rm -f _$*.c
+	@ln $< _$*.c && $(COMPILE) _$*.c && mv _$*.o $@ && rm _$*.c
+.c._o:
+	./ansi2knr $< > $*._c
+	@echo $(COMPILE) $*._c
+	@rm -f _$*.c
+	@ln $*._c _$*.c && $(COMPILE) _$*.c && mv _$*.o $@ && rm _$*.c
+
+INCLUDES = -I. -I$(srcdir)
+
+HEADERS = recode.h charname.h
+SOURCES = recode.c charname.c charset.c $(C_STEPS) $(L_STEPS)
+OBJECTS = recode$O charname$O charset$O $(STEPOBJS)
+LIBHDRS = getopt.h pathmax.h
+LIBSRCS = argmatch.c getopt.c getopt1.c error.c xmalloc.c xstrdup.c
+LIBOBJS = argmatch.o getopt.o getopt1.o error.o xmalloc.o xstrdup.o
+
+L_STEPS = ascilat1.l htmllat1.l ltexlat1.l txtelat1.l
+C_STEPS = \
+charset1.c charset2.c applemac.c atarist.c bangbang.c cdcnos.c \
+ebcdic.c flat.c ibmpc.c iconqnx.c lat1asci.c lat1html.c lat1ltex.c \
+lat1txte.c next.c 
+STEPOBJS = merged$O \
+charset1$O charset2$O applemac$O atarist$O bangbang$O cdcnos$O \
+ebcdic$O flat$O ibmpc$O iconqnx$O lat1asci$O lat1html$O lat1ltex$O \
+lat1txte$O next$O 
+
+DISTFILES = README NEWS TODO THANKS COPYING INSTALL ChangeLog \
+configure.in acconfig.h aclocal.m4 mkinstalldirs install-sh \
+Makefile.in mergelex.awk recode.texi File-Latin1 \
+$(HEADERS) $(SOURCES) $(LIBHDRS) $(LIBSRCS) checkit \
+ansi2knr.c ansi2knr.1 c-boxes.el texinfo.tex \
+rfc1345.txt charname.sed charname.pl charset.sed charset.pl \
+README.DOS configdos dosfn config.h.dos Makefile.os2 config_h.os2 \
+stamp-h.in config.h.in configure stamp-vti version.texi charset.texi \
+recode.info stamp-init initstep.h merged.c TAGS BACKLOG
+
+all: recode.info recode
+
+info: recode.info
+
+recode.info: recode.texi charset.texi version.texi
+	cd $(srcdir) && $(MAKEINFO) --no-split recode.texi
+
+dvi: recode.dvi
+
+recode.dvi: recode.texi
+	$(TEXI2DVI) $(srcdir)/recode.texi
+
+version.texi: stamp-vti
+stamp-vti: recode.texi configure.in
+	echo "@set EDITION $(VERSION)" > version.tmp
+	echo "@set UPDATED `date '+%B %Y'`" >> version.tmp
+	echo "@set VERSION $(VERSION)" >> version.tmp
+	if cmp -s version.tmp $(srcdir)/version.texi; then rm version.tmp; \
+	else mv version.tmp $(srcdir)/version.texi; fi
+	date > $(srcdir)/stamp-vti
+
+recode: initstep.h $(OBJECTS) librec.a
+	$(LINK) $(OBJECTS) librec.a $(LIBS)
+
+initstep.h: stamp-init
+stamp-init: $(C_STEPS) merged.c
+	@echo "updating initstep.h"
+	@(cd $(srcdir) && sed -n 's/^\(module_[^ ]*\).*/  \1 ();/p' \
+	  $(C_STEPS) merged.c ) > initstep.tmp
+	@if cmp -s $(srcdir)/initstep.h initstep.tmp; then rm initstep.tmp; \
+	else mv initstep.tmp $(srcdir)/initstep.h; fi
+	date > $(srcdir)/stamp-init
+
+merged.c: mergelex.awk $(L_STEPS)
+	(cd $(srcdir) \
+	  && $(AWK) -f mergelex.awk $(L_STEPS)
+	  && rm merged1.tmp merged2.tmp merged3.tmp) > merged.tmp1
+	$(LEX) -t8 merged.tmp1 > merged.tmp2
+	grep -v '^# *line [0-9]' merged.tmp2 > $(srcdir)/merged.c
+	rm merged.tmp1 merged.tmp2
+
+charname.h: charname.sed charname.pl rfc1345.txt
+	cd $(srcdir) && sed -n -f charname.sed rfc1345.txt | perl charname.pl
+
+charset1.c charset2.c charset.texi: charset.sed charset.pl rfc1345.txt
+	cd $(srcdir) && sed -n -f charset.sed rfc1345.txt | perl charset.pl
+
+$(OBJECTS): $(ANSI2KNR) config.h
+recode$O charname$O charset$O $(STEPOBJS): recode.h
+recode$O: initstep.h getopt.h
+charname$O: charname.h
+
+ansi2knr: ansi2knr.o
+	$(LINK) ansi2knr.o $(LIBS)
+
+librec.a: $(LIBOBJS)
+	rm -f librec.a
+	$(AR) cru librec.a $(LIBOBJS)
+	$(RANLIB) librec.a
+
+$(LIBOBJS): config.h
+getopt.o getopt1.o: getopt.h
+
+CHECKING = @$(srcdir)/checkit $(srcdir)/COPYING
+
+check: recode
+	@./recode --version
+	$(CHECKING) texte texte
+	$(CHECKING) texte latin1
+	$(CHECKING) texte ibmpc
+	$(CHECKING) texte iconqnx
+	$(CHECKING) texte bangbang
+	$(CHECKING) ascii-bs ebcdic
+	@echo "All checks completed successfully."
+
+autocheck:
+	@echo "The following test may take part of an hour.  Be patient."
+	@(./recode --auto-check | grep UNACH | grep -v '^flat') || exit 0
+
+install: all
+	$(srcdir)/mkinstalldirs $(bindir) $(infodir)
+	$(INSTALL_PROGRAM) recode $(bindir)/`echo recode | sed '$(transform)'`
+	$(INSTALL_DATA) $(srcdir)/recode.info $(infodir)/recode.info
+
+uninstall:
+	rm -f $(bindir)/`echo recode | sed '$(transform)'`
+	rm -f $(infodir)/recode.info
+
+tags: TAGS
+
+TAGS: $(HEADERS) $(SOURCES) $(LIBHDRS) $(LIBSRCS)
+	cd $(srcdir) && etags $(HEADERS) $(SOURCES) $(LIBHDRS) $(LIBSRCS)
+
+mostlyclean:
+	rm -f *.aux *.cp *.cps *.dvi *.fn *.fns *.ky *.log *.pg *.toc *.tp *.vr
+	rm -f *.a *.o *._c *._o core core.*
+	rm -f *.tmp yy.tab.*
+
+clean: mostlyclean
+	rm -f recode
+
+distclean: clean
+	rm -f ansi2knr
+	rm -f Makefile config.cache config.h config.log stamp-h config.status
+
+realclean: distclean
+	rm -f stamp-vti version.texi charset.texi recode.info
+	rm -f stamp-init initstep.h charset1.c charset2.c charname.h merged.c
+	rm -f TAGS
+
+dist: $(DISTFILES)
+	rm -rf $(PRODUCT)-$(VERSION)
+	mkdir $(PRODUCT)-$(VERSION)
+	chmod 777 $(PRODUCT)-$(VERSION)
+	@echo "Copying distribution files"
+	@for file in $(DISTFILES); do \
+	  ln $(srcdir)/$$file $(PRODUCT)-$(VERSION) 2> /dev/null \
+	    || cp -p $(srcdir)/$$file $(PRODUCT)-$(VERSION); \
+	done
+	chmod -R a+r $(PRODUCT)-$(VERSION)
+	tar chozf $(PRODUCT)-$(VERSION).tar.gz $(PRODUCT)-$(VERSION)
+	rm -rf $(PRODUCT)-$(VERSION)
+
+distdos: $(DISTFILES) recode
+	rm -rf distdos
+	rm -f $(ZOOFILE)
+	mkdir distdos
+	@echo "Copying distribution files"
+	@cp -p $(DISTFILES) distdos
+	./configdos -tcc > distdos/Makefile
+	cp -p config.h.dos distdos/config.h
+	for name in $(LIBOBJS); do \
+	  echo $$name | sed 's/^/+ /;s/$$/bj \&/' >> distdos/libobjs.lst; \
+	done
+	echo , >> distdos/libobjs.lst
+	for name in $(OBJECTS); do \
+	  echo $$name | sed 's/$$/bj/' >> distdos/objects.lst; \
+	done
+	find distdos -type f | xargs chmod +w
+	find distdos -type f | xargs ./dosfn
+	find distdos -type f | xargs ./recode -v :ibmpc
+	find distdos -type f | zoo ahI $(ZOOFILE)
+	rm -rf distdos
+
+# For an explanation of the following Makefile rules, see node
+# `Automatic Remaking' in GNU Autoconf documentation.
+Makefile: Makefile.in config.status
+	CONFIG_FILES=$@ CONFIG_HEADERS= ./config.status
+config.status: configure
+	./config.status --recheck
+configure: configure.in aclocal.m4
+	cd $(srcdir) && autoconf
+
+config.h: stamp-h
+stamp-h: config.h.in config.status
+	CONFIG_FILES= CONFIG_HEADERS=config.h ./config.status
+	date > stamp-h
+config.h.in: stamp-h.in
+stamp-h.in: configure.in aclocal.m4 acconfig.h
+	cd $(srcdir) && autoheader
+	date > $(srcdir)/stamp-h.in
+
+# Tell versions [3.59,3.63) of GNU make not to export all variables.
+# Otherwise a system limit (for SysV at least) may be exceeded.
+.NOEXPORT:

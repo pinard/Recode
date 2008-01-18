@@ -1,0 +1,99 @@
+#!/usr/bin/perl -s
+eval "exec /usr/bin/perl -s -S $0 $*"
+    if $running_under_some_shell;
+
+# Turn the given filenames into MSDOS filenames by renaming them.
+# Copyright (C) 1992, 1993, 1994 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1992.
+
+# Usage: $0 [-tcc] [FILE]...
+
+if ($ARGV[0] eq "-v")
+{
+    $verbose = 1;
+    shift @ARGV;
+}
+
+while ($oldname = shift @ARGV)
+{
+    $newname = &dosfn ($oldname);
+    if ($newname ne $oldname)
+    {
+	warn "Renaming `$oldname' to `$newname'\n" if $verbose;
+	rename ($oldname, $newname)
+	    || warn "WARNING: Could not rename `$oldname' to `$newname'\n";
+    }
+}
+
+# Turn the argument into an MSDOS file name.
+# Copyright (C) 1992, 1993, 1994 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1992.
+
+# Predefine $tcc if necessary.
+
+sub dosfn
+{
+    local ($whole, $prefix, $name, $ext);
+
+    $whole = $_[0];
+    $whole =~ y/A-Z/a-z/;
+
+    # Change any beginning period with an underline.
+
+    $whole =~ s/^\./_/;
+
+    # Change all periods except the last with underlines.
+
+    while ($whole =~ /(.*)\.(.*)\.(.*)/)
+    {
+	$whole = "$1_$2.$3";
+    }
+
+    # If no period at all, let flow characters after the 8th into the
+    # the extension.
+
+    if ($whole =~ /^(.*\/)?([^.\/]+)$/)
+    {
+	($prefix, $name, $ext) = ($1, $2, "");
+	if (length ($name) > 8)
+	{
+	    $ext = substr ($name, 8);
+	    $name = substr ($name, 0, 8);
+	    $ext = substr ($ext, 0, 3) if length ($ext) > 3;
+	    return "$prefix$name.$ext";
+	}
+	return "$prefix$name";
+    }
+
+    # There is only one period, truncate to 8 characters before it and
+    # to 3 characters after it.
+
+    if ($whole =~ /^(.*\/)?([^.\/]+)\.([^.\/]+)$/)
+    {
+	($prefix, $name, $ext) = ($1, $2, $3);
+	$name = substr ($name, 0, 8) if length ($name) > 8;
+	if ($ext eq "a" && $tcc)
+	{
+	    $ext = "lib";
+	}
+	elsif ($ext eq "o" && $tcc)
+	{
+	    $ext = "obj";
+	}
+	elsif ($ext eq "texi" || $ext eq "texinfo")
+	{
+	    $ext = "ti";
+	}
+	elsif (length ($ext) > 3)
+	{
+	    $ext = substr ($ext, 0, 3);
+	}
+	return "$prefix$name.$ext";
+    }
+
+    # This should not happen.
+
+    warn "Error in dosfn.pl for \`$_[0]'\n";
+    return $_[0];
+}
+

@@ -1,0 +1,70 @@
+/* config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* Define if on AIX 3.
+   System headers sometimes define this.
+   We just want to avoid a redefinition error message.  */
+#ifndef _ALL_SOURCE
+#undef _ALL_SOURCE
+#endif
+
+/* Define to empty if the keyword does not work.  */
+#undef const
+
+/* Define if you don't have vprintf but do have _doprnt.  */
+#undef HAVE_DOPRNT
+
+/* Define if you have the vprintf function.  */
+#undef HAVE_VPRINTF
+
+/* Define if on MINIX.  */
+#undef _MINIX
+
+/* Define if the system does not provide POSIX.1 features except
+   with this defined.  */
+#undef _POSIX_1_SOURCE
+
+/* Define if you need to in order for stat and other things to work.  */
+#undef _POSIX_SOURCE
+
+/* Define as the return type of signal handlers (int or void).  */
+#undef RETSIGTYPE
+
+/* Define if you have the ANSI C header files.  */
+#undef STDC_HEADERS
+
+/* Default charset is `Latin-1' on UNIX, `IBM-PC' on MSDOS.  */
+#undef DEFAULT_CHARSET
+
+/* Define to the name of the distribution.  */
+#undef PRODUCT
+
+/* Define to 1 if ANSI function prototypes are usable.  */
+#undef PROTOTYPES
+
+/* Define to the version of the distribution.  */
+#undef VERSION
+
+/* Define to 1 for better use of the debugging malloc library.  See 
+   site ftp.antaire.com in antaire/src, file dmalloc/dmalloc.tar.gz.  */
+#undef WITH_DMALLOC
+
+/* Define if you have the dup2 function.  */
+#undef HAVE_DUP2
+
+/* Define if you have the pipe function.  */
+#undef HAVE_PIPE
+
+/* Define if you have the popen function.  */
+#undef HAVE_POPEN
+
+/* Define if you have the rename function.  */
+#undef HAVE_RENAME
+
+/* Define if you have the strerror function.  */
+#undef HAVE_STRERROR
+
+/* Define if you have the <limits.h> header file.  */
+#undef HAVE_LIMITS_H
+
+/* Define if you have the <string.h> header file.  */
+#undef HAVE_STRING_H

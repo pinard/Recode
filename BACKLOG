@@ -1,0 +1,167 @@
+# Summary of pending email for GNU recode 3.4.
+# Last updated: Sunday, November 06, 1994.
+
+rmail/announce
+ 1. 31 Oct 94 <pinard> recode 3.3.2 en pretest
+ 2. 31 Oct 94 <pinard@IRO.UMontreal.CA> Prerelease: GNU recode 3.3.2
+
+rmail/charsets/backspace
+ 1. 11 Oct 94 <mike@vlsivie.tuwien.ac.at> Re: recode
+
+rmail/charsets/easy-french
+ 1. 18 Aug 94 <pinard@IRO.UMontreal.CA> Re: Japanese names
+
+rmail/charsets/ebcdic
+ 1. 31 Aug 90 <keld@login.dkuug.dk> [comp.unix.questions] Re: EBCDIC to ASCII c
+ 2. 02 Oct 90 <jeffb@blia.BLI.COM> Re: EBCDIC <--> ASCII conversion
+ 3. 03 Oct 90 <luke@modus.sublink.ORG> Re: EBCDIC <--> ASCII conversion
+ 4. 22 Oct 90 <exspes@gdr.bath.ac.uk> Re: EBCDIC <--> ASCII conversion
+ 5. 24 Oct 90 <meissner@osf.org> Re: EBCDIC <--> ASCII conversion
+ 6. 26 Oct 90 <ok@goanna.cs.rmit.oz.au> Re: EBCDIC <--> ASCII conversion
+ 7. 26 Oct 90 <henry@zoo.toronto.edu> Re: EBCDIC <--> ASCII conversion
+ 8. 27 Mar 91 <mcastle@mcs213c.cs.umr.edu> Re: COMPRESSING of binary data into 
+ 9. 06 Dec 93 <rocky@watson.ibm.com> ascii <-> ebcdic
+10. 06 Dec 93 <rocky@watson.ibm.com> ascii <-> ebcdic
+11. 11 Dec 93 <pinard> ascii <-> ebcdic
+12. 31 Dec 93 <mike@mo.math.nat.tu-bs.de> recode-3.3
+13. 25 Aug 94 <dorre@well.sf.ca.us> Re: Latin American/Spanish EBCDIC character
+14. 26 Aug 94 <EURMXK@vm.sas.com> Re: Latin American/Spanish EBCDIC character s
+15. 26 Aug 94 <x15@aixterm2.urz.uni-heidelberg.de> Re: Latin American/Spanish E
+16. 29 Aug 94 <ALB@immedia.ca> Latin American EBCDIC
+17. 30 Aug 94 <EURMXK@MVS.SAS.COM> Re: Latin American EBCDIC
+
+rmail/charsets/html
+ 1. 19 Mar 94 <lebel@iro.umontreal.ca> HTML... 
+ 2. 25 May 94 <Christian.Rolland@irisa.fr> recode new charset
+ 3. 25 May 94 <Christian.Rolland@irisa.fr> lat1ent.c
+ 4. 25 May 94 <Christian.Rolland@irisa.fr> entlat1.l
+ 5. 25 May 94 <pinard@IRO.UMontreal.CA> Re: recode new charset
+ 6. 26 May 94 <Christian.Rolland@irisa.fr> Re: recode new charset
+ 7. 26 May 94 <pinard@IRO.UMontreal.CA> Re: recode new charset
+ 8. 26 May 94 <Christian.Rolland@irisa.fr> Re: recode new charset
+ 9. 08 Sep 94 <lebel@IRO.UMontreal.CA> Annonce: texi2html-1.20
+10. 28 Mar 94 <news@usage.csd.unsw.OZ.AU> Re: manpage to HTML converter/gateway
+11. 15 Jul 94 <cameron@cse.unsw.edu.au> Re: Using perl to parse HTML - help!
+12. 16 Jul 94 <gl8f@fermi.clas.Virginia.EDU> Re: Using perl to parse HTML - hel
+13. 28 Aug 94 <iwj10@cus.cam.ac.uk> HTML FAQ now available / Forgery recently p
+
+rmail/charsets/latex
+ 1. 30 Oct 92 <pierre.darmon%acc1bbs@ssr.com> Re: How to make the "degree" symb
+ 2. 02 Nov 92 <DL24794@UAFSYSB.UARK.EDU> degree symbol
+ 3. 18 Nov 92 <iad@cogsci.ed.ac.uk> Re: \b \d and ISO 6937 Latin Diacriticals
+ 4. 09 Mar 93 <abraham@research.att.com> Latin 1 to LaTeX table
+ 5. 02 Dec 93 <pinard> recode
+ 6. 06 Dec 93 <volker@numsun1.mathematik.uni-halle.de> Re: recode
+ 7. 11 Dec 93 <pinard> GNU recode 3.2.9
+ 8. 12 Dec 93 <abraham@research.att.com> Re: GNU recode 3.2.9
+ 9. 03 Mar 93 <pflynn@curia.ucc.ie> Re: TeX to Latin 1 table
+10. 25 Jul 94 <davleeuwen%tm.tno.nl@Lightning.McRCIM.McGill.EDU> --diacritics, 
+
+rmail/charsets/morse
+ 1. 04 May 94 <pinard> Re: comment on morse and unmose
+
+rmail/charsets/rfc1345
+ 1. 20 Mar 94 <pinard> RFC 1345 out of recode
+ 2. 20 Mar 94 <keld@dkuug.dk> Re: RFC 1345 out of recode
+ 3. 01 Nov 94 <czyborra@cs.tu-berlin.de> Re: Prerelease: GNU recode 3.3.2
+ 4. 01 Nov 94 <czyborra@cs.tu-berlin.de> Re: Prerelease: GNU recode 3.3.2
+
+rmail/languages/esperanto
+ 1. 02 Aug 92 <jkp@cs.HUT.FI> MATERIAL: Esperanto in 7-bit ASCII
+ 2. 02 Aug 92 <jkp@cs.HUT.FI> [repost] MATERIAL: TOOLS Roman (including Esperan
+ 3. 10 Aug 92 <richwing@leland.Stanford.EDU> Re: MATERIAL: Esperanto in 7-bit A
+ 4. 28 Apr 93 <kingdon@cygnus.com> Changes to recode for Esperanto
+ 5. 06 Dec 93 <pinard> Changes to recode for Esperanto
+ 6. 16 Dec 93 <keld@dkuug.dk> Re: Esperanto, Latin-3 and 1620
+ 7. 23 Dec 93 <kingdon@cygnus.com> Changes to recode for Esperanto
+ 8. 13 Jan 94 <hansen@forwiss.uni-passau.de> Re: Suggestions for `recode'
+ 9. 13 Jan 94 <hansen@forwiss.uni-passau.de> Re: Suggestions for `recode'
+
+rmail/languages/german
+ 1. 09 Jan 94 <hansen@forwiss.uni-passau.de> Suggestions for `recode'
+ 2. 11 Jan 94 <pinard@iro.umontreal.ca> Suggestions for `recode'
+ 3. 12 Jan 94 <hansen@forwiss.uni-passau.de> Re: Suggestions for `recode'
+ 4. 12 Jan 94 <pinard@iro.umontreal.ca> shar: diac.tar.gz
+ 5. 12 Jan 94 <pinard@iro.umontreal.ca> Re: Suggestions for `recode'
+ 6. 09 Jan 94 <hansen@forwiss.uni-passau.de> Suggestions for `recode'
+ 7. 11 Jan 94 <pinard@IRO.UMontreal.CA> Suggestions for `recode'
+ 8. 12 Jan 94 <hansen@forwiss.uni-passau.de> Re: Suggestions for `recode'
+ 9. 12 Jan 94 <pinard@IRO.UMontreal.CA> Re: Suggestions for `recode'
+10. 28 Sep 94 <gator@cs.tu-berlin.de> new charset for recode
+11. 30 Sep 94 <pinard> Re: new charset for recode
+12. 01 Oct 94 <gator@cs.tu-berlin.de> Re: new charset for recode
+13. 19 Jul 94 <haible@ma2s2.mathematik.uni-karlsruhe.de> latex conversions in r
+14. 19 Jul 94 <pinard> Re: latex conversions in recode-3.3
+15. 19 Jul 94 <haible@ma2s2.mathematik.uni-karlsruhe.de> Re: latex conversions 
+16. 11 Feb 93 <unrza3@cd4680fs.rrze.uni-erlangen.de> Re: transcription iso-8859
+
+rmail/options/listing
+ 1. 21 Dec 93 <maechler@stat.math.ethz.ch> Re: Prerelease: GNU recode version 3
+ 2. 21 Dec 93 <pinard> Prerelease: GNU recode version 3.2.10
+
+rmail/options/performance
+ 1. 01 Jan 94 <eggert@twinsun.com> Re: io.c hash algorithm
+
+rmail/options/swabytes
+ 1. 20 May 94 <pinard> recode -w
+
+rmail/problems/documentation
+ 1. 13 Sep 94 <pinard> Option -k dans recode
+ 2. 29 Dec 93 <pinard> Release: GNU recode version 3.3
+ 3. 11 Mar 94 <pinard> recode
+ 4. 09 Mar 94 <pinard@iro.umontreal.ca> Re: recode
+ 5. 01 Nov 94 <maechler@stat.math.ethz.ch> Re: Prerelease: GNU recode 3.3.2
+
+rmail/problems/miscellaneous
+ 1. 09 Mar 94 <anquetil@iro.umontreal.ca> recode
+ 2. 02 Jun 94 <pinard%taarna.UUCP@IRO.UMontreal.CA> recode taarna
+
+rmail/problems/msdos
+ 1. 13 Apr 94 <Ulrich.Windl@rz.uni-regensburg.de> recode 3.3
+ 2. 13 Apr 94 <Ulrich.Windl@rz.uni-regensburg.de> recode 3.3
+
+rmail/problems/newlines
+ 1. 04 Feb 94 <lr@cs.uta.fi> recode
+ 2. 14 Dec 93 <pinard> GNU recode
+
+rmail/problems/warnings
+ 1. 18 Jan 94 <rpayette@edupac.qc.ca> (none)
+
+rmail/tools/_ch
+ 1. 15 Jan 91 <pinard> files pub
+ 2. 18 Oct 91 <pinard> files pub
+ 3. 19 Oct 91 <mcgill-vision!dkuug.dk!archive> Sent pub archive files at dkuug
+
+rmail/tools/_conv
+ 1. 04 Nov 91 <mcgill-vision!sisug.sisu.se!jonas> International character sets.
+ 2. 28 Mar 91 <keld@dkuug.dk> Installation and Configuration Guide
+
+rmail/tools/_elisp
+ 1. 23 Nov 92 <pinard> recode
+ 2. 23 Nov 92 <mcgill-vision!corto.inria.fr!shapiro> recode
+ 3. 11 Mar 93 <abraham@iesd.auc.dk> min-key.el: Keyboard Remapping and Characte
+ 4. 02 Jun 93 <abraham@research.att.com> Danish, Swedish, German, Russian, and 
+ 5. 22 Oct 93 <mike@vlsivie.tuwien.ac.at> Re: tex sequence to ISO latin convers
+ 6. 22 Oct 93 <mwarren@us.oracle.com> Re: Problem, solution idea and hack for i
+
+rmail/tools/_keld
+ 1. 14 Dec 93 <keld@dkuug.dk> Re: GNU recode
+ 2. 26 Dec 93 <keld@dkuug.dk> Re: NeXTSTEP charset
+ 3. 16 Dec 93 <keld@dkuug.dk> Re: GNU recode and work underlying RFC 1345
+
+rmail/tools/_kermit
+ 1. 18 Sep 91 <cmg@watsun.cc.columbia.edu> Character Set Files and Utilities
+
+rmail/tools/_ncr
+ 1. 15 Jul 94 <hurtta@dionysos.fmi.fi> Re: Latin-1 <-> NRC character set mappin
+ 2. 16 Jul 94 <keld@login.dkuug.dk> Re: Latin-1 <-> NRC character set mapping
+
+rmail/tools/_tcs
+ 1. 09 Feb 93 <andrew@research.att.com> (none)
+ 2. 14 Feb 93 <pinard> tcs, recode
+ 3. 20 Feb 93 <pinard> Legaleese
+ 4. 11 Dec 93 <pinard> GNU recode 3.2.9
+ 5. 12 Dec 93 <abraham@research.att.com> Re: GNU recode 3.2.9
+
+rmail/tools/_ucs
+ 1. 26 Aug 93 <hueni@iam.unibe.ch> Re: WANTED: recode extension to ROMAN8 (HP) 

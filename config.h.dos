@@ -1,0 +1,11 @@
+/* config.h for MSDOS.  Hand edited from config.h.in.  */
+
+#define DEFAULT_CHARSET "IBM-PC"
+
+#define MSDOS
+#define USE_FPUTC
+
+#define STDC_HEADERS 1
+#define HAVE_RENAME 1
+#define HAVE_STRERROR 1
+#define HAVE_STRING_H 1

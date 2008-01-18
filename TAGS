@@ -1,0 +1,252 @@
+
+recode.h,574
+#  define CHAR_BIT 35,1059
+# define EXIT_SUCCESS 41,1183
+# define EXIT_FAILURE 44,1235
+# define _(48,1280
+# define _(50,1308
+typedef const char* DOUBLE_TABLE[DOUBLE_TABLE60,1526
+typedef struct charset CHARSET;CHARSET62,1564
+struct charsetcharset64,1597
+typedef enum quality QUALITY;QUALITY74,1876
+enum qualityquality76,1907
+typedef struct step STEP;STEP86,2259
+struct stepstep88,2286
+typedef struct known_pair KNOWN_PAIR;KNOWN_PAIR100,2759
+struct known_pairknown_pair102,2798
+enum list_formatlist_format110,2974
+# define DMALLOC_FUNC_CHECK166,4738
+
+charname.h,141
+#define NUMBER_OF_SINGLES 22,925
+#define MAX_CHARNAME_LENGTH 24,956
+#define NUMBER_OF_CHARNAMES 26,988
+struct charnamecharname841,37275
+
+recode.c,1372
+#define MAX_SINGLE_STEPS 23,935
+#define MAX_SEQUENCE 26,1013
+#define RETSIGTYPE 38,1209
+#define strchr 45,1309
+#define strrchr 46,1330
+#define MSDOS_or_OS2 50,1374
+#define unlink 52,1414
+#define MSDOS_or_OS2 59,1504
+#define USE_TMPFILE 102,3346
+#define L_tmpnam 108,3443
+#define L_tmpnam 116,3543
+enum sequence_strategysequence_strategy241,8078
+signal_handler 273,9060
+setup_signals 284,9388
+quality_to_string 300,9704
+merge_qualities 330,10354
+decode_before_after 391,11344
+new_single_step 443,12456
+declare_step 470,13300
+declare_step 475,13486
+invert_table 495,14095
+complete_pairs 539,15409
+register_all_modules 701,19276
+output_header_file 773,21028
+declare_double_step 955,25295
+struct itemitem983,26086
+compare_struct_item 990,26234
+init_recode_rfc1345 1003,26764
+#define UNREACHABLE	1135,30803
+echo_sequence 1142,31054
+find_sequence 1180,32164
+simplify_type 1282,35203
+simplify_sequence 1301,35774
+file_copy 1478,40511
+file_one_to_one 1492,41005
+file_one_to_many 1510,41607
+execute_pass_sequence 1542,42680
+execute_popen_sequence 1689,46493
+dup2_recursive 1762,48654
+dup2 1780,49103
+execute_pipe_sequence 1818,50253
+execute_pipe_sequence 1939,53873
+execute_sequence 2084,58409
+print_truncated_charset_name 2183,60798
+perform_auto_check_one 2203,61354
+perform_auto_check 2274,63180
+usage 2321,64425
+main 2455,69263
+
+charname.c,28
+symbol_to_charname 30,1162
+
+charset.c,680
+#define MAX_CHARSETS 23,918
+#define HASH_TABLE_SIZE 26,986
+#define MAX_SYMBOL_SIZE 29,1069
+struct hashhash38,1259
+code_to_symbol 63,2138
+print_symbol 95,2920
+decode_known_pairs 119,3500
+check_restricted 180,4923
+prepare_charset_initialization 221,5787
+cleanup_charset_name 239,6326
+#define UINT_BIT 269,7023
+#define ROTATE_LEFT(270,7071
+#define HASH(271,7136
+hash_string 274,7194
+hash_string 287,7423
+find_charset 306,7980
+declare_alias 363,9385
+make_argmatch_array 413,10570
+clean_charset_name 465,12085
+compare_struct_hash 507,13094
+list_all_charsets 527,13723
+init_table_for_rfc1345 601,15519
+list_concise_charset 650,16624
+list_full_charset 729,18366
+
+charset1.c,28
+module_charset1 1414,39697
+
+charset2.c,27
+module_charset2 913,34146
+
+applemac.c,122
+#define NUMBER_OF_PAIRS 117,5089
+init_latin1_applemac 120,5171
+init_applemac_latin1 126,5283
+module_applemac 132,5388
+
+atarist.c,151
+#define USE_DOUBLE_STEP 21,902
+#define NUMBER_OF_PAIRS 136,4244
+init_latin1_atarist 139,4326
+init_atarist_latin1 145,4437
+module_atarist 153,4575
+
+bangbang.c,89
+init_latin1_bangbang 285,8809
+file_bangbang_latin1 291,8900
+module_bangbang 375,11557
+
+cdcnos.c,80
+init_ascii_cdcnos 155,3736
+file_cdcnos_ascii 225,5181
+module_cdcnos 315,7831
+
+ebcdic.c,230
+#define ASCII 20,856
+init_ascii_ebcdic 139,7570
+init_ebcdic_ascii 145,7656
+init_ascii_ebcdic_ccc 151,7757
+init_ebcdic_ccc_ascii 157,7851
+init_ascii_ebcdic_ibm 163,7960
+init_ebcdic_ibm_ascii 169,8054
+module_ebcdic 175,8156
+
+flat.c,45
+file_ascii_flat 23,894
+module_flat 95,2188
+
+ibmpc.c,239
+#define DOS_EOF 22,883
+#define DOS_CR 23,925
+#define DOS_LF 24,966
+#define NUMBER_OF_PAIRS 162,5608
+file_latin1_ibmpc 165,5689
+file_ibmpc_latin1 203,6637
+init_latin1_ibmpc 285,8293
+init_ibmpc_latin1 292,8443
+module_ibmpc 313,8989
+
+iconqnx.c,237
+#define DOS_CR 22,883
+#define DOS_LF 23,924
+#define DOS_EOF 24,959
+#define ESCAPE 26,1002
+#define ENDLINE 27,1060
+#define TRANSLATE_AND_BREAK(29,1109
+file_ibmpc_iconqnx 37,1292
+file_iconqnx_ibmpc 92,2713
+module_iconqnx 222,5403
+
+lat1asci.c,58
+init_latin1_ascii 156,6106
+module_latin1_ascii 178,6552
+
+lat1html.c,94
+struct translationtranslation22,877
+init_latin1_html 106,2678
+module_latin1_html 135,3419
+
+lat1ltex.c,96
+struct translationtranslation22,877
+init_latin1_latex 126,5411
+module_latin1_latex 155,6115
+
+lat1txte.c,58
+init_latin1_texte 156,5986
+module_latin1_texte 206,7480
+
+next.c,21
+module_next 55,2071
+
+ascilat1.l,0
+
+htmllat1.l,0
+
+ltexlat1.l,0
+
+txtelat1.l,0
+
+getopt.h,125
+#define _GETOPT_H 19,797
+#define	no_argument	93,3221
+#define required_argument	94,3244
+#define optional_argument	95,3272
+
+pathmax.h,137
+#define _PATHMAX_H19,807
+#define _POSIX_PATH_MAX 33,1193
+#define PATH_MAX 37,1277
+#define PATH_MAX 46,1585
+#define PATH_MAX 50,1638
+
+argmatch.c,39
+argmatch 37,1251
+invalid_arg 76,2233
+
+getopt.c,204
+#define _NO_PROTO26,1085
+#define const37,1302
+#define	my_index	164,6120
+my_index 173,6270
+exchange 219,7715
+_getopt_initialize 277,9238
+_getopt_internal 367,12723
+getopt 665,20341
+main 684,20723
+
+getopt1.c,105
+#define const29,1042
+#define NULL 55,1833
+getopt_long 59,1860
+getopt_long_only 75,2363
+main 93,2719
+
+error.c,175
+#  define VA_START(29,1004
+#  define VA_START(32,1092
+# define va_alist 35,1155
+# define va_dcl 36,1204
+private_strerror 59,1769
+#define strerror 69,1975
+error 80,2305
+
+xmalloc.c,133
+#define VOID 23,866
+#define VOID 25,890
+#define EXIT_FAILURE 39,1061
+fixup_null_alloc 53,1383
+xmalloc 69,1647
+xrealloc 85,1896
+
+xstrdup.c,17
+xstrdup 32,1025

@@ -1,0 +1,327 @@
+#!/usr/bin/perl -s
+eval "exec /usr/bin/perl -s -S $0 $*"
+    if $running_under_some_shell;
+
+# Convert `Makefile.in' into a Makefile for MSDOS.
+# Copyright (C) 1991, 1993, 1994 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1991
+
+# Usage: $0 [-tcc]
+
+$output_name = $tcc ? "makefile.tcc" : "makefile.xxx";
+$output_name = "-";
+
+open (INPUT, "Makefile.in") || die "Cannot read Makefile.in\n";
+open (OUTPUT, ">$output_name") || die "Cannot create $output_name\n";
+
+# Default @VARIABLE@ substitutions for MSDOS.  Changed or activated by
+# MSDOS_<variable>=<new-default> lines in Makefile.in.
+
+$configure{"ALLOCA"} = "";
+$configure{"LIBOBJS"} = "";
+$configure{"VPATH"} = ".";
+$configure{"srcdir"} = ".";
+
+# Default VARIABLE= overrides and @VARIABLE@ substitutions for MSDOS.
+# VARIABLE= overrides are deactivated for variables in %configure.
+
+$override{"AR"} = $tcc ? "tlib" : "ar";
+$override{"AWK"} = "@echo :";
+$override{"CC"} = $tcc ? "tcc -v -N" : "gcc";
+$override{"CFLAGS"} = "";
+$override{"DEFS"} = "-DHAVE_CONFIG_H";
+$override{"INSTALL"} = "@echo :";
+$override{"INSTALL_DATA"} = $tcc ? "copy" : "cp";
+$override{"INSTALL_PROGRAM"} = $tcc ? "copy" : "cp";
+$override{"LDFLAGS"} = "";
+$override{"LEX"} = $tcc ? "@echo :" : "flex";
+$override{"LIBS"} = "";
+$override{"MAKEINFO"} = "@echo :";
+$override{"RANLIB"} = $tcc ? "@echo :" : "ranlib";
+$override{"TEXI2DVI"} = "@echo :";
+$override{"U"} = "";
+$override{"YACC"} = $tcc ? "@echo :" : "bison -y";
+
+# Default file renames for MSDOS.  Macros DISTFILES, *HDRS, *HEADERS,
+# *SRCS, *SOURCES, *OBJS, *OBJECTS also introduce file lists.
+
+$renaming{"GNUmakefile"} = "makefile.gnu";
+$renaming{"tags"} = "tags";
+$renaming{"TAGS"} = "tagse";
+
+# Transform `Makefile.in' into `$output_name'.
+
+print OUTPUT "# Generated automatically from Makefile.in by `$0'.\n";
+while (<INPUT>)
+{
+    chop;
+
+    # Process Makefile.in comments.  A few are special purpose.
+
+    if (/^\#=MSDOS=(.*)/)
+    {
+	# An =MSDOS= comment outputs the remainder of the line, verbatim.
+
+	print OUTPUT $1, "\n";
+	next;
+    }
+    elsif (/^\#-MSDOS/)
+    {
+	# An -MSDOS comment remove all lines until an +MSDOS comment.
+
+	while (<INPUT>)
+	{
+	    last if /^\#\+MSDOS/;
+	}
+	last if !$_;
+	next;
+    }
+    elsif (/^\#/)
+    {
+	# Copy other comments right now.
+
+	print OUTPUT $_, "\n";
+	next;
+    }
+
+    # Remove $U prefixes, useless, so file name renaming works better.
+
+    s/\$U//g;
+
+    # Execute @...@ substitutions.
+
+    while (/(.*)\@(\w[\w0-9]*)\@(.*)/)
+    {
+	if (defined $configure{$2})
+	{
+	    $_ = $1 . $configure{$2} . $3;
+	}
+	elsif (defined $override{$2})
+	{
+	    $_ = $1 . $override{$2} . $3;
+	}
+	else
+	{
+	    warn "*** @$2@ not substituted ***";
+	    last;
+	}
+    }
+
+    # Save MSDOS_* definitions for later substitution.  MSDOS_PROGS
+    # announce file names which should have .exe appended.
+
+    if (/^MSDOS_PROGS\s*=\s*(.*)/)
+    {
+	foreach $prog (split (' ', $1))
+	{
+	    $renaming{$prog} = &dosfn ("$prog.exe");
+	    $program{$prog} = 1;
+	}
+	next;
+    }
+
+    if (/^MSDOS_([^\s]+)\s*=\s*(.*)/)
+    {
+	$configure{$1} = $2;
+	next;
+    }
+
+    # Some macros annonce list of files.  Study these lines to get a
+    # better %renaming cache.
+
+    if (/^(DISTFILES|\w*HDRS|\w*HEADERS)\s*=\s*(.*)/)
+    {
+	&studylist ($2);
+	$studylist = 1;
+    }
+    elsif (/^(\w*SRCS|\w*SOURCES|\w*OBJS|\w*OBJECTS)\s*=\s*(.*)/)
+    {
+	&studylist ($2);
+	$studylist = 1;
+    }
+    elsif ($studylist)
+    {
+	&studylist ($_);
+    }
+
+    if ($studylist && ! /\\$/)
+    {
+	$studylist = 0;
+    }
+
+    # Extract each word of the line and process it.
+
+    ($_, $line) = /^(\w[\w0-9]*\s*=\s*)?(.*)/;
+    while ($line =~ /[-.\w\/]+/)
+    {
+	$_ .= $`;
+	$line = $';
+
+	if (defined $renaming{$&})
+	{
+	    # Execute any previously saved substitution.
+
+	    $value = $renaming{$&};
+	}
+	else
+	{
+	    $value = $&;
+	    if ($value =~ /^[^.]+\.[^.]+$/)
+	    {
+		# Normalize anything resembling a file name.
+
+		$value = &dosfn ($value);
+	    }
+	}
+	$_ .= $value;
+    }
+    $_ .= $line;
+
+    # Check for other special modifications.
+
+    if (/^SHELL\s*=/)
+    {
+	s/^/#/;
+    }
+    elsif (/^	\$\(CC\).*-o\s+(\w+)/)
+    {
+	if ($tcc)
+	{
+	    s/-o\s+/-e/;
+	    s/\$\(OBJECTS\)/@objects.lst/;
+	}
+	else
+	{
+	    $aout = $1;
+	    s/\.exe//;
+	}
+    }
+    elsif (/^	\$\(AR\)\scru\s/ && $tcc)
+    {
+	s/\scru//;
+	s/\$\(LIBOBJS\)/@libobjs.lst/;
+    }
+    elsif (/^\w+\s*=\s*:\b/ || /^	:\b/)
+    {
+	s/:/@echo :/;
+    }
+    elsif ((/^\w+\s*=\s*cp\b/ || /^	cp\b/) && $tcc)
+    {
+	s/cp(\s+-\w+)*/copy/;
+    }
+    elsif ((/^\w+\s*=\s*rm\b/ || /^	rm\b/) && $tcc)
+    {
+	s/rm(\s+-\w+)*/erase/;
+    }
+    elsif (/^\.c\.o:$/ && $tcc)
+    {
+	print OUTPUT ".SUFFIXES: .obj\n";
+	s/\.o/\.obj/;
+    }
+    elsif (/^(\w+)\s*=/)
+    {
+	if (!defined $configure{$1} && defined $override{$1})
+	{
+	    $_ = $1 . " = " . $override{$1};
+	}
+    }
+    elsif (/^$/ && $aout)
+    {
+	print OUTPUT "\taout2exe $aout\n";
+	print OUTPUT "\trm $aout\n";
+	$aout = "";
+    }
+
+    print OUTPUT $_, "\n";
+}
+close INPUT;
+close OUTPUT;
+exit 0;
+
+# Prepare substitutions for the given list of files.
+
+sub studylist
+{
+    $list = $_[0];
+    $list =~ s/\$\(\w+\)//g;
+    $list =~ s/\\$//;
+    while ($list =~ /([-.\w\/]+)/)
+    {
+	$list = $';
+	$value = $&;
+	$renaming{$value} = &dosfn ($&);
+    }
+}
+
+# Turn the argument into an MSDOS file name.
+# Copyright (C) 1992, 1993, 1994 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1992.
+
+# Predefine $tcc if necessary.
+
+sub dosfn
+{
+    local ($whole, $prefix, $name, $ext);
+
+    $whole = $_[0];
+    $whole =~ y/A-Z/a-z/;
+
+    # Change any beginning period with an underline.
+
+    $whole =~ s/^\./_/;
+
+    # Change all periods except the last with underlines.
+
+    while ($whole =~ /(.*)\.(.*)\.(.*)/)
+    {
+	$whole = "$1_$2.$3";
+    }
+
+    # If no period at all, let flow characters after the 8th into the
+    # the extension.
+
+    if ($whole =~ /^(.*\/)?([^.\/]+)$/)
+    {
+	($prefix, $name, $ext) = ($1, $2, "");
+	if (length ($name) > 8)
+	{
+	    $ext = substr ($name, 8);
+	    $name = substr ($name, 0, 8);
+	    $ext = substr ($ext, 0, 3) if length ($ext) > 3;
+	    return "$prefix$name.$ext";
+	}
+	return "$prefix$name";
+    }
+
+    # There is only one period, truncate to 8 characters before it and
+    # to 3 characters after it.
+
+    if ($whole =~ /^(.*\/)?([^.\/]+)\.([^.\/]+)$/)
+    {
+	($prefix, $name, $ext) = ($1, $2, $3);
+	$name = substr ($name, 0, 8) if length ($name) > 8;
+	if ($ext eq "a" && $tcc)
+	{
+	    $ext = "lib";
+	}
+	elsif ($ext eq "o" && $tcc)
+	{
+	    $ext = "obj";
+	}
+	elsif ($ext eq "texi" || $ext eq "texinfo")
+	{
+	    $ext = "ti";
+	}
+	elsif (length ($ext) > 3)
+	{
+	    $ext = substr ($ext, 0, 3);
+	}
+	return "$prefix$name.$ext";
+    }
+
+    # This should not happen.
+
+    warn "Error in dosfn.pl for \`$_[0]'\n";
+    return $_[0];
+}
+

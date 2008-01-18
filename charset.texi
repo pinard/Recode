@@ -1,0 +1,516 @@
+
+@item ANSI_X3.4-1968
+@code{ANSI_X3.4-1986}, @code{ASCII}, @code{IBM367}, @code{ISO646-US}, @code{ISO_646.irv:1991}, @code{US-ASCII}, @code{cp367}, @code{iso-ir-6} and @code{us} are aliases for this charset. 
+source: ECMA registry
+
+@item ASMO_449
+@code{ISO_9036}, @code{arabic7} and @code{iso-ir-89} are aliases for this charset. 
+source: ECMA registry
+
+@item BS_4730
+@code{ISO646-GB}, @code{gb}, @code{iso-ir-4} and @code{uk} are aliases for this charset. 
+source: ECMA registry
+
+@item BS_viewdata
+@code{iso-ir-47} is an alias for this charset.
+source: ECMA registry
+
+@item CSA_Z243.4-1985-1
+@code{ISO646-CA}, @code{ca}, @code{csa7-1} and @code{iso-ir-121} are aliases for this charset. 
+source: ECMA registry
+
+@item CSA_Z243.4-1985-2
+@code{ISO646-CA2}, @code{csa7-2} and @code{iso-ir-122} are aliases for this charset. 
+source: ECMA registry
+
+@item CSA_Z243.4-1985-gr
+@code{iso-ir-123} is an alias for this charset.
+source: ECMA registry
+
+@item CSN_369103
+@code{iso-ir-139} is an alias for this charset.
+source: ECMA registry
+
+@item DEC-MCS
+@code{dec} is an alias for this charset.
+VAX/VMS User's Manual, Order Number: AI-Y517A-TE, April 1986.
+
+@item DIN_66003
+@code{ISO646-DE}, @code{de} and @code{iso-ir-21} are aliases for this charset. 
+source: ECMA registry
+
+@item DS_2089
+@code{DS2089}, @code{ISO646-DK} and @code{dk} are aliases for this charset. 
+source: Danish Standard, DS 2089, February 1974
+
+@item EBCDIC-AT-DE
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-AT-DE-A
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-CA-FR
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-DK-NO
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-DK-NO-A
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-ES
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-ES-A
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-ES-S
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-FI-SE
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-FI-SE-A
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-FR
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-IT
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-PT
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-UK
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item EBCDIC-US
+source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+
+@item ECMA-cyrillic
+@code{iso-ir-111} is an alias for this charset.
+source: ECMA registry
+
+@item ES
+@code{ISO646-ES} and @code{iso-ir-17} are aliases for this charset. 
+source: ECMA registry
+
+@item ES2
+@code{ISO646-ES2} and @code{iso-ir-85} are aliases for this charset. 
+source: ECMA registry
+
+@item GB_1988-80
+@code{ISO646-CN}, @code{cn} and @code{iso-ir-57} are aliases for this charset. 
+source: ECMA registry
+
+@item GOST_19768-74
+@code{ST_SEV_358-88} and @code{iso-ir-153} are aliases for this charset. 
+source: ECMA registry
+
+@item IBM037
+@code{cp037}, @code{ebcdic-cp-ca}, @code{ebcdic-cp-nl}, @code{ebcdic-cp-us} and @code{ebcdic-cp-wt} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM038
+@code{EBCDIC-INT} and @code{cp038} are aliases for this charset. 
+source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+
+@item IBM1026
+@code{CP1026} is an alias for this charset.
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM273
+@code{CP273} is an alias for this charset.
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM274
+@code{CP274} and @code{EBCDIC-BE} are aliases for this charset. 
+source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+
+@item IBM275
+@code{EBCDIC-BR} and @code{cp275} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM277
+@code{EBCDIC-CP-DK} and @code{EBCDIC-CP-NO} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM278
+@code{CP278}, @code{ebcdic-cp-fi} and @code{ebcdic-cp-se} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM280
+@code{CP280} and @code{ebcdic-cp-it} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM281
+@code{EBCDIC-JP-E} and @code{cp281} are aliases for this charset. 
+source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+
+@item IBM284
+@code{CP284} and @code{ebcdic-cp-es} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM285
+@code{CP285} and @code{ebcdic-cp-gb} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM290
+@code{EBCDIC-JP-kana} and @code{cp290} are aliases for this charset. 
+source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+
+@item IBM297
+@code{cp297} and @code{ebcdic-cp-fr} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM420
+@code{cp420} and @code{ebcdic-cp-ar1} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+IBM NLS RM p 11-11
+
+@item IBM423
+@code{cp423} and @code{ebcdic-cp-gr} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM424
+@code{cp424} and @code{ebcdic-cp-he} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM437
+@code{437} and @code{cp437} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM500
+@code{CP500}, @code{ebcdic-cp-be} and @code{ebcdic-cp-ch} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM850
+@code{850} and @code{cp850} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM851
+@code{851} and @code{cp851} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM852
+@code{852} and @code{cp852} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM855
+@code{855} and @code{cp855} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM857
+@code{857} and @code{cp857} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM860
+@code{860} and @code{cp860} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM861
+@code{861}, @code{cp-is} and @code{cp861} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM862
+@code{862} and @code{cp862} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM863
+@code{863} and @code{cp863} are aliases for this charset. 
+source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+
+@item IBM864
+@code{cp864} is an alias for this charset.
+source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+
+@item IBM865
+@code{865} and @code{cp865} are aliases for this charset. 
+source: IBM DOS 3.3 Ref (Abridged), 94X9575 (Feb 1987)
+
+@item IBM868
+@code{CP868} and @code{cp-ar} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM869
+@code{869}, @code{cp-gr} and @code{cp869} are aliases for this charset. 
+source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+
+@item IBM870
+@code{CP870}, @code{ebcdic-cp-roece} and @code{ebcdic-cp-yu} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM871
+@code{CP871} and @code{ebcdic-cp-is} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM880
+@code{EBCDIC-Cyrillic} and @code{cp880} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM891
+@code{cp891} is an alias for this charset.
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM903
+@code{cp903} is an alias for this charset.
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM904
+@code{904} and @code{cp904} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IBM905
+@code{CP905} and @code{ebcdic-cp-tr} are aliases for this charset. 
+source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+
+@item IBM918
+@code{CP918} and @code{ebcdic-cp-ar2} are aliases for this charset. 
+source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+
+@item IEC_P27-1
+@code{iso-ir-143} is an alias for this charset.
+source: ECMA registry
+
+@item INIS
+@code{iso-ir-49} is an alias for this charset.
+source: ECMA registry
+
+@item INIS-8
+@code{iso-ir-50} is an alias for this charset.
+source: ECMA registry
+
+@item INIS-cyrillic
+@code{iso-ir-51} is an alias for this charset.
+source: ECMA registry
+
+@item INVARIANT
+
+@item ISO_10367-box
+@code{iso-ir-155} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_2033-1983
+@code{e13b} and @code{iso-ir-98} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_5427
+@code{iso-ir-37} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_5427:1981
+@code{iso-ir-54} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_5428:1980
+@code{iso-ir-55} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_646.basic:1983
+@code{ref} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_646.irv:1983
+@code{irv} and @code{iso-ir-2} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_6937-2-25
+@code{iso-ir-152} is an alias for this charset.
+source: ECMA registry
+
+@item ISO_8859-1:1987
+@code{CP819}, @code{IBM819}, @code{ISO-8859-1}, @code{ISO_8859-1}, @code{iso-ir-100}, @code{l1} and @code{latin1} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-2:1987
+@code{ISO-8859-2}, @code{ISO_8859-2}, @code{iso-ir-101}, @code{l2} and @code{latin2} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-3:1988
+@code{ISO-8859-3}, @code{ISO_8859-3}, @code{iso-ir-109}, @code{l3} and @code{latin3} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-4:1988
+@code{ISO-8859-4}, @code{ISO_8859-4}, @code{iso-ir-110}, @code{l4} and @code{latin4} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-5:1988
+@code{ISO-8859-5}, @code{ISO_8859-5}, @code{cyrillic} and @code{iso-ir-144} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-6:1987
+@code{ASMO-708}, @code{ECMA-114}, @code{ISO-8859-6}, @code{ISO_8859-6}, @code{arabic} and @code{iso-ir-127} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-7:1987
+@code{ECMA-118}, @code{ELOT_928}, @code{ISO-8859-7}, @code{ISO_8859-7}, @code{greek}, @code{greek8} and @code{iso-ir-126} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-8:1988
+@code{ISO-8859-8}, @code{ISO_8859-8}, @code{hebrew} and @code{iso-ir-138} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-9:1989
+@code{ISO-8859-9}, @code{ISO_8859-9}, @code{iso-ir-148}, @code{l5} and @code{latin5} are aliases for this charset. 
+source: ECMA registry
+
+@item ISO_8859-supp
+@code{iso-ir-154} and @code{latin1-2-5} are aliases for this charset. 
+source: ECMA registry
+
+@item IT
+@code{ISO646-IT} and @code{iso-ir-15} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6220-1969-jp
+@code{JIS_C6220-1969}, @code{iso-ir-13}, @code{katakana} and @code{x0201-7} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6220-1969-ro
+@code{ISO646-JP}, @code{iso-ir-14} and @code{jp} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6229-1984-a
+@code{jp-ocr-a} is an alias for this charset.
+source: ECMA registry
+
+@item JIS_C6229-1984-b
+@code{ISO646-JP-OCR-B} and @code{jp-ocr-b} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6229-1984-b-add
+@code{iso-ir-93} and @code{jp-ocr-b-add} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6229-1984-hand
+@code{iso-ir-94} and @code{jp-ocr-hand} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6229-1984-hand-add
+@code{iso-ir-95} and @code{jp-ocr-hand-add} are aliases for this charset. 
+source: ECMA registry
+
+@item JIS_C6229-1984-kana
+@code{iso-ir-96} is an alias for this charset.
+source: ECMA registry
+
+@item JIS_X0201
+@code{X0201} is an alias for this charset.
+
+@item JUS_I.B1.002
+@code{ISO646-YU}, @code{iso-ir-141}, @code{js} and @code{yu} are aliases for this charset. 
+source: ECMA registry
+
+@item JUS_I.B1.003-mac
+@code{iso-ir-147} and @code{macedonian} are aliases for this charset. 
+source: ECMA registry
+
+@item JUS_I.B1.003-serb
+@code{iso-ir-146} and @code{serbian} are aliases for this charset. 
+source: ECMA registry
+
+@item KSC5636
+@code{ISO646-KR} is an alias for this charset.
+
+@item Latin-greek-1
+@code{iso-ir-27} is an alias for this charset.
+source: ECMA registry
+
+@item MSZ_7795.3
+@code{ISO646-HU}, @code{hu} and @code{iso-ir-86} are aliases for this charset. 
+source: ECMA registry
+
+@item NATS-DANO
+@code{iso-ir-9-1} is an alias for this charset.
+source: ECMA registry
+
+@item NATS-DANO-ADD
+@code{iso-ir-9-2} is an alias for this charset.
+source: ECMA registry
+
+@item NATS-SEFI
+@code{iso-ir-8-1} is an alias for this charset.
+source: ECMA registry
+
+@item NATS-SEFI-ADD
+@code{iso-ir-8-2} is an alias for this charset.
+source: ECMA registry
+
+@item NC_NC00-10:81
+@code{ISO646-CU}, @code{cuba} and @code{iso-ir-151} are aliases for this charset. 
+source: ECMA registry
+
+@item NF_Z_62-010
+@code{ISO646-FR}, @code{fr} and @code{iso-ir-69} are aliases for this charset. 
+source: ECMA registry
+
+@item NF_Z_62-010_(1973)
+@code{ISO646-FR1} and @code{iso-ir-25} are aliases for this charset. 
+source: ECMA registry
+
+@item NS_4551-1
+@code{ISO646-NO}, @code{iso-ir-60} and @code{no} are aliases for this charset. 
+source: ECMA registry
+
+@item NS_4551-2
+@code{ISO646-NO2}, @code{iso-ir-61} and @code{no2} are aliases for this charset. 
+source: ECMA registry
+
+@item PT
+@code{ISO646-PT} and @code{iso-ir-16} are aliases for this charset. 
+source: ECMA registry
+
+@item PT2
+@code{ISO646-PT2} and @code{iso-ir-84} are aliases for this charset. 
+source: ECMA registry
+
+@item SEN_850200_B
+@code{FI}, @code{ISO646-FI}, @code{ISO646-SE}, @code{iso-ir-10} and @code{se} are aliases for this charset. 
+source: ECMA registry
+
+@item SEN_850200_C
+@code{ISO646-SE2}, @code{iso-ir-11} and @code{se2} are aliases for this charset. 
+source: ECMA registry
+
+@item T.61-7bit
+@code{iso-ir-102} is an alias for this charset.
+source: ECMA registry
+
+@item dk-us
+
+@item greek-ccitt
+@code{iso-ir-150} is an alias for this charset.
+source: ECMA registry
+
+@item greek7
+@code{iso-ir-88} is an alias for this charset.
+source: ECMA registry
+
+@item greek7-old
+@code{iso-ir-18} is an alias for this charset.
+source: ECMA registry
+
+@item hp-roman8
+@code{r8} and @code{roman8} are aliases for this charset. 
+source: LaserJet IIP Printer User's Manual,
+HP part no 33471-90901, Hewlet-Packard, June 1989.
+
+@item latin-greek
+@code{iso-ir-19} is an alias for this charset.
+source: ECMA registry
+
+@item latin-lap
+@code{iso-ir-158} and @code{lap} are aliases for this charset. 
+source: ECMA registry
+
+@item latin6
+@code{iso-ir-157} and @code{l6} are aliases for this charset. 
+source: ECMA registry
+
+@item macintosh
+@code{mac} is an alias for this charset.
+source: The Unicode Standard ver1.0, ISBN 0-201-56788-1, Oct 1991
+
+@item us-dk
+for compatibility with ASCII

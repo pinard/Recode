@@ -1,0 +1,22 @@
+/* config.h  Generated manually for emx under OS/2 */
+
+/* Define if you need to in order for stat and other things to work.  */
+#define _POSIX_SOURCE 1
+
+/* Define if you have the ANSI C header files.  */
+#define STDC_HEADERS 1
+
+/* Default charset is latin1 on UNIX, ibmpc on MSDOS.  */
+#define DEFAULT_CHARSET "ibmpc"
+
+/* Define if you have dup2.  */
+#define HAVE_DUP2 1
+
+/* Define if you have popen.  */
+#define HAVE_POPEN 1
+
+/* Define if you have rename.  */
+#define HAVE_RENAME 1
+
+/* Define if you have the <string.h> header file.  */
+#define HAVE_STRING_H 1

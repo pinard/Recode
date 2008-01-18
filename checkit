@@ -1,0 +1,68 @@
+:
+# Script to help checking `recode'.
+# Copyright (C) 1991 Free Software Foundation, Inc.
+# Francois Pinard <pinard@iro.umontreal.ca>, 1991.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+
+# Use this script by `checkit [-v] FILE BEFORE AFTER'.  It does
+# various check of recoding FILE from BEFORE to AFTER or vice-versa.
+# The -v parameter gives more verbose output.  Exit with a non-zero
+# status if any error found.
+
+if test "$1" = -v; then
+  shift
+  verbose=1
+fi
+
+# Select methods to be tested by studying `configure' output.
+
+methods=i
+grep '#define  *HAVE_POPEN  *1' config.h > /dev/null && methods="$methods o"
+grep '#define  *HAVE_PIPE  *1' config.h > /dev/null && methods="$methods p"
+
+# Try all methods, both in filter and in non-filter modes.  Echo the
+# tested sequence of steps in verbose mode, but only once after the
+# first "Checking" message.
+
+test -n "$verbose" && verbose_once=-v
+for method in $methods; do
+  echo "Checking -$method $2:$3 FILE  (and $3:$2 too)"
+  cp $1 checkit.tmp
+  chmod +w checkit.tmp
+  ./recode $verbose_once -q$method $2:$3 checkit.tmp
+  ./recode $verbose_once -q$method $3:$2 checkit.tmp
+  verbose_once=
+  if cmp -s $1 checkit.tmp; then
+    :
+  else
+    rm checkit.tmp
+    exit 1
+  fi
+
+  echo "Checking -$method $2:$3 <FILE (and $3:$2 too)"
+  ./recode -q$method < $1 $2:$3 | ./recode -q$method $3:$2 > checkit.tmp
+  if cmp -s $1 checkit.tmp; then
+    :
+  else
+    rm checkit.tmp
+    exit 1
+  fi
+done
+
+# Return success.
+
+rm checkit.tmp
+exit 0

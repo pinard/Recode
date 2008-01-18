@@ -1,0 +1,49 @@
+# Configure template for GNU recode.
+# Copyright (C) 1994 Free Software Foundation, Inc.
+# Process this file with autoconf to produce a configure script.
+
+AC_INIT(recode.c)
+AC_CONFIG_HEADER(config.h)
+AC_ARG_PROGRAM
+
+PRODUCT=recode
+VERSION=3.4
+AC_DEFINE_UNQUOTED(PRODUCT, "$PRODUCT")
+AC_DEFINE_UNQUOTED(VERSION, "$VERSION")
+AC_SUBST(PRODUCT)
+AC_SUBST(VERSION)
+
+AC_PROG_AWK
+AC_PROG_CC
+AC_PROG_INSTALL
+AC_PROG_RANLIB
+
+AC_AIX
+AC_ISC_POSIX
+AC_MINIX
+fp_C_PROTOTYPES
+AC_C_CONST
+
+AC_PROG_LEX
+test "$LEX" = flex || AC_WARN(flex not found, so do not modify .l files)
+
+AC_HEADER_STDC
+AC_CHECK_HEADERS(limits.h string.h)
+AC_TYPE_SIGNAL
+
+AC_CHECK_FUNCS(dup2 pipe popen rename strerror)
+AC_FUNC_VPRINTF
+
+AC_MSG_CHECKING(the default charset)
+if test -n "$DEFAULT_CHARSET"; then
+  AC_MSG_RESULT($DEFAULT_CHARSET)
+  AC_DEFINE_UNQUOTED(DEFAULT_CHARSET, "$DEFAULT_CHARSET")
+else
+  AC_MSG_RESULT(Latin-1)
+  AC_DEFINE(DEFAULT_CHARSET, "Latin-1")
+fi
+
+fp_WITH_DMALLOC
+
+AC_OUTPUT(Makefile,
+[test -z "$CONFIG_HEADERS" || date > stamp-h])

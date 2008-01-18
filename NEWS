@@ -1,0 +1,80 @@
+GNU recode NEWS - User visible changes.
+Copyright (C) 1993, 1994 Free Software Foundation, Inc.
+
+Version 3.4 - November 1994, by Franc,ois Pinard
+
+* Charset HTML is new, it handles `&...;' sequences for Latin-1.
+* Charset AtariST handling is more general, --list may be used with it.
+* Charset ASCII-BS overstriking has been extended, mainly for German.
+* Charset RFC1345 may be a goal, to debug or study RFC 1345 short names.
+* Charset names have been revised.  Note that nextstep is now NeXT.
+* Option --force (-f) is accepted, but does not yet protect reversibility.
+* Option --quiet or --silent (-q) silences irreversible recoding messages.
+* Option --known=PAIRS (-k) helps searching through recodings.
+* Option --sequence=pipe (-p) does not fall back on -o anymore.
+* Option --auto-check may narrow its study around one particular charset.
+* An MSDOS port is available, check ftp.iro.umontreal.ca in pub/gnuish.
+* Compilation should now succeed on OS/2 EMX.  Thanks to Kai Uwe Rommel.
+* Program initialization is almost three times faster on average.
+* Corrected reported bugs, added small improvements, some aesthetic.
+
+Version 3.3 - December 1993, by Franc,ois Pinard
+
+* Charsets atarist, ebcdic-ccc, ebcdic-ibm and nextstep have been added.
+* Also, most RFC 1345 charsets and aliases are handled.  That's a bunch!
+* Old ascii disappears because of RFC 1345's ascii, use ascii-bs instead.
+* Old maci disappears because of RFC 1345's macintosh, use applemac instead.
+* Charsets cccascii and cdcascii disappear, use ebcdic-ccc and ebcdic instead.
+* Recoding between latin1, ibmpc and applemac is (almost) reversible.
+* The texinfo documentation has been reorganized, this to be continued.
+* Long options are accepted, charset names may be abbreviated.
+* Option --list (-l) displays charsets, aliases and contents in many formats.
+* Option --strict (-s) asks for stricter, non-reversible recodings.
+* Option --graphics (-g) approximates ibmpc rulers with ASCII graphics.
+* Option --header (-h) produces C source for many recoding tables.
+* Option --auto-check (-a) reports about all possible recodings.
+* Option --ignore (-x) prevents a charset from being selected.
+* Execution has been sped up through step merging, hashing for charset names.
+* Many various buglets have been eradicated, portability increased.
+* Charsets may be edited out by modifying the Makefile only.
+* Configuration is made through the use of an external config.h file.
+
+Version 3.2.4 - October 1992, by Franc,ois Pinard
+
+* None.
+
+Version 3.2.3 - September 1992, by Franc,ois Pinard
+
+* New -d `diacritics_only' option for LaTeX.
+* A few bugs have been corrected.
+* Documentation reorganization and improvements.
+* Increased portability, now uses Autoconf.
+* A few bugs solved.
+
+Version 3.2 - October 1991, by Franc,ois Pinard
+
+* MSDOS port redone.
+* New check goal at installation time.
+* Add -v option for verbose processing, remove old -q.
+* Add -i, -o and -p for letting the user control the strategy.
+* A few bugs corrected.
+* Embedded NULs should now be transmitted.
+
+Version 3.1 - March 1990, by Franc,ois Pinard
+
+* Rename -V to -C for showing Copyright.
+* Calling sequence changed, said files now recoded on themselves.
+* Add -t option for touching files.
+* Better on-line help.
+
+Version 3.0.1 - February 1990, by Franc,ois Pinard
+
+* Add -q option for quiet processing.
+* Executable file now considerably smaller, also speedier.
+* A few bugs corrected.
+
+Version 3.0 - October 1989, by Franc,ois Pinard
+* New Text to Latin1 processing, should be faster.
+* A few bugs corrected.
+
+For prior history down to 1980, see at the end of the ChangeLog.
