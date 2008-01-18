@@ -6,7 +6,7 @@ dnl      ----------------------------
 cat > expect <<'EOF'
 ISO-8859-1
 
-  0 NU    16 DL    32 SP    48 0     64 @     80 P     96 '!   112 p
+  0 NU    16 DL    32 SP    48 0     64 At    80 P     96 '!   112 p
   1 SH    17 D1    33 !     49 1     65 A     81 Q     97 a    113 q
   2 SX    18 D2    34 "     50 2     66 B     82 R     98 b    114 r
   3 EX    19 D3    35 Nb    51 3     67 C     83 S     99 c    115 s
@@ -51,7 +51,7 @@ dnl      --------------------------------
 cat > expect <<'EOF'
 ISO-8859-1
 
-00 NU   10 DL   20 SP   30 0    40 @    50 P    60 '!   70 p
+00 NU   10 DL   20 SP   30 0    40 At   50 P    60 '!   70 p
 01 SH   11 D1   21 !    31 1    41 A    51 Q    61 a    71 q
 02 SX   12 D2   22 "    32 2    42 B    52 R    62 b    72 r
 03 EX   13 D3   23 Nb   33 3    43 C    53 S    63 c    73 s
@@ -96,7 +96,7 @@ dnl      --------------------------
 cat > expect <<'EOF'
 ISO-8859-1
 
-000 NU   020 DL   040 SP   060 0    100 @    120 P    140 '!   160 p
+000 NU   020 DL   040 SP   060 0    100 At   120 P    140 '!   160 p
 001 SH   021 D1   041 !    061 1    101 A    121 Q    141 a    161 q
 002 SX   022 D2   042 "    062 2    102 B    122 R    142 b    162 r
 003 EX   023 D3   043 Nb   063 3    103 C    123 S    143 c    163 s
@@ -205,7 +205,7 @@ Dec  Oct Hex   UCS2  Mne  ISO-8859-1
  61  075  3d   003D  =    equals sign
  62  076  3e   003E  >    greater-than sign
  63  077  3f   003F  ?    question mark
- 64  100  40   0040  @    commercial at
+ 64  100  40   0040  At   commercial at
  65  101  41   0041  A    latin capital letter a
  66  102  42   0042  B    latin capital letter b
  67  103  43   0043  C    latin capital letter c

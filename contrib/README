@@ -87,6 +87,13 @@
 
 . + Programs
 
+.  - libiconv
+
+     This comprehensive charset converter library revolves around Unicode,
+     and support Asian encodings among many others.  Even `recode' uses it!
+     ftp://ftp.ilog.fr/pub/Users/haible/gnu/libiconv-1.3.tar.gz
+     Bruno Haible <haible@ilog.fr>
+
 .  - tcs
 
      Here is the main recoding tool from the Plan9 project.
@@ -126,6 +133,16 @@
      character dumps, but properly embedded within complete C header files.
      http://research.de.uu.net:8080/~gnu/b2c/b2c-2.1.tar.gz
      Jörg Heitkötter <Joerg.Heitkoetter@de.uu.net>, 1997-11.
+
+.  - PyRecode
+
+     This wrapper provides Free `recode' functionnality to Python programs.
+     http://www.suxers.de/PyRecode.tgz
+     Andreas Jung <ajung@server.python.net>
+
+     Also see:
+     http://www.vex.net/parnassus/apyllo.py?find=recode
+     http://www.suxers.de/python/pyrecode.htm
 
 .* Non-Unix ports or alikes
 

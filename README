@@ -1,13 +1,13 @@
 * README file for `recode'			allout -*- outline -*-
 
-  Here is version 3.5c for the Free `recode' program and library.  Glance
+  Here is version 3.5d for the Free `recode' program and library.  Glance
   through this `README' file before starting configuration.  Make sure
   you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
   them already.
 
   The canonical distribution point for this version is:
 
-     http://www.iro.umontreal.ca/contrib/recode/recode-3.5c.tar.gz
+     http://www.iro.umontreal.ca/contrib/recode/recode-3.5d.tar.gz
 
   yet the second URL (the FTP one) might disappear one day.  GNU mirrors
   usually hold a copy of non-pretest releases, the canonical distribution
@@ -21,13 +21,14 @@
 . + Presentation
 
     The `recode' library converts files between character sets and usages.
-    The library recognises or produces nearly 150 different character sets
-    and is able to transliterate files between almost any pair.  When exact
-    transliteration are not possible, it may get rid of the offending
-    characters or fall back on approximations.  Most RFC 1345 character sets
-    are supported.  The `recode' program is a handy front-end to the library.
+    It recognises or produces more than 300 different character sets and
+    transliterates files between almost any pair.  When exact transliteration
+    are not possible, it gets rid of offending characters or fall back
+    on approximations.  The `recode' program is a handy front-end to
+    the library.
 
-    The `recode' program and library have been written by François Pinard.
+    The `recode' program and library have been written by François Pinard,
+    yet it significantly reuses works from Keld Simonsen and Bruno Haible.
     It is an evolving package, and specifications might change in future
     releases.  Option `-f' is now fairly implemented, yet not fully.
 
@@ -68,11 +69,11 @@
     For comprehensive modifications to `recode', you might need tools beyond
     those used in simple installations.  If not done already, get:
 
-    autoconf	ftp://ftp.gnu.org/pub/gnu/autoconf/autoconf-2.13.tar.gz
+    autoconf	ftp://ftp.enst.fr/pub/unix/a2ps/autoconf-2.14a.tar.gz
     automake	ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
     flex	ftp://ftp.gnu.org/pub/gnu/flex/flex-2.5.4a.tar.gz
     gettext	ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
-    help2man	http://www.ozemail.com.au/~bod/help2man-1.019.tar.gz
+    help2man	http://www.ozemail.com.au/~bod/help2man-1.020.tar.gz
     libtool	http://www.oranda.demon.co.uk/dist/libtool-1.3.4.tar.gz
     m4		ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4n.tar.gz
     perl	ftp://ftp.gnu.org/pub/gnu/perl/perl-5.005.03.tar.gz
@@ -80,7 +81,8 @@
     tar		ftp://ftp.gnu.org/pub/gnu/tar/tar-1.12.tar.gz
 
     Make sure GNU `m4' is fully installed before you start installing
-    Autoconf.  Have Perl installed before Automake and `help2man'.
+    Autoconf.  Apply `PATCHES-AC' to Autoconf before installing it.
+    Have Perl installed before Automake and `help2man'.
 
     Python 1.5 and Flex 2.5, or better, are needed for remaking `merged.c',
     after you modify or add an `.l' source file.
@@ -98,10 +100,10 @@
 
 	subscribe recode-forum
 
-    Look into `http://www.iro.umontreal.ca/contrib/recode' for various
-    releases, pretests, and related files.  In particular, subdirectory
-    `dist/' contains a weekly mirror of the current unpackaged work files,
-    while subdirectory `rmail/' contains saved or pending correspondence.
+    Look into `http://www.iro.umontreal.ca/contrib/recode for various
+    releases, pretests, and related files.  In particular, button `Browse'
+    gives access to a weekly mirror of the current unpackaged work files,
+    while button `Folders' gives access to saved or pending correspondence.
 
     Please do _not_ widely redistribute releases having a letter after
     the version numbers, as these are meant for pretesting only, and might

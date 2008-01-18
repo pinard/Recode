@@ -112,7 +112,7 @@ euc_jp_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
 
   /* Code set 2 (half-width katakana) */
   ret = jisx0201_wctomb(conv,buf,wc,1);
-  if (ret != RET_ILSEQ) {
+  if (ret != RET_ILSEQ && buf[0] >= 0x80) {
     if (ret != 1) abort();
     if (n < 2)
       return RET_TOOSMALL;

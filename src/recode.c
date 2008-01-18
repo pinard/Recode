@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -87,6 +87,7 @@ recode_perror (outer, format, va_alist)
      va_dcl
 #endif
 {
+  int saved_errno = errno;
 #ifdef VA_START
   va_list args;
 
@@ -100,7 +101,7 @@ recode_perror (outer, format, va_alist)
 #else
   fprintf (stderr, format, a1, a2, a3, a4, a5, a6, a7, a8);
 #endif
-  fprintf (stderr, ": %s\n", strerror (errno));
+  fprintf (stderr, ": %s\n", strerror (saved_errno));
   fflush (stderr);
 }
 
@@ -573,6 +574,9 @@ recode_format_table (RECODE_REQUEST request,
 
       switch (header_language)
 	{
+	case RECODE_NO_LANGUAGE:
+	  assert (0);
+
 	case RECODE_LANGUAGE_C:
 	  printf ("unsigned char const %s[256] =\n", name);
 	  printf ("  {\n");
@@ -592,6 +596,9 @@ recode_format_table (RECODE_REQUEST request,
 	}
       switch (header_language)
 	{
+	case RECODE_NO_LANGUAGE:
+	  assert (0);
+
 	case RECODE_LANGUAGE_C:
 	  printf ("  };\n");
 	  break;
@@ -609,6 +616,9 @@ recode_format_table (RECODE_REQUEST request,
 
       switch (header_language)
 	{
+	case RECODE_NO_LANGUAGE:
+	  assert (0);
+
 	case RECODE_LANGUAGE_C:
 	  printf ("const char *%s[256] =\n", name);
 	  printf ("  {\n");
@@ -686,6 +696,9 @@ recode_format_table (RECODE_REQUEST request,
 	  else
 	    switch (header_language)
 	      {
+	      case RECODE_NO_LANGUAGE:
+		assert (0);
+
 	      case RECODE_LANGUAGE_C:
 		printf ("0");
 		column++;
@@ -707,6 +720,9 @@ recode_format_table (RECODE_REQUEST request,
 	}
       switch (header_language)
 	{
+	case RECODE_NO_LANGUAGE:
+	  assert (0);
+
 	case RECODE_LANGUAGE_C:
 	  printf ("  };\n");
 	  break;

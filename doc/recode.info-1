@@ -1,5 +1,4 @@
-This is recode.info, produced by makeinfo version 3.12n from
-recode.texi.
+This is recode.info, produced by makeinfo version 4.0 from recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -9,8 +8,8 @@ END-INFO-DIR-ENTRY
    This file documents the `recode' command, which has the purpose of
 converting files between various character sets and surfaces.
 
-   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
-Inc.
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
+Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -35,12 +34,12 @@ File: recode.info,  Node: Top,  Next: Tutorial,  Prev: (dir),  Up: (dir)
    This recoding library converts files between various coded character
 sets and surface encodings.  When this cannot be achieved exactly, it
 may get rid of the offending characters or fall back on approximations.
-The library recognises or produces nearly 150 different character sets
-and is able to convert files between almost any pair.  Most RFC 1345
-character sets are supported.  The `recode' program is a handy
-front-end to the library.
+The library recognises or produces more than 300 different character
+sets and is able to convert files between almost any pair.  Most
+RFC 1345 character sets, and all `libiconv' character sets, are
+supported.  The `recode' program is a handy front-end to the library.
 
-   The current `recode' release is 3.5c.
+   The current `recode' release is 3.5d.
 
 * Menu:
 
@@ -58,10 +57,10 @@ front-end to the library.
 * Miscellaneous::       Various other charsets
 * Surfaces::            All about surfaces
 * Internals::           Internal aspects
-* Concept Index::
-* Option Index::
-* Library Index::
-* Charset and Surface Index::
+* Concept Index::       Concept Index
+* Option Index::        Option Index
+* Library Index::       Library Index
+* Charset and Surface Index::  Charset and Surface Index
 
  --- The Detailed Node Listing ---
 
@@ -81,6 +80,7 @@ How to use this program
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
 * Emacs::               Using `recode' within Emacs
+* Debugging::           Debugging considerations
 
 A recoding library
 
@@ -141,7 +141,7 @@ All about surfaces
 * End lines::           Representation for end of lines
 * MIME::                MIME contents encodings
 * Dump::                Interpreted character dumps
-* Debugging::           Artificial data
+* Test::                Artificial data for testing
 
 Internal aspects
 
@@ -321,7 +321,7 @@ extensibility of the program.
 
    The program `recode' has been written by Franc,ois Pinard.  With
 time, it got to reuse works from other contributors, and notably, those
-of Keld Simonsen.
+of Keld Simonsen and Bruno Haible.
 
 * Menu:
 
@@ -336,8 +336,9 @@ Overview of charsets
 ====================
 
    Recoding is currently possible between many charsets, the bulk of
-which is described by RFC 1345 tables.  *Note Tabular::.  The `recode'
-library also handles some charsets in some specialised ways.  These are:
+which is described by RFC 1345 tables or available in the `iconv'
+library.  *Note Tabular::, and *note libiconv::.  The `recode' library
+also handles some charsets in some specialised ways.  These are:
 
    * 6-bit charsets based on CDC display code: 6/12 code from NOS;
      bang-bang code from Universite' de Montre'al;
@@ -359,6 +360,15 @@ charsets having the functionality of older ones, but yet being different
 in subtle ways.  The effects have not been fully investigated yet, so
 for now, clashes are avoided, the old and new charsets are kept well
 separate.
+
+   Conversion is possible between almost any pair of charsets.  Here is
+a list of the exceptions.  One may not recode _from_ the `flat',
+`count-characters' or `dump-with-names' charsets, nor _from_ or _to_
+the `data', `tree' or `:libiconv:' charsets.  Also, if we except the
+`data' and `tree' pseudo-charsets, charsets and surfaces live in
+disjoint recoding spaces, one cannot really transform a surface into a
+charset or vice-versa, as surfaces are only meant to be applied over
+charsets, or removed from them.
 
 
 File: recode.info,  Node: Surface overview,  Next: Contributing,  Prev: Charset overview,  Up: Introduction
@@ -433,7 +443,7 @@ it and what would go in the next.
 report details, because this program is the mere aggregation of
 hundreds of details.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) I'm not prone at accepting a charset you just invented, and
 which nobody uses yet: convince your friends and community first!
@@ -460,6 +470,7 @@ somewhat grouped according to the related functionalities they control.
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
 * Emacs::               Using `recode' within Emacs
+* Debugging::           Debugging considerations
 
 
 File: recode.info,  Node: Synopsis,  Next: Requests,  Prev: Invoking recode,  Up: Invoking recode
@@ -523,7 +534,7 @@ neatly:
    This example also shows that `l1' could be used instead of
 `Latin-1'; charset names often have such aliases.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) In previous versions or `recode', a single colon `:' was used
 instead of the two dots `..' for separating charsets, but this was
@@ -652,7 +663,7 @@ text(3).
    The allowable values for BEFORE or AFTER charsets, and various
 surfaces, are described in the remainder of this document.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) More precisely, `pc' is an alias for the charset `IBM-PC'.
 
@@ -1135,7 +1146,7 @@ some users wrongly interpreted as bugs.  Here are two examples.
      end, recoding six times in the same direction would recover all
      characters in cycles of length 1, 2, 3 or 6.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) There are still some cases of ambiguous output which are rather
 difficult to detect, and for which the protection is not active.

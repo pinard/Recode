@@ -1,5 +1,5 @@
 # Makefile for `recode' regression tests.
-# Copyright © 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
+# Copyright © 1996, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
@@ -19,13 +19,13 @@
 
 AUTOMAKE_OPTIONS = gnits
 
-SUITE = african.m4 base64.m4 combine.m4 debug.m4 dumps.m4 lists.m4 \
-methods.m4 names.m4 quoted.m4 utf7.m4 utf8.m4
+SUITE = african.m4 base64.m4 combine.m4 dumps.m4 lists.m4 methods.m4 \
+names.m4 quoted.m4 testdump.m4 utf7.m4 utf8.m4
 
 EXTRA_DIST = atgeneral.m4 suite.m4 testsuite $(SUITE) \
-bigauto.sh bigauto.pl dumps-data quoted-data utf7-data
+bigauto.py dumps-data quoted-data utf7-data
 
-PERL = perl
+PYTHON = python
 
 all-local: atconfig testsuite
 
@@ -45,13 +45,16 @@ $(srcdir)/testsuite: atgeneral.m4 suite.m4 $(SUITE)
 	m4 -I $(srcdir) atgeneral.m4 suite.m4 | cat -s > $@-tmp
 	mv $@-tmp $@
 
-bigtest:
-	PATH=../src:$$PATH $(srcdir)/bigauto.sh > big-s-off.res
-	$(PERL) $(srcdir)/bigauto.pl big-s-off.res
+bigtest: warning
+	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py
 
-bigtest-strict:
-	PATH=../src:$$PATH $(srcdir)/bigauto.sh -s > big-s-on.res
-	$(PERL) $(srcdir)/bigauto.pl big-s-on.res
+bigtest-strict: warning
+	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py -s
+
+warning:
+	echo 1>&2 '==============================================='
+	echo 1>&2 "The \`bigauto' test may take hours.  Be patient."
+	echo 1>&2 '==============================================='
 
 clean-local:
 	rm -f at-check-line debug-*.sh stderr stdout

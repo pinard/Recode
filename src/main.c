@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This program is free software; you can redistribute it and/or modify it
@@ -29,8 +29,10 @@
 # include <unistd.h>
 #endif
 
-#if HAVE_UTIME_H
-# include <utime.h>
+#if HAVE_STRUCT_UTIMBUF
+# if HAVE_UTIME_H
+#  include <utime.h>
+# endif
 #else
 
 struct utimbuf
@@ -60,7 +62,7 @@ static int show_help = 0;
 static int show_version = 0;
 
 /* If true, show a list of one or all known charsets, then exit.  */
-static bool show_charsets = false;
+static bool show_symbols = false;
 
 /* If true, dump all tables as a big C module.  */
 static bool freeze_tables = false;
@@ -116,10 +118,10 @@ static const char *after_full_name;
 #endif
 
 /* Ordinals of list, BEFORE and AFTER charset.  */
-static RECODE_CHARSET list_charset;
+static RECODE_SYMBOL list_charset;
 #if 0
-static RECODE_CHARSET before_charset;
-static RECODE_CHARSET after_charset;
+static RECODE_SYMBOL before_charset;
+static RECODE_SYMBOL after_charset;
 #endif
 
 /* Flag telling usage that we are decoding charsets.  */
@@ -248,7 +250,7 @@ for the equivalent short option also.  Similarly for optional arguments.\n\
       fputs (_("\
 \n\
 Listings:\n\
-  -l, --list[=FORMAT]        list one or all known charsets\n\
+  -l, --list[=FORMAT]        list one or all known charsets and aliases\n\
   -k, --known=PAIRS          restrict charsets according to known PAIRS list\n\
   -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n\
   -F, --freeze-tables        write out a C module holding all tables\n\
@@ -425,14 +427,14 @@ main (int argc, char *const *argv)
 	break;
 
       case '\n':
-	switch (argmatch (optarg, sequence_strings))
+	switch (argmatch (optarg, sequence_strings, NULL, 0))
 	  {
 	  case -2:
-	    error (0, 0, _("Ambiguous sequence `%s'"), optarg);
+	    error (0, 0, _("Sequence `%s' is ambiguous"), optarg);
 	    usage (EXIT_FAILURE, 0);
 
 	  case -1:
-	    error (0, 0, _("Unknown sequence `%s'"), optarg);
+	    error (0, 0, _("Sequence `%s' is unknown"), optarg);
 	    usage (EXIT_FAILURE, 0);
 
 	  case 0:
@@ -459,14 +461,14 @@ main (int argc, char *const *argv)
 
       case 'S':
 	if (optarg)
-	  switch (argmatch (optarg, language_strings))
+	  switch (argmatch (optarg, language_strings, NULL, 0))
 	    {
 	    case -2:
-	      error (0, 0, _("Ambiguous language `%s'"), optarg);
+	      error (0, 0, _("Language `%s' is ambiguous"), optarg);
 	      usage (EXIT_FAILURE, 0);
 
 	    default:		/* -1 */
-	      error (0, 0, _("Unknown language `%s'"), optarg);
+	      error (0, 0, _("Language `%s' is unknown"), optarg);
 	      usage (EXIT_FAILURE, 0);
 
 	    case 0:
@@ -517,14 +519,14 @@ main (int argc, char *const *argv)
 	    for (counter = 0; optarg[counter] != '/'; counter++)
 	      buffer[counter] = tolower (optarg[counter]);
 	    buffer[counter] = NUL;
-	    switch (argmatch (buffer, language_strings))
+	    switch (argmatch (buffer, language_strings, NULL, 0))
 	      {
 	      case -2:
-		error (0, 0, _("Ambiguous language `%s'"), buffer);
+		error (0, 0, _("Language `%s' is ambiguous"), buffer);
 		usage (EXIT_FAILURE, 0);
 
 	      default:		/* -1 */
-		error (0, 0, _("Unknown language `%s'"), buffer);
+		error (0, 0, _("Language `%s' is unknown"), buffer);
 		usage (EXIT_FAILURE, 0);
 
 	      case 0:
@@ -553,16 +555,16 @@ main (int argc, char *const *argv)
 	break;
 
       case 'l':
-	show_charsets = true;
+	show_symbols = true;
 	if (optarg)
-	  switch (argmatch (optarg, format_strings))
+	  switch (argmatch (optarg, format_strings, NULL, 0))
 	    {
 	    case -2:
-	      error (0, 0, _("Ambiguous format `%s'"), optarg);
+	      error (0, 0, _("Format `%s' is ambiguous"), optarg);
 	      usage (EXIT_FAILURE, 0);
 
 	    case -1:
-	      error (0, 0, _("Unknown format `%s'"), optarg);
+	      error (0, 0, _("Format `%s' is unknown"), optarg);
 	      usage (EXIT_FAILURE, 0);
 
 	    case 0:
@@ -620,6 +622,9 @@ main (int argc, char *const *argv)
     {
       printf ("Free %s %s\n", PACKAGE, VERSION);
       fputs (_("\
+Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
+	     stdout);
+      fputs (_("\
 \n\
 Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"),
 	     stdout);
@@ -627,11 +632,6 @@ Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"),
 This is free software; see the source for copying conditions.  There is NO\n\
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 	     stdout);
-      fputs (_("\
-\n\
-Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
-	     stdout);
-
       exit (EXIT_SUCCESS);
     }
 
@@ -664,52 +664,71 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 
   if (ignored_name)
     {
-      RECODE_SYMBOL symbol
-	= find_symbol (outer, ignored_name, SYMBOL_FIND_AS_CHARSET);
+      RECODE_ALIAS alias
+	= find_alias (outer, ignored_name, ALIAS_FIND_AS_CHARSET);
 
-      if (!symbol)
-	usage (EXIT_FAILURE, 1);
+      if (!alias)
+	{
+	  error (0, 0, _("Symbol `%s' is unknown"), ignored_name);
+	  usage (EXIT_FAILURE, 1);
+	}
 
-      symbol->charset->ignore = true;
+      alias->symbol->ignore = true;
     }
 
   /* Process charset listing options.  */
 
   if (find_subsets)
-    if (find_and_report_subsets (outer))
-      exit (EXIT_SUCCESS);
-    else
-      exit (EXIT_FAILURE);
+    {
+      if (find_and_report_subsets (outer))
+	exit (EXIT_SUCCESS);
+      else
+	exit (EXIT_FAILURE);
+    }
 
-  if (show_charsets || charset_restrictions)
+  if (show_symbols || charset_restrictions)
     {
       if (charset_restrictions)
 	if (!decode_known_pairs (outer, charset_restrictions))
-	  usage (EXIT_FAILURE, 0);
+	  {
+	    error (0, 0, "Could not understand `%s'", charset_restrictions);
+	    usage (EXIT_FAILURE, 0);
+	  }
       if (optind + 1 < argc)
-	usage (EXIT_FAILURE, 0);
+	{
+	  error (0, 0, "Argument `%s' is extraneous", argv[optind]);
+	  usage (EXIT_FAILURE, 0);
+	}
 
       /* Select a possible charset and a default format.  */
 
       if (optind < argc)
 	{
-	  RECODE_SYMBOL symbol
-	    = find_symbol (outer, argv[optind], SYMBOL_FIND_AS_CHARSET);
+	  RECODE_ALIAS alias
+	    = find_alias (outer, argv[optind], ALIAS_FIND_AS_CHARSET);
 
-	  if (!symbol)
-	    usage (EXIT_FAILURE, 1);
+	  if (!alias)
+	    {
+	      error (0, 0, _("Charset `%s' is unknown or ambiguous"),
+		     argv[optind]);
+	      usage (EXIT_FAILURE, 1);
+	    }
 
-	  list_charset = symbol->charset;
+	  list_charset = alias->symbol;
 	}
       else if (list_format != RECODE_NO_FORMAT || charset_restrictions)
 	{
-	  RECODE_SYMBOL symbol
-	    = find_symbol (outer, NULL, SYMBOL_FIND_AS_CHARSET);
+	  RECODE_ALIAS alias
+	    = find_alias (outer, NULL, ALIAS_FIND_AS_CHARSET);
 
-	  if (!symbol)
-	    usage (EXIT_FAILURE, 1);
+	  if (!alias)
+	    {
+	      error (0, 0, _("Charset `%s' is unknown or ambiguous"),
+		     argv[optind]);
+	      usage (EXIT_FAILURE, 1);
+	    }
 
-	  list_charset = symbol->charset;
+	  list_charset = alias->symbol;
 	}
       else
 	list_charset = NULL;
@@ -717,14 +736,14 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
       /* List the charset(s) appropriately.  */
 
       if (charset_restrictions)
-	list_all_charsets (outer, list_charset);
+	list_all_symbols (outer, list_charset);
       else if (list_charset)
 	if (list_format == RECODE_FULL_FORMAT)
 	  list_full_charset (outer, list_charset);
 	else
 	  list_concise_charset (outer, list_charset, list_format);
       else
-	list_all_charsets (outer, NULL);
+	list_all_symbols (outer, NULL);
 
       /* Then get out.  */
 
@@ -734,7 +753,10 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
   /* Decode the REQUEST argument.  */
 
   if (optind + 1 > argc)
-    usage (EXIT_FAILURE, 0);
+    {
+      error (0, 0, _("Required argument is missing"));
+      usage (EXIT_FAILURE, 0);
+    }
 
   request = recode_new_request (outer);
   request->ascii_graphics = request_option.ascii_graphics;
@@ -774,13 +796,13 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 
 	    user_request = rewritten_request;
 	    if (!quiet_flag)
-	      error (0, 0, _("Deprecated syntax, please prefer `%s'"),
+	      error (0, 0, _("Syntax is deprecated, please prefer `%s'"),
 		     user_request);
 	  }
       }
 
     if (!recode_scan_request (request, user_request))
-      error (EXIT_FAILURE, 0, _("Erroneous request `%s'"), user_request);
+      error (EXIT_FAILURE, 0, _("Request `%s' is erroneous"), user_request);
   }
 
   /* If we merely want source code, do it and get out.  */

@@ -1,5 +1,4 @@
-This is recode.info, produced by makeinfo version 3.12n from
-recode.texi.
+This is recode.info, produced by makeinfo version 4.0 from recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -9,8 +8,8 @@ END-INFO-DIR-ENTRY
    This file documents the `recode' command, which has the purpose of
 converting files between various character sets and surfaces.
 
-   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
-Inc.
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
+Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -25,6 +24,88 @@ permission notice identical to this one.
 manual into another language, under the above conditions for modified
 versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
+
+
+File: recode.info,  Node: UCS-2,  Next: UCS-4,  Prev: Universal,  Up: Universal
+
+Universal Character Set, 2 bytes
+================================
+
+   One surface of `UCS' is usable for the subset defined by its first
+sixty thousand characters (in fact, 31 * 2^11 codes), and uses exactly
+two bytes per character.  It is a mere dump of the internal memory
+representation which is _natural_ for this subset and as such, conveys
+with it endianness problems.
+
+   A non-empty `UCS-2' file normally begins with a so called "byte
+order mark", having value `0xFEFF'.  The value `0xFFFE' is not an `UCS'
+character, so if this value is seen at the beginning of a file,
+`recode' reacts by swapping all pairs of bytes.  The library also
+properly reacts to other occurrences of `0xFEFF' or `0xFFFE' elsewhere
+than at the beginning, because concatenation of `UCS-2' files should
+stay a simple matter, but it might trigger a diagnostic about non
+canonical input.
+
+   By default, when producing an `UCS-2' file, `recode' always outputs
+the high order byte before the low order byte.  But this could be
+easily overridden through the `21-Permutation' surface (*note
+Permutations::).  For example, the command:
+
+     recode u8..u2/21 < INPUT > OUTPUT
+
+asks for an `UTF-8' to `UCS-2' conversion, with swapped byte output.
+
+   Use `UCS-2' as a genuine charset.  This charset is available in
+`recode' under the name `ISO-10646-UCS-2'.  Accepted aliases are
+`UCS-2', `BMP', `rune' and `u2'.
+
+   The `recode' library is able to combine `UCS-2' some sequences of
+codes into single code characters, to represent a few diacriticized
+characters, ligatures or diphtongs which have been included to ease
+mapping with other existing charsets.  It is also able to explode such
+single code characters into the corresponding sequence of codes.  The
+request syntax for triggering such operations is rudimentary and
+temporary.  The `combined-UCS-2' pseudo character set is a special form
+of `UCS-2' in which known combinings have been replaced by the simpler
+code.  Using `combined-UCS-2' instead of `UCS-2' in an _after_ position
+of a request forces a combining step, while using `combined-UCS-2'
+instead of `UCS-2' in a _before_ position of a request forces an
+exploding step.  For the time being, one has to resort to advanced
+request syntax to achieve other effects.  For example:
+
+     recode u8..co,u2..u8 < INPUT > OUTPUT
+
+copies an `UTF-8' INPUT over OUTPUT, still to be in `UTF-8', yet
+merging combining characters into single codes whenever possible.
+
+
+File: recode.info,  Node: UCS-4,  Next: UTF-7,  Prev: UCS-2,  Up: Universal
+
+Universal Character Set, 4 bytes
+================================
+
+   Another surface of `UCS' uses exactly four bytes per character, and
+is a mere dump of the internal memory representation which is _natural_
+for the whole charset and as such, conveys with it endianness problems.
+
+   Use it as a genuine charset.  This charset is available in `recode'
+under the name `ISO-10646-UCS-4'.  Accepted aliases are `UCS', `UCS-4',
+`ISO_10646', `10646' and `u4'.
+
+
+File: recode.info,  Node: UTF-7,  Next: UTF-8,  Prev: UCS-4,  Up: Universal
+
+Universal Transformation Format, 7 bits
+=======================================
+
+   `UTF-7' comes from IETF rather than ISO, and is described by
+RFC 2152, in the MIME series.  The `UTF-7' encoding is meant to fit
+`UCS-2' over channels limited to seven bits per byte.  It proceeds from
+a mix between the spirit of `Quoted-Printable' and methods of `Base64',
+adapted to Unicode contexts.
+
+   This charset is available in `recode' under the name
+`UNICODE-1-1-UTF-7'.  Accepted aliases are `UTF-7', `TF-7' and `u7'.
 
 
 File: recode.info,  Node: UTF-8,  Next: UTF-16,  Prev: UTF-7,  Up: Universal
@@ -286,102 +367,119 @@ for what is the genuine charset name.
    * General character sets
     `US-ASCII'
           `ASCII', `ISO646-US', `ISO_646.IRV:1991', `ISO-IR-6',
-          `ANSI_X3.4-1968', `CP367', `IBM367', `US' and `CSASCII' are
-          aliases for this charset.
+          `ANSI_X3.4-1968', `CP367', `IBM367', `US', `csASCII' and
+          `ISO646.1991-IRV' are aliases for this charset.
 
    * General multi-byte encodings
     `UTF-8'
+          `UTF8' is an alias for this charset.
 
     `UCS-2'
-          `ISO-10646-UCS-2' and `CSUNICODE' are aliases for this
+          `ISO-10646-UCS-2' and `csUnicode' are aliases for this
           charset.
 
+    `UCS-2BE'
+          `UNICODEBIG', `UNICODE-1-1' and `csUnicode11' are aliases for
+          this charset.
+
+    `UCS-2LE'
+          `UNICODELITTLE' is an alias for this charset.
+
     `UCS-4'
-          `ISO-10646-UCS-4' and `CSUCS4' are aliases for this charset.
+          `ISO-10646-UCS-4' and `csUCS4' are aliases for this charset.
+
+    `UCS-4BE'
+
+    `UCS-4LE'
 
     `UTF-16'
 
+    `UTF-16BE'
+
+    `UTF-16LE'
+
     `UTF-7'
-          `UNICODE-1-1-UTF-7' and `CSUNICODE11UTF7' are aliases for
+          `UNICODE-1-1-UTF-7' and `csUnicode11UTF7' are aliases for
           this charset.
 
     `UCS-2-INTERNAL'
 
     `UCS-2-SWAPPED'
 
-    `UCS-2-BE'
-          `UNICODEBIG' is an alias for this charset.
-
-    `UCS-2-LE'
-          `UNICODELITTLE' is an alias for this charset.
-
     `UCS-4-INTERNAL'
 
     `UCS-4-SWAPPED'
-
-    `UCS-4-BE'
-
-    `UCS-4-LE'
 
     `JAVA'
    * Standard 8-bit encodings
     `ISO-8859-1'
           `ISO_8859-1', `ISO_8859-1:1987', `ISO-IR-100', `CP819',
-          `IBM819', `LATIN1', `L1' and `CSISOLATIN1' are aliases for
-          this charset.
+          `IBM819', `LATIN1', `L1', `csISOLatin1', `ISO8859-1' and
+          `ISO8859_1' are aliases for this charset.
 
     `ISO-8859-2'
-          `ISO_8859-2', `ISO_8859-2:1987', `ISO-IR-101', `LATIN2', `L2'
-          and `CSISOLATIN2' are aliases for this charset.
+          `ISO_8859-2', `ISO_8859-2:1987', `ISO-IR-101', `LATIN2',
+          `L2', `csISOLatin2', `ISO8859-2' and `ISO8859_2' are aliases
+          for this charset.
 
     `ISO-8859-3'
-          `ISO_8859-3', `ISO_8859-3:1988', `ISO-IR-109', `LATIN3', `L3'
-          and `CSISOLATIN3' are aliases for this charset.
+          `ISO_8859-3', `ISO_8859-3:1988', `ISO-IR-109', `LATIN3',
+          `L3', `csISOLatin3', `ISO8859-3' and `ISO8859_3' are aliases
+          for this charset.
 
     `ISO-8859-4'
-          `ISO_8859-4', `ISO_8859-4:1988', `ISO-IR-110', `LATIN4', `L4'
-          and `CSISOLATIN4' are aliases for this charset.
+          `ISO_8859-4', `ISO_8859-4:1988', `ISO-IR-110', `LATIN4',
+          `L4', `csISOLatin4', `ISO8859-4' and `ISO8859_4' are aliases
+          for this charset.
 
     `ISO-8859-5'
-          `ISO_8859-5', `ISO_8859-5:1988', `ISO-IR-144', `CYRILLIC' and
-          `CSISOLATINCYRILLIC' are aliases for this charset.
+          `ISO_8859-5', `ISO_8859-5:1988', `ISO-IR-144', `CYRILLIC',
+          `csISOLatinCyrillic', `ISO8859-5' and `ISO8859_5' are aliases
+          for this charset.
 
     `ISO-8859-6'
           `ISO_8859-6', `ISO_8859-6:1987', `ISO-IR-127', `ECMA-114',
-          `ASMO-708', `ARABIC' and `CSISOLATINARABIC' are aliases for
-          this charset.
+          `ASMO-708', `ARABIC', `csISOLatinArabic', `ISO8859-6' and
+          `ISO8859_6' are aliases for this charset.
 
     `ISO-8859-7'
           `ISO_8859-7', `ISO_8859-7:1987', `ISO-IR-126', `ECMA-118',
-          `ELOT_928', `GREEK8', `GREEK' and `CSISOLATINGREEK' are
-          aliases for this charset.
+          `ELOT_928', `GREEK8', `GREEK', `csISOLatinGreek', `ISO8859-7'
+          and `ISO8859_7' are aliases for this charset.
 
     `ISO-8859-8'
-          `ISO_8859-8', `ISO_8859-8:1988', `ISO-IR-138', `HEBREW' and
-          `CSISOLATINHEBREW' are aliases for this charset.
+          `ISO_8859-8', `ISO_8859-8:1988', `ISO-IR-138', `HEBREW',
+          `csISOLatinHebrew', `ISO8859-8' and `ISO8859_8' are aliases
+          for this charset.
 
     `ISO-8859-9'
-          `ISO_8859-9', `ISO_8859-9:1989', `ISO-IR-148', `LATIN5', `L5'
-          and `CSISOLATIN5' are aliases for this charset.
+          `ISO_8859-9', `ISO_8859-9:1989', `ISO-IR-148', `LATIN5',
+          `L5', `csISOLatin5', `ISO8859-9' and `ISO8859_9' are aliases
+          for this charset.
 
     `ISO-8859-10'
           `ISO_8859-10', `ISO_8859-10:1992', `ISO-IR-157', `LATIN6',
-          `L6' and `CSISOLATIN6' are aliases for this charset.
+          `L6', `csISOLatin6' and `ISO8859-10' are aliases for this
+          charset.
 
     `ISO-8859-13'
           `ISO_8859-13', `ISO-IR-179', `LATIN7' and `L7' are aliases
           for this charset.
 
     `ISO-8859-14'
-          `ISO_8859-14', `ISO_8859-14:1998', `LATIN8' and `L8' are
-          aliases for this charset.
+          `ISO_8859-14', `ISO_8859-14:1998', `ISO-IR-199', `LATIN8' and
+          `L8' are aliases for this charset.
 
     `ISO-8859-15'
-          `ISO_8859-15' and `ISO_8859-15:1998' are aliases for this
-          charset.
+          `ISO_8859-15', `ISO_8859-15:1998' and `ISO-IR-203' are
+          aliases for this charset.
+
+    `ISO-8859-16'
+          `ISO_8859-16', `ISO_8859-16:2000' and `ISO-IR-226' are
+          aliases for this charset.
 
     `KOI8-R'
-          `CSKOI8R' is an alias for this charset.
+          `csKOI8R' is an alias for this charset.
 
     `KOI8-U'
 
@@ -416,15 +514,16 @@ for what is the genuine charset name.
 
    * DOS 8-bit encodings
     `CP850'
-          `IBM850', `850' and `CSPC850MULTILINGUAL' are aliases for
+          `IBM850', `850' and `csPC850Multilingual' are aliases for
           this charset.
 
     `CP866'
-          `IBM866', `866' and `CSIBM866' are aliases for this charset.
+          `IBM866', `866' and `csIBM866' are aliases for this charset.
 
    * Macintosh 8-bit encodings
     `MacRoman'
-          `Macintosh' is an alias for this charset.
+          `Macintosh', `MAC' and `csMacintosh' are aliases for this
+          charset.
 
     `MacCentralEurope'
 
@@ -449,7 +548,7 @@ for what is the genuine charset name.
     `MacThai'
    * Other platform specific 8-bit encodings
     `HP-ROMAN8'
-          `ROMAN8', `R8' and `CSHPROMAN8' are aliases for this charset.
+          `ROMAN8', `R8' and `csHPRoman8' are aliases for this charset.
 
     `NEXTSTEP'
    * Regional 8-bit encodings used for a single language
@@ -472,57 +571,76 @@ for what is the genuine charset name.
           `WINDOWS-874' is an alias for this charset.
 
     `VISCII'
-          `VISCII1.1-1' and `CSVISCII' are aliases for this charset.
+          `VISCII1.1-1' and `csVISCII' are aliases for this charset.
 
     `TCVN'
           `TCVN-5712', `TCVN5712-1' and `TCVN5712-1:1993' are aliases
           for this charset.
 
-   * CJK character sets
+   * CJK character sets (not documented)
+    `JIS_C6220-1969-RO'
+          `ISO646-JP', `ISO-IR-14', `JP' and `csISO14JISC6220ro' are
+          aliases for this charset.
+
     `JIS_X0201'
-          `JISX0201-1976', `JISX0201.1976-0', `X0201' and
-          `CSHALFWIDTHKATAKANA' are aliases for this charset.
+          `JISX0201-1976', `X0201', `csHalfWidthKatakana',
+          `JISX0201.1976-0' and `JIS0201' are aliases for this charset.
 
     `JIS_X0208'
-          `JIS_X0208.1983-0', `JIS_X0208.1983-1', `JIS_X0208-1983',
-          `JIS_X0208-1990' and `JIS0208' are aliases for this charset.
+          `JIS_X0208-1983', `JIS_X0208-1990', `JIS0208', `X0208',
+          `ISO-IR-87', `csISO87JISX0208', `JISX0208.1983-0',
+          `JISX0208.1990-0' and `JIS0208' are aliases for this charset.
 
     `JIS_X0212'
-          `JIS_X0212.1990-0', `JIS_X0212-1990', `X0212', `ISO-IR-159'
-          and `CSISO159JISX02121990' are aliases for this charset.
+          `JIS_X0212.1990-0', `JIS_X0212-1990', `X0212', `ISO-IR-159',
+          `csISO159JISX02121990', `JISX0212.1990-0' and `JIS0212' are
+          aliases for this charset.
+
+    `GB_1988-80'
+          `ISO646-CN', `ISO-IR-57', `CN' and `csISO57GB1988' are
+          aliases for this charset.
+
+    `GB_2312-80'
+          `ISO-IR-58', `csISO58GB231280', `CHINESE' and `GB2312.1980-0'
+          are aliases for this charset.
+
+    `ISO-IR-165'
+          `CN-GB-ISOIR165' is an alias for this charset.
 
     `KSC_5601'
-          `KSC5601.1987-0', `KS_C_5601-1987', `KS_C_5601-1989',
-          `ISO-IR-149', `CSKSC56011987', `KOREAN' and `CP949' are
-          aliases for this charset.
+          `KS_C_5601-1987', `KS_C_5601-1989', `ISO-IR-149',
+          `csKSC56011987', `KOREAN', `KSC5601.1987-0' and
+          `KSX1001:1992' are aliases for this charset.
 
    * CJK encodings
     `EUC-JP'
-          `EUCJP', `EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE' and
-          `CSEUCPKDFMTJAPANESE' are aliases for this charset.
+          `EUCJP', `Extended_UNIX_Code_Packed_Format_for_Japanese',
+          `csEUCPkdFmtJapanese' and `EUC_JP' are aliases for this
+          charset.
 
     `SJIS'
-          `SHIFT_JIS', `SHIFT-JIS', `MS_KANJI' and `CSSHIFTJIS' are
+          `SHIFT_JIS', `SHIFT-JIS', `MS_KANJI' and `csShiftJIS' are
           aliases for this charset.
 
     `CP932'
 
     `ISO-2022-JP'
-          `CSISO2022JP' is an alias for this charset.
+          `csISO2022JP' and `ISO2022JP' are aliases for this charset.
 
     `ISO-2022-JP-1'
 
     `ISO-2022-JP-2'
-          `CSISO2022JP2' is an alias for this charset.
+          `csISO2022JP2' is an alias for this charset.
 
     `EUC-CN'
-          `EUCCN', `GB2312' and `CSGB2312' are aliases for this charset.
+          `EUCCN', `GB2312', `CN-GB', `csGB2312' and `EUC_CN' are
+          aliases for this charset.
 
     `GBK'
           `CP936' is an alias for this charset.
 
     `ISO-2022-CN'
-          `CSISO2022CN' is an alias for this charset.
+          `csISO2022CN' and `ISO2022CN' are aliases for this charset.
 
     `ISO-2022-CN-EXT'
 
@@ -530,22 +648,25 @@ for what is the genuine charset name.
           `HZ-GB-2312' is an alias for this charset.
 
     `EUC-TW'
-          `EUCTW' and `CSEUCTW' are aliases for this charset.
+          `EUCTW', `csEUCTW' and `EUC_TW' are aliases for this charset.
 
     `BIG5'
-          `BIG-5', `BIG-FIVE', `BIGFIVE' and `CSBIG5' are aliases for
-          this charset.
+          `BIG-5', `BIG-FIVE', `BIGFIVE', `CN-BIG5' and `csBig5' are
+          aliases for this charset.
 
     `CP950'
 
     `EUC-KR'
-          `EUCKR' and `CSEUCKR' are aliases for this charset.
+          `EUCKR', `csEUCKR' and `EUC_KR' are aliases for this charset.
+
+    `CP949'
+          `UHC' is an alias for this charset.
 
     `JOHAB'
           `CP1361' is an alias for this charset.
 
     `ISO-2022-KR'
-          `CSISO2022KR' is an alias for this charset.
+          `csISO2022KR' and `ISO2022KR' are aliases for this charset.
 
 
 File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: libiconv,  Up: Top
@@ -564,7 +685,7 @@ defines many character mnemonics and character sets.  The `recode'
 library implements most of RFC 1345, however:
 
    * It does not recognise those charsets which overload character
-     positions: `dk-us' and `us-dk'.  However, see *Note Mixed::.
+     positions: `dk-us' and `us-dk'.  However, *Note Mixed::.
 
    * It does not recognise those charsets which combine two characters
      for representing a third: `ANSI_X3.110-1983', `ISO_6937-2-add',
@@ -966,62 +1087,69 @@ implemented in some future version, however.
      `iso-ir-170' is an alias for this charset.
 
 `ISO-8859-1'
-     `819', `CP819', `IBM819', `ISO_8859-1', `ISO_8859-1:1987',
-     `iso-ir-100', `l1' and `latin1' are aliases for this charset.
-     Source: ISO 2375 registry.
+     `819', `CP819', `IBM819', `ISO8859-1', `ISO_8859-1',
+     `ISO_8859-1:1987', `iso-ir-100', `l1' and `latin1' are aliases for
+     this charset.  Source: ISO 2375 registry.
 
 `ISO-8859-10'
-     `ISO_8859-10', `ISO_8859-10:1993', `iso-ir-157', `l6' and `latin6'
-     are aliases for this charset.  Source: ISO 2375 registry.
-
-`ISO-8859-13'
-     `ISO_8859-13', `ISO_8859-13:1998', `iso-baltic', `iso-ir-179a',
-     `l7' and `latin7' are aliases for this charset.  Source: ISO 2375
-     registry.
-
-`ISO-8859-14'
-     `ISO_8859-14', `ISO_8859-14:1998', `iso-celtic', `iso-ir-199',
-     `l8' and `latin8' are aliases for this charset.  Source: ISO 2375
-     registry.
-
-`ISO-8859-15'
-     `ISO_8859-15', `ISO_8859-15:1998', `iso-ir-203', `l9' and `latin9'
-     are aliases for this charset.  Source: ISO 2375 registry.
-
-`ISO-8859-2'
-     `912', `CP912', `IBM912', `ISO_8859-2', `ISO_8859-2:1987',
-     `iso-ir-101', `l2' and `latin2' are aliases for this charset.
-     Source: ISO 2375 registry.
-
-`ISO-8859-3'
-     `ISO_8859-3', `ISO_8859-3:1988', `iso-ir-109', `l3' and `latin3'
-     are aliases for this charset.  Source: ISO 2375 registry.
-
-`ISO-8859-4'
-     `ISO_8859-4', `ISO_8859-4:1988', `iso-ir-110', `l4' and `latin4'
-     are aliases for this charset.  Source: ISO 2375 registry.
-
-`ISO-8859-5'
-     `ISO_8859-5', `ISO_8859-5:1988', `cyrillic' and `iso-ir-144' are
-     aliases for this charset.  Source: ISO 2375 registry.
-
-`ISO-8859-6'
-     `ASMO-708', `ECMA-114', `ISO_8859-6', `ISO_8859-6:1987', `arabic'
-     and `iso-ir-127' are aliases for this charset.  Source: ISO 2375
-     registry.
-
-`ISO-8859-7'
-     `ECMA-118', `ELOT_928', `ISO_8859-7', `ISO_8859-7:1987', `greek',
-     `greek8' and `iso-ir-126' are aliases for this charset.  Source:
+     `ISO8859-10', `ISO_8859-10', `ISO_8859-10:1993', `L6',
+     `iso-ir-157' and `latin6' are aliases for this charset.  Source:
      ISO 2375 registry.
 
+`ISO-8859-13'
+     `ISO8859-13', `ISO_8859-13', `ISO_8859-13:1998', `iso-baltic',
+     `iso-ir-179a', `l7' and `latin7' are aliases for this charset.
+     Source: ISO 2375 registry.
+
+`ISO-8859-14'
+     `ISO8859-14', `ISO_8859-14', `ISO_8859-14:1998', `iso-celtic',
+     `iso-ir-199', `l8' and `latin8' are aliases for this charset.
+     Source: ISO 2375 registry.
+
+`ISO-8859-15'
+     `ISO8859-15', `ISO_8859-15', `ISO_8859-15:1998', `iso-ir-203',
+     `l9' and `latin9' are aliases for this charset.  Source: ISO 2375
+     registry.
+
+`ISO-8859-2'
+     `912', `CP912', `IBM912', `ISO8859-2', `ISO_8859-2',
+     `ISO_8859-2:1987', `iso-ir-101', `l2' and `latin2' are aliases for
+     this charset.  Source: ISO 2375 registry.
+
+`ISO-8859-3'
+     `ISO8859-3', `ISO_8859-3', `ISO_8859-3:1988', `iso-ir-109', `l3'
+     and `latin3' are aliases for this charset.  Source: ISO 2375
+     registry.
+
+`ISO-8859-4'
+     `ISO8859-4', `ISO_8859-4', `ISO_8859-4:1988', `iso-ir-110', `l4'
+     and `latin4' are aliases for this charset.  Source: ISO 2375
+     registry.
+
+`ISO-8859-5'
+     `ISO8859-5', `ISO_8859-5', `ISO_8859-5:1988', `cyrillic' and
+     `iso-ir-144' are aliases for this charset.  Source: ISO 2375
+     registry.
+
+`ISO-8859-6'
+     `ASMO-708', `ECMA-114', `ISO8859-6', `ISO_8859-6',
+     `ISO_8859-6:1987', `arabic' and `iso-ir-127' are aliases for this
+     charset.  Source: ISO 2375 registry.
+
+`ISO-8859-7'
+     `ECMA-118', `ELOT_928', `ISO8859-7', `ISO_8859-7',
+     `ISO_8859-7:1987', `greek', `greek8' and `iso-ir-126' are aliases
+     for this charset.  Source: ISO 2375 registry.
+
 `ISO-8859-8'
-     `ISO_8859-8', `ISO_8859-8:1988', `hebrew' and `iso-ir-138' are
-     aliases for this charset.  Source: ISO 2375 registry.
+     `ISO8859-8', `ISO_8859-8', `ISO_8859-8:1988', `hebrew' and
+     `iso-ir-138' are aliases for this charset.  Source: ISO 2375
+     registry.
 
 `ISO-8859-9'
-     `ISO_8859-9', `ISO_8859-9:1989', `iso-ir-148', `l5' and `latin5'
-     are aliases for this charset.  Source: ISO 2375 registry.
+     `ISO8859-9', `ISO_8859-9', `ISO_8859-9:1989', `iso-ir-148', `l5'
+     and `latin5' are aliases for this charset.  Source: ISO 2375
+     registry.
 
 `ISO_10367-box'
      `iso-ir-155' is an alias for this charset.  Source: ISO 2375
@@ -1323,137 +1451,4 @@ been removed since the `recode' program can now recreate these easily:
      recode -ld l1                   for concise decimal table
      recode -lo l1                   for concise octal table
      recode -lh l1                   for concise hexadecimal table
-
-
-File: recode.info,  Node: ASCII-BS,  Next: flat,  Prev: ISO 8859,  Up: ASCII misc
-
-ASCII 7-bits, `BS' to overstrike
-================================
-
-   This charset is available in `recode' under the name `ASCII-BS',
-with `BS' as an acceptable alias.
-
-   The file is straight ASCII, seven bits only.  According to the
-definition of ASCII, diacritics are applied by a sequence of three
-characters: the letter, one `BS', the diacritic mark.  We deviate
-slightly from this by exchanging the diacritic mark and the letter so,
-on a screen device, the diacritic will disappear and let the letter
-alone.  At recognition time, both methods are acceptable.
-
-   The French quotes are coded by the sequences: `< BS "' or `" BS <'
-for the opening quote and `> BS "' or `" BS >' for the closing quote.
-This artificial convention was inherited in straight `ASCII-BS' from
-habits around `Bang-Bang' entry, and is not well known.  But we decided
-to stick to it so that `ASCII-BS' charset will not lose French quotes.
-
-   The `ASCII-BS' charset is independent of `ASCII', and different.
-The following examples demonstrate this, knowing at advance that `!2'
-is the `Bang-Bang' way of representing an `e' with an acute accent.
-Compare:
-
-     % echo \!2 | recode -v bang..l1/d
-     Request: Bang-Bang..ISO-8859-1/Decimal-1
-     233,  10
-
-with:
-
-     % echo \!2 | recode -v bang..bs/d
-     Request: Bang-Bang..ISO-8859-1..ASCII-BS/Decimal-1
-      39,   8, 101,  10
-
-   In the first case, the `e' with an acute accent is merely
-transmitted by the `Latin-1..ASCII' mapping, not having a special
-recoding rule for it.  In the `Latin-1..ASCII-BS' case, the acute
-accent is applied over the `e' with a backspace: diacriticised
-characters have special rules.  For the `ASCII-BS' charset,
-reversibility is still possible, but there might be difficult cases.
-
-
-File: recode.info,  Node: flat,  Prev: ASCII-BS,  Up: ASCII misc
-
-ASCII without diacritics nor underline
-======================================
-
-   This charset is available in `recode' under the name `flat'.
-
-   This code is ASCII expunged of all diacritics and underlines, as
-long as they are applied using three character sequences, with `BS' in
-the middle.  Also, despite slightly unrelated, each control character is
-represented by a sequence of two or three graphic characters.  The
-newline character, however, keeps its functionality and is not
-represented.
-
-   Note that charset `flat' is a terminal charset.  We can convert _to_
-`flat', but not _from_ it.
-
-
-File: recode.info,  Node: IBM and MS,  Next: CDC,  Prev: ASCII misc,  Up: Top
-
-Some IBM or Microsoft charsets
-******************************
-
-   The `recode' program provides various IBM or Microsoft code pages
-(*note Tabular::).  An easy way to find them all at once out of the
-`recode' program itself is through the command:
-
-     recode -l | egrep -i '(CP|IBM)[0-9]'
-
-But also, see few special charsets presented in the incoming sections.
-
-* Menu:
-
-* EBCDIC::              EBCDIC codes
-* IBM-PC::              IBM's PC code
-* Icon-QNX::            Unisys' Icon code
-
-
-File: recode.info,  Node: EBCDIC,  Next: IBM-PC,  Prev: IBM and MS,  Up: IBM and MS
-
-EBCDIC code
-===========
-
-   This charset is the IBM's External Binary Coded Decimal for
-Interchange Coding.  This is an eight bits code.  The following three
-variants were implemented in `recode' independently of RFC 1345:
-
-`EBCDIC'
-     In `recode', the `us..ebcdic' conversion is identical to `dd
-     conv=ebcdic' conversion, and `recode' `ebcdic..us' conversion is
-     identical to `dd conv=ascii' conversion.  This charset also
-     represents the way Control Data Corporation relates EBCDIC to
-     8-bits ASCII.
-
-`EBCDIC-CCC'
-     In `recode', the `us..ebcdic-ccc' or `ebcdic-ccc..us' conversions
-     represent the way Concurrent Computer Corporation (formerly Perkin
-     Elmer) relates EBCDIC to 8-bits ASCII.
-
-`EBCDIC-IBM'
-     In `recode', the `us..ebcdic-ibm' conversion is _almost_ identical
-     to the GNU `dd conv=ibm' conversion.  Given the exact `dd
-     conv=ibm' conversion table, `recode' once said:
-
-          Codes  91 and 213 both recode to 173
-          Codes  93 and 229 both recode to 189
-          No character recodes to  74
-          No character recodes to 106
-
-     So I arbitrarily chose to recode 213 by 74 and 229 by 106.  This
-     makes the `EBCDIC-IBM' recoding reversible, but this is not
-     necessarily the best correction.  In any case, I think that GNU
-     `dd' should be amended.  `dd' and `recode' should ideally agree on
-     the same correction.  So, this table might change once again.
-
-   RFC 1345 brings into `recode' 15 other EBCDIC charsets, and 21 other
-charsets having EBCDIC in at least one of their alias names.  You can
-get a list of all these by executing:
-
-     recode -l | grep -i ebcdic
-
-   Note that `recode' may convert a pure stream of EBCDIC characters,
-but it does not know how to handle binary data between records which is
-sometimes used to delimit them and build physical blocks.  If end of
-lines are not marked, fixed record size may produce something readable,
-but `VB' or `VBS' blocking is likely to yield some garbage in the
-converted results.
 

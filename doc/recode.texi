@@ -21,7 +21,7 @@
 This file documents the @code{recode} command, which has the purpose of
 converting files between various character sets and surfaces.
 
-Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -53,7 +53,7 @@ by the Foundation.
 
 @page
 @vskip 0pt plus 1filll
-Copyright @copyright{} 1993, 94, 97, 98, 99 Free Software Foundation, Inc.
+Copyright @copyright{} 1993, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
 
 Permission is granted to make and distribute verbatim copies of
 this manual provided the copyright notice and this permission notice
@@ -79,10 +79,10 @@ by the Foundation.
 This recoding library converts files between various coded character
 sets and surface encodings.  When this cannot be achieved exactly, it
 may get rid of the offending characters or fall back on approximations.
-The library recognises or produces nearly 150 different character sets and
-is able to convert files between almost any pair.  Most @w{RFC 1345} character
-sets are supported.  The @code{recode} program is a handy front-end to
-the library.
+The library recognises or produces more than 300 different character sets
+and is able to convert files between almost any pair.  Most @w{RFC 1345}
+character sets, and all @code{libiconv} character sets, are supported.
+The @code{recode} program is a handy front-end to the library.
 
 The current @code{recode} release is @value{VERSION}.
 
@@ -101,10 +101,10 @@ The current @code{recode} release is @value{VERSION}.
 * Miscellaneous::       Various other charsets
 * Surfaces::            All about surfaces
 * Internals::           Internal aspects
-* Concept Index::
-* Option Index::
-* Library Index::
-* Charset and Surface Index::
+* Concept Index::       Concept Index
+* Option Index::        Option Index
+* Library Index::       Library Index
+* Charset and Surface Index::  Charset and Surface Index
 
 @detailmenu
  --- The Detailed Node Listing ---
@@ -125,6 +125,7 @@ How to use this program
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
 * Emacs::               Using @code{recode} within Emacs
+* Debugging::           Debugging considerations
 
 A recoding library
 
@@ -185,7 +186,7 @@ All about surfaces
 * End lines::           Representation for end of lines
 * MIME::                MIME contents encodings
 * Dump::                Interpreted character dumps
-* Debugging::           Artificial data
+* Test::                Artificial data for testing
 
 Internal aspects
 
@@ -379,7 +380,7 @@ not impair the usefulness, generality or extensibility of the program.
 
 The program @code{recode} has been written by Fran@,{c}ois Pinard.
 With time, it got to reuse works from other contributors, and notably,
-those of Keld Simonsen.
+those of Keld Simonsen and Bruno Haible.
 
 @menu
 * Charset overview::    Overview of charsets
@@ -391,9 +392,10 @@ those of Keld Simonsen.
 @section Overview of charsets
 
 @cindex charsets, overview
-Recoding is currently possible between many charsets, the bulk of which
-is described by @w{RFC 1345} tables.  @xref{Tabular}.  The @code{recode}
-library also handles some charsets in some specialised ways.  These are:
+Recoding is currently possible between many charsets, the bulk of which is
+described by @w{RFC 1345} tables or available in the @code{iconv} library.
+@xref{Tabular}, and @pxref{libiconv}.  The @code{recode} library also
+handles some charsets in some specialised ways.  These are:
 
 @itemize @bullet
 @item
@@ -420,6 +422,26 @@ The introduction of @w{RFC 1345} in @code{recode} has brought with it a few
 charsets having the functionality of older ones, but yet being different
 in subtle ways.  The effects have not been fully investigated yet, so for
 now, clashes are avoided, the old and new charsets are kept well separate.
+
+@cindex unavailable conversions
+@cindex conversions, unavailable
+@cindex impossible conversions
+@cindex unreachable charsets
+@cindex exceptions to available conversions
+@cindex pseudo-charsets
+@tindex flat@r{, not as before charset}
+@tindex count-characters@r{, not as before charset}
+@tindex dump-with-names@r{, not as before charset}
+@tindex data@r{, not with charsets}
+@tindex libiconv@r{, not in requests}
+Conversion is possible between almost any pair of charsets.  Here is a
+list of the exceptions.  One may not recode @emph{from} the @code{flat},
+@code{count-characters} or @code{dump-with-names} charsets, nor @emph{from}
+or @emph{to} the @code{data}, @code{tree} or @code{:libiconv:} charsets.
+Also, if we except the @code{data} and @code{tree} pseudo-charsets, charsets
+and surfaces live in disjoint recoding spaces, one cannot really transform
+a surface into a charset or vice-versa, as surfaces are only meant to be
+applied over charsets, or removed from them.
 
 @node Surface overview, Contributing, Charset overview, Introduction
 @section Overview of surfaces
@@ -512,6 +534,7 @@ control.
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
 * Emacs::               Using @code{recode} within Emacs
+* Debugging::           Debugging considerations
 @end menu
 
 @node Synopsis, Requests, Invoking recode, Invoking recode
@@ -1504,7 +1527,7 @@ and original @code{msgid} strings are not to be touched by this recoding.
 If @var{language} is not specified, @samp{c} is assumed.
 @end table
 
-@node Emacs,  , Mixed, Invoking recode
+@node Emacs, Debugging, Mixed, Invoking recode
 @section Using @code{recode} within Emacs
 
 The fact @code{recode} is a filter makes it quite easy to use from
@@ -1533,6 +1556,94 @@ the current region from Easy French to @w{@code{Latin-1}} (on Unix) and the key
    (concat "recode " (if flag "..txte" "txte")) t)
   (exchange-point-and-mark))
 @end example
+
+@node Debugging,  , Emacs, Invoking recode
+@section Debugging considerations
+
+It is our experience that when @code{recode} does not provide satisfying
+results, either @code{recode} was not called properly, correct results
+raised some doubts nevertheless, or files to recode were somewhat mangled.
+Genuine bugs are surely possible.
+
+Unless you already are a @code{recode} expert, it might be a good idea to
+quickly revisit the tutorial (@pxref{Tutorial}) or the prior sections in this
+chapter, to make sure that you properly formatted your recoding request.
+In the case you intended to use @code{recode} as a filter, make sure that you
+did not forget to redirect your standard input (through using the @kbd{<}
+symbol in the shell, say).  Some @code{recode} false mysteries are also
+easily explained, @xref{Reversibility}.
+
+For the other cases, some investigation is needed.  To illustrate how to
+proceed, let's presume that you want to recode the @file{nicepage} file,
+coded @code{UTF-8}, into @code{HTML}.  The problem is that the command
+@samp{recode u8..h nicepage} yields:
+
+@example
+recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
+@end example
+
+One good trick is to use @code{recode} in filter mode instead of in file
+replacement mode, @xref{Synopsis}.  Another good trick is to use the
+@samp{-v} option asking for a verbose description of the recoding steps.
+We could rewrite our recoding call as @samp{recode -v u8..h <nicepage},
+to get something like:
+
+@example
+Request: UTF-8..:libiconv:..ISO-10646-UCS-2..HTML_4.0
+Shrunk to: UTF-8..ISO-10646-UCS-2..HTML_4.0
+[@dots{}@var{some output}@dots{}]
+recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
+@end example
+
+This might help you to better understand what the diagnostic means.  The
+recoding request is achieved in two steps, the first recodes @code{UTF-8}
+into @code{UCS-2}, the second recodes @code{UCS-2} into @code{HTML}.
+The problem occurs within the first of these two steps, and since, the
+input of this step is the input file given to @code{recode}, this is
+this overall input file which seems to be invalid.  Also, when used in
+filter mode, @code{recode} processes as much input as possible before the
+error occurs and sends the result of this processing to standard output.
+Since the standard output has not been redirected to a file, it is merely
+displayed on the user screen.  By inspecting near the end of the resulting
+@code{HTML} output, that is, what was recoding a bit before the recoding
+was interrupted, you may infer about where the error stands in the real
+@code{UTF-8} input file.
+
+If you have the proper tools to examine the intermediate recoding data,
+you might also prefer to reduce the problem to a single step to better
+study it.  This is what I usually do.  For example, the last @code{recode}
+call above is more or less equivalent to:
+
+@example
+recode -v UTF-8..ISO_10646-UCS-2 <nicepage >temporary
+recode -v ISO_10646-UCS-2..HTML_4.0 <temporary
+rm temporary
+@end example
+
+If you know that the problem is within the first step, you might prefer to
+concentrate on using the first @code{recode} line.  If you know that the
+problem is within the second step, you might execute the first @code{recode}
+line once and for all, and then play with the second @code{recode} call,
+repeatedly using the @file{temporary} file created once by the first call.
+
+Note that the @samp{-f} switch may be used to force the production of
+@code{HTML} output despite invalid input, it might be satisfying enough
+for you, and easier than repairing the input file.  That depends on how
+strict you would like to be about the precision of the recoding process.
+
+If you later see that your HTML file begins with @samp{@@lt;html@@gt;} when
+you expected @samp{<html>}, then @code{recode} might have done a bit more
+that you wanted.  In this case, your input file was half-@code{UTF-8},
+half-@code{HTML} already, that is, a mixed file (@pxref{Mixed}).  There is a
+special @code{-d} switch for this case.  So, your might be end up calling
+@samp{recode -fd nicepage}.  Until you are quite sure that you accept
+overwriting your input file whatever what, I recommend that you stick with
+filter mode.
+
+If, after such experiments, you seriously think that the @code{recode}
+program does not behave properly, there might be a genuine bug in the
+program itself, in which case I invite you to to contribute a bug report,
+@xref{Contributing}.
 
 @node Library, Universal, Invoking recode, Top
 @chapter A recoding library
@@ -2903,7 +3014,7 @@ library implements most of @w{RFC 1345}, however:
 @tindex dk-us@r{, not recognised by }recode
 @tindex us-dk@r{, not recognised by }recode
 It does not recognise those charsets which overload character positions:
-@code{dk-us} and @code{us-dk}.  However, see @ref{Mixed}.
+@code{dk-us} and @code{us-dk}.  However, @xref{Mixed}.
 
 @item
 @tindex ANSI_X3.110-1983@r{, not recognised by }recode
@@ -4061,26 +4172,39 @@ and usage.  @xref{Universal}.
 
 @cindex surfaces, implementation in @code{recode}
 @tindex data@r{, a special charset}
-Surfaces are implemented within @code{recode} as special charsets which may
-only transform to or from the @code{data} special charset.  Clever users
-may use this knowledge for writing surface names in requests exactly as if
-they were pure charsets, when the only need is to change surfaces without
-any kind of recoding between real charsets.  In such contexts, @code{data}
-may also be used as if it were some kind of generic, anonymous charset:
-the request @samp{data..@var{surface}} merely adds the given @var{surface},
+@tindex tree@r{, a special charset}
+Surfaces are implemented within @code{recode} as special charsets
+which may only transform to or from the @code{data} or @code{tree}
+special charsets.  Clever users may use this knowledge for writing
+surface names in requests exactly as if they were pure charsets, when
+the only need is to change surfaces without any kind of recoding between
+real charsets.  In such contexts, either @code{data} or @code{tree} may
+also be used as if it were some kind of generic, anonymous charset: the
+request @samp{data..@var{surface}} merely adds the given @var{surface},
 while the request @samp{@var{surface}..data} removes it.
 
-We are only beginning to experiment with surfaces in @code{recode}, but
-the concept opens the doors to many avenues; it is not clear yet which
-ones are worth pursuing, and which should be abandoned.  This chapter
-presents all surfaces currently available.
+@cindex structural surfaces
+@cindex surfaces, structural
+@cindex surfaces, trees
+The @code{recode} library distinguishes between mere data surfaces, and
+structural surfaces, also called tree surfaces for short.  Structural
+surfaces might allow, in the long run, transformations between a few
+specialised representations of structural information like MIME parts,
+Perl or Python initialisers, LISP S-expressions, XML, Emacs outlines, etc.
+
+We are still experimenting with surfaces in @code{recode}.  The concept opens
+the doors to many avenues; it is not clear yet which ones are worth pursuing,
+and which should be abandoned.  In particular, implementation of structural
+surfaces is barely starting, there is not even a commitment that tree
+surfaces will stay in @code{recode}, if they do prove to be more cumbersome
+than useful.  This chapter presents all surfaces currently available.
 
 @menu
 * Permutations::        Permuting groups of bytes
 * End lines::           Representation for end of lines
 * MIME::                MIME contents encodings
 * Dump::                Interpreted character dumps
-* Debugging::           Artificial data
+* Test::                Artificial data for testing
 @end menu
 
 @node Permutations, End lines, Surfaces, Surfaces
@@ -4197,7 +4321,7 @@ Internet standards.  MIME changed from a ``Proposed Standard'' (@w{RFC
 and was @emph{recycled} as a ``Draft Standard'' in 1996-11.  It is not yet a
 ``Full Standard''.
 
-@node Dump, Debugging, MIME, Surfaces
+@node Dump, Test, MIME, Surfaces
 @section Interpreted character dumps
 
 @cindex dumping characters
@@ -4314,8 +4438,8 @@ far end.  Also, source lines not beginning with a number are skipped.  So,
 @code{recode} should often be able to read a whole C header file, wrapping
 the results of a previous dump, and regenerate the original byte string.
 
-@node Debugging,  , Dump, Surfaces
-@section Artificial data
+@node Test,  , Dump, Surfaces
+@section Artificial data for testing
 
 A few pseudo-surfaces exist to generate debugging data out of thin air.
 These surfaces are only meant for the expert @code{recode} user, and are
@@ -4443,19 +4567,17 @@ efficient, reversible, merge-able single steps out of these double steps.
 @cindex average number of recoding steps
 I made some statistics about how many internal recoding steps are required
 between any two charsets chosen at random.  The initial recoding layout,
-before optimisation, always uses between 1 and 6 steps.  Optimisation could
+before optimisation, always uses between 1 and 5 steps.  Optimisation could
 sometimes produce mere copies, which are counted as no steps at all.
 In other cases, optimisation is unable to save any step.  The number of
-steps after optimisation is currently between 0 and 6 steps.  Of course,
-the @emph{expected} number of steps is affected by optimisation: it
-drops from 2.2 to 0.9.@footnote{The above numbers were for @code{recode}
-version 3.4.  After UCS additions, it drops from 2.3 to 1.1.} This means
-that @code{recode} uses a theoretical average of a bit less than one step
-per recoding job.  This looks good.  This was computed using reversible
-recodings.  In strict mode, optimisation might be defeated somewhat.
-Number of steps run between 1 and 6, both before and after optimisation,
-and the expected number of steps decreases by a lesser amount, going from
-2.2 to 1.3.  This is still manageable.
+steps after optimisation is currently between 0 and 5 steps.  Of course,
+the @emph{expected} number of steps is affected by optimisation: it drops
+from 2.8 to 1.8.  This means that @code{recode} uses a theoretical average
+of a bit less than one step per recoding job.  This looks good.  This was
+computed using reversible recodings.  In strict mode, optimisation might
+be defeated somewhat.  Number of steps run between 1 and 6, both before
+and after optimisation, and the expected number of steps decreases by a
+lesser amount, going from 2.2 to 1.3.  This is still manageable.
 
 @node New charsets, New surfaces, Main flow, Internals
 @section Adding new charsets
@@ -4556,15 +4678,17 @@ the fact your routines is written in C or in Flex.
 @cindex new surfaces, how to add
 
 Adding a new surface is technically quite similar to adding a new charset.
-@xref{New charsets}.  A surface is provided as a set of two
-transformations: one from the predefined special charset @code{data} to
-the new surface, meant to apply the surface, the other from the new surface
-to the predefined special charset @code{data}, meant to remove the surface.
+@xref{New charsets}.  A surface is provided as a set of two transformations:
+one from the predefined special charset @code{data} or @code{tree} to the
+new surface, meant to apply the surface, the other from the new surface
+to the predefined special charset @code{data} or @code{tree}, meant to
+remove the surface.
 
 @findex declare_step
 Internally in @code{recode}, function @code{declare_step} especially
-recognises when a charset is so related to @code{data}, and then takes
-appropriate actions so that charset gets indeed installed as a surface.
+recognises when a charset is so related to @code{data} or @code{tree},
+and then takes appropriate actions so that charset gets indeed installed
+as a surface.
 
 @node Design,  , New surfaces, Internals
 @section Comments on the library design

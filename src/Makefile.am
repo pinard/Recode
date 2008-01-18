@@ -1,5 +1,5 @@
 # Makefile for `recode' sources.
-# Copyright © 1991,92,93,94,95,96,97,98,99 Free Software Foundation, Inc.
+# Copyright © 1991,92,93,94,95,96,97,98,99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
@@ -24,18 +24,18 @@ man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
-fr-charname.h hash.h inisteps.h libiconv.h rfc1345.h $(H_FALLBACKS) \
-$(H_SURFACES)
+fr-charname.h hash.h inisteps.h libiconv.h quotearg.h rfc1345.h	\
+$(H_FALLBACKS) $(H_SURFACES)
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
-debug.c ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c \
+ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
 ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES)
 OLD_C_STEPS = next.c
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
 
 H_FALLBACKS =
-C_FALLBACKS = flat.c html.c lat1ltex.c lat1texi.c lat1txte.c rfc1345.c
+C_FALLBACKS = flat.c html.c lat1ltex.c lat1txte.c rfc1345.c texinfo.c
 L_FALLBACKS = ltexlat1.l txtelat1.l
 
 H_SURFACES = base64.h
@@ -46,8 +46,8 @@ recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 
 librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
-hash.c iconv.c libiconv.c merged.c names.c outer.c recode.c request.c \
-strip-pool.c task.c $(C_STEPS)
+hash.c iconv.c libiconv.c merged.c names.c outer.c quotearg.c recode.c \
+request.c strip-pool.c task.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
 INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
@@ -68,7 +68,7 @@ stamp-steps: $(C_STEPS) merged.c
 	@echo "Updating decsteps.h and inisteps.h"
 	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS) merged.c ) \
 	    | sed 's/ .*//' > liste.tmp
-	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/p' \
+	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/' \
 	    liste.tmp > decsteps.tmp
 	@sed 's/\(.*\)/  if (!\1 (outer)) return false;/' \
 	    liste.tmp > inisteps.tmp

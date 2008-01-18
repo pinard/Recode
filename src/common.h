@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -30,6 +30,7 @@
 # define DOSWIN_OR_OS2 1
 #endif
 
+#include <assert.h>
 #include <stdio.h>
 
 #if STDC_HEADERS
@@ -105,7 +106,7 @@ typedef enum {false = 0, true = 1} bool;
 # endif
 #endif
 
-int argmatch PARAMS ((const char *, const char *const *));
+#include <argmatch.h>
 
 #include <errno.h>
 #ifndef errno

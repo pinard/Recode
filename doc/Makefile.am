@@ -1,5 +1,5 @@
 # Makefile for `recode' documentation.
-# Copyright © 1994, 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
+# Copyright © 1994, 95, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -21,6 +21,8 @@ info_TEXINFOS = recode.texi
 
 EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore \
 tables.py
+
+MOSTLYCLEANFILES = recode.ops
 
 recode.info: libiconv.texi rfc1345.texi
 recode.dvi: libiconv.texi rfc1345.texi

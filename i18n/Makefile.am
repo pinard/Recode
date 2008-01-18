@@ -32,7 +32,8 @@ if USE_NLS
 	files='$(MOFILES)'; \
 	for file in $$files; do \
 	  base=`basename $$file`; \
-	  langdir=$(localedir)/`echo $$base | sed 's/\.mo$$//'`/LC_MESSAGES; \
+	  langdir=$(DESTDIR)$(localedir)/`echo $$base \
+	    | sed 's/\.mo$$//'`/LC_MESSAGES; \
 	  $(mkinstalldirs) $$langdir; \
 	  echo " $(INSTALL_DATA) $(srcdir)/$$file $$langdir/$(PACKAGE).mo"; \
 	  $(INSTALL_DATA) $(srcdir)/$$file $$langdir/$(PACKAGE).mo; \
@@ -44,7 +45,8 @@ if USE_NLS
 	files='$(MOFILES)'; \
 	for file in $$files; do \
 	  base=`basename $$file`; \
-	  langdir=$(localedir)/`echo $$base | sed 's/\.mo$$//'`/LC_MESSAGES; \
+	  langdir=$(DESTDIR)$(localedir)/`echo $$base
+	    | sed 's/\.mo$$//'`/LC_MESSAGES; \
 	  rm -f $$langdir/$(PACKAGE).mo; \
 	done
 endif

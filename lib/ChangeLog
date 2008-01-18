@@ -1,7 +1,7 @@
 1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (INCLUDES): Do not use ../intl.
-
+
 1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: Adapt to the gettext scheme used in wdiff.
@@ -17,7 +17,8 @@
 	* alloca.c, malloc.c, realloc.c: New files, from elsewhere.
 	* Makefile.am (EXTRA_DIST): Distribute them.
 	(libreco_a_LIBADD): Uncomment.
-	Reported by Alan J. Flavell, Alexandre Oliva and Peter Turcan.
+	Reported by Alan J. Flavell, Alexandre Oliva, Olivier Lecarme and
+	Peter Turcan.
 
 1998-12-13  François Pinard  <pinard@iro.umontreal.ca>
 

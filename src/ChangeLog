@@ -1,3 +1,145 @@
+2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* task.c: Insert union wait portability from GNU make.
+	Reported by Bruno Haible.
+
+	* testdump.c: New name for debug.c.
+	(module_testdump): Renamed from test_debug.
+	* Makefile.am (C_STEPS): Adjusted.
+
+2000-06-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Check for HAVE_STRUCT_UTIMBUF, for OpenSTEP to work.
+	Reported by Jim Meyering and Tom Hageman.
+
+2000-06-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (stamp-steps): Remove p in s///p.
+
+	Avoid (sometimes questionable) compiler warnings.
+	* recodext.h (put_byte): Cast argument to char.
+	(RETURN_IF_NOGO): Use the brace trick instead of the else trick.
+	(RECODE_NO_SYMBOL_TYPE): New constant.
+	* applemac.c (module_applemac): Always return a value.
+	* combine.c (find_shifted_state, prepare_shifted_state): Declare
+	second argument as unsigned instead of unsigned short.  Strange...
+	* debug.c (produce_count): Make a block, to avoid shadowing character.
+	* dump.c (dump, umdump):  Add superfluous parentheses.
+	(undump): Add superfluous braces.
+	* html.c (transform_ucs2_html): Add superfluous parentheses.
+	* ibmpc.c (module_ibmpc): Always return a value.
+	* mergelex.py (section1): Define YY_NO_UNPUT.
+	* mixed.c (start_accumulation, recode_accumulated): No inline.
+	* names.c (code_to_ucs2): Cast value to int within ? operator.
+	(find_alias): Preset type.
+	* recode.c (recode_format_table): Handle RECODE_NO_LANGUAGE in switch.
+	* request.c (edit_sequence): Rename step to step2, avoid shadowing.
+	(add_to_sequence): Simplify code by using result of REALLOC in test.
+	(scan_charset): Rename alias to alias2, avoid shadowing.
+	* task.c (recode_if_nogo): Rename error to new_error, avoid shadowing.
+	* ucs.c (get_ucs2): Add superfluous parentheses.
+	* utf16.c (transform_utf16_ucs4): Add superfluous braces.
+	Reported by Bruno Haible.
+
+2000-05-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.c (transform_base64_data): Skip \r.
+	Reported by Eli Zaretskii.
+
+2000-04-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* debug.c (produce_full_dump): Do not produce header when no data.
+
+2000-04-23  Bruno Haible  <haible@clisp.cons.org>
+
+	* libiconv.c: Include "iconv.h".
+	* iconv.c: Include "iconv.h" instead of "libiconv.h".
+
+	* recode.c (recode_perror): Fetch errno before anything else.
+
+	* task.c: Provide W* macro replacements whenever needed.
+	(perform_pipe_sequence): Use <sys/wait.h> instead of hardwired bit
+	masks.
+
+	* rfc1345.c (transform_rfc1345_ucs2): Avoid double dereference.
+
+	* combine.c (combine_byte_byte, combine_ucs2_byte, combine_byte_ucs2,
+	combine_ucs2_ucs2): Silence gcc warning.
+	* debug.c (produce_count): Remove unused variable 'cursor'.
+	* html.c (init_ucs2_html): Remove unused variables 'outer', 'done'.
+	(init_html_ucs2): Likewise.
+	(init_ucs2_html_v11, init_ucs2_html_v20, init_ucs2_html_v27,
+	init_ucs2_html_v32, init_ucs2_html_v40, init_html_v11_ucs2,
+	init_html_v20_ucs2, init_html_v27_ucs2, init_html_v32_ucs2,
+	init_html_v40_ucs2): Return a value.
+	* main.c (main): Silence gcc warning.
+	* names.c (make_argmatch_arrays): Remove unused variable 'hash'.
+	(list_full_charset): Remove unused variable 'ucs2'.
+	(find_and_report_subsets): Remove unused variable 'counter'.
+	* request.c (scan_identifier): Remove unused variable 'outer'.
+	(add_unsurfacers_to_sequence): Return true.
+	(scan_charset): Silence gcc warning.
+	* task.c (perform_memory_sequence, perform_pass_sequence): Silence
+	gcc warning.  Include <unistd.h>, needed for pipe(), fork(),
+	dup2(), close() declarations.  Include <sys/wait.h>, needed for
+	wait() declaration and W* macros.
+	(recode_perform_task): Silence gcc warning.
+	* utf16.c (transform_ucs4_utf16): Remove unused variables 'character',
+        'chunk'.
+	* utf7.c (transform_utf16_utf7): Remove unused variable 'character'.
+	* vn.c (module_vietnamese): Return true.
+
+	* outer.c (module_libiconv): New declaration.
+
+2000-03-14  Bruno Haible  <haible@ilog.fr>
+
+	* iconv.c: Updated to libiconv 0.3, 1.0, 1.1, then 1.2.
+
+2000-03-03  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (C_FALLBACKS): Replace lat1texi.c by texinfo.c.
+	* texinfo.c: New module.
+	* lat1texi.c: Deleted.
+
+2000-03-01  Karl Eichwalder  <ke@suse.de>
+
+	* lat1texi.c: Add @exclamdown{}, @questiondown{}, @AA{}, @O{},
+	@ss{}, @aa{}, @`i, @'i, and @o{}.
+
+2000-02-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h: Some structures progressively shifted their meaning
+	with recode evolving, time for some global nomenclature changes:
+	symbol is now alias, charset is now symbol, charset_type is data_type.
+	(struct recode_symbol): Rename charset_data to data, replace
+	charset_flag with type.
+	* All adjusted.
+
+2000-02-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h, freeze.c, request.c, outer.c: Implement tree_charset.
+
+2000-01-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* quotearg.c, quotearg.h: New files, from elsewhere.
+	* Makefile.am: Adjusted.
+	* common.h, names.c, main.c: Adjusted for new argmatch call.
+
+2000-01-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Write version in two blocks rather than three.
+	Reported by Jim Meyering.
+
+2000-01-12  Akim Demaille  <akim@epita.fr>
+
+	* lat1texi.c: Updated to newer Texinfo commands.  That is,
+	change @ptexc to @, and @ptexi to @dotless{i}.
+
+1999-12-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Rephrase some error messages so they are less
+	telegraphic, add a few messages to better explain some errors.
+
 1999-12-29  François Pinard  <pinard@iro.umontreal.ca>
 
 	* mixed.c (struct mixed): Delete original_task.
@@ -5,7 +147,7 @@
 	(recode_accumulated): Merges previous plumb_buffer_to_output,
 	a call to recode_perform_task, and previous plumb_input_to_output.
 	Usages adjusted accordingly.
-
+
 1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconv.c: New file, from Bruno Haible's libiconv 0.2.
@@ -22,7 +164,7 @@
 	* task.c (recode_if_nogo): New function.
 	* recodext.h: Declare it.
 	(SET_TASK_ERROR, RETURN_IF_NOGO): Use it.
-
+
 1999-12-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	* vn.c (viscii_viqr_data, viscii_vni_data): Final DONE was missing.

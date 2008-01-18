@@ -37,7 +37,7 @@ euc_tw_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
           unsigned char buf[2];
           int ret;
           buf[0] = c3-0x80; buf[1] = c4-0x80;
-          switch (c3-0xa0) {
+          switch (c2-0xa0) {
             case 1: ret = cns11643_1_mbtowc(conv,pwc,buf,2); break;
             case 2: ret = cns11643_2_mbtowc(conv,pwc,buf,2); break;
             case 3: ret = cns11643_3_mbtowc(conv,pwc,buf,2); break;

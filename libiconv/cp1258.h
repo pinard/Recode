@@ -38,9 +38,12 @@ cp1258_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
     *pwc = (wchar_t) c;
     return 1;
   }
-  else if (c >= 0x80) {
-    *pwc = (wchar_t) cp1258_2uni[c-0x80];
-    return 1;
+  else {
+    unsigned short wc = cp1258_2uni[c-0x80];
+    if (wc != 0xfffd) {
+      *pwc = (wchar_t) wc;
+      return 1;
+    }
   }
   return RET_ILSEQ;
 }

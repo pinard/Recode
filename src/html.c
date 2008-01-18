@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -418,9 +418,7 @@ init_ucs2_html (RECODE_STEP step,
 		unsigned mask)
 {
   Hash_table *table;
-  RECODE_OUTER outer = request->outer;
   struct ucs2_to_string const *cursor;
-  bool done;
 
   if (before_options || after_options)
     return false;
@@ -446,7 +444,8 @@ init_ucs2_html_v11 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_ucs2_html (step, request, before_options, after_options, V11);
+  return
+    init_ucs2_html (step, request, before_options, after_options, V11);
 }
 
 static bool
@@ -455,7 +454,8 @@ init_ucs2_html_v20 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_ucs2_html (step, request, before_options, after_options, V20);
+  return
+    init_ucs2_html (step, request, before_options, after_options, V20);
 }
 
 static bool
@@ -464,7 +464,8 @@ init_ucs2_html_v27 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_ucs2_html (step, request, before_options, after_options, V27);
+  return
+    init_ucs2_html (step, request, before_options, after_options, V27);
 }
 
 static bool
@@ -473,7 +474,8 @@ init_ucs2_html_v32 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_ucs2_html (step, request, before_options, after_options, V32);
+  return
+    init_ucs2_html (step, request, before_options, after_options, V32);
 }
 
 static bool
@@ -482,7 +484,8 @@ init_ucs2_html_v40 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_ucs2_html (step, request, before_options, after_options, V40);
+  return
+    init_ucs2_html (step, request, before_options, after_options, V40);
 }
 
 /*-----------------.
@@ -514,7 +517,7 @@ transform_ucs2_html (RECODE_SUBTASK subtask)
 	    }
 	  put_byte (';', subtask);
 	}
-      else if (value < 32 && value != '\n' && value != '\t' || value >= 127)
+      else if ((value < 32 && value != '\n' && value != '\t') || value >= 127)
 	{
 	  unsigned divider = 10000;
 
@@ -584,9 +587,7 @@ init_html_ucs2 (RECODE_STEP step,
 		unsigned mask)
 {
   Hash_table *table;
-  RECODE_OUTER outer = request->outer;
   struct ucs2_to_string const *cursor;
-  bool done;
 
   if (before_options || after_options)
     return false;
@@ -612,7 +613,8 @@ init_html_v11_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_html_ucs2 (step, request, before_options, after_options, V11);
+  return
+    init_html_ucs2 (step, request, before_options, after_options, V11);
 }
 
 static bool
@@ -621,7 +623,8 @@ init_html_v20_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_html_ucs2 (step, request, before_options, after_options, V20);
+  return
+    init_html_ucs2 (step, request, before_options, after_options, V20);
 }
 
 static bool
@@ -630,7 +633,8 @@ init_html_v27_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_html_ucs2 (step, request, before_options, after_options, V27);
+  return
+    init_html_ucs2 (step, request, before_options, after_options, V27);
 }
 
 static bool
@@ -639,7 +643,8 @@ init_html_v32_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_html_ucs2 (step, request, before_options, after_options, V32);
+  return
+    init_html_ucs2 (step, request, before_options, after_options, V32);
 }
 
 static bool
@@ -648,7 +653,8 @@ init_html_v40_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  init_html_ucs2 (step, request, before_options, after_options, V40);
+  return
+    init_html_ucs2 (step, request, before_options, after_options, V40);
 }
 
 /*-----------------.

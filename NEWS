@@ -1,35 +1,37 @@
 Free recode NEWS - User visible changes.	-*- outline -*- (allout)
-Copyright © 1993, 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
+Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 
-* Version 3.5c - François Pinard, 1999-12.
+* Version 3.5d - François Pinard, 2000-03.
 
 .* General changes
 . + The Texinfo manual is now indexed, by charset, by concept, etc.
-. + Program messages are also available in Greek and Italian.
+. + Program messages are also available in Greek, Gallicean and Italian.
 . + Bruno Haible's nice portable iconv library has been integrated.
+. + RFC 1345 tables and French character names have been updated.
+. + The Texinfo charset has been refreshed, and made reversible.
 
-.* New charsets (most from libiconv)
+.* New charsets (most from libiconv) [list to be revised]
 
 . + Japanese
-    EUC-JP (CSEUCPKDFMTJAPANESE,
-      EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE);
-    ISO-2022-JP (CSISO2022JP); ISO-2022-JP-1; ISO-2022-JP-2 (CSISO2022JP2);
-    JIS_X0201 (CSHALFWIDTHKATAKANA, JISX0201-1976, JISX0201.1976-0, X0201);
+    EUC-JP (csEUCPkdFmtJapanese,
+      Extended_UNIX_Code_Packed_Format_for_Japanese);
+    ISO-2022-JP (csISO2022JP); ISO-2022-JP-1; ISO-2022-JP-2 (csISO2022JP2);
+    JIS_X0201 (csHalfWidthKatakana, JISX0201-1976, JISX0201.1976-0, X0201);
     JIS_X0208 (JIS0208, JIS_X0208.1983-0, JIS_X0208-1983, JIS_X0208-1990,
       JIS_X0208.1983-1);
-    JIS_X0212 (CSISO159JISX02121990, ISO-IR-159, JIS_X0212.1990-0,
+    JIS_X0212 (csISO159JISX02121990, ISO-IR-159, JIS_X0212.1990-0,
       JIS_X0212-1990, X0212);
-    SJIS (CSSHIFTJIS, MS_KANJI, SHIFT-JIS).
+    SJIS (csShiftJIS, MS_KANJI, SHIFT-JIS).
 
 . + Chinese
-    BIG5 (BIG-5, BIG-FIVE, BIGFIVE, CSBIG5);
-    EUC-CN (CSGB2312, EUCCN, GB2312); EUC-TW (CSEUCTW, EUCTW);
-    HZ (HZ-GB-2312); ISO-2022-CN (CSISO2022CN); ISO-2022-CN-EXT.
+    BIG5 (BIG-5, BIG-FIVE, BIGFIVE, csBig5);
+    EUC-CN (csGB2312, EUCCN, GB2312); EUC-TW (csEUCTW, EUCTW);
+    HZ (HZ-GB-2312); ISO-2022-CN (csISO2022CN); ISO-2022-CN-EXT.
 
 . + Korean
-    JOHAB (CP1361); EUC-KR (CSEUCKR, EUCKR); GBK (CP936);
-    ISO-2022-KR (CSISO2022KR);
-    KSC_5601 (CP949, CSKSC56011987, ISO-IR-149, KOREAN, KSC5601.1987-0,
+    JOHAB (CP1361); EUC-KR (csEUCKR, EUCKR); GBK (CP936);
+    ISO-2022-KR (csISO2022KR);
+    KSC_5601 (CP949, csKSC56011987, ISO-IR-149, KOREAN, KSC5601.1987-0,
       KS_C_5601-1987, KS_C_5601-1989).
 
 . + Vietnamese (independently of libiconv)
@@ -46,28 +48,29 @@ Copyright © 1993, 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
     MacHebrew; MacIceland; MacRomania; MacThai; MacTurkish; MacUkraine
 
 . + Unicode
-    JAVA; UCS-2-BE (UNICODEBIG); UCS-2-INTERNAL; UCS-2-LE (UNICODELITTLE);
-    UCS-2-SWAPPED; UCS-4-BE; UCS-4-INTERNAL; UCS-4-LE; UCS-4-SWAPPED
+    JAVA; UCS-2-BE (csUnicode11, UNICODE-1-1, UnicodeBIG); UCS-2-INTERNAL;
+    UCS-2-LE (UnicodeLITTLE); UCS-2-SWAPPED; UCS-4-BE; UCS-4-INTERNAL;
+    UCS-4-LE; UCS-4-SWAPPED; UCS-2BE; UCS-2LE; UCS-4BE; UCS-4LE.
 
 . + Others
-    CP932; CP950; CP866 (866, CSIBM866, IBM866).
+    CP932; CP950; CP866 (866, csIBM866, IBM866).
 
 . + Recode internal
     :libiconv: (:)   [so option -x: avoids going through libiconv]
 
-.* New aliases (from libiconv)
-   CSASCII (for ANSI_X3.4-1968); CSHPROMAN8 (for hp-roman8);
-   CSISOLATIN1 (for ISO-8859-1); CSISOLATIN2 (for ISO-8859-2);
-   CSISOLATIN3 (for ISO-8859-3); CSISOLATIN4 (for ISO-8859-4);
-   CSISOLATIN5 (for ISO-8859-9);
-   CSISOLATIN6 and ISO_8859-10:1992 (for ISO-8859-10);
-   CSISOLATINARABIC (for ISO-8859-6); CSISOLATINCYRILLIC (for ISO-8859-5);
-   CSISOLATINGREEK (for ISO-8859-7); CSISOLATINHEBREW (for ISO-8859-8);
-   CSKOI8R (for KOI8-R); CSPC850MULTILINGUAL (for IBM850);
-   CSUCS4 (for ISO-10646-UCS-4); CSUNICODE (for ISO-10646-UCS-2);
-   CSUNICODE11UTF7 (for UNICODE-1-1-UTF-7);
-   CSVISCII and VISCII1.1-1 (for VISCII);
-   ISO-IR-179 (for ISO-8859-13); MACROMAN (for macintosh);
+.* New aliases (from libiconv) [list to be revised]
+   csASCII (for ANSI_X3.4-1968); csHPRoman8 (for hp-roman8);
+   csISOLatin1 (for ISO-8859-1); csISOLatin2 (for ISO-8859-2);
+   csISOLatin3 (for ISO-8859-3); csISOLatin4 (for ISO-8859-4);
+   csISOLatin5 (for ISO-8859-9);
+   csISOLatin6 and ISO_8859-10:1992 (for ISO-8859-10);
+   csISOLatinArabic (for ISO-8859-6); csISOLatinCyrillic (for ISO-8859-5);
+   csISOLatinGreek (for ISO-8859-7); csISOLatinHebrew (for ISO-8859-8);
+   csKOI8R (for KOI8-R); csPC850Multilingual (for IBM850);
+   csUCS4 (for ISO-10646-UCS-4); csUnicode (for ISO-10646-UCS-2);
+   csUnicode11UTF7 (for UNICODE-1-1-UTF-7);
+   csVISCII and VISCII1.1-1 (for VISCII);
+   ISO-IR-179 (for ISO-8859-13); csMacintosh and MacRoman (for macintosh);
    TCVN5712-1, TCVN5712-1:1993 and TCVN-5712 (for TCVN).
 
 * Version 3.5 - François Pinard, 1999-05.

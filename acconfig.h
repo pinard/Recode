@@ -1,5 +1,5 @@
 /* Special definitions for GNU recode, processed by autoheader.
-   Copyright © 1993, 1998, 1999 Free Software Foundation, Inc.
+   Copyright © 1993, 1998, 1999, 2000 Free Software Foundation, Inc.
    François Pinard <pinard@iro.umontreal.ca>, 1993.
 */
 

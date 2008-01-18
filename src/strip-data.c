@@ -4,17 +4,17 @@
    Copyright © 1999 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1993, 1997.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -697,6 +697,7 @@ static struct strip_data data_43 =
    iso-ir-100
    ISO_8859-1:1987
    ISO_8859-1
+   ISO8859-1
    latin1
    l1
    IBM819
@@ -718,6 +719,7 @@ static struct strip_data data_44 =
    iso-ir-101
    ISO_8859-2:1987
    ISO_8859-2
+   ISO8859-2
    latin2
    l2
    IBM912
@@ -753,6 +755,7 @@ static struct strip_data data_46 =
    iso-ir-109
    ISO_8859-3:1988
    ISO_8859-3
+   ISO8859-3
    latin3
    l3
 */
@@ -771,6 +774,7 @@ static struct strip_data data_47 =
    iso-ir-110
    ISO_8859-4:1988
    ISO_8859-4
+   ISO8859-4
    latin4
    l4
 */
@@ -852,6 +856,7 @@ static struct strip_data data_52 =
    iso-ir-126
    ISO_8859-7:1987
    ISO_8859-7
+   ISO8859-7
    ELOT_928
    ECMA-118
    greek
@@ -872,6 +877,7 @@ static struct strip_data data_53 =
    iso-ir-127
    ISO_8859-6:1987
    ISO_8859-6
+   ISO8859-6
    ECMA-114
    ASMO-708
    arabic
@@ -891,6 +897,7 @@ static struct strip_data data_54 =
    iso-ir-138
    ISO_8859-8:1988
    ISO_8859-8
+   ISO8859-8
    hebrew
 */
 
@@ -955,6 +962,7 @@ static struct strip_data data_58 =
    iso-ir-144
    ISO_8859-5:1988
    ISO_8859-5
+   ISO8859-5
    cyrillic
 */
 
@@ -1002,6 +1010,7 @@ static struct strip_data data_61 =
    iso-ir-148
    ISO_8859-9:1989
    ISO_8859-9
+   ISO8859-9
    latin5
    l5
 */
@@ -1109,7 +1118,8 @@ static struct strip_data data_68 =
    iso-ir-157
    ISO_8859-10:1993
    ISO_8859-10
-   l6
+   ISO8859-10
+   L6
    latin6
 */
 
@@ -1127,6 +1137,7 @@ static struct strip_data data_69 =
    iso-ir-179a
    ISO_8859-13:1998
    ISO_8859-13
+   ISO8859-13
    latin7
    iso-baltic
    l7
@@ -1146,6 +1157,7 @@ static struct strip_data data_70 =
    iso-ir-199
    ISO_8859-14:1998
    ISO_8859-14
+   ISO8859-14
    latin8
    iso-celtic
    l8
@@ -1165,6 +1177,7 @@ static struct strip_data data_71 =
    iso-ir-203
    ISO_8859-15:1998
    ISO_8859-15
+   ISO8859-15
    latin9
    l9
 */
@@ -1360,8 +1373,8 @@ static struct strip_data data_84 =
 
 /* IBM256
    EBCDIC-INT1
-   256
    CP256
+   256
 */
 
 static struct strip_data data_85 =
@@ -2453,7 +2466,7 @@ static struct strip_data data_157 =
 bool
 module_strips (struct recode_outer *outer)
 {
-  RECODE_SYMBOL symbol;
+  RECODE_ALIAS alias;
 
   if (!declare_strip_data (outer, &data_0, "ISO_646.basic"))
     return false;
@@ -2806,17 +2819,17 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "us", "ANSI_X3.4-1968"))
     return false;
-  if (symbol = declare_alias (outer, "IBM367", "ANSI_X3.4-1968"), !symbol)
+  if (alias = declare_alias (outer, "IBM367", "ANSI_X3.4-1968"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP367", "ANSI_X3.4-1968"), !symbol)
+  if (alias = declare_alias (outer, "CP367", "ANSI_X3.4-1968"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "367", "ANSI_X3.4-1968"), !symbol)
+  if (alias = declare_alias (outer, "367", "ANSI_X3.4-1968"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "iso-ir-8-1", "NATS-SEFI"))
     return false;
@@ -2980,21 +2993,23 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-1", "ISO-8859-1"))
     return false;
+  if (!declare_alias (outer, "ISO8859-1", "ISO-8859-1"))
+    return false;
   if (!declare_alias (outer, "latin1", "ISO-8859-1"))
     return false;
   if (!declare_alias (outer, "l1", "ISO-8859-1"))
     return false;
-  if (symbol = declare_alias (outer, "IBM819", "ISO-8859-1"), !symbol)
+  if (alias = declare_alias (outer, "IBM819", "ISO-8859-1"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP819", "ISO-8859-1"), !symbol)
+  if (alias = declare_alias (outer, "CP819", "ISO-8859-1"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "819", "ISO-8859-1"), !symbol)
+  if (alias = declare_alias (outer, "819", "ISO-8859-1"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "iso-ir-101", "ISO-8859-2"))
     return false;
@@ -3002,21 +3017,23 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-2", "ISO-8859-2"))
     return false;
+  if (!declare_alias (outer, "ISO8859-2", "ISO-8859-2"))
+    return false;
   if (!declare_alias (outer, "latin2", "ISO-8859-2"))
     return false;
   if (!declare_alias (outer, "l2", "ISO-8859-2"))
     return false;
-  if (symbol = declare_alias (outer, "IBM912", "ISO-8859-2"), !symbol)
+  if (alias = declare_alias (outer, "IBM912", "ISO-8859-2"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP912", "ISO-8859-2"), !symbol)
+  if (alias = declare_alias (outer, "CP912", "ISO-8859-2"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "912", "ISO-8859-2"), !symbol)
+  if (alias = declare_alias (outer, "912", "ISO-8859-2"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "iso-ir-102", "T.61-7bit"))
     return false;
@@ -3025,6 +3042,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-3:1988", "ISO-8859-3"))
     return false;
   if (!declare_alias (outer, "ISO_8859-3", "ISO-8859-3"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-3", "ISO-8859-3"))
     return false;
   if (!declare_alias (outer, "latin3", "ISO-8859-3"))
     return false;
@@ -3035,6 +3054,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-4:1988", "ISO-8859-4"))
     return false;
   if (!declare_alias (outer, "ISO_8859-4", "ISO-8859-4"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-4", "ISO-8859-4"))
     return false;
   if (!declare_alias (outer, "latin4", "ISO-8859-4"))
     return false;
@@ -3068,6 +3089,8 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-7", "ISO-8859-7"))
     return false;
+  if (!declare_alias (outer, "ISO8859-7", "ISO-8859-7"))
+    return false;
   if (!declare_alias (outer, "ELOT_928", "ISO-8859-7"))
     return false;
   if (!declare_alias (outer, "ECMA-118", "ISO-8859-7"))
@@ -3082,6 +3105,8 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-6", "ISO-8859-6"))
     return false;
+  if (!declare_alias (outer, "ISO8859-6", "ISO-8859-6"))
+    return false;
   if (!declare_alias (outer, "ECMA-114", "ISO-8859-6"))
     return false;
   if (!declare_alias (outer, "ASMO-708", "ISO-8859-6"))
@@ -3093,6 +3118,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-8:1988", "ISO-8859-8"))
     return false;
   if (!declare_alias (outer, "ISO_8859-8", "ISO-8859-8"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-8", "ISO-8859-8"))
     return false;
   if (!declare_alias (outer, "hebrew", "ISO-8859-8"))
     return false;
@@ -3118,6 +3145,8 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-5", "ISO-8859-5"))
     return false;
+  if (!declare_alias (outer, "ISO8859-5", "ISO-8859-5"))
+    return false;
   if (!declare_alias (outer, "cyrillic", "ISO-8859-5"))
     return false;
   if (!declare_alias (outer, "iso-ir-146", "JUS_I.B1.003-serb"))
@@ -3133,6 +3162,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-9:1989", "ISO-8859-9"))
     return false;
   if (!declare_alias (outer, "ISO_8859-9", "ISO-8859-9"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-9", "ISO-8859-9"))
     return false;
   if (!declare_alias (outer, "latin5", "ISO-8859-9"))
     return false;
@@ -3166,7 +3197,9 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-10", "ISO-8859-10"))
     return false;
-  if (!declare_alias (outer, "l6", "ISO-8859-10"))
+  if (!declare_alias (outer, "ISO8859-10", "ISO-8859-10"))
+    return false;
+  if (!declare_alias (outer, "L6", "ISO-8859-10"))
     return false;
   if (!declare_alias (outer, "latin6", "ISO-8859-10"))
     return false;
@@ -3175,6 +3208,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-13:1998", "ISO-8859-13"))
     return false;
   if (!declare_alias (outer, "ISO_8859-13", "ISO-8859-13"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-13", "ISO-8859-13"))
     return false;
   if (!declare_alias (outer, "latin7", "ISO-8859-13"))
     return false;
@@ -3188,6 +3223,8 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ISO_8859-14", "ISO-8859-14"))
     return false;
+  if (!declare_alias (outer, "ISO8859-14", "ISO-8859-14"))
+    return false;
   if (!declare_alias (outer, "latin8", "ISO-8859-14"))
     return false;
   if (!declare_alias (outer, "iso-celtic", "ISO-8859-14"))
@@ -3199,6 +3236,8 @@ module_strips (struct recode_outer *outer)
   if (!declare_alias (outer, "ISO_8859-15:1998", "ISO-8859-15"))
     return false;
   if (!declare_alias (outer, "ISO_8859-15", "ISO-8859-15"))
+    return false;
+  if (!declare_alias (outer, "ISO8859-15", "ISO-8859-15"))
     return false;
   if (!declare_alias (outer, "latin9", "ISO-8859-15"))
     return false;
@@ -3230,25 +3269,25 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "next", "NeXTSTEP"))
     return false;
-  if (symbol = declare_alias (outer, "macintosh", "macintosh"), !symbol)
+  if (alias = declare_alias (outer, "macintosh", "macintosh"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->cr_surface))
+  if (!declare_implied_surface (outer, alias, outer->cr_surface))
     return false;
-  if (symbol = declare_alias (outer, "mac", "macintosh"), !symbol)
+  if (alias = declare_alias (outer, "mac", "macintosh"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->cr_surface))
+  if (!declare_implied_surface (outer, alias, outer->cr_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM037", "IBM037"), !symbol)
+  if (alias = declare_alias (outer, "IBM037", "IBM037"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP037", "IBM037"), !symbol)
+  if (alias = declare_alias (outer, "CP037", "IBM037"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "037", "IBM037"), !symbol)
+  if (alias = declare_alias (outer, "037", "IBM037"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-us", "IBM037"))
     return false;
@@ -3258,247 +3297,247 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ebcdic-cp-nl", "IBM037"))
     return false;
-  if (symbol = declare_alias (outer, "IBM038", "IBM038"), !symbol)
+  if (alias = declare_alias (outer, "IBM038", "IBM038"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-INT", "IBM038"))
     return false;
-  if (symbol = declare_alias (outer, "CP038", "IBM038"), !symbol)
+  if (alias = declare_alias (outer, "CP038", "IBM038"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "038", "IBM038"), !symbol)
+  if (alias = declare_alias (outer, "038", "IBM038"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM256", "IBM256"), !symbol)
+  if (alias = declare_alias (outer, "IBM256", "IBM256"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-INT1", "IBM256"))
     return false;
-  if (symbol = declare_alias (outer, "256", "IBM256"), !symbol)
+  if (alias = declare_alias (outer, "CP256", "IBM256"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP256", "IBM256"), !symbol)
+  if (alias = declare_alias (outer, "256", "IBM256"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM273", "IBM273"), !symbol)
+  if (alias = declare_alias (outer, "IBM273", "IBM273"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP273", "IBM273"), !symbol)
+  if (alias = declare_alias (outer, "CP273", "IBM273"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "273", "IBM273"), !symbol)
+  if (alias = declare_alias (outer, "273", "IBM273"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM274", "IBM274"), !symbol)
+  if (alias = declare_alias (outer, "IBM274", "IBM274"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-BE", "IBM274"))
     return false;
-  if (symbol = declare_alias (outer, "CP274", "IBM274"), !symbol)
+  if (alias = declare_alias (outer, "CP274", "IBM274"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "274", "IBM274"), !symbol)
+  if (alias = declare_alias (outer, "274", "IBM274"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM275", "IBM275"), !symbol)
+  if (alias = declare_alias (outer, "IBM275", "IBM275"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-BR", "IBM275"))
     return false;
-  if (symbol = declare_alias (outer, "CP275", "IBM275"), !symbol)
+  if (alias = declare_alias (outer, "CP275", "IBM275"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "275", "IBM275"), !symbol)
+  if (alias = declare_alias (outer, "275", "IBM275"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM277", "IBM277"), !symbol)
+  if (alias = declare_alias (outer, "IBM277", "IBM277"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-CP-DK", "IBM277"))
     return false;
   if (!declare_alias (outer, "EBCDIC-CP-NO", "IBM277"))
     return false;
-  if (symbol = declare_alias (outer, "IBM278", "IBM278"), !symbol)
+  if (alias = declare_alias (outer, "IBM278", "IBM278"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP278", "IBM278"), !symbol)
+  if (alias = declare_alias (outer, "CP278", "IBM278"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "278", "IBM278"), !symbol)
+  if (alias = declare_alias (outer, "278", "IBM278"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-fi", "IBM278"))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-se", "IBM278"))
     return false;
-  if (symbol = declare_alias (outer, "IBM280", "IBM280"), !symbol)
+  if (alias = declare_alias (outer, "IBM280", "IBM280"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP280", "IBM280"), !symbol)
+  if (alias = declare_alias (outer, "CP280", "IBM280"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "280", "IBM280"), !symbol)
+  if (alias = declare_alias (outer, "280", "IBM280"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-it", "IBM280"))
     return false;
-  if (symbol = declare_alias (outer, "IBM281", "IBM281"), !symbol)
+  if (alias = declare_alias (outer, "IBM281", "IBM281"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-JP-E", "IBM281"))
     return false;
-  if (symbol = declare_alias (outer, "CP281", "IBM281"), !symbol)
+  if (alias = declare_alias (outer, "CP281", "IBM281"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "281", "IBM281"), !symbol)
+  if (alias = declare_alias (outer, "281", "IBM281"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM284", "IBM284"), !symbol)
+  if (alias = declare_alias (outer, "IBM284", "IBM284"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP284", "IBM284"), !symbol)
+  if (alias = declare_alias (outer, "CP284", "IBM284"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "284", "IBM284"), !symbol)
+  if (alias = declare_alias (outer, "284", "IBM284"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-es", "IBM284"))
     return false;
-  if (symbol = declare_alias (outer, "IBM285", "IBM285"), !symbol)
+  if (alias = declare_alias (outer, "IBM285", "IBM285"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP285", "IBM285"), !symbol)
+  if (alias = declare_alias (outer, "CP285", "IBM285"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "285", "IBM285"), !symbol)
+  if (alias = declare_alias (outer, "285", "IBM285"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-gb", "IBM285"))
     return false;
-  if (symbol = declare_alias (outer, "IBM290", "IBM290"), !symbol)
+  if (alias = declare_alias (outer, "IBM290", "IBM290"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP290", "IBM290"), !symbol)
+  if (alias = declare_alias (outer, "CP290", "IBM290"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "290", "IBM290"), !symbol)
+  if (alias = declare_alias (outer, "290", "IBM290"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-JP-kana", "IBM290"))
     return false;
-  if (symbol = declare_alias (outer, "IBM297", "IBM297"), !symbol)
+  if (alias = declare_alias (outer, "IBM297", "IBM297"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP297", "IBM297"), !symbol)
+  if (alias = declare_alias (outer, "CP297", "IBM297"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "297", "IBM297"), !symbol)
+  if (alias = declare_alias (outer, "297", "IBM297"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-fr", "IBM297"))
     return false;
-  if (symbol = declare_alias (outer, "IBM420", "IBM420"), !symbol)
+  if (alias = declare_alias (outer, "IBM420", "IBM420"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP420", "IBM420"), !symbol)
+  if (alias = declare_alias (outer, "CP420", "IBM420"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "420", "IBM420"), !symbol)
+  if (alias = declare_alias (outer, "420", "IBM420"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-ar1", "IBM420"))
     return false;
-  if (symbol = declare_alias (outer, "IBM423", "IBM423"), !symbol)
+  if (alias = declare_alias (outer, "IBM423", "IBM423"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP423", "IBM423"), !symbol)
+  if (alias = declare_alias (outer, "CP423", "IBM423"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "423", "IBM423"), !symbol)
+  if (alias = declare_alias (outer, "423", "IBM423"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-gr", "IBM423"))
     return false;
-  if (symbol = declare_alias (outer, "IBM424", "IBM424"), !symbol)
+  if (alias = declare_alias (outer, "IBM424", "IBM424"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP424", "IBM424"), !symbol)
+  if (alias = declare_alias (outer, "CP424", "IBM424"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "424", "IBM424"), !symbol)
+  if (alias = declare_alias (outer, "424", "IBM424"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-he", "IBM424"))
     return false;
-  if (symbol = declare_alias (outer, "IBM437", "IBM437"), !symbol)
+  if (alias = declare_alias (outer, "IBM437", "IBM437"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP437", "IBM437"), !symbol)
+  if (alias = declare_alias (outer, "CP437", "IBM437"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "437", "IBM437"), !symbol)
+  if (alias = declare_alias (outer, "437", "IBM437"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM500", "IBM500"), !symbol)
+  if (alias = declare_alias (outer, "IBM500", "IBM500"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP500", "IBM500"), !symbol)
+  if (alias = declare_alias (outer, "CP500", "IBM500"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "500", "IBM500"), !symbol)
+  if (alias = declare_alias (outer, "500", "IBM500"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "500V1", "IBM500"))
     return false;
@@ -3506,425 +3545,425 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "ebcdic-cp-ch", "IBM500"))
     return false;
-  if (symbol = declare_alias (outer, "IBM850", "IBM850"), !symbol)
+  if (alias = declare_alias (outer, "IBM850", "IBM850"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP850", "IBM850"), !symbol)
+  if (alias = declare_alias (outer, "CP850", "IBM850"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "850", "IBM850"), !symbol)
+  if (alias = declare_alias (outer, "850", "IBM850"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM851", "IBM851"), !symbol)
+  if (alias = declare_alias (outer, "IBM851", "IBM851"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP851", "IBM851"), !symbol)
+  if (alias = declare_alias (outer, "CP851", "IBM851"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "851", "IBM851"), !symbol)
+  if (alias = declare_alias (outer, "851", "IBM851"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM852", "IBM852"), !symbol)
+  if (alias = declare_alias (outer, "IBM852", "IBM852"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP852", "IBM852"), !symbol)
+  if (alias = declare_alias (outer, "CP852", "IBM852"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "852", "IBM852"), !symbol)
+  if (alias = declare_alias (outer, "852", "IBM852"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "pcl2", "IBM852"))
     return false;
   if (!declare_alias (outer, "pclatin2", "IBM852"))
     return false;
-  if (symbol = declare_alias (outer, "IBM855", "IBM855"), !symbol)
+  if (alias = declare_alias (outer, "IBM855", "IBM855"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP855", "IBM855"), !symbol)
+  if (alias = declare_alias (outer, "CP855", "IBM855"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "855", "IBM855"), !symbol)
+  if (alias = declare_alias (outer, "855", "IBM855"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM857", "IBM857"), !symbol)
+  if (alias = declare_alias (outer, "IBM857", "IBM857"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP857", "IBM857"), !symbol)
+  if (alias = declare_alias (outer, "CP857", "IBM857"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "857", "IBM857"), !symbol)
+  if (alias = declare_alias (outer, "857", "IBM857"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM860", "IBM860"), !symbol)
+  if (alias = declare_alias (outer, "IBM860", "IBM860"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP860", "IBM860"), !symbol)
+  if (alias = declare_alias (outer, "CP860", "IBM860"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "860", "IBM860"), !symbol)
+  if (alias = declare_alias (outer, "860", "IBM860"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM861", "IBM861"), !symbol)
+  if (alias = declare_alias (outer, "IBM861", "IBM861"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP861", "IBM861"), !symbol)
+  if (alias = declare_alias (outer, "CP861", "IBM861"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "861", "IBM861"), !symbol)
+  if (alias = declare_alias (outer, "861", "IBM861"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "cp-is", "IBM861"))
     return false;
-  if (symbol = declare_alias (outer, "IBM862", "IBM862"), !symbol)
+  if (alias = declare_alias (outer, "IBM862", "IBM862"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP862", "IBM862"), !symbol)
+  if (alias = declare_alias (outer, "CP862", "IBM862"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "862", "IBM862"), !symbol)
+  if (alias = declare_alias (outer, "862", "IBM862"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM863", "IBM863"), !symbol)
+  if (alias = declare_alias (outer, "IBM863", "IBM863"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP863", "IBM863"), !symbol)
+  if (alias = declare_alias (outer, "CP863", "IBM863"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "863", "IBM863"), !symbol)
+  if (alias = declare_alias (outer, "863", "IBM863"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM864", "IBM864"), !symbol)
+  if (alias = declare_alias (outer, "IBM864", "IBM864"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP864", "IBM864"), !symbol)
+  if (alias = declare_alias (outer, "CP864", "IBM864"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "864", "IBM864"), !symbol)
+  if (alias = declare_alias (outer, "864", "IBM864"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM865", "IBM865"), !symbol)
+  if (alias = declare_alias (outer, "IBM865", "IBM865"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP865", "IBM865"), !symbol)
+  if (alias = declare_alias (outer, "CP865", "IBM865"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "865", "IBM865"), !symbol)
+  if (alias = declare_alias (outer, "865", "IBM865"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM868", "IBM868"), !symbol)
+  if (alias = declare_alias (outer, "IBM868", "IBM868"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP868", "IBM868"), !symbol)
+  if (alias = declare_alias (outer, "CP868", "IBM868"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "868", "IBM868"), !symbol)
+  if (alias = declare_alias (outer, "868", "IBM868"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "cp-ar", "IBM868"))
     return false;
-  if (symbol = declare_alias (outer, "IBM869", "IBM869"), !symbol)
+  if (alias = declare_alias (outer, "IBM869", "IBM869"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP869", "IBM869"), !symbol)
+  if (alias = declare_alias (outer, "CP869", "IBM869"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "869", "IBM869"), !symbol)
+  if (alias = declare_alias (outer, "869", "IBM869"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "cp-gr", "IBM869"))
     return false;
-  if (symbol = declare_alias (outer, "IBM870", "IBM870"), !symbol)
+  if (alias = declare_alias (outer, "IBM870", "IBM870"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP870", "IBM870"), !symbol)
+  if (alias = declare_alias (outer, "CP870", "IBM870"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "870", "IBM870"), !symbol)
+  if (alias = declare_alias (outer, "870", "IBM870"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-roece", "IBM870"))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-yu", "IBM870"))
     return false;
-  if (symbol = declare_alias (outer, "IBM871", "IBM871"), !symbol)
+  if (alias = declare_alias (outer, "IBM871", "IBM871"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP871", "IBM871"), !symbol)
+  if (alias = declare_alias (outer, "CP871", "IBM871"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "871", "IBM871"), !symbol)
+  if (alias = declare_alias (outer, "871", "IBM871"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-is", "IBM871"))
     return false;
-  if (symbol = declare_alias (outer, "IBM875", "IBM875"), !symbol)
+  if (alias = declare_alias (outer, "IBM875", "IBM875"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP875", "IBM875"), !symbol)
+  if (alias = declare_alias (outer, "CP875", "IBM875"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "875", "IBM875"), !symbol)
+  if (alias = declare_alias (outer, "875", "IBM875"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-Greek", "IBM875"))
     return false;
-  if (symbol = declare_alias (outer, "IBM880", "IBM880"), !symbol)
+  if (alias = declare_alias (outer, "IBM880", "IBM880"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP880", "IBM880"), !symbol)
+  if (alias = declare_alias (outer, "CP880", "IBM880"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "880", "IBM880"), !symbol)
+  if (alias = declare_alias (outer, "880", "IBM880"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "EBCDIC-Cyrillic", "IBM880"))
     return false;
-  if (symbol = declare_alias (outer, "IBM891", "IBM891"), !symbol)
+  if (alias = declare_alias (outer, "IBM891", "IBM891"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP891", "IBM891"), !symbol)
+  if (alias = declare_alias (outer, "CP891", "IBM891"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "891", "IBM891"), !symbol)
+  if (alias = declare_alias (outer, "891", "IBM891"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM903", "IBM903"), !symbol)
+  if (alias = declare_alias (outer, "IBM903", "IBM903"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP903", "IBM903"), !symbol)
+  if (alias = declare_alias (outer, "CP903", "IBM903"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "903", "IBM903"), !symbol)
+  if (alias = declare_alias (outer, "903", "IBM903"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM904", "IBM904"), !symbol)
+  if (alias = declare_alias (outer, "IBM904", "IBM904"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP904", "IBM904"), !symbol)
+  if (alias = declare_alias (outer, "CP904", "IBM904"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "904", "IBM904"), !symbol)
+  if (alias = declare_alias (outer, "904", "IBM904"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM905", "IBM905"), !symbol)
+  if (alias = declare_alias (outer, "IBM905", "IBM905"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP905", "IBM905"), !symbol)
+  if (alias = declare_alias (outer, "CP905", "IBM905"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "905", "IBM905"), !symbol)
+  if (alias = declare_alias (outer, "905", "IBM905"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-tr", "IBM905"))
     return false;
-  if (symbol = declare_alias (outer, "IBM918", "IBM918"), !symbol)
+  if (alias = declare_alias (outer, "IBM918", "IBM918"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP918", "IBM918"), !symbol)
+  if (alias = declare_alias (outer, "CP918", "IBM918"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "918", "IBM918"), !symbol)
+  if (alias = declare_alias (outer, "918", "IBM918"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ebcdic-cp-ar2", "IBM918"))
     return false;
-  if (symbol = declare_alias (outer, "IBM1004", "IBM1004"), !symbol)
+  if (alias = declare_alias (outer, "IBM1004", "IBM1004"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP1004", "IBM1004"), !symbol)
+  if (alias = declare_alias (outer, "CP1004", "IBM1004"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "1004", "IBM1004"), !symbol)
+  if (alias = declare_alias (outer, "1004", "IBM1004"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "os2latin1", "IBM1004"))
     return false;
-  if (symbol = declare_alias (outer, "IBM1026", "IBM1026"), !symbol)
+  if (alias = declare_alias (outer, "IBM1026", "IBM1026"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP1026", "IBM1026"), !symbol)
+  if (alias = declare_alias (outer, "CP1026", "IBM1026"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "1026", "IBM1026"), !symbol)
+  if (alias = declare_alias (outer, "1026", "IBM1026"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "IBM1047", "IBM1047"), !symbol)
+  if (alias = declare_alias (outer, "IBM1047", "IBM1047"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP1047", "IBM1047"), !symbol)
+  if (alias = declare_alias (outer, "CP1047", "IBM1047"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "1047", "IBM1047"), !symbol)
+  if (alias = declare_alias (outer, "1047", "IBM1047"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
-  if (symbol = declare_alias (outer, "CP1250", "CP1250"), !symbol)
+  if (alias = declare_alias (outer, "CP1250", "CP1250"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-ee", "CP1250"))
     return false;
-  if (symbol = declare_alias (outer, "1250", "CP1250"), !symbol)
+  if (alias = declare_alias (outer, "1250", "CP1250"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1250", "CP1250"))
     return false;
-  if (symbol = declare_alias (outer, "CP1251", "CP1251"), !symbol)
+  if (alias = declare_alias (outer, "CP1251", "CP1251"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-cyrl", "CP1251"))
     return false;
-  if (symbol = declare_alias (outer, "1251", "CP1251"), !symbol)
+  if (alias = declare_alias (outer, "1251", "CP1251"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1251", "CP1251"))
     return false;
-  if (symbol = declare_alias (outer, "CP1252", "CP1252"), !symbol)
+  if (alias = declare_alias (outer, "CP1252", "CP1252"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-ansi", "CP1252"))
     return false;
-  if (symbol = declare_alias (outer, "1252", "CP1252"), !symbol)
+  if (alias = declare_alias (outer, "1252", "CP1252"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1252", "CP1252"))
     return false;
-  if (symbol = declare_alias (outer, "CP1253", "CP1253"), !symbol)
+  if (alias = declare_alias (outer, "CP1253", "CP1253"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-greek", "CP1253"))
     return false;
-  if (symbol = declare_alias (outer, "1253", "CP1253"), !symbol)
+  if (alias = declare_alias (outer, "1253", "CP1253"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1253", "CP1253"))
     return false;
-  if (symbol = declare_alias (outer, "CP1254", "CP1254"), !symbol)
+  if (alias = declare_alias (outer, "CP1254", "CP1254"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-turk", "CP1254"))
     return false;
-  if (symbol = declare_alias (outer, "1254", "CP1254"), !symbol)
+  if (alias = declare_alias (outer, "1254", "CP1254"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1254", "CP1254"))
     return false;
-  if (symbol = declare_alias (outer, "CP1255", "CP1255"), !symbol)
+  if (alias = declare_alias (outer, "CP1255", "CP1255"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-hebr", "CP1255"))
     return false;
-  if (symbol = declare_alias (outer, "1255", "CP1255"), !symbol)
+  if (alias = declare_alias (outer, "1255", "CP1255"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1255", "CP1255"))
     return false;
-  if (symbol = declare_alias (outer, "CP1256", "CP1256"), !symbol)
+  if (alias = declare_alias (outer, "CP1256", "CP1256"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "ms-arab", "CP1256"))
     return false;
-  if (symbol = declare_alias (outer, "1256", "CP1256"), !symbol)
+  if (alias = declare_alias (outer, "1256", "CP1256"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1256", "CP1256"))
     return false;
-  if (symbol = declare_alias (outer, "CP1257", "CP1257"), !symbol)
+  if (alias = declare_alias (outer, "CP1257", "CP1257"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "WinBaltRim", "CP1257"))
     return false;
-  if (symbol = declare_alias (outer, "1257", "CP1257"), !symbol)
+  if (alias = declare_alias (outer, "1257", "CP1257"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
   if (!declare_alias (outer, "windows-1257", "CP1257"))
     return false;
@@ -3936,13 +3975,13 @@ module_strips (struct recode_outer *outer)
     return false;
   if (!declare_alias (outer, "cp-hu", "CWI"))
     return false;
-  if (symbol = declare_alias (outer, "macintosh_ce", "macintosh_ce"), !symbol)
+  if (alias = declare_alias (outer, "macintosh_ce", "macintosh_ce"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->cr_surface))
+  if (!declare_implied_surface (outer, alias, outer->cr_surface))
     return false;
-  if (symbol = declare_alias (outer, "macce", "macintosh_ce"), !symbol)
+  if (alias = declare_alias (outer, "macce", "macintosh_ce"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->cr_surface))
+  if (!declare_implied_surface (outer, alias, outer->cr_surface))
     return false;
 
   return true;

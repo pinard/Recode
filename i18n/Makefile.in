@@ -65,42 +65,24 @@ host_triplet = @host@
 ALL_LINGUAS = @ALL_LINGUAS@
 AS = @AS@
 AT_TESTPATH = @AT_TESTPATH@
-CATALOGS = @CATALOGS@
-CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CPP = @CPP@
-DATADIRNAME = @DATADIRNAME@
 DLLTOOL = @DLLTOOL@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
-GENCAT = @GENCAT@
-GMOFILES = @GMOFILES@
-GMSGFMT = @GMSGFMT@
-GT_NO = @GT_NO@
-GT_YES = @GT_YES@
-INCLUDE_LOCALE_H = @INCLUDE_LOCALE_H@
-INSTOBJEXT = @INSTOBJEXT@
-INTLDEPS = @INTLDEPS@
-INTLLIBS = @INTLLIBS@
-INTLOBJS = @INTLOBJS@
 LEX = @LEX@
+LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LTALLOCA = @LTALLOCA@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
-MKINSTALLDIRS = @MKINSTALLDIRS@
 OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
-POFILES = @POFILES@
-POSUB = @POSUB@
 RANLIB = @RANLIB@
 U = @U@
-USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
-USE_NLS = @USE_NLS@
 VERSION = @VERSION@
-l = @l@
 
 AUTOMAKE_OPTIONS = gnits
 
@@ -239,7 +221,8 @@ install-data-local: $(MOFILES)
 @USE_NLS_TRUE@	files='$(MOFILES)'; \
 @USE_NLS_TRUE@	for file in $$files; do \
 @USE_NLS_TRUE@	  base=`basename $$file`; \
-@USE_NLS_TRUE@	  langdir=$(localedir)/`echo $$base | sed 's/\.mo$$//'`/LC_MESSAGES; \
+@USE_NLS_TRUE@	  langdir=$(DESTDIR)$(localedir)/`echo $$base \
+@USE_NLS_TRUE@	    | sed 's/\.mo$$//'`/LC_MESSAGES; \
 @USE_NLS_TRUE@	  $(mkinstalldirs) $$langdir; \
 @USE_NLS_TRUE@	  echo " $(INSTALL_DATA) $(srcdir)/$$file $$langdir/$(PACKAGE).mo"; \
 @USE_NLS_TRUE@	  $(INSTALL_DATA) $(srcdir)/$$file $$langdir/$(PACKAGE).mo; \
@@ -249,7 +232,8 @@ uninstall-local:
 @USE_NLS_TRUE@	files='$(MOFILES)'; \
 @USE_NLS_TRUE@	for file in $$files; do \
 @USE_NLS_TRUE@	  base=`basename $$file`; \
-@USE_NLS_TRUE@	  langdir=$(localedir)/`echo $$base | sed 's/\.mo$$//'`/LC_MESSAGES; \
+@USE_NLS_TRUE@	  langdir=$(DESTDIR)$(localedir)/`echo $$base
+@USE_NLS_TRUE@	    | sed 's/\.mo$$//'`/LC_MESSAGES; \
 @USE_NLS_TRUE@	  rm -f $$langdir/$(PACKAGE).mo; \
 @USE_NLS_TRUE@	done
 

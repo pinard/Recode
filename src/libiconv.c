@@ -1,23 +1,24 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1999 Free Software Foundation, Inc.
+   Copyright © 1999, 2000 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
 #include "common.h"
+#include "iconv.h"
 #include "libiconv.h"
 
 /*-----------------------------------------.
@@ -27,8 +28,7 @@
 #define LIBICONV_BUFFER_SIZE 2048
 
 static bool
-wrapped_transform (iconv_t conversion,
-		   RECODE_SUBTASK subtask)
+wrapped_transform (iconv_t conversion, RECODE_SUBTASK subtask)
 {
   int input_char = get_byte (subtask);
   char input_buffer[LIBICONV_BUFFER_SIZE];
@@ -132,12 +132,12 @@ module_libiconv (RECODE_OUTER outer)
 
       while (*cursor)
 	{
-	  RECODE_SYMBOL symbol
-	    = find_symbol (outer, *cursor, SYMBOL_FIND_AS_CHARSET);
+	  RECODE_ALIAS alias
+	    = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
 
-	  if (symbol)
+	  if (alias)
 	    {
-	      charset_name = symbol->charset->name;
+	      charset_name = alias->symbol->name;
 	      break;
 	    }
 	  cursor++;
@@ -152,12 +152,12 @@ module_libiconv (RECODE_OUTER outer)
 
       for (cursor = aliases; *cursor; cursor++)
 	{
-	  RECODE_SYMBOL symbol
-	    = find_symbol (outer, *cursor, SYMBOL_FIND_AS_CHARSET);
+	  RECODE_ALIAS alias
+	    = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
 
 	  /* If there is a charset contradiction, call declare_alias
 	     nevertheless, as the error processing will occur there.  */
-	  if (!symbol || symbol->charset->name != charset_name)
+	  if (!alias || alias->symbol->name != charset_name)
 	    if (!declare_alias (outer, *cursor, charset_name))
 	      return false;
 	}

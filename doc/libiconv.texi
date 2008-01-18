@@ -12,35 +12,62 @@
 @tindex CP367
 @tindex IBM367
 @tindex US
-@tindex CSASCII
-@code{ASCII}, @code{ISO646-US}, @code{ISO_646.IRV:1991}, @code{ISO-IR-6}, @code{ANSI_X3.4-1968}, @code{CP367}, @code{IBM367}, @code{US} and @code{CSASCII} are aliases for this charset.
+@tindex csASCII
+@tindex ISO646.1991-IRV
+@code{ASCII}, @code{ISO646-US}, @code{ISO_646.IRV:1991}, @code{ISO-IR-6}, @code{ANSI_X3.4-1968}, @code{CP367}, @code{IBM367}, @code{US}, @code{csASCII} and @code{ISO646.1991-IRV} are aliases for this charset.
 @end table
 
 @item General multi-byte encodings
 @table @code
 @item UTF-8
-@tindex UTF-8
+@tindex UTF-8@r{, aliases}
+@tindex UTF8
+@code{UTF8} is an alias for this charset.
 
 @item UCS-2
 @tindex UCS-2@r{, aliases}
 @tindex ISO-10646-UCS-2
-@tindex CSUNICODE
-@code{ISO-10646-UCS-2} and @code{CSUNICODE} are aliases for this charset.
+@tindex csUnicode
+@code{ISO-10646-UCS-2} and @code{csUnicode} are aliases for this charset.
+
+@item UCS-2BE
+@tindex UCS-2BE@r{, aliases}
+@tindex UNICODEBIG
+@tindex UNICODE-1-1
+@tindex csUnicode11
+@code{UNICODEBIG}, @code{UNICODE-1-1} and @code{csUnicode11} are aliases for this charset.
+
+@item UCS-2LE
+@tindex UCS-2LE@r{, aliases}
+@tindex UNICODELITTLE
+@code{UNICODELITTLE} is an alias for this charset.
 
 @item UCS-4
 @tindex UCS-4@r{, aliases}
 @tindex ISO-10646-UCS-4
-@tindex CSUCS4
-@code{ISO-10646-UCS-4} and @code{CSUCS4} are aliases for this charset.
+@tindex csUCS4
+@code{ISO-10646-UCS-4} and @code{csUCS4} are aliases for this charset.
+
+@item UCS-4BE
+@tindex UCS-4BE
+
+@item UCS-4LE
+@tindex UCS-4LE
 
 @item UTF-16
 @tindex UTF-16
 
+@item UTF-16BE
+@tindex UTF-16BE
+
+@item UTF-16LE
+@tindex UTF-16LE
+
 @item UTF-7
 @tindex UTF-7@r{, aliases}
 @tindex UNICODE-1-1-UTF-7
-@tindex CSUNICODE11UTF7
-@code{UNICODE-1-1-UTF-7} and @code{CSUNICODE11UTF7} are aliases for this charset.
+@tindex csUnicode11UTF7
+@code{UNICODE-1-1-UTF-7} and @code{csUnicode11UTF7} are aliases for this charset.
 
 @item UCS-2-INTERNAL
 @tindex UCS-2-INTERNAL
@@ -48,27 +75,11 @@
 @item UCS-2-SWAPPED
 @tindex UCS-2-SWAPPED
 
-@item UCS-2-BE
-@tindex UCS-2-BE@r{, aliases}
-@tindex UNICODEBIG
-@code{UNICODEBIG} is an alias for this charset.
-
-@item UCS-2-LE
-@tindex UCS-2-LE@r{, aliases}
-@tindex UNICODELITTLE
-@code{UNICODELITTLE} is an alias for this charset.
-
 @item UCS-4-INTERNAL
 @tindex UCS-4-INTERNAL
 
 @item UCS-4-SWAPPED
 @tindex UCS-4-SWAPPED
-
-@item UCS-4-BE
-@tindex UCS-4-BE
-
-@item UCS-4-LE
-@tindex UCS-4-LE
 
 @item JAVA
 @tindex JAVA
@@ -85,8 +96,10 @@
 @tindex IBM819
 @tindex LATIN1
 @tindex L1
-@tindex CSISOLATIN1
-@code{ISO_8859-1}, @code{ISO_8859-1:1987}, @code{ISO-IR-100}, @code{CP819}, @code{IBM819}, @code{LATIN1}, @code{L1} and @code{CSISOLATIN1} are aliases for this charset.
+@tindex csISOLatin1
+@tindex ISO8859-1
+@tindex ISO8859_1
+@code{ISO_8859-1}, @code{ISO_8859-1:1987}, @code{ISO-IR-100}, @code{CP819}, @code{IBM819}, @code{LATIN1}, @code{L1}, @code{csISOLatin1}, @code{ISO8859-1} and @code{ISO8859_1} are aliases for this charset.
 
 @item ISO-8859-2
 @tindex ISO-8859-2@r{, aliases}
@@ -95,8 +108,10 @@
 @tindex ISO-IR-101
 @tindex LATIN2
 @tindex L2
-@tindex CSISOLATIN2
-@code{ISO_8859-2}, @code{ISO_8859-2:1987}, @code{ISO-IR-101}, @code{LATIN2}, @code{L2} and @code{CSISOLATIN2} are aliases for this charset.
+@tindex csISOLatin2
+@tindex ISO8859-2
+@tindex ISO8859_2
+@code{ISO_8859-2}, @code{ISO_8859-2:1987}, @code{ISO-IR-101}, @code{LATIN2}, @code{L2}, @code{csISOLatin2}, @code{ISO8859-2} and @code{ISO8859_2} are aliases for this charset.
 
 @item ISO-8859-3
 @tindex ISO-8859-3@r{, aliases}
@@ -105,8 +120,10 @@
 @tindex ISO-IR-109
 @tindex LATIN3
 @tindex L3
-@tindex CSISOLATIN3
-@code{ISO_8859-3}, @code{ISO_8859-3:1988}, @code{ISO-IR-109}, @code{LATIN3}, @code{L3} and @code{CSISOLATIN3} are aliases for this charset.
+@tindex csISOLatin3
+@tindex ISO8859-3
+@tindex ISO8859_3
+@code{ISO_8859-3}, @code{ISO_8859-3:1988}, @code{ISO-IR-109}, @code{LATIN3}, @code{L3}, @code{csISOLatin3}, @code{ISO8859-3} and @code{ISO8859_3} are aliases for this charset.
 
 @item ISO-8859-4
 @tindex ISO-8859-4@r{, aliases}
@@ -115,8 +132,10 @@
 @tindex ISO-IR-110
 @tindex LATIN4
 @tindex L4
-@tindex CSISOLATIN4
-@code{ISO_8859-4}, @code{ISO_8859-4:1988}, @code{ISO-IR-110}, @code{LATIN4}, @code{L4} and @code{CSISOLATIN4} are aliases for this charset.
+@tindex csISOLatin4
+@tindex ISO8859-4
+@tindex ISO8859_4
+@code{ISO_8859-4}, @code{ISO_8859-4:1988}, @code{ISO-IR-110}, @code{LATIN4}, @code{L4}, @code{csISOLatin4}, @code{ISO8859-4} and @code{ISO8859_4} are aliases for this charset.
 
 @item ISO-8859-5
 @tindex ISO-8859-5@r{, aliases}
@@ -124,8 +143,10 @@
 @tindex ISO_8859-5(1988)
 @tindex ISO-IR-144
 @tindex CYRILLIC
-@tindex CSISOLATINCYRILLIC
-@code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{ISO-IR-144}, @code{CYRILLIC} and @code{CSISOLATINCYRILLIC} are aliases for this charset.
+@tindex csISOLatinCyrillic
+@tindex ISO8859-5
+@tindex ISO8859_5
+@code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{ISO-IR-144}, @code{CYRILLIC}, @code{csISOLatinCyrillic}, @code{ISO8859-5} and @code{ISO8859_5} are aliases for this charset.
 
 @item ISO-8859-6
 @tindex ISO-8859-6@r{, aliases}
@@ -135,8 +156,10 @@
 @tindex ECMA-114
 @tindex ASMO-708
 @tindex ARABIC
-@tindex CSISOLATINARABIC
-@code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{ISO-IR-127}, @code{ECMA-114}, @code{ASMO-708}, @code{ARABIC} and @code{CSISOLATINARABIC} are aliases for this charset.
+@tindex csISOLatinArabic
+@tindex ISO8859-6
+@tindex ISO8859_6
+@code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{ISO-IR-127}, @code{ECMA-114}, @code{ASMO-708}, @code{ARABIC}, @code{csISOLatinArabic}, @code{ISO8859-6} and @code{ISO8859_6} are aliases for this charset.
 
 @item ISO-8859-7
 @tindex ISO-8859-7@r{, aliases}
@@ -147,8 +170,10 @@
 @tindex ELOT_928
 @tindex GREEK8
 @tindex GREEK
-@tindex CSISOLATINGREEK
-@code{ISO_8859-7}, @code{ISO_8859-7:1987}, @code{ISO-IR-126}, @code{ECMA-118}, @code{ELOT_928}, @code{GREEK8}, @code{GREEK} and @code{CSISOLATINGREEK} are aliases for this charset.
+@tindex csISOLatinGreek
+@tindex ISO8859-7
+@tindex ISO8859_7
+@code{ISO_8859-7}, @code{ISO_8859-7:1987}, @code{ISO-IR-126}, @code{ECMA-118}, @code{ELOT_928}, @code{GREEK8}, @code{GREEK}, @code{csISOLatinGreek}, @code{ISO8859-7} and @code{ISO8859_7} are aliases for this charset.
 
 @item ISO-8859-8
 @tindex ISO-8859-8@r{, aliases}
@@ -156,8 +181,10 @@
 @tindex ISO_8859-8(1988)
 @tindex ISO-IR-138
 @tindex HEBREW
-@tindex CSISOLATINHEBREW
-@code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{ISO-IR-138}, @code{HEBREW} and @code{CSISOLATINHEBREW} are aliases for this charset.
+@tindex csISOLatinHebrew
+@tindex ISO8859-8
+@tindex ISO8859_8
+@code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{ISO-IR-138}, @code{HEBREW}, @code{csISOLatinHebrew}, @code{ISO8859-8} and @code{ISO8859_8} are aliases for this charset.
 
 @item ISO-8859-9
 @tindex ISO-8859-9@r{, aliases}
@@ -166,8 +193,10 @@
 @tindex ISO-IR-148
 @tindex LATIN5
 @tindex L5
-@tindex CSISOLATIN5
-@code{ISO_8859-9}, @code{ISO_8859-9:1989}, @code{ISO-IR-148}, @code{LATIN5}, @code{L5} and @code{CSISOLATIN5} are aliases for this charset.
+@tindex csISOLatin5
+@tindex ISO8859-9
+@tindex ISO8859_9
+@code{ISO_8859-9}, @code{ISO_8859-9:1989}, @code{ISO-IR-148}, @code{LATIN5}, @code{L5}, @code{csISOLatin5}, @code{ISO8859-9} and @code{ISO8859_9} are aliases for this charset.
 
 @item ISO-8859-10
 @tindex ISO-8859-10@r{, aliases}
@@ -176,8 +205,9 @@
 @tindex ISO-IR-157
 @tindex LATIN6
 @tindex L6
-@tindex CSISOLATIN6
-@code{ISO_8859-10}, @code{ISO_8859-10:1992}, @code{ISO-IR-157}, @code{LATIN6}, @code{L6} and @code{CSISOLATIN6} are aliases for this charset.
+@tindex csISOLatin6
+@tindex ISO8859-10
+@code{ISO_8859-10}, @code{ISO_8859-10:1992}, @code{ISO-IR-157}, @code{LATIN6}, @code{L6}, @code{csISOLatin6} and @code{ISO8859-10} are aliases for this charset.
 
 @item ISO-8859-13
 @tindex ISO-8859-13@r{, aliases}
@@ -191,20 +221,29 @@
 @tindex ISO-8859-14@r{, aliases}
 @tindex ISO_8859-14
 @tindex ISO_8859-14(1998)
+@tindex ISO-IR-199
 @tindex LATIN8
 @tindex L8
-@code{ISO_8859-14}, @code{ISO_8859-14:1998}, @code{LATIN8} and @code{L8} are aliases for this charset.
+@code{ISO_8859-14}, @code{ISO_8859-14:1998}, @code{ISO-IR-199}, @code{LATIN8} and @code{L8} are aliases for this charset.
 
 @item ISO-8859-15
 @tindex ISO-8859-15@r{, aliases}
 @tindex ISO_8859-15
 @tindex ISO_8859-15(1998)
-@code{ISO_8859-15} and @code{ISO_8859-15:1998} are aliases for this charset.
+@tindex ISO-IR-203
+@code{ISO_8859-15}, @code{ISO_8859-15:1998} and @code{ISO-IR-203} are aliases for this charset.
+
+@item ISO-8859-16
+@tindex ISO-8859-16@r{, aliases}
+@tindex ISO_8859-16
+@tindex ISO_8859-16(2000)
+@tindex ISO-IR-226
+@code{ISO_8859-16}, @code{ISO_8859-16:2000} and @code{ISO-IR-226} are aliases for this charset.
 
 @item KOI8-R
 @tindex KOI8-R@r{, aliases}
-@tindex CSKOI8R
-@code{CSKOI8R} is an alias for this charset.
+@tindex csKOI8R
+@code{csKOI8R} is an alias for this charset.
 
 @item KOI8-U
 @tindex KOI8-U
@@ -275,15 +314,15 @@
 @tindex CP850@r{, aliases}
 @tindex IBM850
 @tindex 850
-@tindex CSPC850MULTILINGUAL
-@code{IBM850}, @code{850} and @code{CSPC850MULTILINGUAL} are aliases for this charset.
+@tindex csPC850Multilingual
+@code{IBM850}, @code{850} and @code{csPC850Multilingual} are aliases for this charset.
 
 @item CP866
 @tindex CP866@r{, aliases}
 @tindex IBM866
 @tindex 866
-@tindex CSIBM866
-@code{IBM866}, @code{866} and @code{CSIBM866} are aliases for this charset.
+@tindex csIBM866
+@code{IBM866}, @code{866} and @code{csIBM866} are aliases for this charset.
 @end table
 
 @item Macintosh 8-bit encodings
@@ -291,7 +330,9 @@
 @item MacRoman
 @tindex MacRoman@r{, aliases}
 @tindex Macintosh
-@code{Macintosh} is an alias for this charset.
+@tindex MAC
+@tindex csMacintosh
+@code{Macintosh}, @code{MAC} and @code{csMacintosh} are aliases for this charset.
 
 @item MacCentralEurope
 @tindex MacCentralEurope
@@ -333,8 +374,8 @@
 @tindex HP-ROMAN8@r{, aliases}
 @tindex ROMAN8
 @tindex R8
-@tindex CSHPROMAN8
-@code{ROMAN8}, @code{R8} and @code{CSHPROMAN8} are aliases for this charset.
+@tindex csHPRoman8
+@code{ROMAN8}, @code{R8} and @code{csHPRoman8} are aliases for this charset.
 
 @item NEXTSTEP
 @tindex NEXTSTEP
@@ -377,8 +418,8 @@
 @item VISCII
 @tindex VISCII@r{, aliases}
 @tindex VISCII1.1-1
-@tindex CSVISCII
-@code{VISCII1.1-1} and @code{CSVISCII} are aliases for this charset.
+@tindex csVISCII
+@code{VISCII1.1-1} and @code{csVISCII} are aliases for this charset.
 
 @item TCVN
 @tindex TCVN@r{, aliases}
@@ -388,24 +429,37 @@
 @code{TCVN-5712}, @code{TCVN5712-1} and @code{TCVN5712-1:1993} are aliases for this charset.
 @end table
 
-@item CJK character sets
+@item CJK character sets (not documented)
 @table @code
+@item JIS_C6220-1969-RO
+@tindex JIS_C6220-1969-RO@r{, aliases}
+@tindex ISO646-JP
+@tindex ISO-IR-14
+@tindex JP
+@tindex csISO14JISC6220ro
+@code{ISO646-JP}, @code{ISO-IR-14}, @code{JP} and @code{csISO14JISC6220ro} are aliases for this charset.
+
 @item JIS_X0201
 @tindex JIS_X0201@r{, aliases}
 @tindex JISX0201-1976
-@tindex JISX0201.1976-0
 @tindex X0201
-@tindex CSHALFWIDTHKATAKANA
-@code{JISX0201-1976}, @code{JISX0201.1976-0}, @code{X0201} and @code{CSHALFWIDTHKATAKANA} are aliases for this charset.
+@tindex csHalfWidthKatakana
+@tindex JISX0201.1976-0
+@tindex JIS0201
+@code{JISX0201-1976}, @code{X0201}, @code{csHalfWidthKatakana}, @code{JISX0201.1976-0} and @code{JIS0201} are aliases for this charset.
 
 @item JIS_X0208
 @tindex JIS_X0208@r{, aliases}
-@tindex JIS_X0208.1983-0
-@tindex JIS_X0208.1983-1
 @tindex JIS_X0208-1983
 @tindex JIS_X0208-1990
 @tindex JIS0208
-@code{JIS_X0208.1983-0}, @code{JIS_X0208.1983-1}, @code{JIS_X0208-1983}, @code{JIS_X0208-1990} and @code{JIS0208} are aliases for this charset.
+@tindex X0208
+@tindex ISO-IR-87
+@tindex csISO87JISX0208
+@tindex JISX0208.1983-0
+@tindex JISX0208.1990-0
+@tindex JIS0208
+@code{JIS_X0208-1983}, @code{JIS_X0208-1990}, @code{JIS0208}, @code{X0208}, @code{ISO-IR-87}, @code{csISO87JISX0208}, @code{JISX0208.1983-0}, @code{JISX0208.1990-0} and @code{JIS0208} are aliases for this charset.
 
 @item JIS_X0212
 @tindex JIS_X0212@r{, aliases}
@@ -413,19 +467,42 @@
 @tindex JIS_X0212-1990
 @tindex X0212
 @tindex ISO-IR-159
-@tindex CSISO159JISX02121990
-@code{JIS_X0212.1990-0}, @code{JIS_X0212-1990}, @code{X0212}, @code{ISO-IR-159} and @code{CSISO159JISX02121990} are aliases for this charset.
+@tindex csISO159JISX02121990
+@tindex JISX0212.1990-0
+@tindex JIS0212
+@code{JIS_X0212.1990-0}, @code{JIS_X0212-1990}, @code{X0212}, @code{ISO-IR-159}, @code{csISO159JISX02121990}, @code{JISX0212.1990-0} and @code{JIS0212} are aliases for this charset.
+
+@item GB_1988-80
+@tindex GB_1988-80@r{, aliases}
+@tindex ISO646-CN
+@tindex ISO-IR-57
+@tindex CN
+@tindex csISO57GB1988
+@code{ISO646-CN}, @code{ISO-IR-57}, @code{CN} and @code{csISO57GB1988} are aliases for this charset.
+
+@item GB_2312-80
+@tindex GB_2312-80@r{, aliases}
+@tindex ISO-IR-58
+@tindex csISO58GB231280
+@tindex CHINESE
+@tindex GB2312.1980-0
+@code{ISO-IR-58}, @code{csISO58GB231280}, @code{CHINESE} and @code{GB2312.1980-0} are aliases for this charset.
+
+@item ISO-IR-165
+@tindex ISO-IR-165@r{, aliases}
+@tindex CN-GB-ISOIR165
+@code{CN-GB-ISOIR165} is an alias for this charset.
 
 @item KSC_5601
 @tindex KSC_5601@r{, aliases}
-@tindex KSC5601.1987-0
 @tindex KS_C_5601-1987
 @tindex KS_C_5601-1989
 @tindex ISO-IR-149
-@tindex CSKSC56011987
+@tindex csKSC56011987
 @tindex KOREAN
-@tindex CP949
-@code{KSC5601.1987-0}, @code{KS_C_5601-1987}, @code{KS_C_5601-1989}, @code{ISO-IR-149}, @code{CSKSC56011987}, @code{KOREAN} and @code{CP949} are aliases for this charset.
+@tindex KSC5601.1987-0
+@tindex KSX1001(1992)
+@code{KS_C_5601-1987}, @code{KS_C_5601-1989}, @code{ISO-IR-149}, @code{csKSC56011987}, @code{KOREAN}, @code{KSC5601.1987-0} and @code{KSX1001:1992} are aliases for this charset.
 @end table
 
 @item CJK encodings
@@ -433,40 +510,44 @@
 @item EUC-JP
 @tindex EUC-JP@r{, aliases}
 @tindex EUCJP
-@tindex EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE
-@tindex CSEUCPKDFMTJAPANESE
-@code{EUCJP}, @code{EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE} and @code{CSEUCPKDFMTJAPANESE} are aliases for this charset.
+@tindex Extended_UNIX_Code_Packed_Format_for_Japanese
+@tindex csEUCPkdFmtJapanese
+@tindex EUC_JP
+@code{EUCJP}, @code{Extended_UNIX_Code_Packed_Format_for_Japanese}, @code{csEUCPkdFmtJapanese} and @code{EUC_JP} are aliases for this charset.
 
 @item SJIS
 @tindex SJIS@r{, aliases}
 @tindex SHIFT_JIS
 @tindex SHIFT-JIS
 @tindex MS_KANJI
-@tindex CSSHIFTJIS
-@code{SHIFT_JIS}, @code{SHIFT-JIS}, @code{MS_KANJI} and @code{CSSHIFTJIS} are aliases for this charset.
+@tindex csShiftJIS
+@code{SHIFT_JIS}, @code{SHIFT-JIS}, @code{MS_KANJI} and @code{csShiftJIS} are aliases for this charset.
 
 @item CP932
 @tindex CP932
 
 @item ISO-2022-JP
 @tindex ISO-2022-JP@r{, aliases}
-@tindex CSISO2022JP
-@code{CSISO2022JP} is an alias for this charset.
+@tindex csISO2022JP
+@tindex ISO2022JP
+@code{csISO2022JP} and @code{ISO2022JP} are aliases for this charset.
 
 @item ISO-2022-JP-1
 @tindex ISO-2022-JP-1
 
 @item ISO-2022-JP-2
 @tindex ISO-2022-JP-2@r{, aliases}
-@tindex CSISO2022JP2
-@code{CSISO2022JP2} is an alias for this charset.
+@tindex csISO2022JP2
+@code{csISO2022JP2} is an alias for this charset.
 
 @item EUC-CN
 @tindex EUC-CN@r{, aliases}
 @tindex EUCCN
 @tindex GB2312
-@tindex CSGB2312
-@code{EUCCN}, @code{GB2312} and @code{CSGB2312} are aliases for this charset.
+@tindex CN-GB
+@tindex csGB2312
+@tindex EUC_CN
+@code{EUCCN}, @code{GB2312}, @code{CN-GB}, @code{csGB2312} and @code{EUC_CN} are aliases for this charset.
 
 @item GBK
 @tindex GBK@r{, aliases}
@@ -475,8 +556,9 @@
 
 @item ISO-2022-CN
 @tindex ISO-2022-CN@r{, aliases}
-@tindex CSISO2022CN
-@code{CSISO2022CN} is an alias for this charset.
+@tindex csISO2022CN
+@tindex ISO2022CN
+@code{csISO2022CN} and @code{ISO2022CN} are aliases for this charset.
 
 @item ISO-2022-CN-EXT
 @tindex ISO-2022-CN-EXT
@@ -489,16 +571,18 @@
 @item EUC-TW
 @tindex EUC-TW@r{, aliases}
 @tindex EUCTW
-@tindex CSEUCTW
-@code{EUCTW} and @code{CSEUCTW} are aliases for this charset.
+@tindex csEUCTW
+@tindex EUC_TW
+@code{EUCTW}, @code{csEUCTW} and @code{EUC_TW} are aliases for this charset.
 
 @item BIG5
 @tindex BIG5@r{, aliases}
 @tindex BIG-5
 @tindex BIG-FIVE
 @tindex BIGFIVE
-@tindex CSBIG5
-@code{BIG-5}, @code{BIG-FIVE}, @code{BIGFIVE} and @code{CSBIG5} are aliases for this charset.
+@tindex CN-BIG5
+@tindex csBig5
+@code{BIG-5}, @code{BIG-FIVE}, @code{BIGFIVE}, @code{CN-BIG5} and @code{csBig5} are aliases for this charset.
 
 @item CP950
 @tindex CP950
@@ -506,8 +590,14 @@
 @item EUC-KR
 @tindex EUC-KR@r{, aliases}
 @tindex EUCKR
-@tindex CSEUCKR
-@code{EUCKR} and @code{CSEUCKR} are aliases for this charset.
+@tindex csEUCKR
+@tindex EUC_KR
+@code{EUCKR}, @code{csEUCKR} and @code{EUC_KR} are aliases for this charset.
+
+@item CP949
+@tindex CP949@r{, aliases}
+@tindex UHC
+@code{UHC} is an alias for this charset.
 
 @item JOHAB
 @tindex JOHAB@r{, aliases}
@@ -516,7 +606,8 @@
 
 @item ISO-2022-KR
 @tindex ISO-2022-KR@r{, aliases}
-@tindex CSISO2022KR
-@code{CSISO2022KR} is an alias for this charset.
+@tindex csISO2022KR
+@tindex ISO2022KR
+@code{csISO2022KR} and @code{ISO2022KR} are aliases for this charset.
 @end table
 @end itemize

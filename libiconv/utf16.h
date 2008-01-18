@@ -2,8 +2,14 @@
  * UTF-16
  */
 
+/* Specification: RFC 2781 */
+
 /* Here we accept FFFE/FEFF marks as endianness indicators everywhere
-   in the stream, not just at the beginning. The default is big-endian. */
+   in the stream, not just at the beginning. (This is contrary to what
+   RFC 2781 section 3.2 specifies, but it allows concatenation of byte
+   sequences to work flawlessly, while disagreeing with the RFC behaviour
+   only for strings containing U+FEFF characters, which is quite rare.)
+   The default is big-endian. */
 /* The state is 0 if big-endian, 1 if little-endian. */
 static int
 utf16_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
@@ -38,16 +44,30 @@ utf16_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
   return RET_TOOFEW(count);
 }
 
-/* But we output UTF-16 in big-endian order, without byte-order mark. */
+/* We output UTF-16 in big-endian order, with byte-order mark.
+   See RFC 2781 section 3.3 for a rationale: Some document formats
+   mandate a BOM; the file concatenation issue is not so severe as
+   long as the above utf16_mbtowc function is used. */
+/* The state is 0 at the beginning, 1 after the BOM has been written. */
 static int
 utf16_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
 {
   if (wc != 0xfffe) {
+    int count = 0;
+    if (!conv->ostate) {
+      if (n >= 2) {
+        r[0] = 0xFE;
+        r[1] = 0xFF;
+        r += 2; n -= 2; count += 2;
+      } else
+        return RET_TOOSMALL;
+    }
     if (wc < 0x10000) {
       if (n >= 2) {
         r[0] = (unsigned char) (wc >> 8);
         r[1] = (unsigned char) wc;
-        return 2;
+        conv->ostate = 1;
+        return count+2;
       } else
         return RET_TOOSMALL;
     }
@@ -59,7 +79,8 @@ utf16_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
         r[1] = (unsigned char) wc1;
         r[2] = (unsigned char) (wc2 >> 8);
         r[3] = (unsigned char) wc2;
-        return 4;
+        conv->ostate = 1;
+        return count+4;
       } else
         return RET_TOOSMALL;
     }

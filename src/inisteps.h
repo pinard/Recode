@@ -4,13 +4,13 @@
   if (!module_atarist (outer)) return false;
   if (!module_bangbang (outer)) return false;
   if (!module_cdcnos (outer)) return false;
-  if (!module_debug (outer)) return false;
   if (!module_ebcdic (outer)) return false;
   if (!module_ibmpc (outer)) return false;
   if (!module_iconqnx (outer)) return false;
   if (!module_latin1_ascii (outer)) return false;
   if (!module_mule (outer)) return false;
   if (!module_strips (outer)) return false;
+  if (!module_testdump (outer)) return false;
   if (!module_ucs (outer)) return false;
   if (!module_utf16 (outer)) return false;
   if (!module_utf7 (outer)) return false;
@@ -20,9 +20,9 @@
   if (!module_flat (outer)) return false;
   if (!module_html (outer)) return false;
   if (!module_latin1_latex (outer)) return false;
-  if (!module_latin1_texinfo (outer)) return false;
   if (!module_latin1_texte (outer)) return false;
   if (!module_rfc1345 (outer)) return false;
+  if (!module_texinfo (outer)) return false;
   if (!module_base64 (outer)) return false;
   if (!module_dump (outer)) return false;
   if (!module_endline (outer)) return false;

@@ -7,13 +7,16 @@ Significant contributions require written assignments and disclaimers.
 
 .* Before next official release
 
+. + Update NEWS for latest libiconv and latest Keld tables.
 . + Remove TeX edition warnings, rephrase whatever required.
 . + Complete inter-node and menu references, as necessary.
+. + Resolve THANKS, which Emacs does not save correctly.
+. + Check with recent versions for Autoconf, Automake, Libtool.
 
 .* Particular notes
 
 . + Autoconf and DOSWIN
-. + New RFC 1345 tables, still many diagnostics
+. + New RFC 1345 tables, still some diagnostics
 . + Check notes from ORA
 . @ ~/libit/rmail/m4
 . @ ~/libit/rmail/gettext

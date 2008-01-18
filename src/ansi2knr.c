@@ -1,6 +1,6 @@
-/* Copyright (C) 1989, 1997 Aladdin Enterprises.  All rights reserved. */
+/* Copyright (C) 1989, 1997, 1998, 1999 Aladdin Enterprises.  All rights reserved. */
 
-/* ansi2knr.c */
+/*$Id: ansi2knr.c,v 1.14 1999/04/13 14:44:33 meyering Exp $*/
 /* Convert ANSI C function definitions to K&R ("traditional C") syntax */
 
 /*
@@ -40,50 +40,71 @@ program under the GPL.
  * identifier at the left margin, followed by a left parenthesis,
  * with a right parenthesis as the last character on the line,
  * and with a left brace as the first token on the following line
- * (ignoring possible intervening comments).
- * It will recognize a multi-line header provided that no intervening
- * line ends with a left or right brace or a semicolon.
+ * (ignoring possible intervening comments), except that a line
+ * consisting of only
+ *	identifier1(identifier2)
+ * will not be considered a function definition unless identifier2 is
+ * the word "void", and a line consisting of
+ *	identifier1(identifier2, <<arbitrary>>)
+ * will not be considered a function definition.
+ * ansi2knr will recognize a multi-line header provided
+ * that no intervening line ends with a left or right brace or a semicolon.
  * These algorithms ignore whitespace and comments, except that
  * the function name must be the first thing on the line.
  * The following constructs will confuse it:
  *	- Any other construct that starts at the left margin and
  *	    follows the above syntax (such as a macro or function call).
- *	- Some macros that tinker with the syntax of the function header.
+ *	- Some macros that tinker with the syntax of function headers.
  */
 
 /*
  * The original and principal author of ansi2knr is L. Peter Deutsch
  * <ghost@aladdin.com>.  Other authors are noted in the change history
  * that follows (in reverse chronological order):
-	lpd 97-12-08 made input_file optional; only closes input and/or
+	lpd 1999-04-12 added minor fixes from Pavel Roskin
+		<pavel_roskin@geocities.com> for clean compilation with
+		gcc -W -Wall
+	lpd 1999-03-22 added hack to recognize lines consisting of
+		identifier1(identifier2, xxx) as *not* being procedures
+	lpd 1999-02-03 made indentation of preprocessor commands consistent
+	lpd 1999-01-28 fixed two bugs: a '/' in an argument list caused an
+		endless loop; quoted strings within an argument list
+		confused the parser
+	lpd 1999-01-24 added a check for write errors on the output,
+		suggested by Jim Meyering <meyering@ascend.com>
+	lpd 1998-11-09 added further hack to recognize identifier(void)
+		as being a procedure
+	lpd 1998-10-23 added hack to recognize lines consisting of
+		identifier1(identifier2) as *not* being procedures
+	lpd 1997-12-08 made input_file optional; only closes input and/or
 		output file if not stdin or stdout respectively; prints
 		usage message on stderr rather than stdout; adds
 		--filename switch (changes suggested by
 		<ceder@lysator.liu.se>)
-	lpd 96-01-21 added code to cope with not HAVE_CONFIG_H and with
+	lpd 1996-01-21 added code to cope with not HAVE_CONFIG_H and with
 		compilers that don't understand void, as suggested by
 		Tom Lane
-	lpd 96-01-15 changed to require that the first non-comment token
+	lpd 1996-01-15 changed to require that the first non-comment token
 		on the line following a function header be a left brace,
 		to reduce sensitivity to macros, as suggested by Tom Lane
 		<tgl@sss.pgh.pa.us>
-	lpd 95-06-22 removed #ifndefs whose sole purpose was to define
+	lpd 1995-06-22 removed #ifndefs whose sole purpose was to define
 		undefined preprocessor symbols as 0; changed all #ifdefs
 		for configuration symbols to #ifs
-	lpd 95-04-05 changed copyright notice to make it clear that
+	lpd 1995-04-05 changed copyright notice to make it clear that
 		including ansi2knr in a program does not bring the entire
 		program under the GPL
-	lpd 94-12-18 added conditionals for systems where ctype macros
+	lpd 1994-12-18 added conditionals for systems where ctype macros
 		don't handle 8-bit characters properly, suggested by
 		Francois Pinard <pinard@iro.umontreal.ca>;
 		removed --varargs switch (this is now the default)
-	lpd 94-10-10 removed CONFIG_BROKETS conditional
-	lpd 94-07-16 added some conditionals to help GNU `configure',
+	lpd 1994-10-10 removed CONFIG_BROKETS conditional
+	lpd 1994-07-16 added some conditionals to help GNU `configure',
 		suggested by Francois Pinard <pinard@iro.umontreal.ca>;
 		properly erase prototype args in function parameters,
 		contributed by Jim Avera <jima@netcom.com>;
 		correct error in writeblanks (it shouldn't erase EOLs)
-	lpd 89-xx-xx original version
+	lpd 1989-xx-xx original version
  */
 
 /* Most of the conditionals here are to make ansi2knr work with */
@@ -146,19 +167,24 @@ program under the GPL.
 
 #endif
 
+/* Define NULL (for *very* old compilers). */
+#ifndef NULL
+# define NULL (0)
+#endif
+
 /*
  * The ctype macros don't always handle 8-bit characters correctly.
  * Compensate for this here.
  */
 #ifdef isascii
-#  undef HAVE_ISASCII		/* just in case */
-#  define HAVE_ISASCII 1
+# undef HAVE_ISASCII		/* just in case */
+# define HAVE_ISASCII 1
 #else
 #endif
 #if STDC_HEADERS || !HAVE_ISASCII
-#  define is_ascii(c) 1
+# define is_ascii(c) 1
 #else
-#  define is_ascii(c) isascii(c)
+# define is_ascii(c) isascii(c)
 #endif
 
 #define is_space(c) (is_ascii(c) && isspace(c))
@@ -171,6 +197,7 @@ program under the GPL.
 
 /* Forward references */
 char *skipspace();
+char *scanstring();
 int writeblanks();
 int test1();
 int convert1();
@@ -183,6 +210,8 @@ main(argc, argv)
 {	FILE *in = stdin;
 	FILE *out = stdout;
 	char *filename = 0;
+	char *program_name = argv[0];
+	char *output_name = 0;
 #define bufsize 5000			/* arbitrary size */
 	char *buf;
 	char *line;
@@ -198,6 +227,7 @@ main(argc, argv)
 	 * check for this switch for backward compatibility.
 	 */
 	int convert_varargs = 1;
+	int output_error;
 
 	while ( argc > 1 && argv[1][0] == '-' ) {
 	  if ( !strcmp(argv[1], "--varargs") ) {
@@ -212,7 +242,8 @@ main(argc, argv)
 	    argv += 2;
 	    continue;
 	  }
-	  fprintf(stderr, "Unrecognized switch: %s\n", argv[1]);
+	  fprintf(stderr, "%s: Unrecognized switch: %s\n", program_name,
+		  argv[1]);
 	  fprintf(stderr, usage);
 	  exit(1);
 	}
@@ -222,16 +253,19 @@ main(argc, argv)
 		fprintf(stderr, usage);
 		exit(0);
 	case 3:
-		out = fopen(argv[2], "w");
+		output_name = argv[2];
+		out = fopen(output_name, "w");
 		if ( out == NULL ) {
-		  fprintf(stderr, "Cannot open output file %s\n", argv[2]);
+		  fprintf(stderr, "%s: Cannot open output file %s\n",
+			  program_name, output_name);
 		  exit(1);
 		}
 		/* falls through */
 	case 2:
 		in = fopen(argv[1], "r");
 		if ( in == NULL ) {
-		  fprintf(stderr, "Cannot open input file %s\n", argv[1]);
+		  fprintf(stderr, "%s: Cannot open input file %s\n",
+			  program_name, argv[1]);
 		  exit(1);
 		}
 		if ( filename == 0 )
@@ -243,6 +277,11 @@ main(argc, argv)
 	if ( filename )
 	  fprintf(out, "#line 1 \"%s\"\n", filename);
 	buf = malloc(bufsize);
+	if ( buf == NULL )
+	   {
+		fprintf(stderr, "Unable to allocate read buffer!\n");
+		exit(1);
+	   }
 	line = buf;
 	while ( fgets(line, (unsigned)(buf + bufsize - line), in) != NULL )
 	   {
@@ -293,14 +332,24 @@ wl:			fputs(buf, out);
 	if ( line != buf )
 	  fputs(buf, out);
 	free(buf);
-	if ( out != stdout )
-	  fclose(out);
+	if ( output_name ) {
+	  output_error = ferror(out);
+	  output_error |= fclose(out);
+	} else {		/* out == stdout */
+	  fflush(out);
+	  output_error = ferror(out);
+	}
+	if ( output_error ) {
+	  fprintf(stderr, "%s: error writing to %s\n", program_name,
+		  (output_name ? output_name : "stdout"));
+	  exit(1);
+	}
 	if ( in != stdin )
 	  fclose(in);
 	return 0;
 }
 
-/* Skip over space and comments, in either direction. */
+/* Skip over whitespace and comments, in either direction. */
 char *
 skipspace(p, dir)
     register char *p;
@@ -319,6 +368,17 @@ skipspace(p, dir)
 		p += dir;  p += dir;
 	   }
 	return p;
+}
+
+/* Scan over a quoted string, in either direction. */
+char *
+scanstring(p, dir)
+    register char *p;
+    register int dir;
+{
+    for (p += dir; ; p += dir)
+	if (*p == '"' && p[-dir] != '\\')
+	    return p + dir;
 }
 
 /*
@@ -389,7 +449,7 @@ test1(buf)
 		   };
 		char **key = words;
 		char *kp;
-		int len = endfn - buf;
+		unsigned len = endfn - buf;
 
 		while ( (kp = *key) != 0 )
 		   {	if ( strlen(kp) == len && !strncmp(kp, buf, len) )
@@ -397,6 +457,36 @@ test1(buf)
 			key++;
 		   }
 	   }
+	   {
+	       char *id = p;
+	       int len;
+	       /*
+		* Check for identifier1(identifier2) and not
+		* identifier1(void), or identifier1(identifier2, xxxx).
+		*/
+
+	       while ( isidchar(*p) )
+		   p++;
+	       len = p - id;
+	       p = skipspace(p, 1);
+	       if (*p == ',' ||
+		   (*p == ')' && (len != 4 || strncmp(id, "void", 4)))
+		   )
+		   return 0;	/* not a function */
+	   }
+	/*
+	 * If the last significant character was a ), we need to count
+	 * parentheses, because it might be part of a formal parameter
+	 * that is a procedure.
+	 */
+	if (contin > 0) {
+	    int level = 0;
+
+	    for (p = skipspace(buf, 1); *p; p = skipspace(p + 1, 1))
+		level += (*p == '(' ? 1 : *p == ')' ? -1 : 0);
+	    if (level > 0)
+		contin = -1;
+	}
 	return contin;
 }
 
@@ -426,7 +516,7 @@ convert1(buf, out, header, convert_varargs)
 	  ;
 top:	p = endfn;
 	breaks = (char **)malloc(sizeof(char *) * num_breaks * 2);
-	if ( breaks == 0 )
+	if ( breaks == NULL )
 	   {	/* Couldn't allocate break table, give up */
 		fprintf(stderr, "Unable to allocate break table!\n");
 		fputs(buf, out);
@@ -438,7 +528,7 @@ top:	p = endfn;
 	do
 	   {	int level = 0;
 		char *lp = NULL;
-		char *rp;
+		char *rp = NULL;
 		char *end = NULL;
 
 		if ( bp >= btop )
@@ -465,14 +555,18 @@ top:	p = endfn;
 				else rp = p;
 				break;
 			   case '/':
-				p = skipspace(p, 1) - 1;
+				if (p[1] == '*')
+				    p = skipspace(p, 1) - 1;
 				break;
+			   case '"':
+			       p = scanstring(p, 1) - 1;
+			       break;
 			   default:
 				;
 			   }
 		   }
 		/* Erase any embedded prototype parameters. */
-		if ( lp )
+		if ( lp && rp )
 		  writeblanks(lp + 1, rp);
 		p--;			/* back up over terminator */
 		/* Find the name being declared. */
@@ -488,9 +582,19 @@ top:	p = endfn;
 				while ( level )
 				 switch ( *--p )
 				   {
-				   case ']': case ')': level++; break;
-				   case '[': case '(': level--; break;
-				   case '/': p = skipspace(p, -1) + 1; break;
+				   case ']': case ')':
+				       level++;
+				       break;
+				   case '[': case '(':
+				       level--;
+				       break;
+				   case '/':
+				       if (p > buf && p[-1] == '*')
+					   p = skipspace(p, -1) + 1;
+				       break;
+				   case '"':
+				       p = scanstring(p, -1) + 1;
+				       break;
 				   default: ;
 				   }
 			   }

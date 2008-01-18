@@ -1,5 +1,4 @@
-This is recode.info, produced by makeinfo version 3.12n from
-recode.texi.
+This is recode.info, produced by makeinfo version 4.0 from recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -9,8 +8,8 @@ END-INFO-DIR-ENTRY
    This file documents the `recode' command, which has the purpose of
 converting files between various character sets and surfaces.
 
-   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
-Inc.
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
+Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -152,7 +151,7 @@ allow for a few precise kinds of mixed charset files.
      If LANGUAGE is not specified, `c' is assumed.
 
 
-File: recode.info,  Node: Emacs,  Prev: Mixed,  Up: Invoking recode
+File: recode.info,  Node: Emacs,  Next: Debugging,  Prev: Mixed,  Up: Invoking recode
 
 Using `recode' within Emacs
 ===========================
@@ -177,6 +176,92 @@ from Easy French to `Latin-1' (on Unix) and the key `C-u C-c T' from
         (region-beginning) (region-end)
         (concat "recode " (if flag "..txte" "txte")) t)
        (exchange-point-and-mark))
+
+
+File: recode.info,  Node: Debugging,  Prev: Emacs,  Up: Invoking recode
+
+Debugging considerations
+========================
+
+   It is our experience that when `recode' does not provide satisfying
+results, either `recode' was not called properly, correct results
+raised some doubts nevertheless, or files to recode were somewhat
+mangled.  Genuine bugs are surely possible.
+
+   Unless you already are a `recode' expert, it might be a good idea to
+quickly revisit the tutorial (*note Tutorial::) or the prior sections
+in this chapter, to make sure that you properly formatted your recoding
+request.  In the case you intended to use `recode' as a filter, make
+sure that you did not forget to redirect your standard input (through
+using the `<' symbol in the shell, say).  Some `recode' false mysteries
+are also easily explained, *Note Reversibility::.
+
+   For the other cases, some investigation is needed.  To illustrate
+how to proceed, let's presume that you want to recode the `nicepage'
+file, coded `UTF-8', into `HTML'.  The problem is that the command
+`recode u8..h nicepage' yields:
+
+     recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
+
+   One good trick is to use `recode' in filter mode instead of in file
+replacement mode, *Note Synopsis::.  Another good trick is to use the
+`-v' option asking for a verbose description of the recoding steps.  We
+could rewrite our recoding call as `recode -v u8..h <nicepage', to get
+something like:
+
+     Request: UTF-8..:libiconv:..ISO-10646-UCS-2..HTML_4.0
+     Shrunk to: UTF-8..ISO-10646-UCS-2..HTML_4.0
+     [...SOME OUTPUT...]
+     recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
+
+   This might help you to better understand what the diagnostic means.
+The recoding request is achieved in two steps, the first recodes `UTF-8'
+into `UCS-2', the second recodes `UCS-2' into `HTML'.  The problem
+occurs within the first of these two steps, and since, the input of
+this step is the input file given to `recode', this is this overall
+input file which seems to be invalid.  Also, when used in filter mode,
+`recode' processes as much input as possible before the error occurs
+and sends the result of this processing to standard output.  Since the
+standard output has not been redirected to a file, it is merely
+displayed on the user screen.  By inspecting near the end of the
+resulting `HTML' output, that is, what was recoding a bit before the
+recoding was interrupted, you may infer about where the error stands in
+the real `UTF-8' input file.
+
+   If you have the proper tools to examine the intermediate recoding
+data, you might also prefer to reduce the problem to a single step to
+better study it.  This is what I usually do.  For example, the last
+`recode' call above is more or less equivalent to:
+
+     recode -v UTF-8..ISO_10646-UCS-2 <nicepage >temporary
+     recode -v ISO_10646-UCS-2..HTML_4.0 <temporary
+     rm temporary
+
+   If you know that the problem is within the first step, you might
+prefer to concentrate on using the first `recode' line.  If you know
+that the problem is within the second step, you might execute the first
+`recode' line once and for all, and then play with the second `recode'
+call, repeatedly using the `temporary' file created once by the first
+call.
+
+   Note that the `-f' switch may be used to force the production of
+`HTML' output despite invalid input, it might be satisfying enough for
+you, and easier than repairing the input file.  That depends on how
+strict you would like to be about the precision of the recoding process.
+
+   If you later see that your HTML file begins with `@lt;html@gt;' when
+you expected `<html>', then `recode' might have done a bit more that
+you wanted.  In this case, your input file was half-`UTF-8',
+half-`HTML' already, that is, a mixed file (*note Mixed::).  There is a
+special `-d' switch for this case.  So, your might be end up calling
+`recode -fd nicepage'.  Until you are quite sure that you accept
+overwriting your input file whatever what, I recommend that you stick
+with filter mode.
+
+   If, after such experiments, you seriously think that the `recode'
+program does not behave properly, there might be a genuine bug in the
+program itself, in which case I invite you to to contribute a bug
+report, *Note Contributing::.
 
 
 File: recode.info,  Node: Library,  Next: Universal,  Prev: Invoking recode,  Up: Top
@@ -945,7 +1030,7 @@ error, the possible actions currently are:
 `fail_level', `abort_level' and `error_so_far', for more information
 about how errors are handled.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) The minimality of an `UTF-8' encoding is guaranteed on output,
 but currently, it is not checked on input.
@@ -1017,93 +1102,11 @@ complex syntax to `recode' users, when it is simple to assimilate
 * count-characters::    Frequency count of characters
 * dump-with-names::     Fully interpreted UCS dump
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) It is not probable that `recode' will ever support `UTF-1'.
 
    (2) This is when the goal charset allows for 16-bits.  For shorter
 charsets, the `--strict' (`-s') option decides what happens: either the
 character is dropped, or a reversible mapping is produced on the fly.
-
-
-File: recode.info,  Node: UCS-2,  Next: UCS-4,  Prev: Universal,  Up: Universal
-
-Universal Character Set, 2 bytes
-================================
-
-   One surface of `UCS' is usable for the subset defined by its first
-sixty thousand characters (in fact, 31 * 2^11 codes), and uses exactly
-two bytes per character.  It is a mere dump of the internal memory
-representation which is _natural_ for this subset and as such, conveys
-with it endianness problems.
-
-   A non-empty `UCS-2' file normally begins with a so called "byte
-order mark", having value `0xFEFF'.  The value `0xFFFE' is not an `UCS'
-character, so if this value is seen at the beginning of a file,
-`recode' reacts by swapping all pairs of bytes.  The library also
-properly reacts to other occurrences of `0xFEFF' or `0xFFFE' elsewhere
-than at the beginning, because concatenation of `UCS-2' files should
-stay a simple matter, but it might trigger a diagnostic about non
-canonical input.
-
-   By default, when producing an `UCS-2' file, `recode' always outputs
-the high order byte before the low order byte.  But this could be
-easily overridden through the `21-Permutation' surface (*note
-Permutations::).  For example, the command:
-
-     recode u8..u2/21 < INPUT > OUTPUT
-
-asks for an `UTF-8' to `UCS-2' conversion, with swapped byte output.
-
-   Use `UCS-2' as a genuine charset.  This charset is available in
-`recode' under the name `ISO-10646-UCS-2'.  Accepted aliases are
-`UCS-2', `BMP', `rune' and `u2'.
-
-   The `recode' library is able to combine `UCS-2' some sequences of
-codes into single code characters, to represent a few diacriticized
-characters, ligatures or diphtongs which have been included to ease
-mapping with other existing charsets.  It is also able to explode such
-single code characters into the corresponding sequence of codes.  The
-request syntax for triggering such operations is rudimentary and
-temporary.  The `combined-UCS-2' pseudo character set is a special form
-of `UCS-2' in which known combinings have been replaced by the simpler
-code.  Using `combined-UCS-2' instead of `UCS-2' in an _after_ position
-of a request forces a combining step, while using `combined-UCS-2'
-instead of `UCS-2' in a _before_ position of a request forces an
-exploding step.  For the time being, one has to resort to advanced
-request syntax to achieve other effects.  For example:
-
-     recode u8..co,u2..u8 < INPUT > OUTPUT
-
-copies an `UTF-8' INPUT over OUTPUT, still to be in `UTF-8', yet
-merging combining characters into single codes whenever possible.
-
-
-File: recode.info,  Node: UCS-4,  Next: UTF-7,  Prev: UCS-2,  Up: Universal
-
-Universal Character Set, 4 bytes
-================================
-
-   Another surface of `UCS' uses exactly four bytes per character, and
-is a mere dump of the internal memory representation which is _natural_
-for the whole charset and as such, conveys with it endianness problems.
-
-   Use it as a genuine charset.  This charset is available in `recode'
-under the name `ISO-10646-UCS-4'.  Accepted aliases are `UCS', `UCS-4',
-`ISO_10646', `10646' and `u4'.
-
-
-File: recode.info,  Node: UTF-7,  Next: UTF-8,  Prev: UCS-4,  Up: Universal
-
-Universal Transformation Format, 7 bits
-=======================================
-
-   `UTF-7' comes from IETF rather than ISO, and is described by
-RFC 2152, in the MIME series.  The `UTF-7' encoding is meant to fit
-`UCS-2' over channels limited to seven bits per byte.  It proceeds from
-a mix between the spirit of `Quoted-Printable' and methods of `Base64',
-adapted to Unicode contexts.
-
-   This charset is available in `recode' under the name
-`UNICODE-1-1-UTF-7'.  Accepted aliases are `UTF-7', `TF-7' and `u7'.
 

@@ -1,5 +1,4 @@
-This is recode.info, produced by makeinfo version 3.12n from
-recode.texi.
+This is recode.info, produced by makeinfo version 4.0 from recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -9,8 +8,8 @@ END-INFO-DIR-ENTRY
    This file documents the `recode' command, which has the purpose of
 converting files between various character sets and surfaces.
 
-   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
-Inc.
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
+Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -25,6 +24,139 @@ permission notice identical to this one.
 manual into another language, under the above conditions for modified
 versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
+
+
+File: recode.info,  Node: ASCII-BS,  Next: flat,  Prev: ISO 8859,  Up: ASCII misc
+
+ASCII 7-bits, `BS' to overstrike
+================================
+
+   This charset is available in `recode' under the name `ASCII-BS',
+with `BS' as an acceptable alias.
+
+   The file is straight ASCII, seven bits only.  According to the
+definition of ASCII, diacritics are applied by a sequence of three
+characters: the letter, one `BS', the diacritic mark.  We deviate
+slightly from this by exchanging the diacritic mark and the letter so,
+on a screen device, the diacritic will disappear and let the letter
+alone.  At recognition time, both methods are acceptable.
+
+   The French quotes are coded by the sequences: `< BS "' or `" BS <'
+for the opening quote and `> BS "' or `" BS >' for the closing quote.
+This artificial convention was inherited in straight `ASCII-BS' from
+habits around `Bang-Bang' entry, and is not well known.  But we decided
+to stick to it so that `ASCII-BS' charset will not lose French quotes.
+
+   The `ASCII-BS' charset is independent of `ASCII', and different.
+The following examples demonstrate this, knowing at advance that `!2'
+is the `Bang-Bang' way of representing an `e' with an acute accent.
+Compare:
+
+     % echo \!2 | recode -v bang..l1/d
+     Request: Bang-Bang..ISO-8859-1/Decimal-1
+     233,  10
+
+with:
+
+     % echo \!2 | recode -v bang..bs/d
+     Request: Bang-Bang..ISO-8859-1..ASCII-BS/Decimal-1
+      39,   8, 101,  10
+
+   In the first case, the `e' with an acute accent is merely
+transmitted by the `Latin-1..ASCII' mapping, not having a special
+recoding rule for it.  In the `Latin-1..ASCII-BS' case, the acute
+accent is applied over the `e' with a backspace: diacriticised
+characters have special rules.  For the `ASCII-BS' charset,
+reversibility is still possible, but there might be difficult cases.
+
+
+File: recode.info,  Node: flat,  Prev: ASCII-BS,  Up: ASCII misc
+
+ASCII without diacritics nor underline
+======================================
+
+   This charset is available in `recode' under the name `flat'.
+
+   This code is ASCII expunged of all diacritics and underlines, as
+long as they are applied using three character sequences, with `BS' in
+the middle.  Also, despite slightly unrelated, each control character is
+represented by a sequence of two or three graphic characters.  The
+newline character, however, keeps its functionality and is not
+represented.
+
+   Note that charset `flat' is a terminal charset.  We can convert _to_
+`flat', but not _from_ it.
+
+
+File: recode.info,  Node: IBM and MS,  Next: CDC,  Prev: ASCII misc,  Up: Top
+
+Some IBM or Microsoft charsets
+******************************
+
+   The `recode' program provides various IBM or Microsoft code pages
+(*note Tabular::).  An easy way to find them all at once out of the
+`recode' program itself is through the command:
+
+     recode -l | egrep -i '(CP|IBM)[0-9]'
+
+But also, see few special charsets presented in the incoming sections.
+
+* Menu:
+
+* EBCDIC::              EBCDIC codes
+* IBM-PC::              IBM's PC code
+* Icon-QNX::            Unisys' Icon code
+
+
+File: recode.info,  Node: EBCDIC,  Next: IBM-PC,  Prev: IBM and MS,  Up: IBM and MS
+
+EBCDIC code
+===========
+
+   This charset is the IBM's External Binary Coded Decimal for
+Interchange Coding.  This is an eight bits code.  The following three
+variants were implemented in `recode' independently of RFC 1345:
+
+`EBCDIC'
+     In `recode', the `us..ebcdic' conversion is identical to `dd
+     conv=ebcdic' conversion, and `recode' `ebcdic..us' conversion is
+     identical to `dd conv=ascii' conversion.  This charset also
+     represents the way Control Data Corporation relates EBCDIC to
+     8-bits ASCII.
+
+`EBCDIC-CCC'
+     In `recode', the `us..ebcdic-ccc' or `ebcdic-ccc..us' conversions
+     represent the way Concurrent Computer Corporation (formerly Perkin
+     Elmer) relates EBCDIC to 8-bits ASCII.
+
+`EBCDIC-IBM'
+     In `recode', the `us..ebcdic-ibm' conversion is _almost_ identical
+     to the GNU `dd conv=ibm' conversion.  Given the exact `dd
+     conv=ibm' conversion table, `recode' once said:
+
+          Codes  91 and 213 both recode to 173
+          Codes  93 and 229 both recode to 189
+          No character recodes to  74
+          No character recodes to 106
+
+     So I arbitrarily chose to recode 213 by 74 and 229 by 106.  This
+     makes the `EBCDIC-IBM' recoding reversible, but this is not
+     necessarily the best correction.  In any case, I think that GNU
+     `dd' should be amended.  `dd' and `recode' should ideally agree on
+     the same correction.  So, this table might change once again.
+
+   RFC 1345 brings into `recode' 15 other EBCDIC charsets, and 21 other
+charsets having EBCDIC in at least one of their alias names.  You can
+get a list of all these by executing:
+
+     recode -l | grep -i ebcdic
+
+   Note that `recode' may convert a pure stream of EBCDIC characters,
+but it does not know how to handle binary data between records which is
+sometimes used to delimit them and build physical blocks.  If end of
+lines are not marked, fixed record size may produce something readable,
+but `VB' or `VBS' blocking is likely to yield some garbage in the
+converted results.
 
 
 File: recode.info,  Node: IBM-PC,  Next: Icon-QNX,  Prev: EBCDIC,  Up: IBM and MS
@@ -76,7 +208,7 @@ The first command uses the charset prior to RFC 1345 introduction.
 Both methods give different recodings.  These differences are annoying,
 the fuzziness will have to be explained and settle down one day.
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) On DOS/Windows, stock shells do not know that apostrophes quote
 special characters like `|', so one need to use double quotes instead
@@ -173,7 +305,7 @@ given N, in which case these two bytes are not to be interpreted as
 are to be considered as part of the end of line and not interpreted as
 `:'(1).
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) This convention replaced an older one saying that up to 4
 immediately preceeding _pairs_ of zero bytes, going backward, are to be
@@ -694,7 +826,7 @@ systematically obeyed by the various recognisers.
      figue, garrigue, gigue, igue, intrigue, ligue, prodigue, sarigue
      and zigue).
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) There are supposed to be seven words in this case.  So, one is
 missing.
@@ -747,7 +879,7 @@ is sometimes needed.  Within Emacs, `Mule' comes with `Leim', which
 stands for `_l_ibraries of _e_macs _i_nput _m_ethods'.  One of these
 libraries is named `quail'(1).
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) Usually, quail means quail egg in Japanese, while egg alone is
 usually chicken egg.  Both quail egg and chicken egg are popular food
@@ -785,18 +917,29 @@ of as surfaces.  This choice yields to cleaner syntax and usage.  *Note
 Universal::.
 
    Surfaces are implemented within `recode' as special charsets which
-may only transform to or from the `data' special charset.  Clever users
-may use this knowledge for writing surface names in requests exactly as
-if they were pure charsets, when the only need is to change surfaces
-without any kind of recoding between real charsets.  In such contexts,
-`data' may also be used as if it were some kind of generic, anonymous
-charset: the request `data..SURFACE' merely adds the given SURFACE,
-while the request `SURFACE..data' removes it.
+may only transform to or from the `data' or `tree' special charsets.
+Clever users may use this knowledge for writing surface names in
+requests exactly as if they were pure charsets, when the only need is
+to change surfaces without any kind of recoding between real charsets.
+In such contexts, either `data' or `tree' may also be used as if it
+were some kind of generic, anonymous charset: the request
+`data..SURFACE' merely adds the given SURFACE, while the request
+`SURFACE..data' removes it.
 
-   We are only beginning to experiment with surfaces in `recode', but
-the concept opens the doors to many avenues; it is not clear yet which
-ones are worth pursuing, and which should be abandoned.  This chapter
-presents all surfaces currently available.
+   The `recode' library distinguishes between mere data surfaces, and
+structural surfaces, also called tree surfaces for short.  Structural
+surfaces might allow, in the long run, transformations between a few
+specialised representations of structural information like MIME parts,
+Perl or Python initialisers, LISP S-expressions, XML, Emacs outlines,
+etc.
+
+   We are still experimenting with surfaces in `recode'.  The concept
+opens the doors to many avenues; it is not clear yet which ones are
+worth pursuing, and which should be abandoned.  In particular,
+implementation of structural surfaces is barely starting, there is not
+even a commitment that tree surfaces will stay in `recode', if they do
+prove to be more cumbersome than useful.  This chapter presents all
+surfaces currently available.
 
 * Menu:
 
@@ -804,9 +947,9 @@ presents all surfaces currently available.
 * End lines::           Representation for end of lines
 * MIME::                MIME contents encodings
 * Dump::                Interpreted character dumps
-* Debugging::           Artificial data
+* Test::                Artificial data for testing
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) These are mere examples to explain the concept, `recode' only
 has `Base64' and `CR-LF', actually.
@@ -912,7 +1055,7 @@ in 1993, and was _recycled_ as a "Draft Standard" in 1996-11.  It is
 not yet a "Full Standard".
 
 
-File: recode.info,  Node: Dump,  Next: Debugging,  Prev: MIME,  Up: Surfaces
+File: recode.info,  Node: Dump,  Next: Test,  Prev: MIME,  Up: Surfaces
 
 Interpreted character dumps
 ===========================
@@ -1013,146 +1156,4 @@ places other than at the far end.  Also, source lines not beginning
 with a number are skipped.  So, `recode' should often be able to read a
 whole C header file, wrapping the results of a previous dump, and
 regenerate the original byte string.
-
-
-File: recode.info,  Node: Debugging,  Prev: Dump,  Up: Surfaces
-
-Artificial data
-===============
-
-   A few pseudo-surfaces exist to generate debugging data out of thin
-air.  These surfaces are only meant for the expert `recode' user, and
-are only useful in a few contexts, like for generating binary
-permutations from the recoding or acting on them.
-
-   Debugging surfaces, _when removed_, insert their generated data at
-the beginning of the output stream, and copy all the input stream after
-the generated data, unchanged.  This strange removal constraint comes
-from the fact that debugging surfaces are usually specified in the
-_before_ position instead of the _after_ position within a request.
-With debugging surfaces, one often recodes file `/dev/null' in filter
-mode.  Specifying many debugging surfaces at once has an accumulation
-effect on the output, and since surfaces are removed from right to left,
-each generating its data at the beginning of previous output, the net
-effect is an _impression_ that debugging surfaces are generated from
-left to right, each appending to the result of the previous.  In any
-case, any real input data gets appended after what was generated.
-
-`test7'
-     When removed, this surface produces 128 single bytes, the first
-     having value 0, the second having value 1, and so forth until all
-     128 values have been generated.
-
-`test8'
-     When removed, this surface produces 256 single bytes, the first
-     having value 0, the second having value 1, and so forth until all
-     256 values have been generated.
-
-`test15'
-     When removed, this surface produces 64509 double bytes, the first
-     having value 0, the second having value 1, and so forth until all
-     values have been generated, but excluding risky `UCS-2' values,
-     like all codes from the surrogate `UCS-2' area (for `UTF-16'), the
-     byte order mark, and values known as invalid `UCS-2'.
-
-`test16'
-     When removed, this surface produces 65536 double bytes, the first
-     having value 0, the second having value 1, and so forth until all
-     65536 values have been generated.
-
-   As an example, the command `recode l5/test8..dump < /dev/null' is a
-convoluted way to produce an output similar to `recode -lf l5'.  It says
-to generate all possible 256 bytes and interpret them as `ISO-8859-9'
-codes, while converting them to `UCS-2'.  Resulting `UCS-2' characters
-are dumped one per line, accompanied with their explicative name.
-
-
-File: recode.info,  Node: Internals,  Next: Concept Index,  Prev: Surfaces,  Up: Top
-
-Internal aspects
-****************
-
-   The incoming explanations of the internals of `recode' should help
-people who want to dive into `recode' sources for adding new charsets.
-Adding new charsets does not require much knowledge about the overall
-organisation of `recode'.  You can rather concentrate of your new
-charset, letting the remainder of the `recode' mechanics take care of
-interconnecting it with all others charsets.
-
-   If you intend to play seriously at modifying `recode', beware that
-you may need some other GNU tools which were not required when you first
-installing `recode'.  If you modify or create any `.l' file, then you
-need Flex, and some better `awk' like `mawk', GNU `awk', or `nawk'.  If
-you modify the documentation (and you should!), you need `makeinfo'.
-If you are really audacious, you may also want Perl for modifying
-tabular processing, then `m4', Autoconf, Automake and `libtool' for
-adjusting configuration matters.
-
-* Menu:
-
-* Main flow::           Overall organisation
-* New charsets::        Adding new charsets
-* New surfaces::        Adding new surfaces
-* Design::              Comments on the library design
-
-
-File: recode.info,  Node: Main flow,  Next: New charsets,  Prev: Internals,  Up: Internals
-
-Overall organisation
-====================
-
-   The `recode' mechanics slowly evolved for many years, and it would
-be tedious to explain all problems I met and mistakes I did all along,
-yielding the current behaviour.  Surely, one of the key choices was to
-stop trying to do all conversions in memory, one line or one buffer at
-a time.  It has been fruitful to use the character stream paradigm, and
-the elementary recoding steps now convert a whole stream to another.
-Most of the control complexity in `recode' exists so that each
-elementary recoding step stays simple, making easier to add new ones.
-The whole point of `recode', as I see it, is providing a comfortable
-nest for growing new charset conversions.
-
-   The main `recode' driver constructs, while initialising all
-conversion modules, a table giving all the conversion routines
-available ("single step"s) and for each, the starting charset and the
-ending charset.  If we consider these charsets as being the nodes of a
-directed graph, each single step may be considered as oriented arc from
-one node to the other.  A cost is attributed to each arc: for example,
-a high penalty is given to single steps which are prone to losing
-characters, a lower penalty is given to those which need studying more
-than one input character for producing an output character, etc.
-
-   Given a starting code and a goal code, `recode' computes the most
-economical route through the elementary recodings, that is, the best
-sequence of conversions that will transform the input charset into the
-final charset.  To speed up execution, `recode' looks for subsequences
-of conversions which are simple enough to be merged, and then
-dynamically creates new single steps to represent these mergings.
-
-   A "double step" in `recode' is a special concept representing a
-sequence of two single steps, the output of the first single step being
-the special charset `UCS-2', the input of the second single step being
-also `UCS-2'.  Special `recode' machinery dynamically produces
-efficient, reversible, merge-able single steps out of these double
-steps.
-
-   I made some statistics about how many internal recoding steps are
-required between any two charsets chosen at random.  The initial
-recoding layout, before optimisation, always uses between 1 and 6
-steps.  Optimisation could sometimes produce mere copies, which are
-counted as no steps at all.  In other cases, optimisation is unable to
-save any step.  The number of steps after optimisation is currently
-between 0 and 6 steps.  Of course, the _expected_ number of steps is
-affected by optimisation: it drops from 2.2 to 0.9.(1) This means that
-`recode' uses a theoretical average of a bit less than one step per
-recoding job.  This looks good.  This was computed using reversible
-recodings.  In strict mode, optimisation might be defeated somewhat.
-Number of steps run between 1 and 6, both before and after optimisation,
-and the expected number of steps decreases by a lesser amount, going
-from 2.2 to 1.3.  This is still manageable.
-
-   --------- Notes en bas de page ---------
-
-   (1) The above numbers were for `recode' version 3.4.  After UCS
-additions, it drops from 2.3 to 1.1.
 

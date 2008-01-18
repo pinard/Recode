@@ -785,6 +785,7 @@ static char *yy_last_accepting_cpos;
 char *yytext;
 #define INITIAL 0
 /* This file is generated automatically by `mergelex.py'.  */
+#define YY_NO_UNPUT
 #include "common.h"
 static RECODE_CONST_REQUEST request;
 static RECODE_SUBTASK subtask;
@@ -2837,16 +2838,16 @@ int main()
 #endif
 
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
+   This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
    Library General Public License for more details.
@@ -2880,15 +2881,15 @@ module_ascii_latin1 (RECODE_OUTER outer)
   return true;
 }
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
+   This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
    Library General Public License for more details.
@@ -2922,15 +2923,15 @@ NULL, transform_latex_latin1)
     && declare_alias (outer, "ltex", "LaTeX");
 }
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1989.
 
-   The `recode' Library is free software; you can redistribute it and/or
+   This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
    Library General Public License for more details.

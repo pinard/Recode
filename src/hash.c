@@ -402,7 +402,7 @@ hash_string (const char *string, unsigned n_buckets)
 /* Return true if CANDIDATE is a prime number.  CANDIDATE should be an odd
    number at least equal to 11.  */
 
-static int
+static bool
 is_prime (unsigned long candidate)
 {
   unsigned long divisor = 3;
@@ -468,15 +468,14 @@ check_tuning (Hash_table *table)
   return false;
 }
 
-/* Allocate and return a new hash table, or NULL upon failure.  The
-   initial number of buckets is automatically selected so as to _guarantee_ that
-   you may insert at least CANDIDATE different user entries before any growth
-   of the hash table size occurs.  So, if have a reasonably tight a-priori
-   upper bound on the
-   number of entries you intend to insert in the hash table, you may save some
-   table memory and insertion time, by specifying it here.  If the
-   IS_N_BUCKETS field of the TUNING structure is true, the CANDIDATE argument
-   has its meaning changed to the wanted number of buckets.
+/* Allocate and return a new hash table, or NULL upon failure.  The initial
+   number of buckets is automatically selected so as to _guarantee_ that you
+   may insert at least CANDIDATE different user entries before any growth of
+   the hash table size occurs.  So, if have a reasonably tight a-priori upper
+   bound on the number of entries you intend to insert in the hash table, you
+   may save some table memory and insertion time, by specifying it here.  If
+   the IS_N_BUCKETS field of the TUNING structure is true, the CANDIDATE
+   argument has its meaning changed to the wanted number of buckets.
 
    TUNING points to a structure of user-supplied values, in case some fine
    tuning is wanted over the default behavior of the hasher.  If TUNING is
@@ -769,8 +768,8 @@ hash_find_entry (Hash_table *table, const void *entry,
 
 /* For an already existing hash table, change the number of buckets through
    specifying CANDIDATE.  The contents of the hash table are preserved.  The
-   new number of buckets is automatically selected so as to _guarantee_ that the
-   table may receive at least CANDIDATE different user entries, including
+   new number of buckets is automatically selected so as to _guarantee_ that
+   the table may receive at least CANDIDATE different user entries, including
    those already in the table, before any other growth of the hash table size
    occurs.  If TUNING->IS_N_BUCKETS is true, then CANDIDATE specifies the
    exact number of buckets desired.  */

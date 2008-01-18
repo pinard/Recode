@@ -1,202 +1,46 @@
-/* Copyright (C) 1999 Free Software Foundation, Inc.
+/* Copyright (C) 1999-2000 Free Software Foundation, Inc.
    This file is part of the GNU ICONV Library.
 
    The GNU ICONV Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License as
+   modify it under the terms of the GNU Lesser General Public License as
    published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
    The GNU ICONV Library is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the GNU ICONV Library; see the file COPYING.LIB.  If not,
    write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
    Boston, MA 02111-1307, USA.  */
 
 #include "common.h"
-#include "libiconv.h"
+#include "iconv.h"
 
-/* Define our own notion of wchar_t, as UCS-4, according to ISO-10646-1. */
-#undef wchar_t
-#define wchar_t  unsigned int
-
-/* State used by a conversion. 0 denotes the initial state. */
-typedef unsigned int state_t;
-
-/* iconv_t is an opaque type. This is the real iconv_t type. */
-typedef struct conv_struct * conv_t;
+#if 0
 
 /*
- * Data type for conversion multibyte -> unicode
+ * Consider those system dependent encodings that are needed for the
+ * current system.
  */
-struct mbtowc_funcs {
-  int (*xxx_mbtowc) (conv_t conv, wchar_t *pwc, unsigned char const *s, int n);
-  /*
-   * int xxx_mbtowc (conv_t conv, wchar_t *pwc, unsigned char const *s, int n)
-   * converts the byte sequence starting at s to a wide character. Up to n bytes
-   * are available at s. n is >= 1.
-   * Result is number of bytes consumed (if a wide character was read),
-   * or 0 if invalid, or -1 if n too small, or -1-(number of bytes consumed)
-   * if only a shift sequence was read.
-   */
-};
+#ifdef _AIX
+#define USE_AIX
+#endif
+
+#endif
 
 /*
- * Data type for conversion unicode -> multibyte
+ * Converters.
  */
-struct wctomb_funcs {
-  int (*xxx_wctomb) (conv_t conv, unsigned char *r, wchar_t wc, int n);
-  /*
-   * int xxx_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
-   * converts the wide character wc to the character set xxx, and stores the
-   * result beginning at r. Up to n bytes may be written at r. n is >= 1.
-   * Result is number of bytes written, or 0 if invalid, or -1 if n too small.
-   */
-  int (*xxx_reset) (conv_t conv, unsigned char *r, int n);
-  /*
-   * int xxx_reset (conv_t conv, unsigned char *r, int n)
-   * stores a shift sequences returning to the initial state beginning at r.
-   * Up to n bytes may be written at r. n is >= 0.
-   * Result is number of bytes written, or -1 if n too small.
-   */
-};
-
-/* Return code if invalid. (xxx_mbtowc, xxx_wctomb) */
-#define RET_ILSEQ      0
-/* Return code if only a shift sequence of n bytes was read. (xxx_mbtowc) */
-#define RET_TOOFEW(n)  (-1-(n))
-/* Return code if output buffer is too small. (xxx_wctomb, xxx_reset) */
-#define RET_TOOSMALL   -1
+#include "converters.h"
 
 /*
- * Contents of a conversion descriptor.
+ * Transliteration tables.
  */
-struct conv_struct {
-  /* Input (conversion multibyte -> unicode) */
-  struct mbtowc_funcs ifuncs;
-  state_t istate;
-  /* Output (conversion unicode -> multibyte) */
-  struct wctomb_funcs ofuncs;
-  state_t ostate;
-  /* Operation flags */
-  int transliterate;
-};
-
-/*
- * Include all the converters.
- */
-
-#include "ascii.h"
-
-/* General multi-byte encodings */
-#include "utf8.h"
-#include "ucs2.h"
-#include "ucs4.h"
-#include "utf16.h"
-#include "utf7.h"
-#include "ucs2internal.h"
-#include "ucs2swapped.h"
-#include "ucs4internal.h"
-#include "ucs4swapped.h"
-#include "java.h"
-
-/* 8-bit encodings */
-#include "iso8859_1.h"
-#include "iso8859_2.h"
-#include "iso8859_3.h"
-#include "iso8859_4.h"
-#include "iso8859_5.h"
-#include "iso8859_6.h"
-#include "iso8859_7.h"
-#include "iso8859_8.h"
-#include "iso8859_9.h"
-#include "iso8859_10.h"
-#include "iso8859_13.h"
-#include "iso8859_14.h"
-#include "iso8859_15.h"
-#include "koi8_r.h"
-#include "koi8_u.h"
-#include "koi8_ru.h"
-#include "cp1250.h"
-#include "cp1251.h"
-#include "cp1252.h"
-#include "cp1253.h"
-#include "cp1254.h"
-#include "cp1255.h"
-#include "cp1256.h"
-#include "cp1257.h"
-#include "cp1258.h"
-#include "cp850.h"
-#include "cp866.h"
-#include "mac_roman.h"
-#include "mac_centraleurope.h"
-#include "mac_iceland.h"
-#include "mac_croatian.h"
-#include "mac_romania.h"
-#include "mac_cyrillic.h"
-#include "mac_ukraine.h"
-#include "mac_greek.h"
-#include "mac_turkish.h"
-#include "mac_hebrew.h"
-#include "mac_arabic.h"
-#include "mac_thai.h"
-#include "hp_roman8.h"
-#include "nextstep.h"
-#include "armscii_8.h"
-#include "georgian_academy.h"
-#include "georgian_ps.h"
-#include "mulelao.h"
-#include "cp1133.h"
-#include "tis620.h"
-#include "cp874.h"
-#include "viscii.h"
-#include "tcvn.h"
-
-/* CJK character sets [CCS = coded character set] [CJKV.INF chapter 3] */
-
-typedef struct {
-  unsigned short indx; /* index into big table */
-  unsigned short used; /* bitmask of used entries */
-} Summary16;
-
-#include "jisx0201.h"
-#include "jisx0208.h"
-#include "jisx0212.h"
-
-#include "gb2312.h"
-/*#include "gb12345.h"*/
-#include "gbk.h"
-#include "cns11643.h"
-#include "big5.h"
-
-#include "ksc5601.h"
-#include "johab_hangul.h"
-#include "johab_decomp.h"
-
-/* CJK encodings [CES = character encoding scheme] [CJKV.INF chapter 4] */
-
-#include "euc_jp.h"
-#include "sjis.h"
-#include "cp932.h"
-#include "iso2022_jp.h"
-#include "iso2022_jp1.h"
-#include "iso2022_jp2.h"
-
-#include "euc_cn.h"
-#include "ces_gbk.h"
-#include "iso2022_cn.h"
-#include "iso2022_cnext.h"
-#include "hz.h"
-#include "euc_tw.h"
-#include "ces_big5.h"
-#include "cp950.h"
-
-#include "euc_kr.h"
-#include "johab.h"
-#include "iso2022_kr.h"
+#include "cjk_variants.h"
+#include "translit.h"
 
 /*
  * Table of all supported encodings.
@@ -204,18 +48,26 @@ typedef struct {
 struct encoding {
   struct mbtowc_funcs ifuncs; /* conversion multibyte -> unicode */
   struct wctomb_funcs ofuncs; /* conversion unicode -> multibyte */
+  int oflags;                 /* flags for unicode -> multibyte conversion */
 };
 enum {
 #define DEFENCODING(xxx_names,xxx,xxx_ifuncs,xxx_ofuncs1,xxx_ofuncs2) \
   ei_##xxx ,
 #include "encodings.def"
+#ifdef USE_AIX
+#include "encodings_aix.def"
+#endif
 #undef DEFENCODING
 ei_for_broken_compilers_that_dont_like_trailing_commas
 };
+#include "flags.h"
 static struct encoding const all_encodings[] = {
 #define DEFENCODING(xxx_names,xxx,xxx_ifuncs,xxx_ofuncs1,xxx_ofuncs2) \
-  { xxx_ifuncs, xxx_ofuncs1,xxx_ofuncs2 },
+  { xxx_ifuncs, xxx_ofuncs1,xxx_ofuncs2, ei_##xxx##_oflags },
 #include "encodings.def"
+#ifdef USE_AIX
+#include "encodings_aix.def"
+#endif
 #undef DEFENCODING
 };
 
@@ -227,6 +79,34 @@ static struct encoding const all_encodings[] = {
  *   #define MAX_WORD_LENGTH ...
  */
 #include "aliases.h"
+
+/*
+ * System dependent alias lookup function.
+ * Defines
+ *   const struct alias * aliases2_lookup (const char *str);
+ */
+#if defined(USE_AIX) /* || ... */
+static struct alias sysdep_aliases[] = {
+#ifdef USE_AIX
+#include "aliases_aix.h"
+#endif
+};
+#ifdef __GNUC__
+__inline
+#endif
+const struct alias *
+aliases2_lookup (register const char *str)
+{
+  struct alias * ptr;
+  unsigned int count;
+  for (ptr = sysdep_aliases, count = sizeof(sysdep_aliases)/sizeof(sysdep_aliases[0]); count > 0; ptr++, count--)
+    if (!strcmp(str,ptr->name))
+      return ptr;
+  return NULL;
+}
+#else
+#define aliases2_lookup(str)  NULL
+#endif
 
 #if 0
 /* Like !strcasecmp, except that the both strings can be assumed to be ASCII
@@ -281,9 +161,14 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
       goto invalid;
   }
   ap = aliases_lookup(buf,bp-buf);
-  if (ap == NULL)
-    goto invalid;
+  if (ap == NULL) {
+    ap = aliases2_lookup(buf);
+    if (ap == NULL)
+      goto invalid;
+  }
+  cd->oindex = ap->encoding_index;
   cd->ofuncs = all_encodings[ap->encoding_index].ofuncs;
+  cd->oflags = all_encodings[ap->encoding_index].oflags;
   /* Search fromcode in the table. */
   for (cp = fromcode, bp = buf, count = MAX_WORD_LENGTH+1; ; cp++, bp++) {
     unsigned char c = * (unsigned char *) cp;
@@ -298,8 +183,12 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
       goto invalid;
   }
   ap = aliases_lookup(buf,bp-buf);
-  if (ap == NULL)
-    goto invalid;
+  if (ap == NULL) {
+    ap = aliases2_lookup(buf);
+    if (ap == NULL)
+      goto invalid;
+  }
+  cd->iindex = ap->encoding_index;
   cd->ifuncs = all_encodings[ap->encoding_index].ifuncs;
   /* Initialize the states. */
   memset(&cd->istate,'\0',sizeof(state_t));
@@ -326,7 +215,8 @@ size_t iconv (iconv_t icd,
       return 0;
     } else {
       if (cd->ofuncs.xxx_reset) {
-        int outcount = cd->ofuncs.xxx_reset(cd,*outbuf,*outbytesleft);
+        int outcount =
+          cd->ofuncs.xxx_reset(cd, (unsigned char *) *outbuf, *outbytesleft);
         if (outcount < 0) {
           errno = E2BIG;
           return -1;
@@ -365,16 +255,158 @@ size_t iconv (iconv_t icd,
         incount = -1-incount;
       } else {
         /* Case 4: k bytes read, making up a wide character */
+        if (outleft == 0) {
+          errno = E2BIG;
+          result = -1;
+          break;
+        }
         outcount = cd->ofuncs.xxx_wctomb(cd,outptr,wc,outleft);
-        if (outcount == 0) {
-          /* This is not optimal. Transliteration would be better. */
-          outcount = cd->ofuncs.xxx_wctomb(cd,outptr,0xFFFD,outleft);
-          if (outcount == 0) {
-            errno = EILSEQ;
-            result = -1;
-            break;
+        if (outcount != 0)
+          goto outcount_ok;
+        /* Try transliteration. */
+        result++;
+        if (cd->transliterate) {
+          if (cd->oflags & HAVE_HANGUL_JAMO) {
+            /* Decompose Hangul into Jamo. Use double-width Jamo (contained
+               in all Korean encodings and ISO-2022-JP-2), not half-width Jamo
+               (contained in Unicode only). */
+            wchar_t buf[3];
+            int ret = johab_hangul_decompose(cd,buf,wc);
+            if (ret != RET_ILSEQ) {
+              /* we know 1 <= ret <= 3 */
+              state_t backup_state = cd->ostate;
+              unsigned char* backup_outptr = outptr;
+              size_t backup_outleft = outleft;
+              int i, sub_outcount;
+              for (i = 0; i < ret; i++) {
+                if (outleft == 0) {
+                  sub_outcount = RET_TOOSMALL;
+                  goto johab_hangul_failed;
+                }
+                sub_outcount = cd->ofuncs.xxx_wctomb(cd,outptr,buf[i],outleft);
+                if (sub_outcount <= 0)
+                  goto johab_hangul_failed;
+                if (!(sub_outcount <= outleft)) abort();
+                outptr += sub_outcount; outleft -= sub_outcount;
+              }
+              goto char_done;
+            johab_hangul_failed:
+              cd->ostate = backup_state;
+              outptr = backup_outptr;
+              outleft = backup_outleft;
+              if (sub_outcount < 0) {
+                errno = E2BIG;
+                result = -1;
+                break;
+              }
+            }
+          }
+          {
+            /* Try to use a variant, but postfix it with
+               U+303E IDEOGRAPHIC VARIATION INDICATOR
+               (cf. Ken Lunde's "CJKV information processing", p. 188). */
+            int indx = -1;
+            if (wc == 0x3006)
+              indx = 0;
+            else if (wc == 0x30f6)
+              indx = 1;
+            else if (wc >= 0x4e00 && wc < 0xa000)
+              indx = cjk_variants_indx[wc-0x4e00];
+            if (indx >= 0) {
+              for (;; indx++) {
+                wchar_t buf[2];
+                unsigned short variant = cjk_variants[indx];
+                unsigned short last = variant & 0x8000;
+                variant &= 0x7fff;
+                variant += 0x3000;
+                buf[0] = variant; buf[1] = 0x303e;
+                {
+                  state_t backup_state = cd->ostate;
+                  unsigned char* backup_outptr = outptr;
+                  size_t backup_outleft = outleft;
+                  int i, sub_outcount;
+                  for (i = 0; i < 2; i++) {
+                    if (outleft == 0) {
+                      sub_outcount = RET_TOOSMALL;
+                      goto variant_failed;
+                    }
+                    sub_outcount = cd->ofuncs.xxx_wctomb(cd,outptr,buf[i],outleft);
+                    if (sub_outcount <= 0)
+                      goto variant_failed;
+                    if (!(sub_outcount <= outleft)) abort();
+                    outptr += sub_outcount; outleft -= sub_outcount;
+                  }
+                  goto char_done;
+                variant_failed:
+                  cd->ostate = backup_state;
+                  outptr = backup_outptr;
+                  outleft = backup_outleft;
+                  if (sub_outcount < 0) {
+                    errno = E2BIG;
+                    result = -1;
+                    break;
+                  }
+                }
+                if (last)
+                  break;
+              }
+            }
+          }
+          if (wc >= 0x2018 && wc <= 0x201a) {
+            /* Special case for quotation marks 0x2018, 0x2019, 0x201a */
+            wchar_t substitute =
+              (cd->oflags & HAVE_QUOTATION_MARKS
+               ? (wc == 0x201a ? 0x2018 : wc)
+               : (cd->oflags & HAVE_ACCENTS
+                  ? (wc==0x2019 ? 0x00b4 : 0x0060) /* use accents */
+                  : 0x0027 /* use apostrophe */
+              )  );
+            outcount = cd->ofuncs.xxx_wctomb(cd,outptr,substitute,outleft);
+            if (outcount != 0)
+              goto outcount_ok;
+          }
+          {
+            /* Use the transliteration table. */
+            int indx = translit_index(wc);
+            if (indx >= 0) {
+              const unsigned char * cp = &translit_data[indx];
+              unsigned int num = *cp++;
+              state_t backup_state = cd->ostate;
+              unsigned char* backup_outptr = outptr;
+              size_t backup_outleft = outleft;
+              unsigned int i;
+              int sub_outcount;
+              for (i = 0; i < num; i++) {
+                if (outleft == 0) {
+                  sub_outcount = RET_TOOSMALL;
+                  goto translit_failed;
+                }
+                sub_outcount = cd->ofuncs.xxx_wctomb(cd,outptr,cp[i],outleft);
+                if (sub_outcount <= 0)
+                  goto translit_failed;
+                if (!(sub_outcount <= outleft)) abort();
+                outptr += sub_outcount; outleft -= sub_outcount;
+              }
+              goto char_done;
+            translit_failed:
+              cd->ostate = backup_state;
+              outptr = backup_outptr;
+              outleft = backup_outleft;
+              if (sub_outcount < 0) {
+                errno = E2BIG;
+                result = -1;
+                break;
+              }
+            }
           }
         }
+        outcount = cd->ofuncs.xxx_wctomb(cd,outptr,0xFFFD,outleft);
+        if (outcount != 0)
+          goto outcount_ok;
+        errno = EILSEQ;
+        result = -1;
+        break;
+      outcount_ok:
         if (outcount < 0) {
           errno = E2BIG;
           result = -1;
@@ -382,6 +414,8 @@ size_t iconv (iconv_t icd,
         }
         if (!(outcount <= outleft)) abort();
         outptr += outcount; outleft -= outcount;
+      char_done:
+        ;
       }
       if (!(incount <= inleft)) abort();
       inptr += incount; inleft -= incount;
@@ -400,3 +434,26 @@ int iconv_close (iconv_t icd)
   free(cd);
   return 0;
 }
+
+#ifndef LIBICONV_PLUG
+
+int iconvctl (iconv_t icd, int request, void* argument)
+{
+  conv_t cd = (conv_t) icd;
+  switch (request) {
+    case ICONV_TRIVIALP:
+      *(int *)argument = (cd->iindex == cd->oindex ? 1 : 0);
+      return 0;
+    case ICONV_GET_TRANSLITERATE:
+      *(int *)argument = cd->transliterate;
+      return 0;
+    case ICONV_SET_TRANSLITERATE:
+      cd->transliterate = (*(const int *)argument ? 1 : 0);
+      return 0;
+    default:
+      errno = EINVAL;
+      return -1;
+  }
+}
+
+#endif

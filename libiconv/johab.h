@@ -48,12 +48,17 @@ johab_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
         return RET_TOOFEW(0);
       s2 = s[1];
       if ((s2 >= 0x31 && s2 <= 0x7e) || (s2 >= 0x91 && s2 <= 0xfe)) {
-        unsigned char t1 = (s1 < 0xe0 ? 2*(s1-0xd9) : 2*s1-0x197);
-        unsigned char t2 = (s2 < 0x91 ? s2-0x31 : s2-0x43);
-        unsigned char buf[2];
-        buf[0] = t1 + (t2 < 0x5e ? 0 : 1) + 0x21;
-        buf[1] = (t2 < 0x5e ? t2 : t2-0x5e) + 0x21;
-        return ksc5601_mbtowc(conv,pwc,buf,2);
+        /* In KSC 5601, the region s1 = 0xDA, 0xA1 <= s2 <= 0xD3 contains
+           the 51 Jamo (Hangul letters). But in the Johab encoding, they
+           have been moved to the Hangul section, see johab_hangul_page31. */
+        if (!(s1 == 0xda && (s2 >= 0xa1 && s2 <= 0xd3))) {
+          unsigned char t1 = (s1 < 0xe0 ? 2*(s1-0xd9) : 2*s1-0x197);
+          unsigned char t2 = (s2 < 0x91 ? s2-0x31 : s2-0x43);
+          unsigned char buf[2];
+          buf[0] = t1 + (t2 < 0x5e ? 0 : 1) + 0x21;
+          buf[1] = (t2 < 0x5e ? t2 : t2-0x5e) + 0x21;
+          return ksc5601_mbtowc(conv,pwc,buf,2);
+        }
       }
     }
     return RET_ILSEQ;

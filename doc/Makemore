@@ -1,5 +1,5 @@
 # Special Makefile for `recode' tables.			-*- Makefile -*-
-# Copyright © 1997, 1998, 1999 Progiciels Bourbeau-Pinard inc.
+# Copyright © 1997, 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1997.
 
 # This program is free software; you can redistribute it and/or modify
@@ -44,10 +44,13 @@ MAPURL = ftp://ftp.unicode.org/MAPPINGS
 MNEMONICS_DS = mnemonic,ds
 ISO10646_DEF = $(CHSET)/iso10646.def
 CHARSETS_DEF = $(CHSET)/charsets.def
-ENCODINGS_DEF = $(top_srcdir)/libiconv/encodings.def
-MNEMONICS_DS = keld-email/mnemonics,ds
+ENCODINGS_DEF = ../libiconv/encodings.def
+MNEMONICS_DS = keld-email/iso10646.def
+ISO10646_DEF = keld-email/iso10646.def
 CHARSETS_DEF = keld-email/charsets.def
+MNEMONICS_DS = keld-email/iso10646.def keld-email/other.def keld-email/control.def
 NOMS_CARACS = noms_juc_19981216.txt
+NOMS_CARACS = NomsSeulsfinal.lst
 
 PYTHON = python
 SURF = netscape
@@ -102,8 +105,8 @@ $(srcdir)/rfc1345.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
 	mv $(srcdir)/strip-pool.c $(top_srcdir)/src/strip-pool.c
 	mv $(srcdir)/strip-data.c $(top_srcdir)/src/strip-data.c
 
-$(srcdir)/fr-rfc1345.texi: tables.py $(CHARSETS_DEF)
-	cd $(srcdir) && $(PYTHON) tables.py -Ft $(CHARSETS_DEF)
+$(srcdir)/fr-rfc1345.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	cd $(srcdir) && $(PYTHON) tables.py -Ft $(MNEMONICS_DS) $(CHARSETS_DEF)
 
 # -----------------------------------#
 # External files built into recode.  #

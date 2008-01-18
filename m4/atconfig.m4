@@ -2,11 +2,12 @@
 ## Prepare for testing.  ##
 ## ----------------------##
 
-# Single argument says where are built sources to test, relative to the
-# built test directory.  Maybe omitted if the same (flat distribution).
+# The argument (often `../src') says where are the built sources to test,
+# relative to the built test directory.  Empty for a flat distribution, as
+# `.' gets always added in front of the search path by the `atconfig' script.
 
 AC_DEFUN(AT_CONFIG,
-[AT_TESTPATH=ifelse($1, , ., $1)
+[AT_TESTPATH=$1
 AC_SUBST(AT_TESTPATH)
 fp_PROG_ECHO
 ])

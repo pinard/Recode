@@ -25,20 +25,3 @@ ucs4swapped_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
   } else
     return RET_TOOSMALL;
 }
-
-/*
- * UCS-4-BE = UCS-4 big endian, with machine dependent alignment
- * UCS-4-LE = UCS-4 little endian, with machine dependent alignment
- */
-
-#ifdef WORDS_LITTLEENDIAN
-#define ucs4be_mbtowc ucs4swapped_mbtowc
-#define ucs4be_wctomb ucs4swapped_wctomb
-#define ucs4le_mbtowc ucs4internal_mbtowc
-#define ucs4le_wctomb ucs4internal_wctomb
-#else
-#define ucs4be_mbtowc ucs4internal_mbtowc
-#define ucs4be_wctomb ucs4internal_wctomb
-#define ucs4le_mbtowc ucs4swapped_mbtowc
-#define ucs4le_wctomb ucs4swapped_wctomb
-#endif

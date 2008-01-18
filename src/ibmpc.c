@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -345,7 +345,7 @@ init_ibmpc_latin1 (RECODE_STEP step,
 bool
 module_ibmpc (RECODE_OUTER outer)
 {
-  RECODE_SYMBOL symbol;
+  RECODE_ALIAS alias;
 
   if (!declare_single (outer, "Latin-1", "IBM-PC",
 		       outer->quality_byte_to_variable,
@@ -356,28 +356,29 @@ module_ibmpc (RECODE_OUTER outer)
 		       init_ibmpc_latin1, transform_ibmpc_latin1))
     return false;
 
-  if (symbol = declare_alias (outer, "IBM-PC", "IBM-PC"), !symbol)
+  if (alias = declare_alias (outer, "IBM-PC", "IBM-PC"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
-    return false;
-
-  if (symbol = declare_alias (outer, "dos", "IBM-PC"), !symbol)
-    return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
 
-  if (symbol = declare_alias (outer, "MSDOS", "IBM-PC"), !symbol)
+  if (alias = declare_alias (outer, "dos", "IBM-PC"), !alias)
     return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
-    return false;
-
-  if (symbol = declare_alias (outer, "pc", "IBM-PC"), !symbol)
-    return false;
-  if (!declare_implied_surface (outer, symbol, outer->crlf_surface))
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
     return false;
 
+  if (alias = declare_alias (outer, "MSDOS", "IBM-PC"), !alias)
+    return false;
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
+    return false;
+
+  if (alias = declare_alias (outer, "pc", "IBM-PC"), !alias)
+    return false;
+  if (!declare_implied_surface (outer, alias, outer->crlf_surface))
+    return false;
 #if 0
   /* FIXME!  */
-  declare_alias (outer, "IBM-PC", "ibm437");
+  if (!declare_alias (outer, "IBM-PC", "ibm437"))
+    return false;
 #endif
+  return true;
 }

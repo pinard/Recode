@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -66,56 +66,110 @@ declare_single (RECODE_OUTER outer,
 		struct recode_quality quality,
 		Recode_init init_routine, Recode_transform transform_routine)
 {
-  RECODE_SYMBOL symbol;
-  RECODE_SINGLE single;
+  RECODE_SINGLE single = new_single_step (outer);
 
-  single = new_single_step (outer);
   if (!single)
     return NULL;
 
-  if (symbol = find_symbol (outer, before_name, SYMBOL_CREATE_CHARSET),
-      !symbol)
-    return NULL;
-  single->before = symbol->charset;
-
-  if (symbol = find_symbol (outer, after_name, SYMBOL_CREATE_CHARSET),
-      !symbol)
+  if (strcmp (before_name, "data") == 0)
     {
+      single->before = outer->data_symbol;
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp(after_name, "data") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->data_symbol;
+    }
+  else if (strcmp (before_name, "tree") == 0)
+    {
+      single->before = outer->tree_symbol;
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_TREE_SURFACE)->symbol;
+    }
+  else if (strcmp(after_name, "tree") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_TREE_SURFACE)->symbol;
+      single->after = outer->tree_symbol;
+    }
+  else
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_CHARSET)->symbol;
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_CHARSET)->symbol;
+    }
+
 #if 0
-      /* FIXME: We should delink from the list of charsets before freeing.
-	 The symbol should also be freed. */
+  /* FIXME: We should delink from the list of charsets before freeing.
+     The alias should also be freed. */
+  if (!before || !after)
+    {
       free (single->before);
-#endif
       return NULL;
     }
-  single->after = symbol->charset;
+#endif
 
-  if (single->before == outer->data_charset)
+  single->quality = quality;
+  single->init_routine = init_routine;
+  single->transform_routine = transform_routine;
+
+  if (single->before == outer->data_symbol
+      || single->before == outer->tree_symbol)
     {
       if (single->after->resurfacer)
 	recode_error (outer, _("Resurfacer set more than once for `%s'"),
 		      after_name);
       single->after->resurfacer = single;
     }
-  else if (single->after == outer->data_charset)
+  else if (single->after == outer->data_symbol
+	   || single->after == outer->tree_symbol)
     {
       if (single->before->unsurfacer)
 	recode_error (outer, _("Unsurfacer set more than once for `%s'"),
 		      before_name);
       single->before->unsurfacer = single;
     }
-  else
-    {
-      single->before->charset_flag = true;
-      single->after->charset_flag = true;
-    }
-
-  single->quality = quality;
-  single->init_routine = init_routine;
-  single->transform_routine = transform_routine;
 
   return single;
 }
+
+#if 0
+
+/*-------------------------------------------.
+| Create and initialize a new data surface.  |
+`-------------------------------------------*/
+
+bool
+declare_data_surface (RECODE_OUTER outer, const char *name,
+		      struct recode_quality resurfacer_quality,
+		      Recode_init resurfacer_init_routine,
+		      Recode_transform resurfacer_transform_routine,
+		      struct recode_quality unsurfacer_quality,
+		      Recode_init unsurfacer_init_routine,
+		      Recode_transform unsurfacer_transform_routine)
+{
+}
+
+/*-------------------------------------------------.
+| Create and initialize a new structural surface.  |
+`-------------------------------------------------*/
+
+bool
+declare_tree_surface (RECODE_OUTER outer, const char *name,
+		      struct recode_quality resurfacer_quality,
+		      Recode_init resurfacer_init_routine,
+		      Recode_transform resurfacer_transform_routine,
+		      struct recode_quality unsurfacer_quality,
+		      Recode_init unsurfacer_init_routine,
+		      Recode_transform unsurfacer_transform_routine)
+{
+}
+
+#endif
 
 /*---------------------------------------------------------------------------.
 | Declare a charset available through `libiconv', given the NAME of this     |
@@ -133,19 +187,19 @@ internal_iconv (RECODE_SUBTASK subtask)
 bool
 declare_libiconv (RECODE_OUTER outer, const char *name)
 {
-  RECODE_SYMBOL symbol;
+  RECODE_ALIAS alias;
   RECODE_SINGLE single;
 
-  if (symbol = find_symbol (outer, name, SYMBOL_FIND_AS_EITHER),
-      !symbol)
-    if (symbol = find_symbol (outer, name, SYMBOL_CREATE_CHARSET),
-	!symbol)
+  if (alias = find_alias (outer, name, ALIAS_FIND_AS_EITHER),
+      !alias)
+    if (alias = find_alias (outer, name, SYMBOL_CREATE_CHARSET),
+	!alias)
       return false;
-  symbol->charset->charset_flag = true;
+  assert(alias->symbol->type == RECODE_CHARSET);
 
   if (single = new_single_step (outer), !single)
     return false;
-  single->before = symbol->charset;
+  single->before = alias->symbol;
   single->after = outer->libiconv_pivot;
   single->quality = outer->quality_variable_to_variable;
   single->init_routine = NULL;
@@ -154,7 +208,7 @@ declare_libiconv (RECODE_OUTER outer, const char *name)
   if (single = new_single_step (outer), !single)
     return false;
   single->before = outer->libiconv_pivot;
-  single->after = symbol->charset;
+  single->after = alias->symbol;
   single->quality = outer->quality_variable_to_variable;
   single->init_routine = NULL;
   single->transform_routine = internal_iconv;
@@ -164,9 +218,9 @@ declare_libiconv (RECODE_OUTER outer, const char *name)
 
 #if 0
 
-/*-------------------------------------------------.
-| Save explode data within the charset structure.  |
-`-------------------------------------------------*/
+/*------------------------------------------------.
+| Save explode data within the symbol structure.  |
+`------------------------------------------------*/
 
 bool register_explode_data
   PARAMS ((RECODE_OUTER, const char *, const unsigned short *));
@@ -175,16 +229,16 @@ bool
 register_explode_data (RECODE_OUTER outer,
 		       const char *name, const unsigned short *data)
 {
-  RECODE_CHARSET charset;
+  RECODE_SYMBOL symbol;
 
-  charset = find_symbol (outer, name, SYMBOL_CREATE_CHARSET);
-  if (!charset)
+  symbol = find_alias (outer, name, SYMBOL_CREATE_CHARSET);
+  if (!symbol)
     return false;
 
-  charset->charset_flag = true;
-  charset->charset_type = RECODE_EXPLODE_DATA;
+  assert(symbol->type = RECODE_CHARSET);
+  symbol->data_type = RECODE_EXPLODE_DATA;
   /* The cast is a way to silently discard the const.  */
-  charset->charset_data = (void *) data;
+  symbol->data = (void *) data;
   return true;
 }
 
@@ -200,31 +254,31 @@ bool
 declare_explode_data (RECODE_OUTER outer, const unsigned short *data,
 		      const char *name_combined, const char *name_exploded)
 {
-  RECODE_SYMBOL symbol;
-  RECODE_CHARSET charset_combined;
-  RECODE_CHARSET charset_exploded;
+  RECODE_ALIAS alias;
+  RECODE_SYMBOL charset_combined;
+  RECODE_SYMBOL charset_exploded;
   RECODE_SINGLE single;
 
-  if (symbol = find_symbol (outer, name_combined, SYMBOL_CREATE_CHARSET),
-      !symbol)
+  if (alias = find_alias (outer, name_combined, SYMBOL_CREATE_CHARSET),
+      !alias)
     return false;
 
-  charset_combined = symbol->charset;
-  charset_combined->charset_flag = true;
+  charset_combined = alias->symbol;
+  assert(charset_combined->type == RECODE_CHARSET);
 
   if (name_exploded)
     {
-      if (symbol = find_symbol (outer, name_exploded, SYMBOL_CREATE_CHARSET),
-	  !symbol)
+      if (alias = find_alias (outer, name_exploded, SYMBOL_CREATE_CHARSET),
+	  !alias)
 	return false;
 
-      charset_exploded = symbol->charset;
-      charset_exploded->charset_flag = true;
+      charset_exploded = alias->symbol;
+      assert(charset_exploded->type == RECODE_CHARSET);
     }
   else
     {
-      charset_combined->charset_type = RECODE_EXPLODE_DATA;
-      charset_combined->charset_data = (void *) data;
+      charset_combined->data_type = RECODE_EXPLODE_DATA;
+      charset_combined->data = (void *) data;
       charset_exploded = outer->ucs2_charset;
     }
 
@@ -263,17 +317,17 @@ bool
 declare_strip_data (RECODE_OUTER outer, struct strip_data *data,
 		    const char *name)
 {
-  RECODE_SYMBOL symbol;
-  RECODE_CHARSET charset;
+  RECODE_ALIAS alias;
+  RECODE_SYMBOL charset;
   RECODE_SINGLE single;
 
-  if (symbol = find_symbol (outer, name, SYMBOL_CREATE_CHARSET), !symbol)
+  if (alias = find_alias (outer, name, SYMBOL_CREATE_CHARSET), !alias)
     return false;
 
-  charset = symbol->charset;
-  charset->charset_flag = true;
-  charset->charset_type = RECODE_STRIP_DATA;
-  charset->charset_data = data;
+  charset = alias->symbol;
+  assert(charset->type == RECODE_CHARSET);
+  charset->data_type = RECODE_STRIP_DATA;
+  charset->data = data;
 
   single = new_single_step (outer);
   if (!single)
@@ -377,11 +431,13 @@ estimate_single_cost (RECODE_OUTER outer, RECODE_SINGLE single)
 `------------------------------------------------------------------------*/
 
 #include "decsteps.h"
+bool module_libiconv PARAMS ((struct recode_outer *));
+
 
 static bool
 register_all_modules (RECODE_OUTER outer)
 {
-  RECODE_SYMBOL symbol;
+  RECODE_ALIAS alias;
   RECODE_SINGLE single;
   unsigned counter;
   unsigned char *table;
@@ -392,35 +448,41 @@ register_all_modules (RECODE_OUTER outer)
     table[counter] = counter;
   outer->one_to_same = table;
 
-  prepare_for_names (outer);
+  prepare_for_aliases (outer);
   outer->single_list = NULL;
   outer->number_of_singles = 0;
 
-  if (symbol = find_symbol (outer, "data", SYMBOL_CREATE_CHARSET), !symbol)
+  if (alias = find_alias (outer, "data", SYMBOL_CREATE_CHARSET), !alias)
     return false;
-  outer->data_charset = symbol->charset;
+  outer->data_symbol = alias->symbol;
 
-  if (symbol = find_symbol (outer, "ISO-10646-UCS-2", SYMBOL_CREATE_CHARSET),
-      !symbol)
+  if (alias = find_alias (outer, "tree", SYMBOL_CREATE_CHARSET), !alias)
     return false;
-  symbol->charset->charset_flag = true;
-  outer->ucs2_charset = symbol->charset;
+  outer->tree_symbol = alias->symbol;
 
-  if (symbol = find_symbol (outer, ":libiconv:", SYMBOL_CREATE_CHARSET),
-      !symbol)
+  if (alias = find_alias (outer, "ISO-10646-UCS-2", SYMBOL_CREATE_CHARSET),
+      !alias)
     return false;
-  symbol->charset->charset_flag = true;
-  outer->libiconv_pivot = symbol->charset;
+  assert(alias->symbol->type == RECODE_CHARSET);
+  outer->ucs2_charset = alias->symbol;
+
+  if (alias = find_alias (outer, ":libiconv:", SYMBOL_CREATE_CHARSET),
+      !alias)
+    return false;
+  assert(alias->symbol->type == RECODE_CHARSET);
+  outer->libiconv_pivot = alias->symbol;
   if (!declare_alias (outer, ":", ":libiconv:"))
     return false;
 
-  if (symbol = find_symbol (outer, "CR-LF", SYMBOL_CREATE_CHARSET), !symbol)
+  if (alias = find_alias (outer, "CR-LF", SYMBOL_CREATE_CHARSET), !alias)
     return false;
-  outer->crlf_surface = symbol->charset;
+  alias->symbol->type = RECODE_DATA_SURFACE;
+  outer->crlf_surface = alias->symbol;
 
-  if (symbol = find_symbol (outer, "CR", SYMBOL_CREATE_CHARSET), !symbol)
+  if (alias = find_alias (outer, "CR", SYMBOL_CREATE_CHARSET), !alias)
     return false;
-  outer->cr_surface = symbol->charset;
+  alias->symbol->type = RECODE_DATA_SURFACE;
+  outer->cr_surface = alias->symbol;
 
 #if 0
   /* `.' might be later used for asking recode to guess the charset.  */
@@ -480,7 +542,7 @@ recode_new_outer (bool auto_abort)
   if (!register_all_modules (outer) || !make_argmatch_arrays (outer))
     {
       recode_delete_outer (outer);
-      return false;
+      return NULL;
     }
 
   outer->quality_byte_reversible.in_size = RECODE_1;
@@ -525,13 +587,13 @@ recode_delete_outer (RECODE_OUTER outer)
   /* FIXME: Pawel Krawczyk reports that calling new_outer ... delete_outer
      20000 times in a program has the effect of consuming all virtual memory.
      So there might be memory leaks should to track down and resolve.  */
-  while (outer->number_of_charsets > 0)
+  while (outer->number_of_symbols > 0)
     {
-      RECODE_CHARSET charset = outer->charset_list;
+      RECODE_SYMBOL symbol = outer->symbol_list;
 
-      outer->charset_list = charset->next;
-      outer->number_of_charsets--;
-      free (charset);
+      outer->symbol_list = symbol->next;
+      outer->number_of_symbols--;
+      free (symbol);
     }
   while (outer->number_of_singles > 0)
     {
@@ -543,8 +605,8 @@ recode_delete_outer (RECODE_OUTER outer)
     }
   if (outer->pair_restriction)
     free (outer->pair_restriction);
-  if (outer->symbol_table)
-    free (outer->symbol_table);
+  if (outer->alias_table)
+    free (outer->alias_table);
   if (outer->argmatch_charset_array)
     free (outer->argmatch_charset_array);
 #if 0

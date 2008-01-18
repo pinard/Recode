@@ -1,7 +1,7 @@
 #!/bin/sh
 #                                                      -*- coding: latin-1 -*-
 # Validation suite for the Free `recode' program and library.
-# Copyright © 1998, 1999 Progiciels Bourbeau-Pinard inc.
+# Copyright © 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1998.
 
 # Still many parts of `recode' are not exercised by the test suite.  A few
@@ -112,7 +112,6 @@ cat >expout <<'EOF'
 /Base64 64 b64
 /CR
 /CR-LF cl
-/data
 /Decimal-1 d d1
 /Decimal-2 d2
 /Decimal-4 d4
@@ -133,7 +132,7 @@ AFRFUL-103-BPI_OCIL t-bambara t-bra t-ewondo t-fulfulde
 AFRL1-101-BPI_OCIL t-fra t-francais
 AFRLIN-104-BPI_OCIL lin lingala sango wolof
 AFRLIN-105-BPI_OCIL t-lin t-lingala t-sango t-wolof
-ANSI_X3.4-1968 367/CR-LF ANSI_X3.4-1986 ASCII CP367/CR-LF CSASCII IBM367/CR-LF ISO646-US iso-ir-6 ISO_646.irv:1991 us US-ASCII
+ANSI_X3.4-1968 367/CR-LF ANSI_X3.4-1986 ASCII CP367/CR-LF csASCII IBM367/CR-LF ISO646-US ISO646.1991-IRV iso-ir-6 ISO_646.irv:1991 us US-ASCII
 Apple-Mac/CR
 ARMSCII-8
 ASCII-BS BS
@@ -141,16 +140,17 @@ ASMO_449 arabic7 iso-ir-89 ISO_9036
 AtariST
 baltic iso-ir-179
 Bang-Bang
-BIG5 BIG-5 BIG-FIVE BIGFIVE CSBIG5
+BIG5 BIG-5 BIG-FIVE BIGFIVE CN-BIG5 csBig5
 BS_4730 gb ISO646-GB iso-ir-4 uk
 BS_viewdata iso-ir-47
 CDC-NOS NOS
 combined-UCS-2 co
 CORK T1
 count-characters
-CP866 866 CSIBM866 IBM866
+CP866 866 csIBM866 IBM866
 CP874 WINDOWS-874
 CP932
+CP949 UHC
 CP950
 CP1133 IBM-CP1133
 CP1250/CR-LF 1250/CR-LF ms-ee windows-1250
@@ -167,6 +167,7 @@ CSA_Z243.4-1985-2 csa7-2 ISO646-CA2 iso-ir-122
 CSA_Z243.4-1985-gr iso-ir-123
 CSN_369103 iso-ir-139 koi8l2 KOI-8_L2
 CWI cp-hu CWI-2
+data
 DEC-MCS dec
 DIN_66003 de ISO646-DE iso-ir-21
 DS_2089 dk DS2089 ISO646-DK
@@ -193,20 +194,21 @@ EBCDIC-US
 ECMA-cyrillic ECMA-113 ECMA-113:1986 iso-ir-111
 ES ISO646-ES iso-ir-17
 ES2 ISO646-ES2 iso-ir-85
-EUC-CN CSGB2312 EUCCN GB2312
-EUC-JP CSEUCPKDFMTJAPANESE EUCJP EXTENDED_UNIX_CODE_PACKED_FORMAT_FOR_JAPANESE
-EUC-KR CSEUCKR EUCKR
-EUC-TW CSEUCTW EUCTW
+EUC-CN CN-GB csGB2312 EUCCN EUC_CN GB2312
+EUC-JP csEUCPkdFmtJapanese EUCJP EUC_JP Extended_UNIX_Code_Packed_Format_for_Japanese
+EUC-KR csEUCKR EUCKR EUC_KR
+EUC-TW csEUCTW EUCTW EUC_TW
 flat
 GBK CP936
-GB_1988-80 cn ISO646-CN iso-ir-57
+GB_1988-80 cn csISO57GB1988 ISO646-CN iso-ir-57
+GB_2312-80 CHINESE csISO58GB231280 GB2312.1980-0 ISO-IR-58
 Georgian-Academy
 Georgian-PS
 GOST_19768-87 iso-ir-153 ST_SEV_358-88
 greek7 iso-ir-88
 greek7-old iso-ir-18
 greek-ccitt iso-ir-150
-hp-roman8 CSHPROMAN8 r8 roman8
+hp-roman8 csHPRoman8 r8 roman8
 HTML-i18n 2070 RFC2070
 HTML_1.1 h1
 HTML_2.0 1866 h2 RFC1866
@@ -232,7 +234,7 @@ IBM423/CR-LF 423/CR-LF CP423/CR-LF ebcdic-cp-gr
 IBM424/CR-LF 424/CR-LF CP424/CR-LF ebcdic-cp-he
 IBM437/CR-LF 437/CR-LF CP437/CR-LF
 IBM500/CR-LF 500/CR-LF 500V1 CP500/CR-LF ebcdic-cp-be ebcdic-cp-ch
-IBM850/CR-LF 850/CR-LF CP850/CR-LF CSPC850MULTILINGUAL
+IBM850/CR-LF 850/CR-LF CP850/CR-LF csPC850Multilingual
 IBM851/CR-LF 851/CR-LF CP851/CR-LF
 IBM852/CR-LF 852/CR-LF CP852/CR-LF pcl2 pclatin2
 IBM855/CR-LF 855/CR-LF CP855/CR-LF
@@ -264,27 +266,29 @@ INIS iso-ir-49
 INIS-8 iso-ir-50
 INIS-cyrillic iso-ir-51
 INVARIANT iso-ir-170
-ISO-2022-CN CSISO2022CN
+ISO-2022-CN csISO2022CN ISO2022CN
 ISO-2022-CN-EXT
-ISO-2022-JP CSISO2022JP
+ISO-2022-JP csISO2022JP ISO2022JP
 ISO-2022-JP-1
-ISO-2022-JP-2 CSISO2022JP2
-ISO-2022-KR CSISO2022KR
-ISO-8859-1 819/CR-LF CP819/CR-LF CSISOLATIN1 IBM819/CR-LF iso-ir-100 ISO_8859-1 ISO_8859-1:1987 l1 lat1 latin1 Latin-1
-ISO-8859-2 912/CR-LF CP912/CR-LF CSISOLATIN2 IBM912/CR-LF iso-ir-101 ISO_8859-2 ISO_8859-2:1987 l2 latin2
-ISO-8859-3 CSISOLATIN3 iso-ir-109 ISO_8859-3 ISO_8859-3:1988 l3 latin3
-ISO-8859-4 CSISOLATIN4 iso-ir-110 ISO_8859-4 ISO_8859-4:1988 l4 latin4
-ISO-8859-5 CSISOLATINCYRILLIC cyrillic iso-ir-144 ISO_8859-5 ISO_8859-5:1988
-ISO-8859-6 arabic ASMO-708 CSISOLATINARABIC ECMA-114 iso-ir-127 ISO_8859-6 ISO_8859-6:1987
-ISO-8859-7 CSISOLATINGREEK ECMA-118 ELOT_928 greek greek8 iso-ir-126 ISO_8859-7 ISO_8859-7:1987
-ISO-8859-8 CSISOLATINHEBREW hebrew iso-ir-138 ISO_8859-8 ISO_8859-8:1988
-ISO-8859-9 CSISOLATIN5 iso-ir-148 ISO_8859-9 ISO_8859-9:1989 l5 latin5
-ISO-8859-10 CSISOLATIN6 iso-ir-157 ISO_8859-10 ISO_8859-10:1992 ISO_8859-10:1993 l6 latin6
-ISO-8859-13 iso-baltic ISO-IR-179 iso-ir-179a ISO_8859-13 ISO_8859-13:1998 l7 latin7
-ISO-8859-14 iso-celtic iso-ir-199 ISO_8859-14 ISO_8859-14:1998 l8 latin8
-ISO-8859-15 iso-ir-203 ISO_8859-15 ISO_8859-15:1998 l9 latin9
-ISO-10646-UCS-2 BMP CSUNICODE rune u2 UCS-2 UNICODE-1-1
-ISO-10646-UCS-4 10646 CSUCS4 ISO_10646 u4 UCS UCS-4
+ISO-2022-JP-2 csISO2022JP2
+ISO-2022-KR csISO2022KR ISO2022KR
+ISO-8859-1 819/CR-LF CP819/CR-LF csISOLatin1 IBM819/CR-LF ISO8859-1 iso-ir-100 ISO_8859-1 ISO_8859-1:1987 l1 lat1 latin1 Latin-1
+ISO-8859-2 912/CR-LF CP912/CR-LF csISOLatin2 IBM912/CR-LF ISO8859-2 iso-ir-101 ISO_8859-2 ISO_8859-2:1987 l2 latin2
+ISO-8859-3 csISOLatin3 ISO8859-3 iso-ir-109 ISO_8859-3 ISO_8859-3:1988 l3 latin3
+ISO-8859-4 csISOLatin4 ISO8859-4 iso-ir-110 ISO_8859-4 ISO_8859-4:1988 l4 latin4
+ISO-8859-5 csISOLatinCyrillic cyrillic ISO8859-5 iso-ir-144 ISO_8859-5 ISO_8859-5:1988
+ISO-8859-6 arabic ASMO-708 csISOLatinArabic ECMA-114 ISO8859-6 iso-ir-127 ISO_8859-6 ISO_8859-6:1987
+ISO-8859-7 csISOLatinGreek ECMA-118 ELOT_928 greek greek8 ISO8859-7 iso-ir-126 ISO_8859-7 ISO_8859-7:1987
+ISO-8859-8 csISOLatinHebrew hebrew ISO8859-8 iso-ir-138 ISO_8859-8 ISO_8859-8:1988
+ISO-8859-9 csISOLatin5 ISO8859-9 iso-ir-148 ISO_8859-9 ISO_8859-9:1989 l5 latin5
+ISO-8859-10 csISOLatin6 ISO8859-10 iso-ir-157 ISO_8859-10 ISO_8859-10:1992 ISO_8859-10:1993 L6 latin6
+ISO-8859-13 ISO8859-13 iso-baltic ISO-IR-179 iso-ir-179a ISO_8859-13 ISO_8859-13:1998 l7 latin7
+ISO-8859-14 ISO8859-14 iso-celtic iso-ir-199 ISO_8859-14 ISO_8859-14:1998 l8 latin8
+ISO-8859-15 ISO8859-15 iso-ir-203 ISO_8859-15 ISO_8859-15:1998 l9 latin9
+ISO-8859-16 ISO-IR-226 ISO_8859-16 ISO_8859-16:2000
+ISO-10646-UCS-2 BMP csUnicode csUnicode11 rune u2 UCS-2 UCS-2BE UNICODE-1-1 UNICODEBIG
+ISO-10646-UCS-4 10646 csUCS4 ISO_10646 u4 UCS UCS-4
+ISO-IR-165 CN-GB-ISOIR165
 ISO_646.basic ISO_646.basic:1983 ref
 ISO_646.irv irv iso-ir-2 ISO_646.irv:1983
 ISO_2033-1983 e13b iso-ir-98
@@ -297,29 +301,29 @@ ISO_10367-box iso-ir-155
 IT ISO646-IT iso-ir-15
 JAVA
 JIS_C6220-1969-jp iso-ir-13 JIS_C6220-1969 katakana x0201-7
-JIS_C6220-1969-ro ISO646-JP iso-ir-14 jp
+JIS_C6220-1969-ro csISO14JISC6220ro ISO646-JP iso-ir-14 jp
 JIS_C6229-1984-a jp-ocr-a
 JIS_C6229-1984-b ISO646-JP-OCR-B jp-ocr-b
 JIS_C6229-1984-b-add iso-ir-93 jp-ocr-b-add
 JIS_C6229-1984-hand iso-ir-94 jp-ocr-hand
 JIS_C6229-1984-hand-add iso-ir-95 jp-ocr-hand-add
 JIS_C6229-1984-kana iso-ir-96
-JIS_X0201 CSHALFWIDTHKATAKANA JISX0201-1976 JISX0201.1976-0 X0201
-JIS_X0208 JIS0208 JIS_X0208-1983 JIS_X0208-1990 JIS_X0208.1983-0 JIS_X0208.1983-1
-JIS_X0212 CSISO159JISX02121990 ISO-IR-159 JIS_X0212-1990 JIS_X0212.1990-0 X0212
+JIS_X0201 csHalfWidthKatakana JIS0201 JISX0201-1976 JISX0201.1976-0 X0201
+JIS_X0208 csISO87JISX0208 ISO-IR-87 JIS0208 JISX0208.1983-0 JISX0208.1990-0 JIS_X0208-1983 JIS_X0208-1990 X0208
+JIS_X0212 csISO159JISX02121990 ISO-IR-159 JIS0212 JISX0212.1990-0 JIS_X0212-1990 JIS_X0212.1990-0 X0212
 JOHAB CP1361
 JUS_I.B1.002 ISO646-YU iso-ir-141 js yu
 JUS_I.B1.003-mac iso-ir-147 macedonian
 JUS_I.B1.003-serb iso-ir-146 serbian
 KEYBCS2 Kamenicky
-KOI8-R CSKOI8R
+KOI8-R csKOI8R
 KOI8-RU
 KOI8-U
 KOI-7
 KOI-8 GOST_19768-74
 KOI-8_CS2
 KSC5636 ISO646-KR
-KSC_5601 CP949 CSKSC56011987 ISO-IR-149 KOREAN KSC5601.1987-0 KS_C_5601-1987 KS_C_5601-1989
+KSC_5601 csKSC56011987 ISO-IR-149 KOREAN KSC5601.1987-0 KSX1001:1992 KS_C_5601-1987 KS_C_5601-1989
 LaTeX ltex TeX
 latin-greek iso-ir-19
 Latin-greek-1 iso-ir-27
@@ -331,7 +335,7 @@ MacCyrillic
 MacGreek
 MacHebrew
 MacIceland
-macintosh/CR mac/CR MacRoman
+macintosh/CR csMacintosh mac/CR MacRoman
 macintosh_ce/CR macce/CR
 MacRomania
 MacThai
@@ -356,39 +360,41 @@ RFC1345 1345 mnemonic
 sami iso-ir-158 lap latin-lap
 SEN_850200_B FI ISO646-FI ISO646-SE iso-ir-10 se SS636127
 SEN_850200_C ISO646-SE2 iso-ir-11 se2
-SJIS CSSHIFTJIS MS_KANJI SHIFT-JIS SHIFT_JIS
+SJIS csShiftJIS MS_KANJI SHIFT-JIS SHIFT_JIS
 T.61-7bit iso-ir-102
 TCVN TCVN5712-1 TCVN5712-1:1993 TCVN-5712
 Texinfo texi ti
 Texte txte
 TIS-620 ISO-IR-166 TIS620 TIS620-0 TIS620.2529-1 TIS620.2533-0 TIS620.2533-1
-UCS-2-BE UNICODEBIG
+tree
 UCS-2-INTERNAL
-UCS-2-LE UNICODELITTLE
 UCS-2-SWAPPED
-UCS-4-BE
+UCS-2LE UNICODELITTLE
 UCS-4-INTERNAL
-UCS-4-LE
 UCS-4-SWAPPED
-UNICODE-1-1-UTF-7 CSUNICODE11UTF7 TF-7 u7 UTF-7
+UCS-4BE
+UCS-4LE
+UNICODE-1-1-UTF-7 csUnicode11UTF7 TF-7 u7 UTF-7
 UTF-8 FSS_UTF TF-8 u8 UTF-2 UTF-FSS
 UTF-16 TF-16 u6 Unicode
+UTF-16BE
+UTF-16LE
 VIQR
-VISCII CSVISCII VISCII1.1-1
+VISCII csVISCII VISCII1.1-1
 VNI
 VPS
 EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/names.m4:279: testing..."
-echo names.m4:279 > at-check-line
+  && echo "$srcdir/names.m4:285: testing..."
+echo names.m4:285 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode -l
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -427,19 +433,19 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf stdout stderr expout
 # Snippet )c2)
-  echo names.m4:283 > at-check-line
+  echo names.m4:289 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing the --find-subsets option'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "2. $srcdir/names.m4:283       $at_c"
+  echo $at_n "2. $srcdir/names.m4:289       $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d2(
 # Testing the --find-subsets option
 # Snippet )d2)
 # Snippet (s2(
-# starting from `names.m4:283'.
+# starting from `names.m4:289'.
 $at_traceon
 
 cat >expout <<'EOF'
@@ -890,14 +896,14 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/names.m4:734: testing..."
-echo names.m4:734 > at-check-line
+  && echo "$srcdir/names.m4:740: testing..."
+echo names.m4:740 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode -T | sort
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -956,7 +962,7 @@ $at_traceon
 cat > expect <<'EOF'
 ISO-8859-1
 
-  0 NU    16 DL    32 SP    48 0     64 @     80 P     96 '!   112 p
+  0 NU    16 DL    32 SP    48 0     64 At    80 P     96 '!   112 p
   1 SH    17 D1    33 !     49 1     65 A     81 Q     97 a    113 q
   2 SX    18 D2    34 "     50 2     66 B     82 R     98 b    114 r
   3 EX    19 D3    35 Nb    51 3     67 C     83 S     99 c    115 s
@@ -1000,7 +1006,7 @@ $at_traceon
 recode -ld latin-1 | cmp -s - expect
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1057,7 +1063,7 @@ $at_traceon
 cat > expect <<'EOF'
 ISO-8859-1
 
-00 NU   10 DL   20 SP   30 0    40 @    50 P    60 '!   70 p
+00 NU   10 DL   20 SP   30 0    40 At   50 P    60 '!   70 p
 01 SH   11 D1   21 !    31 1    41 A    51 Q    61 a    71 q
 02 SX   12 D2   22 "    32 2    42 B    52 R    62 b    72 r
 03 EX   13 D3   23 Nb   33 3    43 C    53 S    63 c    73 s
@@ -1101,7 +1107,7 @@ $at_traceon
 recode -lh latin-1 | cmp -s - expect
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1158,7 +1164,7 @@ $at_traceon
 cat > expect <<'EOF'
 ISO-8859-1
 
-000 NU   020 DL   040 SP   060 0    100 @    120 P    140 '!   160 p
+000 NU   020 DL   040 SP   060 0    100 At   120 P    140 '!   160 p
 001 SH   021 D1   041 !    061 1    101 A    121 Q    141 a    161 q
 002 SX   022 D2   042 "    062 2    102 B    122 R    142 b    162 r
 003 EX   023 D3   043 Nb   063 3    103 C    123 S    143 c    163 s
@@ -1202,7 +1208,7 @@ $at_traceon
 recode -lo latin-1 | cmp -s - expect
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1323,7 +1329,7 @@ Dec  Oct Hex   UCS2  Mne  ISO-8859-1
  61  075  3d   003D  =    equals sign
  62  076  3e   003E  >    greater-than sign
  63  077  3f   003F  ?    question mark
- 64  100  40   0040  @    commercial at
+ 64  100  40   0040  At   commercial at
  65  101  41   0041  A    latin capital letter a
  66  102  42   0042  B    latin capital letter b
  67  103  43   0043  C    latin capital letter c
@@ -1526,7 +1532,7 @@ $at_traceon
 recode -lf latin-1 | cmp -s - expect
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1599,7 +1605,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1684,7 +1690,7 @@ recode /../d1 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1896,7 +1902,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -1977,7 +1983,7 @@ recode /../d2 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2186,7 +2192,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2267,7 +2273,7 @@ recode /../d4 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2476,7 +2482,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2565,7 +2571,7 @@ recode /../x1 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2781,7 +2787,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -2866,7 +2872,7 @@ recode /../x2 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3078,7 +3084,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3159,7 +3165,7 @@ recode /../x4 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3366,7 +3372,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3455,7 +3461,7 @@ recode /../o1 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3671,7 +3677,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3756,7 +3762,7 @@ recode /../o2 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -3968,7 +3974,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4053,7 +4059,7 @@ recode /../o4 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4267,7 +4273,7 @@ $at_traceon
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4343,7 +4349,7 @@ recode /../64 < $at_srcdir/dumps-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4545,7 +4551,7 @@ recode qp..x1 < $at_srcdir/quoted-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4721,7 +4727,7 @@ recode ../,bambara/qp..t-bambara/64 < example
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4743,7 +4749,7 @@ recode ../,t-bambara/64..bambara/qp < transcript
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4824,7 +4830,7 @@ recode ../,fulfulde/qp..t-fulfulde/64 < example
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4846,7 +4852,7 @@ recode ../,t-fulfulde/64..fulfulde/qp < transcript
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4935,7 +4941,7 @@ recode ../,lingala/qp..t-lingala/64 < example
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -4957,7 +4963,7 @@ recode ../,t-lingala/64..lingala/qp < transcript
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5040,7 +5046,7 @@ recode ../,sango/qp..t-sango/64 < example
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5062,7 +5068,7 @@ recode ../,t-sango/64..sango/qp < transcript
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5140,7 +5146,7 @@ recode ../,wolof/qp..t-wolof/64 < example
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5162,7 +5168,7 @@ recode ../,t-wolof/64..wolof/qp < transcript
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5227,7 +5233,7 @@ $at_traceon
 recode co..l1 < /dev/null
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5268,31 +5274,31 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf stdout stderr
 # Snippet )c55)
-  echo debug.m4:3 > at-check-line
+  echo testdump.m4:3 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing testing and counting'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "55. $srcdir/debug.m4:3        $at_c"
+  echo $at_n "55. $srcdir/testdump.m4:3     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d55(
 # Testing testing and counting
 # Snippet )d55)
 # Snippet (s55(
-# starting from `debug.m4:3'.
+# starting from `testdump.m4:3'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/debug.m4:11: testing..."
-echo debug.m4:11 > at-check-line
+  && echo "$srcdir/testdump.m4:11: testing..."
+echo testdump.m4:11 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test7..x,us..count < /dev/null
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5309,14 +5315,14 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/debug.m4:18: testing..."
-echo debug.m4:18 > at-check-line
+  && echo "$srcdir/testdump.m4:18: testing..."
+echo testdump.m4:18 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test8..x,us..count < /dev/null
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5333,14 +5339,14 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/debug.m4:26: testing..."
-echo debug.m4:26 > at-check-line
+  && echo "$srcdir/testdump.m4:26: testing..."
+echo testdump.m4:26 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test15..x2,us..count < /dev/null
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5358,14 +5364,14 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/debug.m4:34: testing..."
-echo debug.m4:34 > at-check-line
+  && echo "$srcdir/testdump.m4:34: testing..."
+echo testdump.m4:34 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test16..x2,us..count < /dev/null
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff
@@ -5575,7 +5581,7 @@ recode l1/qp..u8/x < $at_srcdir/quoted-data
 
 at_status=$?
 if test $at_status != 0; then
-  test -n "$at_verbose" && cat stderr >&6
+  test -n "$at_verbose" && test -z "$at_no_redirs" && cat stderr >&6
   exit $at_status
 fi
 $at_traceoff

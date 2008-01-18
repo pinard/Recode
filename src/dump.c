@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1997, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1997, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1997.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -71,7 +71,7 @@ dump (RECODE_SUBTASK subtask,
 	  character = get_byte (subtask);
 	  if (character == EOF)
 	    break;
-	  value = value << 8 | MASK (8) & character;
+	  value = (value << 8) | (MASK (8) & character);
 	}
 
       /* Write delimiters.  */
@@ -200,7 +200,7 @@ undump (RECODE_SUBTASK subtask,
 	case OCTAL:
 	  while (character >= '0' && character <= '7')
 	    {
-	      value = value << 3 | character - '0';
+	      value = (value << 3) | (character - '0');
 	      width++;
 	      character = get_byte (subtask);
 	    }
@@ -219,19 +219,19 @@ undump (RECODE_SUBTASK subtask,
 	  while (true)
 	    if (character >= '0' && character <= '9')
 	      {
-		value = value << 4 | character - '0';
+		value = (value << 4) | (character - '0');
 		width++;
 		character = get_byte (subtask);
 	      }
 	    else if (character >= 'A' && character <= 'F')
 	      {
-		value = value << 4 | character - 'A' + 10;
+		value = (value << 4) | (character - 'A' + 10);
 		width++;
 		character = get_byte (subtask);
 	      }
 	    else if (character >= 'a' && character <= 'f')
 	      {
-		value = value << 4 | character - 'a' + 10;
+		value = (value << 4) | (character - 'a' + 10);
 		width++;
 		character = get_byte (subtask);
 	      }
@@ -281,7 +281,7 @@ undump (RECODE_SUBTASK subtask,
 	    unsigned shift;
 
 	    for (shift = size * 8; shift != 0; shift -= 8)
-	      put_byte (MASK (8) & value >> shift - 8, subtask);
+	      put_byte (MASK (8) & value >> (shift - 8), subtask);
 	  }
 	}
 
@@ -289,10 +289,12 @@ undump (RECODE_SUBTASK subtask,
 
       comma_on_last = character == ',';
       if (!comma_on_last)
-	if (character == '\n')
-	  character = get_byte (subtask);
-	else
-	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	{
+	  if (character == '\n')
+	    character = get_byte (subtask);
+	  else
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+	}
       else
 	{
 	  character = get_byte (subtask);

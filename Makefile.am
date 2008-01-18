@@ -1,5 +1,5 @@
 # Main Makefile for GNU recode.
-# Copyright © 1992, 93, 94, 95, 96, 97, 98, 99 Free Software Foundation, Inc.
+# Copyright © 1992,93,94,95,96,97,98,99,00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1992.
 
 # This program is free software; you can redistribute it and/or modify
@@ -21,13 +21,20 @@ AUTOMAKE_OPTIONS = gnits
 ACLOCAL_AMFLAGS = -I m4
 
 BABYL = ../rmail/* ../*/rmail/* ../*/*/RMAIL ../*/*/rmail/*
-EXTRA_DIST = rebox.el COPYING-LIB
+EXTRA_DIST = COPYING-LIB PATCHES-AC rebox.el recode.spec
 SUBDIRS = m4 doc lib libiconv i18n src tests contrib
 
-POTFILES = src/debug.c src/main.c src/names.c src/outer.c src/recode.c \
-src/request.c src/strip-data.c src/task.c
+POTFILES = src/main.c src/names.c src/outer.c src/recode.c \
+src/request.c src/strip-data.c src/task.c src/testdump.c
 
 all-local: $(srcdir)/stamp-pot
 
 $(srcdir)/stamp-pot: $(POTFILES)
 	@echo "$(POTFILES)" > $@
+
+install-stow:
+	$(MAKE) install \
+	  prefix=$(exec_prefix)/stow/$(PACKAGE)-$(VERSION) \
+	  exec_prefix=$(exec_prefix)/stow/$(PACKAGE)-$(VERSION)
+	rm -f $(exec_prefix)/stow/$(PACKAGE)-$(VERSION)/info/dir
+	cd $(exec_prefix)/stow && stow $(PACKAGE)-$(VERSION)

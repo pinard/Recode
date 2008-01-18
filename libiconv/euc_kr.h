@@ -32,7 +32,7 @@ euc_kr_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 static int
 euc_kr_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
 {
-  unsigned char buf[3];
+  unsigned char buf[2];
   int ret;
 
   /* Code set 0 (ASCII or KS C 5636-1993) */
@@ -49,22 +49,6 @@ euc_kr_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
     r[0] = buf[0]+0x80;
     r[1] = buf[1]+0x80;
     return 2;
-  }
-
-  if (conv->transliterate) {
-    /* Decompose Hangul into Jamo */
-    ret = johab_hangul_decompose(conv,buf,wc);
-    if (ret != RET_ILSEQ) {
-      int i;
-      if (n < 2*ret)
-        return RET_TOOSMALL;
-      for (i = 0; i < ret; i++) {
-        r[0] = 0xa4;
-        r[1] = 0xa0+buf[i];
-        r += 2;
-      }
-      return 2*ret;
-    }
   }
 
   return RET_ILSEQ;

@@ -1,5 +1,4 @@
-This is recode.info, produced by makeinfo version 3.12n from
-recode.texi.
+This is recode.info, produced by makeinfo version 4.0 from recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -9,8 +8,8 @@ END-INFO-DIR-ENTRY
    This file documents the `recode' command, which has the purpose of
 converting files between various character sets and surfaces.
 
-   Copyright (C) 1990, 93, 94, 96, 97, 98, 99 Free Software Foundation,
-Inc.
+   Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
+Foundation, Inc.
 
    Permission is granted to make and distribute verbatim copies of this
 manual provided the copyright notice and this permission notice are
@@ -25,6 +24,143 @@ permission notice identical to this one.
 manual into another language, under the above conditions for modified
 versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
+
+
+File: recode.info,  Node: Test,  Prev: Dump,  Up: Surfaces
+
+Artificial data for testing
+===========================
+
+   A few pseudo-surfaces exist to generate debugging data out of thin
+air.  These surfaces are only meant for the expert `recode' user, and
+are only useful in a few contexts, like for generating binary
+permutations from the recoding or acting on them.
+
+   Debugging surfaces, _when removed_, insert their generated data at
+the beginning of the output stream, and copy all the input stream after
+the generated data, unchanged.  This strange removal constraint comes
+from the fact that debugging surfaces are usually specified in the
+_before_ position instead of the _after_ position within a request.
+With debugging surfaces, one often recodes file `/dev/null' in filter
+mode.  Specifying many debugging surfaces at once has an accumulation
+effect on the output, and since surfaces are removed from right to left,
+each generating its data at the beginning of previous output, the net
+effect is an _impression_ that debugging surfaces are generated from
+left to right, each appending to the result of the previous.  In any
+case, any real input data gets appended after what was generated.
+
+`test7'
+     When removed, this surface produces 128 single bytes, the first
+     having value 0, the second having value 1, and so forth until all
+     128 values have been generated.
+
+`test8'
+     When removed, this surface produces 256 single bytes, the first
+     having value 0, the second having value 1, and so forth until all
+     256 values have been generated.
+
+`test15'
+     When removed, this surface produces 64509 double bytes, the first
+     having value 0, the second having value 1, and so forth until all
+     values have been generated, but excluding risky `UCS-2' values,
+     like all codes from the surrogate `UCS-2' area (for `UTF-16'), the
+     byte order mark, and values known as invalid `UCS-2'.
+
+`test16'
+     When removed, this surface produces 65536 double bytes, the first
+     having value 0, the second having value 1, and so forth until all
+     65536 values have been generated.
+
+   As an example, the command `recode l5/test8..dump < /dev/null' is a
+convoluted way to produce an output similar to `recode -lf l5'.  It says
+to generate all possible 256 bytes and interpret them as `ISO-8859-9'
+codes, while converting them to `UCS-2'.  Resulting `UCS-2' characters
+are dumped one per line, accompanied with their explicative name.
+
+
+File: recode.info,  Node: Internals,  Next: Concept Index,  Prev: Surfaces,  Up: Top
+
+Internal aspects
+****************
+
+   The incoming explanations of the internals of `recode' should help
+people who want to dive into `recode' sources for adding new charsets.
+Adding new charsets does not require much knowledge about the overall
+organisation of `recode'.  You can rather concentrate of your new
+charset, letting the remainder of the `recode' mechanics take care of
+interconnecting it with all others charsets.
+
+   If you intend to play seriously at modifying `recode', beware that
+you may need some other GNU tools which were not required when you first
+installing `recode'.  If you modify or create any `.l' file, then you
+need Flex, and some better `awk' like `mawk', GNU `awk', or `nawk'.  If
+you modify the documentation (and you should!), you need `makeinfo'.
+If you are really audacious, you may also want Perl for modifying
+tabular processing, then `m4', Autoconf, Automake and `libtool' for
+adjusting configuration matters.
+
+* Menu:
+
+* Main flow::           Overall organisation
+* New charsets::        Adding new charsets
+* New surfaces::        Adding new surfaces
+* Design::              Comments on the library design
+
+
+File: recode.info,  Node: Main flow,  Next: New charsets,  Prev: Internals,  Up: Internals
+
+Overall organisation
+====================
+
+   The `recode' mechanics slowly evolved for many years, and it would
+be tedious to explain all problems I met and mistakes I did all along,
+yielding the current behaviour.  Surely, one of the key choices was to
+stop trying to do all conversions in memory, one line or one buffer at
+a time.  It has been fruitful to use the character stream paradigm, and
+the elementary recoding steps now convert a whole stream to another.
+Most of the control complexity in `recode' exists so that each
+elementary recoding step stays simple, making easier to add new ones.
+The whole point of `recode', as I see it, is providing a comfortable
+nest for growing new charset conversions.
+
+   The main `recode' driver constructs, while initialising all
+conversion modules, a table giving all the conversion routines
+available ("single step"s) and for each, the starting charset and the
+ending charset.  If we consider these charsets as being the nodes of a
+directed graph, each single step may be considered as oriented arc from
+one node to the other.  A cost is attributed to each arc: for example,
+a high penalty is given to single steps which are prone to losing
+characters, a lower penalty is given to those which need studying more
+than one input character for producing an output character, etc.
+
+   Given a starting code and a goal code, `recode' computes the most
+economical route through the elementary recodings, that is, the best
+sequence of conversions that will transform the input charset into the
+final charset.  To speed up execution, `recode' looks for subsequences
+of conversions which are simple enough to be merged, and then
+dynamically creates new single steps to represent these mergings.
+
+   A "double step" in `recode' is a special concept representing a
+sequence of two single steps, the output of the first single step being
+the special charset `UCS-2', the input of the second single step being
+also `UCS-2'.  Special `recode' machinery dynamically produces
+efficient, reversible, merge-able single steps out of these double
+steps.
+
+   I made some statistics about how many internal recoding steps are
+required between any two charsets chosen at random.  The initial
+recoding layout, before optimisation, always uses between 1 and 5
+steps.  Optimisation could sometimes produce mere copies, which are
+counted as no steps at all.  In other cases, optimisation is unable to
+save any step.  The number of steps after optimisation is currently
+between 0 and 5 steps.  Of course, the _expected_ number of steps is
+affected by optimisation: it drops from 2.8 to 1.8.  This means that
+`recode' uses a theoretical average of a bit less than one step per
+recoding job.  This looks good.  This was computed using reversible
+recodings.  In strict mode, optimisation might be defeated somewhat.
+Number of steps run between 1 and 6, both before and after
+optimisation, and the expected number of steps decreases by a lesser
+amount, going from 2.2 to 1.3.  This is still manageable.
 
 
 File: recode.info,  Node: New charsets,  Next: New surfaces,  Prev: Main flow,  Up: Internals
@@ -120,13 +256,15 @@ Adding new surfaces
 
    Adding a new surface is technically quite similar to adding a new
 charset.  *Note New charsets::.  A surface is provided as a set of two
-transformations: one from the predefined special charset `data' to the
-new surface, meant to apply the surface, the other from the new surface
-to the predefined special charset `data', meant to remove the surface.
+transformations: one from the predefined special charset `data' or
+`tree' to the new surface, meant to apply the surface, the other from
+the new surface to the predefined special charset `data' or `tree',
+meant to remove the surface.
 
    Internally in `recode', function `declare_step' especially
-recognises when a charset is so related to `data', and then takes
-appropriate actions so that charset gets indeed installed as a surface.
+recognises when a charset is so related to `data' or `tree', and then
+takes appropriate actions so that charset gets indeed installed as a
+surface.
 
 
 File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
@@ -293,7 +431,7 @@ Comments on the library design
      should.  Not only the doors should stay open, but we should force
      them wider!
 
-   --------- Notes en bas de page ---------
+   ---------- Footnotes ----------
 
    (1) If strict mapping is requested, another efficient device will be
 used instead of a permutation.
@@ -341,6 +479,7 @@ Concept Index
 * combining characters:                  UCS-2.
 * commutativity of surfaces:             Requests.
 * contributing charsets:                 Contributing.
+* conversions, unavailable:              Charset overview.
 * convert a subset of characters:        Mixed.
 * convert strings and comments:          Mixed.
 * copyright conditions, printing:        Listings.
@@ -349,7 +488,7 @@ Concept Index
 * CR-LF surface, in IBM-PC charsets:     IBM-PC.
 * Ctrl-Z, discarding:                    End lines.
 * Cyrillic charsets:                     Others.
-* debugging surfaces:                    Debugging.
+* debugging surfaces:                    Test.
 * default charset:                       Requests.
 * description of individual characters:  dump-with-names.
 * details about recoding:                Recoding.
@@ -369,6 +508,7 @@ Concept Index
 * error level threshold:                 Errors.
 * error messages:                        Errors.
 * error messages, suppressing:           Reversibility.
+* exceptions to available conversions:   Charset overview.
 * file sequencing:                       Sequencing.
 * file time stamps:                      Recoding.
 * filter operation:                      Synopsis.
@@ -386,6 +526,7 @@ Concept Index
 * identifying subsets in charsets:       Listings.
 * ignore charsets:                       Recoding.
 * implied surfaces:                      Requests.
+* impossible conversions:                Charset overview.
 * information about charsets:            Listings.
 * initialisation functions, outer:       Outer level.
 * initialisation functions, request:     Request level.
@@ -429,6 +570,7 @@ Concept Index
 * pipe sequencing:                       Sequencing.
 * program_name variable:                 Outer level.
 * programming language support:          Listings.
+* pseudo-charsets:                       Charset overview.
 * pure charset:                          Surface overview.
 * quality of recoding:                   Recoding.
 * recode internals:                      Internals.
@@ -459,6 +601,7 @@ Concept Index
 * stdbool.h header:                      Outer level.
 * strict operation:                      Reversibility.
 * string and comments conversion:        Mixed.
+* structural surfaces:                   Surfaces.
 * subsets in charsets:                   Listings.
 * super-charsets:                        Mule.
 * supported programming languages:       Listings.
@@ -470,7 +613,9 @@ Concept Index
 * surfaces, implementation in recode:    Surfaces.
 * surfaces, implied:                     Requests.
 * surfaces, overview:                    Surface overview.
+* surfaces, structural:                  Surfaces.
 * surfaces, syntax:                      Requests.
+* surfaces, trees:                       Surfaces.
 * system detected problem, error message: Errors.
 * task execution:                        Task level.
 * task level functions:                  Task level.
@@ -480,8 +625,10 @@ Concept Index
 * time stamps of files:                  Recoding.
 * trivial surface:                       Surfaces.
 * tutorial:                              Tutorial.
+* unavailable conversions:               Charset overview.
 * Unicode:                               UCS-2.
 * unknown charsets:                      Listings.
+* unreachable charsets:                  Charset overview.
 * untranslatable input, error message:   Errors.
 * valid characters in charset names:     Requests.
 * verbose operation:                     Recoding.

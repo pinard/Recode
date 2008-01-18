@@ -36,6 +36,12 @@
  *    We don't implement these changes.
  *
  * 2. A small new row. See cp950ext.h.
+ *
+ * 3. CP950.TXT is lacking the range 0xC6A1..0xC7FC (Hiragana, Katakana,
+ *    Cyrillic, circled digits, parenthesized digits).
+ *
+ *    We implement this omission, because said range is marked "uncertain"
+ *    in the unicode.org BIG5 table.
  */
 
 #include "cp950ext.h"
@@ -54,9 +60,11 @@ cp950_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
     {
       unsigned char c2 = s[1];
       if ((c2 >= 0x40 && c2 < 0x7f) || (c2 >= 0xa1 && c2 < 0xff)) {
-        int ret = big5_mbtowc(conv,pwc,s,2);
-        if (ret != RET_ILSEQ)
-          return ret;
+        if (!((c == 0xc6 && c2 >= 0xa1) || c == 0xc7)) {
+          int ret = big5_mbtowc(conv,pwc,s,2);
+          if (ret != RET_ILSEQ)
+            return ret;
+        }
       }
     }
     if (c == 0xf9) {
@@ -83,11 +91,13 @@ cp950_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
   ret = big5_wctomb(conv,buf,wc,2);
   if (ret != RET_ILSEQ) {
     if (ret != 2) abort();
-    if (n < 2)
-      return RET_TOOSMALL;
-    r[0] = buf[0];
-    r[1] = buf[1];
-    return 2;
+    if (!((buf[0] == 0xc6 && buf[1] >= 0xa1) || buf[0] == 0xc7)) {
+      if (n < 2)
+        return RET_TOOSMALL;
+      r[0] = buf[0];
+      r[1] = buf[1];
+      return 2;
+    }
   }
   ret = cp950ext_wctomb(conv,buf,wc,2);
   if (ret != RET_ILSEQ) {

@@ -1,23 +1,69 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
 #include "common.h"
+
+#if HAVE_UNISTD_H
+# include <unistd.h>
+#endif
+
+#include <sys/types.h>
+
+#include <sys/wait.h>
+/* Bruno suggests the following, from GNU make 3.79.0.2 in `job.c'.  He also
+   remarks that on Linux, WEXITSTATUS are bits 15..8 and WTERMSIG are bits
+   7..0, while BeOS uses the contrary.  */
+#if HAVE_UNION_WAIT
+# define WAIT_T union wait
+# ifndef WTERMSIG
+#  define WTERMSIG(x) ((x).w_termsig)
+# endif
+# ifndef WCOREDUMP
+#  define WCOREDUMP(x) ((x).w_coredump)
+# endif
+# ifndef WEXITSTATUS
+#  define WEXITSTATUS(x) ((x).w_retcode)
+# endif
+# ifndef WIFSIGNALED
+#  define WIFSIGNALED(x) (WTERMSIG(x) != 0)
+# endif
+# ifndef WIFEXITED
+#  define WIFEXITED(x) (WTERMSIG(x) == 0)
+# endif
+#else
+# define WAIT_T int
+# ifndef WTERMSIG
+#  define WTERMSIG(x) ((x) & 0x7f)
+# endif
+# ifndef WCOREDUMP
+#  define WCOREDUMP(x) ((x) & 0x80)
+# endif
+# ifndef WEXITSTATUS
+#  define WEXITSTATUS(x) (((x) >> 8) & 0xff)
+# endif
+# ifndef WIFSIGNALED
+#  define WIFSIGNALED(x) (WTERMSIG (x) != 0)
+# endif
+# ifndef WIFEXITED
+#  define WIFEXITED(x) (WTERMSIG (x) == 0)
+# endif
+#endif
 
 /* Buffer size used in transform_mere_copy.  */
 #define BUFFER_SIZE (16 * 1024)
@@ -89,13 +135,13 @@ put_byte_helper (int byte, RECODE_SUBTASK subtask)
 `------------------------------------------------------------------------*/
 
 bool
-recode_if_nogo (enum recode_error error, RECODE_SUBTASK subtask)
+recode_if_nogo (enum recode_error new_error, RECODE_SUBTASK subtask)
 {
   RECODE_TASK task = subtask->task;
 
-  if (error > task->error_so_far)
+  if (new_error > task->error_so_far)
     {
-      task->error_so_far = error;
+      task->error_so_far = new_error;
       task->error_at_step = subtask->step;
     }
   return task->error_so_far >= task->abort_level;
@@ -247,14 +293,16 @@ perform_memory_sequence (RECODE_TASK task)
 	  subtask->input = task->input;
 
 	  if (subtask->input.name)
-	    if (!*subtask->input.name)
-	      subtask->input.file = stdin;
-	    else if (subtask->input.file = fopen (subtask->input.name, "r"),
-		     subtask->input.file == NULL)
-	      {
-		recode_perror (NULL, "fopen (%s)", subtask->input.name);
-		return false;
-	      }
+	    {
+	      if (!*subtask->input.name)
+		subtask->input.file = stdin;
+	      else if (subtask->input.file = fopen (subtask->input.name, "r"),
+		       subtask->input.file == NULL)
+		{
+		  recode_perror (NULL, "fopen (%s)", subtask->input.name);
+		  return false;
+		}
+	    }
 	}
       else
 	{
@@ -275,14 +323,17 @@ perform_memory_sequence (RECODE_TASK task)
 	  subtask->output = task->output;
 
 	  if (subtask->output.name)
-	    if (!*subtask->output.name)
-	      subtask->output.file = stdout;
-	    else if (subtask->output.file = fopen (subtask->output.name, "w"),
-		     subtask->output.file == NULL)
-	      {
-		recode_perror (NULL, "fopen (%s)", subtask->output.name);
-		return false;
-	      }
+	    {
+	      if (!*subtask->output.name)
+		subtask->output.file = stdout;
+	      else if (subtask->output.file = fopen (subtask->output.name,
+						     "w"),
+		       subtask->output.file == NULL)
+		{
+		  recode_perror (NULL, "fopen (%s)", subtask->output.name);
+		  return false;
+		}
+	    }
 	}
 
       /* Execute one recoding step.  */
@@ -441,14 +492,16 @@ perform_pass_sequence (RECODE_TASK task)
 	  subtask->input = task->input;
 
 	  if (subtask->input.name)
-	    if (!*subtask->input.name)
-	      subtask->input.file = stdin;
-	    else if (subtask->input.file = fopen (subtask->input.name, "r"),
-		     subtask->input.file == NULL)
-	      {
-		recode_perror (NULL, "fopen (%s)", subtask->input.name);
-		return false;
-	      }
+	    {
+	      if (!*subtask->input.name)
+		subtask->input.file = stdin;
+	      else if (subtask->input.file = fopen (subtask->input.name, "r"),
+		       subtask->input.file == NULL)
+		{
+		  recode_perror (NULL, "fopen (%s)", subtask->input.name);
+		  return false;
+		}
+	    }
 	}
       else
 	{
@@ -499,14 +552,17 @@ perform_pass_sequence (RECODE_TASK task)
 	  subtask->output = task->output;
 
 	  if (subtask->output.name)
-	    if (!*subtask->output.name)
-	      subtask->output.file = stdout;
-	    else if (subtask->output.file = fopen (subtask->output.name, "w"),
-		     subtask->output.file == NULL)
-	      {
-		recode_perror (NULL, "fopen (%s)", subtask->output.name);
-		return false;
-	      }
+	    {
+	      if (!*subtask->output.name)
+		subtask->output.file = stdout;
+	      else if (subtask->output.file = fopen (subtask->output.name,
+						     "w"),
+		       subtask->output.file == NULL)
+		{
+		  recode_perror (NULL, "fopen (%s)", subtask->output.name);
+		  return false;
+		}
+	    }
 	}
 
       /* Execute one recoding step.  */
@@ -644,7 +700,7 @@ perform_pipe_sequence (RECODE_TASK task)
 
   int pipe_pair[2];		/* pair of file descriptors for a pipe */
   int child_process;		/* child process number, zero if child */
-  int wait_status;		/* status returned by wait() */
+  WAIT_T wait_status;		/* status returned by wait() */
 
   memset (subtask, 0, sizeof (struct recode_subtask));
   subtask->task = task;
@@ -755,11 +811,15 @@ perform_pipe_sequence (RECODE_TASK task)
      output file contents, but also to reduce the number of zombie
      processes in case the user recodes many files at once.  */
 
-  /* FIXME: Maybe I should rather use <wait.h> and the macros?  */
   while (wait (&wait_status) > 0)
     {
       /* Diagnose and abort on any abnormally terminating child.  */
 
+#if 0				/* FIXME: Bruno would prefer this.  */
+      if (!(WIFEXITED (wait_status)
+	    || (WIFSIGNALED (wait_status)
+		&& WTERMSIG (wait_status) == SIGPIPE)))
+#endif
       if ((wait_status & MASK (8)) != 0
 	  && (wait_status & MASK (8)) != SIGPIPE)
 	{
@@ -770,7 +830,9 @@ perform_pipe_sequence (RECODE_TASK task)
 
       /* Check for a nonzero exit from the terminating child.  */
 
-      if (wait_status & MASK (16))
+      if (WIFEXITED (wait_status)
+	  ? WEXITSTATUS (wait_status) != 0
+	  : WTERMSIG (wait_status) != 0)
 	/* FIXME: It is not very clear what happened in sub-processes.  */
 	if (task->error_so_far < task->fail_level)
 	  {
@@ -806,7 +868,7 @@ perform_pipe_sequence (RECODE_TASK task)
 
   int pipe_pair[2];		/* pair of file descriptors for a pipe */
   int child_process;		/* child process number, zero if child */
-  int wait_status;		/* status returned by wait() */
+  WAIT_T wait_status;		/* status returned by wait() */
 
   memset (subtask, 0, sizeof (struct recode_subtask));
   subtask->task = task;
@@ -933,8 +995,9 @@ perform_pipe_sequence (RECODE_TASK task)
     {
       /* Diagnose and abort on any abnormally terminating child.  */
 
-      if ((wait_status & MASK (8)) != 0
-	  && (wait_status & MASK (8)) != SIGPIPE)
+      if (!(WIFEXITED (wait_status)
+	    || (WIFSIGNALED (wait_status)
+		&& WTERMSIG (wait_status) == SIGPIPE)))
 	{
 	  recode_error (outer, _("Child process wait status is 0x%0.2x"),
 			wait_status);
@@ -943,7 +1006,9 @@ perform_pipe_sequence (RECODE_TASK task)
 
       /* Check for a nonzero exit from the terminating child.  */
 
-      if (wait_status & MASK (16))
+      if (WIFEXITED (wait_status)
+	  ? WEXITSTATUS (wait_status) != 0
+	  : WTERMSIG (wait_status) != 0)
 	/* FIXME: It is not very clear what happened in sub-processes.  */
 	if (task->error_so_far < task->fail_level)
 	  {
@@ -1100,24 +1165,28 @@ recode_perform_task (RECODE_TASK task)
       subtask->output = task->output;
 
       if (subtask->input.name)
-	if (!*subtask->input.name)
-	  subtask->input.file = stdin;
-	else if (subtask->input.file = fopen (subtask->input.name, "r"),
-		 subtask->input.file == NULL)
-	  {
-	    recode_perror (NULL, "fopen (%s)", subtask->input.name);
-	    return false;
-	  }
+	{
+	  if (!*subtask->input.name)
+	    subtask->input.file = stdin;
+	  else if (subtask->input.file = fopen (subtask->input.name, "r"),
+		   subtask->input.file == NULL)
+	    {
+	      recode_perror (NULL, "fopen (%s)", subtask->input.name);
+	      return false;
+	    }
+	}
 
       if (subtask->output.name)
-	if (!*subtask->output.name)
-	  subtask->output.file = stdout;
-	else if (subtask->output.file = fopen (subtask->output.name, "w"),
-		 subtask->output.file == NULL)
-	  {
-	    recode_perror (NULL, "fopen (%s)", subtask->output.name);
-	    return false;
-	  }
+	{
+	  if (!*subtask->output.name)
+	    subtask->output.file = stdout;
+	  else if (subtask->output.file = fopen (subtask->output.name, "w"),
+		   subtask->output.file == NULL)
+	    {
+	      recode_perror (NULL, "fopen (%s)", subtask->output.name);
+	      return false;
+	    }
+	}
 
       if (request->sequence_length == 1)
 	{

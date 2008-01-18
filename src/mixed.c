@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
    François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This program is free software; you can redistribute it and/or modify it
@@ -89,14 +89,14 @@ close_mixed (struct mixed *mixed)
     fclose (mixed->subtask.task->output.file);
 }
 
-static inline void
+static /*inline*/ void
 start_accumulation (struct mixed *mixed)
 {
   mixed->buffer.cursor = mixed->buffer.buffer;
   mixed->subtask.output = mixed->buffer;
 }
 
-static inline bool
+static /*inline*/ bool
 recode_accumulated (struct mixed *mixed)
 {
   RECODE_TASK task = mixed->subtask.task;

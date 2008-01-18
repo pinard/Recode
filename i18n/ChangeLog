@@ -1,3 +1,15 @@
+2000-05-31  François Pinard  <pinard@iro.umontreal.ca>
+
+	* da.po: Updated.
+
+2000-02-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* sl.po: Updated.
+
+2000-01-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* gl.po: New file.
+
 1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: New file.

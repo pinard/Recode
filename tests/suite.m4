@@ -1,7 +1,7 @@
 #!/bin/sh
 #                                                      -*- coding: latin-1 -*-
 # Validation suite for the Free `recode' program and library.
-# Copyright © 1998, 1999 Progiciels Bourbeau-Pinard inc.
+# Copyright © 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1998.
 
 # Still many parts of `recode' are not exercised by the test suite.  A few
@@ -44,7 +44,7 @@ echo
 
 AT_INCLUDE(african.m4)
 AT_INCLUDE(combine.m4)
-AT_INCLUDE(debug.m4)
+AT_INCLUDE(testdump.m4)
 AT_INCLUDE(utf7.m4)
 AT_INCLUDE(utf8.m4)
 

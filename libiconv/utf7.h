@@ -9,7 +9,7 @@
  *   A-Z a-z 0-9 ' ( ) , - . / : ? space tab lf cr
  */
 static const unsigned char direct_tab[128/8] = {
-  0x00, 0x24, 0x00, 0x00, 0x81, 0xf3, 0xff, 0x87,
+  0x00, 0x26, 0x00, 0x00, 0x81, 0xf3, 0xff, 0x87,
   0xfe, 0xff, 0xff, 0x07, 0xfe, 0xff, 0xff, 0x07,
 };
 #define isdirect(ch) ((ch) < 128 && ((direct_tab[(ch)>>3] >> (ch & 7)) & 1))
@@ -19,7 +19,7 @@ static const unsigned char direct_tab[128/8] = {
  *   ! " # $ % & * ; < = > @ [ ] ^ _ ` { | }
  */
 static const unsigned char xdirect_tab[128/8] = {
-  0x00, 0x24, 0x00, 0x00, 0xff, 0xf7, 0xff, 0xff,
+  0x00, 0x26, 0x00, 0x00, 0xff, 0xf7, 0xff, 0xff,
   0xff, 0xff, 0xff, 0xef, 0xff, 0xff, 0xff, 0x3f,
 };
 #define isxdirect(ch) ((ch) < 128 && ((xdirect_tab[(ch)>>3] >> (ch & 7)) & 1))
@@ -199,7 +199,7 @@ utf7_wctomb (conv_t conv, unsigned char *r, wchar_t iwc, int n)
       return 1;
     } else {
       *r++ = '+';
-      if (wc == '-') {
+      if (wc == '+') {
         if (n < 2)
           return RET_TOOSMALL;
         *r = '-';

@@ -1,13 +1,13 @@
 # Configure template for GNU recode.
-# Copyright (C) 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
+# Copyright (C) 1994, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 # Process this file with autoconf to produce a configure script.
 
 AC_INIT(src/recode.c)
 AC_PREREQ(2.12)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(recode, 3.5c)
+AM_INIT_AUTOMAKE(recode, 3.5d)
 AT_CONFIG(../src)
-ALL_LINGUAS="da de el es fr it nl pl pt sl sv"
+ALL_LINGUAS="da de el es fr gl it nl pl pt sl sv"
 
 AC_PROG_CC
 AC_AIX
@@ -18,12 +18,12 @@ AC_ISC_POSIX
 AM_C_PROTOTYPES
 AC_C_CONST
 AC_C_INLINE
-AM_PROG_LEX
-test "$LEX" = flex || AC_MSG_WARN([flex not found, so do not modify .l files])
+ad_AC_PROG_FLEX
 
 AC_HEADER_STDC
 AC_CHECK_HEADERS(limits.h string.h stdbool.h unistd.h utime.h)
 AC_TYPE_SIGNAL
+jm_STRUCT_UTIMBUF
 
 AC_CHECK_FUNCS(dup2 rename strerror)
 AC_REPLACE_FUNCS(strtol strtoul)

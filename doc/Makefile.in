@@ -11,7 +11,7 @@
 # PARTICULAR PURPOSE.
 
 # Makefile for `recode' documentation.
-# Copyright © 1994, 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
+# Copyright © 1994, 95, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -82,50 +82,33 @@ ALL_MOFILES = @ALL_MOFILES@
 ALL_POFILES = @ALL_POFILES@
 AS = @AS@
 AT_TESTPATH = @AT_TESTPATH@
-CATALOGS = @CATALOGS@
-CATOBJEXT = @CATOBJEXT@
 CC = @CC@
 CPP = @CPP@
-DATADIRNAME = @DATADIRNAME@
 DLLTOOL = @DLLTOOL@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
-GENCAT = @GENCAT@
-GMOFILES = @GMOFILES@
-GMSGFMT = @GMSGFMT@
-GT_NO = @GT_NO@
-GT_YES = @GT_YES@
-INCLUDE_LOCALE_H = @INCLUDE_LOCALE_H@
-INSTOBJEXT = @INSTOBJEXT@
-INTLDEPS = @INTLDEPS@
-INTLLIBS = @INTLLIBS@
-INTLOBJS = @INTLOBJS@
 LEX = @LEX@
+LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LTALLOCA = @LTALLOCA@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
-MKINSTALLDIRS = @MKINSTALLDIRS@
 MOFILES = @MOFILES@
-MSGFMT = @MSGFMT@
 OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
-POFILES = @POFILES@
-POSUB = @POSUB@
 RANLIB = @RANLIB@
 U = @U@
-USE_INCLUDED_LIBINTL = @USE_INCLUDED_LIBINTL@
-USE_NLS = @USE_NLS@
 VERSION = @VERSION@
-l = @l@
 
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
 
 EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore tables.py
 
+
+MOSTLYCLEANFILES = recode.ops
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -339,6 +322,7 @@ installdirs:
 
 
 mostlyclean-generic:
+	-test -z "$(MOSTLYCLEANFILES)" || rm -f $(MOSTLYCLEANFILES)
 
 clean-generic:
 

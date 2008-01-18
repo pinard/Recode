@@ -1,3 +1,53 @@
+2000-06-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Debugging): New node.
+	(Test): Renamed from Debugging.
+
+	* tables.py (Mnemonics.digest_iso10646_def): Handle varying
+	capitalisation in file others.def.
+
+2000-05-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (MOSTLYCLEANFILES): Define to recode.ops.
+
+	* tables.py (Strips): Generate strip data only when needed.
+	* Makemore (fr-rfc1345.texi): Depends on and use mnemonics,ds.
+
+2000-04-23  Bruno Haible  <haible@clisp.cons.org>
+
+	* tables.py: While generating libiconv.h, do not produce those
+	declarations which are now contained in iconv.h.
+
+2000-03-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* NomsSeulsfinal.lst: Updated.
+	Reported by François Yergeau.
+
+2000-03-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py: Reorganised with classes, no more globals.
+
+2000-02-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* NomsSeulsfinal.lst: Update replacing noms_juc_19981216.txt.
+	* Makemore (NOMS_CARACS): Adjusted.
+	Reported by Patrick Andries.
+
+2000-02-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makemore (ENCODINGS_DEF): Use ../ instead of top_srcdir.
+
+	* tables.py: Nomenclature change of symbol to alias.
+
+2000-02-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Document tree as a special charset.
+
+1999-12-30  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Charset overview): Document unreachable charsets.
+	Reported by François-Xavier Bergot
+
 1999-12-29  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi (libiconv): Adjust to reflect the merge.
@@ -10,7 +60,7 @@
 1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi (libiconv): New name for iconv node.
-
+
 1999-12-23  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi (iconv, Vietnamese): New nodes.

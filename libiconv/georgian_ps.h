@@ -84,7 +84,7 @@ georgian_ps_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
   }
   else if (wc >= 0x0080 && wc < 0x00a0)
     c = georgian_ps_page00[wc-0x0080];
-  else if ((wc >= 0x00a0 && wc < 0x00c0) || (wc >= 0x00e7 && wc < 0x0100))
+  else if ((wc >= 0x00a0 && wc < 0x00c0) || (wc >= 0x00e6 && wc < 0x0100))
     c = wc;
   else if (wc >= 0x0150 && wc < 0x0198)
     c = georgian_ps_page01[wc-0x0150];

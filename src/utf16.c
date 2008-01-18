@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1996, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -22,9 +22,7 @@
 static bool
 transform_ucs4_utf16 (RECODE_SUBTASK subtask)
 {
-  int character;
   unsigned value;
-  unsigned chunk;
 
   if (get_ucs4 (&value, subtask))
     {
@@ -70,46 +68,47 @@ transform_utf16_ucs4 (RECODE_SUBTASK subtask)
   unsigned value;
 
   if (get_ucs2 (&value, subtask))
+    {
+      while (true)
+	if (value >= 0xD800 && value < 0xE000)
+	  if (value < 0xDC00)
+	    {
+	      unsigned chunk;
 
-    while (true)
-      if (value >= 0xD800 && value < 0xE000)
-	if (value < 0xDC00)
-	  {
-	    unsigned chunk;
+	      if (!get_ucs2 (&chunk, subtask))
+		break;
 
-	    if (!get_ucs2 (&chunk, subtask))
-	      break;
+	      if (chunk >= 0xDC00 && chunk < 0xE000)
+		{
+		  put_ucs4 ((((1 << 16) + ((value - 0xD800) << 10))
+			     | (chunk - 0xDC00)),
+			    subtask);
+		  if (!get_ucs2 (&value, subtask))
+		    break;
+		}
+	      else
+		{
+		  /* Discard the first chunk if the pair is invalid.  */
 
-	    if (chunk >= 0xDC00 && chunk < 0xE000)
-	      {
-		put_ucs4 ((((1 << 16) + ((value - 0xD800) << 10))
-			   | (chunk - 0xDC00)),
-			  subtask);
-		if (!get_ucs2 (&value, subtask))
-		  break;
-	      }
-	    else
-	      {
-		/* Discard the first chunk if the pair is invalid.  */
+		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+		  value = chunk;
+		}
+	    }
+	  else
+	    {
+	      /* Discard a second chunk when presented first.  */
 
-		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
-		value = chunk;
-	      }
-	  }
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	      if (!get_ucs2 (&value, subtask))
+		break;
+	    }
 	else
 	  {
-	    /* Discard a second chunk when presented first.  */
-
-	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	    put_ucs4 (value, subtask);
 	    if (!get_ucs2 (&value, subtask))
 	      break;
 	  }
-      else
-	{
-	  put_ucs4 (value, subtask);
-	  if (!get_ucs2 (&value, subtask))
-	    break;
-	}
+    }
 
   SUBTASK_RETURN (subtask);
 }

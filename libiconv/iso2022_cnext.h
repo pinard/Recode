@@ -232,8 +232,7 @@ iso2022_cn_ext_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
           case STATE2_DESIGNATED_CNS11643_1:
             ret = cns11643_1_mbtowc(conv,pwc,s,2); break;
           case STATE2_DESIGNATED_ISO_IR_165:
-            /* We don't have an ISO-IR-165 table yet. */
-            ret = gb2312_mbtowc(conv,pwc,s,2); break;
+            ret = isoir165_mbtowc(conv,pwc,s,2); break;
           default: abort();
         }
         if (ret == RET_ILSEQ)
@@ -396,7 +395,34 @@ iso2022_cn_ext_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
 
   }
 
-  /* No table for ISO-IR-165 yet. */
+  /* Try ISO-IR-165. */
+  ret = isoir165_wctomb(conv,buf,wc,2);
+  if (ret != RET_ILSEQ) {
+    if (ret != 2) abort();
+    if (buf[0] < 0x80 && buf[1] < 0x80) {
+      int count = (state2 == STATE2_DESIGNATED_ISO_IR_165 ? 0 : 4) + (state1 == STATE_TWOBYTE ? 0 : 1) + 2;
+      if (n < count)
+        return RET_TOOSMALL;
+      if (state2 != STATE2_DESIGNATED_ISO_IR_165) {
+        r[0] = ESC;
+        r[1] = '$';
+        r[2] = ')';
+        r[3] = 'E';
+        r += 4;
+        state2 = STATE2_DESIGNATED_ISO_IR_165;
+      }
+      if (state1 != STATE_TWOBYTE) {
+        r[0] = SO;
+        r += 1;
+        state1 = STATE_TWOBYTE;
+      }
+      r[0] = buf[0];
+      r[1] = buf[1];
+      COMBINE_STATE;
+      conv->ostate = state;
+      return count;
+    }
+  }
 
   return RET_ILSEQ;
 }

@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1996, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1997.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -149,10 +149,8 @@ produce_count (RECODE_SUBTASK subtask)
 {
   RECODE_OUTER outer = subtask->task->request->outer;
   Hash_table *table;		/* hash table for UCS-2 characters */
-  unsigned character;		/* current character being counted */
   size_t size;			/* number of different characters */
   struct ucs2_to_count **array;	/* array into hash table items */
-  struct ucs2_to_count **cursor;
 
   table = hash_initialize (0, NULL,
 			   ucs2_to_count_hash, ucs2_to_count_compare, NULL);
@@ -161,25 +159,29 @@ produce_count (RECODE_SUBTASK subtask)
 
   /* Count characters.  */
 
-  while (get_ucs2 (&character, subtask))
-    {
-      struct ucs2_to_count lookup;
-      struct ucs2_to_count *entry;
+  {
+    unsigned character;		/* current character being counted */
 
-      lookup.code = character;
-      entry = hash_lookup (table, &lookup);
-      if (entry)
-	entry->count++;
-      else
-	{
-	  if (!ALLOC (entry, 1, struct ucs2_to_count))
-	    return false;
-	  entry->code = character;
-	  entry->count = 1;
-	  if (!hash_insert (table, entry))
-	    return false;
-	}
-    }
+    while (get_ucs2 (&character, subtask))
+      {
+	struct ucs2_to_count lookup;
+	struct ucs2_to_count *entry;
+
+	lookup.code = character;
+	entry = hash_lookup (table, &lookup);
+	if (entry)
+	  entry->count++;
+	else
+	  {
+	    if (!ALLOC (entry, 1, struct ucs2_to_count))
+	      return false;
+	    entry->code = character;
+	    entry->count = 1;
+	    if (!hash_insert (table, entry))
+	      return false;
+	  }
+      }
+  }
 
   /* Sort results.  */
 
@@ -192,6 +194,8 @@ produce_count (RECODE_SUBTASK subtask)
   qsort (array, size, sizeof (struct ucs2_to_count *), compare_item);
 
   /* Produce the report.  */
+
+  /* FIXME: Produce it column-wise.  (See transp.c).  */
 
   {
     const unsigned non_count_width = 12;
@@ -264,56 +268,63 @@ static bool
 produce_full_dump (RECODE_SUBTASK subtask)
 {
   unsigned character;		/* character to dump */
-  const char *charname;		/* charname for code */
-  bool french;			/* if output should be in French */
-  const char *string;		/* environment value */
-
-  /* Decide if we prefer French or English output.  */
-
-  french = false;
-  string = getenv ("LANGUAGE");
-  if (string && string[0] == 'f' && string[1] == 'r')
-    french = true;
-  else
-    {
-      string = getenv ("LANG");
-      if (string && string[0] == 'f' && string[1] == 'r')
-	french = true;
-    }
 
   /* Dump all characters.  */
 
-  fputs (_("UCS2   Mne   Description\n\n"), stdout);
-
-  while (get_ucs2 (&character, subtask))
+  if (get_ucs2 (&character, subtask))
     {
-      const char *mnemonic = ucs2_to_rfc1345 (character);
+      const char *charname;	/* charname for code */
+      bool french;		/* if output should be in French */
+      const char *string;	/* environment value */
 
-      printf ("%.4X", character);
-      if (mnemonic)
-	printf ("   %-3s", mnemonic);
-      else
-	fputs ("      ", stdout);
+      /* Decide if we prefer French or English output.  */
 
-      if (french)
-	{
-	  charname = ucs2_to_french_charname (character);
-	  if (!charname)
-	    charname = ucs2_to_charname (character);
-	}
+      french = false;
+      string = getenv ("LANGUAGE");
+      if (string && string[0] == 'f' && string[1] == 'r')
+	french = true;
       else
 	{
-	  charname = ucs2_to_charname (character);
-	  if (!charname)
-	    charname = ucs2_to_french_charname (character);
+	  string = getenv ("LANG");
+	  if (string && string[0] == 'f' && string[1] == 'r')
+	    french = true;
 	}
 
-      if (charname)
+      fputs (_("UCS2   Mne   Description\n\n"), stdout);
+
+      while (1)
 	{
-	  fputs ("   ", stdout);
-	  fputs (charname, stdout);
+	  const char *mnemonic = ucs2_to_rfc1345 (character);
+
+	  printf ("%.4X", character);
+	  if (mnemonic)
+	    printf ("   %-3s", mnemonic);
+	  else
+	    fputs ("      ", stdout);
+
+	  if (french)
+	    {
+	      charname = ucs2_to_french_charname (character);
+	      if (!charname)
+		charname = ucs2_to_charname (character);
+	    }
+	  else
+	    {
+	      charname = ucs2_to_charname (character);
+	      if (!charname)
+		charname = ucs2_to_french_charname (character);
+	    }
+
+	  if (charname)
+	    {
+	      fputs ("   ", stdout);
+	      fputs (charname, stdout);
+	    }
+	  printf ("\n");
+
+	  if (!get_ucs2 (&character, subtask))
+	    break;
 	}
-      printf ("\n");
     }
 
   SUBTASK_RETURN (subtask);
@@ -324,7 +335,7 @@ produce_full_dump (RECODE_SUBTASK subtask)
 `-----------------------------------------*/
 
 bool
-module_debug (RECODE_OUTER outer)
+module_testdump (RECODE_OUTER outer)
 {
   /* Test surfaces.  */
 

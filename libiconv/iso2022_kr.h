@@ -6,9 +6,9 @@
 /* Specification: RFC 1557 */
 
 /* Note: CJK.INF says the SO designator needs to appear only once at the
-   beginning of a text, but RFC 1557 says it must appear once in every line
-   containing SO characters. So we produce ISO-2022-KR according to RFC 1557,
-   but accept ISO-2022-KR according to CJK.INF. */
+   beginning of a text, but to decrease the risk of ambiguities, when
+   producing ISO-2022-KR, we repeat the designator in every line containing
+   SO characters. RFC 1557 does not mandate this. */
 
 #define ESC 0x1b
 #define SO  0x0e
@@ -117,7 +117,7 @@ iso2022_kr_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
 {
   state_t state = conv->ostate;
   SPLIT_STATE;
-  unsigned char buf[3];
+  unsigned char buf[2];
   int ret;
 
   /* Try ASCII. */
@@ -165,38 +165,6 @@ iso2022_kr_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
       }
       r[0] = buf[0];
       r[1] = buf[1];
-      COMBINE_STATE;
-      conv->ostate = state;
-      return count;
-    }
-  }
-
-  if (conv->transliterate) {
-    /* Decompose Hangul into Jamo */
-    ret = johab_hangul_decompose(conv,buf,wc);
-    if (ret != RET_ILSEQ) {
-      int count = (state2 == STATE2_DESIGNATED_KSC5601 ? 0 : 4) + (state1 == STATE_TWOBYTE ? 0 : 1) + 2*ret;
-      int i;
-      if (n < count)
-        return RET_TOOSMALL;
-      if (state2 != STATE2_DESIGNATED_KSC5601) {
-        r[0] = ESC;
-        r[1] = '$';
-        r[2] = ')';
-        r[3] = 'C';
-        r += 4;
-        state2 = STATE2_DESIGNATED_KSC5601;
-      }
-      if (state1 != STATE_TWOBYTE) {
-        r[0] = SO;
-        r += 1;
-        state1 = STATE_TWOBYTE;
-      }
-      for (i = 0; i < ret; i++) {
-        r[0] = 0x24;
-        r[1] = 0x20+buf[i];
-        r += 2;
-      }
       COMBINE_STATE;
       conv->ostate = state;
       return count;

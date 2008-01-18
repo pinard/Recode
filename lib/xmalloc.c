@@ -1,5 +1,5 @@
 /* xmalloc.c -- malloc with out of memory checking
-   Copyright (C) 1990, 91, 92, 93, 94, 95, 96, 97 Free Software Foundation, Inc.
+   Copyright (C) 1990-1997, 98, 99 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -46,13 +46,6 @@ void free ();
 # define EXIT_FAILURE 1
 #endif
 
-/* Prototypes for functions defined here.  */
-#if defined (__STDC__) && __STDC__
-void *xmalloc (size_t n);
-void *xcalloc (size_t n, size_t s);
-void *xrealloc (void *p, size_t n);
-#endif
-
 #ifndef HAVE_DONE_WORKING_MALLOC_CHECK
 you must run the autoconf test for a properly working malloc -- see malloc.m4
 #endif
@@ -65,37 +58,35 @@ you must run the autoconf test for a properly working realloc -- see realloc.m4
    The caller may set it to some other value.  */
 int xalloc_exit_failure = EXIT_FAILURE;
 
-/* FIXME: describe */
+/* If non NULL, call this function when memory is exhausted. */
+void (*xalloc_fail_func) PARAMS ((void)) = 0;
+
+/* If XALLOC_FAIL_FUNC is NULL, or does return, display this message
+   before exiting when memory is exhausted.  Goes through gettext. */
 char *const xalloc_msg_memory_exhausted = N_("Memory exhausted");
 
-/* FIXME: describe */
-void (*xalloc_fail_func) () = 0;
-
-#if __STDC__ && (HAVE_VPRINTF || HAVE_DOPRNT)
-void error (int, int, const char *, ...);
-#else
-void error ();
-#endif
-
-static void
-xalloc_fail ()
+void
+xalloc_die (void)
 {
   if (xalloc_fail_func)
     (*xalloc_fail_func) ();
-  error (xalloc_exit_failure, 0, xalloc_msg_memory_exhausted);
+  error (xalloc_exit_failure, 0, "%s", _(xalloc_msg_memory_exhausted));
+  /* The `noreturn' cannot be given to error, since it may return if
+     its first argument is 0.  To help compilers understand the
+     xalloc_die does terminate, call exit. */
+  exit (EXIT_FAILURE);
 }
 
 /* Allocate N bytes of memory dynamically, with error checking.  */
 
 void *
-xmalloc (n)
-     size_t n;
+xmalloc (size_t n)
 {
   void *p;
 
   p = malloc (n);
   if (p == 0)
-    xalloc_fail ();
+    xalloc_die ();
   return p;
 }
 
@@ -104,30 +95,23 @@ xmalloc (n)
    If P is NULL, run xmalloc.  */
 
 void *
-xrealloc (p, n)
-     void *p;
-     size_t n;
+xrealloc (void *p, size_t n)
 {
   p = realloc (p, n);
   if (p == 0)
-    xalloc_fail ();
+    xalloc_die ();
   return p;
 }
-
-#ifdef NOT_USED
 
 /* Allocate memory for N elements of S bytes, with error checking.  */
 
 void *
-xcalloc (n, s)
-     size_t n, s;
+xcalloc (size_t n, size_t s)
 {
   void *p;
 
   p = calloc (n, s);
   if (p == 0)
-    xalloc_fail ();
+    xalloc_die ();
   return p;
 }
-
-#endif /* NOT_USED */

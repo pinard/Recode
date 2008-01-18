@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1996, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1996, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -395,7 +395,7 @@ get_ucs2 (unsigned *value, RECODE_SUBTASK subtask)
       switch (subtask->task->swap_input)
 	{
 	case RECODE_SWAP_UNDECIDED:
-	  chunk = (MASK (8) & character1) << 8 | MASK (8) & character2;
+	  chunk = ((MASK (8) & character1) << 8) | (MASK (8) & character2);
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
@@ -416,7 +416,7 @@ get_ucs2 (unsigned *value, RECODE_SUBTASK subtask)
 	  break;
 
 	case RECODE_SWAP_NO:
-	  chunk = (MASK (8) & character1) << 8 | MASK (8) & character2;
+	  chunk = ((MASK (8) & character1) << 8) | (MASK (8) & character2);
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
@@ -435,7 +435,7 @@ get_ucs2 (unsigned *value, RECODE_SUBTASK subtask)
 	  break;
 
 	case RECODE_SWAP_YES:
-	  chunk = (MASK (8) & character2) << 8 | MASK (8) & character1;
+	  chunk = ((MASK (8) & character2) << 8) | (MASK (8) & character1);
 	  switch (chunk)
 	    {
 	    case BYTE_ORDER_MARK:
@@ -539,8 +539,8 @@ init_combined_ucs2 (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  step->before->charset_type = RECODE_EXPLODE_DATA;
-  step->before->charset_data = (void *) combining_data;
+  step->before->data_type = RECODE_EXPLODE_DATA;
+  step->before->data = (void *) combining_data;
   return init_explode (step, request, before_options, after_options);
 }
 
@@ -550,8 +550,8 @@ init_ucs2_combined (RECODE_STEP step,
 		    RECODE_CONST_OPTION_LIST before_options,
 		    RECODE_CONST_OPTION_LIST after_options)
 {
-  step->after->charset_type = RECODE_EXPLODE_DATA;
-  step->after->charset_data = (void *) combining_data;
+  step->after->data_type = RECODE_EXPLODE_DATA;
+  step->after->data = (void *) combining_data;
   return init_combine (step, request, before_options, after_options);
 }
 

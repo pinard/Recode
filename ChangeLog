@@ -1,3 +1,42 @@
+2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (POTFILES): Rename debug.c to testdump.c.
+
+2000-06-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Check for struct utimbuf.
+	Reported by Jim Meyering and Tom Hageman.
+
+	* configure.in: Use ad_AC_PROG_FLEX instead of AM_PROG_LEX.
+	Reported by Akim Demaille.
+
+2000-05-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* PATCHES-AC: New for Autoconf 2.14a.
+	* Makefile.am (EXTRA_DIST): Adjusted.
+
+2000-04-25  François Pinard  <pinard@iro.umontreal.ca>
+
+	* acconfig.h: Remove LIBICONV_PLUG.
+	Reported by Bruno Haible.
+
+2000-03-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.spec: New file.
+	* Makefile.am (EXTRA_DIST): Adjusted.
+
+2000-03-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* acconfig.h: Define LIBICONV_PLUG.
+
+2000-01-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (install-stow): New goal.
+
+2000-01-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in (ALL_LINGUAS): Add gl.
+
 1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Remove --with-libiconv test.
@@ -7,7 +46,7 @@
 1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5c.
-
+
 1999-12-20  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5b.

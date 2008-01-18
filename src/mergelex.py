@@ -1,5 +1,5 @@
 # Conversion of files between different charsets and surfaces.
-# Copyright © 1990, 1993, 1994, 1995, 1997, 1999 Free Software Foundation, Inc.
+# Copyright © 1990, 93, 94, 95, 97, 99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1990.
 #
 # This program is free software; you can redistribute it and/or modify
@@ -27,6 +27,7 @@ section0 = ["/* This file is generated automatically by `mergelex.py'.  */\n"]
 section1 = ["\n"
             "%option noyywrap\n"
             "%{\n"
+            '#define YY_NO_UNPUT\n'
             '#include "common.h"\n'
             "static RECODE_CONST_REQUEST request;\n"
             "static RECODE_SUBTASK subtask;\n"

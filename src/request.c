@@ -1,18 +1,18 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
-   The `recode' Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Library General Public License
+   This library is free software; you can redistribute it and/or
+   modify it under the terms of the GNU Lesser General Public License
    as published by the Free Software Foundation; either version 2 of the
    License, or (at your option) any later version.
 
-   The `recode' Library is distributed in the hope that it will be
+   This library is distributed in the hope that it will be
    useful, but WITHOUT ANY WARRANTY; without even the implied warranty
    of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Library General Public License for more details.
+   Lesser General Public License for more details.
 
-   You should have received a copy of the GNU Library General Public
+   You should have received a copy of the GNU Lesser General Public
    License along with the `recode' Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
@@ -113,7 +113,7 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
     add_work_string (request, _("*mere copy*"));
   else
     {
-      RECODE_CHARSET last_charset_printed = NULL;
+      RECODE_SYMBOL last_charset_printed = NULL;
       RECODE_STEP step = request->sequence_array;
 
       while (step < request->sequence_array + request->sequence_length)
@@ -124,7 +124,8 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 	  /* Find unsurfacers.  */
 
 	  while (step < request->sequence_array + request->sequence_length
-		 && step->after == outer->data_charset)
+		 && (step->after == outer->data_symbol
+		     || step->after == outer->tree_symbol))
 	    step++;
 	  unsurfacer_end = step;
 
@@ -162,14 +163,16 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 
 	  add_work_string (request, "..");
 	  if (step < request->sequence_array + request->sequence_length
-	      && step->before != outer->data_charset)
+	      && step->before != outer->data_symbol
+	      && step->before != outer->tree_symbol)
 	    {
 	      last_charset_printed = step->after;
 	      add_work_string (request, last_charset_printed->name);
 	      step++;
 #if 0
 	      if ((step == request->sequence_array + request->sequence_length
-		   || step->before != outer->data_charset)
+		   || (step->before != outer->data_symbol
+		       && step->before != outer->tree_symbol))
 		  && last_charset_printed
 		  && last_charset_printed->implied_surfaces)
 		add_work_character (request, '/');
@@ -177,14 +180,16 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 	    }
 	  else
 	    {
-	      last_charset_printed = outer->data_charset;
+	      last_charset_printed = outer->data_symbol;
+	      /* FIXME: why not outer->tree_symbol?  */
 	      add_work_string (request, last_charset_printed->name);
 	    }
 
 	  /* Print resurfacers.  */
 
 	  while (step < request->sequence_array + request->sequence_length
-		 && step->before == outer->data_charset)
+		 && (step->before == outer->data_symbol
+		     || step->before == outer->tree_symbol))
 	    {
 	      add_work_character (request, '/');
 	      last_charset_printed = NULL;
@@ -196,12 +201,12 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
       if (edit_quality)
 	{
 	  struct recode_quality quality = outer->quality_byte_reversible;
-	  RECODE_CONST_STEP step;
+	  RECODE_CONST_STEP step2;
 
-	  for (step = request->sequence_array;
-	       step < request->sequence_array + request->sequence_length;
-	       step++)
-	    merge_qualities (&quality, step->quality);
+	  for (step2 = request->sequence_array;
+	       step2 < request->sequence_array + request->sequence_length;
+	       step2++)
+	    merge_qualities (&quality, step2->quality);
 	  add_work_character (request, ' ');
 	  add_work_character (request, '(');
 	  add_work_string (request, quality_to_string (quality));
@@ -235,10 +240,8 @@ add_to_sequence (RECODE_REQUEST request, RECODE_SINGLE single,
       else
 	request->sequence_allocated *= 2;
 
-      REALLOC (request->sequence_array, request->sequence_allocated,
-	       struct recode_step);
-
-      if (!request->sequence_array)
+      if (!REALLOC (request->sequence_array, request->sequence_allocated,
+		    struct recode_step))
 	{
 	  recode_error (outer, _("Virtual memory exhausted!"));
 	  return false;
@@ -284,9 +287,9 @@ add_to_sequence (RECODE_REQUEST request, RECODE_SINGLE single,
 
 static bool
 find_sequence (RECODE_REQUEST request,
-	       RECODE_CONST_CHARSET before,
+	       RECODE_CONST_SYMBOL before,
 	       RECODE_CONST_OPTION_LIST before_options,
-	       RECODE_CONST_CHARSET after,
+	       RECODE_CONST_SYMBOL after,
 	       RECODE_CONST_OPTION_LIST after_options)
 {
   RECODE_OUTER outer = request->outer;
@@ -300,16 +303,16 @@ find_sequence (RECODE_REQUEST request,
   RECODE_SINGLE single;	/* cursor in possible single_singles */
   int cost;			/* cost under consideration */
   bool modified;		/* if modified since last iteration */
-  RECODE_CONST_CHARSET charset;	/* charset while reconstructing */
+  RECODE_CONST_SYMBOL charset;	/* charset while reconstructing */
 
-  if (!ALLOC (search_array, outer->number_of_charsets, struct search))
+  if (!ALLOC (search_array, outer->number_of_symbols, struct search))
     return false;
 
   /* Search for an economical route, looking our way backward from the after
      towards the before.  */
 
   for (search = search_array;
-       search < search_array + outer->number_of_charsets;
+       search < search_array + outer->number_of_symbols;
        search++)
     {
       search->single = NULL;
@@ -424,7 +427,7 @@ complete_double_ucs2_step (RECODE_OUTER outer, RECODE_STEP step)
 {
   struct side
     {
-      RECODE_CHARSET charset; /* charset */
+      RECODE_SYMBOL charset;	/* charset */
       struct item item[256];	/* array of binding items */
       size_t number_of_items;	/* number of binding items in array */
     };
@@ -469,7 +472,7 @@ complete_double_ucs2_step (RECODE_OUTER outer, RECODE_STEP step)
     {
       /* Construct the array of binding items for the charset.  */
 
-      data = side->charset->charset_data;
+      data = side->charset->data;
       pool = data->pool;
       item_cursor = side->item;
       byte = 0;
@@ -574,10 +577,10 @@ simplify_sequence (RECODE_REQUEST request)
 
   while (in < limit)
     if (in < limit - 1
-	&& in[0].before->charset_type == RECODE_STRIP_DATA
+	&& in[0].before->data_type == RECODE_STRIP_DATA
 	&& in[0].after == outer->ucs2_charset
 	&& in[1].before == outer->ucs2_charset
-	&& in[1].after->charset_type == RECODE_STRIP_DATA)
+	&& in[1].after->data_type == RECODE_STRIP_DATA)
       {
 	/* This is a double UCS-2 step.  */
 	out->before = in[0].before;
@@ -727,7 +730,6 @@ simplify_sequence (RECODE_REQUEST request)
 static bool
 scan_identifier (RECODE_REQUEST request)
 {
-  RECODE_OUTER outer = request->outer;
   char *cursor = request->scanned_string;
 
   while (*request->scan_cursor && *request->scan_cursor != ','
@@ -806,23 +808,23 @@ static bool
 scan_unsurfacers (RECODE_REQUEST request)
 {
   RECODE_OUTER outer = request->outer;
-  RECODE_CHARSET surface = NULL;
+  RECODE_SYMBOL surface = NULL;
   RECODE_OPTION_LIST surface_options = NULL;
 
   request->scan_cursor++;
   scan_identifier (request);
   if (*request->scanned_string)
     {
-      RECODE_SYMBOL symbol = find_symbol (outer, request->scanned_string,
-					  SYMBOL_FIND_AS_SURFACE);
+      RECODE_ALIAS alias = find_alias (outer, request->scanned_string,
+					  ALIAS_FIND_AS_SURFACE);
 
-      if (!symbol)
+      if (!alias)
 	{
 	  recode_error (outer, _("Unrecognised surface name `%s'"),
 			request->scanned_string);
 	  return false;
 	}
-      surface = symbol->charset;
+      surface = alias->symbol;
       /* FIXME: Should check that it does not itself have implied surfaces?  */
     }
   if (*request->scan_cursor == '+')
@@ -855,6 +857,8 @@ add_unsurfacers_to_sequence (RECODE_REQUEST request,
   if (list->surface->unsurfacer)
     return
       add_to_sequence (request, list->surface->unsurfacer, NULL, NULL);
+
+  return true;
 }
 
 /*---------------------------------------------------------------------------.
@@ -870,24 +874,24 @@ add_unsurfacers_to_sequence (RECODE_REQUEST request,
 | going on if VERBOSE.                                                       |
 `---------------------------------------------------------------------------*/
 
-static RECODE_CHARSET
+static RECODE_SYMBOL
 scan_charset (RECODE_REQUEST request,
-	      RECODE_CONST_CHARSET before,
+	      RECODE_CONST_SYMBOL before,
 	      RECODE_CONST_OPTION_LIST before_options,
 	      RECODE_OPTION_LIST *options_pointer)
 {
   RECODE_OUTER outer = request->outer;
-  RECODE_SYMBOL symbol;
-  RECODE_CHARSET charset;
+  RECODE_ALIAS alias;
+  RECODE_SYMBOL charset;
   RECODE_OPTION_LIST charset_options = NULL;
 
   scan_identifier (request);
-  symbol = find_symbol (outer, request->scanned_string, SYMBOL_FIND_AS_EITHER);
+  alias = find_alias (outer, request->scanned_string, ALIAS_FIND_AS_EITHER);
   if (*request->scan_cursor == '+')
     charset_options = scan_options (request);
-  if (!symbol)
+  if (!alias)
     return NULL;
-  charset = symbol->charset;
+  charset = alias->symbol;
 
   if (before)
     {
@@ -906,51 +910,53 @@ scan_charset (RECODE_REQUEST request,
 	 these would be immediately followed by their removal.  */
 
       if (scan_check_if_last_charset (request))
-	if (*request->scan_cursor == '/')
-	  {
-	    while (*request->scan_cursor == '/')
-	      {
-		RECODE_CHARSET surface = NULL;
-		RECODE_OPTION_LIST surface_options = NULL;
+	{
+	  if (*request->scan_cursor == '/')
+	    {
+	      while (*request->scan_cursor == '/')
+		{
+		  RECODE_SYMBOL surface = NULL;
+		  RECODE_OPTION_LIST surface_options = NULL;
 
-		request->scan_cursor++;
-		scan_identifier (request);
-		if (*request->scanned_string)
-		  {
-		    RECODE_SYMBOL symbol
-		      = find_symbol (outer, request->scanned_string,
-				     SYMBOL_FIND_AS_SURFACE);
+		  request->scan_cursor++;
+		  scan_identifier (request);
+		  if (*request->scanned_string)
+		    {
+		      RECODE_ALIAS alias2
+			= find_alias (outer, request->scanned_string,
+				      ALIAS_FIND_AS_SURFACE);
 
-		    if (!symbol)
-		      {
-			recode_error (outer,
-				      _("Unrecognised surface name `%s'"),
-				      request->scanned_string);
-			return NULL;
-		      }
-		    surface = symbol->charset;
-		    /* FIXME: Should check that it does not itself have
-		       implied surfaces?  */
-		  }
-		if (*request->scan_cursor == '+')
-		  surface_options = scan_options (request);
+		      if (!alias2)
+			{
+			  recode_error (outer,
+					_("Unrecognised surface name `%s'"),
+					request->scanned_string);
+			  return NULL;
+			}
+		      surface = alias2->symbol;
+		      /* FIXME: Should check that it does not itself have
+			 implied surfaces?  */
+		    }
+		  if (*request->scan_cursor == '+')
+		    surface_options = scan_options (request);
 
-		if (surface && surface->resurfacer)
-		  if (!add_to_sequence (request, surface->resurfacer,
-					NULL, surface_options))
+		  if (surface && surface->resurfacer)
+		    if (!add_to_sequence (request, surface->resurfacer,
+					  NULL, surface_options))
+		      return NULL;
+		}
+	    }
+	  else if (alias->implied_surfaces && !request->make_header_flag)
+	    {
+	      struct recode_surface_list *list;
+
+	      for (list = alias->implied_surfaces; list; list = list->next)
+		if (list->surface->resurfacer)
+		  if (!add_to_sequence (request, list->surface->resurfacer,
+					NULL, NULL))
 		    return NULL;
-	      }
-	  }
-	else if (symbol->implied_surfaces && !request->make_header_flag)
-	  {
-	    struct recode_surface_list *list;
-
-	    for (list = symbol->implied_surfaces; list; list = list->next)
-	      if (list->surface->resurfacer)
-		if (!add_to_sequence (request, list->surface->resurfacer,
-				      NULL, NULL))
-		  return NULL;
-	  }
+	    }
+	}
     }
   else
     {
@@ -963,9 +969,9 @@ scan_charset (RECODE_REQUEST request,
 	  if (!scan_unsurfacers (request))
 	    return NULL;
 	}
-      else if (symbol->implied_surfaces && !request->make_header_flag)
+      else if (alias->implied_surfaces && !request->make_header_flag)
 	{
-	  if (!add_unsurfacers_to_sequence (request, symbol->implied_surfaces))
+	  if (!add_unsurfacers_to_sequence (request, alias->implied_surfaces))
 	    return NULL;
 	}
     }
@@ -982,7 +988,7 @@ scan_request (RECODE_REQUEST request)
 {
   RECODE_OUTER outer = request->outer;
   RECODE_OPTION_LIST options;
-  RECODE_CHARSET charset = scan_charset (request, NULL, NULL, &options);
+  RECODE_SYMBOL charset = scan_charset (request, NULL, NULL, &options);
 
   if (!charset)
     return false;

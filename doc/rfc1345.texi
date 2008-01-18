@@ -644,54 +644,59 @@ Source: ISO 2375 registry.
 @tindex 819
 @tindex CP819
 @tindex IBM819
+@tindex ISO8859-1
 @tindex ISO_8859-1
 @tindex ISO_8859-1(1987)
 @tindex iso-ir-100
 @tindex l1
 @tindex latin1
-@code{819}, @code{CP819}, @code{IBM819}, @code{ISO_8859-1}, @code{ISO_8859-1:1987}, @code{iso-ir-100}, @code{l1} and @code{latin1} are aliases for this charset.
+@code{819}, @code{CP819}, @code{IBM819}, @code{ISO8859-1}, @code{ISO_8859-1}, @code{ISO_8859-1:1987}, @code{iso-ir-100}, @code{l1} and @code{latin1} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-10
 @tindex ISO-8859-10@r{, aliases and source}
+@tindex ISO8859-10
 @tindex ISO_8859-10
 @tindex ISO_8859-10(1993)
+@tindex L6
 @tindex iso-ir-157
-@tindex l6
 @tindex latin6
-@code{ISO_8859-10}, @code{ISO_8859-10:1993}, @code{iso-ir-157}, @code{l6} and @code{latin6} are aliases for this charset.
+@code{ISO8859-10}, @code{ISO_8859-10}, @code{ISO_8859-10:1993}, @code{L6}, @code{iso-ir-157} and @code{latin6} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-13
 @tindex ISO-8859-13@r{, aliases and source}
+@tindex ISO8859-13
 @tindex ISO_8859-13
 @tindex ISO_8859-13(1998)
 @tindex iso-baltic
 @tindex iso-ir-179a
 @tindex l7
 @tindex latin7
-@code{ISO_8859-13}, @code{ISO_8859-13:1998}, @code{iso-baltic}, @code{iso-ir-179a}, @code{l7} and @code{latin7} are aliases for this charset.
+@code{ISO8859-13}, @code{ISO_8859-13}, @code{ISO_8859-13:1998}, @code{iso-baltic}, @code{iso-ir-179a}, @code{l7} and @code{latin7} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-14
 @tindex ISO-8859-14@r{, aliases and source}
+@tindex ISO8859-14
 @tindex ISO_8859-14
 @tindex ISO_8859-14(1998)
 @tindex iso-celtic
 @tindex iso-ir-199
 @tindex l8
 @tindex latin8
-@code{ISO_8859-14}, @code{ISO_8859-14:1998}, @code{iso-celtic}, @code{iso-ir-199}, @code{l8} and @code{latin8} are aliases for this charset.
+@code{ISO8859-14}, @code{ISO_8859-14}, @code{ISO_8859-14:1998}, @code{iso-celtic}, @code{iso-ir-199}, @code{l8} and @code{latin8} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-15
 @tindex ISO-8859-15@r{, aliases and source}
+@tindex ISO8859-15
 @tindex ISO_8859-15
 @tindex ISO_8859-15(1998)
 @tindex iso-ir-203
 @tindex l9
 @tindex latin9
-@code{ISO_8859-15}, @code{ISO_8859-15:1998}, @code{iso-ir-203}, @code{l9} and @code{latin9} are aliases for this charset.
+@code{ISO8859-15}, @code{ISO_8859-15}, @code{ISO_8859-15:1998}, @code{iso-ir-203}, @code{l9} and @code{latin9} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-2
@@ -699,83 +704,91 @@ Source: ISO 2375 registry.
 @tindex 912
 @tindex CP912
 @tindex IBM912
+@tindex ISO8859-2
 @tindex ISO_8859-2
 @tindex ISO_8859-2(1987)
 @tindex iso-ir-101
 @tindex l2
 @tindex latin2
-@code{912}, @code{CP912}, @code{IBM912}, @code{ISO_8859-2}, @code{ISO_8859-2:1987}, @code{iso-ir-101}, @code{l2} and @code{latin2} are aliases for this charset.
+@code{912}, @code{CP912}, @code{IBM912}, @code{ISO8859-2}, @code{ISO_8859-2}, @code{ISO_8859-2:1987}, @code{iso-ir-101}, @code{l2} and @code{latin2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-3
 @tindex ISO-8859-3@r{, aliases and source}
+@tindex ISO8859-3
 @tindex ISO_8859-3
 @tindex ISO_8859-3(1988)
 @tindex iso-ir-109
 @tindex l3
 @tindex latin3
-@code{ISO_8859-3}, @code{ISO_8859-3:1988}, @code{iso-ir-109}, @code{l3} and @code{latin3} are aliases for this charset.
+@code{ISO8859-3}, @code{ISO_8859-3}, @code{ISO_8859-3:1988}, @code{iso-ir-109}, @code{l3} and @code{latin3} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-4
 @tindex ISO-8859-4@r{, aliases and source}
+@tindex ISO8859-4
 @tindex ISO_8859-4
 @tindex ISO_8859-4(1988)
 @tindex iso-ir-110
 @tindex l4
 @tindex latin4
-@code{ISO_8859-4}, @code{ISO_8859-4:1988}, @code{iso-ir-110}, @code{l4} and @code{latin4} are aliases for this charset.
+@code{ISO8859-4}, @code{ISO_8859-4}, @code{ISO_8859-4:1988}, @code{iso-ir-110}, @code{l4} and @code{latin4} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-5
 @tindex ISO-8859-5@r{, aliases and source}
+@tindex ISO8859-5
 @tindex ISO_8859-5
 @tindex ISO_8859-5(1988)
 @tindex cyrillic
 @tindex iso-ir-144
-@code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{cyrillic} and @code{iso-ir-144} are aliases for this charset.
+@code{ISO8859-5}, @code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{cyrillic} and @code{iso-ir-144} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-6
 @tindex ISO-8859-6@r{, aliases and source}
 @tindex ASMO-708
 @tindex ECMA-114
+@tindex ISO8859-6
 @tindex ISO_8859-6
 @tindex ISO_8859-6(1987)
 @tindex arabic
 @tindex iso-ir-127
-@code{ASMO-708}, @code{ECMA-114}, @code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{arabic} and @code{iso-ir-127} are aliases for this charset.
+@code{ASMO-708}, @code{ECMA-114}, @code{ISO8859-6}, @code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{arabic} and @code{iso-ir-127} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-7
 @tindex ISO-8859-7@r{, aliases and source}
 @tindex ECMA-118
 @tindex ELOT_928
+@tindex ISO8859-7
 @tindex ISO_8859-7
 @tindex ISO_8859-7(1987)
 @tindex greek
 @tindex greek8
 @tindex iso-ir-126
-@code{ECMA-118}, @code{ELOT_928}, @code{ISO_8859-7}, @code{ISO_8859-7:1987}, @code{greek}, @code{greek8} and @code{iso-ir-126} are aliases for this charset.
+@code{ECMA-118}, @code{ELOT_928}, @code{ISO8859-7}, @code{ISO_8859-7}, @code{ISO_8859-7:1987}, @code{greek}, @code{greek8} and @code{iso-ir-126} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-8
 @tindex ISO-8859-8@r{, aliases and source}
+@tindex ISO8859-8
 @tindex ISO_8859-8
 @tindex ISO_8859-8(1988)
 @tindex hebrew
 @tindex iso-ir-138
-@code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{hebrew} and @code{iso-ir-138} are aliases for this charset.
+@code{ISO8859-8}, @code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{hebrew} and @code{iso-ir-138} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-9
 @tindex ISO-8859-9@r{, aliases and source}
+@tindex ISO8859-9
 @tindex ISO_8859-9
 @tindex ISO_8859-9(1989)
 @tindex iso-ir-148
 @tindex l5
 @tindex latin5
-@code{ISO_8859-9}, @code{ISO_8859-9:1989}, @code{iso-ir-148}, @code{l5} and @code{latin5} are aliases for this charset.
+@code{ISO8859-9}, @code{ISO_8859-9}, @code{ISO_8859-9:1989}, @code{iso-ir-148}, @code{l5} and @code{latin5} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_10367-box
