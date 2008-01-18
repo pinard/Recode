@@ -1,0 +1,701 @@
+# Polish translations for the GNU recode messages
+# Copyright (C) 1996 Free Software Foundation, Inc.
+# Pawe³ Krawczyk <kravietz@ceti.pl>, 1996, 1997, 1998, 1999
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recode 3.4r\n"
+"POT-Creation-Date: 1999-05-18 08:46-0400\n"
+"PO-Revision-Date: 1999-05-26 14:49+02:00\n"
+"Last-Translator: Pawe³ Krawczyk <kravietz@ceti.pl>\n"
+"Language-Team: Polish <pl@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#. Dump all characters.
+#: src/debug.c:287
+msgid "UCS2   Mne   Description\n\n"
+msgstr "UCS2   Mne   Description\n\n"
+
+#: src/main.c:140
+msgid "No error"
+msgstr "Brak b³êdu"
+
+#: src/main.c:143
+msgid "Non canonical input"
+msgstr "Dane wej¶ciowe nie s± kanoniczne"
+
+#: src/main.c:146
+msgid "Ambiguous output"
+msgstr "Dane wyj¶ciowe s± dwuznaczne"
+
+#: src/main.c:149
+msgid "Untranslatable input"
+msgstr "Dane wej¶ciowe nie mog± byæ przet³umaczone"
+
+#: src/main.c:152
+msgid "Invalid input"
+msgstr "B³êdne dane wej¶ciowe"
+
+#: src/main.c:155
+msgid "System detected problem"
+msgstr "System wykry³ problem"
+
+#: src/main.c:158
+msgid "Misuse of recoding library"
+msgstr "B³êdne u¿ycie biblioteki przekodowuj±cej"
+
+#: src/main.c:161
+msgid "Internal recoding bug"
+msgstr "Wyst±pi³ wewnêtrzny b³±d przekodowania"
+
+#: src/main.c:206
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2, or (at your option)\n"
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+msgstr ""
+"Ten program jest darmowy; mo¿esz rozprowadzaæ go i/lub modyfikowaæ\n"
+"zachowuj±c warunki Powszechnej Licencji Publicznej GNU (General Public\n"
+"Licence), opublikowanej przez Free Software Foundation, w wersji 2 lub\n"
+"wy¿szej.\n"
+"\n"
+"Program ten jest rozprowadzany w nadziei, ¿e bêdzie przydatny,\n"
+"ale BEZ ¯ADNEJ GWARANCJI, nawet bez domy¶lnej gwarancji SPRZEDAWALNO¦CI\n"
+"lub PRZYDATNO¦CI DO KONKRETNYCH ZASTOSOWAÑ. Szczegó³y znajdziesz\n"
+"w Powszechnej Licencji Publicznej GNU.\n"
+"\n"
+"Powiniene¶ otrzymaæ kopiê Powszechnej Licencji Publicznej GNU wraz\n"
+"z tym programem. Je¶li nie, napisz do Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+
+#: src/main.c:231
+#, c-format
+msgid "Try `%s %s' for more information.\n"
+msgstr "Polecenie `%s %s' wy¶wietli wiêcej informacji.\n"
+
+#: src/main.c:235
+msgid "Free `recode' converts files between various character sets and surfaces.\n"
+msgstr ""
+"Program `recode' konwertuje pliki pomiêdzy ró¿nymi zestawami znaków\n"
+"i sposobami kodowania.\n"
+
+# REQUEST t³umaczê wszêdzie konsekwentnie jako POLECENIE, a nie '¿±danie'
+#: src/main.c:239
+#, c-format
+msgid "\nUsage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+msgstr "\nSk³adnia: %s [OPCJA]... [ [ZESTAW_ZNAKÓW] | POLECENIE [PLIK]... ]\n"
+
+#: src/main.c:242
+msgid ""
+"\n"
+"If a long option shows an argument as mandatory, then it is mandatory\n"
+"for the equivalent short option also.  Similarly for optional arguments.\n"
+msgstr ""
+"\n"
+"Je¶li argumenty s± obowi±zkowe dla d³ugich wersji opcji, to s± one równie¿\n"
+"obowi±zkowe dla krótkich wersji. Analogicznie dla argumentów opcjonalnych.\n"
+
+#: src/main.c:248
+msgid ""
+"\n"
+"Listings:\n"
+"  -l, --list[=FORMAT]        list one or all known charsets\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS list\n"
+"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
+"  -F, --freeze-tables        write out a C module holding all tables\n"
+"  -T, --find-subsets         report all charsets being subset of others\n"
+"  -C, --copyright            display Copyright and copying conditions\n"
+"      --help                 display this help and exit\n"
+"      --version              output version information and exit\n"
+msgstr ""
+"\n"
+"Listy:\n"
+"  -l, --list[=FORMAT]        wy¶wietla jeden lub wszystkie znane zestawy\n"
+"                             znaków\n"
+"  -k, --known=PARY           ogranicza listê zestawów do znanych PAR\n"
+"  -h, --header[=[LN/]NAZWA]  wy¶wietla tablicê NAZWA na standardowe wyj¶cie\n"
+"                             u¿ywaj±c LN i koñczy pracê\n"
+"  -F, --freeze-table         wy¶wietla modu³ w C zawieraj±cy wszystkie\n"
+"                             tablice\n"
+"  -T, --find-subsets         wy¶wietla wszystkie zestawy bêd±ce podzbiorami\n"
+"                             innych zestawów\n"
+"  -C, --copyright            wy¶wietla informacje o prawach autorskich\n"
+"                             oraz warunkach kopiowania\n"
+"      --version              wy¶wietla wersjê programu i koñczy pracê\n"
+"      --help                 wy¶wietla ten tekst pomocy i koñczy pracê\n"
+
+#: src/main.c:261
+msgid ""
+"\n"
+"Operation modes:\n"
+"  -v, --verbose           explain sequence of steps and report progress\n"
+"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+"  -f, --force             force recodings even when not reversible\n"
+"  -t, --touch             touch the recoded files after replacement\n"
+"  -i, --sequence=files    use intermediate files for sequencing passes\n"
+"      --sequence=memory   use memory buffers for sequencing passes\n"
+msgstr ""
+"\n"
+"Tryby pracy:\n"
+"\n"
+"  -v, --verbose           oznajmia wykonywane kroki oraz postêp pracy\n"
+"  -q, --quiet, --silent   nie wy¶wietla komunikatów o nieistotnych\n"
+"                          konwersjach\n"
+"  -f, --force             wymusza przekodowanie nawet je¶li jest ono\n"
+"                          nieodwracalne\n"
+"  -t, --touch             uaktualnia czas plików po przekodowaniu\n"
+"  -i, --sequence=pliki    u¿ywa plików tymczasowych miêdzy etapami\n"
+"      --sequence=memory   u¿ywa buforów w pamiêci miêdzy etapami\n"
+
+#: src/main.c:273
+msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
+msgstr "  -p, --sequence=pipe     u¿ywa potoków miêdzy etapami\n"
+
+#: src/main.c:278
+msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
+msgstr "  -p, --sequence=pipe     identyczne jak -i (w tym systemie)\n"
+
+#: src/main.c:283
+msgid ""
+"\n"
+"Fine tuning:\n"
+"  -s, --strict           use strict mappings, even loose characters\n"
+"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
+"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
+"  -c, --colons           use colons instead of double quotes for diaeresis\n"
+"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
+"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+msgstr ""
+"\n"
+"Modyfikacja parametrów pracy:\n"
+"\n"
+"  -s, --strict           u¿ywa ¶cis³ego mapowania, nawet dla nie¶cis³ych\n"
+"                         znaków\n"
+"  -d, --diacritics       konwertuje tylko znaki diakrytyczne oraz symbole\n"
+"                         znaków (takie jak w HTML i LaTeX)\n"
+"  -c, --colons           u¿ywa dwukropków zamiast cudzys³owów dla oznaczenia\n"
+"                         umlautu\n"
+"  -g, --graphics         próbuje przybli¿aæ ramki IBMPC znakami ASCII\n"
+"  -x, --ignore=ZESTAW    ignoruje ZESTAW znaków podczas okre¶lania drogi\n"
+"                         przekodowania\n"
+
+#: src/main.c:294
+msgid ""
+"\n"
+"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
+"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+msgstr ""
+"\n"
+"Bez FORMATu lub ZESTAWu, opcja -l wy¶wietla dostêpne zestawy i sposoby\n"
+"kodowania znaków. FORMAT to `decimal', `octal', `hexadecimal' lub `full',\n"
+"(lub jedna z liter `dohf').\n"
+
+#: src/main.c:302
+#, c-format
+msgid "Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n"
+msgstr ""
+"Je¶li zmienna ¶rodowiskowa DEFAULT_CHARSET nie jest ustawiona, domy¶lnym\n"
+"zestawem znaków jest `%s'.\n"
+
+#: src/main.c:308
+msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
+msgstr ""
+"ZESTAW znaków nie ma warto¶ci domy¶lnej, ustaw zmienn± ¶rodowiskow±\n"
+"DEFAULT_CHARSET.\n"
+
+#: src/main.c:313
+msgid ""
+"With -k, possible before charsets are listed for the given after CHARSET,\n"
+"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:AFT2,...'\n"
+"and BEFs and AFTs being codes are given as decimal numbers.\n"
+msgstr ""
+"Je¶li podano opcjê -k, program wy¶wietla zestawy znaków z których mo¿na\n"
+"dokonaæ konwersji do podanego ZESTAWu docelowego. Oba s± stabelaryzowanymi\n"
+"zestawami znaków z PARAmi postaci `SK¡D1:DOK¡D1,SK¡D2:DOK¡D2...', gdzie\n"
+"SK¡D i DOK¡D s± kodami podanymi jako liczby dziesiêtne.\n"
+
+#: src/main.c:318
+msgid "LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
+msgstr ""
+"LN jest jêzykiem programowania, do wyboru `c', `perl' lub `po'.\n"
+"Domy¶ln± warto¶ci± jest `c'.\n"
+
+#: src/main.c:321
+msgid ""
+"\n"
+"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[..ENCODING]...\n"
+"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE..AFTER,\n"
+"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
+"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; a /\n"
+"with an empty surface name means no surfaces at all.  See the manual.\n"
+msgstr ""
+"\n"
+"POLecenie to PODPOL[,PODPOL]...; PODPOLecenie to ENKOD[..ENKOD]...\n"
+"ENKOD to [ZESTAW][/[KODOWANIE]]...; POLecenie czêsto ma postaæ SK¡D..DOK¡D,\n"
+"gdzie SK¡D i DOK¡D s± zestawami znaków. W miejsce pominiêtego zestawu\n"
+"przyjmowany jest zestaw domy¶lny; W miejsce pominiêtego [/KODOWANIA]\n"
+"przyjmowany jest domy¶lny sposób kodowania dla danego ZESTawu; sam znak\n"
+"/ bez podanego KODOWANIA oznacza brak jakiegokolwiek kodowania. Szczegó³y\n"
+"w dokumentacji.\n"
+
+#: src/main.c:329
+msgid ""
+"\n"
+"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
+"Each FILE is recoded over itself, destroying the original.  If no\n"
+"FILE is specified, then act as a filter and recode stdin to stdout.\n"
+msgstr ""
+"\n"
+"Je¶li nie podano opcji -i ani -p, przyjmowana jest opcja -p je¶li nie\n"
+"podano PLIKu, w przeciwnym razie -i. Ka¿dy PLIK jest nadpisywany z utrat±\n"
+"oryginalnej zawarto¶ci. Je¶li nie podano PLIKu, program dzia³a jako filtr\n"
+"przekodowuj±c stdin na stdout.\n"
+
+#: src/main.c:335
+msgid "\nReport bugs to <recode-bugs@iro.umontreal.ca>.\n"
+msgstr "\nProsimy o zg³aszanie b³êdów na adres <recode-bugs@iro.umontreal.ca>.\n"
+
+#: src/main.c:431
+#, c-format
+msgid "Ambiguous sequence `%s'"
+msgstr "Nierozpoznana sekwencja `%s'"
+
+#: src/main.c:435
+#, c-format
+msgid "Unknown sequence `%s'"
+msgstr "Nieznana sekwencja `%s'"
+
+#: src/main.c:465 src/main.c:523
+#, c-format
+msgid "Ambiguous language `%s'"
+msgstr "Nierozpoznany jêzyk `%s'"
+
+#. -1
+#: src/main.c:469 src/main.c:527
+#, c-format
+msgid "Unknown language `%s'"
+msgstr "Nieznany jêzyk `%s'"
+
+#: src/main.c:561
+#, c-format
+msgid "Ambiguous format `%s'"
+msgstr "Nierozpoznany format `%s'"
+
+#: src/main.c:565
+#, c-format
+msgid "Unknown format `%s'"
+msgstr "Nieznany format `%s'"
+
+#: src/main.c:622
+msgid "\nCopyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+msgstr "\nCopyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+
+#: src/main.c:626
+msgid ""
+"This is free software; see the source for copying conditions.  There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr ""
+"Oprogramowanie darmowe; warunki jego kopiowania znajdziesz w kodzie\n"
+"¼ród³owym. Nie podlega ¿adnej gwarancji, nawet gwarancji przydatno¶ci\n"
+"do jakiegokolwiek zastosowania lub sprzeda¿y.\n"
+
+#: src/main.c:630
+msgid "\nWritten by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr "\nAutorem jest Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+
+#: src/main.c:775
+#, c-format
+msgid "Deprecated syntax, please prefer `%s'"
+msgstr "Odradza siê stosowanie tej sk³adni, proszê u¿ywaæ `%s'"
+
+#: src/main.c:781
+#, c-format
+msgid "Erroneous request `%s'"
+msgstr "B³êdne polecenie `%s'"
+
+#: src/main.c:878
+#, c-format
+msgid "Recoding %s..."
+msgstr "Przekodowanie %s..."
+
+#: src/main.c:888
+msgid " done\n"
+msgstr " skoñczone\n"
+
+#: src/main.c:924
+#, c-format
+msgid " failed: %s in %s..%s\n"
+msgstr " nie powiod³o siê: %s w %s..%s\n"
+
+#: src/main.c:931
+#, c-format
+msgid "%s failed: %s in %s..%s"
+msgstr "%s nie powiod³o siê: %s w %s..%s"
+
+#: src/main.c:954
+#, c-format
+msgid "%s in %s..%s"
+msgstr "%s w %s..%s"
+
+#: src/names.c:317
+#, c-format
+msgid "Charset %s already exists and is not %s"
+msgstr "Zestaw %s ju¿ istnieje i nie jest %s"
+
+#: src/names.c:819
+#, c-format
+msgid "Cannot list `%s', no names available for this charset"
+msgstr "Nie mogê wylistowaæ `%s', brak nazw dla tego zestawu znaków"
+
+#. code counter
+#. expected value for code counter
+#. UCS-2 translation
+#. insert a while line before printing
+#. Print the long table according to explode data.
+#: src/names.c:974 src/names.c:1020
+#, c-format
+msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
+msgstr "Dec  Okt Hex   UCS2  Mne  %s\n"
+
+#: src/names.c:1039
+#, c-format
+msgid "Sorry, no names available for `%s'"
+msgstr "Brak nazw dla `%s'"
+
+#: src/outer.c:95
+#, c-format
+msgid "Resurfacer set more than once for `%s'"
+msgstr "Procedura rekoduj±ca zosta³a ustawiona wiêcej ni¿ raz dla `%s'"
+
+#: src/outer.c:102
+#, c-format
+msgid "Unsurfacer set more than once for `%s'"
+msgstr "Procedura dekoduj±ca zosta³a ustawiona wiêcej ni¿ raz dla `%s'"
+
+#: src/recode.c:115 src/recode.c:127
+msgid "Virtual memory exhausted"
+msgstr "Pamiêæ wirtualna wyczerpana"
+
+#: src/recode.c:155
+#, c-format
+msgid "Codes %3d and %3d both recode to %3d"
+msgstr "Kody %3d i %3d oba t³umacz± siê na %3d"
+
+#: src/recode.c:169
+#, c-format
+msgid "No character recodes to %3d"
+msgstr "¯aden znak nie koduje siê na %3d"
+
+#: src/recode.c:170
+msgid "Cannot invert given one-to-one table"
+msgstr "Nie mogê odwróciæ danej tablicy "
+
+#: src/recode.c:224 src/recode.c:236
+#, c-format
+msgid "Following diagnostics for `%s' to `%s'"
+msgstr "Diagnostyka dla `%s' do `%s'"
+
+#: src/recode.c:229 src/recode.c:241
+#, c-format
+msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
+msgstr "Para nr %d: < %3d, %3d > konflikt z < %3d, %3d >"
+
+#: src/recode.c:272
+msgid "Cannot complete table from set of known pairs"
+msgstr "Nie mogê utworzyæ tablicy z zestawu znanych par"
+
+#: src/recode.c:492
+msgid "Identity recoding, not worth a table"
+msgstr "Przekodowanie jest proste, tablica nie jest potrzebna"
+
+#: src/recode.c:499
+msgid "Recoding is too complex for a mere table"
+msgstr "Przekodowanie jest zbyt skomplikowane na zwyk³± tablicê"
+
+#. Print the header of the header file.
+#: src/recode.c:531
+#, c-format
+msgid "%sConversion table generated mechanically by Free `%s' %s"
+msgstr "%sTablica przekodowañ wygenerowana automatycznie przez GNU `%s' %s."
+
+#: src/recode.c:533
+#, c-format
+msgid "%sfor sequence %s.%s"
+msgstr "%sdla sekwencji %s.%s"
+
+#: src/recode.c:724
+msgid "No table to print"
+msgstr "Brak tablicy do wypisania"
+
+#: src/request.c:35
+msgid "reversible"
+msgstr "odwracalna"
+
+#: src/request.c:37
+#, c-format
+msgid "%s to %s"
+msgstr "%s na %s"
+
+#: src/request.c:38 src/request.c:40
+msgid "byte"
+msgstr "bajt"
+
+#: src/request.c:39 src/request.c:41
+msgid "ucs2"
+msgstr "ucs2"
+
+#: src/request.c:39 src/request.c:41
+msgid "variable"
+msgstr "zmienne"
+
+#: src/request.c:112
+msgid "*Unachievable*"
+msgstr "*Nieosi±galne*"
+
+#: src/request.c:114
+msgid "*mere copy*"
+msgstr "*zwyk³a kopia*"
+
+#: src/request.c:244
+msgid "Virtual memory exhausted!"
+msgstr "Pamiêæ wirtualna wyczerpana!"
+
+#: src/request.c:263
+msgid "Step initialisation failed"
+msgstr "Inicjalizacja kroku nie powiod³a siê"
+
+#: src/request.c:270
+msgid "Step initialisation failed (unprocessed options)"
+msgstr "Inicjalizacja kroku nie powiod³a siê (nieprzetworzone opcje)"
+
+#: src/request.c:566
+#, c-format
+msgid "Request: %s\n"
+msgstr "Polecenie: %s\n"
+
+#: src/request.c:702
+#, c-format
+msgid "Shrunk to: %s\n"
+msgstr "Zmniejszony do: %s\n"
+
+#: src/request.c:806 src/request.c:912
+#, c-format
+msgid "Unrecognised surface name `%s'"
+msgstr "Nierozpoznana nazwa standardu kodowania `%s'"
+
+#: src/request.c:884
+#, c-format
+msgid "No way to recode from `%s' to `%s'"
+msgstr "Przekodowanie `%s' na `%s' jest niemo¿liwe"
+
+#: src/request.c:992
+msgid "Expecting `..' in request"
+msgstr "Spodziewane `..' w poleceniu"
+
+#: src/task.c:751 src/task.c:915
+#, c-format
+msgid "Child process wait status is 0x%0.2x"
+msgstr "Stan oczekiwania procesu potomnego wynosi 0x%0.2x"
+
+#~ msgid "   Each input char transforms into an output string,\n"
+#~ msgstr "   Ka¿dy znak wej¶ciowy jest konwertowany na ³añcuch wyj¶ciowy,\n"
+
+#~ msgid "   Each input char transforms into an output string.\n"
+#~ msgstr "   Ka¿dy znak wej¶ciowy jest konwertowany na ³añcuch wyj¶ciowy.\n"
+
+#~ msgid "   Programming is needed to handle multichar input.\n"
+#~ msgstr "   Do obs³ugi kodów wieloznakowych potrzebna jest umiejêtno¶æ programowania.\n"
+
+#~ msgid "   The recoding might not be reversible.\n"
+#~ msgstr "   Konwersja mo¿e byæ nieodwracalna.\n"
+
+#~ msgid "   The recoding should be reversible.\n"
+#~ msgstr "   Konwersja powinna byæ odwracalna.\n"
+
+#~ msgid "   programming is needed to handle multichar input.\n"
+#~ msgstr "   do obs³ugi kodów wieloznakowych potrzebna jest umiejêtno¶æ programowania.\n"
+
+#~ msgid "  UNACHIEVABLE\n"
+#~ msgstr "  NIEOSI¡GALNE\n"
+
+#~ msgid "%s: Recoding is not reversible"
+#~ msgstr "%s: Konwersja jest nieodwracalna"
+
+#~ msgid ", %d saved by merging"
+#~ msgstr ", %d zachowane przez z³±czenie"
+
+#~ msgid "/* Conversion table from `%s' charset to `%s' charset.\n"
+#~ msgstr "/* Tablica konwersji zestawow znakow `%s' na `%s'.\n"
+
+#~ msgid "Cannot auto check on %s"
+#~ msgstr "Nie mogê automatycznie sprawdziæ %s"
+
+#~ msgid "Cannot auto check the ignored charset"
+#~ msgstr "Nie mogê automatycznie sprawdziæ ignorowanego zestawu znaków"
+
+#~ msgid "Currently, -s is ignored when -g is selected"
+#~ msgstr "Opcja -s jest wy³±czana przez opcjê -g"
+
+#~ msgid "Hash stats: %d names using %d buckets out of %d\n"
+#~ msgstr "Wyniki przeszukiwania: %d u¿ywa %d spo¶ród %d zbiorów\n"
+
+#~ msgid "Internal error - strategy undecided"
+#~ msgstr "B³±d wewnêtrzy - niezdecydowana strategia"
+
+#~ msgid "MAX_CHARSETS is too small"
+#~ msgstr "MAX_CHARSETS jest za ma³e"
+
+#~ msgid "MAX_SEQUENCE is too small"
+#~ msgstr "MAX_SEQUENCE jest za ma³e"
+
+#~ msgid "MAX_SINGLE_STEPS is too small"
+#~ msgstr "MAX_SINGLE_STEPS jest za ma³e"
+
+#~ msgid "Mere copy for the trivial recoding\n"
+#~ msgstr "Zwyk³a kopia do prostego przekodowania\n"
+
+#~ msgid "ONE to SAME"
+#~ msgstr "ONE na SAME"
+
+#~ msgid "Recoding is not reversible"
+#~ msgstr "Przekodowanie jest nieodwracalne"
+
+#~ msgid "Simplified to: "
+#~ msgstr "Uproszczone do: "
+
+#~ msgid "UNACHIEVABLE recoding!\n"
+#~ msgstr "NIEOSI¡GALNE przekodowanie!\n"
+
+#~ msgid "You may not explicitly recode from RFC 1345"
+#~ msgstr "Nie ma potrzebt ¶cis³ego przekodowania z RFC 1345"
+
+#~ msgid "  -o, --sequence=popen    same as -i (on this system)\n"
+#~ msgstr " -o, --sequence=popen    identyczne jak -i (w tym systemie)\n"
+
+#~ msgid "  -o, --sequence=popen    use popen machinery for sequencing passes\n"
+#~ msgstr "  -o, --sequence=popen    u¿ycie techniki popen w przebiegach sekwencyjnych\n"
+
+#~ msgid ""
+#~ "  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+#~ "  -s, --strict            use strict mappings, even loose characters\n"
+#~ "  -t, --touch             touch the recoded files after replacement\n"
+#~ "  -v, --verbose           explain sequence of steps and report progress\n"
+#~ "  -x, --ignore=CHARSET    ignore CHARSET while choosing a recoding path\n"
+#~ "\n"
+#~ "If none of -i, -o and -p are given, presume -p if no FILE, else -i.\n"
+#~ "Each FILE is recoded over itself, destroying the original.  If no\n"
+#~ "FILE is specified, then act as a filter and recode stdin to stdout.\n"
+#~ msgstr ""
+#~ " -q, --quiet, --silent    blokuj komunikaty o nieodwracalnych konwersjach\n"
+#~ " -s, --strict        u¿ywaj ¶cis³ych odwzorowañ, nawet dla w±tpliwych znaków\n"
+#~ " -t, --touch              uaktualnij datê przekodowanego, podstawionego pliku\n"
+#~ " -v, --verbose            pokazuj kolejne kroki i postêp konwersji\n"
+#~ " -x, --ignore=ZESTAW      ignoruj ZESTAW znaków przy wyborze konwersji\n"
+#~ "\n"
+#~ "Je¶li nie wybrano ¿adnej z opcji -i, -o lub -p, i nie ma agumentu PLIK,\n"
+#~ "domy¶lnie przyjmowana jest opcja -p, w przeciwnym wypadku -i. Ka¿dy PLIK\n"
+#~ "po konwersji jest zapisywany pod t± sam± nazw±, z usuniêciem orygina³u.\n"
+#~ "Je¶li brak PLIKu, recode dzia³a jak filtr i konwertuje z stdin na stdout.\n"
+
+#~ msgid "BEFORE and AFTER both default to `%s' when needed.\n"
+#~ msgstr "PRZED i PO w razie potrzeby s± ustawiane domy¶lnie na `%s'.\n"
+
+#~ msgid ""
+#~ "Mandatory or optional arguments to long options are mandatory or optional\n"
+#~ "for short options too.\n"
+#~ "\n"
+#~ "  -C, --copyright       display Copyright and copying conditions\n"
+#~ "  -a, --auto-check      report about some or all recoding paths, then exit\n"
+#~ "  -l, --list[=FORMAT]   list one or all known charsets\n"
+#~ "  -k, --known=PAIRS     restrict charsets according to known PAIRS list\n"
+#~ "      --help            display this help and exit\n"
+#~ "      --version         output version information and exit\n"
+#~ "\n"
+#~ "FORMAT is a word among decimal, octal, hexadecimal or full (which may be\n"
+#~ "abbreviated to one of `dohf'), it defaults to just the canonical name.\n"
+#~ "With -k, possible before charsets are listed for the given after CHARSET,\n"
+#~ "both being RFC1345 charsets, with PAIRS of the form `BEF1:AFT1,BEF2:AFT2,...\n"
+#~ "and BEFs and AFTs being codes.  All codes are given as decimal numbers.\n"
+#~ msgstr ""
+#~ "Obowi±zkowe lub opcjonalne argumenty d³ugich form opcji maj± tak± sam±\n"
+#~ "postaæ dla krótkich form.\n"
+#~ "\n"
+#~ "  -C, --copyright       wy¶wietl informacje licencyjne i warunki kopiowania\n"
+#~ "  -a, --auto-check      wy¶wietl ¶cie¿ki konwersji i zakoñcz pracê\n"
+#~ "  -l, --list[=FORMAT]   wy¶wietl znane zestawy znaków\n"
+#~ "  -k, --known=PARY      ogranicz zestawy znaków wg. podanych PAR\n"
+#~ "      --help            wy¶wietl ten tekst pomocy i zakoñcz pracê\n"
+#~ "      --version         wy¶wietl wersjê programu i zakoñcz pracê\n"
+#~ "\n"
+#~ "FORMAT jest jednym z: decimal, octal, hexadecimal oraz full (skróty: dohf)\n"
+#~ "Domy¶lnie wy¶wietlane s± tylko nazwy kanoniczne wszystkich standardów.\n"
+#~ "Dla opcjê -k podaje siê dla danego zestawu PO pary decymalnych kodów znaków\n"
+#~ "z zestawów RFC1345, postaci: PRZED1:PO2,PRZED2:PO2,...\n"
+
+#~ msgid ""
+#~ "Option -l with no FORMAT nor CHARSET list all charsets, also see the Texinfo\n"
+#~ "documentation.  My preferred charsets are (each user has preferences):\n"
+#~ "\n"
+#~ "  ascii-bs   ASCII (7-bit), using backspace to apply diacritics\n"
+#~ "  ibmpc      IBM-PC 8-bit characters, with proper newlines\n"
+#~ "  latex      LaTeX coding of foreign and diacriticized characters\n"
+#~ "  latin1     ISO Latin-1 8-bit extension of ASCII\n"
+#~ "  texte      Easy French convention for transmitting email messages\n"
+#~ msgstr ""
+#~ "Opcja -l bez podania FORMATu i ZESTAWu wy¶wietla listê wszystkich zestawów\n"
+#~ "(szczegó³y w dokumentacji). Ulubione zestawy Autora to:\n"
+#~ "\n"
+#~ "  ascii-bs   ASCII (7-bitowy), znak BS u¿ywany do dodawania ogonków\n"
+#~ "  ibmpc      IBM-PC 8-bitowe znaki, z odpowiednimi znakami nowej linii\n"
+#~ "  latex      kodowanie znaków diakrytycznych w formacie LaTeXa\n"
+#~ "  latin1     ISO Latin-1 8-bitowe rozszerzenie ASCII\n"
+#~ "  texte      popularny francuski standard stosowany w emailu\n"
+
+#~ msgid ""
+#~ "\n"
+#~ "  -c, --colons            use colons instead of double quotes for diaeresis\n"
+#~ "  -d, --diacritics        limit conversion to diacritics or alike for LaTeX\n"
+#~ "  -f, --force             force recodings even if they are not reversible\n"
+#~ "                          (BEWARE: in this version, -f is always selected)\n"
+#~ "  -g, --graphics          approximate IBMPC rulers by ASCII graphics\n"
+#~ "  -h, --header[=NAME]     write C code with table NAME on stdout, then exit\n"
+#~ "  -i, --sequence=files    use intermediate files for sequencing passes\n"
+#~ msgstr ""
+#~ "\n"
+#~ "  -c, --colons            u¿ywaj dwukropków zamiast cudzys³owów\n"
+#~ "  -d, --diacritics        ogranicz konwersjê do zn. diakryt. itp. dla LaTeXa\n"
+#~ "  -f, --force             wymuszaj konwersje, nawet je¶li s± nieodwracalne\n"
+#~ "                          (UWAGA: w tej wersji -f zawsze obowi±zuje)\n"
+#~ "  -g, --graphics          przybli¿aj ramki IBMPC za pomoc± znaków ASCII\n"
+#~ "  -h, --header[=NAZWA]    wypisz zestaw NAZWA w postaci kodu C na stdout\n"
+#~ "  -i, --sequence=pliki    u¿ywaj plików po¶rednich do przebiegów sekwencyjnych\n"
+
+#~ msgid "\nUsage: %s [OPTION]... [BEFORE]:[AFTER] [FILE]...\n"
+#~ msgstr "\nSk³adnia: %s [OPCJA]... [PRZED]:[PO] [PLIK]...\n"
+
+#~ msgid "many to many"
+#~ msgstr "wiele na wiele"
+
+#~ msgid "many to one"
+#~ msgstr "wiele na jeden"
+
+#~ msgid "one to many"
+#~ msgstr "jeden na wiele"
+
+#~ msgid "one to one"
+#~ msgstr "jeden na jeden"
+
+#~ msgid "steps: %d"
+#~ msgstr "kroków: %d"

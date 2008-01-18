@@ -34,6 +34,8 @@ bool module_utf8 PARAMS ((struct recode_outer *));
 bool module_utf8 PARAMS ((struct recode_outer *));
 bool module_varia PARAMS ((struct recode_outer *));
 bool module_varia PARAMS ((struct recode_outer *));
+bool module_viet PARAMS ((struct recode_outer *));
+bool module_viet PARAMS ((struct recode_outer *));
 bool module_flat PARAMS ((struct recode_outer *));
 bool module_flat PARAMS ((struct recode_outer *));
 bool module_html PARAMS ((struct recode_outer *));

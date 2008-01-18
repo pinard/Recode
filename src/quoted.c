@@ -26,7 +26,7 @@ static const bool bitnet_flag = false;
 
 /* Characters from 33 to 60 inclusive and from 62 to 126 inclusive do not
    need be quoted.  */
-static const char safe_char_usual[128] =
+static const char safe_char_usual[1 << 7] =
 {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /*   0- 15 */
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /*  16- 31 */
@@ -39,7 +39,7 @@ static const char safe_char_usual[128] =
 };
 
 /* In a Bitnet environment, also quote: ! " # $ @ [ \ ] ^ ` { | } ~ */
-static const char safe_char_bitnet[128] =
+static const char safe_char_bitnet[1 << 7] =
 {
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /*   0- 15 */
   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, /*  16- 31 */
@@ -66,20 +66,16 @@ static bool
 transform_data_quoted_printable (RECODE_CONST_STEP step,
 				 RECODE_TASK task)
 {
-  const char *safe_char;
-  unsigned available;
-  int character;
+  const char *safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
+  unsigned available = MIME_LINE_LENGTH;
+  int character = get_byte (task);
   int next_character;
 
-  safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
+  /* Proper maximum filling of quoted-printable lines, avoiding a line buffer
+     nor much look-ahead, is a bit trickier than I initially expected.  */
 
-  /* Proper maximum filling of quoted-printable lines is a bit trickier than
-     I initially expected, avoiding a line buffer nor much look-ahead.  */
-
-  available = MIME_LINE_LENGTH;
-  character = get_byte (task);
   while (character != EOF)
-    if (character < 128 && safe_char[character])
+    if (!(character & (1 << 7)) && safe_char[character])
 
       /* Case of a safe character.  */
 
@@ -219,130 +215,130 @@ transform_data_quoted_printable (RECODE_CONST_STEP step,
 }
 
 static bool
-transform_quoted_printable_byte (RECODE_CONST_STEP step,
+transform_quoted_printable_data (RECODE_CONST_STEP step,
 				 RECODE_TASK task)
 {
-  const char *safe_char;
-  bool status;
-  unsigned counter;
-  int character;
-  unsigned last_length;
-  enum {SPACE_TYPE, SAFE_TYPE, QUOTED_TYPE} last_type;
+  const char *safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
+  unsigned counter = 0;
+  int character = get_byte (task);
+  char buffer[MIME_LINE_LENGTH + 1];
+  char *cursor;
   unsigned value;
 
-  /* FIXME: reversibility validation is not really implemented.  To be
-     completed at some later time.  */
-
-  safe_char = bitnet_flag ? safe_char_bitnet : safe_char_usual;
-
-  status = true;
-  counter = 0;
-  character = get_byte (task);
-  last_length = MIME_LINE_LENGTH;
-  last_type = SAFE_TYPE;
   while (character != EOF)
-    {
-      switch (character)
-	{
-	case '\n':
+    switch (character)
+      {
+      case '\n':
+	/* Process hard line break.  */
 
-	  /* Process hard line break.  */
+	if (counter > MIME_LINE_LENGTH)
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	counter = 0;
+	put_byte ('\n', task);
+	character = get_byte (task);
+	break;
 
-	  last_length = counter;
-	  counter = 0;
-	  if (last_type == SPACE_TYPE)
-	    status = false;
-	  put_byte ('\n', task);
-	  character = get_byte (task);
-	  last_type = SAFE_TYPE;
-	  break;
+      case ' ':
+      case '\t':
+	/* Process white space.  */
 
-	case ' ':
-	case '\t':
-
-	  /* Process white space.  */
-
-	  counter++;
-#if 0
-	  if (available == 0)
-	    status = false;
-#endif
-	    put_byte (character, task);
-	    character = get_byte (task);
-	    last_type = SPACE_TYPE;
-	    break;
-
-	case '=':
-	  character = get_byte (task);
-	  if (character == ' ' || character == '\t' || character == '\n')
-	    {
-	      /* Process soft line break.  */
-
-	      while (character == ' ' || character == '\t')
-		character = get_byte (task);
-	      if (character != '\n')
-		{
-		  status = false;
-		  break;
-		}
-	      counter = 0;
-	      character = get_byte (task);
-	      break;
-	    }
-
-	  /* Process quoted value.  */
-
-	  if (character >= '0' && character <= '9')
-	    value = (character - '0') << 4;
-	  else if (character >= 'a' && character <= 'f')
-	    value = (character - 'a' + 10) << 4;
-	  else if (character >= 'A' && character <= 'F')
-	    value = (character - 'A' + 10) << 4;
-	  else
-	    {
-	      counter++;
-	      status = false;
-	      break;
-	    }
-	  character = get_byte (task);
-	  if (character >= '0' && character <= '9')
-	    value |= character - '0';
-	  else if (character >= 'a' && character <= 'f')
-	    value |= character - 'a' + 10;
-	  else if (character >= 'A' && character <= 'F')
-	    value |= character - 'A' + 10;
-	  else
-	    {
-	      counter += 2;
-	      status = false;
-	      break;
-	    }
-	  counter += 3;
-	  put_byte (value, task);
-	  character = get_byte (task);
-	  last_type = QUOTED_TYPE;
-	  break;
-
-	default:
-
-	  /* Process safe character.  */
-
-	  counter++;
-	  put_byte (character, task);
-	  character = get_byte (task);
-	  last_type = SAFE_TYPE;
-	}
-
-      /* Truncate longer lines, ensuring it is white space.  */
-
-      if (counter >= MIME_LINE_LENGTH)
-	while (character != '\n' && character != EOF)
+	cursor = buffer;
+	while (character == ' ' || character == '\t')
 	  {
-	    if (character != ' ' && character != '\t')
-	      status = false;
+	    if (cursor == buffer + MIME_LINE_LENGTH)
+	      {
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		for (cursor = buffer;
+		     cursor < buffer + MIME_LINE_LENGTH;
+		     cursor++)
+		  put_byte (*cursor, task);
+	      }
+	    counter++;
+	    *cursor++ = character;
 	    character = get_byte (task);
 	  }
-    }
+	if (character == '\n' || character == EOF)
+	  {
+	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    counter = 0;
+	    break;
+	  }
+	*cursor = '\0';
+	for (cursor = buffer; *cursor; cursor++)
+	  put_byte (*cursor, task);
+	break;
+
+      case '=':
+	counter++;
+	character = get_byte (task);
+	if (character == ' ' || character == '\t' || character == '\n')
+	  {
+	    /* Process soft line break.  */
+
+	    if (character == ' ' || character == '\t')
+	      {
+		RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+		while (character == ' ' || character == '\t')
+		  {
+		    counter++;
+		    character = get_byte (task);
+		  }
+	      }
+	    if (character != '\n')
+	      {
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+		break;
+	      }
+	    if (counter > MIME_LINE_LENGTH)
+	      RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+	    counter = 0;
+	    character = get_byte (task);
+	    break;
+	  }
+
+	/* Process quoted value.  */
+
+	counter++;
+	if (character >= '0' && character <= '9')
+	  value = (character - '0') << 4;
+	else if (character >= 'a' && character <= 'f')
+	  value = (character - 'a' + 10) << 4;
+	else if (character >= 'A' && character <= 'F')
+	  value = (character - 'A' + 10) << 4;
+	else
+	  {
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    break;
+	  }
+	character = get_byte (task);
+	counter++;
+	if (character >= '0' && character <= '9')
+	  value |= character - '0';
+	else if (character >= 'a' && character <= 'f')
+	  value |= character - 'a' + 10;
+	else if (character >= 'A' && character <= 'F')
+	  value |= character - 'A' + 10;
+	else
+	  {
+	    RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	    break;
+	  }
+	if (!(value & (1 << 7)) && safe_char[value])
+	  RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
+
+	put_byte (value, task);
+	character = get_byte (task);
+	break;
+
+      default:
+	/* Process safe character.  */
+
+	counter++;
+	if (character & (1 << 7) || !safe_char[character])
+	  RETURN_IF_NOGO (RECODE_INVALID_INPUT, step, task);
+	put_byte (character, task);
+	character = get_byte (task);
+      }
 
   if (counter != 0)
     /* Last line is not terminated.  */
@@ -360,7 +356,7 @@ module_quoted_printable (RECODE_OUTER outer)
 		    NULL, transform_data_quoted_printable)
     && declare_single (outer, "Quoted-Printable", "data",
 		       outer->quality_variable_to_variable,
-		       NULL, transform_quoted_printable_byte)
+		       NULL, transform_quoted_printable_data)
     && declare_alias (outer, "quote-printable", "Quoted-Printable")
     && declare_alias (outer, "QP", "Quoted-Printable");
 }

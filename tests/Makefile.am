@@ -54,4 +54,5 @@ bigtest-strict:
 	$(PERL) $(srcdir)/bigauto.pl big-s-on.res
 
 clean-local:
-	rm -f debug-*.sh big-s-off.res big-s-on.res
+	rm -f at-check-line debug-*.sh stderr stdout
+	rm -f input output big-s-off.res big-s-on.res

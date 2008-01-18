@@ -27,7 +27,7 @@ AT_SETUP(block of lines to Base64)
 dnl      ------------------------
 
 AT_CHECK(
-[recode ../64 < $at_srcdir/dumps-data
+[recode /../64 < $at_srcdir/dumps-data
 ], 0,
 [CmEKYWIKYWJjCmFiY2QKYWJjZGVmZ2hpCmFiY2RlZmdoaWprbG1ub3BxcnMKYWJjZGVmZ2hpamts
 bW5vcHFyc3R1dnd6eXpBQkMKYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd6eXpBQkNERUZHSElKS0xN
@@ -45,8 +45,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../64 output
-  recode /64 output
+  recode /../64 output
+  recode /64../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -61,8 +61,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../64 output
-recode /64 output
+recode /../64 output
+recode /64../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])

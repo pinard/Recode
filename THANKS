@@ -7,133 +7,196 @@ for a detailed description of contributions.
 Akim Demaille		demaille@inf.enst.fr
 Alain Labonté		alb@riq.qc.ca
 Alain Magloire		alainm@macs.ee.mcgill.ca
-Alexander L. Belikoff	abel@bfr.co.il
+Alan J. Flavell		flavell@a5.ph.gla.ac.uk
+Alexander L. Belikoff	abel@vallinor4.com
+			http://www.vallinor4.com
+Alexandre Oliva		oliva@dcc.unicamp.br
+			http://www.dcc.unicamp.br/~oliva
 Andreas Dietrich	quasi@mathematik.uni-marburg.de
+Andreas Frick		afr@aifb.uni-karlsruhe.de
 Andreas Mueller		afm@othello.ch
-Andreas Schwab		schwab@issan.informatik.uni-dortmund.de
+			http://www.othello.ch
+Andreas Schwab		schwab@suse.de
 Andries Brouwer		Andries.Brouwer@cwi.nl
 Arnaldo Mandel		am@ime.usp.br
-Bastian Schlueter	buzz@cs.tu-berlin.de
+Bastian Schlueter	buzz@gmx.de
+			http://home.pages.de/~buzz
 Bernt Guldbrandtsen	bg@rs580.sh.dk
 Bert Schweitzer		b.schweitzer@tu-bs.de
-Branimir Dolicki	bdolicki@tel.hr
+Branimir Dolicki
+Brendan O'Dea		bod@compusol.com.au
+			http://www.ozemail.com.au/~bod/
+Bruno Haible		haible@ilog.fr
+			http://clisp.cons.org/~haible/
 Christian Limpach	Christian.Limpach@nice.ch
-Christian Recktenwald	chris@janus.citecs.de
-Christian Rolland	Christian.Rolland@irisa.fr
+			http://www.nice.ch/~chris/
+Christian Recktenwald	chris@citecs.de
+			http://www.citecs.de/
+Christian Rolland
 Claude Goutier		goutier@jsp.umontreal.ca
-Colin Plumb		colin@nyx10.cs.du.edu
+Colin Plumb
 Daniel Quinlan		quinlan@best.com
 Daniel Taupin		taupin@lps.u-psud.fr
-David E. A. Wilson	david@cs.uow.edu.au
-David Kastrup		dak@pool.informatik.rwth-aachen.de
+David E. A. Wilson	david_wilson@uow.edu.au
+			http://www.uow.edu.au/~david
+David Kastrup
 David Lebel		lebel@iro.umontreal.ca
-David Mentre		David.Mentre@enst-bretagne.fr
-David van Leeuwen	david@gandalf.tm.tno.nl
+David Mentre
+David van Leeuwen
 Detlev Droege		droege@informatik.uni-koblenz.de
-Dominique Quatravaux	quatrava@clipper.ens.fr
+Dominique Quatravaux	Dominique.Quatravaux@quatramaran.ens.fr
+			http://www.piren.epita.fr/~dom
 Dominique Schmit	dschmit@tabarly.saclay.cea.fr
 Duane Ellis		duane@franklin.com
+			http://www.franklin.com
 Eli Zaretskii		eliz@is.elta.co.il
-Eric Backus		ericb@lsid.hp.com
-Erick Branderhorst	branderh@iaehv.nl
-Erwan Mas		emas@bondy.orstom.fr
-Farzad Farid		farzy@publicis.fr
+Eric Backus		eric_backus@hp.com
+			http://www.wolfenet.com/~ericjb
+Erick Branderhorst	Erick.Branderhorst@asml.nl
+Erwan Mas		erwanmas@chez.com
+			http://www.chez.com/erwanmas/
+Farzad Farid
 Florian Oelmaier	100265.2501@compuserve.com
 François Pinard		pinard@iro.umontreal.ca
-François Robitaille	f_robita@crim.ca
+			http://www.iro.umontreal.ca/~pinard
+François Robitaille
 François Yergeau	yergeau@alis.com
+			http://www.alis.com/~yergeau/
 Françoise Audebrand	audebran@ere.umontreal.ca
-Frederic Albrecht	fred@calvacom.fr
+Frederic Albrecht
 Frère Roy		roy@taize.fr
-Gabriel P. Silva	gabriel@rio.cos.ufrj.br
-Ghislain Plamondon	gplamon@edupac.qc.ca
+			http://www.taize.fr
+Gabriel P. Silva	gpsilva@geocities.com
+			http://www.nce.ufrj.br/~gabriel
+Ghislain Plamondon
 Georg Haefele		haefele@atlas.gis.univie.ac.at
-Greg McGary		gkm@cstone.net
+Greg McGary
 Guy Lapalme		lapalme@iro.umontreal.ca
+			http://www.iro.umontreal.ca/~lapalme
 Harald Falkenberg	harald.falkenberg@desy.de
 Harald Koenig		koenig@tat.physik.uni-tuebingen.de
 Hermann Hueni		hueni@iam.unibe.ch
-Hennus Bergman		hennus@sky.ow.nl
+Hennus Bergman
 Hilmar Schlegel		hs@semic.ag-berlin.mpg.de
+Hrvoje Niksic		hniksic@srce.hr
 Jacques Madelaine	jacques@info.unicaen.fr
-Jacques Richer		richer@cerca.umontreal.ca
+			http://www.info.unicaen.r/~jacques
+Jacques Richer		Jacques.Richer@CERCA.UMontreal.CA
+			http://www.CERCA.UMontreal.CA/~richer
 Jan Djarv		jan.djarv@mbox200.swipnet.se
 Jean-Claude Nadeau	nadeau@jsp.umontreal.ca
 Jens Quade		jens@ronja.dinoco.de
 Jim Meyering		meyering@na-net.ornl.gov
-Joelle Stemp		stemp@ere.umontreal.ca
-John van Krieken	john@atcmp.nl
+Joelle Stemp
+John van Krieken	John.van.Krieken@ATComputing.nl
+			http://www.ATComputing.nl/images/pasfotos/john.jpg
 Jörg Höhle		Joerg.Hoehle@gmd.de
+			http://fit.gmd.de/~hoehle/
 Jose Joao Almeida	jj@di.uminho.pt
+			http://www.di.uminho.pt/~jj
 Julio Sanchez		jsanchez@gmv.es
 Juliusz Chroboczek	jch@clipper.ens.fr
 Juergen Zeller		zet@rupert.franken.de
-Kai Uwe Rommel		rommel@ars.muc.de
+Kai Uwe Rommel
 Karl Berry		karl@cs.umb.edu
+			http://www.cs.umb.edu/~karl/
 Keld Jørn Simonsen	keld@dkuug.dk
 Kester Habermann	kester@unix-ag.uni-kl.de
-Kevin Stuckless		kevins@rc.gc.ca
+			http://www.unix-ag.uni-kl.de/~kester/
+Kevin Stuckless		kevins@stuck.warped.com
+			http://stuck.warped.com/~kevins
+Kristian K.AŽöhntopp	kk@netuse.de
 Laurent Bourbeau	bourbeau@progiciels-bpi.ca
 Larry W. Virden		lvirden@cas.org
+			http://purl.org/net/lvirden/
 Liisa R{ih{		lr@cs.uta.fi
-Loic Dachary		loic@design.axis.fr
-Lukas Petrlik		luki@scylla.zcu.cz
+Loic Dachary
+Lukas Petrlik
 Mac Pigman		gwp@dido.caltech.edu
-Marc Gingold		gingold@amoco.saclay.cea.fr
+Marc Gingold		gingold@spht.saclay.cea.fr
+			http:////www-spht.cea.fr/doc.html
 Marc Shapiro		shapiro@prof.inria.fr
-Marc Verreault		vero@iro.umontreal.ca
+Marc Verreault
 Mario Gay		mgay@ti-edu.ch
-Markus Kuhn		mskuhn@faui01.informatik.uni-erlangen.de
-Martin J. Dürst		mduerst@ifi.unizh.ch
+Markus Kuhn		Markus.Kuhn@cl.cam.ac.uk
+			http://www.cl.cam.ac.uk/~mgk25/
+Martin J. Dürst		duerst@w3.org
+			http://www.w3.org/People/D%C3%BCrst
 Martin Maechler		maechler@stat.math.ethz.ch
 Martin Mares		mj@ucw.cz
+			http://atrey.karlin.mff.cuni.cz/~mj/
 Michael Gschwind	mike@vlsivie.tuwien.ac.at
-Michael L. Dowling	mike@mo.math.nat.tu-bs.de
+Michael L. Dowling	M.Dowling@tu-bs.de
+			http://www.mathematik.tu-bs.de
 Michael Schmidt		mschmidt@koblenz.fh-rpl.de
-Michael Shields		shields@tembel.org
-Mikko Silvonen		Mikko.Silvonen@helsinki.fi
-Nathanael Makarevitch	Nathanael.MAKAREVITCH@ifp.fr
+Michael Shields		shields@msrl.com
+			http://www.msrl.com/
+Mikko Silvonen		silvonen@iki.fi
+			http://www.iki.fi/silvonen/
+Nathanael Makarevitch
 Nathaniel Borenstein	nsb@aa.fv.com
-Nicolas Anquetil	anquetil@iro.umontreal.ca
-Nicolas Thiery		nthiery@clipper.ens.fr
+Neal McBurnett		http://bcn.boulder.co.us/~neal/
+NguyŽên-ŽÐai QuŽý		daiquy.nguyen@ulg.ac.be
+Nicolas Anquetil
+Nicolas Thiery		Nicolas.Thiery@jonas.univ-lyon1.fr
+			http://www.lmd.univ-lyon1.fr/home/nthiery/
 Niels Kr. Bech Jensen	nkbj@image.dk
-Olivier Tharan		tharan@galaxie.int-evry.fr
+			http://www.image.dk/~nkbj/
+Olivier Tharan		olive@laria.u-picardie.fr
+			http://www.laria.u-picardie.fr/~olive/
+Pawel Krawczyk		kravietz@ceti.pl
+			http://ceti.pl/~kravietz/
 Per Andersson		perand@stacken.kth.se
-Per Steinar Iversen	PerSteinar.Iversen@fi.uib.no
+Per Starback		starback@ling.uu.se
+			http://stp.ling.uu.se/~starback/me.html
+Per Steinar Iversen
+Peter Turcan		peter.turcan@minerva-is.sk
 Phyllis Frankl		phyllis@morph.poly.edu
+			http://ebbets.poly.edu/~pfrankl
 Pierre Gaumond		gaumondp@ere.umontreal.ca
 Pierre Girard		pierreg@crt.umontreal.ca
 Pierre Mathieu		mathieu@geod.emr.ca
 Povl H. Pedersen	pope@netguide.dk
-Primo.BŽ¾ Peterlin		peterlin@biofiz.mf.uni-lj.si
-Rejean Payette		rpayette@edupac.qc.ca
+Primo.BŽ¾ Peterlin		primoz.peterlin@biofiz.mf.uni-lj.si
+			http://sizif.mf.uni-lj.si/~peterlin/
+Rejean Payette		rejean.payette@rtsq.qc.ca
 Ricard Torres		torres@upf.es
 Richard Plasun		plasun@iue.tuwien.ac.at
 Richard Stallman	rms@gnu.org
 Robert Joop		rj@rainbow.in-berlin.de
 Roman Czyborra		czyborra@cs.tu-berlin.de
 Ronald C.F. Antony	rcfa@cubiculum.com
+			http://www.cubiculum.com/~rcfa
 Santiago Vila Doncel	sanvila@unex.es
 Saverio Pangoli		saverio@mystere.sci.sns.it
-Sebastian Huebner	cyco@lili.uni-bielefeld.de
+Sebastian Huebner	cyco@baud.de
+			http://www.baud.de/cyco/
+Scott Schwartz		schwartz@bio.cse.psu.edu
 Slaven Rezic		eserte@cs.tu-berlin.de
+			http://user.cs.tu-berlin.de/~eserte
 Stefan Albertz		Stefan.Albertz@rus.uni-stuttgart.de
-Stefan Haubenthal	wwwsth@sx1.hrz.uni-dortmund.de
+Stefan Haubenthal	haubi@geocities.com
+			http://home.pages.de/~haubi
 Steinar Bang		sb@metis.no
 Stephane Berube		berube@iro.umontreal.ca
 Sumit Bose		bose@physik.tu-berlin.de
 Thomas Gebhardt		gebhardt@hrz.uni-marburg.de
-Thomas M. Ott		Labalutsch@aol.com
-Thomas Seeling		Thomas.Seeling@math.uni-giessen.de
+			http://www.uni-marburg.de/hrz/mitarbeiter/gebhardt.html
+Thomas M. Ott
+Thomas Seeling
+Tom Hageman		tom@basil.icce.rug.nl
 Tom Tromey		tromey@cygnus.com
+			http://cafe.colorado.edu/~tromey/
 Ulrich Drepper		drepper@gnu.org
 Ulrich Windl		Ulrich.Windl@rz.uni-regensburg.de
+			http://www.uni-regensburg.de/Einrichtungen/Rechenzentrum/Orientierung/Mitarbeiter/windl.html
 Vern Paxson		vern@ee.lbl.gov
-Vitor Duarte		vad@fct.unl.pt
+Vitor Duarte		vad@di.fct.unl.pt
 Walter M.AŽüller		walt@pi4.informatik.uni-mannheim.de
-Wiel Seuskens		wseuskens@siteways.nl
+Wiel Seuskens		wiel@xs4all.nl
+			http://www.xs4all.nl/~wiel/
 Wilhelm Zadrapa		wfz@aon.at
 William Bader		wbader@scarecrow.csee.lehigh.edu
 Wolfgang Boerner	Wolfgang.Boerner@rz.uni-regensburg.de
 Wolfgang Wander		wwc@hermes.desy.de
-Yves Arrouye		Yves.Arrouye@imag.fr
+Yves Arrouye

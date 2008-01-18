@@ -1,3 +1,38 @@
+1999-12-19  Eli Zaretskii  <eliz@is.elta.co.il>
+
+	* recode.texi: Add index references and print indices for
+	concepts, options, library features, and charsets and surfaces.
+	Many stylistic changes, both for English and for Texinfo.  Various
+	factual errors corrected, including output from some examples.
+	* tables.py (produce_texinfo): Generate index references.
+
+1999-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Show program_name in the examples for the library
+	usage, and document its purpose.
+	Reported by Kristian Köhntopp and Pawel Krawczyk.
+
+1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (MIME contents encoding, UTF-7): Adjust RFC numbers
+	and correct historical note.
+	Reported by Neal McBurnett.
+
+1999-09-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py: Python version of tables.pl.
+	* tables.pl: Deleted.
+	* Makefile.am, Makemore: Adjusted.
+
+1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (man_MANS, recode.1): Deleted.  The man page will
+	now be built in src/ rather than here.
+
+1999-06-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Top): Use @ifnottex instead of @ifinfo.
+
 1999-04-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Do not use od in examples, recode can do it itself.

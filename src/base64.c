@@ -140,11 +140,10 @@ transform_data_base64 (RECODE_CONST_STEP step, RECODE_TASK task)
 static bool
 transform_base64_data (RECODE_CONST_STEP step, RECODE_TASK task)
 {
-  int counter;
+  int counter = 0;
   int character;
   unsigned value;
 
-  counter = 0;
   while (true)
     {
       /* Accept wrapping lines, reversibly if at each 76 characters.  */
@@ -159,17 +158,15 @@ transform_base64_data (RECODE_CONST_STEP step, RECODE_TASK task)
 
       if (character == '\n')
 	{
-	  character = get_byte (task);
-	  if (character == EOF)
-	    TASK_RETURN (task);
 	  if (counter != MIME_LINE_LENGTH / 4)
 	    RETURN_IF_NOGO (RECODE_NOT_CANONICAL, step, task);
-	  counter = 1;
+	  counter = 0;
+	  continue;
 	}
-      else
-	counter++;
 
       /* Process first byte of a quadruplet.  */
+
+      counter++;
 
       if (IS_BASE64 (character))
 	value = base64_char_to_value[character] << 18;

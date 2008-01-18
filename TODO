@@ -5,10 +5,16 @@ of these ideas, listed more or less in decreasing order of priority.
 Some TODO items are implicit from received email.  See file BACKLOG.
 Significant contributions require written assignments and disclaimers.
 
-.* Notes particulières
+.* Before next official release
 
-. + Nouvelles tables RFC 1345
-. + Révision ORA
+. + Remove TeX edition warnings, rephrase whatever required.
+. + Complete inter-node and menu references, as necessary.
+
+.* Particular notes
+
+. + Autoconf and DOSWIN
+. + New RFC 1345 tables, still many diagnostics
+. + Check notes from ORA
 . @ ~/libit/rmail/m4
 . @ ~/libit/rmail/gettext
 
@@ -45,11 +51,11 @@ Significant contributions require written assignments and disclaimers.
 . + Take note that ->RFC1345 recodings are non reversible.
 
 .* Notes about MSDOS port
-. + Un touch stamp-h a été nécessaire.
-. + @PRODUCT@ et @VERSION@ n'ont pas été substitués.
-. + Remplacer PRODUCT par PACKAGE dans config_h.*.
-. + On doit avoir -DHAVE_CONFIG_H=1 (le =1 est requis).
+. + I had to `touch stamp-h'.
+. + @PRODUCT@ and @VERSION@ were not substituted.
+. + Replace PRODUCT by PACKAGE within config_h.*.
+. + One should have -DHAVE_CONFIG_H=1 (the `=1' is required).
 . + charset.c:637: Maybe incorrect assignment in init_table_for_rfc1345().
-. + LIBINTL.OBJ et LOCALE.OBJ n'étaient pas compilés.
-. + La règle pour compiler LIBINTL.OBJ était absente.
-. + readme.tcc doit devenir README.DOS en cours de route.
+. + LIBINTL.OBJ and LOCALE.OBJ were not compiled.
+. + Rule to compile LIBINTL.OBJ was missing.
+. + readme.tcc should become README.DOS as things go.

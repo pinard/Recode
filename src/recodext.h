@@ -513,6 +513,12 @@ struct ucs2_to_string
     const char *string;		/* corresponding string */
   };
 
+/* Per module declarations.  */
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* recode.c.  */
 
 #define ALLOC_SIZE(Variable, Size, Type) \
@@ -540,7 +546,7 @@ bool init_ucs2_to_byte PARAMS ((RECODE_STEP, RECODE_CONST_REQUEST,
 				RECODE_CONST_OPTION_LIST,
 				RECODE_CONST_OPTION_LIST));
 bool transform_ucs2_to_byte PARAMS ((RECODE_CONST_STEP, RECODE_TASK));
-
+
 /* charname.c and fr-charname.c.  */
 
 const char *ucs2_to_charname PARAMS ((int));
@@ -657,6 +663,10 @@ bool get_ucs2 PARAMS ((unsigned *, RECODE_CONST_STEP, RECODE_TASK));
 bool get_ucs4 PARAMS ((unsigned *, RECODE_CONST_STEP, RECODE_TASK));
 bool put_ucs2 PARAMS ((unsigned, RECODE_TASK));
 bool put_ucs4 PARAMS ((unsigned, RECODE_TASK));
+
+#ifdef __cplusplus
+}
+#endif
 
 /* Global macros specifically for `recode'.  */
 

@@ -60,331 +60,322 @@
 #define V40		(1 << 5)
 
 #define ENTRY(Code, String, Flags) \
-  { Code, 0 Flags, String }
+  { Code, Flags, String }
 
-static struct ucs2_to_string main_translations [] =
+static struct ucs2_to_string translations [] =
   {
-    ENTRY (33, "excl",							),
-    ENTRY (34, "quot",			| V20				),
-    ENTRY (35, "num",							),
-    ENTRY (36, "dollar",						),
-    ENTRY (37, "percnt",						),
-    ENTRY (38, "amp",		| V11	| V20				),
-    ENTRY (39, "apos",							),
-    ENTRY (40, "lpar",							),
-    ENTRY (41, "rpar",							),
-    ENTRY (42, "ast",							),
-    ENTRY (43, "plus",							),
-    ENTRY (44, "comma",							),
-    ENTRY (45, "horbar",						),
-    ENTRY (46, "period",						),
-    ENTRY (58, "colon",							),
-    ENTRY (59, "semi",							),
-    ENTRY (60, "lt",		| V11	| V20				),
-    ENTRY (61, "equals",						),
-    ENTRY (62, "gt",		| V11	| V20				),
-    ENTRY (63, "quest",							),
-    ENTRY (64, "commat",						),
-    ENTRY (91, "lsqb",							),
-    ENTRY (93, "rsqb",							),
-    ENTRY (94, "uarr",							),
-    ENTRY (95, "lowbar",						),
-    ENTRY (96, "grave",							),
-    ENTRY (123, "lcub",							),
-    ENTRY (124, "verbar",						),
-    ENTRY (125, "rcub",							),
-    ENTRY (126, "tilde",						),
-    ENTRY (160, "nbsp",				| V27	| V32	| V40	),
-    ENTRY (161, "iexcl",			| V27	| V32	| V40	),
-    ENTRY (162, "cent",				| V27	| V32	| V40	),
-    ENTRY (163, "pound",			| V27	| V32	| V40	),
-    ENTRY (164, "curren",			| V27	| V32	| V40	),
-    ENTRY (165, "yen",				| V27	| V32	| V40	),
-    ENTRY (166, "brkbar",	| V11					),
-    ENTRY (166, "brvbar",			| V27	| V32	| V40	),
-    ENTRY (167, "sect",				| V27	| V32	| V40	),
-    ENTRY (168, "die",		| V11					),
-    ENTRY (168, "uml",				| V27	| V32	| V40	),
-    ENTRY (169, "copy",				| V27	| V32	| V40	),
-    ENTRY (170, "ordf",				| V27	| V32	| V40	),
-    ENTRY (171, "laquo",			| V27	| V32	| V40	),
-    ENTRY (172, "not",				| V27	| V32	| V40	),
-    ENTRY (173, "hyphen",	| V11					),
-    ENTRY (173, "shy",				| V27	| V32	| V40	),
-    ENTRY (174, "reg",				| V27	| V32	| V40	),
-    ENTRY (175, "hibar",	| V11					),
-    ENTRY (175, "macr",				| V27	| V32	| V40	),
-    ENTRY (176, "deg",				| V27	| V32	| V40	),
-    ENTRY (177, "plusmn",			| V27	| V32	| V40	),
-    ENTRY (178, "sup2",				| V27	| V32	| V40	),
-    ENTRY (179, "sup3",				| V27	| V32	| V40	),
-    ENTRY (180, "acute",			| V27	| V32	| V40	),
-    ENTRY (181, "micro",			| V27	| V32	| V40	),
-    ENTRY (182, "para",				| V27	| V32	| V40	),
-    ENTRY (183, "middot",			| V27	| V32	| V40	),
-    ENTRY (184, "cedil",			| V27	| V32	| V40	),
-    ENTRY (185, "sup1",				| V27	| V32	| V40	),
-    ENTRY (186, "ordm",				| V27	| V32	| V40	),
-    ENTRY (187, "raquo",			| V27	| V32	| V40	),
-    ENTRY (188, "frac14",			| V27	| V32	| V40	),
-    ENTRY (189, "half",		| V11					),
-    ENTRY (189, "frac12",			| V27	| V32	| V40	),
-    ENTRY (190, "frac34",			| V27	| V32	| V40	),
-    ENTRY (191, "iquest",			| V27	| V32	| V40	),
-    ENTRY (192, "Agrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (193, "Aacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (194, "Acircu",	| V11					),
-    ENTRY (194, "Acirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (195, "Atilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (196, "Adiaer",	| V11					),
-    ENTRY (196, "Auml",			| V20	| V27	| V32	| V40	),
-    ENTRY (197, "Aring",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (198, "AE",		| V11					),
-    ENTRY (198, "AElig",		| V20	| V27	| V32	| V40	),
-    ENTRY (199, "Ccedil",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (200, "Egrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (201, "Eacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (202, "Ecircu",	| V11					),
-    ENTRY (202, "Ecirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (203, "Ediaer",	| V11					),
-    ENTRY (203, "Euml",			| V20	| V27	| V32	| V40	),
-    ENTRY (204, "Igrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (205, "Iacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (206, "Icircu",	| V11					),
-    ENTRY (206, "Icirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (207, "Idiaer",	| V11					),
-    ENTRY (207, "Iuml",			| V20	| V27	| V32	| V40	),
-    ENTRY (208, "ETH",		| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (209, "Ntilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (210, "Ograve",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (211, "Oacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (212, "Ocircu",	| V11					),
-    ENTRY (212, "Ocirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (213, "Otilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (214, "Odiaer",	| V11					),
-    ENTRY (214, "Ouml",			| V20	| V27	| V32	| V40	),
-    ENTRY (215, "MULT",		| V11					),
-    ENTRY (215, "times",			| V27	| V32	| V40	),
-    ENTRY (216, "Ostroke",	| V11					),
-    ENTRY (216, "Oslash",		| V20	| V27	| V32	| V40	),
-    ENTRY (217, "Ugrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (218, "Uacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (219, "Ucircu",	| V11					),
-    ENTRY (219, "Ucirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (220, "Udiaer",	| V11					),
-    ENTRY (220, "Uuml",			| V20	| V27	| V32	| V40	),
-    ENTRY (221, "Yacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (222, "THORN",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (223, "ssharp",	| V11					),
-    ENTRY (223, "szlig",		| V20	| V27	| V32	| V40	),
-    ENTRY (224, "agrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (225, "aacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (226, "acircu",	| V11					),
-    ENTRY (226, "acirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (227, "atilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (228, "adiaer",	| V11					),
-    ENTRY (228, "auml",			| V20	| V27	| V32	| V40	),
-    ENTRY (229, "aring",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (230, "ae",		| V11					),
-    ENTRY (230, "aelig",		| V20	| V27	| V32	| V40	),
-    ENTRY (231, "ccedil",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (232, "egrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (233, "eacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (234, "ecircu",	| V11					),
-    ENTRY (234, "ecirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (235, "ediaer",	| V11					),
-    ENTRY (235, "euml",			| V20	| V27	| V32	| V40	),
-    ENTRY (236, "igrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (237, "iacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (238, "icircu",	| V11					),
-    ENTRY (238, "icirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (239, "idiaer",	| V11					),
-    ENTRY (239, "iuml",			| V20	| V27	| V32	| V40	),
-    ENTRY (240, "eth",		| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (241, "ntilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (242, "ograve",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (243, "oacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (244, "ocircu",	| V11					),
-    ENTRY (244, "ocirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (245, "otilde",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (246, "odiaer",	| V11					),
-    ENTRY (246, "ouml",			| V20	| V27	| V32	| V40	),
-    ENTRY (247, "DIVIS",	| V11					),
-    ENTRY (247, "divide",			| V27	| V32	| V40	),
-    ENTRY (248, "ostroke",	| V11					),
-    ENTRY (248, "oslash",		| V20	| V27	| V32	| V40	),
-    ENTRY (249, "ugrave",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (250, "uacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (251, "ucircu",	| V11					),
-    ENTRY (251, "ucirc",		| V20	| V27	| V32	| V40	),
-    ENTRY (252, "udiaer",	| V11					),
-    ENTRY (252, "uuml",			| V20	| V27	| V32	| V40	),
-    ENTRY (253, "yacute",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (254, "thorn",	| V11	| V20	| V27	| V32	| V40	),
-    ENTRY (255, "ydiaer",	| V11					),
-    ENTRY (255, "yuml",			| V20	| V27	| V32	| V40	),
-    ENTRY (338, "OElig",					| V40	),
-    ENTRY (339, "oelig",					| V40	),
-    ENTRY (352, "Scaron",					| V40	),
-    ENTRY (353, "scaron",					| V40	),
-    ENTRY (376, "Yuml",						| V40	),
-    ENTRY (402, "fnof",						| V40	),
-    ENTRY (710, "circ",						| V40	),
-    ENTRY (732, "tilde",					| V40	),
-    ENTRY (913, "Alpha",					| V40	),
-    ENTRY (914, "Beta",						| V40	),
-    ENTRY (915, "Gamma",					| V40	),
-    ENTRY (916, "Delta",					| V40	),
-    ENTRY (917, "Epsilon",					| V40	),
-    ENTRY (918, "Zeta",						| V40	),
-    ENTRY (919, "Eta",						| V40	),
-    ENTRY (920, "Theta",					| V40	),
-    ENTRY (921, "Iota",						| V40	),
-    ENTRY (922, "Kappa",					| V40	),
-    ENTRY (923, "Lambda",					| V40	),
-    ENTRY (924, "Mu",						| V40	),
-    ENTRY (925, "Nu",						| V40	),
-    ENTRY (926, "Xi",						| V40	),
-    ENTRY (927, "Omicron",					| V40	),
-    ENTRY (928, "Pi",						| V40	),
-    ENTRY (929, "Rho",						| V40	),
-    ENTRY (931, "Sigma",					| V40	),
-    ENTRY (932, "Tau",						| V40	),
-    ENTRY (933, "Upsilon",					| V40	),
-    ENTRY (934, "Phi",						| V40	),
-    ENTRY (935, "Chi",						| V40	),
-    ENTRY (936, "Psi",						| V40	),
-    ENTRY (937, "Omega",					| V40	),
-    ENTRY (945, "alpha",					| V40	),
-    ENTRY (946, "beta",						| V40	),
-    ENTRY (947, "gamma",					| V40	),
-    ENTRY (948, "delta",					| V40	),
-    ENTRY (949, "epsilon",					| V40	),
-    ENTRY (950, "zeta",						| V40	),
-    ENTRY (951, "eta",						| V40	),
-    ENTRY (952, "theta",					| V40	),
-    ENTRY (953, "iota",						| V40	),
-    ENTRY (954, "kappa",					| V40	),
-    ENTRY (955, "lambda",					| V40	),
-    ENTRY (956, "mu",						| V40	),
-    ENTRY (957, "nu",						| V40	),
-    ENTRY (958, "xi",						| V40	),
-    ENTRY (959, "omicron",					| V40	),
-    ENTRY (960, "pi",						| V40	),
-    ENTRY (961, "rho",						| V40	),
-    ENTRY (962, "sigmaf",					| V40	),
-    ENTRY (963, "sigma",					| V40	),
-    ENTRY (964, "tau",						| V40	),
-    ENTRY (965, "upsilon",					| V40	),
-    ENTRY (966, "phi",						| V40	),
-    ENTRY (967, "chi",						| V40	),
-    ENTRY (968, "psi",						| V40	),
-    ENTRY (969, "omega",					| V40	),
-    ENTRY (977, "thetasym",					| V40	),
-    ENTRY (978, "upsih",					| V40	),
-    ENTRY (982, "piv",						| V40	),
-    ENTRY (8194, "ensp",					| V40	),
-    ENTRY (8195, "emsp",					| V40	),
-    ENTRY (8201, "thinsp",					| V40	),
-    ENTRY (8204, "zwnj",			| V27		| V40	),
-    ENTRY (8205, "zwj",				| V27		| V40	),
-    ENTRY (8206, "lrm",				| V27		| V40	),
-    ENTRY (8207, "rlm",				| V27		| V40	),
-    ENTRY (8211, "ndash",					| V40	),
-    ENTRY (8212, "mdash",					| V40	),
-    ENTRY (8216, "lsquo",					| V40	),
-    ENTRY (8217, "rsquo",					| V40	),
-    ENTRY (8218, "sbquo",					| V40	),
-    ENTRY (8220, "ldquo",					| V40	),
-    ENTRY (8221, "rdquo",					| V40	),
-    ENTRY (8222, "bdquo",					| V40	),
-    ENTRY (8224, "dagger",					| V40	),
-    ENTRY (8225, "Dagger",					| V40	),
-    ENTRY (8226, "bull",					| V40	),
-    ENTRY (8230, "hellip",					| V40	),
-    ENTRY (8240, "permil",					| V40	),
-    ENTRY (8242, "prime",					| V40	),
-    ENTRY (8243, "Prime",					| V40	),
-    ENTRY (8249, "lsaquo",					| V40	),
-    ENTRY (8250, "rsaquo",					| V40	),
-    ENTRY (8254, "oline",					| V40	),
-    ENTRY (8260, "frasl",					| V40	),
-    ENTRY (8364, "euro",					| V40	),
-    ENTRY (8465, "image",					| V40	),
-    ENTRY (8472, "weierp",					| V40	),
-    ENTRY (8476, "real",					| V40	),
-    ENTRY (8482, "trade",					| V40	),
-    ENTRY (8501, "alefsym",					| V40	),
-    ENTRY (8592, "larr",					| V40	),
-    ENTRY (8593, "uarr",					| V40	),
-    ENTRY (8594, "rarr",					| V40	),
-    ENTRY (8595, "darr",					| V40	),
-    ENTRY (8596, "harr",					| V40	),
-    ENTRY (8629, "crarr",					| V40	),
-    ENTRY (8656, "lArr",					| V40	),
-    ENTRY (8657, "uArr",					| V40	),
-    ENTRY (8658, "rArr",					| V40	),
-    ENTRY (8659, "dArr",					| V40	),
-    ENTRY (8660, "hArr",					| V40	),
-    ENTRY (8704, "forall",					| V40	),
-    ENTRY (8706, "part",					| V40	),
-    ENTRY (8707, "exist",					| V40	),
-    ENTRY (8709, "empty",					| V40	),
-    ENTRY (8711, "nabla",					| V40	),
-    ENTRY (8712, "isin",					| V40	),
-    ENTRY (8713, "notin",					| V40	),
-    ENTRY (8715, "ni",						| V40	),
-    ENTRY (8719, "prod",					| V40	),
-    ENTRY (8721, "sum",						| V40	),
-    ENTRY (8722, "minus",					| V40	),
-    ENTRY (8727, "lowast",					| V40	),
-    ENTRY (8730, "radic",					| V40	),
-    ENTRY (8733, "prop",					| V40	),
-    ENTRY (8734, "infin",					| V40	),
-    ENTRY (8736, "ang",						| V40	),
-    ENTRY (8743, "and",						| V40	),
-    ENTRY (8744, "or",						| V40	),
-    ENTRY (8745, "cap",						| V40	),
-    ENTRY (8746, "cup",						| V40	),
-    ENTRY (8747, "int",						| V40	),
-    ENTRY (8756, "there4",					| V40	),
-    ENTRY (8764, "sim",						| V40	),
-    ENTRY (8773, "cong",					| V40	),
-    ENTRY (8776, "asymp",					| V40	),
-    ENTRY (8800, "ne",						| V40	),
-    ENTRY (8801, "equiv",					| V40	),
-    ENTRY (8804, "le",						| V40	),
-    ENTRY (8805, "ge",						| V40	),
-    ENTRY (8834, "sub",						| V40	),
-    ENTRY (8835, "sup",						| V40	),
-    ENTRY (8836, "nsub",					| V40	),
-    ENTRY (8838, "sube",					| V40	),
-    ENTRY (8839, "supe",					| V40	),
-    ENTRY (8853, "oplus",					| V40	),
-    ENTRY (8855, "otimes",					| V40	),
-    ENTRY (8869, "perp",					| V40	),
-    ENTRY (8901, "sdot",					| V40	),
-    ENTRY (8968, "lceil",					| V40	),
-    ENTRY (8969, "rceil",					| V40	),
-    ENTRY (8970, "lfloor",					| V40	),
-    ENTRY (8971, "rfloor",					| V40	),
-    ENTRY (9001, "lang",					| V40	),
-    ENTRY (9002, "rang",					| V40	),
-    ENTRY (9674, "loz",						| V40	),
-    ENTRY (9824, "spades",					| V40	),
-    ENTRY (9827, "clubs",					| V40	),
-    ENTRY (9829, "hearts",					| V40	),
-    ENTRY (9830, "diams",					| V40	),
-    ENTRY (0, NULL,							)
-  };
-
-static struct ucs2_to_string const other_translations [] =
-  {
-    ENTRY (34, "quot", 							),
-    ENTRY (38, "amp", 							),
-    ENTRY (60, "lt", 							),
-    ENTRY (62, "gt", 							),
-    ENTRY (0, NULL,							)
+    ENTRY (33, "excl",      0				   ),
+    ENTRY (34, "quot",      0	    | V20 | V27 | V32 | V40),
+    ENTRY (35, "num",       0				   ),
+    ENTRY (36, "dollar",    0				   ),
+    ENTRY (37, "percnt",    0				   ),
+    ENTRY (38, "amp",       0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (39, "apos",      0				   ),
+    ENTRY (40, "lpar",      0				   ),
+    ENTRY (41, "rpar",      0				   ),
+    ENTRY (42, "ast",       0				   ),
+    ENTRY (43, "plus",      0				   ),
+    ENTRY (44, "comma",     0				   ),
+    ENTRY (45, "horbar",    0				   ),
+    ENTRY (46, "period",    0				   ),
+    ENTRY (58, "colon",     0				   ),
+    ENTRY (59, "semi",      0				   ),
+    ENTRY (60, "lt",        0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (61, "equals",    0				   ),
+    ENTRY (62, "gt",        0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (63, "quest",     0				   ),
+    ENTRY (64, "commat",    0				   ),
+    ENTRY (91, "lsqb",      0				   ),
+    ENTRY (93, "rsqb",      0				   ),
+    ENTRY (94, "uarr",      0				   ),
+    ENTRY (95, "lowbar",    0				   ),
+    ENTRY (96, "grave",     0				   ),
+    ENTRY (123, "lcub",     0				   ),
+    ENTRY (124, "verbar",   0				   ),
+    ENTRY (125, "rcub",     0				   ),
+    ENTRY (126, "tilde",    0				   ),
+    ENTRY (160, "nbsp",     0		  | V27 | V32 | V40),
+    ENTRY (161, "iexcl",    0		  | V27 | V32 | V40),
+    ENTRY (162, "cent",     0		  | V27 | V32 | V40),
+    ENTRY (163, "pound",    0		  | V27 | V32 | V40),
+    ENTRY (164, "curren",   0		  | V27 | V32 | V40),
+    ENTRY (165, "yen",      0		  | V27 | V32 | V40),
+    ENTRY (166, "brkbar",   0 | V11                        ),
+    ENTRY (166, "brvbar",   0		  | V27 | V32 | V40),
+    ENTRY (167, "sect",     0		  | V27 | V32 | V40),
+    ENTRY (168, "die",      0 | V11                        ),
+    ENTRY (168, "uml",      0		  | V27 | V32 | V40),
+    ENTRY (169, "copy",     0		  | V27 | V32 | V40),
+    ENTRY (170, "ordf",     0		  | V27 | V32 | V40),
+    ENTRY (171, "laquo",    0		  | V27 | V32 | V40),
+    ENTRY (172, "not",      0		  | V27 | V32 | V40),
+    ENTRY (173, "hyphen",   0 | V11                        ),
+    ENTRY (173, "shy",      0		  | V27 | V32 | V40),
+    ENTRY (174, "reg",      0		  | V27 | V32 | V40),
+    ENTRY (175, "hibar",    0 | V11                        ),
+    ENTRY (175, "macr",     0		  | V27 | V32 | V40),
+    ENTRY (176, "deg",      0		  | V27 | V32 | V40),
+    ENTRY (177, "plusmn",   0		  | V27 | V32 | V40),
+    ENTRY (178, "sup2",     0		  | V27 | V32 | V40),
+    ENTRY (179, "sup3",     0		  | V27 | V32 | V40),
+    ENTRY (180, "acute",    0		  | V27 | V32 | V40),
+    ENTRY (181, "micro",    0		  | V27 | V32 | V40),
+    ENTRY (182, "para",     0		  | V27 | V32 | V40),
+    ENTRY (183, "middot",   0		  | V27 | V32 | V40),
+    ENTRY (184, "cedil",    0		  | V27 | V32 | V40),
+    ENTRY (185, "sup1",     0		  | V27 | V32 | V40),
+    ENTRY (186, "ordm",     0		  | V27 | V32 | V40),
+    ENTRY (187, "raquo",    0		  | V27 | V32 | V40),
+    ENTRY (188, "frac14",   0		  | V27 | V32 | V40),
+    ENTRY (189, "half",     0 | V11                        ),
+    ENTRY (189, "frac12",   0		  | V27 | V32 | V40),
+    ENTRY (190, "frac34",   0		  | V27 | V32 | V40),
+    ENTRY (191, "iquest",   0		  | V27 | V32 | V40),
+    ENTRY (192, "Agrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (193, "Aacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (194, "Acircu",   0 | V11                        ),
+    ENTRY (194, "Acirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (195, "Atilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (196, "Adiaer",   0 | V11                        ),
+    ENTRY (196, "Auml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (197, "Aring",    0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (198, "AE",       0 | V11                        ),
+    ENTRY (198, "AElig",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (199, "Ccedil",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (200, "Egrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (201, "Eacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (202, "Ecircu",   0 | V11                        ),
+    ENTRY (202, "Ecirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (203, "Ediaer",   0 | V11                        ),
+    ENTRY (203, "Euml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (204, "Igrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (205, "Iacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (206, "Icircu",   0 | V11                        ),
+    ENTRY (206, "Icirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (207, "Idiaer",   0 | V11                        ),
+    ENTRY (207, "Iuml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (208, "ETH",      0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (209, "Ntilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (210, "Ograve",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (211, "Oacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (212, "Ocircu",   0 | V11                        ),
+    ENTRY (212, "Ocirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (213, "Otilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (214, "Odiaer",   0 | V11                        ),
+    ENTRY (214, "Ouml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (215, "MULT",     0 | V11                        ),
+    ENTRY (215, "times",    0		  | V27 | V32 | V40),
+    ENTRY (216, "Ostroke",  0 | V11                        ),
+    ENTRY (216, "Oslash",   0	    | V20 | V27 | V32 | V40),
+    ENTRY (217, "Ugrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (218, "Uacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (219, "Ucircu",   0 | V11                        ),
+    ENTRY (219, "Ucirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (220, "Udiaer",   0 | V11                        ),
+    ENTRY (220, "Uuml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (221, "Yacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (222, "THORN",    0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (223, "ssharp",   0 | V11                        ),
+    ENTRY (223, "szlig",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (224, "agrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (225, "aacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (226, "acircu",   0 | V11                        ),
+    ENTRY (226, "acirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (227, "atilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (228, "adiaer",   0 | V11                        ),
+    ENTRY (228, "auml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (229, "aring",    0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (230, "ae",       0 | V11                        ),
+    ENTRY (230, "aelig",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (231, "ccedil",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (232, "egrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (233, "eacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (234, "ecircu",   0 | V11                        ),
+    ENTRY (234, "ecirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (235, "ediaer",   0 | V11                        ),
+    ENTRY (235, "euml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (236, "igrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (237, "iacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (238, "icircu",   0 | V11                        ),
+    ENTRY (238, "icirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (239, "idiaer",   0 | V11                        ),
+    ENTRY (239, "iuml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (240, "eth",      0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (241, "ntilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (242, "ograve",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (243, "oacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (244, "ocircu",   0 | V11                        ),
+    ENTRY (244, "ocirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (245, "otilde",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (246, "odiaer",   0 | V11                        ),
+    ENTRY (246, "ouml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (247, "DIVIS",    0 | V11                        ),
+    ENTRY (247, "divide",   0		  | V27 | V32 | V40),
+    ENTRY (248, "ostroke",  0 | V11                        ),
+    ENTRY (248, "oslash",   0	    | V20 | V27 | V32 | V40),
+    ENTRY (249, "ugrave",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (250, "uacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (251, "ucircu",   0 | V11                        ),
+    ENTRY (251, "ucirc",    0	    | V20 | V27 | V32 | V40),
+    ENTRY (252, "udiaer",   0 | V11                        ),
+    ENTRY (252, "uuml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (253, "yacute",   0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (254, "thorn",    0 | V11 | V20 | V27 | V32 | V40),
+    ENTRY (255, "ydiaer",   0 | V11                        ),
+    ENTRY (255, "yuml",     0	    | V20 | V27 | V32 | V40),
+    ENTRY (338, "OElig",    0			      | V40),
+    ENTRY (339, "oelig",    0			      | V40),
+    ENTRY (352, "Scaron",   0			      | V40),
+    ENTRY (353, "scaron",   0			      | V40),
+    ENTRY (376, "Yuml",     0			      | V40),
+    ENTRY (402, "fnof",     0			      | V40),
+    ENTRY (710, "circ",     0			      | V40),
+    ENTRY (732, "tilde",    0			      | V40),
+    ENTRY (913, "Alpha",    0			      | V40),
+    ENTRY (914, "Beta",     0			      | V40),
+    ENTRY (915, "Gamma",    0			      | V40),
+    ENTRY (916, "Delta",    0			      | V40),
+    ENTRY (917, "Epsilon",  0			      | V40),
+    ENTRY (918, "Zeta",     0			      | V40),
+    ENTRY (919, "Eta",      0			      | V40),
+    ENTRY (920, "Theta",    0			      | V40),
+    ENTRY (921, "Iota",     0			      | V40),
+    ENTRY (922, "Kappa",    0			      | V40),
+    ENTRY (923, "Lambda",   0			      | V40),
+    ENTRY (924, "Mu",       0			      | V40),
+    ENTRY (925, "Nu",       0			      | V40),
+    ENTRY (926, "Xi",       0			      | V40),
+    ENTRY (927, "Omicron",  0			      | V40),
+    ENTRY (928, "Pi",       0			      | V40),
+    ENTRY (929, "Rho",      0			      | V40),
+    ENTRY (931, "Sigma",    0			      | V40),
+    ENTRY (932, "Tau",      0			      | V40),
+    ENTRY (933, "Upsilon",  0			      | V40),
+    ENTRY (934, "Phi",      0			      | V40),
+    ENTRY (935, "Chi",      0			      | V40),
+    ENTRY (936, "Psi",      0			      | V40),
+    ENTRY (937, "Omega",    0			      | V40),
+    ENTRY (945, "alpha",    0			      | V40),
+    ENTRY (946, "beta",     0			      | V40),
+    ENTRY (947, "gamma",    0			      | V40),
+    ENTRY (948, "delta",    0			      | V40),
+    ENTRY (949, "epsilon",  0			      | V40),
+    ENTRY (950, "zeta",     0			      | V40),
+    ENTRY (951, "eta",      0			      | V40),
+    ENTRY (952, "theta",    0			      | V40),
+    ENTRY (953, "iota",     0			      | V40),
+    ENTRY (954, "kappa",    0			      | V40),
+    ENTRY (955, "lambda",   0			      | V40),
+    ENTRY (956, "mu",       0			      | V40),
+    ENTRY (957, "nu",       0			      | V40),
+    ENTRY (958, "xi",       0			      | V40),
+    ENTRY (959, "omicron",  0			      | V40),
+    ENTRY (960, "pi",       0			      | V40),
+    ENTRY (961, "rho",      0			      | V40),
+    ENTRY (962, "sigmaf",   0			      | V40),
+    ENTRY (963, "sigma",    0			      | V40),
+    ENTRY (964, "tau",      0			      | V40),
+    ENTRY (965, "upsilon",  0			      | V40),
+    ENTRY (966, "phi",      0			      | V40),
+    ENTRY (967, "chi",      0			      | V40),
+    ENTRY (968, "psi",      0			      | V40),
+    ENTRY (969, "omega",    0			      | V40),
+    ENTRY (977, "thetasym", 0			      | V40),
+    ENTRY (978, "upsih",    0			      | V40),
+    ENTRY (982, "piv",      0			      | V40),
+    ENTRY (8194, "ensp",    0			      | V40),
+    ENTRY (8195, "emsp",    0			      | V40),
+    ENTRY (8201, "thinsp",  0			      | V40),
+    ENTRY (8204, "zwnj",    0		  | V27       | V40),
+    ENTRY (8205, "zwj",     0		  | V27       | V40),
+    ENTRY (8206, "lrm",     0		  | V27       | V40),
+    ENTRY (8207, "rlm",     0		  | V27       | V40),
+    ENTRY (8211, "ndash",   0			      | V40),
+    ENTRY (8212, "mdash",   0			      | V40),
+    ENTRY (8216, "lsquo",   0			      | V40),
+    ENTRY (8217, "rsquo",   0			      | V40),
+    ENTRY (8218, "sbquo",   0			      | V40),
+    ENTRY (8220, "ldquo",   0			      | V40),
+    ENTRY (8221, "rdquo",   0			      | V40),
+    ENTRY (8222, "bdquo",   0			      | V40),
+    ENTRY (8224, "dagger",  0			      | V40),
+    ENTRY (8225, "Dagger",  0			      | V40),
+    ENTRY (8226, "bull",    0			      | V40),
+    ENTRY (8230, "hellip",  0			      | V40),
+    ENTRY (8240, "permil",  0			      | V40),
+    ENTRY (8242, "prime",   0			      | V40),
+    ENTRY (8243, "Prime",   0			      | V40),
+    ENTRY (8249, "lsaquo",  0			      | V40),
+    ENTRY (8250, "rsaquo",  0			      | V40),
+    ENTRY (8254, "oline",   0			      | V40),
+    ENTRY (8260, "frasl",   0			      | V40),
+    ENTRY (8364, "euro",    0			      | V40),
+    ENTRY (8465, "image",   0			      | V40),
+    ENTRY (8472, "weierp",  0			      | V40),
+    ENTRY (8476, "real",    0			      | V40),
+    ENTRY (8482, "trade",   0			      | V40),
+    ENTRY (8501, "alefsym", 0			      | V40),
+    ENTRY (8592, "larr",    0			      | V40),
+    ENTRY (8593, "uarr",    0			      | V40),
+    ENTRY (8594, "rarr",    0			      | V40),
+    ENTRY (8595, "darr",    0			      | V40),
+    ENTRY (8596, "harr",    0			      | V40),
+    ENTRY (8629, "crarr",   0			      | V40),
+    ENTRY (8656, "lArr",    0			      | V40),
+    ENTRY (8657, "uArr",    0			      | V40),
+    ENTRY (8658, "rArr",    0			      | V40),
+    ENTRY (8659, "dArr",    0			      | V40),
+    ENTRY (8660, "hArr",    0			      | V40),
+    ENTRY (8704, "forall",  0			      | V40),
+    ENTRY (8706, "part",    0			      | V40),
+    ENTRY (8707, "exist",   0			      | V40),
+    ENTRY (8709, "empty",   0			      | V40),
+    ENTRY (8711, "nabla",   0			      | V40),
+    ENTRY (8712, "isin",    0			      | V40),
+    ENTRY (8713, "notin",   0			      | V40),
+    ENTRY (8715, "ni",      0			      | V40),
+    ENTRY (8719, "prod",    0			      | V40),
+    ENTRY (8721, "sum",     0			      | V40),
+    ENTRY (8722, "minus",   0			      | V40),
+    ENTRY (8727, "lowast",  0			      | V40),
+    ENTRY (8730, "radic",   0			      | V40),
+    ENTRY (8733, "prop",    0			      | V40),
+    ENTRY (8734, "infin",   0			      | V40),
+    ENTRY (8736, "ang",     0			      | V40),
+    ENTRY (8743, "and",     0			      | V40),
+    ENTRY (8744, "or",      0			      | V40),
+    ENTRY (8745, "cap",     0			      | V40),
+    ENTRY (8746, "cup",     0			      | V40),
+    ENTRY (8747, "int",     0			      | V40),
+    ENTRY (8756, "there4",  0			      | V40),
+    ENTRY (8764, "sim",     0			      | V40),
+    ENTRY (8773, "cong",    0			      | V40),
+    ENTRY (8776, "asymp",   0			      | V40),
+    ENTRY (8800, "ne",      0			      | V40),
+    ENTRY (8801, "equiv",   0			      | V40),
+    ENTRY (8804, "le",      0			      | V40),
+    ENTRY (8805, "ge",      0			      | V40),
+    ENTRY (8834, "sub",     0			      | V40),
+    ENTRY (8835, "sup",     0			      | V40),
+    ENTRY (8836, "nsub",    0			      | V40),
+    ENTRY (8838, "sube",    0			      | V40),
+    ENTRY (8839, "supe",    0			      | V40),
+    ENTRY (8853, "oplus",   0			      | V40),
+    ENTRY (8855, "otimes",  0			      | V40),
+    ENTRY (8869, "perp",    0			      | V40),
+    ENTRY (8901, "sdot",    0			      | V40),
+    ENTRY (8968, "lceil",   0			      | V40),
+    ENTRY (8969, "rceil",   0			      | V40),
+    ENTRY (8970, "lfloor",  0			      | V40),
+    ENTRY (8971, "rfloor",  0			      | V40),
+    ENTRY (9001, "lang",    0			      | V40),
+    ENTRY (9002, "rang",    0			      | V40),
+    ENTRY (9674, "loz",     0			      | V40),
+    ENTRY (9824, "spades",  0			      | V40),
+    ENTRY (9827, "clubs",   0			      | V40),
+    ENTRY (9829, "hearts",  0			      | V40),
+    ENTRY (9830, "diams",   0			      | V40),
+    ENTRY (0,    NULL,      0                              )
   };
 
 #undef ENTRY
@@ -439,12 +430,9 @@ init_ucs2_html (RECODE_STEP step,
   if (!table)
     return false;
 
-  for (cursor = main_translations; cursor->code; cursor++)
-    if (cursor->code > 128 && cursor->flags & mask)
-      if (!hash_insert (table, cursor))
-	return false;
-  if (!request->diacritics_only)
-    for (cursor = other_translations; cursor->code; cursor++)
+  for (cursor = translations; cursor->code; cursor++)
+    if (cursor->flags & mask
+	&& (!request->diacritics_only || cursor->code > 128))
       if (!hash_insert (table, cursor))
 	return false;
 
@@ -452,10 +440,6 @@ init_ucs2_html (RECODE_STEP step,
   step->step_table = table;
   return true;
 }
-
-/*-----------------.
-| Initialisation.  |
-`-----------------*/
 
 static bool
 init_ucs2_html_v11 (RECODE_STEP step,
@@ -502,6 +486,10 @@ init_ucs2_html_v40 (RECODE_STEP step,
   init_ucs2_html (step, request, before_options, after_options, V40);
 }
 
+/*-----------------.
+| Transformation.  |
+`-----------------*/
+
 static bool
 transform_ucs2_html (RECODE_CONST_STEP step, RECODE_TASK task)
 {
@@ -527,7 +515,7 @@ transform_ucs2_html (RECODE_CONST_STEP step, RECODE_TASK task)
 	    }
 	  put_byte (';', task);
 	}
-      else if ((value < 32 || value >= 127) && value != '\n')
+      else if (value < 32 && value != '\n' && value != '\t' || value >= 127)
 	{
 	  unsigned divider = 10000;
 
@@ -608,12 +596,9 @@ init_html_ucs2 (RECODE_STEP step,
   if (!table)
     return false;
 
-  for (cursor = main_translations; cursor->code; cursor++)
-    if (cursor->flags & mask)
-      if (!hash_insert (table, cursor))
-	return false;
-  if (!request->diacritics_only)
-    for (cursor = other_translations; cursor->code; cursor++)
+  for (cursor = translations; cursor->code; cursor++)
+    if (cursor->flags & mask
+	&& (!request->diacritics_only || cursor->code > 128))
       if (!hash_insert (table, cursor))
 	return false;
 
@@ -678,6 +663,9 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
   int input_char;
 
   input_char = get_byte (task);
+  if (input_char != EOF)
+    put_ucs2 (BYTE_ORDER_MARK, task);	/* FIXME: experimental */
+
   while (input_char != EOF)
 
     if (input_char == '&')
@@ -703,18 +691,18 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 		while (valid)
 		  {
-		    if (input_char >= '0' && input_char < '9')
+		    if (input_char >= '0' && input_char <= '9')
 		      value = 16 * value + input_char - '0';
-		    else if (input_char >= 'A' && input_char < 'Z')
+		    else if (input_char >= 'A' && input_char <= 'F')
 		      value = 16 * value + input_char - 'A' + 10;
-		    else if (input_char >= 'a' && input_char < 'z')
+		    else if (input_char >= 'a' && input_char <= 'f')
 		      value = 16 * value + input_char - 'a' + 10;
 		    else
 		      break;
 
 		    if (value >= 65535)
 		      valid = false;
-		    else if (cursor == buffer + ENTITY_BUFFER_LENGTH - 1)
+		    else if (cursor == buffer + ENTITY_BUFFER_LENGTH - 2)
 		      valid = false;
 		    else
 		      {
@@ -725,7 +713,10 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 		if (valid)
 		  if (request->diacritics_only)
-		    echo = true;
+		    {
+		      echo = true;
+		      *cursor = '\0';
+		    }
 		  else
 		    {
 		      put_ucs2 (value, task);
@@ -741,16 +732,18 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 		/* Scan &#[0-9]+; notation.  */
 
+		*cursor++ = '#';
+
 		while (valid)
 		  {
-		    if (input_char >= '0' && input_char < '9')
+		    if (input_char >= '0' && input_char <= '9')
 		      value = 10 * value + input_char - '0';
 		    else
 		      break;
 
 		    if (value >= 65535)
 		      valid = false;
-		    else if (cursor == buffer + ENTITY_BUFFER_LENGTH - 1)
+		    else if (cursor == buffer + ENTITY_BUFFER_LENGTH - 2)
 		      valid = false;
 		    else
 		      {
@@ -761,7 +754,10 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 
 		if (valid)
 		  if (request->diacritics_only)
-		    echo = true;
+		    {
+		      echo = true;
+		      *cursor = '\0';
+		    }
 		  else
 		    {
 		      put_ucs2 (value, task);
@@ -785,7 +781,7 @@ transform_html_ucs2 (RECODE_CONST_STEP step, RECODE_TASK task)
 		   && ((input_char >= 'A' && input_char <= 'Z')
 		       || (input_char >= 'a' && input_char <= 'z')
 		       || (input_char >= '0' && input_char <= '9')))
-	      if (cursor == buffer + ENTITY_BUFFER_LENGTH - 1)
+	      if (cursor == buffer + ENTITY_BUFFER_LENGTH - 2)
 		valid = false;
 	      else
 		{

@@ -1,6 +1,7 @@
-This is Info file recode.info, produced by Makeinfo version 1.68 from
-the input file recode.texi.
+This is recode.info, produced by makeinfo version 3.12n from
+recode.texi.
 
+INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
@@ -33,13 +34,13 @@ ASCII "bang bang"
 
    This charset is available in `recode' under the name `Bang-Bang'.
 
-   This code, in use on Cybers at Universit'e de Montr'eal mainly,
+   This code, in use on Cybers at Universite' de Montre'al mainly,
 served to code a lot of French texts.  The original name of this
-charset is "ASCII cod'e Display".  This code is also known as
+charset is "ASCII code' Display".  This code is also known as
 "Bang-bang".  It is based on a six bits character set in which
 capitals, French diacritics and a few others are coded using an `!'
 escape followed by a single character, and control characters using a
-double `!'  escape followed by a single character.
+double `!' escape followed by a single character.
 
    The routines given here presume that the six bits code is already
 expressed in ASCII by the communication channel, with embedded ASCII `!'
@@ -71,7 +72,7 @@ File: recode.info,  Node: Micros,  Next: Miscellaneous,  Prev: CDC,  Up: Top
 Other micro-computer charsets
 *****************************
 
-   The `NeXT' charset, which use to be especially provided in releases
+   The `NeXT' charset, which used to be especially provided in releases
 of `recode' before 3.5, has been integrated since as one RFC 1345 table.
 
 * Menu:
@@ -94,13 +95,13 @@ charset is fairly old in `recode', its tables were produced a long
 while ago by mere inspection of a printed chart of the Macintosh codes
 and glyph.
 
-   It has `LF' as its implied surface.  This means that, if the original
+   It has `CR' as its implied surface.  This means that, if the original
 end of lines have to be preserved while going out of `Apple-Mac', they
 should currently be added back through the usage of a surface on the
 other charset, or better, just never removed.  Here are examples for
 both cases:
 
-     recode ap..l2/cl < INPUT > OUTPUT
+     recode ap..l2/cr < INPUT > OUTPUT
      recode ap/..l2 < INPUT > OUTPUT
 
    RFC 1345 brings into `recode' 2 other Macintosh charsets.  You can
@@ -161,7 +162,7 @@ Various other charsets
 
    Even if these charsets were originally added to `recode' for
 handling texts written in French, they find other uses.  We did use them
-lot for writing French diacriticised texts in the past, so `recode'
+a lot for writing French diacriticised texts in the past, so `recode'
 knows how to handle these particularly well for French texts.
 
 * Menu:
@@ -204,7 +205,7 @@ people often use ampersands and angle brackets in the other charset for
 introducing HTML commands, compromising it: it is not pure HTML, not it
 is pure other charset.  These particular translations can be rather
 inconvenient, they may be specifically inhibited through the command
-option `-d' (*note Mixed::.).
+option `-d' (*note Mixed::).
 
    Codes not having a mnemonic entity are output by `recode' using the
 `&#NNN;' notation, where NNN is a decimal representation of the UCS
@@ -222,7 +223,7 @@ This is documented in:
    * HTML 1.0 was never really documented.
 
    * HTML 2.0 entities are listed in RFC 1866.  Basically, there is an
-     entity for each *alphabetical* character in the right part of
+     entity for each _alphabetical_ character in the right part of
      ISO 8859-1.  In addition, there are four entities for
      syntax-significant ASCII characters: `&amp;', `&gt;', `&lt;' and
      `&quot;'.
@@ -234,22 +235,22 @@ This is documented in:
      (`&#8204;'), `&zwj;' (`&#8205;'), `&lrm;' (`&#8206') and `&rlm;'
      (`&#8207;').
 
-   * HTML 3.2 (`http://www.w3.org/TR/REC-html32.html') took up the full
+   * HTML 3.2 (http://www.w3.org/TR/REC-html32.html) took up the full
      Latin-1 list but not the i18n-related entities from RFC 2070.
 
-   * HTML 4.0 (`http://www.w3.org/TR/REC-html40/') has the whole
-     Latin-1 list, a set of entities for symbols, mathematical symbols,
-     and Greek letters, and another set for markup-significant and
+   * HTML 4.0 (http://www.w3.org/TR/REC-html40/) has the whole Latin-1
+     list, a set of entities for symbols, mathematical symbols, and
+     Greek letters, and another set for markup-significant and
      internationalization characters comprising the 4 ASCII entities,
      the 4 i18n-related from RFC 2070 plus some more.
 
    When `recode' translates to HTML, the translation occurs according
 to `http://www.w3.org/TR/REC-html40/sgml/entities.html'.  It is also
 assumed that RFC 1866 has an equivalent contents.  When translating
-*from* HTML, `recode' accepts some alternative special sequences, to be
+_from_ HTML, `recode' accepts some alternative special sequences, to be
 forgiving when files use older HTML tables.
 
-   The `recode' program can be used to *normalise* an HTML file using
+   The `recode' program can be used to _normalise_ an HTML file using
 oldish conventions.  For example, it accepts `&AE;', as this once was a
 valid writing, somewhere.  However, it should always produce `&AElig;'
 instead of `&AE;'.  Yet, this is not completely true.  If one does:
@@ -280,7 +281,7 @@ occurrences of backslashes `\' are translated into the string
 the other charset for introducing TeX commands, compromising it: it is
 not pure TeX, nor it is pure other charset.  This translation of
 backslashes into `\backslash{}' can be rather inconvenient, it may be
-inhibited through the command option `-d' (*note Mixed::.).
+inhibited through the command option `-d' (*note Mixed::).
 
 
 File: recode.info,  Node: Texinfo,  Next: African,  Prev: LaTeX,  Up: Miscellaneous
@@ -386,7 +387,7 @@ destroyed.
 
    Easy French has been in use in France for a while.  I only slightly
 adapted it (the diaeresis option) to make it more comfortable to several
-usages in Qu'ebec originating from Universit'e de Montr'eal.  In fact,
+usages in Que'bec originating from Universite' de Montre'al.  In fact,
 the main problem for me was not to necessarily to invent Easy French,
 but to recognise the "best" convention to use, (best is not being
 defined, here) and to try to solve the main pitfalls associated with
@@ -413,7 +414,7 @@ represented either.  In some countries, `:' is used instead of `"' to
 mark diaeresis.  `recode' supports only one convention per call,
 depending on the `-c' option of the `recode' command.  French quotes
 (sometimes called "angle quotes") are noted the same way English quotes
-are noted in TeX, *id est* by ```' and `'''.  No effort has been put to
+are noted in TeX, _id est_ by ```' and `'''.  No effort has been put to
 preserve Latin ligatures (`ae', `oe') which are representable in
 several other charsets.  So, these ligatures may be lost through Easy
 French conventions.
@@ -450,25 +451,24 @@ systematically obeyed by the various recognisers.
 
   3. A double quote or colon, depending on `-c' option, which follows a
      vowel is interpreted as diaeresis only if it is followed by
-     another letter.  But there are in French several words that *end*
+     another letter.  But there are in French several words that _end_
      with a diaeresis, and the `recode' library is aware of them.
      There are words ending in "igue", either feminine words without a
-     relative masculine (besaigu"e and cigu"e), or feminine words with
-     a relative masculine(1) (aigu"e, ambigu"e, contigu"e, exigu"e,
-     subaigu"e and suraigu"e).  There are also words not ending in
+     relative masculine (besaigue" and cigue"), or feminine words with
+     a relative masculine(1) (aigue", ambigue", contigue", exigue",
+     subaigue" and suraigue").  There are also words not ending in
      "igue", but instead, either ending by "i"(2) (ai", congai", goi",
      hai"kai", inoui", sai", samurai", thai" and tokai"), ending by "e"
-     (cano"e) or ending by "u"(3) (Esa"u).
+     (canoe") or ending by "u"(3) (Esau").
 
      Just to complete this topic, note that it would be wrong to make a
      rule for all words ending in "igue" as needing a diaerisis, as
-     there are counter-examples (becfigue, b`esigue, bigue, bordigue,
+     there are counter-examples (becfigue, be`sigue, bigue, bordigue,
      bourdigue, brigue, contre-digue, digue, d'intrigue, fatigue,
      figue, garrigue, gigue, igue, intrigue, ligue, prodigue, sarigue
      and zigue).
 
-
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) There are supposed to be seven words in this case.  So, one is
 missing.
@@ -480,7 +480,7 @@ interpreted with the `-c' option):
      Ai:e!  Voici le proble`me que j'ai:
 
    There is an ambiguity between an ai", the small animal, and the
-indicative future of *avoir* (first person singular), when followed by
+indicative future of _avoir_ (first person singular), when followed by
 what could be a diaeresis mark.  Hopefully, the case is solved by the
 fact that an apostrophe always precedes the verb and almost never the
 animal.
@@ -504,31 +504,31 @@ needed this for himself.  However, it is intended that Mule support to
 become more real in subsequent releases of `recode'.
 
    Multiplexed charsets are not to be confused with mixed charset texts
-(*note Mixed::.).  For mixed charset input, the rules allowing to
+(*note Mixed::).  For mixed charset input, the rules allowing to
 distinguish which charset is current, at any given place, are kind of
 informal, and driven from the semantics of what the file contains.  On
-the other side, multiplexed charsets are *designed* to be interpreted
+the other side, multiplexed charsets are _designed_ to be interpreted
 fairly precisely, and quite independently of any informational context.
 
-   The spelling `Mule' originally stands for `*mul*tilingual
-*e*nhancement to GNU Emacs', it is the result of a collective effort
-orchestrated by Handa Ken'ishi since 1993.  When `Mule' got rewritten
+   The spelling `Mule' originally stands for `_mul_tilingual
+_e_nhancement to GNU Emacs', it is the result of a collective effort
+orchestrated by Handa Ken'ichi since 1993.  When `Mule' got rewritten
 in the main development stream of GNU Emacs 20, the FSF renamed it
-`MULE', meaning `*mul*tilingual *e*nvironment in GNU Emacs'.  Even if
+`MULE', meaning `_mul_tilingual _e_nvironment in GNU Emacs'.  Even if
 the charset `Mule' is meant to stay internal to GNU Emacs, it sometimes
 breaks loose in external files, and as a consequence, a recoding tool
-is sometimes needed.  Within Emacs, `Mule' comes with `leim', which
-stands for `*l*ibraries of *e*macs *i*nput *m*ethods'.  One of these
+is sometimes needed.  Within Emacs, `Mule' comes with `Leim', which
+stands for `_l_ibraries of _e_macs _i_nput _m_ethods'.  One of these
 libraries is named `quail'(1).
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) Usually, quail means quail egg in Japanese, while egg alone is
 usually chicken egg.  Both quail egg and chicken egg are popular food
 in Japan.  The `quail' input system has been named because it is
 smaller that the previous `EGG' system.  As for `EGG', it is the
 translation of `TAMAGO'.  This word comes from the Japanese sentence
-`*ta*kusan *ma*tasete *go*mennasai', meaning `sorry to have let you
+`_ta_kusan _ma_tasete _go_mennasai', meaning `sorry to have let you
 wait so long'.  Of course, the publication of `EGG' has been delayed
 many times...  (Story by Takahashi Naoto)
 
@@ -538,7 +538,7 @@ File: recode.info,  Node: Surfaces,  Next: Internals,  Prev: Miscellaneous,  Up:
 All about surfaces
 ******************
 
-   The "trivial surface" consists into using a fixed number of bits
+   The "trivial surface" consists of using a fixed number of bits
 (often eight) for each character, the bits together hold the integer
 value of the index for the character in its charset table.  There are
 many kinds of surfaces, beyond the trivial one, all having the purpose
@@ -568,7 +568,7 @@ charset: the request `data..SURFACE' merely adds the given SURFACE,
 while the request `SURFACE..data' removes it.
 
    We are only beginning to experiment with surfaces in `recode', but
-the concept opens the doors to many avenues, it is not clear yet which
+the concept opens the doors to many avenues; it is not clear yet which
 ones are worth pursuing, and which should be abandoned.  This chapter
 presents all surfaces currently available.
 
@@ -580,7 +580,7 @@ presents all surfaces currently available.
 * Dump::                Interpreted character dumps
 * Debugging::           Artificial data
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) These are mere examples to explain the concept, `recode' only
 has `Base64' and `CR-LF', actually.
@@ -592,12 +592,12 @@ Permuting groups of bytes
 =========================
 
    A permutation is a surface transformation which reorders groups of
-eight-bit bytes.  A *21* permutation exchanges pairs of successive
+eight-bit bytes.  A _21_ permutation exchanges pairs of successive
 bytes.  If the text contains an odd number of bytes, the last byte is
-merely copied.  An *4321* permutation inverts the order of quadruples
+merely copied.  An _4321_ permutation inverts the order of quadruples
 of bytes.  If the text does not contains a multiple of four bytes, the
-remaining bytes are nevertheless permuted as *321* if there are three
-bytes, *21* if there are two bytes, or merely copied otherwise.
+remaining bytes are nevertheless permuted as _321_ if there are three
+bytes, _21_ if there are two bytes, or merely copied otherwise.
 
 `21'
      This surface is available in `recode' under the name
@@ -623,7 +623,7 @@ for representing end of lines are available through surfaces.
      This convention is popular on Apple's Macintosh machines.  When
      this surface is applied, each line is terminated by `CR', which has
      `ASCII' value 13.  Unless the library is operating in strict mode,
-     adding or removing the surface will in fact *exchange* `CR' and
+     adding or removing the surface will in fact _exchange_ `CR' and
      `LF', for better reversibility.  However, in strict mode, the
      exchange does not happen, any `CR' will be copied verbatim while
      applying the surface, and any `LF' will be copied verbatim while
@@ -660,7 +660,7 @@ File: recode.info,  Node: MIME,  Next: Dump,  Prev: End lines,  Up: Surfaces
 MIME contents encodings
 =======================
 
-   RFC 1521 defines two 7-bit surfaces, meant to prepare 8-bit messages
+   RFC 2045 defines two 7-bit surfaces, meant to prepare 8-bit messages
 for transmission.  Base64 is especially usable for binary entities,
 while Quoted-Printable is especially usable for text entities, in those
 case the lower 128 characters of the underlying charset coincide with
@@ -680,9 +680,10 @@ is provided as a genuine charset instead, as it necessary relates to
 `UCS-2' and nothing else.  *Note UTF-7::.
 
    A little historical note, also showing the three levels of
-acceptation of Internet standards.  MIME changed from a "Proposed
-Standard" to a "Draft Standard" in 1993, and only became a "Full
-Standard" during 1996-12.
+acceptance of Internet standards.  MIME changed from a "Proposed
+Standard" (RFC 1341-1344, 1992) to a "Draft Standard" (RFC 1521-1523)
+in 1993, and was _recycled_ as a "Draft Standard" in 1996-11.  It is
+not yet a "Full Standard".
 
 
 File: recode.info,  Node: Dump,  Next: Debugging,  Prev: MIME,  Up: Surfaces
@@ -775,17 +776,17 @@ single type, and so, have identical sizes.
    When removing a dump surface, that is, when reading a dump results
 back into a sequence of bytes, the narrower expression for a short last
 chunk is recognised, so dumping is a fully reversible operation.
-However, in case you want do produce dumps by other means than through
+However, in case you want to produce dumps by other means than through
 `recode', beware that for decimal dumps, the library has to rely on the
 number of spaces to establish the original byte size of the chunk.
 
-   Despite the library might report reversibility errors, removing a
-dump surface is a rather forgiving process: one may mix bases, group
-more or less numbers per source line, or use shorter chunks elsewhere
-than at the far end.  Also, source lines not beginning with a number
-are skipped.  So, `recode' should often be able to read a whole C
-header file, wrapping the results of a previous dump, and regenerate
-the original byte string.
+   Although the library might report reversibility errors, removing a
+dump surface is a rather forgiving process: one may mix bases, group a
+variable number of data per source line, or use shorter chunks in
+places other than at the far end.  Also, source lines not beginning
+with a number are skipped.  So, `recode' should often be able to read a
+whole C header file, wrapping the results of a previous dump, and
+regenerate the original byte string.
 
 
 File: recode.info,  Node: Debugging,  Prev: Dump,  Up: Surfaces
@@ -798,16 +799,16 @@ air.  These surfaces are only meant for the expert `recode' user, and
 are only useful in a few contexts, like for generating binary
 permutations from the recoding or acting on them.
 
-   Debugging surfaces, *when removed*, insert their generated data at
+   Debugging surfaces, _when removed_, insert their generated data at
 the beginning of the output stream, and copy all the input stream after
 the generated data, unchanged.  This strange removal constraint comes
 from the fact that debugging surfaces are usually specified in the
-*before* position instead of the *after* position within a request.
+_before_ position instead of the _after_ position within a request.
 With debugging surfaces, one often recodes file `/dev/null' in filter
 mode.  Specifying many debugging surfaces at once has an accumulation
 effect on the output, and since surfaces are removed from right to left,
 each generating its data at the beginning of previous output, the net
-effect is an *impression* that debugging surfaces are generated from
+effect is an _impression_ that debugging surfaces are generated from
 left to right, each appending to the result of the previous.  In any
 case, any real input data gets appended after what was generated.
 
@@ -833,14 +834,14 @@ case, any real input data gets appended after what was generated.
      having value 0, the second having value 1, and so forth until all
      65536 values have been generated.
 
-   For an example, the command `recode l5/test8..dump < /dev/null' is a
+   As an example, the command `recode l5/test8..dump < /dev/null' is a
 convoluted way to produce an output similar to `recode -lf l5'.  It says
 to generate all possible 256 bytes and interpret them as `ISO-8859-9'
 codes, while converting them to `UCS-2'.  Resulting `UCS-2' characters
 are dumped one per line, accompanied with their explicative name.
 
 
-File: recode.info,  Node: Internals,  Prev: Surfaces,  Up: Top
+File: recode.info,  Node: Internals,  Next: Concept Index,  Prev: Surfaces,  Up: Top
 
 Internal aspects
 ****************
@@ -899,7 +900,7 @@ than one input character for producing an output character, etc.
 economical route through the elementary recodings, that is, the best
 sequence of conversions that will transform the input charset into the
 final charset.  To speed up execution, `recode' looks for subsequences
-of conversions which are simple enough to be merged, it then
+of conversions which are simple enough to be merged, and then
 dynamically creates new single steps to represent these mergings.
 
    A "double step" in `recode' is a special concept representing a
@@ -915,7 +916,7 @@ recoding layout, before optimisation, always uses between 1 and 6
 steps.  Optimisation could sometimes produce mere copies, which are
 counted as no steps at all.  In other cases, optimisation is unable to
 save any step.  The number of steps after optimisation is currently
-between 0 and 6 steps.  Of course, the *expected* number of steps is
+between 0 and 6 steps.  Of course, the _expected_ number of steps is
 affected by optimisation: it drops from 2.2 to 0.9.(1) This means that
 `recode' uses a theoretical average of a bit less than one step per
 recoding job.  This looks good.  This was computed using reversible
@@ -924,7 +925,7 @@ Number of steps run between 1 and 6, both before and after optimisation,
 and the expected number of steps decreases by a lesser amount, going
 from 2.2 to 1.3.  This is still manageable.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) The above numbers were for `recode' version 3.4.  After UCS
 additions, it drops from 2.3 to 1.1.
@@ -972,7 +973,7 @@ an example from the style that better fits your application.
 
    Each of your source files should have its own initialisation
 function, named `module_CHARSET', which is meant to be executed
-*quickly* once, prior to any recoding.  It should declare the name of
+_quickly_ once, prior to any recoding.  It should declare the name of
 your charsets and the single steps (or elementary recodings) you
 provide, by calling `declare_step' one or more times.  Besides the
 charset names, `declare_step' expects a description of the recoding

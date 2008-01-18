@@ -19,17 +19,17 @@
 
 AUTOMAKE_OPTIONS = gnits ansi2knr
 bin_PROGRAMS = recode
-#noinst_PROGRAMS = d.recode
 lib_LTLIBRARIES = librecode.la
+man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
 fr-charname.h hash.h inisteps.h rfc1345.h $(H_FALLBACKS) $(H_SURFACES)
-EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.awk
+EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
 debug.c ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c \
-ucs.c utf16.c utf7.c utf8.c varia.c $(C_FALLBACKS) $(C_SURFACES)
+ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES)
 OLD_C_STEPS = next.c
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
 
@@ -42,7 +42,7 @@ C_SURFACES = base64.c dump.c endline.c permut.c quoted.c
 L_SURFACES =
 
 recode_SOURCES = main.c freeze.c mixed.c
-recode_LDADD = librecode.la ../lib/libreco.a @INTLLIBS@
+recode_LDADD = librecode.la ../lib/libreco.a
 #d_recode = main.c
 #d_recode_LDADD = librecode.la ../lib/libreco.la @INTLLIBS@
 #d_recode_LDFLAGS = -static
@@ -52,19 +52,18 @@ hash.c merged.c names.c outer.c recode.c request.c strip-pool.c task.c \
 $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
-INCLUDES = -I.. -I../intl -I$(srcdir) -I$(top_srcdir)/lib
+INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 
 ETAGS_ARGS = $(L_STEPS)
 TAGS_DEPENDENCIES = $(L_STEPS)
-
-localedir = $(prefix)/@DATADIRNAME@/locale
 
 # These CFLAGS values are not auto-configured:
 # -DDIFF_HASH		For using GNU diff's hash algorithm instead.
 # -DHASH_STATS		For printing a one-liner hash statistics.
 
-AWK = @AWK@
 LEX = @LEX@
+PERL = perl
+PYTHON = python
 
 $(srcdir)/decsteps.h $(srcdir)/inisteps.h: stamp-steps
 stamp-steps: $(C_STEPS) merged.c
@@ -82,15 +81,24 @@ stamp-steps: $(C_STEPS) merged.c
 	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
 	@echo timestamp > $(srcdir)/stamp-steps
 
-main.o: main.c ../config.status common.h recode.h
-	$(COMPILE) -DLOCALEDIR=\"$(localedir)\" -c $<
-
+main.o: main.c ../config.status
+#main.o: common.h recode.h (should be automatic?)
 outer.o: stamp-steps
 
-$(srcdir)/merged.c: mergelex.awk $(L_STEPS)
-	(cd $(srcdir) \
-	  && $(AWK) -f mergelex.awk $(L_STEPS) \
-	  && rm merged1.tmp merged2.tmp merged3.tmp) > merged.tm1
+$(srcdir)/merged.c: mergelex.py $(L_STEPS)
+	(cd $(srcdir) && cat $(L_STEPS)) \
+	| $(PYTHON) $(srcdir)/mergelex.py > merged.tm1
 	$(LEX) -t8 merged.tm1 > merged.tm2
 	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
 	rm merged.tm1 merged.tm2
+
+$(srcdir)/recode.1: recode
+	@if test -r $@ && test ! -w $@; then \
+	  echo "WARNING: Page \`$@' read only, not updated"; \
+	elif $(PERL) $(top_srcdir)/doc/help2man --output=$@ ./recode; then \
+	  echo "Page \`$@' has been updated"; \
+	else \
+	  echo "WARNING: Page \`$@' has *not* been updated."; \
+	  echo "         It might be that \`Perl' is missing on your system,"; \
+	  echo "         but you may safely and merely ignore this error."; \
+	fi

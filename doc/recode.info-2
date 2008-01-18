@@ -1,6 +1,7 @@
-This is Info file recode.info, produced by Makeinfo version 1.68 from
-the input file recode.texi.
+This is recode.info, produced by makeinfo version 3.12n from
+recode.texi.
 
+INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
@@ -71,12 +72,12 @@ explained below.
      call.  All copies of the program operate in parallel.  This is the
      default behaviour in filter mode.  If this option is used when
      files are recoded over themselves, this should also save disk
-     space because some temporary files might not be needed, at cost of
-     more system overhead.
+     space because some temporary files might not be needed, at the
+     cost of more system overhead.
 
      If, at installation time, the `pipe(2)' call is said to be
      unavailable, selecting option `-p' is equivalent to selecting
-     option `-i'.
+     option `-i'.  (This happens, for example, on MS-DOS systems.)
 
 
 File: recode.info,  Node: Mixed,  Next: Emacs,  Prev: Sequencing,  Up: Invoking recode
@@ -89,8 +90,8 @@ charsets at once.  Some parts of the file encode one charset, while
 other parts encode another charset, and so forth.  Usually, a file does
 not toggle between more than two or three charsets.  The means to
 distinguish which charsets are encoded at various places is not always
-easy.  The `recode' program is able to handle only a few simple cases
-of mixed input.
+available.  The `recode' program is able to handle only a few simple
+cases of mixed input.
 
    The default `recode' behaviour is to expect pure charset files, to
 be recoded as other pure charset files.  However, the following options
@@ -131,7 +132,7 @@ allow for a few precise kinds of mixed charset files.
      successfully find where the comment or string ends.
 
      Even if `ASCII' is the usual charset for writing programs, some
-     compilers are able to directly read other charsets, like `UTF-8'
+     compilers are able to directly read other charsets, like `UTF-8',
      say.  There is currently no provision in `recode' for reading
      mixed charset sources which are not based on `ASCII'.  It is
      probable that the need for mixed recoding is not as pressing in
@@ -141,8 +142,8 @@ allow for a few precise kinds of mixed charset files.
 
           recode -Spo pc/..u8 < INPUT.po > OUTPUT.po
 
-     file `OUTPUT.po' holds a copy of `INPUT.po' in which translator
-     comments and the contents of `msgstr' strings *only* have been
+     file `OUTPUT.po' holds a copy of `INPUT.po' in which _only_
+     translator comments and the contents of `msgstr' strings have been
      recoded from the `IBM-PC' charset to pure `UTF-8', without
      attempting conversion of end-of-lines.  Machine generated comments
      and original `msgid' strings are not to be touched by this
@@ -157,16 +158,16 @@ Using `recode' within Emacs
 ===========================
 
    The fact `recode' is a filter makes it quite easy to use from within
-GNU Emacs.  For example, recoding the whole buffer from the IBM-PC
-charset to current charset (Latin-1 on Unix) is easily done with:
+GNU Emacs.  For example, recoding the whole buffer from the `IBM-PC'
+charset to current charset (`Latin-1' on Unix) is easily done with:
 
      C-x h C-u M-| recode ibmpc RET
 
-The `C-x h' selects the whole buffer, and `C-u M-|' filters and
-replaces the current region through the given shell command.  Here is
-another example, binding the keys `C-c T' to the recoding of the
-current region from Easy French to Latin-1 (on Unix) and the key
-`C-u C-c T' from Latin-1 (on Unix) to Easy French:
+`C-x h' selects the whole buffer, and `C-u M-|' filters and replaces
+the current region through the given shell command.  Here is another
+example, binding the keys `C-c T' to the recoding of the current region
+from Easy French to `Latin-1' (on Unix) and the key `C-u C-c T' from
+`Latin-1' (on Unix) to Easy French:
 
      (global-set-key "\C-cT" 'recode-texte)
      
@@ -227,9 +228,12 @@ is an example of a program which does not really make anything useful.
      #include <stdbool.h>
      #include <recode.h>
      
+     const char *program_name;
+     
      int
-     main ()
+     main (int argc, char *const *argv)
      {
+       program_name = argv[0];
        RECODE_OUTER outer = recode_new_outer (true);
      
        recode_delete_outer (outer);
@@ -281,9 +285,12 @@ like:
      
      #include <recode.h>
      
+     const char *program_name;
+     
      int
-     main ()
+     main (int argc, char *const *argv)
      {
+       program_name = argv[0];
        RECODE_OUTER outer = recode_new_outer (true);
      
        recode_term_outer (outer);
@@ -328,6 +335,25 @@ but we will not insist on such details in the examples to come.
      reclaimed when the program ends.  You may spare this terminating
      call if you prefer.
 
+   * The `program_name' declaration
+
+     As we just explained, the user may set the `recode' library so
+     that, in case of problems error, it issues the diagnostic itself
+     and aborts the whole processing.  This capability may be quite
+     convenient.  When this feature is used, the aborting routine
+     includes the name of the running program in the diagnostic.  On
+     the other hand, when this feature is not used, the library merely
+     return error codes, giving the library user fuller control over
+     all this.  This behaviour is more like what usual libraries do:
+     they return codes and never abort.  However, I would rather not
+     force library users to necessarily check all return codes
+     themselves, by leaving no other choice.  In most simple
+     applications, letting the library diagnose and abort is much
+     easier, and quite welcome.  This is precisely because both
+     possibilities exist that the `program_name' variable is needed: it
+     may be used by the library _when_ the user sets it to diagnose
+     itself.
+
 
 File: recode.info,  Node: Request level,  Next: Task level,  Prev: Outer level,  Up: Library
 
@@ -345,9 +371,12 @@ standard output.
      #include <stdbool.h>
      #include <recode.h>
      
+     const char *program_name;
+     
      int
-     main ()
+     main (int argc, char *const *argv)
      {
+       program_name = argv[0];
        RECODE_OUTER outer = recode_new_outer (true);
        RECODE_REQUEST request = recode_new_request (outer);
        bool success;
@@ -390,7 +419,7 @@ request level functions, and in most cases, may be considered as opaque.
      meaningfully changed, once a REQUEST has been initialised by
      `recode_new_request', but before it gets used.  It is not very
      frequent, in practice, that these fields need to be changed.  To
-     access the fields, you need to include `recodext.h' *instead* of
+     access the fields, you need to include `recodext.h' _instead_ of
      `recode.h', in which case there also is a greater chance that you
      need to recompile your programs if a new version of the recoding
      library gets installed.
@@ -439,9 +468,9 @@ request level functions, and in most cases, may be considered as opaque.
      The main role of a REQUEST variable is to describe a set of
      recoding transformations.  Function `recode_scan_request' studies
      the given STRING, and stores an internal representation of it into
-     REQUEST.  Note that STRING may be a full-fledge `recode' request,
+     REQUEST.  Note that STRING may be a full-fledged `recode' request,
      possibly including surfaces specifications, intermediary charsets,
-     sequences, aliases or abbreviations (*note Requests::.).
+     sequences, aliases or abbreviations (*note Requests::).
 
      The internal representation automatically receives some
      pre-conditioning and optimisation, so the REQUEST may then later
@@ -579,9 +608,12 @@ a bit differently.
      #include <stdbool.h>
      #include <recodext.h>
      
+     const char *program_name;
+     
      int
-     main ()
+     main (int argc, char *const *argv)
      {
+       program_name = argv[0];
        RECODE_OUTER outer = recode_new_outer (false);
        RECODE_REQUEST request = recode_new_request (outer);
        RECODE_TASK task;
@@ -642,7 +674,7 @@ few fields in this structure, using special functions.
      meaningfully changed, once a TASK has been initialised by
      `recode_new_task'.  In fact, fields are expected to change.  Once
      again, to access the fields, you need to include `recodext.h'
-     *instead* of `recode.h', in which case there also is a greater
+     _instead_ of `recode.h', in which case there also is a greater
      chance that you need to recompile your programs if a new version
      of the recoding library gets installed.
 
@@ -744,30 +776,30 @@ few fields in this structure, using special functions.
 
     `fail_level'
           This field, which is of type `enum recode_error' (*note
-          Errors::.), sets the error level at which task level
-          functions should report a failure.  If an error being
-          detected is equal or greater than `fail_level', the function
-          will eventually return `false' instead of `true'.  The preset
-          value for this field is `RECODE_NOT_CANONICAL', that means
-          that if not reset to another value, the library will report
-          failure on *any* error.
+          Errors::), sets the error level at which task level functions
+          should report a failure.  If an error being detected is equal
+          or greater than `fail_level', the function will eventually
+          return `false' instead of `true'.  The preset value for this
+          field is `RECODE_NOT_CANONICAL', that means that if not reset
+          to another value, the library will report failure on _any_
+          error.
 
     `abort_level'
           This field, which is of type `enum recode_error' (*note
-          Errors::.), sets the error level at which task level
-          functions should immediately interrupt their processing.  If
-          an error being detected is equal or greater than
-          `abort_level', the function returns immediately, but the
-          returned value (`true' or `false') is still is decided from
-          the setting of `fail_level', not `abort_level'.  The preset
-          value for this field is `RECODE_MAXIMUM_ERROR', that means
-          that is not reset to another value, the library will never
-          interrupt a recoding task.
+          Errors::), sets the error level at which task level functions
+          should immediately interrupt their processing.  If an error
+          being detected is equal or greater than `abort_level', the
+          function returns immediately, but the returned value (`true'
+          or `false') is still is decided from the setting of
+          `fail_level', not `abort_level'.  The preset value for this
+          field is `RECODE_MAXIMUM_ERROR', that means that is not reset
+          to another value, the library will never interrupt a recoding
+          task.
 
     `error_so_far'
           This field, which is of type `enum recode_error' (*note
-          Errors::.), maintains the maximum error level met so far
-          while the recoding task was proceeding.  The preset value is
+          Errors::), maintains the maximum error level met so far while
+          the recoding task was proceeding.  The preset value is
           `RECODE_NO_ERROR'.
 
    * Task execution
@@ -814,7 +846,7 @@ Handling errors
    The `recode' program, while using the `recode' library, needs to
 control whether recoding problems are reported or not, and then reflect
 these in the exit status.  The program should also instruct the library
-about if the recoding should be abruptly interrupted when an error is
+whether the recoding should be abruptly interrupted when an error is
 met (so sparing processing when it is known in advance that a wrong
 result would be discarded anyway), or if it should proceed nevertheless.
 Here is how the library groups errors into levels, listed here in order
@@ -827,13 +859,13 @@ of increasing severity.
      The input text was using one of the many alternative codings for
      some phenomenon, but not the one `recode' would have canonically
      generated.  So, if the reverse recoding is later attempted, it
-     would produce a text having the same *meaning* as the original
+     would produce a text having the same _meaning_ as the original
      text, yet not being byte identical.
 
      For example, a `Base64' block in which end-of-lines appear
      elsewhere that at every 76 characters is not canonical.  An
-     e-circumflex in TeX which is coded `\^{e}' instead of `\^e' is not
-     canonical.
+     e-circumflex in TeX which is coded as `\^{e}' instead of `\^e' is
+     not canonical.
 
 `RECODE_AMBIGUOUS_OUTPUT'
      It has been discovered that if the reverse recoding was attempted
@@ -866,13 +898,14 @@ of increasing severity.
      various Latin charsets.
 
 `RECODE_INVALID_INPUT'
-     The input text does comply with the coding it is declared to hold.
-     So, there is no way by which a reverse recoding would reproduce
-     this text, because `recode' should never produce invalid output.
+     The input text does not comply with the coding it is declared to
+     hold.  So, there is no way by which a reverse recoding would
+     reproduce this text, because `recode' should never produce invalid
+     output.
 
-     Here are a few examples.  In strict mode, `ASCII' text just may
-     not contain characters with the eight bit set.  `UTF-8' encodings
-     ought to be minimal(1).
+     Here are a few examples.  In strict mode, `ASCII' text is not
+     allowed to contain characters with the eight bit set.  `UTF-8'
+     encodings ought to be minimal(1).
 
 `RECODE_SYSTEM_ERROR'
      The underlying system reported an error while the recoding was
@@ -887,13 +920,13 @@ of increasing severity.
 `RECODE_INTERNAL_ERROR'
      Something really wrong, which should normally never happen, was
      detected within the recoding library.  This might be due to
-     genuine bugs in the library, or maybe also, by un-initialised or
+     genuine bugs in the library, or maybe due to un-initialised or
      overwritten arguments to the API.  (This error symbol is currently
      unused in the library.)
 
 `RECODE_MAXIMUM_ERROR'
      This error code should never be returned, it is only internally
-     used as a sentinel over all possible error codes.
+     used as a sentinel for the list of all possible error codes.
 
    One should be able to set the error level threshold for returning
 failure at end of recoding, and also the threshold for immediate
@@ -908,11 +941,11 @@ error, the possible actions currently are:
 
    * interrupt recoding right away and return failure now.
 
-*Note Task level::, and particularly the description of fields
+*Note Task level::, and particularly the description of the fields
 `fail_level', `abort_level' and `error_so_far', for more information
 about how errors are handled.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) The minimality of an `UTF-8' encoding is guaranteed on output,
 but currently, it is not checked on input.
@@ -920,7 +953,7 @@ but currently, it is not checked on input.
    (2) Another approach would have been to define the level symbols as
 masks instead, and to give masks to threshold setting routines, and to
 retain all errors--yet I never met myself such a need in practice, and
-so, fear it would be overkill.  On the other hand, it might be
+so I fear it would be overkill.  On the other hand, it might be
 interesting to maintain counters about how many times each kind of
 error occurred.
 
@@ -955,18 +988,18 @@ transmissions limited to 7-bit bytes.  Most often, one might see
 storage.
 
    When `recode' is producing any representation of `UCS', it uses the
-replacement character `U+FFFD' for any *valid* character which is not
+replacement character `U+FFFD' for any _valid_ character which is not
 representable in the goal charset(2).  This happens, for example, when
 `UCS-2' is not capable to echo a wide `UCS-4' character, or for a
 similar reason, an `UTF-8' sequence using more than three bytes.  The
 replacement character is meant to represent an existing character.  So,
 it is never produced to represent an invalid sequence or ill-formed
-character in the input text.  In such cases, `recode' just get rid of
-the noise, while taking note of the error its usual ways.
+character in the input text.  In such cases, `recode' just gets rid of
+the noise, while taking note of the error in its usual ways.
 
    Even if `UTF-8' is an encoding, really, it is the encoding of a
 single character set, and nothing else.  It is useful to distinguish
-between an encoding (a *surface* within `recode') and a charset, but
+between an encoding (a _surface_ within `recode') and a charset, but
 only when the surface may be applied to several charsets.  Specifying a
 charset is a bit simpler than specifying a surface in a `recode'
 request.  There would not be a practical advantage at imposing a more
@@ -984,9 +1017,9 @@ complex syntax to `recode' users, when it is simple to assimilate
 * count-characters::    Frequency count of characters
 * dump-with-names::     Fully interpreted UCS dump
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
-   (1) It is not probable that `recode' will support `UTF-1' ever.
+   (1) It is not probable that `recode' will ever support `UTF-1'.
 
    (2) This is when the goal charset allows for 16-bits.  For shorter
 charsets, the `--strict' (`-s') option decides what happens: either the
@@ -1001,7 +1034,7 @@ Universal Character Set, 2 bytes
    One surface of `UCS' is usable for the subset defined by its first
 sixty thousand characters (in fact, 31 * 2^11 codes), and uses exactly
 two bytes per character.  It is a mere dump of the internal memory
-representation which is *natural* for this subset and as such, conveys
+representation which is _natural_ for this subset and as such, conveys
 with it endianness problems.
 
    A non-empty `UCS-2' file normally begins with a so called "byte
@@ -1013,18 +1046,18 @@ than at the beginning, because concatenation of `UCS-2' files should
 stay a simple matter, but it might trigger a diagnostic about non
 canonical input.
 
-   By default, when producing an `UCS-2' file, `recode' always output
+   By default, when producing an `UCS-2' file, `recode' always outputs
 the high order byte before the low order byte.  But this could be
-easily overridden through the `21-Permutation' surface.  For example,
-the command:
+easily overridden through the `21-Permutation' surface (*note
+Permutations::).  For example, the command:
 
      recode u8..u2/21 < INPUT > OUTPUT
 
 asks for an `UTF-8' to `UCS-2' conversion, with swapped byte output.
 
-   Use it as a genuine charset.  This charset is available in `recode'
-under the name `ISO-10646-UCS-2'.  Accepted aliases are `UCS-2', `BMP',
-`rune' and `u2'.
+   Use `UCS-2' as a genuine charset.  This charset is available in
+`recode' under the name `ISO-10646-UCS-2'.  Accepted aliases are
+`UCS-2', `BMP', `rune' and `u2'.
 
    The `recode' library is able to combine `UCS-2' some sequences of
 codes into single code characters, to represent a few diacriticized
@@ -1034,9 +1067,9 @@ single code characters into the corresponding sequence of codes.  The
 request syntax for triggering such operations is rudimentary and
 temporary.  The `combined-UCS-2' pseudo character set is a special form
 of `UCS-2' in which known combinings have been replaced by the simpler
-code.  Using `combined-UCS-2' instead of `UCS-2' in an *after* position
+code.  Using `combined-UCS-2' instead of `UCS-2' in an _after_ position
 of a request forces a combining step, while using `combined-UCS-2'
-instead of `UCS-2' in a *before* position of a request forces an
+instead of `UCS-2' in a _before_ position of a request forces an
 exploding step.  For the time being, one has to resort to advanced
 request syntax to achieve other effects.  For example:
 
@@ -1052,7 +1085,7 @@ Universal Character Set, 4 bytes
 ================================
 
    Another surface of `UCS' uses exactly four bytes per character, and
-is a mere dump of the internal memory representation which is *natural*
+is a mere dump of the internal memory representation which is _natural_
 for the whole charset and as such, conveys with it endianness problems.
 
    Use it as a genuine charset.  This charset is available in `recode'
@@ -1066,7 +1099,7 @@ Universal Transformation Format, 7 bits
 =======================================
 
    `UTF-7' comes from IETF rather than ISO, and is described by
-RFC 1642, in the MIME series.  The `UTF-7' encoding is meant to fit
+RFC 2152, in the MIME series.  The `UTF-7' encoding is meant to fit
 `UCS-2' over channels limited to seven bits per byte.  It proceeds from
 a mix between the spirit of `Quoted-Printable' and methods of `Base64',
 adapted to Unicode contexts.

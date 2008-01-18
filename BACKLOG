@@ -1,5 +1,5 @@
-# Summary of pending email for Free recode 3.5.
-# Last updated on 1999-06-01.
+# Summary of pending email for Free recode 3.5a.
+# Last updated on 1999-12-20.
 
 # This file summarises almost all pending email pertaining to this package.
 # I think users deserve to know where maintenance stands for what they use.
@@ -11,36 +11,72 @@
 # When diffs have been provided, an asterisk sometimes replaces the initial
 # dot.  All dates are written according to ISO 8601, as far as possible.
 
-../rmail/auto-detect
- 1. 1997-12-09 FranÁois Pinard: Re: recode
- 2. 1997-12-09 Milivoj Ivkovic: Re: recode
- 3. 1998-07-01 Sam: Re: au secour!
- 4. 1996-01-13 DiDakDok,IVC: Decodage MIME
+../rmail/compilation
+ 1. 1999-08-25 FranÁois Pinard: Re: recode compile problem
+ 2. 1997-12-26 FranÁois Pinard: recode sur raptor
+ 3. 1999-06-23 Bruno Haible: recode installation on Solaris
+ 4. 1999-12-13 Tom Hageman: Re: recode-3.5 on NEXTSTEP, OPENSTEP and MacOS X Se
+ 5. 1998-05-17 Jim Meyering: Re: easing acconfig.h maintenance: utimbuf.m4
+ 6. 1999-12-17 Tom Hageman: Re: recode-3.5 on NEXTSTEP, OPENSTEP and MacOS X Se
+ 7. 1999-12-19 FranÁois Pinard: recode juste =?iso-8859-1?q?apr=E8s?= modifs do
 
-../rmail/backup
- 1. 1994-03-09 Nicolas Anquetil: recode
- 2. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
+../rmail/configuration
+ 1. 1999-12-15 FranÁois Pinard: libtool.m4 and aclocal
+ 2. 1999-12-15 Jim Meyering: Re: libtool.m4 and aclocal
+ 3. 1999-12-15 Akim Demaille: Re: libtool.m4 and aclocal
+ 4. 1999-12-15 Tom Tromey: Re: libtool.m4 and aclocal
 
-../rmail/doc-hexa
- 1. 1998-10-14 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
- 2. 1998-10-14 Francois Yergeau: Re: Pour ceux qui ont le temps de lire... Cadr
- 3. 1998-10-23 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
- 4. 1998-10-23 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+../rmail/gettext
+ 1. 1999-07-05 Bruno Haible: recode-3.5 installation problem
+ 2. 1999-07-14 Eric Siegerman: Recode 3.5 w/NLS doesn't link on Solaris 2.5.1
+ 3. 1999-04-02 Laurent Bourbeau: Recode 3.4q - bug-1
+ 4. 1999-04-05 Laurent Bourbeau: Recode 3.4q - Bug 6
+ 5. 1999-04-05 Laurent Bourbeau: Recode 3.4q - Bug 7
+ 6. 1997-12-02 FranÅÁois Pinard: [Eric Backus <ericb@labejb.lsid.hp.com>] recod
+ 7. 1997-12-09 FranÅÁois Pinard: Re: recode 3.4e pretest
+ 8. 1998-11-09 Alain Magloire: recode on Solaris
 
-../rmail/emacs
+../rmail/lex
+ 1. 1998-04-06 Tom Tromey: Re: I want flex, not lex!
+ 2. 1998-04-07 Akim Demaille: Re: I want flex, not lex!
+ 3. 1998-04-07 Akim Demaille: Re: I want flex, not lex!
+
+../rmail/libtool
+ 1. 1997-12-16 Erick Branderhorst: recode and ltmain.sh on solaris 2.6
+ 2. 1998-01-07 Erick Branderhorst: recode-3.4g is not compiling properly becaus
+ 3. 1998-02-23 Jim Meyering: Re: Installing fileutils 3.16m on icule
+ 4. 1998-03-24 Larry W. Virden, x2487: problems building recode 3.4f
+ 5. 1998-10-21 FranÁois Pinard: Re: Some paxutils issues
+ 6. 1999-04-02 FranÁois Pinard: recode 3.4q - testing difficulties
+ 7. 1999-04-03 Alexandre Oliva: Re: recode 3.4q - testing difficulties
+ 8. 1999-12-12 Tom Hageman: recode-3.5 on NEXTSTEP, OPENSTEP and MacOS X Server
+ 9. 1999-09-16 Daniel Ouimet: Re: probleme avec recode
+10. 1998-07-21 FranÁois Pinard: Re: recode: lat1html.c
+11. 1998-07-21 Wiel: recode: lat1html.c
+12. 1998-12-27 FranÁois Pinard: recode - dynlibs
+
+../admin/rmail/emacs
  1. 1998-05-12 FranÁois Pinard: Emacs 20.2.93 - lisp/format.el and recode
 
-../rmail/legalese
+../admin/rmail/jitterbug
+ 1. 1997-12-28 Jim Meyering: rsync: a neat tool
+ 2. 1999-08-03 FranÁois Pinard: Bug tracking
+ 3. 1999-08-03 David Ascher: FYI: CareTracker from LinuxCare
+ 4. 1999-10-18 Barry A. Warsaw: Re: Adding info to Python Buglist
+ 5. 1999-10-16 Jason Trowbridge: Re: Adding info to Python Buglist
+ 6. 1999-10-17 Hrvoje Niksic: Re: Adding info to Python Buglist
+ 7. 1999-10-18 Jason Trowbridge: Re: Adding info to Python Buglist
+
+../admin/rmail/legalese
  1. 1997-11-24 Richard Stallman: Re: License for recode
  2. 1999-01-30 Richard Stallman: Why you shouldn't use the Library GPL for your
- 3. 1999-03-19 Bob Friesenhahn: Re: libltdl license?
 
-../rmail/library
- 1. 1995-12-06 Per Bothner: Re: Internationalization resources?
- 2. 1996-05-29 Ulrich Drepper: librecode, again
- 3. 1997-10-14 Ulrich Drepper: Re: librecode
+../admin/rmail/list-admin
+ 1. 1999-07-20 Mail Delivery Subsystem: Returned mail: Can't create output
+ 2. 1999-07-20 Mail Delivery Subsystem: Returned mail: Can't create output
+ 3. 1999-06-02 Mail Delivery Subsystem: Returned mail: User unknown
 
-../rmail/list-announce
+../admin/rmail/list-announce
  1. 1994-10-31 pinard@IRO.UMontreal.CA: Prerelease: GNU recode 3.3.2
  2. 1994-11-06 pinard@iro.umontreal.ca: Release: GNU recode 3.4
  3. 1994-12-01 pinard@IRO.UMontreal.CA: Prerelease: GNU recode 3.4.1
@@ -67,45 +103,87 @@
 24. 1999-04-29 FranÁois Pinard: Executable of `recode' for DOSWIN
 25. 1999-01-16 FranÁois Pinard: Playing with implied surfaces
 26. 1999-05-18 FranÁois Pinard: Prerelease: Free recode 3.4r
+27. 1999-06-01 FranÁois Pinard: Release: Free recode 3.5
+28. 1999-06-06 FranÁois Pinard: Release: Free recode 3.5
 
-../rmail/listing
- 1. 1993-12-21 Martin Maechler: Re: Prerelease: GNU recode version 3.2.10
- 2. 1993-12-21 Francois Pinard: Prerelease: GNU recode version 3.2.10
- 3. 1993-02-10 Patrik F{ltstr|m: Re: transcription iso-8859-1 to us-ascii?
- 4. 1998-10-29 Markus Kuhn: Free X11 Unicode terminal font available
- 5. 1998-11-22 FranÁois Pinard: Re: Free X11 Unicode terminal font available
- 6. 1999-03-30 Andreas Schwab: Fix for AtariST encoding
+../admin/rmail/port-doswin
+ 1. 1998-02-18 Eli Zaretskii: Re: Integrating your diffs
+ 2. 1998-02-26 Eli Zaretskii: Re: Snapshot of `tar' sources
+ 3. 1998-02-26 FranÁois Pinard: Re: Snapshot of `tar' sources
+ 4. 1998-03-01 Eli Zaretskii: Re: tar 1.12a
+ 5. 1998-03-01 Eli Zaretskii: Re: Snapshot of `tar' sources
+ 6. 1998-03-09 Eli Zaretskii: Re: Snapshot of `tar' sources
+ 7. 1998-03-22 Eli Zaretskii: File name quoting in Tar
+ 8. 1998-04-05 Tom Tromey: Re: AM_CONFIG_HEADER ignores directories
+ 9. 1998-11-10 FranÁois Pinard: Re: Snapshot of `tar' sources
+10. 1998-11-21 Jim Meyering: Re: Textutils 1.22d ported to DJGPP
+11. 1998-11-22 Eli Zaretskii: Re: `tar' modifs in `lib/'
+12. 1998-11-22 Eli Zaretskii: Re: msdos version of tar
+13. 1998-11-22 Eli Zaretskii: Re: Textutils 1.22d ported to DJGPP
+14. 1998-12-06 Eli Zaretskii: Re: GNU Emacs port to Solaris 7 (sparc, 64-bit)
+15. 1999-02-15 Eli Zaretskii: Re: gettext.m4 and absolute file names
+16. 1999-03-30 Eli Zaretskii: Re: GNU configur.bat
+17. 1999-03-30 Eli Zaretskii: Re: GNU configur.bat
+18. 1999-04-13 FranÁois Pinard: Re: ... and paxutils
+19. 1999-04-13 Eli Zaretskii: Re: ... and paxutils
+20. 1999-04-15 FranÁois Pinard: DJGPP rm possible bug
+21. 1999-04-18 Eli Zaretskii: Re: DJGPP rm possible bug
+22. 1999-05-06 Eli Zaretskii: Re: GNU sed or equivalent on Windows NT4?
+23. 1999-05-09 Eli Zaretskii: Re: Automatic expansion of environment variables
+24. 1999-05-16 Alain Magloire: Re: Automatic expansion of environment variables
+25. 1999-05-18 Eli Zaretskii: Re: Automatic expansion of environment variables
+26. 1999-05-18 Alain Magloire: Re: Automatic expansion of environment variables
+27. 1999-05-19 Eli Zaretskii: Re: Automatic expansion of environment variables
+28. 1999-05-26 Alain Magloire: v2.04 (was Re: Automatic ...)
+29. 1999-07-01 FranÁois Pinard: Re: ["Uwe Brauer" <oub@eucmos.sim.ucm.es>] hebr
+30. 1999-08-08 Ian Lance Taylor: [eliz@is.elta.co.il: Re: Problems building Bin
+31. 1999-08-08 Mark E.: Re: [eliz@is.elta.co.il: Re: Problems building Binutils
+32. 1998-03-26 FranÅÁois Pinard: Re: find reco dos executable
+33. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
+34. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
+35. 1998-11-24 FranÁois Pinard: Re: recode for Amiga - 3.4k update
+36. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
+37. 1998-11-25 Eli Zaretskii: libtool+shell [was: Re: recode for Amiga - 3.4k u
+38. 1998-11-25 Eli Zaretskii: Perl [was: Re: recode for Amiga - 3.4k update]
+39. 1998-11-25 Eli Zaretskii: EOLs [was: Re: recode for Amiga - 3.4k update]
+40. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
+41. 1998-11-25 Eli Zaretskii: Intro [was: Re: recode for Amiga - 3.4k update]
+42. 1998-11-30 Eli Zaretskii: Re: New -Spo option to `recode'
+43. 1999-01-31 Matt Armstrong: Re: Cygwin, make install and .exe
+44. 1999-02-15 Eli Zaretskii: Re: gettext.m4 and absolute file names
+45. 1999-04-10 Robert S. Maier: automake problems DJGPP
+46. 1999-04-10 Alexandre Oliva: Re: automake problems DJGPP
+47. 1999-04-13 Eli Zaretskii: Re: ... and paxutils
+48. 1999-04-12 Eli Zaretskii: Re: Playing with DJGPP again
+49. 1999-04-12 Eli Zaretskii: Re: Playing with DJGPP again
+50. 1999-04-15 FranÁois Pinard: recode on DJGPP
+51. 1999-06-01 FranÁois Pinard: Re: POT file for recode 3.4r now being uploaded
+52. 1999-06-02 FranÁois Pinard: Re: POT file for recode 3.4r now being uploaded
+53. 1999-06-03 Eli Zaretskii: Re: POT file for recode 3.4r now being uploaded
+54. 1999-12-14 Eli Zaretskii: Re: `recode' and DJGPP
+55. 1999-12-14 FranÁois Pinard: Re: `recode' and DJGPP
+56. 1999-02-07 Jim Meyering: Re: gettext.m4 and absolute file names
 
-../rmail/mixed
- 1. 1992-11-23 mcgill-vision!corto.inria.fr!shapiro: recode
- 2. 1994-12-19 Martin Wendel: ANNOUNCE: Emil-2.0 is available
- 3. 1995-02-28 Francois Pinard: UUPC
- 4. 1995-03-11 Scott Nelson: ISO-8859-X email test
- 5. 1995-03-16 Martin Wendel: ANNOUNCE: emil-2.0.5 released
- 6. 1995-07-05 FranÁois Pinard: Re: Retour !
- 7. 1995-07-25 David Collier-Brown: Early announcement: Mime-witing library
- 8. 1996-03-02 FranÁois Pinard: Re: PrÈsentation de Ulrich Drepper!
- 9. 1996-06-09 FranÁois Pinard: Re: About recode
-10. 1997-10-30 =?iso-8859-1?Q?G=E9rald_St=2DArneault_=3Cstarneag=40grics.qc.ca=
+../admin/rmail/port-winNT
+ 1. 1998-02-09 Paul E. Jones: Tar-1.12 on Windows NT
+ 2. 1998-02-09 FranÁois Pinard: Re: Tar-1.12 on Windows NT
+ 3. 1998-02-09 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+ 4. 1998-02-11 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+ 5. 1998-02-11 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+ 6. 1998-02-11 Paul E. Jones: Re: Tar-1.12 on Windows NT
+ 7. 1998-02-12 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+ 8. 1998-02-12 Eli Zaretskii: Re: [comp.windows.x.apps] Re: Making PC like UNIX
+ 9. 1998-02-24 Paul E. Jones: Re: Tar-1.12 on Windows NT
+10. 1998-03-05 FranÁois Pinard: Re: Tar-1.12 on Windows NT
+11. 1998-03-05 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+12. 1998-03-08 Eli Zaretskii: Re: Tar-1.12 on Windows NT
+13. 1998-03-09 Paul E. Jones: Re: Tar-1.12 on Windows NT
+14. 1998-03-22 Eli Zaretskii: Re: [pinard@icule.progiciels-bpi.ca: Re: Prerelea
+15. 1998-03-27 FranÁois Pinard: Keeping copies of your binaries
+16. 1998-03-29 Paul E. Jones: Re: Keeping copies of your binaries
+17. 1998-03-29 Eli Zaretskii: Re: Keeping copies of your binaries
 
-../rmail/moteur
- 1. 1999-04-18 FranÁois Pinard: -lf et ibmpc ?
- 2. 1999-04-14 FranÁois Pinard: recode - IBM-PC
- 3. 1999-04-03 Laurent Bourbeau: Recode 3.4q - Bug 5
- 4. 1999-04-02 FranÁois Pinard: =?iso-8859-1?q?Probl=E8me?= recode
-
-../rmail/multext
- 1. 1996-05-24 Jean Ve'ronis: Soft: MtScript (Multilingual editor)
- 2. 1996-06-17 Jean Ve'ronis: Free Soft: MtStr - Multilingual string library
- 3. 1996-06-20 Jean Ve'ronis: Free Soft: MtRecode - Character conversion progra
- 4. 1996-08-29 Malek BOUALEM -- UNIVERSITE: Brief Introduction of the LPL
- 5. 1996-09-05 Malek BOUALEM -- UNIVERSITE: Re: Introduction of LPL/MULTEXT/MTS
- 6. 1997-12-10 Jean Veronis: Re: Citation de MtRecode
-
-../rmail/notation
- 1. 1997-08-06 Ulrich Drepper: Re: charset names
-
-../rmail/relecture
+../admin/rmail/relecture
  1. 1999-01-01 FranÁois Pinard: RÅÈfÅÈrences de l'IANA sur les jeux de caractÅË
  2. 1999-01-01 FranÁois Pinard: D'autre rÅÈfÅÈrences
  3. 1999-01-13 Ulrich Drepper: wanna read?
@@ -116,15 +194,334 @@
  8. 1999-04-23 Olivier Tharan: Re: =?iso-8859-1?Q?Manuel_fran=E7ais_pour_recode
  9. 1999-04-27 FranÁois Pinard: Re: Manuel =?iso-8859-1?q?fran=E7ais?= pour rec
 
-../rmail/speed
- 1. 1999-01-22 Andreas Schwab: Re: iconv changes
- 2. 1999-01-22 Ulrich Drepper: Re: iconv changes
+../asian/rmail/2022
+ 1. 1994-08-26 David Williss: Unicode to ISO-2022
+ 2. 1994-08-27 Martin J. Duerst: Re: Unicode to ISO-2022
+ 3. 1994-12-15 Haruhiko Nishida: Re: HTML in Unicode?
+ 4. 1994-12-16 John B. Melby: Re: HTML in Unicode?
+ 5. 1995-07-31 morioka@jaist.ac.jp (=?ISO-2022-JP?B?GyRCPGkyLBsoQiAbJEJDTkknGyh
+ 6. 1994-09-02 Erik Naggum: Re: CDRA
+ 7. 1997-02-06 FranÁois Pinard: Re: flex-2.5.2.ko.po
+ 8. 1997-08-09 Kenichi Handa: Re: Learning more about MULE
+ 9. 1997-01-19 Alain LaBont/e'/: Re: switching ISO 2022 <-> Unicode
+10. 1997-08-06 Martin J. Duerst: Re: charset names
+11. 1997-09-02 Ulrich Drepper: Re: librecode, libc, gettext
+12. 1997-10-08 Martin J. D¸rst: Re: librecode, libc, gettext
+13. 1997-10-07 Martin J. D¸rst: Re: librecode, libc, gettext
+14. 1997-10-08 Keld J|rn Simonsen: Re: librecode, libc, gettext
+15. 1997-08-01 Martin J. Duerst: Re: librecode, libc, gettext
+16. 1995-03-14 John B. Melby: Re: Unicode/ISO-10646/TRON/MULE/MCS for multiling
+17. 1990-06-29 Robert Claeson: Re: Int'l Character set (Was: Re: filen
+18. 1997-11-13 Duane Ellis: (none)
+19. 1997-11-14 Werner Lemberg: Re: your mail
+20. 1995-04-07 Kari E. Hurtta: 8-bit charset in C1-C3 banks (Re: DO use ESC [ 1
+21. 1997-11-14 Jungshik Shin: Re: unicode <-> iso-2022
+22. 1997-07-29 Oum Sang-il: clipboard encoding
+23. 1994-10-05 Erik Naggum: Re: Shift-JIS (was Re: multilingual HTML, SGML docu
+24. 1994-10-07 G. Ken Holman: Re: more on Japanese SGML, Ken Lunde & ISO 2022
+25. 1995-04-26 Chiaki Ishikawa: Re: 7 bit mail in 1992 still?
+26. 1998-03-09 Alain LaBontÈ†: Canadian contribution objecting against future u
+27. 1997-11-14 Jungshik Shin: Re: unicode <-> iso-2022
+28. 1999-01-16 Shinya Hanataka: ISO-2022-JP-2 latin character encode bug
+29. 1999-01-16 Ulrich Drepper: Re: ISO-2022-JP-2 latin character encode bug
+30. 1999-01-16 Shinya Hanataka: ISO-2022-JP-2 latin character encode bug
+31. 1999-01-16 Ulrich Drepper: Re: ISO-2022-JP-2 latin character encode bug
+32. 1992-06-09 Yutaka Sato =?ISO-2022-JP?B?GyRAOjRGI0stGyhK?=: Re: How to see J
+33. 1999-07-13 lal@cs.ucdavis.edu: Japanese character conversion tools
+34. 1999-05-05 Frank da Cruz: Re: Can someone provide an explanation ?
+35. 1999-06-09 Hrvoje Niksic: ISO 2022 support
+36. 1999-08-17 FranÁois Pinard: Re: ISO 2022 support
+37. 1999-08-17 FranÁois Pinard: Re: ISO 2022 support
+38. 1999-08-24 Hrvoje Niksic: Re: ISO 2022 support
+39. 1999-08-24 FranÁois Pinard: Re: ISO 2022 support
+40. 1999-08-24 Hrvoje Niksic: Re: ISO 2022 support
+41. 1992-06-09 Yutaka Sato =?ISO-2022-JP?B?GyRAOjRGI0stGyhK?=: Re: How to see J
+42. 1997-03-28 Ulrich Drepper: Re: Re: Character set conversion API for libc
+43. 1997-03-28 Jake Morrison: Re: Re: Character set conversion API for libc
+44. 1997-09-11 Kenichi Handa: Re: RMAIL and coding system (Re: file name coding
+45. 1997-09-18 Martin J. D¸rst: Re: RMAIL and coding system (Re: file name codi
 
-../rmail/charsets/1252
+../asian/rmail/aides
+ 1. 1997-12-02 Jake Morrison: Re: Character set conversion API for libc
+ 2. 1997-12-08 FranÁois Pinard: Re: unicode <-> hex converter (fwd)
+ 3. 1997-12-08 FranÁois Pinard: Re: help
+ 4. 1998-03-23 FranÁois Pinard: Re: tar bugs with -g and -G
+ 5. 1998-03-24 Greg HERMAN: Re: tar bugs with -g and -G
+ 6. 1997-04-10 FranÁois Pinard: Re: unicode <-> hex converter (fwd)
+
+../asian/rmail/auto-recognition
+ 1. 1998-07-04 MORIOKA Tomohiko: Re: EMH 1.8.1
+ 2. 1998-07-04 Olivier Lecarme: Re: EMH 1.8.1
+ 3. 1999-12-18 Bruno Haible: Re: suggestion ridicule pour recode
+
+../asian/rmail/chinese
+ 1. 1993-07-22 Pierre Mailhot: Annonce: nouveaux utilitaires "chinois" sur sagu
+ 2. 1993-07-23 Qiang Ming Tan: How to use Chinese tools
+ 3. 1993-08-04 Richard Turmel: Annonce sur lude-iro
+ 4. 1994-11-21 L.S.Ng: Internationalisation vs. Native Development & Chinese WW
+ 5. 1995-01-21 Bow-Yaw Wang: Introducing CEF (Chinese Encoding Framework)
+ 6. 1995-05-01 ywliu@beta.wsl.sinica.edu.tw: Re: glocale info
+ 7. 1996-03-29 Pierre Zweigenbaum: Q: Chinese: GB-2312 or BIG-5?
+ 8. 1996-04-17 Pierre Zweigenbaum: R: Chinese: GB-2312 or BIG-5?
+ 9. 1997-02-25 Ya-Gui Wei: [INFO] How to Read Chinese Text on Usenet: FAQ for a
+10. 1997-05-05 John Clews: East Asian librarians voted for the pinyin system (f
+11. 1997-12-01 Richard Stallman: Chinese translation of the GNU Manifesto
+12. 1998-03-24 Greg HERMAN: Re: tar bugs with -g and -G
+13. 1998-03-24 Greg HERMAN: Re: tar bugs with -g and -G
+14. 1999-05-11 Ulrich Drepper: Re: Question on GB encoding in glibc-2.1.X
+15. 1999-05-12 Tung-Han Hsieh: Re: Question on GB encoding in glibc-2.1.X
+16. 1997-08-01 Martin J. Duerst: Re: librecode, libc, gettext
+17. 1997-12-16 Pofeng Lee: Re: help
+
+../asian/rmail/chinese-big5
+ 1. 1995-08-07 Jyh-Shyang Wang: Re: Problem about compile tar on Ultrix...
+ 2. 1997-07-25 Pofeng Lee: Re: help
+ 3. 1997-12-08 Kenichi Handa: [rms@santafe.edu: Chinese translation of the GNU
+ 4. 1997-10-19 PILCH Hartmut: Hanja-Big5 conversion table
+ 5. 1997-10-20 Jason Molenda: Re: Hanja-Big5 conversion table
+ 6. 1997-10-20 Werner Lemberg: Re: Hanja-Big5 conversion table
+ 7. 1997-10-20 Martin J. D¸rst: Re: Hanja-Big5 conversion table
+ 8. 1997-10-20 Werner Lemberg: Re: Hanja-Big5 conversion table
+ 9. 1997-10-21 Martin J. D¸rst: Re: Hanja-Big5 conversion table
+10. 1997-10-21 Mark Leisher: Re: Hanja-Big5 conversion table
+11. 1997-10-20 Werner Lemberg: Re: Hanja-Big5 conversion table
+12. 1997-10-20 Martin J. D¸rst: Re: Hanja-Big5 conversion table
+13. 1997-10-20 Werner Lemberg: Re: Hanja-Big5 conversion table
+14. 1997-10-20 Jason Molenda: Re: Hanja-Big5 conversion table
+15. 1999-04-05 Tung-Han Hsieh: The zh_TW.Big5 locale data
+16. 1999-11-29 Angelo Borsotti: iconv Big5 incorrect decoding
+
+../asian/rmail/han-unification
+ 1. 1995-12-05 Per Bothner: Re: Internationalization resources?
+ 2. 1995-12-26 Per Bothner: Issues in Internationalizing Guile, Scheme, and Ema
+ 3. 1995-12-27 Richard Stallman: Re: Issues in Internationalizing Guile, Scheme
+ 4. 1995-12-27 Per Bothner: Re: Issues in Internationalizing Guile, Scheme, and
+ 5. 1995-12-28 Richard Stallman: Re: Issues in Internationalizing Guile, Scheme
+ 6. 1995-12-31 Per Bothner: emacs implications of Guile internationalization
+ 7. 1997-07-27 Ulrich Drepper: Re: Trying Emacs 20
+ 8. 1996-01-04 Per Bothner: Re: New Mule
+ 9. 1997-07-28 Pofeng Lee: Re: help
+10. 1996-11-27 unicode@Unicode.ORG: Re: Information on new unihan characters?
+11. 1995-03-16 John B. Melby: Re: Unicode/ISO-10646/TRON/MULE/MCS for multiling
+12. 1995-03-27 Martin J. Duerst: Re: Unicode/ISO-10646/TRON/MULE/MCS for multil
+13. 1997-10-31 Martin J. D¸rst: Re: librecode, libc, gettext
+14. 1997-10-31 FranÁois Pinard: Re: librecode, libc, gettext
+15. 1997-10-31 Martin J. D¸rst: Re: librecode, libc, gettext
+16. 1995-03-16 Glenn A. Adams: Re: Unicode/ISO-10646/TRON/MULE/MCS for multilin
+17. 1998-09-08 Alain LaBontÈ†: Re: Projet de rapport de liaison entre ISO/CEI J
+18. 1998-03-17 Alain LaBontÈ†: ComprÈhension du problËme japonais pour le jeu u
+19. 1996-01-05 FranÅÁois Pinard: Re: 8bit clean perl? (fwd)
+20. 1998-09-09 Alain LaBontÅÈÅ†: Re: Projet de rapport de liaison entre ISO/IEC
+
+../asian/rmail/help
+ 1. 1998-12-04 Martin J. Duerst: Re: Prerelease: GNU recode 3.4i
+ 2. 1998-12-07 FranÁois Pinard: Re: Prerelease: GNU recode 3.4i
+ 3. 1998-12-10 Martin J. Duerst: Re: Prerelease: GNU recode 3.4i
+ 4. 1998-12-10 FranÁois Pinard: Re: Prerelease: GNU recode 3.4i
+ 5. 1998-12-18 Martin J. Duerst: Re: Prerelease: GNU recode 3.4i
+
+../asian/rmail/iconv
+ 1. 1998-12-08 hanataka@abyss.rim.or.jp: gconv/iconv bugs about japanese charac
+ 2. 1998-12-08 Ulrich Drepper: Re: gconv/iconv bugs about japanese character co
+ 3. 1999-01-22 Andreas Schwab: Re: iconv changes
+ 4. 1999-05-06 Rick Jelliffe: Improvement to libc iconv for East Asian text: lo
+ 5. 1999-07-23 Changwoo Ryu: iconv() utf8 -> euc-kr bug.
+ 6. 1999-12-10 Bruno Haible: iconv program produces invalid output
+ 7. 1999-12-10 Ulrich Drepper: Re: iconv program produces invalid output
+ 8. 1999-12-11 Andrew Clausen: iconv() and UCS4 endianness
+ 9. 1999-12-11 Ulrich Drepper: Re: iconv() and UCS4 endianness
+10. 1999-12-11 Andrew Clausen: Re: iconv() and UCS4 endianness
+11. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+12. 1999-12-09 FranÁois Pinard: Re: cjk.tgz, iconv, transliterations
+13. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+14. 1999-12-09 FranÁois Pinard: Re: cjk.tgz, iconv, transliterations
+15. 1999-12-09 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+16. 1999-12-06 FranÁois Pinard: Re: disclaimers
+17. 1999-12-06 assignments: Re: disclaimers
+18. 1999-12-06 assignments: Re: disclaimers
+19. 1999-12-12 FranÁois Pinard: Re: cjk.tgz, iconv, transliterations
+20. 1999-12-06 Bruno Haible: Re: disclaimers
+21. 1999-09-07 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
+22. 1999-09-07 FranÁois Pinard: Re: [loic@ceic.com] Unicode: Toward a standard
+23. 1999-09-08 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
+24. 1999-09-13 Bruno Haible: cjk.tgz
+25. 1999-09-08 FranÁois Pinard: Re: none
+26. 1999-09-08 Bruno Haible: Re: cjk.tgz
+27. 1999-09-15 FranÁois Pinard: Re: cjk.tgz
+28. 1999-12-13 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+29. 1999-12-13 FranÁois Pinard: Re: cjk.tgz, iconv, transliterations
+30. 1999-12-13 Andrew Clausen: Memory leaks in iconv_open() / iconv_close()
+31. 1999-12-15 Bruno Haible: Re: cjk.tgz, iconv, transliterations
+
+../asian/rmail/japanese
+ 1. 1995-04-25 Ryutaro Susukita: Re: tar-1.11.2 SunOS-4.1.3 JLE-1.1.3 segmentai
+ 2. 1995-04-26 International List: Re: International mailings/recodings
+ 3. 1996-04-08 Chiaki Ishikawa: Re: Notes to translators of GNU packages
+ 4. 1997-08-04 Yoshihiko Mori: Re: [Q] height and witdh of Emacs initial window
+ 5. 1997-08-06 Alain LaBont\i - SCT: Classement... ´ alphabÈtique ª
+ 6. 1997-12-02 Ulrich Drepper: Re: Character set conversion API for libc
+ 7. 1997-12-02 Jake Morrison: Re: Character set conversion API for libc
+ 8. 1997-12-03 Ulrich Drepper: Re: Character set conversion API for libc
+ 9. 1997-12-03 Jake Morrison: Re: Character set conversion API for libc
+10. 1998-02-09 =?iso-2022-jp?B?GyRCRiM4NhsoQg==?= =?iso-2022-jp?B?GyRCQD8bKEI=?
+11. 1998-04-02 Uma Umamaheswaran: 10646 and Japanese
+12. 1996-07-05 SAKAI Kiyotaka: Re: About sharutils-4.2.1.ja_JP.EUC.po
+13. 1996-07-05 Ulrich Drepper: Re: About sharutils-4.2.1.ja_JP.EUC.po
+14. 1996-07-08 SAKAI Kiyotaka: Re: About sharutils-4.2.1.ja_JP.EUC.po
+15. 1996-07-08 Ulrich Drepper: Re: About sharutils-4.2.1.ja_JP.EUC.po
+16. 1996-07-10 SAKAI Kiyotaka: Re: About sharutils-4.2.1.ja_JP.EUC.po
+17. 1996-07-10 Ulrich Drepper: Re: About sharutils-4.2.1.ja_JP.EUC.po
+18. 1996-07-15 SAKAI Kiyotaka: Re: About sharutils-4.2.1.ja_JP.EUC.po
+19. 1996-07-15 NIIBE Yutaka: Re: About sharutils-4.2.1.ja_JP.EUC.po
+20. 1996-07-15 Ulrich Drepper: Re: About sharutils-4.2.1.ja_JP.EUC.po
+21. 1996-04-05 FranÁois Pinard: Re: Notes to translators of GNU packages
+22. 1994-10-04 Rick Jelliffe: "was Re: multilingual HTML, SGML documents" <Shif
+23. 1994-10-05 Erik Naggum: Re: Shift-JIS (was Re: multilingual HTML, SGML docu
+24. 1996-07-24 =?ISO-2022-JP?B?GyRCQEQ7M0JnMnAbKEI=?= /Daisuke Aoyama: patch an
+25. 1996-07-24 $(B@D;3Bg2p(B /Daisuke Aoyama: patch and libraries
+26. 1994-09-27 Dan Connolly: Re: Multilingual HTML, SGML documents?
+27. 1994-10-09 Emmanuel Uren: 850 and more, 8859 and more, and more
+28. 1995-12-05 Jason Molenda: Re: Internationalization resources?
+29. 1995-12-05 Per Bothner: Re: Internationalization resources?
+30. 1996-04-09 Chiaki Ishikawa: Re: Notes to translators of GNU packages
+31. 1996-04-09 Chiaki Ishikawa: Re: Notes to translators of GNU packages
+32. 1997-04-11 Mark Leisher: Recode offer
+33. 1997-04-11 Brendan_Murray/DUB/Lotus@lotus.com: Re: unicode <-> hex converte
+34. 1997-04-11 Leong Kok Yong: Re: unicode <-> hex converter (fwd)
+35. 1997-12-08 FranÁois Pinard: Re: Japanese format conversions SJIS <--> JIS?
+36. 1997-12-12 NUMATA Toshinori: (i18n.419) (posix 3411) 3007 IDEOGRAPHIC NUMBE
+37. 1998-03-12 Jeffrey Friedl: Re: Japanese format conversions SJIS <--> JIS?
+38. 1998-03-12 Jeffrey Friedl: Re: Japanese format conversions SJIS <--> JIS?
+39. 1998-03-13 FranÁois Pinard: Re: Japanese format conversions SJIS <--> JIS?
+
+../asian/rmail/japanese-euc
+ 1. 1998-04-28 Koichi Nakatani: Re: MHonArc and multi-byte characters in HTML
+ 2. 1998-04-28 Earl Hood: Re: MHonArc and multi-byte characters in HTML
+ 3. 1998-05-06 Koichi Nakatani: Re: MHonArc and multi-byte characters in HTML
+ 4. 1994-12-14 Daniel R. Kegel: Re: HTML in Unicode?
+ 5. 1999-08-27 Coordinator of Japanese Team: SVP make EUC-JP charset valid (was
+
+../asian/rmail/jconv
+ 1. 1999-07-14 lal@cs.ucdavis.edu: Re: Japanese character conversion tools
+ 2. 1999-07-14 Peter Wyzlic: Re: Japanese character conversion tools
+ 3. 1999-07-14 Jungshik Shin: Re: Japanese character conversion tools
+
+../asian/rmail/korean
+ 1. 1997-10-07 Jungshik Shin: description of Korean/Chinese lang. environment
+ 2. 1997-10-08 Jungshik Shin: Re: korean
+ 3. 1997-10-08 Jungshik Shin: Re: description of Korean/Chinese lang. environme
+ 4. 1997-10-08 Ken Lunde: Re: description of Korean/Chinese lang. environment
+ 5. 1997-10-08 Ken Lunde: Re: description of Korean/Chinese lang. environment
+ 6. 1997-10-08 Martin J. D¸rst: Re: description of Korean/Chinese lang. environ
+ 7. 1997-10-08 Kenichi Handa: Re: description of Korean/Chinese lang. environme
+ 8. 1997-10-08 Martin J. D¸rst: Re: description of Korean/Chinese lang. environ
+ 9. 1997-10-09 Kenichi Handa: Re: description of Korean/Chinese lang. environme
+10. 1997-10-09 Martin J. D¸rst: Re: description of Korean/Chinese lang. environ
+11. 1997-10-15 Deogtae Kim: Re: korean-hanterm input method and han.* encoding
+12. 1997-10-21 Werner Lemberg: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+13. 1997-10-21 Mark Leisher: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+14. 1997-10-21 Kenichi Handa: [Marcel.Kohl@vs.dasa.de: korean characters]
+15. 1997-10-21 Martin J. D¸rst: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+16. 1997-10-22 Kenichi Handa: Re: korean-hanterm input method and han.* encodin
+17. 1997-10-22 Gary Roberts: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+18. 1997-10-22 Jungshik Shin: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+19. 1997-10-22 Jungshik Shin: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+20. 1997-10-22 Gary Roberts: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+21. 1997-10-22 Jungshik Shin: Re: Korean mail coding-system and bug in iso-2022
+22. 1997-10-22 Martin J. D¸rst: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+23. 1997-10-22 Kenichi Handa: Re: korean-hanterm input method and han.* encodin
+24. 1997-10-22 Martin J. D¸rst: Re: [Marcel.Kohl@vs.dasa.de: korean characters]
+25. 1997-10-24 Jungshik Shin: Re: korean-hanterm input method and han.* encodin
+26. 1997-10-25 Kenichi Handa: Re: korean-hanterm input method and han.* encodin
+27. 1997-10-25 Jungshik Shin: Re: korean-hanterm input method and han.* encodin
+28. 1997-10-25 Murata Shuuichirou: Re: korean-hanterm input method and han.* en
+29. 1997-10-25 Martin J. D¸rst: Re: korean-hanterm input method and han.* encod
+30. 1997-10-25 Jungshik Shin: Re: korean-hanterm input method and han.* encodin
+31. 1997-10-27 Martin J. D¸rst: Re: korean-hanterm input method and han.* encod
+32. 1997-10-27 Kenichi Handa: Re: korean-hanterm input method and han.* encodin
+33. 1997-10-29 Joerg Plassen: Re: description of Korean/Chinese lang. environme
+34. 1998-05-16 Yun YoungSun: [report] korean environment in gnus with semi.
+35. 1998-05-17 MORIOKA Tomohiko: Re: [report] korean environment in gnus with s
+36. 1998-11-26 Jungshik Shin: Adding Korean JOHAB support?
+37. 1998-11-27 Kenichi Handa: Re: Adding Korean JOHAB support?
+38. 1998-11-27 Jungshik Shin: Re: Adding Korean JOHAB support?
+39. 1994-12-13 Ross Paterson: Re: can ISO-IR-*** be used as MIME charset?
+40. 1999-03-11 Alain LaBontÅÈÅ†: JUC : Noms de caractÅËres corÅÈens
+41. 1997-12-15 Choi, Jun Ho: Re: flex-2.5.2.ko.po
+42. 1998-01-06 FranÁois Pinard: Re: Phonetic transcription of Korean [was: Re:
+
+../asian/rmail/korean-hangul
+ 1. 1996-05-14 Alain LaBont/e'/: UNICODE et le codage hangul
+ 2. 1996-05-15 Jian YANG: Re: UNICODE et le codage hangul
+ 3. 1996-05-15 Alain LaBont/e'/: Re: UNICODE et le codage hangul
+ 4. 1996-05-22 Alain LaBont/e'/: Re: Nom des caracteres coreens dans l'ISO/CEI
+ 5. 1998-12-16 Francois Yergeau: Tel que promis
+ 6. 1998-12-16 Francois Yergeau: Re: recode et table =?ISO-8859-1?Q?fran=E7aise
+
+../asian/rmail/mule
+ 1. 1998-03-28 Werner Lemberg: Re: MULE-UCS 0.01(YUME) Release.
+ 2. 1998-03-28 =?ISO-2022-JP?B?GyRCNVwyPBsoQiAbJEI+MBsoQjpISU1J?=: MULE-UCS 0.0
+ 3. 1998-03-28 Satoru Tomura: Re: MULE-UCS 0.01(YUME) Release.
+ 4. 1998-04-08 NIIBE Yutaka: it works again
+ 5. 1998-08-31 SL Baur: Re: MULE primer
+ 6. 1998-09-01 Stephen J. Turnbull: Re: MULE primer
+ 7. 1999-02-05 Stephen J. Turnbull: Re: More charset things
+ 8. 1999-02-05 Stephen J. Turnbull: Re: More charset things
+ 9. 1999-02-04 Stainless Steel Rat: Re: More charset things
+10. 1999-05-07 Takashi Nishimoto: Re: Need help to find doc
+11. 1997-11-05 French GNU/LI List: Re: Donation process
+
+../asian/rmail/printing
+ 1. 1998-02-11 Jungshik Shin: Re: Emacs 20.x desiderata
+ 2. 1998-02-25 Jens-Ulrik Holger Petersen: Re: Emacs 20.x desiderata
+ 3. 1998-03-02 SAKAI Kiyotaka: Re: Emacs 20.x desiderata
+ 4. 1999-07-05 Lars Magne Ingebrigtsen: Contributor section
+ 5. 1999-07-04 Russ Allbery: Re: Contributor section
+ 6. 1999-07-05 Mike Fabian: Re: Contributor section
+ 7. 1999-07-09 Werner LEMBERG: Re: MULE and TeX
+ 8. 1999-07-09 Werner LEMBERG: Re: MULE and TeX
+ 9. 1998-02-09 Joshua Redstone: Re: Emacs 20.x desiderata
+
+../asian/rmail/printing-latex
+ 1. 1999-01-08 Werner LEMBERG: ANNOUNCING CJK 4.2.0 [Chinese/Japanese/Korean fo
+
+../asian/rmail/references
+ 1. 1997-12-25 Junko Matsumoto: Free Software Distribution Approval
+
+../asian/rmail/tex
+ 1. 1997-10-06 Werner Lemberg: ANNOUNCING CJK 4.1.3 [Chin/Jap/Kor for LaTeX2e]
+ 2. 1997-09-05 Werner Lemberg: Re: a perhaps popular question
+
+../asian/rmail/ucip
+ 1. 1997-12-09 Ken Lunde: Re: Recode offer
+ 2. 1997-12-08 FranÁois Pinard: Re: Recode offer
+ 3. 1997-12-09 Mark Leisher: Re: Recode offer
+ 4. 1997-12-09 FranÁois Pinard: Re: Recode offer
+ 5. 1997-12-15 Ken Lunde: Re: Recode offer
+ 6. 1997-12-18 FranÁois Pinard: Re: Recode offer
+ 7. 1997-12-19 Gigi Estabrook: Review of Understanding CJKV Info. Processing
+ 8. 1997-12-19 FranÁois Pinard: Re: Review of Understanding CJKV Info. Processi
+ 9. 1997-12-19 FranÁois Pinard: Re: Review of Understanding CJKV Info. Processi
+10. 1998-12-30 Ora-News: CJKV Info Processing
+
+../asian/rmail/wnn
+ 1. 1997-08-07 David Fox: Re: Frustration: Universally available input methods
+
+../charsets/rmail/1252
  1. 1997-04-24 Markus Kuhn: Re: &#146; valid HTML or no?
  2. 1997-10-29 Alain LaBontÈ - 3: Re: Comment fonctionnent les codepages sous W
+ 3. 1999-11-01 Karl Eichwalder: charset="Windows-1252"
+ 4. 1999-11-02 Steinar Bang: Re: charset="Windows-1252"
+ 5. 1999-11-02 Hrvoje Niksic: Re: charset="Windows-1252"
+ 6. 1999-11-02 Steinar Bang: Re: charset="Windows-1252"
+ 7. 1999-11-02 Hrvoje Niksic: Re: charset="Windows-1252"
+ 8. 1999-11-02 Steinar Bang: Re: charset="Windows-1252"
+ 9. 1999-11-02 Florian Weimer: Re: charset="Windows-1252"
+10. 1999-11-02 Toby Speight: Re: charset="Windows-1252"
+11. 1999-11-04 Robert Bihlmeyer: Re: charset="Windows-1252"
+12. 1999-11-04 Karl Eichwalder: Re: charset="Windows-1252"
 
-../rmail/charsets/5426
+../charsets/rmail/5426
  1. 1997-12-23 FranÁois Pinard: Re: ISO 5426 -> iso8859-1 converter
  2. 1997-12-24 Ulrich Drepper: Re: ISO 5426 -> iso8859-1 converter
  3. 1998-01-08 Wolfram Schneider: Re: ISO 5426 -> iso8859-1 converter
@@ -133,14 +530,14 @@
  6. 1997-12-24 Keld J|rn Simonsen: Re: ISO 5426 -> iso8859-1 converter
  7. 1998-01-08 Keld J|rn Simonsen: Re: ISO 5426 -> iso8859-1 converter
 
-../rmail/charsets/737
+../charsets/rmail/737
  1. 1999-01-20 Alejandros Diamandidis: recode: CP737 (DOS Greek) request
 
-../rmail/charsets/850
+../charsets/rmail/850
  1. 1997-08-25 Duncan Sargeant: recode l1:cp850 improvement.
  2. 1996-10-09 Juliusz Chroboczek: Re: RMAIL and charset=iso-8859-1
 
-../rmail/charsets/8859-15
+../charsets/rmail/8859-15
  1. 1998-04-13 Alain LaBontÈ†: Re: ISO 8859-15 to Unicode - Conversion table
  2. 1998-03-23 Alain LaBontÈ†: registration of a new charset: iso-8859-15
  3. 1998-06-22 Alain LaBontÈ†: Re: Outlook & the Euro
@@ -159,16 +556,27 @@
 16. 1998-09-08 Alain LaBontÈ†: Nouvelle page de code EBCDIC respectant le franÁ
 17. 1999-03-09 Alain LaBontÈ†: Re: Latin 1, latin 9 tout neuf : Windows et Mac
 18. 1999-03-31 Alain LaBontÈ†: Publication of Latin 9
+19. 1998-03-24 Alain LaBontÅÈÅ†: Re: registration of a new charset: iso-8859-15
+20. 1998-04-17 Alain LaBontÅÈÅ†: ISO/CEI FDIS 8859-15 (final text)
 
-../rmail/charsets/ansel
+../charsets/rmail/8859-7
+ 1. 1999-10-29 Tom Tromey: forwarded message from Markus Kuhn
+
+../charsets/rmail/african
+ 1. 1998-08-18 Laurent Bourbeau: Texinfo - EC-FC
+ 2. 1998-08-25 Laurent Bourbeau: Recode 3.4h - Bilan BUG de Laurent
+ 3. 1998-09-02 Laurent Bourbeau: Recode - Tests 2
+
+../charsets/rmail/ansel
  1. 1998-04-06 Michael Taeschner: recode support for ANSI Z39.47 (1985) ?
  2. 1998-04-07 FranÁois Pinard: Re: recode support for ANSI Z39.47 (1985) ?
  3. 1998-04-07 FranÁois Pinard: ANSEL
  4. 1998-04-07 FranÁois Pinard: ANSEL (bis)
  5. 1998-04-08 Michael Taeschner: Re: recode support for ANSI Z39.47 (1985) ?
  6. 1998-04-08 FranÁois Pinard: Re: recode support for ANSI Z39.47 (1985) ?
+ 7. 1999-12-17 Bruno Haible: suggestion ridicule pour recode
 
-../rmail/charsets/apl
+../charsets/rmail/apl
  1. 1991-11-15 mitloehn@uxq.wu-wien.ac.at: [comp.lang.apl] APL Transliteration
  2. 1994-11-13 Raul Deluth Miller: recode-3.4 and APL
  3. 1994-11-14 Francois Pinard: Re: recode-3.4 and APL
@@ -180,14 +588,14 @@
  9. 1997-01-31 Leigh Clayton: Re: apl character set
 10. 1997-02-01 rdm@tad.micro.umn.edu: Re: apl character set
 
-../rmail/charsets/apple
+../charsets/rmail/apple
  1. 1998-12-08 Larry W. Virden: Re: Novice user of recode with question
  2. 1998-12-16 Larry W. Virden: Re: Novice user of recode with question
 
-../rmail/charsets/ascii-bs
+../charsets/rmail/ascii-bs
  1. 1997-04-23 V.S. Umamaheswaran: Contribution to SC2 on 8-bit codes and combi
 
-../rmail/charsets/ebcdic
+../charsets/rmail/ebcdic
  1. 1990-08-31 Keld J|rn Simonsen: [comp.unix.questions] Re: EBCDIC to ASCII co
  2. 1990-10-02 Jeff Beard: Re: EBCDIC <--> ASCII conversion
  3. 1990-10-03 Luciano Mannucci: Re: EBCDIC <--> ASCII conversion
@@ -212,17 +620,17 @@
 22. 1996-03-28 Jim Meyering: Re: dd conv=(ascii|ebcdic)
 23. 1996-11-24 Joe Wright: Re: The char type crossing the 8 bit barrier? (Was R
 
-../rmail/charsets/euro
+../charsets/rmail/euro
  1. 1998-04-01 K I Larsson: (TC304.1649) More on Euro-codetables
 
-../rmail/charsets/extended-ascii
+../charsets/rmail/extended-ascii
  1. 1997-04-14 Uri Guttman: recode and extended ascii
  2. 1997-06-18 FranÁois Pinard: Re: recode and extended ascii
 
-../rmail/charsets/georgian
+../charsets/rmail/georgian
  1. 1998-02-22 John Clews: (TC304.1511) Georgian standard (forwarded)
 
-../rmail/charsets/html
+../charsets/rmail/html
  1. 1994-03-19 David Lebel: HTML...
  2. 1994-11-12 Francois Pinard: iso8859-1.html
  3. 1994-11-12 Francois Pinard: isolat1.html
@@ -266,12 +674,13 @@
 41. 1998-10-25 Martin J. Duerst: Re: Converting control characters to HTML?
 42. 1998-12-07 Thorgeir Sigurdsson: (CEN/TC304-Contribtns) Mark-Up and Braille
 43. 1994-03-19 David Lebel: HTML...
+44. 1998-07-21 Wiel: recode: lat1html.c
 
-../rmail/charsets/kermit
+../charsets/rmail/kermit
  1. 1991-09-18 Christine M Gianone: Character Set Files and Utilities
  2. 1995-02-03 Chris Smith: kermit, recode latin1:cp850, and a little program
 
-../rmail/charsets/latex
+../charsets/rmail/latex
  1. 1992-10-30 Pierre Darmon: Re: How to make the "degree" symbol?
  2. 1992-11-02 Daniel H. Luecking: degree symbol
  3. 1992-11-18 Ivan A Derzhanski: Re: \b \d and ISO 6937 Latin Diacriticals
@@ -297,225 +706,21 @@
 23. 1998-07-14 Santiago Vila: Bug #24436: recode: missing some things for latex
 24. 1998-07-14 FranÁois Pinard: Re: Bug #24436: recode: missing some things for
 
-../rmail/charsets/latin1
+../charsets/rmail/latin1
  1. 1989-07-10 der Mouse: (none)
  2. 1996-03-08 Alain LaBont:e':: (SC2.15) (Copy) iso / dis 8879 Hypertext Marku
  3. 1996-05-22 Alain LaBont/e'/: Re:Roman Char set
  4. 1997-06-09 mike@vlsivie.tuwien.ac.at: ISO 8859-1 National Character Set FAQ
  5. 1997-01-17 mike@vlsivie.tuwien.ac.at: ISO 8859-1 National Character Set FAQ
+ 6. 1999-04-30 Julien CASSAIGNE: Re: Subjonctif imparfait
+ 7. 1999-05-06 Antoine Leca: Re: Subjonctif imparfait
+ 8. 1998-05-20 Alain LaBontÈ†: La petite histoire de la ligature OE dans les no
+ 9. 1998-02-16 Alain LaBontÈ†: Les ligatures dans les normes et standards
 
-../rmail/charsets/t61
- 1. 1997-11-21 Ulrich Drepper: Re: Character set conversion API for libc
- 2. 1997-11-26 Jake Morrison: Re: Character set conversion API for libc
+../charsets/rmail/marc
+ 1. 1999-12-17 Bruno Haible: suggestion ridicule pour recode
 
-../rmail/charsets/tabular
- 1. 1995-06-21 Hilmar Schlegel: Re: recode problem
- 2. 1995-06-21 FranÁois Pinard: Re: recode problem
- 3. 1997-06-27 FranÁois Pinard: Re: recode 3.4 and Windows charset.
- 4. 1997-12-03 Hilmar Schlegel: Re: recode problem
- 5. 1997-04-09 Leong Kok Yong: Re: unicode <-> hex converter (fwd)
- 6. 1995-02-15 Francois Pinard: Re: recode 3.4 documentation
-
-../rmail/install/ansi2knr
- 1. 1998-04-07 Jim Meyering: Re: LIBOBJS and ANSI2KNR
- 2. 1998-04-07 Gary V Vaughan: Re: LIBOBJS and ANSI2KNR
- 3. 1999-02-02 L. Peter Deutsch: ansi2knr.c updates
- 4. 1999-02-02 L. Peter Deutsch: new version of ansi2knr
- 5. 1999-02-02 L. Peter Deutsch: new version of ansi2knr
- 6. 1999-02-02 L. Peter Deutsch: new version of ansi2knr
- 7. 1999-02-02 L. Peter Deutsch: new version of ansi2knr
-
-../rmail/install/bigcheck
- 1. 1998-12-18 Larry W. Virden: Re: Prerelease: Free recode 3.4n
-
-../rmail/install/docum
- 1. 1997-12-06 Santiago Vila Doncel: What is a `resurface'?
- 2. 1997-12-06 Santiago Vila Doncel: Re: What is a `resurface'?
- 3. 1997-12-11 FranÁois Pinard: Re: What is a `resurface'?
- 4. 1998-10-20 Brendan O'Dea: ANNOUNCE: help2man-1.5c available
-
-../rmail/install/gettext
- 1. 1997-12-02 FranÁois Pinard: [Eric Backus <ericb@labejb.lsid.hp.com>] recode
- 2. 1997-12-09 FranÁois Pinard: Re: recode 3.4e pretest
- 3. 1998-11-09 Alain Magloire: recode on Solaris
-
-../rmail/install/html
- 1. 1998-07-21 Wiel: recode: lat1html.c
- 2. 1998-07-21 FranÁois Pinard: Re: recode: lat1html.c
-
-../rmail/install/lex
- 1. 1998-04-06 Tom Tromey: Re: I want flex, not lex!
- 2. 1998-04-07 Akim Demaille: Re: I want flex, not lex!
- 3. 1998-04-07 Akim Demaille: Re: I want flex, not lex!
-
-../rmail/install/libtool
- 1. 1997-12-16 Erick Branderhorst: recode and ltmain.sh on solaris 2.6
- 2. 1998-01-07 Erick Branderhorst: recode-3.4g is not compiling properly becaus
- 3. 1998-02-23 Jim Meyering: Re: Installing fileutils 3.16m on icule
- 4. 1998-03-24 Larry W. Virden, x2487: problems building recode 3.4f
- 5. 1998-10-21 FranÁois Pinard: Re: Some paxutils issues
- 6. 1999-04-02 FranÁois Pinard: recode 3.4q - testing difficulties
- 7. 1999-04-03 Alexandre Oliva: Re: recode 3.4q - testing difficulties
-
-../rmail/install/overflows
- 1. 1999-04-26 FranÁois Pinard: Buffer overflows
-
-../rmail/install/raptor
- 1. 1998-12-10 FranÁois Pinard: recode 3.4l sur raptor - problËmes
-
-../rmail/install/types
- 1. 1997-12-26 FranÁois Pinard: recode sur raptor
-
-../rmail/iso/14652
- 1. 1997-12-21 Alain LaBontÈ - 3: (SC22WG20.2149) 14652 FDC available
- 2. 1998-01-07 Keld J|rn Simonsen: Re: ISO/IEC FCD 14651 and 14652
- 3. 1998-01-06 x.zhang@utoronto.ca: Re: ISO/IEC FCD 14651 and 14652
- 4. 1998-03-12 Keld J|rn Simonsen: Re: 9995-3 table 1 + registering Canadian lo
- 5. 1998-03-12 Keld J|rn Simonsen: Re: 9995-3 table 1 + registering Canadian lo
- 6. 1998-12-31 Keld J|rn Simonsen: (i18n.439) new sorting and locale drafts
-
-../rmail/iso/14766
- 1. 1998-05-19 Keld J|rn Simonsen: (iso14766.15) 14766 WD 3
-
-../rmail/iso/9term
- 1. 1996-07-09 Marc Feeley: 9term
- 2. 1996-07-25 Marc Feeley: 9term
- 3. 1996-06-07 Arnold D. Robbins: Re: terminal emulator recommendation?
- 4. 1996-07-25 Marc Feeley: 9term
- 5. 1995-11-22 Gary Capell: Unicode/UTF text editor: wily 0.9.8 (beta)
-
-../rmail/iso/cac-jtc1-i18n
- 1. 1998-04-02 Zbigniew, Ignatowicz: CAC-JTC1-I18N - mailing list.
- 2. 1998-05-29 Uma Umamaheswaran: (none)
- 3. 1998-04-03 SCC-JTC1_Forum@scc.ca: Notification of new entries in "CAC/JTC1/
- 4. 1995-03-24 Keld J|rn Simonsen: Re: Unicode/10646 equivalences for RFC 1345
- 5. 1996-02-27 Keld J|rn Simonsen: (i18n.292) new sc2/wg2 pages
-
-../rmail/iso/cdra
- 1. 1994-10-20 Erik Naggum: Re: Abandon ASCII for EBCDIC now!
-
-../rmail/iso/collate
- 1. 1997-10-29 Alain LaBontÈ - 3: Re: une question naÔve
- 2. 1998-08-05 Alain LaBontÈ†: RE: on Draft DoC on 14651 - sorting of numbers i
- 3. 1998-08-17 Alain LaBontÈ†: RE: on Draft DoC on 14651 - sorting of numbers i
- 4. 1998-05-22 Alain LaBontÈ†: ISO/IEC 14652 and ISO/IEC 14651
- 5. 1998-07-30 Alain LaBontÈ†: Tri respectant la norme canadienne dans Excel
- 6. 1998-07-30 Alain LaBontÈ†: Tri ne respectant pas la norme canadienne dans E
- 7. 1998-12-27 Alain LaBontÈ†: Re: (SC22WG20.2470) Macron in ISO/IEC FCD 14651
- 8. 1998-12-24 Alain LaBontÈ†: Re: Note from John Clews [on international order
- 9. 1998-12-30 Alain LaBontÈ†: Re: (SC22WG20.2484) (SC22WG20.2483) (SC22WG20.24
-10. 1999-01-06 Alain LaBontÈ†: Re: CaractËres UCS cherchÈs :-)
-11. 1999-01-07 Thorgeir Sigurdsson: (CEN/TC304-N877) Greek Ordering
-12. 1998-11-19 Alain LaBontÈ: ISO/IEC 14651
-13. 1998-11-16 Alain LaBontÈ: Final final F[inal]CD 14651 ready for ballot (:
-14. 1998-11-17 Alain LaBontÈ: Re: Final final F[inal]CD 14651 ready for ballot
-15. 1998-11-17 Alain LaBontÈ: 14651
-16. 1998-11-10 Alain LaBontÈ: Ordering standard: to be sent for ballot unless t
-17. 1998-11-10 Alain LaBontÈ: Ordering standard: to be sent for ballot unless t
-18. 1999-04-29 Alain LaBontÈ†: Re: Thai String Collation
-
-../rmail/iso/dutch
- 1. 1999-03-22 Thorgeir Sigurdsson: (CEN/TC304-N889) Dutch Char Set Policy
-
-../rmail/iso/elot
- 1. 1996-08-20 John Clews: Re: Transliteration and ISO
- 2. 1996-08-20 John Clews: EUROASCII and ASIASCII project proposals
- 3. 1996-08-23 FranÁois Pinard: [Mail Delivery Subsystem <MAILER-DAEMON@IRO.UMo
- 4. 1996-08-24 Mail Delivery Subsystem: Returned mail: Cannot send message for
- 5. 1996-08-22 FranÁois Pinard: subscribe
- 6. 1996-08-27 Mail Delivery Subsystem: Returned mail: Cannot send message for
-
-../rmail/iso/engine
- 1. 1998-10-30 Thorgeir Sigurdsson: (TC304.2057) N854 Draft of MODEL PT deliver
-
-../rmail/iso/euro
- 1. 1998-11-03 E.I. Kolehmainen: (TC304.2059) Euro Currency Support in Certain
-
-../rmail/iso/franÁais
- 1. 1996-07-17 Alain LaBont/e'/: Correction required in the French title of ISO
- 2. 1996-08-08 Alain LaBont/e'/: RÈunions de l'ISO ‡ QuÈbec
- 3. 1997-03-13 Alain LaBont/e'/: Character names and identifiers (was: Re: (SC2
- 4. 1998-03-18 Alain LaBontÈ†: Re: Noms de caractËres Unicode et ISO
- 5. 1998-03-23 Alain LaBontÈ†: Re: Liste de noms de caractËres du JUC
- 6. 1998-09-12 Alain LaBontÈ†: Version franÁaise des normes
- 7. 1997-01-30 Alain LaBont/e'/: Re: HTLM et signes diacritiques
- 8. 1998-12-09 Alain LaBontÈ†: Re: FW: Localising Unicode character names
- 9. 1998-12-17 FranÁois Pinard: Blancs suffixes
-10. 1998-12-17 FranÁois Pinard: Autres dÈtails (je suis un peu maniaque :-)
-11. 1998-12-17 FranÁois Pinard: Re: recode et table franÁaise
-12. 1999-04-12 Alain LaBontÈ†: Double name in the new version of the UCS
-
-../rmail/iso/guide
- 1. 1999-03-08 Thorgeir Sigurdsson: (CEN/TC304-N885) Guide on Character sets
- 2. 1999-03-10 malinder@algonet.se: (TC304.2138) Guide to Use of Character Sets
- 3. 1999-03-10 Subscription Confirmation: Subscribe guide CJIPROHXWU
- 4. 1999-03-10 FranÁois Pinard: Re: Subscribe guide CJIPROHXWU
- 5. 1999-03-10 STRI requests: Re: Subscribe guide CJIPROHXWU
- 6. 1999-03-10 FranÁois Pinard: (none)
-
-../rmail/iso/iso
- 1. 1997-10-29 Alain LaBontÈ - 3: Re: une question naÔve
- 2. 1997-10-29 Alain LaBont\i - 2: L'ISO : francisation plus avancÈe qu'‡ l'UIT
- 3. 1997-11-04 Alain LaBont\i - 3: Nouveaux comitÈs de l'ISO/CEI/JTC1 et leurs
- 4. 1997-11-04 Alain LaBontÈ - 1: RE: <<L'ISO et la CEI ne font pas partie des
- 5. 1998-04-22 Alain LaBontÈ†: PlÈniËre du JTC1 et AdaptabilitÈ culturelle
- 6. 1998-03-10 Alain LaBontÈ†: Nom et adresse du Conseil canadien des normes da
- 7. 1998-03-12 Alain LaBontÈ†: Re: Adresse du site Web du CCN
-
-../rmail/iso/mailing-lists
- 1. 1997-10-31 Keld J|rn Simonsen: (TC304.1321) iso14766 list created
- 2. 1997-11-19 Michael Everson: (TC304.1354) iso15924 list created
- 3. 1997-11-19 Michael Everson: (i18n.399) iso15924 list created
- 4. 1997-11-03 Keld J|rn Simonsen: (TC304.1323) list of i18n lists
- 5. 1997-11-13 borka@e5.ijs.si: (TC304.1345) list of i18n lists
- 6. 1997-11-13 Alain LaBontÈ - 2: (TC304.1346) list of i18n lists
- 7. 1997-11-19 Tom Garland SMI European Software Centre: (TC304.1351) list of i
- 8. 1998-01-30 ﬁorvarur K·ri ”lafsson: (TC304.1472) Discussion lists for funde
- 9. 1998-02-21 ﬁorvarur K·ri ”lafsson: (TC304.1506) Please split up the discus
-10. 1998-04-06 ﬁorvarur K·ri ”lafsson: (TC304.1684) Project discussion lists
-11. 1998-05-01 Keld J|rn Simonsen: (TC304.1742) guide on POSIX locales
-12. 1998-05-06 ﬁorvarur K·ri ”lafsson: (TC304.1750) Keyboards list
-
-../rmail/iso/mes
- 1. 1998-08-26 Uma Umamaheswaran: Software to assist you in scrutinizing MES dr
-
-../rmail/iso/registry
- 1. 1998-05-20 Martin J. Duerst: International registry of coded character sets
- 2. 1998-05-20 Martin J. Duerst: International registry of coded character sets
- 3. 1997-10-07 Keld J|rn Simonsen: (TC304.1258) characters in MES - ENV 1973
- 4. 1997-10-07 ﬁorvarur K·ri ”lafsson: (TC304.1264) characters in MES - ENV 19
- 5. 1998-08-03 Johan van Wingen: (TC304.1918) comparison of repertoires
- 6. 1998-08-04 Johan van Wingen: (TC304.1921) Annex C to NEN 1888 (revision in
- 7. 1998-05-13 Uma Umamaheswaran: (SC2.432) International registries of Coded C
- 8. 1998-05-20 Martin J. Duerst: International registry of coded character sets
- 9. 1998-09-16 Keld J|rn Simonsen: Cultural registry as international standard
-10. 1998-10-15 Uma Umamaheswaran: (SC2.463) New Registrations
-11. 1998-10-27 Thorgeir Sigurdsson: (TC304.2049) N852 Guide on the use of Char
-12. 1997-10-07 Keld J|rn Simonsen: Re: librecode, libc, gettext
-13. 1993-02-10 Jon Postel: Re: transcription iso-8859-1 to us-ascii?
-14. 1994-11-12 Ned Freed: Re: Non-observance of ; charset=xxxxxx etc
-15. 1997-01-12 Alain LaBont/e'/: Re: GUTenberg/oe y trema
-16. 1997-02-18 John F. Chandler: (i18n.347) Update to ISO International Registr
-17. 1995-03-14 Roman Czyborra: KOI8-R charset
-18. 1998-04-12 Keld J|rn Simonsen: (i18n.437) new list of character names
-19. 1998-04-13 Uma Umamaheswaran: (i18n.437) new list of character names
-20. 1993-02-10 Jon Postel: Re: transcription iso-8859-1 to us-ascii?
-21. 1994-10-12 Johannes Wilhelm: Re: ISO Latin-1 for DOS ?
-22. 1994-10-12 Markus Kuhn: Re: ISO Latin-1 for DOS ?
-23. 1994-10-17 Kosta Kostis: Re: ISO8859-1 to US-ASCII
-24. 1994-10-18 Kosta Kostis: Re: ISO8859-1 to US-ASCII
-25. 1994-11-16 J.P. Kuypers: Re: MacEudora and MIME charset
-26. 1994-11-29 Barry Bouwsma: Re: Looking for ISO-8859 character set definition
-27. 1995-02-10 Johan van Wingen: list of character code standards
-28. 1995-03-01 Johan van Wingen: (SC2WG3.47) document by ftp
-29. 1995-03-21 Kari E. Hurtta: Kehpager (Re: Latin-1 <-> NRC character set mapp
-30. 1995-04-10 Primoz Peterlin: Re: Recode and CP 1250
-31. 1996-06-18 John F. Chandler: (i18n.332) Updated summary of ISO IR
-32. 1997-06-20 Lukas Petrlik: Re: cs encodings (was: Re: recode 3.4)
-33. 1997-07-22 Keld J|rn Simonsen: (i18n.363) CEN cultural register
-34. 1996-01-13 Keld J|rn Simonsen: (i18n.285) CEN/TC304 PT01 report
-
-../rmail/iso/rfc1345
+../charsets/rmail/rfc1345
  1. 1991-11-04 Jonas Lagerblad: International character sets.
  2. 1994-12-16 Ross Paterson: MIME charsets (was Re: can ISO-IR-*** be used as
  3. 1996-04-29 Lukas Petrlik: cs encodings (was: Re: recode 3.4)
@@ -571,268 +776,156 @@
 53. 1999-03-31 Keld J|rn Simonsen: Re: Fix for AtariST encoding
 54. 1999-01-02 FranÁois Pinard: recode dans doc
 
-../rmail/iso/tcs
- 1. 1993-02-09 andrew@research.att.com: (none)
- 2. 1993-02-14 Francois Pinard: tcs, recode
- 3. 1993-02-20 Francois Pinard: Legaleese
- 4. 1993-12-11 Francois Pinard: GNU recode 3.2.9
- 5. 1993-12-12 Per Abrahamsen: Re: GNU recode 3.2.9
+../charsets/rmail/t61
+ 1. 1997-11-21 Ulrich Drepper: Re: Character set conversion API for libc
+ 2. 1997-11-26 Jake Morrison: Re: Character set conversion API for libc
+
+../charsets/rmail/tables
+ 1. 1999-07-05 Bruno Haible: recode-3.5 conversion bug
+ 2. 1994-12-20 Hennus Bergman: Re: Small GNU recode bugs
+
+../charsets/rmail/tabular
+ 1. 1995-06-21 Hilmar Schlegel: Re: recode problem
+ 2. 1995-06-21 FranÁois Pinard: Re: recode problem
+ 3. 1997-06-27 FranÁois Pinard: Re: recode 3.4 and Windows charset.
+ 4. 1997-12-03 Hilmar Schlegel: Re: recode problem
+ 5. 1997-04-09 Leong Kok Yong: Re: unicode <-> hex converter (fwd)
+ 6. 1995-02-15 Francois Pinard: Re: recode 3.4 documentation
+
+../charsets/rmail/usoft
+ 1. 1994-08-26 Lloyd: Re: Microsoft Codepages to Unicode
+ 2. 1997-01-06 Alain LaBont/e'/: Re: ABU: FREQUENCES
+
+../engines/rmail/auto-detect
+ 1. 1996-01-13 DiDakDok,IVC: Decodage MIME
+ 2. 1997-12-09 FranÁois Pinard: Re: recode
+ 3. 1997-12-09 Milivoj Ivkovic: Re: recode
+ 4. 1998-07-01 Sam: Re: au secour!
+ 5. 1999-06-25 Earl Hood: Re: language detection
+ 6. 1999-08-23 Larry W. Virden: How to translated from unknown to known?
+ 7. 1999-12-13 FranÁois Pinard: Re: How to translated from unknown to known?
+
+../engines/rmail/backup
+ 1. 1994-03-09 Nicolas Anquetil: recode
+ 2. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
+ 3. 1999-07-19 FranÁois Pinard: Re: better user interface
+ 4. 1999-07-20 Jean-loup Gailly: Re: better user interface
+ 5. 1999-07-20 Scott Schwartz: Re: better user interface
+ 6. 1999-07-20 Scott Schwartz: Re: better user interface
+ 7. 1999-07-20 FranÁois Pinard: Re: [Scott Schwartz <schwartz@bio.cse.psu.edu>]
+ 8. 1999-07-20 Fred L. Drake: Re: [Scott Schwartz <schwartz@bio.cse.psu.edu>] R
+ 9. 1999-07-20 Larry W. Virden: Re: [Scott Schwartz <schwartz@bio.cse.psu.edu>]
+
+../engines/rmail/bigcheck
+ 1. 1998-12-18 Larry W. Virden: Re: Prerelease: Free recode 3.4n
+
+../engines/rmail/documentation
+ 1. 1997-12-06 Santiago Vila Doncel: What is a `resurface'?
+ 2. 1997-12-06 Santiago Vila Doncel: Re: What is a `resurface'?
+ 3. 1997-12-11 FranÁois Pinard: Re: What is a `resurface'?
+ 4. 1999-12-13 CERT Advisory: CERT Advisory CA-99.15 - Buffer Overflows in SSH
+ 5. 1999-12-15 Eli Zaretskii: Re: Release: Free recode 3.5
+ 6. 1999-12-15 FranÁois Pinard: Re: Release: Free recode 3.5
+ 7. 1999-12-19 Eli Zaretskii: Re: Release: Free recode 3.5
+ 8. 1999-12-19 Eli Zaretskii: Re: Release: Free recode 3.5
+
+../engines/rmail/erreurs-doc
+ 1. 1999-12-13 FranÁois Pinard: Re: Recode
+
+../engines/rmail/flat-optimizer
+ 1. 1999-07-23 Frantisek Hanzlik: recode x strip diacritics ?
+ 2. 1999-07-23 FranÁois Pinard: Re: recode x strip diacritics ?
+ 3. 1999-08-17 Frantisek Hanzlik: Re: recode x strip diacritics ?
+
+../engines/rmail/iso-paper
+ 1. 1998-10-30 Thorgeir Sigurdsson: (TC304.2057) N854 Draft of MODEL PT deliver
+
+../engines/rmail/library
+ 1. 1995-12-06 Per Bothner: Re: Internationalization resources?
+ 2. 1996-05-29 Ulrich Drepper: librecode, again
+ 3. 1997-10-14 Ulrich Drepper: Re: librecode
+ 4. 1999-09-23 Pawel Krawczyk: Re: recode memory management
+
+../engines/rmail/listing
+ 1. 1993-12-21 Martin Maechler: Re: Prerelease: GNU recode version 3.2.10
+ 2. 1993-12-21 Francois Pinard: Prerelease: GNU recode version 3.2.10
+ 3. 1993-02-10 Patrik F{ltstr|m: Re: transcription iso-8859-1 to us-ascii?
+ 4. 1998-10-29 Markus Kuhn: Free X11 Unicode terminal font available
+ 5. 1998-11-22 FranÁois Pinard: Re: Free X11 Unicode terminal font available
  6. 1999-03-30 Andreas Schwab: Fix for AtariST encoding
 
-../rmail/iso/thÈorie
- 1. 1998-04-03 Alain LaBontÈ†: Re: …tude sur le codage des caractËres
+../engines/rmail/mixed
+ 1. 1992-11-23 mcgill-vision!corto.inria.fr!shapiro: recode
+ 2. 1994-12-19 Martin Wendel: ANNOUNCE: Emil-2.0 is available
+ 3. 1995-02-28 Francois Pinard: UUPC
+ 4. 1995-03-11 Scott Nelson: ISO-8859-X email test
+ 5. 1995-03-16 Martin Wendel: ANNOUNCE: emil-2.0.5 released
+ 6. 1995-07-05 FranÁois Pinard: Re: Retour !
+ 7. 1995-07-25 David Collier-Brown: Early announcement: Mime-witing library
+ 8. 1996-03-02 FranÁois Pinard: Re: PrÈsentation de Ulrich Drepper!
+ 9. 1996-06-09 FranÁois Pinard: Re: About recode
+10. 1997-10-30 =?iso-8859-1?Q?G=E9rald_St=2DArneault_=3Cstarneag=40grics.qc.ca=
 
-../rmail/iso/ucs
- 1. 1993-08-26 Hermann Hueni: Re: WANTED: recode extension to ROMAN8 (HP) char
+../engines/rmail/moteur
+ 1. 1999-04-18 FranÁois Pinard: -lf et ibmpc ?
+ 2. 1999-04-14 FranÁois Pinard: recode - IBM-PC
+ 3. 1999-04-03 Laurent Bourbeau: Recode 3.4q - Bug 5
+ 4. 1999-04-02 FranÁois Pinard: =?iso-8859-1?q?Probl=E8me?= recode
+ 5. 1999-06-03 Markus Kuhn: UTF-8 table output
+ 6. 1999-06-03 FranÁois Pinard: Re: UTF-8 table output
+ 7. 1999-06-03 FranÁois Pinard: Re: UTF-8 table output
+ 8. 1999-07-19 FranÁois Pinard: Re: better user interface
+ 9. 1999-08-17 Scott Schwartz: Re: better user interface
 
-../rmail/iso/unicode
- 1. 1990-07-23 Dan Oscarsson: Re: Time for 8 bit news, isn't it?????.
- 2. 1994-08-26 Lloyd: Re: Microsoft Codepages to Unicode
- 3. 1994-08-27 H. Peter Anvin: Re: Unix, Unicode, and internationalization
- 4. 1994-09-06 Alan Cox: Re: Unicode & Linux's future (was Re: Acid)
- 5. 1994-09-06 Andries Brouwer: Re: Unicode & Linux's future (was Re: Acid)
- 6. 1994-10-02 Andries.Brouwer%cwi.nl@Lightning.McRCIM.McGill.EDU: Re: recode
- 7. 1994-10-04 ITO Takayuki: Re: UTF-8
- 8. 1994-10-04 Jim.Rees@umich.edu: Re: UTF-8
- 9. 1994-12-21 David Goldsmith: Unicode Web Page Now Available!
-10. 1995-09-20 FranÁois Pinard: Re: Emacs C-q NNN
-11. 1996-01-05 FranÁois Pinard: Re: 8bit clean perl? (fwd)
-12. 1996-01-05 FranÁois Pinard: Re: 8bit clean perl? (fwd)
-13. 1996-03-11 Hart, Edwin F.: Unicode* Version 2.0 and new members of
-14. 1996-03-15 Alain LaBont:e':: Impact of ISO/IEC 10646 on POSIX - Draft perso
-15. 1996-03-21 Alain LaBont/e'/: Version ‡jour de la liste des noms de
-16. 1996-03-28 Keld J|rn Simonsen: (i18n.298) 10646 amendments available
-17. 1996-04-26 Keld J|rn Simonsen: (i18n.325) ISO 10646 character namesand posi
-18. 1996-05-04 Michael Everson: (i18n.327) European Subsets of ISO/IEC 10646-1
-19. 1996-05-11 Alain LaBont/e'/: …quivalences UTF-8 - Impact d'UTF-8, repli d'U
-20. 1996-05-11 Alain LaBont/e'/: Re: French names for 10646
-21. 1996-05-28 Alain LaBont/e'/: Universal Character Set... the most valuable u
-22. 1996-05-29 dorai@vnet.ibm.com: NO SUBJECT
-23. 1996-06-10 Michael Everson: Re: Translation & comments
-24. 1996-06-10 by way of everson@indigo.ie (Michael Everson): (i18n.331) "News"
-25. 1996-08-19 FranÁois Pinard: (none)
-26. 1996-09-13 Markus G. Kuhn: Unicode Introduction and References
-27. 1996-09-30 Markus G. Kuhn: Unicode 2.0 available now!!!
-28. 1996-10-06 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
-29. 1996-10-06 Alain LaBont/e'/: DiffÈrences entre UNICODE et le JUC et implant
-30. 1996-10-07 unicode@Unicode.ORG: UNICODE, SGML and HEBREW
-31. 1996-10-15 unicode@Unicode.ORG: How to order Version 2.0
-32. 1996-10-28 unicode@Unicode.ORG: Repertoires of European Letters: Draft Four
-33. 1996-11-20 Alain LaBont/e'/: Re: French Names for Hebrew Characters
-34. 1996-11-21 Jonathan Rosenne: Re: French Names for Hebrew Characters
-35. 1996-11-22 news@Unicode.ORG: Web Update
-36. 1996-11-24 Erik Naggum: Re: The char type crossing the 8 bit barrier? (Was
-37. 1996-11-28 unicode@Unicode.ORG: Re: HTML - i18n / NCR & charsets
-38. 1997-01-06 Alain LaBont/e'/: Re: ABU: FREQUENCES
-39. 1997-01-09 Michael Everson: (none)
-40. 1997-01-16 unicode@Unicode.ORG: Re: unicode <-> hex converter
-41. 1997-02-05 Alain LaBont/e'/: Up-to-date version of the UCS
-42. 1997-03-16 Alain LaBont/e'/: Courrier Èlectronique pour UNICODE sur ordinat
-43. 1997-05-07 Michael Everson: Re: NO SUBJECT
-44. 1997-05-20 Alain LaBont/e'/: UNICODE et ISO/CEI 10646
-45. 1997-08-12 Alain LaBont\i SCT: DÈfense altruiste... par un AmÈricain par su
-46. 1997-10-28 FranÁois Pinard: Re: librecode, libc, gettext
-47. 1994-12-20 Hennus Bergman: Re: Small GNU recode bugs
-48. 1995-04-20 Markus Kuhn (CIP 90): ISO 10646 & recode concept
-49. 1997-11-26 Andreas Dietrich: Re: Cyrillic cp1251 in recode
-50. 1994-10-09 Emmanuel Uren: 850 and more, 8859 and more, and more
-51. 1997-11-22 FranÁois Pinard: Re: unicode and gnu?
-52. 1998-02-14 Erik Naggum: Re: Is there any alternative to MULE?
-53. 1996-10-24 Alain LaBont/e'/: Quelques adresses pour les rÈfÈrences ‡ mes tr
-54. 1998-01-02 Alain LaBontÈ - 3: Re: aide!
-55. 1998-02-16 Alain LaBontÈ†: Les ligatures dans les normes et standards
-56. 1998-03-10 Alain LaBontÈ†: Importance des noms des caractËres
-57. 1998-03-10 Alain LaBontÈ†: Noms de caractËres -- subtilitÈs
-58. 1998-03-11 Alain LaBontÈ†: Site descriptions containing HTML entity names a
-59. 1998-03-17 Alain LaBontÈ†: Devinette : qu'a de particulier le caractËre UFB
-60. 1998-03-24 Alain LaBontÈ†: Re: Erreurs de nomenclature dans Windows NT4
-61. 1998-03-24 Alain LaBontÈ†: RE: Erreurs de nomenclature dans Windows NT4 (bi
-62. 1998-03-25 Alain LaBontÈ†: Versions franÁaises des produits de Microsoft
-63. 1998-04-09 Alain LaBontÈ†: Java Script (ECMA Script) et ISO/CEI 10646 - sou
-64. 1996-10-29 Francois Yergeau: Re: GNU utils and proportional fonts
-65. 1998-05-09 Martin J. Duerst: Last Call for Papers, Unicode Conference, Sept
-66. 1998-02-16 John Clews: (TC304.1487) Script summary: status of ISO/IEC 10646
-67. 1998-06-30 Thorgeir Sigurdsson: (TC304.1826) Enquiry among members of CEN/T
-68. 1998-07-13 Chris Makemson: (TC304.1862) Review draft of the MES
-69. 1998-07-20 Keld J|rn Simonsen: (TC304.1873) (TC304 P10) Review draft of the
-70. 1998-07-21 Klaas Ruppel: (TC304.1875) (TC304 P10) Review draft of the MES
-71. 1998-07-21 K I Larsson: (TC304.1877) Review MES draft
-72. 1997-10-31 Alain LaBontÈ - 3: Philosophie de l'internationalisation de bon
-73. 1997-12-12 Alain LaBontÈ - 2: 10646 online
-74. 1997-12-15 Alain LaBontÈ†: Re: Proposition pour le Notial ‡ l'intention de
-75. 1997-12-12 NUMATA Toshinori: (i18n.419) (posix 3411) 3007 IDEOGRAPHIC NUMBE
-76. 1997-12-12 Lu Chin (or Lu Qin): (i18n.420) (posix 3411) 3007 IDEOGRAPHIC NU
-77. 1998-05-05 Alain LaBontÈ†: Codage de la langue dans le jeu universel de car
-78. 1998-04-29 Alain LaBontÈ†: Use of the Glyphs associated to the Unicode char
-79. 1998-08-05 Alain LaBontÈ†: Re: Unicode Converter
-80. 1998-08-05 Alain LaBontÈ†: Re: Unicode Converter
-81. 1998-05-26 Michel Suignard: RE: Symboles de fonctions de clavier - DÈplacem
-82. 1998-06-23 Alain LaBontÈ†: Re: fonte ou police ?
-83. 1998-09-09 Alain LaBontÈ†: Re: Projet de rapport de liaison entre ISO/IEC J
-84. 1998-09-10 Gisle Aas: Re: "Coding system"? Eh?
-85. 1998-09-11 FranÁois Pinard: Re: "Coding system"? Eh?
-86. 1998-09-11 FranÁois Pinard: Re: "Coding system"? Eh?
-87. 1997-01-16 unicode@Unicode.ORG: Re: unicode <-> hex converter
-88. 1997-08-01 Martin J. Duerst: Re: librecode, libc, gettext
-89. 1997-11-25 Markus Kuhn: Re: ISO 10646 & recode concept
-90. 1998-01-15 Alain LaBontÈ†: ISO/CEI 10646 et UNICODE : un peu de vulgarisati
-91. 1998-02-25 Alain LaBontÈ†: Underanding/Status of agreement with UNICODE on
-92. 1998-05-20 Alain LaBontÈ†: La petite histoire de la ligature OE dans les no
-93. 1998-09-07 FranÁois Pinard: 1) biz IRC 2) Perl et Unicode (http)
-94. 1998-09-17 Alain LaBontÈ†: Character identifiers, names and mnemonicity --
-95. 1998-10-02 Uma Umamaheswaran: Fourteenth International Unicode Conference
-96. 1998-10-05 Mark Crispin: Re: proposal for a GNU Unicode font
-97. 1998-10-06 Mark Crispin: Re: proposal for a GNU Unicode font
-98. 1998-11-09 malinder@algonet.se: (TC304.2065) PT Guide on Character Sets - O
-99. 1998-11-09 Kenneth Whistler: (TC304.2066) FW: (TC304.2065) PT Guide on Char
-100. 1999-02-15 umavs@ca.ibm.com: FYI: Draft Irish comments on JTC1 N5698
-101. 1999-04-16 umavs@ca.ibm.com: 2nd Call for Papers -- 15th Unicode Conferenc
-102. 1999-05-11 Alain LaBontÈ†: Une question intÈressante et une rÈponse/RE: Un
+../engines/rmail/moteur-ucs
+ 1. 1999-09-02 Bernard Derval: recode 3.5
+ 2. 1999-08-27 Laurent Bonnaud: Re: Bug#42208: recoding latin1<->html is not re
+ 3. 1999-12-13 FranÁois Pinard: Re: recode 3.5
+ 4. 1999-08-02 Santiago Vila: Bug#42208: recoding latin1<->html is not reversib
+ 5. 1999-08-17 FranÁois Pinard: Re: Bug#42208: recoding latin1<->html is not re
+ 6. 1999-08-13 Jukka Korpela: Recode - something simple I'm missing?
+ 7. 1999-08-13 FranÁois Pinard: Re: Recode - something simple I'm missing?
+ 8. 1999-08-16 Jukka.Korpela@hut.fi: Re: Recode - something simple I'm missing?
+ 9. 1999-08-16 FranÁois Pinard: Re: Recode - something simple I'm missing?
 
-../rmail/iso/utf-32
- 1. 1999-04-07 Alain LaBontÈ†: Info -- RE: UTF-32
+../engines/rmail/multext
+ 1. 1996-05-24 Jean Ve'ronis: Soft: MtScript (Multilingual editor)
+ 2. 1996-06-17 Jean Ve'ronis: Free Soft: MtStr - Multilingual string library
+ 3. 1996-06-20 Jean Ve'ronis: Free Soft: MtRecode - Character conversion progra
+ 4. 1996-08-29 Malek BOUALEM -- UNIVERSITE: Brief Introduction of the LPL
+ 5. 1996-09-05 Malek BOUALEM -- UNIVERSITE: Re: Introduction of LPL/MULTEXT/MTS
+ 6. 1997-12-10 Jean Veronis: Re: Citation de MtRecode
 
-../rmail/iso/utf-mnemonics
- 1. 1998-07-18 Markus Kuhn: (TC304.1872) German reaction to Enquiry among membe
+../engines/rmail/notation
+ 1. 1997-08-06 Ulrich Drepper: Re: charset names
 
-../rmail/iso/utf16
- 1. 1998-02-25 FranÁois Pinard: Re: Necessity of a better liaison with ISO TC 2
- 2. ---- -- -- C.Douglas O'Brien [SMTP:dobrien@idon.com]: RE: Necessity of a be
- 3. 1998-09-30 Roman Czyborra: Re: UTF16 <=> Reuters format?
+../engines/rmail/overflows
+ 1. 1999-04-26 FranÁois Pinard: Buffer overflows
 
-../rmail/iso/utf7
- 1. 1998-03-02 FranÁois Pinard: Re: origine de ces nouveaux [...]?
- 2. 1998-03-03 FranÁois Pinard: Re: origine de ces nouveaux [...]?
+../engines/rmail/speed
+ 1. 1999-01-22 Andreas Schwab: Re: iconv changes
+ 2. 1999-01-22 Ulrich Drepper: Re: iconv changes
 
-../rmail/iso/utf8
- 1. 1994-05-05 Martin J. Duerst: Re: What is status of internationalization of
- 2. 1996-03-27 Francois Yergeau: UTF-8 I-D submitted
- 3. 1997-01-14 Alistair Crooks: ssam-1.4 and ure-2.5
- 4. 1997-11-22 FranÁois Pinard: Re: Movement for having Internet addresses usin
- 5. 1995-01-21 Markus Kuhn (CIP 90): ISO 10646/UTF-8 support for recode 3.4
- 6. 1997-12-10 Francois Yergeau: Re: Movement for having Internet addresses usi
- 7. 1998-03-02 Alain LaBontÈ†: Re: origine de ces nouveaux ´Èª, Ë, ‡ ...?
- 8. 1997-12-10 Francois Yergeau: Re: Movement for having Internet addresses usi
- 9. 1995-09-19 FranÁois Pinard: Re: Emacs C-q NNN
-10. 1997-10-28 Martin J. D¸rst: Re: A couple of bugs in Gnus-mule : summary buf
-11. 1998-10-29 Markus Kuhn: Free X11 Unicode terminal font available
-12. 1998-12-02 Richard Coleman: Re: Info on Internationalization
-13. 1998-12-03 Shenghuo ZHU: Re: Info on Internationalization
-14. 1998-12-06 FranÁois Pinard: Re: Info on Internationalization
-15. 1998-11-27 Alain LaBontÈ†: Qu'est-ce que l'ASCII (bis) et courriel de l'ave
-16. 1999-02-09 FranÁois Pinard: Re: More charset things
-17. 1999-02-09 Steinar Bang: Re: More charset things
-18. 1999-02-08 FranÁois Pinard: Re: More charset things
-19. 1999-02-08 FranÁois Pinard: Re: More charset things
-20. 1999-02-14 Steinar Bang: UTF-8 (Was: More charset things)
-21. 1999-02-09 Lars Magne Ingebrigtsen: Re: More charset things
-22. 1998-11-02 Paul Eggert: Re: UTF-8 in gas
-23. 1998-11-02 Paul Eggert: Re: UTF-8 in gas
-24. 1998-11-04 Paul Eggert: Re: UTF-8 in gas
+../engines/rmail/testing
+ 1. 1999-12-15 Eli Zaretskii: Re: Release: Free recode 3.5
+ 2. 1999-12-15 Eli Zaretskii: Re: Release: Free recode 3.5
+ 3. 1999-12-15 FranÁois Pinard: Re: Release: Free recode 3.5
+ 4. 1999-12-15 FranÁois Pinard: Re: Release: Free recode 3.5
+ 5. 1999-12-16 FranÁois Pinard: Re: Release: Free recode 3.5
+ 6. 1999-12-19 Eli Zaretskii: Re: Release: Free recode 3.5
+ 7. 1999-12-19 FranÁois Pinard: Re: Release: Free recode 3.5
 
-../rmail/iso/web-sites
- 1. 1997-11-03 Thorgeir Sigurdsson: (TC304.1326) Web of CEN and our Call
- 2. 1997-11-19 Michael Everson: (i18n.399) iso15924 list created
- 3. 1998-03-13 Thorgeir Sigurdsson: (TC304.1529) Inability to Distribute via ST
- 4. 1998-03-20 Keld J|rn Simonsen: (TC304.1535) Cultural convention standards f
- 5. 1998-04-17 Alain LaBontÈ†: Versions pdf (fr+en) des alphabets latin n∞ 8 (c
- 6. 1998-05-12 Marc Wilhelm Kster: (TC304.1757) First draft of the European Ord
- 7. 1998-06-02 Michael Everson: (TC304.1790) (TC304 P11) WS/Alpha base document
- 8. 1998-06-03 Keld J|rn Simonsen: (TC304.1791) taxonomy draft
- 9. 1998-06-15 Thorgeir Sigurdsson: (TC304.1812) ISSS URL
-10. 1998-07-01 borka@e5.ijs.si: (TC304.1830) LE journal on the WEB
-11. 1998-07-02 Thorgeir Sigurdsson: (TC304.1837) Documents, in the mail
-12. 1998-07-07 Thorgeir Sigurdsson: (TC304.1854) Database of Latin letters
-13. 1998-08-05 Alain LaBontÈ†: Re: Obtaining ISO standards in Canada
-
-../rmail/options/Arabic
+../fallbacks/rmail/Arabic
  1. 1998-06-18 Roman Czyborra: Arabic renderer in four lines of Perl
  2. 1996-12-04 unicode@Unicode.ORG: Arabic code pages (fwd)
  3. 1999-03-08 Bill Kerruish: Re: recode-3.4g for use with Arabjoin
  4. 1998-07-03 TAKAHASHI Naoto: new arabic package for Mule-2.3
  5. 1998-03-23 Kenichi Handa: Re: Arabic in xemacs (or equivalent if necessary)
+ 6. 1999-07-09 FranÁois Pinard: Re: MULE and TeX
+ 7. 1999-07-21 Eli Zaretskii: Re: `paxutils', `tar' and Paul, the saga only beg
+ 8. 1996-10-29 Francois Yergeau: Re: GNU utils and proportional fonts
 
-../rmail/options/Cyrillic-Emacs
- 1. 1997-08-21 Kenichi Handa: Re: input cyrillic
- 2. 1997-08-23 Kenichi Handa: Re: Thank you, Re: input cyrillic
- 3. 1997-08-25 Martin J. D¸rst: Re: input cyrillic
-
-../rmail/options/Cyrillic-LaTeX
- 1. 1998-05-20 Barbara Beeton: Re: Cyrillic by AMS
- 2. 1998-05-21 Boguslaw Jackowski: re: Cyrillic fonts by AMS
- 3. 1998-05-21 Barbara Beeton: re: Cyrillic fonts by AMS
- 4. 1998-05-21 Boguslaw Jackowski: Re: Cyrillic fonts by AMS (hopefully my fina
- 5. 1998-06-07 Barbara Beeton: Re: Cyrillic fonts with T1 encoding
- 6. 1998-06-08 taupin: Cyrillic fonts with T1 encoding
- 7. 1998-06-08 Robin Fairbairns: Re: Cyrillic fonts with T1 encoding
- 8. 1998-06-08 taupin: About cyrillic fonts.
- 9. 1998-06-09 taupin: Re: Ligature question
-
-../rmail/options/Danish
- 1. 1998-05-01 Bo Vagner Hoejer: Re: hello-1.3.10.da.po
-
-../rmail/options/Esperanto
- 1. 1998-10-04 Moshe Zadka: recode: Esperanto addition?
- 2. 1992-07-10 Will Overington: Usenet University. Learning Material. Esperanto
- 3. 1992-07-22 Will Overington: TOOLS Roman (including Esperanto) and Cyrillic
- 4. 1992-08-10 Rich Wingerter: Re: MATERIAL: Esperanto in 7-bit ASCII
- 5. 1993-04-28 Jim Kingdon: Changes to recode for Esperanto
- 6. 1993-12-06 Francois Pinard: Changes to recode for Esperanto
- 7. 1993-12-23 Jim Kingdon: Changes to recode for Esperanto
- 8. 1994-01-13 Thorbjoern Hansen: Re: Suggestions for `recode'
-
-../rmail/options/French
- 1. 1994-03-11 Francois Pinard: recode
- 2. 1994-11-16 Francois Pinard: Re: recode 3.4+ and HTML
- 3. 1996-09-24 FranÁois Pinard: Re: recode-3.4
- 4. 1996-09-24 Paul WINDEY: Re: recode-3.4
- 5. 1998-09-14 Alain LaBontÈ†: Re: recode suggestions
- 6. 1997-08-25 Alain LaBontÈ SCT: Re: character - sign - symbol
- 7. 1997-08-25 Alain LaBontÈ SCT: Re: character - sign - symbol (another theory
- 8. 1996-08-30 Alain LaBont/e'/: Liste des caractËres franÁais du JUC
- 9. 1997-09-02 Alain LaBont\i SCT: Nom franÁais de la lettre islandaise – (ETH
-10. 1996-12-01 unicode@Unicode.ORG: Re: Rare letters: <y:> in french
-11. 1998-08-18 Alain LaBontÈ†: RE: Sous ensemble ´ europÈen ª d'unicode (bis)
-12. 1998-02-24 FranÁois Pinard: Re: Subspace-based fault Subspace-based fault d
-13. 1993-02-14 Harald Tveit Alvestrand: Re: ISO-8859-1 and French
-
-../rmail/options/German
- 1. 1997-09-05 Michael Mauch: Recode 3.4: latin small letter sharp s (german) i
- 2. 1998-04-28 Jochen.Hayek@acm.org: what about `ASCII with easy German convent
- 3. 1998-04-28 FranÁois Pinard: Re: what about `ASCII with easy German conventi
- 4. 1998-04-28 Jochen.Hayek@acm.org: Re: what about `ASCII with easy German con
- 5. 1994-04-13 Ulrich Windl: recode 3.3
- 6. 1997-11-25 Markus Kuhn: Re: ISO 10646/UTF-8 support for recode 3.4
-
-../rmail/options/Greek
- 1. 1994-10-13 Liam R. E. Quin: Re: Multilingual HTML, SGML documents?
-
-../rmail/options/Hebrew
- 1. 1997-10-03 Noam Shomron: Re: Hebrew Transcription
- 2. 1997-10-01 Noam Shomron: Hebrew Transcription
- 3. 1997-10-03 Martin J. D¸rst: Re: Hebrew Transcription
- 4. 1997-10-01 Kenichi Handa: Re: Hebrew
- 5. 1997-10-01 Noam Shomron: Re: Hebrew
- 6. 1992-02-06 Nathaniel Borenstein: test of =?iso-8859-8?q?=FA=E9=F8=E1=F2?= i
-
-../rmail/options/Hungarian
- 1. 1995-11-02 Andras Kornai: Re: Hungarian
-
-../rmail/options/Irish
- 1. 1995-02-15 Daniel Quinlan: Re: recode 3.4 documentation
- 2. 1995-01-11 Daniel Quinlan: GNU recode addition - Gaelic
- 3. 1995-02-15 Daniel Quinlan: Re: recode 3.4 documentation
-
-../rmail/options/compose
- 1. 1998-07-21 Markus Kuhn: (TC304.1878) UTF-mnemonic (was: German reaction)
- 2. 1998-07-24 K I Larsson: (TC304.1903) Keyboard compose sequences
- 3. 1998-12-08 Ulrich Drepper: Re: Character composition
- 4. 1998-12-10 Martin J. Duerst: Re: Character composition
- 5. 1998-12-11 FranÁois Pinard: Combining job
- 6. 1998-12-08 Ulrich Drepper: Re: Character composition
- 7. 1998-12-10 Martin J. Duerst: Re: Character composition
-
-../rmail/options/fallback
+../fallbacks/rmail/CLASSER
  1. 1996-03-28 Keld J|rn Simonsen: (POSIX.2 96) proposal for culturally depende
  2. 1996-04-07 Hallvard B Furuseth: recode suggestion: as-readable-as-possible
  3. 1996-04-17 Don Cragun: (SC22WG15RIN.324) (POSIX.2 96) proposal for cultural
@@ -864,16 +957,98 @@
 29. 1998-12-27 Martin Mares: Assorted recode ideas
 30. 1998-12-27 FranÁois Pinard: Re: Assorted recode ideas
 
-../rmail/options/flat
+../fallbacks/rmail/Danish
+ 1. 1998-05-01 Bo Vagner Hoejer: Re: hello-1.3.10.da.po
+
+../fallbacks/rmail/Dutch
+ 1. 1999-03-22 Thorgeir Sigurdsson: (CEN/TC304-N889) Dutch Char Set Policy
+
+../fallbacks/rmail/Esperanto
+ 1. 1998-10-04 Moshe Zadka: recode: Esperanto addition?
+ 2. 1992-07-10 Will Overington: Usenet University. Learning Material. Esperanto
+ 3. 1992-07-22 Will Overington: TOOLS Roman (including Esperanto) and Cyrillic
+ 4. 1992-08-10 Rich Wingerter: Re: MATERIAL: Esperanto in 7-bit ASCII
+ 5. 1993-04-28 Jim Kingdon: Changes to recode for Esperanto
+ 6. 1993-12-06 Francois Pinard: Changes to recode for Esperanto
+ 7. 1993-12-23 Jim Kingdon: Changes to recode for Esperanto
+ 8. 1994-01-13 Thorbjoern Hansen: Re: Suggestions for `recode'
+
+../fallbacks/rmail/FranÁais
+ 1. 1996-07-17 Alain LaBont/e'/: Correction required in the French title of ISO
+ 2. 1996-08-08 Alain LaBont/e'/: RÈunions de l'ISO ‡ QuÈbec
+ 3. 1997-03-13 Alain LaBont/e'/: Character names and identifiers (was: Re: (SC2
+ 4. 1998-03-18 Alain LaBontÈ†: Re: Noms de caractËres Unicode et ISO
+ 5. 1998-03-23 Alain LaBontÈ†: Re: Liste de noms de caractËres du JUC
+ 6. 1998-09-12 Alain LaBontÈ†: Version franÁaise des normes
+ 7. 1997-01-30 Alain LaBont/e'/: Re: HTLM et signes diacritiques
+ 8. 1998-12-09 Alain LaBontÈ†: Re: FW: Localising Unicode character names
+ 9. 1998-12-17 FranÁois Pinard: Blancs suffixes
+10. 1998-12-17 FranÁois Pinard: Autres dÈtails (je suis un peu maniaque :-)
+11. 1998-12-17 FranÁois Pinard: Re: recode et table franÁaise
+12. 1999-04-12 Alain LaBontÈ†: Double name in the new version of the UCS
+13. 1998-03-25 Alain LaBontÈ†: Versions franÁaises des produits de Microsoft
+
+../fallbacks/rmail/French
+ 1. 1994-03-11 Francois Pinard: recode
+ 2. 1994-11-16 Francois Pinard: Re: recode 3.4+ and HTML
+ 3. 1996-09-24 FranÁois Pinard: Re: recode-3.4
+ 4. 1996-09-24 Paul WINDEY: Re: recode-3.4
+ 5. 1998-09-14 Alain LaBontÈ†: Re: recode suggestions
+ 6. 1997-08-25 Alain LaBontÈ SCT: Re: character - sign - symbol
+ 7. 1997-08-25 Alain LaBontÈ SCT: Re: character - sign - symbol (another theory
+ 8. 1996-08-30 Alain LaBont/e'/: Liste des caractËres franÁais du JUC
+ 9. 1997-09-02 Alain LaBont\i SCT: Nom franÁais de la lettre islandaise – (ETH
+10. 1996-12-01 unicode@Unicode.ORG: Re: Rare letters: <y:> in french
+11. 1998-08-18 Alain LaBontÈ†: RE: Sous ensemble ´ europÈen ª d'unicode (bis)
+12. 1998-02-24 FranÁois Pinard: Re: Subspace-based fault Subspace-based fault d
+13. 1993-02-14 Harald Tveit Alvestrand: Re: ISO-8859-1 and French
+
+../fallbacks/rmail/German
+ 1. 1997-09-05 Michael Mauch: Recode 3.4: latin small letter sharp s (german) i
+ 2. 1998-04-28 Jochen.Hayek@acm.org: what about `ASCII with easy German convent
+ 3. 1998-04-28 FranÁois Pinard: Re: what about `ASCII with easy German conventi
+ 4. 1998-04-28 Jochen.Hayek@acm.org: Re: what about `ASCII with easy German con
+ 5. 1994-04-13 Ulrich Windl: recode 3.3
+ 6. 1997-11-25 Markus Kuhn: Re: ISO 10646/UTF-8 support for recode 3.4
+
+../fallbacks/rmail/Greek
+ 1. 1994-10-13 Liam R. E. Quin: Re: Multilingual HTML, SGML documents?
+
+../fallbacks/rmail/Hebrew
+ 1. 1997-10-03 Noam Shomron: Re: Hebrew Transcription
+ 2. 1997-10-01 Noam Shomron: Hebrew Transcription
+ 3. 1997-10-03 Martin J. D¸rst: Re: Hebrew Transcription
+ 4. 1997-10-01 Kenichi Handa: Re: Hebrew
+ 5. 1997-10-01 Noam Shomron: Re: Hebrew
+ 6. 1992-02-06 Nathaniel Borenstein: test of =?iso-8859-8?q?=FA=E9=F8=E1=F2?= i
+
+../fallbacks/rmail/Hungarian
+ 1. 1995-11-02 Andras Kornai: Re: Hungarian
+
+../fallbacks/rmail/Irish
+ 1. 1995-02-15 Daniel Quinlan: Re: recode 3.4 documentation
+ 2. 1995-01-11 Daniel Quinlan: GNU recode addition - Gaelic
+ 3. 1995-02-15 Daniel Quinlan: Re: recode 3.4 documentation
+
+../fallbacks/rmail/compose
+ 1. 1998-07-21 Markus Kuhn: (TC304.1878) UTF-mnemonic (was: German reaction)
+ 2. 1998-07-24 K I Larsson: (TC304.1903) Keyboard compose sequences
+ 3. 1998-12-08 Ulrich Drepper: Re: Character composition
+ 4. 1998-12-10 Martin J. Duerst: Re: Character composition
+ 5. 1998-12-11 FranÁois Pinard: Combining job
+ 6. 1998-12-08 Ulrich Drepper: Re: Character composition
+ 7. 1998-12-10 Martin J. Duerst: Re: Character composition
+
+../fallbacks/rmail/flat
  1. 1996-04-30 Yann Dirson: Re: recode: suggestion
 
-../rmail/options/generic
+../fallbacks/rmail/generic
  1. 1993-02-10 Markus Kuhn: Re: transcription iso-8859-1 to us-ascii?
 
-../rmail/options/mnemo
+../fallbacks/rmail/mnemo
  1. 1995-02-28 Francois Pinard: UUPC
 
-../rmail/options/translit
+../fallbacks/rmail/translit
  1. 1996-04-07 Hallvard B Furuseth: recode suggestion: as-readable-as-possible
  2. 1996-10-14 Lars Magne Ingebrigtsen: Re: 8 bits in citations (Was: Re: sgnus
  3. 1997-11-25 FranÇÁois Pinard: Re: ISO 10646/UTF-8 support for recode 3.4
@@ -889,7 +1064,7 @@
 13. 1998-07-08 Johan van Wingen: (TC304.1858) transliterating Greek
 14. 1996-10-03 feeley@JSP.UMontreal.CA: (none)
 
-../rmail/options/translit-iso
+../fallbacks/rmail/translit-iso
  1. 1996-05-31 Alain LaBont/e'/: RÈflecteur de courrier sur la translittÈration
  2. 1996-06-12 Alain LaBont/e'/: TranslittÈration
  3. 1996-06-24 dorai@vnet.ibm.com: Transliteration standards; Liaisons; and Ema
@@ -934,39 +1109,202 @@
 42. 1997-11-25 Keld J|rn Simonsen: (i18n.416) Transliteration [and transcriptio
 43. 1997-11-25 Keld J|rn Simonsen: (i18n.417) Transliteration [and transcriptio
 
-../rmail/surfaces/base64
+../iso/rmail/14652
+ 1. 1997-12-21 Alain LaBontÈ - 3: (SC22WG20.2149) 14652 FDC available
+ 2. 1998-01-07 Keld J|rn Simonsen: Re: ISO/IEC FCD 14651 and 14652
+ 3. 1998-01-06 x.zhang@utoronto.ca: Re: ISO/IEC FCD 14651 and 14652
+ 4. 1998-03-12 Keld J|rn Simonsen: Re: 9995-3 table 1 + registering Canadian lo
+ 5. 1998-03-12 Keld J|rn Simonsen: Re: 9995-3 table 1 + registering Canadian lo
+ 6. 1998-12-31 Keld J|rn Simonsen: (i18n.439) new sorting and locale drafts
+
+../iso/rmail/14766
+ 1. 1998-05-19 Keld J|rn Simonsen: (iso14766.15) 14766 WD 3
+
+../iso/rmail/cac-jtc1-i18n
+ 1. 1998-04-02 Zbigniew, Ignatowicz: CAC-JTC1-I18N - mailing list.
+ 2. 1998-05-29 Uma Umamaheswaran: (none)
+ 3. 1998-04-03 SCC-JTC1_Forum@scc.ca: Notification of new entries in "CAC/JTC1/
+ 4. 1995-03-24 Keld J|rn Simonsen: Re: Unicode/10646 equivalences for RFC 1345
+ 5. 1996-02-27 Keld J|rn Simonsen: (i18n.292) new sc2/wg2 pages
+
+../iso/rmail/cdra
+ 1. 1994-10-20 Erik Naggum: Re: Abandon ASCII for EBCDIC now!
+
+../iso/rmail/collate
+ 1. 1997-10-29 Alain LaBontÈ - 3: Re: une question naÔve
+ 2. 1998-08-05 Alain LaBontÈ†: RE: on Draft DoC on 14651 - sorting of numbers i
+ 3. 1998-08-17 Alain LaBontÈ†: RE: on Draft DoC on 14651 - sorting of numbers i
+ 4. 1998-05-22 Alain LaBontÈ†: ISO/IEC 14652 and ISO/IEC 14651
+ 5. 1998-07-30 Alain LaBontÈ†: Tri respectant la norme canadienne dans Excel
+ 6. 1998-07-30 Alain LaBontÈ†: Tri ne respectant pas la norme canadienne dans E
+ 7. 1998-12-27 Alain LaBontÈ†: Re: (SC22WG20.2470) Macron in ISO/IEC FCD 14651
+ 8. 1998-12-24 Alain LaBontÈ†: Re: Note from John Clews [on international order
+ 9. 1998-12-30 Alain LaBontÈ†: Re: (SC22WG20.2484) (SC22WG20.2483) (SC22WG20.24
+10. 1999-01-06 Alain LaBontÈ†: Re: CaractËres UCS cherchÈs :-)
+11. 1999-01-07 Thorgeir Sigurdsson: (CEN/TC304-N877) Greek Ordering
+12. 1998-11-19 Alain LaBontÈ: ISO/IEC 14651
+13. 1998-11-16 Alain LaBontÈ: Final final F[inal]CD 14651 ready for ballot (:
+14. 1998-11-17 Alain LaBontÈ: Re: Final final F[inal]CD 14651 ready for ballot
+15. 1998-11-17 Alain LaBontÈ: 14651
+16. 1998-11-10 Alain LaBontÈ: Ordering standard: to be sent for ballot unless t
+17. 1998-11-10 Alain LaBontÈ: Ordering standard: to be sent for ballot unless t
+18. 1999-04-29 Alain LaBontÈ†: Re: Thai String Collation
+
+../iso/rmail/elot
+ 1. 1996-08-20 John Clews: Re: Transliteration and ISO
+ 2. 1996-08-20 John Clews: EUROASCII and ASIASCII project proposals
+ 3. 1996-08-23 FranÁois Pinard: [Mail Delivery Subsystem <MAILER-DAEMON@IRO.UMo
+ 4. 1996-08-24 Mail Delivery Subsystem: Returned mail: Cannot send message for
+ 5. 1996-08-22 FranÁois Pinard: subscribe
+ 6. 1996-08-27 Mail Delivery Subsystem: Returned mail: Cannot send message for
+
+../iso/rmail/euro
+ 1. 1998-11-03 E.I. Kolehmainen: (TC304.2059) Euro Currency Support in Certain
+
+../iso/rmail/guide
+ 1. 1999-03-08 Thorgeir Sigurdsson: (CEN/TC304-N885) Guide on Character sets
+ 2. 1999-03-10 malinder@algonet.se: (TC304.2138) Guide to Use of Character Sets
+ 3. 1999-03-10 Subscription Confirmation: Subscribe guide CJIPROHXWU
+ 4. 1999-03-10 FranÁois Pinard: Re: Subscribe guide CJIPROHXWU
+ 5. 1999-03-10 STRI requests: Re: Subscribe guide CJIPROHXWU
+ 6. 1999-03-10 FranÁois Pinard: (none)
+
+../iso/rmail/iso
+ 1. 1997-10-29 Alain LaBontÈ - 3: Re: une question naÔve
+ 2. 1997-10-29 Alain LaBont\i - 2: L'ISO : francisation plus avancÈe qu'‡ l'UIT
+ 3. 1997-11-04 Alain LaBont\i - 3: Nouveaux comitÈs de l'ISO/CEI/JTC1 et leurs
+ 4. 1997-11-04 Alain LaBontÈ - 1: RE: <<L'ISO et la CEI ne font pas partie des
+ 5. 1998-04-22 Alain LaBontÈ†: PlÈniËre du JTC1 et AdaptabilitÈ culturelle
+ 6. 1998-03-10 Alain LaBontÈ†: Nom et adresse du Conseil canadien des normes da
+ 7. 1998-03-12 Alain LaBontÈ†: Re: Adresse du site Web du CCN
+
+../iso/rmail/mailing-lists
+ 1. 1997-10-31 Keld J|rn Simonsen: (TC304.1321) iso14766 list created
+ 2. 1997-11-19 Michael Everson: (TC304.1354) iso15924 list created
+ 3. 1997-11-19 Michael Everson: (i18n.399) iso15924 list created
+ 4. 1997-11-03 Keld J|rn Simonsen: (TC304.1323) list of i18n lists
+ 5. 1997-11-13 borka@e5.ijs.si: (TC304.1345) list of i18n lists
+ 6. 1997-11-13 Alain LaBontÈ - 2: (TC304.1346) list of i18n lists
+ 7. 1997-11-19 Tom Garland SMI European Software Centre: (TC304.1351) list of i
+ 8. 1998-01-30 ﬁorvarur K·ri ”lafsson: (TC304.1472) Discussion lists for funde
+ 9. 1998-02-21 ﬁorvarur K·ri ”lafsson: (TC304.1506) Please split up the discus
+10. 1998-04-06 ﬁorvarur K·ri ”lafsson: (TC304.1684) Project discussion lists
+11. 1998-05-01 Keld J|rn Simonsen: (TC304.1742) guide on POSIX locales
+12. 1998-05-06 ﬁorvarur K·ri ”lafsson: (TC304.1750) Keyboards list
+
+../iso/rmail/mes
+ 1. 1996-05-04 Michael Everson: (i18n.327) European Subsets of ISO/IEC 10646-1
+ 2. 1998-07-13 Chris Makemson: (TC304.1862) Review draft of the MES
+ 3. 1998-07-21 Klaas Ruppel: (TC304.1875) (TC304 P10) Review draft of the MES
+ 4. 1998-07-21 K I Larsson: (TC304.1877) Review MES draft
+ 5. 1998-08-26 Uma Umamaheswaran: Software to assist you in scrutinizing MES dr
+
+../iso/rmail/registry
+ 1. 1998-05-20 Martin J. Duerst: International registry of coded character sets
+ 2. 1998-05-20 Martin J. Duerst: International registry of coded character sets
+ 3. 1997-10-07 Keld J|rn Simonsen: (TC304.1258) characters in MES - ENV 1973
+ 4. 1997-10-07 ﬁorvarur K·ri ”lafsson: (TC304.1264) characters in MES - ENV 19
+ 5. 1998-08-03 Johan van Wingen: (TC304.1918) comparison of repertoires
+ 6. 1998-08-04 Johan van Wingen: (TC304.1921) Annex C to NEN 1888 (revision in
+ 7. 1998-05-13 Uma Umamaheswaran: (SC2.432) International registries of Coded C
+ 8. 1998-05-20 Martin J. Duerst: International registry of coded character sets
+ 9. 1998-09-16 Keld J|rn Simonsen: Cultural registry as international standard
+10. 1998-10-15 Uma Umamaheswaran: (SC2.463) New Registrations
+11. 1998-10-27 Thorgeir Sigurdsson: (TC304.2049) N852 Guide on the use of Char
+12. 1997-10-07 Keld J|rn Simonsen: Re: librecode, libc, gettext
+13. 1993-02-10 Jon Postel: Re: transcription iso-8859-1 to us-ascii?
+14. 1994-11-12 Ned Freed: Re: Non-observance of ; charset=xxxxxx etc
+15. 1997-01-12 Alain LaBont/e'/: Re: GUTenberg/oe y trema
+16. 1997-02-18 John F. Chandler: (i18n.347) Update to ISO International Registr
+17. 1995-03-14 Roman Czyborra: KOI8-R charset
+18. 1998-04-12 Keld J|rn Simonsen: (i18n.437) new list of character names
+19. 1998-04-13 Uma Umamaheswaran: (i18n.437) new list of character names
+20. 1993-02-10 Jon Postel: Re: transcription iso-8859-1 to us-ascii?
+21. 1994-10-12 Johannes Wilhelm: Re: ISO Latin-1 for DOS ?
+22. 1994-10-12 Markus Kuhn: Re: ISO Latin-1 for DOS ?
+23. 1994-10-17 Kosta Kostis: Re: ISO8859-1 to US-ASCII
+24. 1994-10-18 Kosta Kostis: Re: ISO8859-1 to US-ASCII
+25. 1994-11-16 J.P. Kuypers: Re: MacEudora and MIME charset
+26. 1994-11-29 Barry Bouwsma: Re: Looking for ISO-8859 character set definition
+27. 1995-02-10 Johan van Wingen: list of character code standards
+28. 1995-03-01 Johan van Wingen: (SC2WG3.47) document by ftp
+29. 1995-03-21 Kari E. Hurtta: Kehpager (Re: Latin-1 <-> NRC character set mapp
+30. 1995-04-10 Primoz Peterlin: Re: Recode and CP 1250
+31. 1996-06-18 John F. Chandler: (i18n.332) Updated summary of ISO IR
+32. 1997-06-20 Lukas Petrlik: Re: cs encodings (was: Re: recode 3.4)
+33. 1997-07-22 Keld J|rn Simonsen: (i18n.363) CEN cultural register
+34. 1996-01-13 Keld J|rn Simonsen: (i18n.285) CEN/TC304 PT01 report
+35. 1999-07-07 LaBontÈ, Alain: Enregistrement des jeux de caractËres ISO - comi
+
+../iso/rmail/rÈfÈrences
+ 1. 1998-04-03 Alain LaBontÈ†: Re: …tude sur le codage des caractËres
+ 2. 1998-11-30 Roman Czyborra: finished thesis on Unicode in Unix
+
+../iso/rmail/using-word
+ 1. 1996-10-06 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+
+../iso/rmail/web-sites
+ 1. 1997-11-03 Thorgeir Sigurdsson: (TC304.1326) Web of CEN and our Call
+ 2. 1997-11-19 Michael Everson: (i18n.399) iso15924 list created
+ 3. 1998-03-13 Thorgeir Sigurdsson: (TC304.1529) Inability to Distribute via ST
+ 4. 1998-03-20 Keld J|rn Simonsen: (TC304.1535) Cultural convention standards f
+ 5. 1998-04-17 Alain LaBontÈ†: Versions pdf (fr+en) des alphabets latin n∞ 8 (c
+ 6. 1998-05-12 Marc Wilhelm Kster: (TC304.1757) First draft of the European Ord
+ 7. 1998-06-02 Michael Everson: (TC304.1790) (TC304 P11) WS/Alpha base document
+ 8. 1998-06-03 Keld J|rn Simonsen: (TC304.1791) taxonomy draft
+ 9. 1998-06-15 Thorgeir Sigurdsson: (TC304.1812) ISSS URL
+10. 1998-07-01 borka@e5.ijs.si: (TC304.1830) LE journal on the WEB
+11. 1998-07-02 Thorgeir Sigurdsson: (TC304.1837) Documents, in the mail
+12. 1998-07-07 Thorgeir Sigurdsson: (TC304.1854) Database of Latin letters
+13. 1998-08-05 Alain LaBontÈ†: Re: Obtaining ISO standards in Canada
+
+../surfaces/rmail/base64
  1. 1998-09-11 Lars Magne Ingebrigtsen: Re: [Various] base64-decode
  2. 1998-09-10 Santiago Vila: Re: [Various] base64-decode
  3. 1998-09-10 FranÁois Pinard: Re: [Various] base64-decode
  4. 1998-09-29 Christopher Davis: Re: line endings
+ 5. 1999-12-13 FranÁois Pinard: Re: Whitespace in base64 input
+ 6. 1999-12-13 FranÁois Pinard: Re: Base64 decoding
 
-../rmail/surfaces/binhex
+../surfaces/rmail/binhex
  1. 1996-08-28 Claude Charest: Re: Binhex
  2. 1995-04-05 John Gardiner Myers: Re: I Need MIME/BASE64 Decoder for Nintendo
  3. 1995-05-18 Chris Newman: Re: Info on MACMIME needed (bis)
  4. 1998-11-30 Lars Magne Ingebrigtsen: MIME display: broken multipart; binhex
  5. 1998-08-07 Remi St-Onge: pasv
 
-../rmail/surfaces/braille
+../surfaces/rmail/braille
  1. 1994-05-18 Francois Pinard: Braille codes
 
-../rmail/surfaces/crypt
+../surfaces/rmail/control-z
+ 1. 1999-07-29 Per Starback: Re: Ctrl-Z in files
+
+../surfaces/rmail/crypt
  1. 1995-07-24 John Gardiner Myers: Re: New base64 option to uuencode in POSIX
  2. 1995-08-03 David Eaves: Re: MIME Content-MD5 header
 
-../rmail/surfaces/graphic
+../surfaces/rmail/doc-hexa
+ 1. 1998-10-14 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+ 2. 1998-10-14 Francois Yergeau: Re: Pour ceux qui ont le temps de lire... Cadr
+ 3. 1998-10-23 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+ 4. 1998-10-23 FranÁois Pinard: Re: Pour ceux qui ont le temps de lire... Cadre
+
+../surfaces/rmail/endlines
+ 1. 1999-10-31 Matt Gushee: Re: A Small dos->UNIX convertor
+
+../surfaces/rmail/graphic
  1. 1994-11-16 Francois Pinard: Re: recode 3.4+ and HTML
  2. 1994-10-11 mike@vlsivie.tuwien.ac.at: Re: recode
  3. 1994-12-02 Lukas Petrlik: recode 3.4
 
-../rmail/surfaces/hlp
+../surfaces/rmail/hlp
  1. 1998-10-29 Marc Verreault: Re: [Q]: *.hlp format to HTML
 
-../rmail/surfaces/implied
+../surfaces/rmail/implied
  1. 1998-12-07 FranÁois Pinard: Re: Novice user of recode with question
  2. 1997-12-09 Milivoj Ivkovic: Re: recode
 
-../rmail/surfaces/keyboards
+../surfaces/rmail/keyboards
  1. 1994-09-07 Darin Johnson: Re: Unicode & Linux's future (was Re: Acid)
  2. 1994-09-07 Andries Brouwer: Re: Unicode & Linux's future (was Re: Acid)
  3. 1994-09-07 Richard L. Goerwitz: Re: Unicode & Linux's future (was Re: Acid)
@@ -978,14 +1316,14 @@
  9. 1995-04-19 Gilles Pinard: Divers
 10. 1989-07-21 Francois Pinard: Support du franc,ais sur icule
 
-../rmail/surfaces/rfc934
+../surfaces/rmail/rfc934
  1. 1994-10-31 David J. MacKenzie: [pinard@iro.umontreal.ca: Re: bug in ansi2kn
  2. 1994-10-31 Francois Pinard: Re: [pinard@iro.umontreal.ca: Re: bug in ansi2k
 
-../rmail/surfaces/sgml
+../surfaces/rmail/sgml
  1. 1995-04-19 FranÁois Pinard: Re: ISO 10646 & recode concept
 
-../rmail/surfaces/shar-docum
+../surfaces/rmail/shar-docum
  1. ....-..-.. lvirden@cas.org: Re: Solution for [Re: shar 4.0 make shar.dvi pr
  2. 1994-09-09 gaumondp@ere.umontreal.ca: Comments about shar-4.0
  3. 1994-09-11 davidsen@tmr.com: Re: shar 4.0 [was: Re: disk buffering in Linux
@@ -1005,13 +1343,13 @@
 17. 1995-12-11 FranÁois Pinard: Re: shar & standard input
 18. 1995-12-12 FranÁois Pinard: Re: GNU shar 4.1: ambiguous date format in head
 
-../rmail/surfaces/tranisci
+../surfaces/rmail/tranisci
  1. 1996-02-16 Alain LaBont:e':: Re: Frappe de caracte`res accentue's
  2. 1996-03-22 asiascii@sesame.demon.co.uk (John Clews) (by way of Alain LaBont
  3. 1996-08-23 Alain LaBont/e'/: Transliteration, ISO and bullet-proof Internet
  4. 1997-12-16 Alain LaBontÈ - 1: Re: RFC1345 charset
 
-../rmail/surfaces/uu-bigger-specs
+../surfaces/rmail/uu-bigger-specs
  1. 1993-09-05 mathew: Re: uuencode/uudecode
  2. 1993-09-07 mathew: Re: GNU uudecode: why no GNU btoa?
  3. 1994-03-03 Ian Jackson: uuencode 1.0: Ultrix, use of spaces, no table, not
@@ -1026,7 +1364,7 @@
 12. 1993-09-02 David Herron: Re: uuencode/uudecode
 13. 1995-02-16 Martin Schulze: Hint: uudecode/uuencode
 
-../rmail/surfaces/uu-doc
+../surfaces/rmail/uu-doc
  1. 1993-09-02 Ian Lance Taylor: DOS uuencode and uudecode
  2. 1993-10-13 -----: Re: uuencode
  3. 1989-07-17 Allott P: uudecode - permission denied
@@ -1038,207 +1376,35 @@
  9. 1994-11-30 Ulrich Drepper: Re: Prerelease: GNU sharutils 4.1.1
 10. 1995-07-14 Elizabeth B. Naime: Uuencode/uudecode for PC
 
-../rmail/surfaces/uu-new-w-option
+../surfaces/rmail/uu-new-w-option
  1. 1994-10-29 Michael Shields: New `uudecode -w' option for easy multipart dec
  2. 1994-10-29 Francois Pinard: Re: New `uudecode -w' option for easy multipart
  3. 1994-10-29 Michael Shields: Re: New `uudecode -w' option for easy multipart
  4. 1994-10-29 Michael Shields: New `uudecode -w' option for easy multipart dec
 
-../rmail/urgent/african
- 1. 1998-08-18 Laurent Bourbeau: Texinfo - EC-FC
- 2. 1998-08-25 Laurent Bourbeau: Recode 3.4h - Bilan BUG de Laurent
- 3. 1998-09-02 Laurent Bourbeau: Recode - Tests 2
+../admin/reweb/RMAIL
+ 1. 1999-06-24 FranÁois Pinard: Re: Please tell me the URL of your home Web pag
+ 2. 1999-06-26 FranÁois Pinard: Re: Please tell me the URL of your home Web pag
 
-../rmail/urgent/cyrillic-866
- 1. 1998-01-06 Roman Czyborra: Re: cyrillic support in recode - patch
- 2. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
- 3. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
- 4. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+../asian/martin/RMAIL
+ 1. 1998-12-18 Martin J. Duerst: Re: Prerelease: GNU recode 3.4i
 
-../rmail/urgent/cyrillic-878
- 1. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+../asian/vietnam/RMAIL
+ 1. 1999-09-22 NGUYEN-DAI Quy: renseignement concernant "recode"
+ 2. 1999-12-13 Nguyen-Dai Quy: Re: renseignement concernant "recode"
+ 3. 1999-12-17 Nguyen-Dai Quy: Re: renseignement concernant "recode"
+ 4. 1999-12-17 Nguyen-Dai Quy: Re: renseignement concernant "recode"
+ 5. 1999-12-17 Nguyen-Dai Quy: Re: renseignement concernant "recode"
+ 6. 1999-12-18 Bruno Haible: Re: suggestion ridicule pour recode
+ 7. 1999-12-18 FranÁois Pinard: Re: renseignement concernant "recode"
+ 8. 1999-12-18 FranÁois Pinard: Contre-cotices (:-) dans `test.viqr'
+ 9. 1999-12-18 FranÁois Pinard: Autres =?iso-8859-1?q?probl=E8mes?= VISCII
+10. 1999-12-18 FranÁois Pinard: TCVN
+11. 1999-12-18 FranÁois Pinard: VPS
+12. 1999-12-19 Nguyen-Dai Quy: recode & vietnamese
+13. 1999-12-19 FranÁois Pinard: Re: recode & vietnamese
 
-../rmail/urgent/cyrillic-gnus
- 1. 1999-02-19 Lars Magne Ingebrigtsen: Re: How to specify charset in message h
- 2. 1999-02-19 Dmitry Yaitskov: Re: How to specify charset in message headers?
- 3. 1999-02-19 Lars Magne Ingebrigtsen: Re: with 0.76, messages in koi8-r are s
- 4. 1999-02-05 Vladimir Volovich: Re: More charset things
- 5. 1999-02-08 Bill White: Re: More charset things
-
-../rmail/urgent/cyrillic-gost
- 1. 1997-12-05 Roman Czyborra: GOST 19768
- 2. 1997-12-05 Roman Czyborra: ECMA-113
- 3. 1997-12-05 Keld J|rn Simonsen: Re: GOST 19768
- 4. 1999-01-04 Keld J|rn Simonsen: Re: Details in your latest charset tables
-
-../rmail/urgent/cyrillic-latin5
- 1. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
-
-../rmail/urgent/cyrillic-unified
- 1. 1997-12-05 Roman Czyborra: new Ukrainian KOI8 charsets
- 2. 1997-12-05 Keld J|rn Simonsen: Re: ISO-IR-111 Cyrillic wrong in RFC 1345 an
- 3. 1998-06-12 Roman Czyborra: KOI8-U
- 4. 1999-01-11 FranÁois Pinard: Re: cyrillic support in recode - patch
-
-../rmail/urgent/cyrillic-windows
- 1. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
- 2. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
- 3. 1998-01-31 Alexander L. Belikoff: cyrillic support in recode
-
-../rmail/urgent/cyrillic-zzz
- 1. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
- 2. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
- 3. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
- 4. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
- 5. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
- 6. 1998-06-12 Roman Czyborra: proofreading RFC 1345++
- 7. 1998-06-15 Roman Czyborra: ANNOUNCE: new charset soups (ISO 8859, Cyrillic,
- 8. 1998-09-12 Vladimir Volovich: Re: \201 problem reproduced
- 9. 1998-09-12 Vladimir Volovich: Re: \201 problem reproduced
-10. 1998-03-10 Thorgeir Sigurdsson: (TC304.1525) EN1923 is an adopted 8 bit MES
-11. 1997-12-28 Andries.Brouwer@cwi.nl: Re: cyrillic support in recode - patch
-12. 1998-11-18 Uma Umamaheswaran: Site with info on different character sets et
-13. 1999-03-26 Earl Hood: RFC: Character sets in MHonArc (was private Re: MHonA
-14. 1999-03-27 Andrew S. Howell: Re: RFC: Character sets in MHonArc (was privat
-15. 1999-03-29 Koichi Nakatani: Re: RFC: Character sets in MHonArc (was private
-16. 1999-03-24 Takashi P.KATOH: iso-2022 filter
-17. 1999-03-24 Earl Hood: Re: iso-2022 filter
-18. 1999-03-02 Lukas Petrlik: Re: Prerelease: GNU recode 3.4i
-19. 1999-01-06 Martin Mares: Re: Prerelease: GNU recode 3.4i
-20. 1999-02-18 Alexander L. Belikoff: Cyrillic encodings - a more or less autho
-21. 1999-01-25 Alexander L. Belikoff: Re: cyrillic support in recode - patch
-22. 1999-01-09 Alexander L. Belikoff: Re: cyrillic support in recode - patch
-23. 1999-01-11 FranÁois Pinard: Re: cyrillic support in recode - patch
-24. 1999-01-25 Alexander L. Belikoff: Re: cyrillic support in recode - patch
-25. 1998-11-30 Roman Czyborra: finished thesis on Unicode in Unix
-26. 1999-03-02 Lukas Petrlik: Re: Prerelease: GNU recode 3.4i
-27. 1999-01-06 Martin Mares: Re: Prerelease: GNU recode 3.4i
-28. 1999-01-06 Keld J|rn Simonsen: Re: Prerelease: GNU recode 3.4i
-29. 1999-01-05 Martin Mares: Re: Prerelease: GNU recode 3.4i
-30. 1999-01-06 FranÁois Pinard: Re: Prerelease: GNU recode 3.4i
-31. 1999-04-13 borka@e5.ijs.si: (TC304.2152) (SC22WG20.2656) Differences betwee
-32. 1999-04-13 Karlsson Kent - keka: (TC304.2153) RE: (SC22WG20.2685) (SC22WG20
-33. 1999-04-15 Konstantin Chuguev: (TC304.2154) (SC22WG20.2686) RE: (SC22WG20.2
-
-../rmail/urgent/doswin
- 1. 1998-03-26 FranÁois Pinard: Re: find reco dos executable
- 2. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
- 3. 1998-11-24 Eli Zaretskii: Re: recode for Amiga - 3.4k update
- 4. 1998-11-24 FranÁois Pinard: Re: recode for Amiga - 3.4k update
- 5. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
- 6. 1998-11-25 Eli Zaretskii: libtool+shell [was: Re: recode for Amiga - 3.4k u
- 7. 1998-11-25 Eli Zaretskii: Perl [was: Re: recode for Amiga - 3.4k update]
- 8. 1998-11-25 Eli Zaretskii: EOLs [was: Re: recode for Amiga - 3.4k update]
- 9. 1998-11-25 Eli Zaretskii: configure+dist [was: Re: recode for Amiga - 3.4k
-10. 1998-11-25 Eli Zaretskii: Intro [was: Re: recode for Amiga - 3.4k update]
-11. 1998-11-30 Eli Zaretskii: Re: New -Spo option to `recode'
-12. 1999-01-31 Matt Armstrong: Re: Cygwin, make install and .exe
-13. 1999-02-15 Eli Zaretskii: Re: gettext.m4 and absolute file names
-14. 1999-04-10 Robert S. Maier: automake problems DJGPP
-15. 1999-04-10 Alexandre Oliva: Re: automake problems DJGPP
-16. 1999-04-13 Eli Zaretskii: Re: ... and paxutils
-17. 1999-04-12 Eli Zaretskii: Re: Playing with DJGPP again
-18. 1999-04-12 Eli Zaretskii: Re: Playing with DJGPP again
-19. 1999-04-15 FranÁois Pinard: recode on DJGPP
-20. 1999-06-01 FranÁois Pinard: Re: POT file for recode 3.4r now being uploaded
-
-../rmail/urgent/gettext
- 1. 1999-04-02 Laurent Bourbeau: Recode 3.4q - bug-1
- 2. 1999-04-05 Laurent Bourbeau: Recode 3.4q - Bug 6
- 3. 1999-04-05 Laurent Bourbeau: Recode 3.4q - Bug 7
-
-../rmail/urgent/korean
- 1. 1999-03-11 Alain LaBontÈ†: JUC : Noms de caractËres corÈens
-
-../admin/abe/RMAIL
- 1. 1991-01-17 Francois Pinard: abe and directories; dabe and Turbo-C
- 2. 1991-01-27 Brad Templeton: Re: abe part numbering
- 3. 1991-02-11 Francois Pinard: Possible bug with b= option
- 4. 1991-02-11 Brad Templeton: Re: Possible bug with b= option
- 5. 1992-07-15 Francois Pinard: Minor problem in dabe.c
- 6. 1994-09-23 Francois Pinard: Re: Possible bug with b= option
- 7. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
- 8. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
- 9. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
-10. 1994-09-24 Francois Pinard: Re: Possible bug with b= option
-11. 1994-09-24 Francois Pinard: Re: Possible bug with b= option
-12. 1994-09-26 brad@alto.clarinet.com: Re: Possible bug with b= option
-
-../admin/abrahamsen/RMAIL
- 1. 1993-03-11 Per Abrahamsen: min-key.el: Keyboard Remapping and Character Set
- 2. 1993-06-02 Per Abrahamsen: Danish, Swedish, German, Russian, and DVORAK Key
-
-../admin/apple/RMAIL
- 1. 1987-06-30 Kevin O'Gorman: Comb
- 2. 1995-05-04 Leonardo Topa: Re: mcvert version 2.16 installed
- 3. 1995-03-10 John Gianni: Re: Application/MAC-BINHEX40
- 4. 1995-03-31 Chris Newman: Re: Looking For BinHex Specifications
- 5. 1995-04-02 Kari E. Hurtta: Re: Looking For BinHex Specifications
- 6. 1995-04-07 Andrew M. Langmead: Re: Looking For BinHex Specifications
- 7. 1995-03-31 bill@slipnet.com: Re: Binhex4.0
- 8. 1995-03-05 Mathieu Dubreuil: Re: Rencontre Jeunes - Nations Unies
- 9. 1995-12-08 DOCUMENSA: DTD Loi
-10. 1997-03-12 FranÁois Pinard: Macintosh
-
-../admin/btoa/RMAIL
- 1. 1994-09-20 kb@cs.umb.edu: shar, uuencode, atob
- 2. 1994-09-20 Francois Pinard: Re: shar, uuencode, atob
- 3. 1994-07-29 ericb@lsid.hp.com: Re: GNU shar, -M and you
- 4. 1994-07-28 Francois Pinard: Re: GNU shar, -M and you
- 5. 1992-10-09 Jef Poskanzer: version of atob with factor of 2 speedup
- 6. 1993-09-26 Francois Pinard: GNU encode 1.0 - still
- 7. 1989-12-30 Stefan Parmark: Re: BTOA 5.2
- 8. 1989-12-30 Francois Pinard: BTOA 5.2
- 9. 1989-12-31 Francois Pinard: diffs for btoa 5.2 under MSDOS
-10. 1990-07-18 Francois Pinard: shar blues
-11. 1994-09-20 Francois Pinard: Re: shar, uuencode, atob
-12. 1994-09-24 kb@cs.umb.edu: Re: shar, uuencode, atob
-
-../admin/cdc-tape/RMAIL
- 1. 1995-02-03 Francois Pinard: Re: Cyber tape formats
-
-../admin/charconv/RMAIL
- 1. 1993-07-19 Burkhard Kirste: charconv - convert extended character sets (1/2
-
-../admin/german/RMAIL
- 1. 1994-01-09 Thorbjoern Hansen: Suggestions for `recode'
- 2. 1994-01-11 Francois Pinard: Suggestions for `recode'
- 3. 1994-01-12 Thorbjoern Hansen: Re: Suggestions for `recode'
- 4. 1994-01-12 Francois Pinard: shar: diac.tar.gz
- 5. 1994-01-12 Francois Pinard: Re: Suggestions for `recode'
- 6. 1994-01-09 Thorbjoern Hansen: Suggestions for `recode'
- 7. 1994-01-11 Francois Pinard: Suggestions for `recode'
- 8. 1994-01-12 Thorbjoern Hansen: Re: Suggestions for `recode'
- 9. 1994-01-12 Francois Pinard: Re: Suggestions for `recode'
-10. 1994-09-28 gator@cs.tu-berlin.de: new charset for recode
-11. 1994-09-30 Francois Pinard: Re: new charset for recode
-12. 1994-10-01 gator@cs.tu-berlin.de: Re: new charset for recode
-13. 1994-07-19 haible@ma2s2.mathematik.uni-karlsruhe.de: latex conversions in r
-14. 1994-07-19 Francois Pinard: Re: latex conversions in recode-3.3
-15. 1994-07-19 haible@ma2s2.mathematik.uni-karlsruhe.de: Re: latex conversions
-16. 1993-02-11 Markus Kuhn: Re: transcription iso-8859-1 to us-ascii?
-17. 1994-12-04 Francois Pinard: Re: Prerelease: GNU recode 3.4.1
-18. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
-19. 1994-12-04 Francois Pinard: Re: Prerelease: GNU recode 3.4.1
-20. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
-21. 1995-01-21 Markus Kuhn: Re: Unicode Matters
-22. 1995-05-09 Ulrich Drepper: Re: Volunteering for translations
-23. 1995-05-10 Ulrich Drepper: Re: Volunteering for translations
-24. 1995-05-10 FranÁois Pinard: Re: Volunteering for translations
-25. 1995-06-07 Ulrich Drepper: something you might be interested in
-26. 1995-06-06 FranÁois Pinard: Re: something you might be interested in
-27. 1995-06-07 Ulrich Drepper: Re: something you might be interested in
-28. 1995-06-07 FranÁois Pinard: Re: something you might be interested in
-29. 1995-07-17 Juergen Weigert (Inf4 - hiwi): recode-3.4 extended 'flat' charac
-30. 1995-07-25 FranÁois Pinard: Re: Patch for recode-3.4
-31. 1995-08-22 Ulrich Windl: Re: problem with recode 3
-32. 1995-08-22 FranÁois Pinard: Re: problem with recode 3
-33. 1995-05-07 FranÁois Pinard: Re: Volunteering for translations
-34. 1995-05-08 Ulrich Drepper: Re: Volunteering for translations
-35. 1995-05-08 Martin Husemann: Re: Volunteering for translations
-36. 1995-05-08 FranÁois Pinard: Re: Volunteering for translations
-
-../admin/mule/RMAIL
+../charsets/mule/RMAIL
  1. 1993-08-12 Kenichi Handa: The official release of Mule Ver.1.0 (Patch Level
  2. 1995-03-30 Gianni Mariani: Re: Unicode/ISO-10646/TRON/MULE/MCS for multilin
  3. 1995-03-30 Martin J. Duerst: Re: Unicode/ISO-10646/TRON/MULE/MCS for multil
@@ -1330,11 +1496,442 @@
 89. 1998-05-13 Kenichi Handa: Re: dialog boxes
 90. 1997-12-06 FranÁois Pinard: Re: Small difficulties in Emacs 20
 91. 1999-05-05 Alfred J Correira: Re: NT / pgnus draft problem
+92. 1999-06-14 Kenichi Handa: Re: dead key for quail
+93. 1999-07-11 Dave Love: Re: Mule Emacs 20.3 w/enable-multibyte-characters set
+94. 1999-07-12 Michael Welsh Duggan: Re: Mule Emacs 20.3 w/enable-multibyte-cha
+95. 1999-07-14 Dave Love: Re: Mule Emacs 20.3 w/enable-multibyte-characters set
+96. 1999-07-29 Kenichi Handa: shift to a new mailing list server.
+97. 1999-07-29 Mito: Re: FAQ: UNICODE conversion support planned?
+98. 1999-07-31 FUJITA Kazutoshi: Re: shift to a new mailing list server.
 
-../admin/translit/RMAIL
+../engines/abrahamsen/RMAIL
+ 1. 1993-03-11 Per Abrahamsen: min-key.el: Keyboard Remapping and Character Set
+ 2. 1993-06-02 Per Abrahamsen: Danish, Swedish, German, Russian, and DVORAK Key
+
+../engines/charconv/RMAIL
+ 1. 1993-07-19 Burkhard Kirste: charconv - convert extended character sets (1/2
+
+../engines/iso2asc/RMAIL
+ 1. 1993-02-11 Markus Kuhn: Re: ISO-8859-1 and French
+ 2. 1993-05-20 Markus Kuhn: Portable ISO Latin 1 -> ASCII Converter
+ 3. 1993-02-10 Markus Kuhn: Re: transcription iso-8859-1 to us-ascii?
+ 4. 1993-12-07 Markus Kuhn (CIP 90): Re: transcription iso-8859-1 to us-ascii?
+
+../engines/translit/RMAIL
  1. 1993-03-18 Jan Labanowski: Translit --- transliterate foreign alphabets
+ 2. 1999-06-03 Han-Wen Nienhuys: Unidentified subject!
+ 3. 1999-06-03 Sigfrid Lundberg, Lub NetLab: Re: Unidentified subject!
 
-../admin/wilson/RMAIL
+../engines/wilson/RMAIL
  1. 1994-10-27 David E A Wilson: recode-3.3
  2. 1994-10-28 David E A Wilson: Re: recode-3.3
  3. 1994-10-28 David E A Wilson: charset program
+
+../fallbacks/German/RMAIL
+ 1. 1994-01-09 Thorbjoern Hansen: Suggestions for `recode'
+ 2. 1994-01-11 Francois Pinard: Suggestions for `recode'
+ 3. 1994-01-12 Thorbjoern Hansen: Re: Suggestions for `recode'
+ 4. 1994-01-12 Francois Pinard: shar: diac.tar.gz
+ 5. 1994-01-12 Francois Pinard: Re: Suggestions for `recode'
+ 6. 1994-01-09 Thorbjoern Hansen: Suggestions for `recode'
+ 7. 1994-01-11 Francois Pinard: Suggestions for `recode'
+ 8. 1994-01-12 Thorbjoern Hansen: Re: Suggestions for `recode'
+ 9. 1994-01-12 Francois Pinard: Re: Suggestions for `recode'
+10. 1994-09-28 gator@cs.tu-berlin.de: new charset for recode
+11. 1994-09-30 Francois Pinard: Re: new charset for recode
+12. 1994-10-01 gator@cs.tu-berlin.de: Re: new charset for recode
+13. 1994-07-19 haible@ma2s2.mathematik.uni-karlsruhe.de: latex conversions in r
+14. 1994-07-19 Francois Pinard: Re: latex conversions in recode-3.3
+15. 1994-07-19 haible@ma2s2.mathematik.uni-karlsruhe.de: Re: latex conversions
+16. 1993-02-11 Markus Kuhn: Re: transcription iso-8859-1 to us-ascii?
+17. 1994-12-04 Francois Pinard: Re: Prerelease: GNU recode 3.4.1
+18. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
+19. 1994-12-04 Francois Pinard: Re: Prerelease: GNU recode 3.4.1
+20. 1994-12-04 Michael Gschwind: Re: Prerelease: GNU recode 3.4.1
+21. 1995-01-21 Markus Kuhn: Re: Unicode Matters
+22. 1995-05-09 Ulrich Drepper: Re: Volunteering for translations
+23. 1995-05-10 Ulrich Drepper: Re: Volunteering for translations
+24. 1995-05-10 FranÁois Pinard: Re: Volunteering for translations
+25. 1995-06-07 Ulrich Drepper: something you might be interested in
+26. 1995-06-06 FranÁois Pinard: Re: something you might be interested in
+27. 1995-06-07 Ulrich Drepper: Re: something you might be interested in
+28. 1995-06-07 FranÁois Pinard: Re: something you might be interested in
+29. 1995-07-17 Juergen Weigert (Inf4 - hiwi): recode-3.4 extended 'flat' charac
+30. 1995-07-25 FranÁois Pinard: Re: Patch for recode-3.4
+31. 1995-08-22 Ulrich Windl: Re: problem with recode 3
+32. 1995-08-22 FranÁois Pinard: Re: problem with recode 3
+33. 1995-05-07 FranÁois Pinard: Re: Volunteering for translations
+34. 1995-05-08 Ulrich Drepper: Re: Volunteering for translations
+35. 1995-05-08 Martin Husemann: Re: Volunteering for translations
+36. 1995-05-08 FranÁois Pinard: Re: Volunteering for translations
+
+../surfaces/abe/RMAIL
+ 1. 1991-01-17 Francois Pinard: abe and directories; dabe and Turbo-C
+ 2. 1991-01-27 Brad Templeton: Re: abe part numbering
+ 3. 1991-02-11 Francois Pinard: Possible bug with b= option
+ 4. 1991-02-11 Brad Templeton: Re: Possible bug with b= option
+ 5. 1992-07-15 Francois Pinard: Minor problem in dabe.c
+ 6. 1994-09-23 Francois Pinard: Re: Possible bug with b= option
+ 7. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
+ 8. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
+ 9. 1994-09-24 brad@alto.clarinet.com: Re: Possible bug with b= option
+10. 1994-09-24 Francois Pinard: Re: Possible bug with b= option
+11. 1994-09-24 Francois Pinard: Re: Possible bug with b= option
+12. 1994-09-26 brad@alto.clarinet.com: Re: Possible bug with b= option
+
+../surfaces/apple/RMAIL
+ 1. 1987-06-30 Kevin O'Gorman: Comb
+ 2. 1995-05-04 Leonardo Topa: Re: mcvert version 2.16 installed
+ 3. 1995-03-10 John Gianni: Re: Application/MAC-BINHEX40
+ 4. 1995-03-31 Chris Newman: Re: Looking For BinHex Specifications
+ 5. 1995-04-02 Kari E. Hurtta: Re: Looking For BinHex Specifications
+ 6. 1995-04-07 Andrew M. Langmead: Re: Looking For BinHex Specifications
+ 7. 1995-03-31 bill@slipnet.com: Re: Binhex4.0
+ 8. 1995-03-05 Mathieu Dubreuil: Re: Rencontre Jeunes - Nations Unies
+ 9. 1995-12-08 DOCUMENSA: DTD Loi
+10. 1997-03-12 FranÁois Pinard: Macintosh
+11. 1999-08-02 Benjamin Kowarsch: Re: Mac Install
+
+../surfaces/btoa/RMAIL
+ 1. 1994-09-20 kb@cs.umb.edu: shar, uuencode, atob
+ 2. 1994-09-20 Francois Pinard: Re: shar, uuencode, atob
+ 3. 1994-07-29 ericb@lsid.hp.com: Re: GNU shar, -M and you
+ 4. 1994-07-28 Francois Pinard: Re: GNU shar, -M and you
+ 5. 1992-10-09 Jef Poskanzer: version of atob with factor of 2 speedup
+ 6. 1993-09-26 Francois Pinard: GNU encode 1.0 - still
+ 7. 1989-12-30 Stefan Parmark: Re: BTOA 5.2
+ 8. 1989-12-30 Francois Pinard: BTOA 5.2
+ 9. 1989-12-31 Francois Pinard: diffs for btoa 5.2 under MSDOS
+10. 1990-07-18 Francois Pinard: shar blues
+11. 1994-09-20 Francois Pinard: Re: shar, uuencode, atob
+12. 1994-09-24 kb@cs.umb.edu: Re: shar, uuencode, atob
+
+../surfaces/cdc-tape/RMAIL
+ 1. 1995-02-03 Francois Pinard: Re: Cyber tape formats
+
+../charsets/cyrillic/rmail/866
+ 1. 1998-01-06 Roman Czyborra: Re: cyrillic support in recode - patch
+ 2. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
+ 3. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+ 4. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+
+../charsets/cyrillic/rmail/878
+ 1. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+
+../charsets/cyrillic/rmail/documentation
+ 1. 1999-06-08 Lukas Petrlik: recode 3.5 docs
+
+../charsets/cyrillic/rmail/emacs
+ 1. 1997-08-21 Kenichi Handa: Re: input cyrillic
+ 2. 1997-08-23 Kenichi Handa: Re: Thank you, Re: input cyrillic
+ 3. 1997-08-25 Martin J. D¸rst: Re: input cyrillic
+
+../charsets/cyrillic/rmail/gnus
+ 1. 1999-02-19 Lars Magne Ingebrigtsen: Re: How to specify charset in message h
+ 2. 1999-02-19 Dmitry Yaitskov: Re: How to specify charset in message headers?
+ 3. 1999-02-19 Lars Magne Ingebrigtsen: Re: with 0.76, messages in koi8-r are s
+ 4. 1999-02-05 Vladimir Volovich: Re: More charset things
+ 5. 1999-02-08 Bill White: Re: More charset things
+
+../charsets/cyrillic/rmail/gost
+ 1. 1997-12-05 Roman Czyborra: GOST 19768
+ 2. 1997-12-05 Roman Czyborra: ECMA-113
+ 3. 1997-12-05 Keld J|rn Simonsen: Re: GOST 19768
+ 4. 1999-01-04 Keld J|rn Simonsen: Re: Details in your latest charset tables
+
+../charsets/cyrillic/rmail/latex
+ 1. 1998-05-20 Barbara Beeton: Re: Cyrillic by AMS
+ 2. 1998-05-21 Boguslaw Jackowski: re: Cyrillic fonts by AMS
+ 3. 1998-05-21 Barbara Beeton: re: Cyrillic fonts by AMS
+ 4. 1998-05-21 Boguslaw Jackowski: Re: Cyrillic fonts by AMS (hopefully my fina
+ 5. 1998-06-07 Barbara Beeton: Re: Cyrillic fonts with T1 encoding
+ 6. 1998-06-08 taupin: Cyrillic fonts with T1 encoding
+ 7. 1998-06-08 Robin Fairbairns: Re: Cyrillic fonts with T1 encoding
+ 8. 1998-06-08 taupin: About cyrillic fonts.
+ 9. 1998-06-09 taupin: Re: Ligature question
+
+../charsets/cyrillic/rmail/latin5
+ 1. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
+
+../charsets/cyrillic/rmail/unified
+ 1. 1997-12-05 Roman Czyborra: new Ukrainian KOI8 charsets
+ 2. 1997-12-05 Keld J|rn Simonsen: Re: ISO-IR-111 Cyrillic wrong in RFC 1345 an
+ 3. 1998-06-12 Roman Czyborra: KOI8-U
+ 4. 1999-01-11 FranÁois Pinard: Re: cyrillic support in recode - patch
+
+../charsets/cyrillic/rmail/windows
+ 1. 1997-12-28 FranÁois Pinard: Re: cyrillic support in recode - patch
+ 2. 1997-12-28 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+ 3. 1998-01-31 Alexander L. Belikoff: cyrillic support in recode
+
+../charsets/cyrillic/rmail/zzz
+ 1. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
+ 2. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
+ 3. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
+ 4. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
+ 5. 1994-11-01 Roman Czyborra: Re: Prerelease: GNU recode 3.3.2
+ 6. 1998-06-12 Roman Czyborra: proofreading RFC 1345++
+ 7. 1998-06-15 Roman Czyborra: ANNOUNCE: new charset soups (ISO 8859, Cyrillic,
+ 8. 1998-09-12 Vladimir Volovich: Re: \201 problem reproduced
+ 9. 1998-09-12 Vladimir Volovich: Re: \201 problem reproduced
+10. 1998-03-10 Thorgeir Sigurdsson: (TC304.1525) EN1923 is an adopted 8 bit MES
+11. 1997-12-28 Andries.Brouwer@cwi.nl: Re: cyrillic support in recode - patch
+12. 1998-11-18 Uma Umamaheswaran: Site with info on different character sets et
+13. 1999-03-26 Earl Hood: RFC: Character sets in MHonArc (was private Re: MHonA
+14. 1999-03-27 Andrew S. Howell: Re: RFC: Character sets in MHonArc (was privat
+15. 1999-03-29 Koichi Nakatani: Re: RFC: Character sets in MHonArc (was private
+16. 1999-03-24 Takashi P.KATOH: iso-2022 filter
+17. 1999-03-24 Earl Hood: Re: iso-2022 filter
+18. 1999-03-02 Lukas Petrlik: Re: Prerelease: GNU recode 3.4i
+19. 1999-01-06 Martin Mares: Re: Prerelease: GNU recode 3.4i
+20. 1999-02-18 Alexander L. Belikoff: Cyrillic encodings - a more or less autho
+21. 1999-01-25 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+22. 1999-01-09 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+23. 1999-01-11 FranÁois Pinard: Re: cyrillic support in recode - patch
+24. 1999-01-25 Alexander L. Belikoff: Re: cyrillic support in recode - patch
+25. 1998-11-30 Roman Czyborra: finished thesis on Unicode in Unix
+26. 1999-03-02 Lukas Petrlik: Re: Prerelease: GNU recode 3.4i
+27. 1999-01-06 Martin Mares: Re: Prerelease: GNU recode 3.4i
+28. 1999-01-06 Keld J|rn Simonsen: Re: Prerelease: GNU recode 3.4i
+29. 1999-01-05 Martin Mares: Re: Prerelease: GNU recode 3.4i
+30. 1999-01-06 FranÁois Pinard: Re: Prerelease: GNU recode 3.4i
+31. 1999-04-13 borka@e5.ijs.si: (TC304.2152) (SC22WG20.2656) Differences betwee
+32. 1999-04-13 Karlsson Kent - keka: (TC304.2153) RE: (SC22WG20.2685) (SC22WG20
+33. 1999-04-15 Konstantin Chuguev: (TC304.2154) (SC22WG20.2686) RE: (SC22WG20.2
+34. 1996-10-13 Alexander L. Belikoff: Linux Cyrillic HOWTO (part 1/1)
+
+../charsets/ucs/rmail/10646
+ 1. 1996-03-15 Alain LaBont:e':: Impact of ISO/IEC 10646 on POSIX - Draft perso
+ 2. 1996-03-28 Keld J|rn Simonsen: (i18n.298) 10646 amendments available
+ 3. 1996-04-26 Keld J|rn Simonsen: (i18n.325) ISO 10646 character namesand posi
+ 4. 1997-02-04 unicode@Unicode.ORG: Re: Korean m*, what is it?
+ 5. 1999-08-25 Alain LaBontÈ†: ISO 10646 (v.f.) - Annexe K -- Conseils pour le
+
+../charsets/ucs/rmail/byte-order-mark
+ 1. 1999-08-01 Marc Feeley: Unicode BOM
+
+../charsets/ucs/rmail/dns
+ 1. 1999-07-07 Stuart Kwan: RE: skwan-utf8-dns (RE: (Almost final) Agenda for d
+
+../charsets/ucs/rmail/documentation
+ 1. 1994-10-09 Emmanuel Uren: 850 and more, 8859 and more, and more
+ 2. 1996-09-13 Markus G. Kuhn: Unicode Introduction and References
+ 3. 1996-11-24 Erik Naggum: Re: The char type crossing the 8 bit barrier? (Was
+ 4. 1997-05-20 Alain LaBont/e'/: UNICODE et ISO/CEI 10646
+ 5. 1997-10-28 FranÅÁois Pinard: Re: librecode, libc, gettext
+ 6. 1997-10-31 Alain LaBontÈ - 3: Philosophie de l'internationalisation de bon
+ 7. 1998-01-02 Alain LaBontÈ - 3: Re: aide!
+ 8. 1998-02-14 Erik Naggum: Re: Is there any alternative to MULE?
+ 9. 1998-02-16 John Clews: (TC304.1487) Script summary: status of ISO/IEC 10646
+10. 1998-03-10 Alain LaBontÈ†: Importance des noms des caractËres
+11. 1998-03-10 Alain LaBontÈ†: Noms de caractËres -- subtilitÈs
+12. 1998-03-24 Alain LaBontÈ†: Re: Erreurs de nomenclature dans Windows NT4
+13. 1998-05-05 Alain LaBontÈ†: Codage de la langue dans le jeu universel de car
+
+../charsets/ucs/rmail/fontes
+ 1. 1997-10-28 Martin J. D¸rst: Re: Mule -> NT
+ 2. 1995-06-05 Michael Everson: (i18n.265) Announcing Everson Mono 10646
+ 3. 1995-12-14 Ulrich Drepper: Unicode mappings
+ 4. 1996-04-30 Yann Dirson: Re: recode: suggestion
+ 5. 1995-12-11 Ulrich Drepper: Re: check successful message
+ 6. 1998-09-29 Roman Czyborra: proposal for a GNU Unicode font
+ 7. 1998-09-30 Jungshik Shin: Re: proposal for a GNU Unicode font
+ 8. 1998-10-04 Primoz Peterlin: Re: proposal for a GNU Unicode font
+ 9. 1998-10-04 Markus Kuhn: Re: proposal for a GNU Unicode font
+10. 1998-10-05 Primoz Peterlin: Re: proposal for a GNU Unicode font
+11. 1998-10-02 Markus Kuhn: Re: proposal for a GNU Unicode font
+12. 1998-10-03 Markus Kuhn: Re: proposal for a GNU Unicode font
+13. 1998-10-06 Jungshik Shin: Re: proposal for a GNU Unicode font
+14. 1998-10-07 Mark Leisher: Re: proposal for a GNU Unicode font
+15. 1998-10-07 Jungshik Shin: Re: proposal for a GNU Unicode font
+16. 1998-10-02 Mark Leisher: Clearly U BDF font update
+17. 1998-10-05 James Matthew Farrow: Font editors...
+18. 1997-11-24 Mark Leisher: Unicode BDF fonts available
+19. 1998-11-24 FranÁois Pinard: Re: Free X11 Unicode terminal font available
+20. 1997-06-14 mike@vlsivie.tuwien.ac.at: Finding Fonts for Internationalizatio
+21. 1999-06-04 Martin J. Duerst: Re: UTF-8 table output
+22. 1999-06-03 FranÁois Pinard: Re: UTF-8 table output
+23. 1999-07-17 Markus Kuhn: Unicode fonts for X11
+
+../charsets/ucs/rmail/franÁais
+ 1. 1996-05-11 Alain LaBont/e'/: Re: French names for 10646
+ 2. 1996-10-24 Alain LaBont/e'/: Quelques adresses pour les rÈfÈrences ‡ mes tr
+ 3. 1998-04-29 Alain LaBontÈ†: Use of the Glyphs associated to the Unicode char
+ 4. 1998-09-17 Alain LaBontÈ†: Character identifiers, names and mnemonicity --
+ 5. 1998-12-17 FranÁois Pinard: Tables franÁaise pour les noms JUC
+
+../charsets/ucs/rmail/html
+ 1. 1995-12-21 Francois Yergeau: RFC sur l'i18n de HTML
+ 2. 1996-05-30 Alain LaBont/e'/: Internationalisation de HTML
+ 3. 1995-03-29 alb@riq.qc.ca: http://www.echo.lu/other/norm
+ 4. 1994-10-08 Gary Houston: Re: multilingual HTML, SGML documents
+ 5. 1997-04-25 Henry Churchyard: Re: &#146; valid HTML or no?
+ 6. 1997-04-30 Henry Churchyard: Re: &#146; valid HTML or no?
+ 7. 1997-04-30 Paul Eggert: Re: &#146; valid HTML or no?
+ 8. 1997-04-27 Tall Ethnic Person: Re: &#146; valid HTML or no?
+ 9. 1997-04-27 Markus Kuhn: Re: &#146; valid HTML or no?
+10. 1999-04-09 Pierre Laplante: Re: =?iso-8859-1?Q?param=E8tres?= avec script c
+
+../charsets/ucs/rmail/libutf8
+ 1. 1999-07-30 Jim Meyering: Re: [FranÁois Pinard <pinard@iro.umontreal.ca>] Re
+ 2. 1999-07-30 FranÁois Pinard: Re: UTF-8
+ 3. 1999-07-30 Bruno Haible: Re: [FranÅÁois Pinard <pinard@iro.umontreal.ca>] R
+ 4. 1999-07-30 Bruno Haible: Re: [=?iso-8859-1?q?Fran=E7ois?= Pinard <pinard@ir
+ 5. 1999-07-30 FranÁois Pinard: Re: UTF-8
+ 6. 1999-07-30 Bruno Haible: Re: UTF-8
+ 7. 1999-07-30 FranÁois Pinard: Re: UTF-8
+ 8. 1999-08-01 Marc Feeley: Unicode BOM
+ 9. 1999-08-02 FranÁois Pinard: Re: UTF-8
+10. 1999-08-02 Bruno Haible: Clarification, UTF-8
+11. 1999-08-02 Bruno Haible: Re: UTF-8, concrete action
+12. 1999-08-02 Bruno Haible: Re: UTF-8, meta discussion
+13. 1999-08-02 Bruno Haible: Re: UTF-8, meta discussion
+14. 1999-08-02 FranÁois Pinard: Re: UTF-8, concrete action
+15. 1999-08-02 Bruno Haible: Re: UTF-8, concrete action
+16. 1999-08-02 FranÁois Pinard: Re: UTF-8, meta discussion
+17. 1999-08-02 Bruno Haible: Re: UTF-8, meta discussion
+18. 1999-08-02 Bruno Haible: Re: UTF-8, meta discussion
+19. 1999-08-04 FranÁois Pinard: Bruno's project
+20. 1999-08-04 Jim Meyering: Re: Bruno's project
+21. 1999-08-04 Jim Meyering: Re: Bruno's project
+22. 1999-08-04 FranÁois Pinard: Re: TP-Robot hello-1.3.23.lv.po
+23. 1999-08-04 FranÁois Pinard: Re: Bruno's project
+24. 1999-09-07 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
+25. 1999-12-06 ADEMIRNET@aol.com: =?ISO-8859-1?Q?Bulletin=20N=B014=20Ademirnet=
+
+../charsets/ucs/rmail/roman
+ 1. 1998-11-30 Roman Czyborra: finished thesis on Unicode in Unix
+
+../charsets/ucs/rmail/sgml
+ 1. 1997-04-30 Paul Eggert: Re: &#146; valid HTML or no?
+ 2. 1994-11-14 Oliver Bonten: Re: Character entity names for ISO-Latin 1
+ 3. 1997-02-05 Bruce Hunter: Re: Mapping Character Entities to Windows Characte
+ 4. 1997-02-05 Markus Kuhn: Unicode Web Test Pages
+ 5. 1997-02-23 Peter Flynn: Re: mapping iso SGML entities to TeX chars?
+ 6. 1997-05-14 Clayton Weaver: catalog entry for ECMA-94
+ 7. 1997-05-14 Markus Kuhn: Re: catalog entry for ECMA-94
+ 8. 1997-05-15 Peter Flynn: Re: catalog entry for ECMA-94
+ 9. 1997-05-15 Peter Flynn: Re: catalog entry for ECMA-94
+10. 1997-06-23 Walther Schubert: Help with FrameMaker+SGML Conversion Table
+11. 1996-03-16 Peter Flynn: Re: TeX to Latin 1 table
+
+../charsets/ucs/rmail/spreading
+ 1. 1996-01-05 FranÁois Pinard: Re: 8bit clean perl? (fwd)
+
+../charsets/ucs/rmail/tools-gscript
+ 1. 1999-07-13 Tom Tromey: good news for internationalization
+
+../charsets/ucs/rmail/tools-java-netscape
+ 1. 1998-08-05 Alain LaBontÅÈÅ†: Re: Unicode Converter
+
+../charsets/ucs/rmail/tools-mule
+ 1. 1999-07-28 =?ISO-2022-JP?B?GyRCNVwyPBsoQiAbJEI+MBsoQjpISU1J?=: Re: FAQ: UNI
+
+../charsets/ucs/rmail/tools-recode
+ 1. 1995-04-20 Markus Kuhn (CIP 90): ISO 10646 & recode concept
+ 2. 1997-08-01 Martin J. Duerst: Re: librecode, libc, gettext
+ 3. 1997-11-25 Markus Kuhn: Re: ISO 10646 & recode concept
+
+../charsets/ucs/rmail/tools-ssam-ure
+ 1. 1997-11-22 FranÁois Pinard: Re: unicode and gnu?
+
+../charsets/ucs/rmail/tools-tcs
+ 1. 1993-02-09 andrew@research.att.com: (none)
+ 2. 1993-02-14 Francois Pinard: tcs, recode
+ 3. 1993-02-20 Francois Pinard: Legaleese
+ 4. 1993-12-11 Francois Pinard: GNU recode 3.2.9
+ 5. 1993-12-12 Per Abrahamsen: Re: GNU recode 3.2.9
+ 6. 1999-03-30 Andreas Schwab: Fix for AtariST encoding
+
+../charsets/ucs/rmail/tools-ucs
+ 1. 1993-08-26 Hermann Hueni: Re: WANTED: recode extension to ROMAN8 (HP) char
+
+../charsets/ucs/rmail/unicode
+ 1. 1994-10-02 Andries.Brouwer%cwi.nl@Lightning.McRCIM.McGill.EDU: Re: recode
+ 2. 1994-12-21 David Goldsmith: Unicode Web Page Now Available!
+ 3. 1996-03-11 Hart, Edwin F.: Unicode* Version 2.0 and new members of
+ 4. 1996-06-10 by way of everson@indigo.ie (Michael Everson): (i18n.331) "News"
+ 5. 1996-08-19 FranÁois Pinard: (none)
+ 6. 1996-09-30 Markus G. Kuhn: Unicode 2.0 available now!!!
+ 7. 1996-10-06 Alain LaBont/e'/: DiffÈrences entre UNICODE et le JUC et implant
+ 8. 1996-10-07 unicode@Unicode.ORG: UNICODE, SGML and HEBREW
+ 9. 1996-10-15 unicode@Unicode.ORG: How to order Version 2.0
+10. 1996-11-22 news@Unicode.ORG: Web Update
+11. 1996-11-28 unicode@Unicode.ORG: Re: HTML - i18n / NCR & charsets
+12. 1997-01-16 unicode@Unicode.ORG: Re: unicode <-> hex converter
+13. 1997-11-26 Andreas Dietrich: Re: Cyrillic cp1251 in recode
+14. 1998-09-10 Gisle Aas: Re: "Coding system"? Eh?
+15. 1998-09-11 FranÁois Pinard: Re: "Coding system"? Eh?
+16. 1998-11-09 Kenneth Whistler: (TC304.2066) FW: (TC304.2065) PT Guide on Char
+17. 1999-10-13 FranÁois Pinard: Re: Making message/rfc822 boundaries visible
+18. 1999-09-15 FranÁois Pinard: Projet de Loic
+19. 1999-09-15 FranÁois Pinard: Message de Loic
+20. 1999-09-15 FranÁois Pinard: =?iso-8859-1?q?R=E9ponse_=E0?= Loic
+21. 1999-09-15 FranÁois Pinard: Autre =?iso-8859-1?q?r=E9ponse?=
+22. 1999-09-15 FranÁois Pinard: =?iso-8859-1?q?Re-r=E9ponse?= de =?iso-8859-1?q
+23. 1999-09-08 loic@ceic.com: [hshih@us.ibm.com: [sw-i18n-l10n] Re: Unicode: To
+24. 1999-09-07 Bruno Haible: Re: [loic@ceic.com] Unicode: Toward a standard lib
+25. 1999-09-07 loic@ceic.com: Unicode: Toward a standard library
+26. 1999-09-07 loic@ceic.com: Latest regex implementation
+27. 1999-09-10 Henry Spencer: Re: Latest regex implementation
+28. 1999-09-06 loic@ceic.com: recode-3.5 & libunicode
+29. 1999-09-06 FranÁois Pinard: Re: recode-3.5 & libunicode
+30. 1999-09-07 loic@ceic.com: Re: recode-3.5 & libunicode
+31. 1999-08-18 Markus Kuhn: Normalization Form KC for Linux
+32. 1999-08-18 Mark H. David: Re: Normalization Form KC for Linux
+33. 1999-08-18 Mark Davis: Re: Normalization Form KC for Linux
+
+../charsets/ucs/rmail/utf-16
+ 1. 1998-01-15 Alain LaBontÈ†: ISO/CEI 10646 et UNICODE : un peu de vulgarisati
+ 2. 1998-09-30 Roman Czyborra: Re: UTF16 <=> Reuters format?
+ 3. ---- -- -- C.Douglas O'Brien [SMTP:dobrien@idon.com]: RE: Necessity of a be
+
+../charsets/ucs/rmail/utf-32
+ 1. 1999-04-07 Hart, Edwin F.: RE: UTF-32
+
+../charsets/ucs/rmail/utf-7
+ 1. 1998-09-11 FranÁois Pinard: Re: "Coding system"? Eh?
+
+../charsets/ucs/rmail/utf-8
+ 1. 1994-05-05 Martin J. Duerst: Re: What is status of internationalization of
+ 2. 1995-09-19 FranÁois Pinard: Re: Emacs C-q NNN
+ 3. 1996-03-27 Francois Yergeau: UTF-8 I-D submitted
+ 4. 1996-05-11 Alain LaBont/e'/: …quivalences UTF-8 - Impact d'UTF-8, repli d'U
+ 5. 1997-01-14 Alistair Crooks: ssam-1.4 and ure-2.5
+ 6. 1997-10-28 Martin J. D¸rst: Re: A couple of bugs in Gnus-mule : summary buf
+ 7. 1997-11-22 FranÁois Pinard: Re: Movement for having Internet addresses usin
+ 8. 1997-12-10 Francois Yergeau: Re: Movement for having Internet addresses usi
+ 9. 1998-03-02 Alain LaBontÈ†: Re: origine de ces nouveaux ´Èª, Ë, ‡ ...?
+10. 1998-10-29 Markus Kuhn: Free X11 Unicode terminal font available
+11. 1998-11-02 Paul Eggert: Re: UTF-8 in gas
+12. 1998-11-02 Paul Eggert: Re: UTF-8 in gas
+13. 1998-11-04 Paul Eggert: Re: UTF-8 in gas
+14. 1998-11-27 Alain LaBontÈ†: Qu'est-ce que l'ASCII (bis) et courriel de l'ave
+15. 1998-12-02 Richard Coleman: Re: Info on Internationalization
+16. 1998-12-03 Shenghuo ZHU: Re: Info on Internationalization
+17. 1998-12-06 FranÁois Pinard: Re: Info on Internationalization
+18. 1999-02-08 FranÁois Pinard: Re: More charset things
+19. 1999-02-08 FranÁois Pinard: Re: More charset things
+20. 1999-02-09 Lars Magne Ingebrigtsen: Re: More charset things
+21. 1999-02-09 FranÁois Pinard: Re: More charset things
+22. 1999-02-09 Steinar Bang: Re: More charset things
+23. 1999-02-14 Steinar Bang: UTF-8 (Was: More charset things)
+
+../charsets/ucs/rmail/utf-mnemonics
+ 1. 1998-07-18 Markus Kuhn: (TC304.1872) German reaction to Enquiry among membe
+
+../charsets/ucs/rmail/voir-web
+ 1. 1996-10-28 unicode@Unicode.ORG: Repertoires of European Letters: Draft Four
+ 2. 1997-01-09 Michael Everson: (none)
+ 3. 1999-02-15 umavs@ca.ibm.com: FYI: Draft Irish comments on JTC1 N5698
+
+../charsets/ucs/rmail/xterm
+ 1. 1995-11-22 Gary Capell: Unicode/UTF text editor: wily 0.9.8 (beta)
+ 2. 1996-06-07 Arnold D. Robbins: Re: terminal emulator recommendation?
+ 3. 1996-07-09 Marc Feeley: 9term
+ 4. 1996-07-25 Marc Feeley: 9term
+ 5. 1999-06-09 Markus Kuhn: Xterm now has UTF-8 support
+ 6. 1998-11-22 Markus Kuhn: Re: Free X11 Unicode terminal font available
+ 7. 1998-11-25 Markus Kuhn: Re: Free X11 Unicode terminal font available
+ 8. 1998-11-22 Markus Kuhn: Re: Free X11 Unicode terminal font available
+ 9. 1998-11-25 Markus Kuhn: Re: Free X11 Unicode terminal font available

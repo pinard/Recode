@@ -6,7 +6,7 @@ dnl      -----------------------
 AT_CHECK(
 [set -e
 while read line; do
-  echo "$line" | recode u7..u6/x2
+  echo "$line" | recode ../,u7..u6/x2
 done < $at_srcdir/utf7-data
 set +e
 ], ,

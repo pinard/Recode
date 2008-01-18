@@ -11,7 +11,7 @@
 # PARTICULAR PURPOSE.
 
 # Makefile for `recode' documentation.
-# Copyright © 1994, 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
+# Copyright © 1994, 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -77,9 +77,11 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_alias = @host_alias@
 host_triplet = @host@
+ALL_LINGUAS = @ALL_LINGUAS@
+ALL_MOFILES = @ALL_MOFILES@
+ALL_POFILES = @ALL_POFILES@
 AS = @AS@
 AT_TESTPATH = @AT_TESTPATH@
-AWK = @AWK@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
@@ -98,16 +100,16 @@ INSTOBJEXT = @INSTOBJEXT@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
-LD = @LD@
 LEX = @LEX@
+LIBOBJS = @LIBOBJS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LTALLOCA = @LTALLOCA@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
+MOFILES = @MOFILES@
 MSGFMT = @MSGFMT@
-NM = @NM@
 OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
 POFILES = @POFILES@
@@ -121,12 +123,8 @@ l = @l@
 
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
-man_MANS = recode.1
 
-EXTRA_DIST = charset.texi File-Latin1 help2man $(MANS) Makemore	tables.pl
-
-
-PERL = perl
+EXTRA_DIST = charset.texi File-Latin1 help2man Makemore	tables.py
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -134,10 +132,6 @@ TEXI2DVI = texi2dvi
 INFO_DEPS = recode.info
 DVIS = recode.dvi
 TEXINFOS = recode.texi
-man1dir = $(mandir)/man1
-MANS = $(man_MANS)
-
-NROFF = nroff
 DIST_COMMON =  ChangeLog Makefile.am Makefile.in mdate-sh stamp-vti \
 texinfo.tex version.texi
 
@@ -296,45 +290,6 @@ maintainer-clean-aminfo:
 	    rm -f $$i-[0-9]*; \
 	  fi; \
 	done
-
-install-man1:
-	$(mkinstalldirs) $(DESTDIR)$(man1dir)
-	@list='$(man1_MANS)'; \
-	l2='$(man_MANS)'; for i in $$l2; do \
-	  case "$$i" in \
-	    *.1*) list="$$list $$i" ;; \
-	  esac; \
-	done; \
-	for i in $$list; do \
-	  if test -f $(srcdir)/$$i; then file=$(srcdir)/$$i; \
-	  else file=$$i; fi; \
-	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
-	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
-	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
-	  echo " $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst"; \
-	  $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst; \
-	done
-
-uninstall-man1:
-	@list='$(man1_MANS)'; \
-	l2='$(man_MANS)'; for i in $$l2; do \
-	  case "$$i" in \
-	    *.1*) list="$$list $$i" ;; \
-	  esac; \
-	done; \
-	for i in $$list; do \
-	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
-	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
-	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
-	  echo " rm -f $(DESTDIR)$(man1dir)/$$inst"; \
-	  rm -f $(DESTDIR)$(man1dir)/$$inst; \
-	done
-install-man: $(MANS)
-	@$(NORMAL_INSTALL)
-	$(MAKE) $(AM_MAKEFLAGS) install-man1
-uninstall-man:
-	@$(NORMAL_UNINSTALL)
-	$(MAKE) $(AM_MAKEFLAGS) uninstall-man1
 tags: TAGS
 TAGS:
 
@@ -366,20 +321,20 @@ installcheck: installcheck-am
 install-exec-am:
 install-exec: install-exec-am
 
-install-data-am: install-info-am install-man
+install-data-am: install-info-am
 install-data: install-data-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 install: install-am
-uninstall-am: uninstall-info uninstall-man
+uninstall-am: uninstall-info
 uninstall: uninstall-am
-all-am: Makefile $(INFO_DEPS) $(MANS)
+all-am: Makefile $(INFO_DEPS)
 all-redirect: all-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
 installdirs:
-	$(mkinstalldirs)  $(DESTDIR)$(infodir) $(DESTDIR)$(mandir)/man1
+	$(mkinstalldirs)  $(DESTDIR)$(infodir)
 
 
 mostlyclean-generic:
@@ -413,27 +368,16 @@ maintainer-clean: maintainer-clean-am
 
 .PHONY: mostlyclean-vti distclean-vti clean-vti maintainer-clean-vti \
 install-info-am uninstall-info mostlyclean-aminfo distclean-aminfo \
-clean-aminfo maintainer-clean-aminfo install-man1 uninstall-man1 \
-install-man uninstall-man tags distdir info-am info dvi-am dvi check \
-check-am installcheck-am installcheck install-exec-am install-exec \
-install-data-am install-data install-am install uninstall-am uninstall \
-all-redirect all-am all installdirs mostlyclean-generic \
-distclean-generic clean-generic maintainer-clean-generic clean \
-mostlyclean distclean maintainer-clean
+clean-aminfo maintainer-clean-aminfo tags distdir info-am info dvi-am \
+dvi check check-am installcheck-am installcheck install-exec-am \
+install-exec install-data-am install-data install-am install \
+uninstall-am uninstall all-redirect all-am all installdirs \
+mostlyclean-generic distclean-generic clean-generic \
+maintainer-clean-generic clean mostlyclean distclean maintainer-clean
 
 
 recode.info: charset.texi
 recode.dvi: charset.texi
-
-recode.1: help2man $(top_srcdir)/src/main.c
-	@if test -f ../src/recode; then \
-	  echo "Updating the \`man' page for \`recode'"; \
-	  LANGUAGE=C $(PERL) $(srcdir)/help2man ../src/recode > recode.1-tmp; \
-	  mv recode.1-tmp $(srcdir)/recode.1; \
-	else \
-	  echo "WARNING: The \`man' page for \`recode' cannot be updated yet."; \
-	  echo "         Retry once the program executable will be ready."; \
-	fi
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

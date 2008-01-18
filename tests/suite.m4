@@ -1,4 +1,5 @@
 #!/bin/sh
+#                                                      -*- coding: latin-1 -*-
 # Validation suite for the Free `recode' program and library.
 # Copyright © 1998, 1999 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1998.
@@ -38,7 +39,7 @@ echo
 echo 'Individual charsets.'
 echo
 
-# FIXME: tests for atarist, next, ebcdic, tables, applemac, ibmpc iconqnx,
+# FIXME: tests for atarist, next, ebcdic, tables, applemac, ibmpc, iconqnx,
 # cdcnos, bangbang, ascii, flat, html, latex, texinfo, texte and utf16.
 
 AT_INCLUDE(african.m4)

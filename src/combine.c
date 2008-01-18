@@ -23,58 +23,27 @@
 
 /* FIXME: Cleanup memory at end of job, and softly report errors.  */
 
-/* Date: 1998-12-11 20:20 -0500
-X-From-Line: recode-forum-owner@IRO.UMontreal.CA  Fri Dec 11 21:22:51 1998
-Return-Path: <recode-forum-owner@iro.umontreal.ca>
-Received: from degusse.IRO.UMontreal.CA (degusse.IRO.UMontreal.CA [132.204.24.51])
-	by lagrande.IRO.UMontreal.CA (8.9.1/8.9.1) with ESMTP id VAA08222
-	for <pinard@lagrande.IRO.UMontreal.CA>; Fri, 11 Dec 1998 21:22:51 -0500 (EST)
-Received: by degusse.IRO.UMontreal.CA (8.9.1/8.9.1) id VAA11542
-	for recode-forum-outgoing; Fri, 11 Dec 1998 21:22:44 -0500 (EST)
-Received: from jupiter.rtsq.qc.ca (rtsq.grics.qc.ca [199.84.132.81])
-	by degusse.IRO.UMontreal.CA (8.9.1/8.9.1) with ESMTP id VAA11529
-	for <recode-forum@iro.umontreal.ca>; Fri, 11 Dec 1998 21:22:38 -0500 (EST)
-Received: from ariel.progiciels-bpi.ca by jupiter.rtsq.qc.ca (8.8.8/8.8.8) with SMTP id VAA10935 for <@jupiter.rtsq.qc.ca:recode-forum@iro.umontreal.ca>; Fri, 11 Dec 1998 21:22:10 -0500
-Received: from icule.progiciels-bpi.ca (uucp@localhost) by ariel.progiciels-bpi.ca (950413.SGI.8.6.12/950213.SGI) via UUCP id VAA17236 for recode-forum@iro.umontreal.ca; Fri, 11 Dec 1998 21:23:51 -0800
-Received: by icule.progiciels-bpi.ca (8.8.8/8.8.8) id UAA05839; Fri, 11 Dec 1998 20:21:00 -0500
-X-Face: "b_m|CE6#'Q8fliQrwHl9K,]PA_o'*S~Dva{~b1n*)K*A(BIwQW.:LY?t4~xhYka_.LV?Qq
- `}X|71X0ea&H]9Dsk!`kxBXlG;q$mLfv_vtaHK_rHFKu]4'<*LWCyUe@ZcI6"*wB5M@[m<Ok5/cC^=
- CxDhg=TJi^o[E
-Message-ID: <oq90ge17gk.fsf@icule.progiciels-bpi.ca>
-Mime-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Transfer-Encoding: 8bit
-Sender: owner-recode-forum@IRO.UMontreal.CA
-Precedence: bulk
-Lines: 49
-Xref: titan.progiciels-bpi.ca entretien.recode:1739
-
-   Let me take a few minutes of rest, and share with you the state of combining
-   in `recode'.  Fun enough, my initial writing of it, which was using some
-   space while it was boiling, reduced to something small and rather simple
-   after some time, from merging of structures and functions, and removal of
-   some limits.  It does not even show, now, that it once was more complicated!
-
-   The satisfactory aspects are that `recode' is now able to combine a set of
+/* The satisfactory aspects are that `recode' is now able to combine a set of
    sequence of UCS-2 characters into single codes, or explode those single
-   codes into the original sequence.  It may happen that many sequences
-   reduce to the same code, one of them is arbitrarily taken as canonical.
-   Any combining sequence of an equivalent set produces the equivalent code,
-   but at explode time, codes are always turned into their canonical sequence.
-   I did not limit the length of a combining sequence, yet it is usually small.
-   Also, I did not put any limit on the number of possibly equivalent sequences.
-   For combining, for each possible partial match in any sequence, there is
-   a state.  States corresponding to the scan of a single code are found by
-   hash coding, while other states are linearly searched on a linked list of
-   possible shifts, rooted on the state corresponding to the partial sequence,
-   but without its last code.  I expect this combination of methods to execute
-   reasonably fast.  Exploding is much simpler, and I merely use hash coding.
+   codes into the original sequence.  It may happen that many sequences reduce
+   to the same code, one of them is arbitrarily taken as canonical.  Any
+   combining sequence of an equivalent set produces the equivalent code, but
+   at explode time, codes are always turned into their canonical sequence.  I
+   did not limit the length of a combining sequence, yet it is usually small.
+   Also, I did not put any limit on the number of possibly equivalent
+   sequences.  For combining, for each possible partial match in any sequence,
+   there is a state.  States corresponding to the scan of a single code are
+   found by hash coding, while other states are linearly searched on a linked
+   list of possible shifts, rooted on the state corresponding to the partial
+   sequence, but without its last code.  I expect this combination of methods
+   to execute reasonably fast.  Exploding is much simpler, and I merely use
+   hash coding.
 
-   The less satisfactory aspects are that the user interface is still
-   very rude.  For the time being, I merely added a "combined" charset:
-   combining is done by `u2..co', exploding is done by `co..u2'.  We surely
-   could do much better, and build on the concept of options (introduced by
-   `+' in the request syntax), Options are probably going to be used for other
+   The less satisfactory aspects are that the user interface is still very
+   rude.  For the time being, I merely added a "combined" charset: combining
+   is done by `u2..co', exploding is done by `co..u2'.  We surely could do
+   much better, and build on the concept of options (introduced by `+' in the
+   request syntax), Options are probably going to be used for other
    transliteration matters.  Even if built on UCS-2, combining matters would
    have natural extensions in other _smaller_ charsets, and it would be nice
    being able to derive the functionality automatically.  One difficulty to
@@ -83,15 +52,10 @@ Xref: titan.progiciels-bpi.ca entretien.recode:1739
    UCS-2 is not otherwise mandated in the request, we would have to create
    such an UCS-2 intermediate.  On the other hand, if UCS-2 is sandwidched
    somewhere in a complex series of steps, we should implicitly propagate
-   options towards the UCS-2 step.  Even if nothing looks utterly difficult,
-   I guess that for doing it right, a lot of attention and care is needed.
+   options towards the UCS-2 step.  Even if nothing looks utterly difficult, I
+   guess that for doing it right, a lot of attention and care is needed.
    Also, I'm pretty sure that scrutinizing the documents (from w3.org or
-   Unicode) that were suggested to us will raise new specific concerns.
-
-   In any case, I'll try to clean a bit more around, for a few hours or maybe
-   a few days, who knows :-), and prepare a new pretest offering "combined".
-   Hmph!  Some documentation, even if terse, would also be welcome.  More
-   later.  */
+   Unicode) that were suggested to us will raise new specific concerns.  */
 
 /* Exploding.  */
 
@@ -292,7 +256,7 @@ struct state
   unsigned short result;	/* character equivalent to the combination */
   struct state *shift;		/* list of states for one more character */
   struct state *unshift;	/* state for one less character (back link) */
-  struct state *next;		/* next state within a linked chain of states */
+  struct state *next;		/* next state in a linked chain of states */
 };
 
 /*---------------------------.

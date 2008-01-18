@@ -1,5 +1,5 @@
 # Makefile for `recode' documentation.
-# Copyright © 1994, 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
+# Copyright © 1994, 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -18,22 +18,8 @@
 
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
-man_MANS = recode.1
 
-EXTRA_DIST = charset.texi File-Latin1 help2man $(MANS) Makemore	\
-tables.pl
-
-PERL = perl
+EXTRA_DIST = charset.texi File-Latin1 help2man Makemore	tables.py
 
 recode.info: charset.texi
 recode.dvi: charset.texi
-
-recode.1: help2man $(top_srcdir)/src/main.c
-	@if test -f ../src/recode; then \
-	  echo "Updating the \`man' page for \`recode'"; \
-	  LANGUAGE=C $(PERL) $(srcdir)/help2man ../src/recode > recode.1-tmp; \
-	  mv recode.1-tmp $(srcdir)/recode.1; \
-	else \
-	  echo "WARNING: The \`man' page for \`recode' cannot be updated yet."; \
-	  echo "         Retry once the program executable will be ready."; \
-	fi

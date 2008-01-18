@@ -1,5 +1,5 @@
 /* Special definitions for GNU recode, processed by autoheader.
-   Copyright © 1993, 1998 Free Software Foundation, Inc.
+   Copyright © 1993, 1998, 1999 Free Software Foundation, Inc.
    François Pinard <pinard@iro.umontreal.ca>, 1993.
 */
 
@@ -22,8 +22,8 @@
 /* Define to 1 if NLS is requested.  */
 #undef ENABLE_NLS
 
-/* Define as 1 if you have catgets and don't want to use GNU gettext.  */
-#undef HAVE_CATGETS
+/* Define as 1 if you have dcgettext.  */
+#undef HAVE_DCGETTEXT
 
 /* Define as 1 if you have gettext and don't want to use GNU gettext.  */
 #undef HAVE_GETTEXT
@@ -33,6 +33,9 @@
 
 /* Define to 1 if stpcpy function is available.  */
 #undef HAVE_STPCPY
+
+/* Define to the installation directory for locales.  */
+#undef LOCALEDIR
 
 /* Define to rpl_malloc if the replacement function should be used.  */
 #undef malloc

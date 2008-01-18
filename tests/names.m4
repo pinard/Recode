@@ -214,11 +214,16 @@ sami iso-ir-158 lap latin-lap
 SEN_850200_B FI ISO646-FI ISO646-SE iso-ir-10 se SS636127
 SEN_850200_C ISO646-SE2 iso-ir-11 se2
 T.61-7bit iso-ir-102
+TCVN
 Texinfo texi ti
 Texte txte
 UNICODE-1-1-UTF-7 TF-7 u7 UTF-7
 UTF-8 FSS_UTF TF-8 u8 UTF-2 UTF-FSS
 UTF-16 TF-16 u6 Unicode
+VIQR
+VISCII
+VNI
+VPS
 EOF
 
 AT_CHECK(recode -l, 0, expout)
@@ -627,11 +632,13 @@ cat >expout <<'EOF'
 [158] ISO_646.basic < DEC-MCS
 [164] ISO_646.basic < IBM1004
 [164] ISO_646.basic < IBM869
+[164] ISO_646.basic < VPS
 [166] ISO_646.basic < CP1254
 [166] ISO_646.basic < ISO-8859-3
 [166] ISO_646.basic < NeXTSTEP
 [167] ISO_646.basic < ISO-8859-7
 [167] ISO_646.basic < ISO_8859-supp
+[167] ISO_646.basic < TCVN
 [168] ISO_646.basic < CP1250
 [168] ISO_646.basic < CP1252
 [168] ISO_646.basic < IBM864
@@ -668,6 +675,7 @@ cat >expout <<'EOF'
 [173] ISO_646.basic < ISO-8859-9
 [173] ISO_646.basic < KOI8-R
 [173] ISO_646.basic < KOI8-RU
+[173] ISO_646.basic < VISCII
 [173] ISO_646.basic < baltic
 [173] ISO_646.basic < macintosh_ce
 EOF

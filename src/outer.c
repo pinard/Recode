@@ -144,11 +144,11 @@ register_explode_data (RECODE_OUTER outer,
 
 #endif
 
-/*----------------------------------------------------------------------------.
-| Associate an explode format DATA structure with charset NAME_COMBINED.  If  |
-| NAME_EXPLODED is not NULL, it should be the name of a 8-bit based charset.  |
-| A NULL value for NAME_EXPLODED implies UCS-2.                               |
-`----------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------.
+| Associate an explode format DATA structure with charset NAME_COMBINED, an |
+| 8-bit charset.  A NULL value for NAME_EXPLODED implies UCS-2.  Otherwise, |
+| NAME_EXPLODED should be the name of a 8-bit based charset.                |
+`--------------------------------------------------------------------------*/
 
 bool
 declare_explode_data (RECODE_OUTER outer, const unsigned short *data,
@@ -461,6 +461,9 @@ recode_new_outer (bool auto_abort)
 bool
 recode_delete_outer (RECODE_OUTER outer)
 {
+  /* FIXME: Pawel Krawczyk reports that calling new_outer ... delete_outer
+     20000 times in a program has the effect of consuming all virtual memory.
+     So there might be memory leaks should to track down and resolve.  */
   while (outer->number_of_charsets > 0)
     {
       RECODE_CHARSET charset = outer->charset_list;

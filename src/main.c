@@ -835,17 +835,18 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 	      if (file = fopen (input_name, "r+"), file == NULL)
 		error (EXIT_FAILURE, errno, "fopen (%s)", input_name);
 
-	      /* Save the input file time stamp.  */
+	      /* Save the input file attrobites.  */
 
-	      if (!touch_option)
-		fstat (fileno (file), &file_stat);
-
+	      fstat (fileno (file), &file_stat);
 	      fclose (file);
 
 	      {
 		char *cursor;
 
 		/* Choose an output file in the same directory.  */
+
+		/* FIXME: Scott Schwartz <schwartz@bio.cse.psu.edu> writes:
+		   "There's no reason to think that that name is unique."  */
 
 		strcpy (output_name, input_name);
 #if DOSWIN_OR_OS2
@@ -893,6 +894,11 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 
 		  if (unlink (input_name) < 0)
 		    error (EXIT_FAILURE, errno, "unlink (%s)", input_name);
+
+		  /* Preserve the file permissions.  */
+
+		  if (chmod (output_name, file_stat.st_mode & 07777) < 0)
+		    error (EXIT_FAILURE, errno, "chmod (%s)", output_name);
 #if HAVE_RENAME
 		  if (rename (output_name, input_name) < 0)
 		    error (EXIT_FAILURE, errno, "rename (%s, %s)",
@@ -921,15 +927,15 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 		  success = false;
 		  if (verbose_flag)
 		    {
-		      fprintf (stderr, _(" failed: %s in %s..%s\n"),
+		      fprintf (stderr, _(" failed: %s in step `%s..%s'\n"),
 			       task_perror (task),
 			       task->error_at_step->before->name,
 			       task->error_at_step->after->name);
 		      fflush (stderr);
 		    }
 		  else if (!quiet_flag)
-		    error (0, 0, _("%s failed: %s in %s..%s"), input_name,
-			   task_perror (task),
+		    error (0, 0, _("%s failed: %s in step `%s..%s'"),
+			   input_name, task_perror (task),
 			   task->error_at_step->before->name,
 			   task->error_at_step->after->name);
 
@@ -951,7 +957,7 @@ Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 	  {
 	    success = false;
 	    if (!quiet_flag)
-	      error (0, 0, _("%s in %s..%s"),
+	      error (0, 0, _("%s in step `%s..%s'"),
 		     task_perror (task),
 		     task->error_at_step->before->name,
 		     task->error_at_step->after->name);

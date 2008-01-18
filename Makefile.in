@@ -78,9 +78,11 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_alias = @host_alias@
 host_triplet = @host@
+ALL_LINGUAS = @ALL_LINGUAS@
+ALL_MOFILES = @ALL_MOFILES@
+ALL_POFILES = @ALL_POFILES@
 AS = @AS@
 AT_TESTPATH = @AT_TESTPATH@
-AWK = @AWK@
 CATALOGS = @CATALOGS@
 CATOBJEXT = @CATOBJEXT@
 CC = @CC@
@@ -99,16 +101,16 @@ INSTOBJEXT = @INSTOBJEXT@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
-LD = @LD@
 LEX = @LEX@
+LIBOBJS = @LIBOBJS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LTALLOCA = @LTALLOCA@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
+MOFILES = @MOFILES@
 MSGFMT = @MSGFMT@
-NM = @NM@
 OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
 POFILES = @POFILES@
@@ -123,17 +125,21 @@ l = @l@
 AUTOMAKE_OPTIONS = gnits
 ACLOCAL_AMFLAGS = -I m4
 
-BABYL = ../rmail/* ../rmail/*/* ../admin/*/RMAIL
+BABYL = ../rmail/* ../*/rmail/* ../*/*/RMAIL ../*/*/rmail/*
 EXTRA_DIST = rebox.el COPYING-LIB
-SUBDIRS = m4 doc lib intl src po tests contrib
+SUBDIRS = m4 doc lib i18n src tests contrib
+
+POTFILES = src/debug.c src/main.c src/names.c src/outer.c src/recode.c src/request.c src/strip-data.c src/task.c
+
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = config.h
 CONFIG_CLEAN_FILES = 
 DIST_COMMON =  README ./stamp-h.in ABOUT-NLS AUTHORS BACKLOG COPYING \
-ChangeLog INSTALL Makefile.am Makefile.in NEWS THANKS TODO acconfig.h \
-aclocal.m4 config.guess config.h.in config.sub configure configure.in \
-install-sh ltconfig ltmain.sh missing mkinstalldirs
+ChangeLog INSTALL Makefile.am Makefile.in NEWS README-alpha THANKS TODO \
+acconfig.h acinclude.m4 aclocal.m4 config.guess config.h.in config.sub \
+configure configure.in install-sh ltconfig ltmain.sh missing \
+mkinstalldirs
 
 
 DISTFILES = $(DIST_COMMON) $(SOURCES) $(HEADERS) $(TEXINFOS) $(EXTRA_DIST)
@@ -149,8 +155,8 @@ Makefile: $(srcdir)/Makefile.in  $(top_builddir)/config.status
 	cd $(top_builddir) \
 	  && CONFIG_FILES=$@ CONFIG_HEADERS= $(SHELL) ./config.status
 
-$(ACLOCAL_M4):  configure.in  m4/atconfig.m4 m4/malloc.m4 \
-		m4/microsoft.m4 m4/nls.m4 m4/realloc.m4
+$(ACLOCAL_M4):  configure.in  acinclude.m4 m4/atconfig.m4 m4/gettext.m4 \
+		m4/malloc.m4 m4/microsoft.m4 m4/realloc.m4
 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
 
 config.status: $(srcdir)/configure $(CONFIG_STATUS_DEPENDENCIES)
@@ -288,7 +294,7 @@ distcheck: dist
 	mkdir $(distdir)/=inst
 	dc_install_base=`cd $(distdir)/=inst && pwd`; \
 	cd $(distdir)/=build \
-	  && ../configure --with-included-gettext --srcdir=.. --prefix=$$dc_install_base \
+	  && ../configure --srcdir=.. --prefix=$$dc_install_base \
 	  && $(MAKE) $(AM_MAKEFLAGS) \
 	  && $(MAKE) $(AM_MAKEFLAGS) dvi \
 	  && $(MAKE) $(AM_MAKEFLAGS) check \
@@ -359,7 +365,7 @@ install-am: all-am
 install: install-recursive
 uninstall-am:
 uninstall: uninstall-recursive
-all-am: Makefile config.h
+all-am: Makefile config.h all-local
 all-redirect: all-recursive-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
@@ -407,10 +413,16 @@ maintainer-clean-recursive tags tags-recursive mostlyclean-tags \
 distclean-tags clean-tags maintainer-clean-tags distdir info-am info \
 dvi-am dvi check check-am installcheck-am installcheck all-recursive-am \
 install-exec-am install-exec install-data-am install-data install-am \
-install uninstall-am uninstall all-redirect all-am all installdirs-am \
-installdirs mostlyclean-generic distclean-generic clean-generic \
-maintainer-clean-generic clean mostlyclean distclean maintainer-clean
+install uninstall-am uninstall all-local all-redirect all-am all \
+installdirs-am installdirs mostlyclean-generic distclean-generic \
+clean-generic maintainer-clean-generic clean mostlyclean distclean \
+maintainer-clean
 
+
+all-local: $(srcdir)/stamp-pot
+
+$(srcdir)/stamp-pot: $(POTFILES)
+	@echo "$(POTFILES)" > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

@@ -1,6 +1,7 @@
-This is Info file recode.info, produced by Makeinfo version 1.68 from
-the input file recode.texi.
+This is recode.info, produced by makeinfo version 3.12n from
+recode.texi.
 
+INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
@@ -66,8 +67,8 @@ Comments on the library design
      package, and take advantage of the Automake interface to neatly
      turn the non-shared library into a shared one.
 
-     Sites linking with the `recode' library, while their system does
-     not support any form of shared libraries, might end up with bulky
+     Sites linking with the `recode' library, whose system does not
+     support any form of shared libraries, might end up with bulky
      executables.  Surely, the `recode' library will have to be used
      statically, and might not very nicely usable on such systems.  It
      seems that progress has a price for those being slow at it.
@@ -76,7 +77,7 @@ Comments on the library design
      `recode' library takes many cycles to initialise itself, calling
      each module in turn for it to set up associated knowledge about
      charsets, aliases, elementary steps, recoding weights, etc.
-     *Then*, the recoding sequence is decided out of the command given.
+     _Then_, the recoding sequence is decided out of the command given.
      I would not be surprised if initialisation was taking a
      perceivable fraction of a second on slower machines.  One thing to
      do, most probably not right in version 3.5, but the version after,
@@ -187,12 +188,313 @@ Comments on the library design
      did it.  Instead, we should try to stay opened to the difficulties
      of real life.  There is still a lot of complex needs for Asian
      people, say, that `recode' does not currently address, while it
-     should.  Not only the doors should stay opened, but we should
-     force them wider!
+     should.  Not only the doors should stay open, but we should force
+     them wider!
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) If strict mapping is requested, another efficient device will be
 used instead of a permutation.
 
+
+File: recode.info,  Node: Concept Index,  Next: Option Index,  Prev: Internals,  Up: Top
+
+Concept Index
+*************
+
+* Menu:
+
+* abbreviated names for charsets and surfaces: Requests.
+* adding new charsets:                   New charsets.
+* adding new surfaces:                   New surfaces.
+* African charsets:                      African.
+* aliases:                               Requests.
+* alternate names for charsets and surfaces: Requests.
+* ambiguous output, error message:       Errors.
+* ASCII table, recreating with recode:   ASCII.
+* average number of recoding steps:      Main flow.
+* bool data type:                        Outer level.
+* box-drawing characters:                Recoding.
+* bug reports, where to send:            Contributing.
+* byte order mark:                       UCS-2.
+* byte order swapping:                   Permutations.
+* caret ASCII code:                      CDC-NOS.
+* CDC charsets:                          CDC.
+* CDC Display Code, a table:             Display Code.
+* chaining of charsets in a request:     Requests.
+* character mnemonics, documentation:    Tabular.
+* character streams, description:        dump-with-names.
+* charset level functions:               Charset level.
+* charset names, valid characters:       Requests.
+* charset, default:                      Requests.
+* charset, pure:                         Surface overview.
+* charset, what it is:                   Introduction.
+* charsets for CDC machines:             CDC.
+* charsets, aliases:                     Requests.
+* charsets, chaining in a request:       Requests.
+* charsets, guessing:                    Listings.
+* charsets, overview:                    Charset overview.
+* chset tools:                           Tabular.
+* codepages:                             IBM and MS.
+* combining characters:                  UCS-2.
+* commutativity of surfaces:             Requests.
+* contributing charsets:                 Contributing.
+* convert a subset of characters:        Mixed.
+* convert strings and comments:          Mixed.
+* copyright conditions, printing:        Listings.
+* counting characters:                   count-characters.
+* CR surface, in Macintosh charsets:     Apple-Mac.
+* CR-LF surface, in IBM-PC charsets:     IBM-PC.
+* Ctrl-Z, discarding:                    End lines.
+* Cyrillic charsets:                     Cyrillic.
+* debugging surfaces:                    Debugging.
+* default charset:                       Requests.
+* description of individual characters:  dump-with-names.
+* details about recoding:                Recoding.
+* deviations from RFC 1345:              Tabular.
+* diacritics and underlines, removing:   flat.
+* diacritics, with ASCII-BS charset:     ASCII-BS.
+* diaeresis:                             Recoding.
+* disable map filling:                   Reversibility.
+* double step:                           Main flow.
+* dumping characters:                    Dump.
+* dumping characters, with description:  dump-with-names.
+* Easy French:                           Texte.
+* EBCDIC charsets:                       EBCDIC.
+* end of line format:                    End lines.
+* endiannes, changing:                   Permutations.
+* error handling:                        Errors.
+* error level threshold:                 Errors.
+* error messages:                        Errors.
+* error messages, suppressing:           Reversibility.
+* file sequencing:                       Sequencing.
+* file time stamps:                      Recoding.
+* filter operation:                      Synopsis.
+* force recoding:                        Reversibility.
+* French description of charsets:        Listings.
+* guessing charsets:                     Listings.
+* handling errors:                       Errors.
+* help page, printing:                   Listings.
+* HTML normalization:                    HTML.
+* IBM codepages:                         IBM and MS.
+* IBM graphics characters:               Recoding.
+* iconv:                                 Design.
+* identifying subsets in charsets:       Listings.
+* ignore charsets:                       Recoding.
+* implied surfaces:                      Requests.
+* information about charsets:            Listings.
+* initialisation functions, outer:       Outer level.
+* initialisation functions, request:     Request level.
+* initialisation functions, task:        Task level.
+* intermediate charsets:                 Requests.
+* internal functions:                    Charset level.
+* internal recoding bug, error message:  Errors.
+* internals:                             Internals.
+* invalid input, error message:          Errors.
+* invocation of recode, synopsis:        Synopsis.
+* irreversible recoding:                 Reversibility.
+* ISO 10646:                             Universal.
+* languages, programming:                Listings.
+* LaTeX files:                           LaTeX.
+* Latin charsets:                        ISO 8859.
+* Latin-1 table, recreating with recode: ISO 8859.
+* letter case, in charset and surface names: Requests.
+* listing charsets:                      Listings.
+* Macintosh charset:                     Apple-Mac.
+* map filling:                           Reversibility.
+* map filling, disable:                  Reversibility.
+* memory sequencing:                     Sequencing.
+* MIME encodings:                        MIME.
+* misuse of recoding library, error message: Errors.
+* MS-DOS charsets:                       IBM-PC.
+* MULE, in Emacs:                        Mule.
+* multiplexed charsets:                  Mule.
+* names of charsets and surfaces, abbreviation: Requests.
+* new charsets, how to add:              New charsets.
+* new surfaces, how to add:              New surfaces.
+* NeXT charsets:                         Micros.
+* non canonical input, error message:    Errors.
+* normilise an HTML file:                HTML.
+* NOS 6/12 code:                         CDC-NOS.
+* outer level functions:                 Outer level.
+* partial conversion:                    Mixed.
+* permutations of groups of bytes:       Permutations.
+* pipe sequencing:                       Sequencing.
+* program_name variable:                 Outer level.
+* programming language support:          Listings.
+* pure charset:                          Surface overview.
+* quality of recoding:                   Recoding.
+* recode internals:                      Internals.
+* recode request syntax:                 Requests.
+* recode use, a tutorial:                Tutorial.
+* recode version, printing:              Listings.
+* recode, a Macintosh port:              Apple-Mac.
+* recode, and RFC 1345:                  Tabular.
+* recode, main flow of operation:        Main flow.
+* recode, operation as filter:           Synopsis.
+* recode, synopsis of invocation:        Synopsis.
+* recoding details:                      Recoding.
+* recoding library:                      Library.
+* recoding path, rejection:              Recoding.
+* recoding steps, statistics:            Main flow.
+* removing diacritics and underlines:    flat.
+* reporting bugs:                        Contributing.
+* request level functions:               Request level.
+* request, syntax:                       Requests.
+* reversibility of recoding:             Reversibility.
+* RFC 1345:                              Tabular.
+* RFC 2045:                              MIME.
+* sequencing:                            Sequencing.
+* shared library implementation:         Design.
+* silent operation:                      Reversibility.
+* single step:                           Main flow.
+* source file generation:                Listings.
+* stdbool.h header:                      Outer level.
+* strict operation:                      Reversibility.
+* string and comments conversion:        Mixed.
+* subsets in charsets:                   Listings.
+* super-charsets:                        Mule.
+* supported programming languages:       Listings.
+* suppressing diagnostic messages:       Reversibility.
+* surface, what it is <1>:               Surfaces.
+* surface, what it is:                   Introduction.
+* surfaces, aliases:                     Requests.
+* surfaces, commutativity:               Requests.
+* surfaces, implementation in recode:    Surfaces.
+* surfaces, implied:                     Requests.
+* surfaces, overview:                    Surface overview.
+* surfaces, syntax:                      Requests.
+* system detected problem, error message: Errors.
+* task execution:                        Task level.
+* task level functions:                  Task level.
+* TeX files:                             LaTeX.
+* Texinfo files:                         Texinfo.
+* threshold for error reporting:         Errors.
+* time stamps of files:                  Recoding.
+* trivial surface:                       Surfaces.
+* tutorial:                              Tutorial.
+* Unicode:                               UCS-2.
+* unknown charsets:                      Listings.
+* untranslatable input, error message:   Errors.
+* valid characters in charset names:     Requests.
+* verbose operation:                     Recoding.
+
+
+File: recode.info,  Node: Option Index,  Next: Library Index,  Prev: Concept Index,  Up: Top
+
+Option Index
+************
+
+   This is an alphabetical list of all command-line options accepted by
+`recode'.
+
+* Menu:
+
+* --colons:                              Recoding.
+* --copyright:                           Listings.
+* --diacritics:                          Mixed.
+* --find-subsets:                        Listings.
+* --force:                               Reversibility.
+* --graphics:                            Recoding.
+* --header:                              Listings.
+* --help:                                Listings.
+* --ignore:                              Recoding.
+* --known=:                              Listings.
+* --list:                                Listings.
+* --quiet:                               Reversibility.
+* --sequence:                            Sequencing.
+* --silent:                              Reversibility.
+* --source:                              Mixed.
+* --strict:                              Reversibility.
+* --touch:                               Recoding.
+* --verbose:                             Recoding.
+* --version:                             Listings.
+* -c:                                    Recoding.
+* -C:                                    Listings.
+* -d:                                    Mixed.
+* -f:                                    Reversibility.
+* -g:                                    Recoding.
+* -h:                                    Listings.
+* -i:                                    Sequencing.
+* -k:                                    Listings.
+* -l:                                    Listings.
+* -p:                                    Sequencing.
+* -q:                                    Reversibility.
+* -S:                                    Mixed.
+* -s:                                    Reversibility.
+* -t:                                    Recoding.
+* -T:                                    Listings.
+* -v:                                    Recoding.
+* -x:                                    Recoding.
+
+
+File: recode.info,  Node: Library Index,  Next: Charset and Surface Index,  Prev: Option Index,  Up: Top
+
+Library Index
+*************
+
+   This is an alphabetical index of important functions, data
+structures, and variables in the `recode' library.
+
+* Menu:
+
+* abort_level:                           Task level.
+* ascii_graphics:                        Request level.
+* byte_order_mark:                       Task level.
+* declare_step:                          New surfaces.
+* DEFAULT_CHARSET:                       Requests.
+* diacritics_only:                       Request level.
+* diaeresis_char:                        Request level.
+* error_so_far:                          Task level.
+* fail_level:                            Task level.
+* file_one_to_many:                      New charsets.
+* file_one_to_one:                       New charsets.
+* find_charset:                          Charset level.
+* LANG, when listing charsets:           Listings.
+* LANGUAGE, when listing charsets:       Listings.
+* list_all_charsets:                     Charset level.
+* list_concise_charset:                  Charset level.
+* list_full_charset:                     Charset level.
+* make_header_flag:                      Request level.
+* RECODE_AMBIGUOUS_OUTPUT:               Errors.
+* recode_buffer_to_buffer:               Request level.
+* recode_buffer_to_file:                 Request level.
+* recode_delete_outer:                   Outer level.
+* recode_delete_request:                 Request level.
+* recode_delete_task:                    Task level.
+* recode_file_to_buffer:                 Request level.
+* recode_file_to_file:                   Request level.
+* recode_filter_close:                   Task level.
+* recode_filter_close, not available:    Request level.
+* recode_filter_open:                    Task level.
+* recode_filter_open, not available:     Request level.
+* recode_format_table:                   Request level.
+* RECODE_INTERNAL_ERROR:                 Errors.
+* RECODE_INVALID_INPUT:                  Errors.
+* RECODE_MAXIMUM_ERROR <1>:              Errors.
+* RECODE_MAXIMUM_ERROR:                  Task level.
+* recode_new_outer:                      Outer level.
+* recode_new_request:                    Request level.
+* recode_new_task:                       Task level.
+* RECODE_NO_ERROR:                       Errors.
+* RECODE_NOT_CANONICAL:                  Errors.
+* RECODE_OUTER structure:                Outer level.
+* recode_perform_task:                   Task level.
+* recode_request structure:              Request level.
+* RECODE_REQUEST structure:              Request level.
+* recode_scan_request:                   Request level.
+* RECODE_SEQUENCE_IN_MEMORY:             Task level.
+* RECODE_SEQUENCE_WITH_FILES:            Task level.
+* RECODE_SEQUENCE_WITH_PIPE:             Task level.
+* RECODE_STRATEGY_UNDECIDED:             Task level.
+* recode_string:                         Request level.
+* recode_string_to_buffer:               Request level.
+* recode_string_to_file:                 Request level.
+* RECODE_SYSTEM_ERROR:                   Errors.
+* RECODE_TASK structure:                 Task level.
+* RECODE_UNTRANSLATABLE:                 Errors.
+* RECODE_USER_ERROR:                     Errors.
+* strategy:                              Task level.
+* task_request structure:                Task level.
+* verbose_flag:                          Request level.
 

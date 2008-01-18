@@ -20,6 +20,14 @@
 AUTOMAKE_OPTIONS = gnits
 ACLOCAL_AMFLAGS = -I m4
 
-BABYL = ../rmail/* ../rmail/*/* ../admin/*/RMAIL
+BABYL = ../rmail/* ../*/rmail/* ../*/*/RMAIL ../*/*/rmail/*
 EXTRA_DIST = rebox.el COPYING-LIB
-SUBDIRS = m4 doc lib intl src po tests contrib
+SUBDIRS = m4 doc lib i18n src tests contrib
+
+POTFILES = src/debug.c src/main.c src/names.c src/outer.c src/recode.c \
+src/request.c src/strip-data.c src/task.c
+
+all-local: $(srcdir)/stamp-pot
+
+$(srcdir)/stamp-pot: $(POTFILES)
+	@echo "$(POTFILES)" > $@

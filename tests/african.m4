@@ -27,12 +27,12 @@ EOF
 
 AT_CHECK(
 [cp transcript expout
-recode bambara/qp..t-bambara/64 < example
+recode ../,bambara/qp..t-bambara/64 < example
 ], 0, expout)
 
 AT_CHECK(
 [cp example expout
-recode t-bambara/64..bambara/qp < transcript
+recode ../,t-bambara/64..bambara/qp < transcript
 ], 0, expout)
 
 AT_CLEANUP(expout example transcript)
@@ -58,12 +58,12 @@ EOF
 
 AT_CHECK(
 [cp transcript expout
-recode fulfulde/qp..t-fulfulde/64 < example
+recode ../,fulfulde/qp..t-fulfulde/64 < example
 ], 0, expout)
 
 AT_CHECK(
 [cp example expout
-recode t-fulfulde/64..fulfulde/qp < transcript
+recode ../,t-fulfulde/64..fulfulde/qp < transcript
 ], 0, expout)
 
 AT_CLEANUP(expout example transcript)
@@ -97,12 +97,12 @@ EOF
 
 AT_CHECK(
 [cp transcript expout
-recode lingala/qp..t-lingala/64 < example
+recode ../,lingala/qp..t-lingala/64 < example
 ], 0, expout)
 
 AT_CHECK(
 [cp example expout
-recode t-lingala/64..lingala/qp < transcript
+recode ../,t-lingala/64..lingala/qp < transcript
 ], 0, expout)
 
 AT_CLEANUP(expout example transcript)
@@ -130,12 +130,12 @@ EOF
 
 AT_CHECK(
 [cp transcript expout
-recode sango/qp..t-sango/64 < example
+recode ../,sango/qp..t-sango/64 < example
 ], 0, expout)
 
 AT_CHECK(
 [cp example expout
-recode t-sango/64..sango/qp < transcript
+recode ../,t-sango/64..sango/qp < transcript
 ], 0, expout)
 
 AT_CLEANUP(expout example transcript)
@@ -158,12 +158,12 @@ EOF
 
 AT_CHECK(
 [cp transcript expout
-recode wolof/qp..t-wolof/64 < example
+recode ../,wolof/qp..t-wolof/64 < example
 ], 0, expout)
 
 AT_CHECK(
 [cp example expout
-recode t-wolof/64..wolof/qp < transcript
+recode ../,t-wolof/64..wolof/qp < transcript
 ], 0, expout)
 
 AT_CLEANUP(expout example transcript)

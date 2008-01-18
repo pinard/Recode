@@ -57,7 +57,7 @@ recode_error (RECODE_OUTER outer, const char *format, ...)
 #else
 recode_error (outer, format, va_alist)
      RECODE_OUTER outer;
-     char *format;
+     const char *format;
      va_dcl
 #endif
 {
@@ -84,7 +84,7 @@ recode_perror (RECODE_OUTER outer, const char *format, ...)
 #else
 recode_perror (outer, format, va_alist)
      RECODE_OUTER outer;
-     char *format;
+     const char *format;
      va_dcl
 #endif
 {

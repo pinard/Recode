@@ -1,3 +1,48 @@
+1999-12-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (BABYL): Adjusted.
+
+1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in (LIBOBJS): Manage for ANSI2KNR.
+	(LTLIBOBJS): Adjusted to fit the style of the above.
+	Reported by Jim Meyering.
+
+	* configure.in: Delete AC_PROG_AWK.
+
+	* Makefile.am, acconfig.h, configure.in: Adapt to the gettext
+	scheme used in wdiff.
+	* i18n: New name for directory po.
+	* intl: Deleted directory.
+
+	* configure.in: Use AC_FUNC_ALLOCA.
+
+	* acinclude.m4: New file, containing file libtool.m4 from the
+	libtool distribution, which suggest that it should be distributed.
+
+1999-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Replace strtol and strtoul only when missing.
+	Reported by Tom Hageman.
+
+1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in (ALL_LINGUAS): Add it.
+
+1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in (ALL_LINGUAS): Add el.
+
+1999-06-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Substitute LIBOBJS, so jm_FUNC_MALLOC and
+	jm_FUNC_REALLOC has some chance to work.
+	Reported by Alexandre Oliva.
+
+1999-06-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.in: Version 3.5a.
+
 1999-05-31  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5.

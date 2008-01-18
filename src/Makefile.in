@@ -78,6 +78,9 @@ PRE_UNINSTALL = :
 POST_UNINSTALL = :
 host_alias = @host_alias@
 host_triplet = @host@
+ALL_LINGUAS = @ALL_LINGUAS@
+ALL_MOFILES = @ALL_MOFILES@
+ALL_POFILES = @ALL_POFILES@
 AS = @AS@
 AT_TESTPATH = @AT_TESTPATH@
 CATALOGS = @CATALOGS@
@@ -98,15 +101,15 @@ INSTOBJEXT = @INSTOBJEXT@
 INTLDEPS = @INTLDEPS@
 INTLLIBS = @INTLLIBS@
 INTLOBJS = @INTLOBJS@
-LD = @LD@
+LIBOBJS = @LIBOBJS@
 LIBTOOL = @LIBTOOL@
 LN_S = @LN_S@
 LTALLOCA = @LTALLOCA@
 LTLIBOBJS = @LTLIBOBJS@
 MAKEINFO = @MAKEINFO@
 MKINSTALLDIRS = @MKINSTALLDIRS@
+MOFILES = @MOFILES@
 MSGFMT = @MSGFMT@
-NM = @NM@
 OBJDUMP = @OBJDUMP@
 PACKAGE = @PACKAGE@
 POFILES = @POFILES@
@@ -120,15 +123,15 @@ l = @l@
 
 AUTOMAKE_OPTIONS = gnits ansi2knr
 bin_PROGRAMS = recode
-#noinst_PROGRAMS = d.recode
 lib_LTLIBRARIES = librecode.la
+man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h fr-charname.h hash.h inisteps.h rfc1345.h $(H_FALLBACKS) $(H_SURFACES)
 
-EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.awk
+EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
-C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c debug.c ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c ucs.c utf16.c utf7.c utf8.c varia.c $(C_FALLBACKS) $(C_SURFACES)
+C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c debug.c ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES)
 
 OLD_C_STEPS = next.c
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
@@ -142,7 +145,7 @@ C_SURFACES = base64.c dump.c endline.c permut.c quoted.c
 L_SURFACES = 
 
 recode_SOURCES = main.c freeze.c mixed.c
-recode_LDADD = librecode.la ../lib/libreco.a @INTLLIBS@
+recode_LDADD = librecode.la ../lib/libreco.a
 #d_recode = main.c
 #d_recode_LDADD = librecode.la ../lib/libreco.la @INTLLIBS@
 #d_recode_LDFLAGS = -static
@@ -151,19 +154,18 @@ librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c hash.c merg
 
 librecode_la_LDFLAGS = -version-info 0:0:0
 
-INCLUDES = -I.. -I../intl -I$(srcdir) -I$(top_srcdir)/lib
+INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 
 ETAGS_ARGS = $(L_STEPS)
 TAGS_DEPENDENCIES = $(L_STEPS)
-
-localedir = $(prefix)/@DATADIRNAME@/locale
 
 # These CFLAGS values are not auto-configured:
 # -DDIFF_HASH		For using GNU diff's hash algorithm instead.
 # -DHASH_STATS		For printing a one-liner hash statistics.
 
-AWK = @AWK@
 LEX = @LEX@
+PERL = perl
+PYTHON = python
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 
@@ -182,7 +184,7 @@ recode$U.lo request$U.lo strip-pool$U.lo task$U.lo african$U.lo \
 afrtran$U.lo applemac$U.lo atarist$U.lo bangbang$U.lo cdcnos$U.lo \
 debug$U.lo ebcdic$U.lo ibmpc$U.lo iconqnx$U.lo lat1asci$U.lo mule$U.lo \
 strip-data$U.lo ucs$U.lo utf16$U.lo utf7$U.lo utf8$U.lo varia$U.lo \
-flat$U.lo html$U.lo lat1ltex$U.lo lat1texi$U.lo lat1txte$U.lo \
+vn$U.lo flat$U.lo html$U.lo lat1ltex$U.lo lat1texi$U.lo lat1txte$U.lo \
 rfc1345$U.lo base64$U.lo dump$U.lo endline$U.lo permut$U.lo quoted$U.lo
 PROGRAMS =  $(bin_PROGRAMS)
 
@@ -194,6 +196,10 @@ COMPILE = $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CF
 LTCOMPILE = $(LIBTOOL) --mode=compile $(CC) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(LIBTOOL) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(LDFLAGS) -o $@
+man1dir = $(mandir)/man1
+MANS = $(man_MANS)
+
+NROFF = nroff
 HEADERS =  $(include_HEADERS) $(noinst_HEADERS)
 
 DIST_COMMON =  ChangeLog Makefile.am Makefile.in ansi2knr.1 ansi2knr.c
@@ -421,6 +427,8 @@ utf8_.c: utf8.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/utf8.c; then echo $(srcdir)/utf8.c; else echo utf8.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > utf8_.c
 varia_.c: varia.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/varia.c; then echo $(srcdir)/varia.c; else echo varia.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > varia_.c
+vn_.c: vn.c $(ANSI2KNR)
+	$(CPP) $(DEFS) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/vn.c; then echo $(srcdir)/vn.c; else echo vn.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > vn_.c
 african_.o african_.lo afrtran_.o afrtran_.lo applemac_.o applemac_.lo \
 argmatch_.o argmatch_.lo atarist_.o atarist_.lo bangbang_.o \
 bangbang_.lo base64_.o base64_.lo cdcnos_.o cdcnos_.lo charname_.o \
@@ -435,7 +443,46 @@ permut_.o permut_.lo quoted_.o quoted_.lo recode_.o recode_.lo \
 request_.o request_.lo rfc1345_.o rfc1345_.lo strip-data_.o \
 strip-data_.lo strip-pool_.o strip-pool_.lo task_.o task_.lo ucs_.o \
 ucs_.lo utf16_.o utf16_.lo utf7_.o utf7_.lo utf8_.o utf8_.lo varia_.o \
-varia_.lo : $(ANSI2KNR)
+varia_.lo vn_.o vn_.lo : $(ANSI2KNR)
+
+install-man1:
+	$(mkinstalldirs) $(DESTDIR)$(man1dir)
+	@list='$(man1_MANS)'; \
+	l2='$(man_MANS)'; for i in $$l2; do \
+	  case "$$i" in \
+	    *.1*) list="$$list $$i" ;; \
+	  esac; \
+	done; \
+	for i in $$list; do \
+	  if test -f $(srcdir)/$$i; then file=$(srcdir)/$$i; \
+	  else file=$$i; fi; \
+	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
+	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
+	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
+	  echo " $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst"; \
+	  $(INSTALL_DATA) $$file $(DESTDIR)$(man1dir)/$$inst; \
+	done
+
+uninstall-man1:
+	@list='$(man1_MANS)'; \
+	l2='$(man_MANS)'; for i in $$l2; do \
+	  case "$$i" in \
+	    *.1*) list="$$list $$i" ;; \
+	  esac; \
+	done; \
+	for i in $$list; do \
+	  ext=`echo $$i | sed -e 's/^.*\\.//'`; \
+	  inst=`echo $$i | sed -e 's/\\.[0-9a-z]*$$//'`; \
+	  inst=`echo $$inst | sed '$(transform)'`.$$ext; \
+	  echo " rm -f $(DESTDIR)$(man1dir)/$$inst"; \
+	  rm -f $(DESTDIR)$(man1dir)/$$inst; \
+	done
+install-man: $(MANS)
+	@$(NORMAL_INSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) install-man1
+uninstall-man:
+	@$(NORMAL_UNINSTALL)
+	$(MAKE) $(AM_MAKEFLAGS) uninstall-man1
 
 install-includeHEADERS: $(include_HEADERS)
 	@$(NORMAL_INSTALL)
@@ -545,6 +592,8 @@ lat1texi.lo lat1texi.o : lat1texi.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
 lat1txte.lo lat1txte.o : lat1txte.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
+main.o: main.c common.h ../config.h ../lib/xalloc.h ../lib/error.h \
+	recodext.h recode.h ../lib/getopt.h
 merged.lo merged.o : merged.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
 mixed.o: mixed.c common.h ../config.h ../lib/xalloc.h ../lib/error.h \
@@ -560,7 +609,7 @@ permut.lo permut.o : permut.c common.h ../config.h ../lib/xalloc.h \
 quoted.lo quoted.o : quoted.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
 recode.lo recode.o : recode.c common.h ../config.h ../lib/xalloc.h \
-	../lib/error.h recodext.h recode.h hash.h
+	../lib/error.h recodext.h recode.h ../lib/getopt.h hash.h
 request.lo request.o : request.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
 rfc1345.lo rfc1345.o : rfc1345.c common.h ../config.h ../lib/xalloc.h \
@@ -581,6 +630,12 @@ utf8.lo utf8.o : utf8.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
 varia.lo varia.o : varia.c common.h ../config.h ../lib/xalloc.h \
 	../lib/error.h recodext.h recode.h
+viet.lo viet.o : viet.c common.h ../config.h ../lib/xalloc.h \
+	../lib/error.h recodext.h recode.h
+vietnam.lo vietnam.o : vietnam.c common.h ../config.h ../lib/xalloc.h \
+	../lib/error.h recodext.h recode.h
+vn.lo vn.o : vn.c common.h ../config.h ../lib/xalloc.h ../lib/error.h \
+	recodext.h recode.h
 
 info-am:
 info: info-am
@@ -593,22 +648,23 @@ installcheck: installcheck-am
 install-exec-am: install-libLTLIBRARIES install-binPROGRAMS
 install-exec: install-exec-am
 
-install-data-am: install-includeHEADERS
+install-data-am: install-man install-includeHEADERS
 install-data: install-data-am
 
 install-am: all-am
 	@$(MAKE) $(AM_MAKEFLAGS) install-exec-am install-data-am
 install: install-am
 uninstall-am: uninstall-libLTLIBRARIES uninstall-binPROGRAMS \
-		uninstall-includeHEADERS
+		uninstall-man uninstall-includeHEADERS
 uninstall: uninstall-am
-all-am: Makefile $(ANSI2KNR) $(LTLIBRARIES) $(PROGRAMS) $(HEADERS)
+all-am: Makefile $(ANSI2KNR) $(LTLIBRARIES) $(PROGRAMS) $(MANS) \
+		$(HEADERS)
 all-redirect: all-am
 install-strip:
 	$(MAKE) $(AM_MAKEFLAGS) AM_INSTALL_PROGRAM_FLAGS=-s install
 installdirs:
 	$(mkinstalldirs)  $(DESTDIR)$(libdir) $(DESTDIR)$(bindir) \
-		$(DESTDIR)$(includedir)
+		$(DESTDIR)$(mandir)/man1 $(DESTDIR)$(includedir)
 
 
 mostlyclean-generic:
@@ -660,7 +716,8 @@ maintainer-clean-libtool mostlyclean-krextra distclean-krextra \
 clean-krextra maintainer-clean-krextra mostlyclean-kr distclean-kr \
 clean-kr maintainer-clean-kr mostlyclean-binPROGRAMS \
 distclean-binPROGRAMS clean-binPROGRAMS maintainer-clean-binPROGRAMS \
-uninstall-binPROGRAMS install-binPROGRAMS uninstall-includeHEADERS \
+uninstall-binPROGRAMS install-binPROGRAMS install-man1 uninstall-man1 \
+install-man uninstall-man uninstall-includeHEADERS \
 install-includeHEADERS tags mostlyclean-tags distclean-tags clean-tags \
 maintainer-clean-tags distdir info-am info dvi-am dvi check check-am \
 installcheck-am installcheck install-exec-am install-exec \
@@ -686,18 +743,27 @@ stamp-steps: $(C_STEPS) merged.c
 	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
 	@echo timestamp > $(srcdir)/stamp-steps
 
-main.o: main.c ../config.status common.h recode.h
-	$(COMPILE) -DLOCALEDIR=\"$(localedir)\" -c $<
-
+main.o: main.c ../config.status
+#main.o: common.h recode.h (should be automatic?)
 outer.o: stamp-steps
 
-$(srcdir)/merged.c: mergelex.awk $(L_STEPS)
-	(cd $(srcdir) \
-	  && $(AWK) -f mergelex.awk $(L_STEPS) \
-	  && rm merged1.tmp merged2.tmp merged3.tmp) > merged.tm1
+$(srcdir)/merged.c: mergelex.py $(L_STEPS)
+	(cd $(srcdir) && cat $(L_STEPS)) \
+	| $(PYTHON) $(srcdir)/mergelex.py > merged.tm1
 	$(LEX) -t8 merged.tm1 > merged.tm2
 	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
 	rm merged.tm1 merged.tm2
+
+$(srcdir)/recode.1: recode
+	@if test -r $@ && test ! -w $@; then \
+	  echo "WARNING: Page \`$@' read only, not updated"; \
+	elif $(PERL) $(top_srcdir)/doc/help2man --output=$@ ./recode; then \
+	  echo "Page \`$@' has been updated"; \
+	else \
+	  echo "WARNING: Page \`$@' has *not* been updated."; \
+	  echo "         It might be that \`Perl' is missing on your system,"; \
+	  echo "         but you may safely and merely ignore this error."; \
+	fi
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

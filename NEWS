@@ -1,6 +1,12 @@
 Free recode NEWS - User visible changes.	-*- outline -*- (allout)
 Copyright © 1993, 1994, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 
+* Version 3.5a - François Pinard, 1999-05.
+
+.* The Texinfo manual has been indexed, thanks to Eli.
+.* Program messages are also available in Greek and Italian.
+.* Vietnamese charsets are supported, but still mostly untested.
+
 * Version 3.5 - François Pinard, 1999-05.
 
 .* Incompatible changes

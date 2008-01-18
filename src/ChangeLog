@@ -1,3 +1,81 @@
+1999-12-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* vn.c: New file.
+	* Makefile.am: Adjusted.
+	Reported by Nguyên-Ðai Quý.
+
+1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mergelex.py: Python version of mergelex.awk.
+	* mergelex.awk: Deleted.
+	* Makefile.am: Adjusted.
+
+	* Makefile.am: Adapt to the gettext scheme used in wdiff.
+
+1999-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.c (recode_error, recode_perror) [!__STDC__]: Use const.
+	Reported by Peter Turcan.
+
+	* quoted.c (transform_quoted_printable_data): Renamed from
+	transform_quoted_printable_byte.  Correct an error by which a
+	newline could be spuriously transported over. Revised to better
+	report canonicity errors and invalid input.
+	Reported by Hrvoje Niksic.
+
+1999-12-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* base64.c (transform_base64_data): Better handle end of lines.
+	Non canonical input was too often reported as invalid.
+	Reported by Hrvoje Niksic.
+
+	* html.c (transform_html_ucs2): Revise echoing code.  With -d,
+	the original HTML string could be copied after its recoded value.
+	Correct character interval tests for numeric conversions.
+
+	* html.c: Merge main_translations and other_translations into
+	a single array named translations.  Merely relate -d to non-ASCII.
+	Reported by Andreas Frick.
+
+	* html.c: Explicit the 0 prefix in the translations table, instead
+	of implying through the ENTRY macro.  It seems NextSTEP 3.3,
+	OpenSTEP 4.2 and MacOS X Server 1.02 do not accept empty slots for
+	third arguments to ENTRY.
+	Reported by Tom Hageman.
+
+1999-11-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	* html.c (transform_ucs2_html): Pass HT undisturbed.
+	Reported by Andreas Frick.
+
+1999-09-21  Andreas Schwab  <schwab@suse.de>
+
+	* main.c (main): Always read the file attributes and restore the
+	permission bits when recoding in place.
+
+1999-08-17  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h, recodext.h: Make C++ safe.
+	Reported by Bruno Haible.
+
+	* html.c (transform_html_ucs2): Expérimentation...  FIXME!
+
+1999-07-26  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c (main): Adjust diagnostics so to quote step names.
+	Reported by Per Starback.
+
+1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (recode.1): New goal, rewritten more simply that the
+	previous one in doc/.  Use --output with help2man.  Do not force
+	LANGUAGE=C anymore since help2man does it internally.
+	(PERL): Define to perl.
+	(man_MANS): Added.
+	(EXTRA_DIST): Include $(MANS).  This should force regeneration of
+	the man page with the correct version, in distributions.
+	Reported by Brendan O'Dea, Santiago Vila Doncel and Scott Schwartz.
+
 1999-04-18  François Pinard  <pinard@iro.umontreal.ca>
 
 	* request.c (scan_charset): Ignore implied surfaces when the only

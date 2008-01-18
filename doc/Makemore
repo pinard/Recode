@@ -17,10 +17,6 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-#essai:
-#	$(PERL) $(srcdir)/tables.pl -n \
-#	  $(srcdir)/$(MNEMONICS_DS) $(srcdir)/$(ISO10646_DEF)
-
 include Makefile
 
 ## Some files in the `recode' distribution are mechanically derived
@@ -34,7 +30,7 @@ include Makefile
 
 ## For activating the included recipes, it suffices to link this
 ## `Makemore' file as `GNUmakefile' in the `doc/' directory of your
-## *build* hierarchy.  You need GNU make, GNU wget, Perl and Internet
+## *build* hierarchy.  You need GNU make, GNU wget, Python and Internet
 ## connectivity for all this to work.  However, be warned that if
 ## external files changed, you may be hit.  I am interested in hearing
 ## about such problems (maybe at `recode-bugs@iro.umontreal.ca'), but
@@ -50,8 +46,9 @@ CHARSETS_DEF = keld-email/charsets.def
 NOMS_CARACS = noms_juc_19981216.txt
 
 MAPURL = ftp://ftp.unicode.org/MAPPINGS
-PERL = perl -w
+PYTHON = python
 SURF = netscape
+WGET = wget
 
 # Merely add our things to standard `all' goal.
 all: $(srcdir)/charset.texi $(srcdir)/fr-charset.texi \
@@ -63,28 +60,28 @@ $(top_srcdir)/src/rfc1345.h
 # may launch many parallel occurrences of the action.  This is bad.
 # Any idea, someone?  For now, just list one of them.
 
-$(srcdir)/charset.texi: tables.pl $(MNEMONICS_DS) $(CHARSETS_DEF)
-	$(PERL) $(srcdir)/tables.pl -p -t \
+$(srcdir)/charset.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	$(PYTHON) $(srcdir)/tables.py -pt \
 	  $(srcdir)/$(MNEMONICS_DS) $(srcdir)/$(CHARSETS_DEF)
 	test $(srcdir) = . || mv charset.texi $@
 	mv strip-pool.c $(top_srcdir)/src/strip-pool.c
 	mv strip-data.c $(top_srcdir)/src/strip-data.c
 
-$(top_srcdir)/src/charname.h: tables.pl $(MNEMONICS_DS) rfc1345.txt
-	$(PERL) $(srcdir)/tables.pl -n \
+$(top_srcdir)/src/charname.h: tables.py $(MNEMONICS_DS) rfc1345.txt
+	$(PYTHON) $(srcdir)/tables.py -n \
 	  $(srcdir)/$(MNEMONICS_DS) $(srcdir)/rfc1345.txt
 	mv charname.h $@
 
-$(top_srcdir)/src/rfc1345.h: tables.pl $(MNEMONICS_DS)
-	$(PERL) $(srcdir)/tables.pl -m $(srcdir)/$(MNEMONICS_DS)
+$(top_srcdir)/src/rfc1345.h: tables.py $(MNEMONICS_DS)
+	$(PYTHON) $(srcdir)/tables.py -m $(srcdir)/$(MNEMONICS_DS)
 	mv rfc1345.h $@
 
-$(srcdir)/fr-charset.texi: tables.pl $(CHARSETS_DEF)
-	$(PERL) $(srcdir)/tables.pl -F -t $(srcdir)/$(CHARSETS_DEF)
+$(srcdir)/fr-charset.texi: tables.py $(CHARSETS_DEF)
+	$(PYTHON) $(srcdir)/tables.py -Ft $(srcdir)/$(CHARSETS_DEF)
 	test $(srcdir) = . || mv fr-charset.texi $@
 
-$(top_srcdir)/src/fr-charname.h: tables.pl $(NOMS_CARACS)
-	$(PERL) $(srcdir)/tables.pl -F -n $(srcdir)/$(NOMS_CARACS)
+$(top_srcdir)/src/fr-charname.h: tables.py $(NOMS_CARACS)
+	$(PYTHON) $(srcdir)/tables.py -Fn $(srcdir)/$(NOMS_CARACS)
 	mv fr-charname.h $@
 
 # -----------------------------------#
@@ -92,21 +89,21 @@ $(top_srcdir)/src/fr-charname.h: tables.pl $(NOMS_CARACS)
 # -----------------------------------#
 
 $(srcdir)/rfc1345.txt:
-	wget ftp://nic.ddn.mil/rfc/rfc1345.txt
+	$(WGET) ftp://nic.ddn.mil/rfc/rfc1345.txt
 	test $(srcdir) = . || mv rfc1345.txt $@
 
 $(srcdir)/$(CHSET)/charsets.def: $(srcdir)/$(CHSET)
 
 $(srcdir)/$(CHSET):
 	mkdir $@-tmp
-	wget ftp://dkuug.dk/pub/$(CHSET).tar
+	$(WGET) ftp://dkuug.dk/pub/$(CHSET).tar
 	tar xfC $(CHSET).tar $@-tmp
 	rm $(CHSET).tar
 	mv $@-tmp $@
 
 # Also look in `ftp://dkuug.dk/i18n/WG15-collection/charmaps/iso10646'.
 $(srcdir)/mnemonic,ds:
-	wget ftp://dkuug.dk/i18n/WG15-collection/repertoiremaps/mnemonic,ds
+	$(WGET) ftp://dkuug.dk/i18n/WG15-collection/repertoiremaps/mnemonic,ds
 	test $(srcdir) = . || mv mnemonic,ds $@
 
 # -------------------------------------------------#
@@ -114,26 +111,26 @@ $(srcdir)/mnemonic,ds:
 # -------------------------------------------------#
 
 $(srcdir)/cp1250.txt:
-	wget $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1250.TXT
+	$(WGET) $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1250.TXT
 	mv CP1250.TXT $@
 
 $(srcdir)/cp1251.txt:
-	wget $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1251.TXT
+	$(WGET) $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1251.TXT
 	mv CP1251.TXT $@
 
 $(srcdir)/cp1252.txt:
-	wget $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1252.TXT
+	$(WGET) $(MAPURL)/VENDORS/MICSFT/WINDOWS/CP1252.TXT
 	mv CP1252.TXT $@
 
 # Index at `http://www.dkuug.dk/jtc1/sc22/wg20/docs/projects.html.en'.
 i18n.txt:
-	wget http://www.dkuug.dk/jtc1/sc22/wg20/docs/i18n.txt
+	$(WGET) http://www.dkuug.dk/jtc1/sc22/wg20/docs/i18n.txt
 i18nrep.txt:
-	wget http://www.dkuug.dk/jtc1/sc22/wg20/docs/i18nrep.txt
+	$(WGET) http://www.dkuug.dk/jtc1/sc22/wg20/docs/i18nrep.txt
 
 # Various files.
 iso2375reg.txt:
-	wget ftp://dkuug.dk/i18n/iso2375reg.txt
+	$(WGET) ftp://dkuug.dk/i18n/iso2375reg.txt
 
 # Online documentation.
 # Index at `http://osiris.dkuug.dk/jtc1/sc2/wg3'.

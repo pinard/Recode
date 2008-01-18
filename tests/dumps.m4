@@ -36,7 +36,7 @@ AT_SETUP(block of lines to Decimal-1)
 dnl      ---------------------------
 
 AT_CHECK(
-[recode ../d1 < $at_srcdir/dumps-data
+[recode /../d1 < $at_srcdir/dumps-data
 ], 0,
 [ 10,  97,  10,  97,  98,  10,  97,  98,  99,  10,  97,  98,  99, 100,  10,
  97,  98,  99, 100, 101, 102, 103, 104, 105,  10,  97,  98,  99, 100, 101,
@@ -65,8 +65,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../d1 output
-  recode /d1 output
+  recode /../d1 output
+  recode /d1../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -81,8 +81,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../d1 output
-recode /d1 output
+recode /../d1 output
+recode /d1../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -121,7 +121,7 @@ AT_SETUP(block of lines to Decimal-2)
 dnl      ---------------------------
 
 AT_CHECK(
-[recode ../d2 < $at_srcdir/dumps-data
+[recode /../d2 < $at_srcdir/dumps-data
 ], 0,
 [ 2657,  2657, 25098, 24930, 25354, 24930, 25444,  2657, 25187, 25701,
 26215, 26729,  2657, 25187, 25701, 26215, 26729, 27243, 27757, 28271,
@@ -147,8 +147,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../d2 output
-  recode /d2 output
+  recode /../d2 output
+  recode /d2../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -163,8 +163,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../d2 output
-recode /d2 output
+recode /../d2 output
+recode /d2../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -203,7 +203,7 @@ AT_SETUP(block of lines to Decimal-4)
 dnl      ---------------------------
 
 AT_CHECK(
-[recode ../d4 < $at_srcdir/dumps-data
+[recode /../d4 < $at_srcdir/dumps-data
 ], 0,
 [ 174131809, 1644847458, 1661624674, 1667500641, 1650680933,
 1718052969,  174154339, 1684366951, 1751738987, 1819111023,
@@ -229,8 +229,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../d4 output
-  recode /d4 output
+  recode /../d4 output
+  recode /d4../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -245,8 +245,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../d4 output
-recode /d4 output
+recode /../d4 output
+recode /d4../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -293,7 +293,7 @@ AT_SETUP(block of lines to Hexadecimal-1)
 dnl      -------------------------------
 
 AT_CHECK(
-[recode ../x1 < $at_srcdir/dumps-data
+[recode /../x1 < $at_srcdir/dumps-data
 ], 0,
 [0x0A, 0x61, 0x0A, 0x61, 0x62, 0x0A, 0x61, 0x62, 0x63, 0x0A, 0x61, 0x62,
 0x63, 0x64, 0x0A, 0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69,
@@ -326,8 +326,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../x1 output
-  recode /x1 output
+  recode /../x1 output
+  recode /x1../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -342,8 +342,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../x1 output
-recode /x1 output
+recode /../x1 output
+recode /x1../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -386,7 +386,7 @@ AT_SETUP(block of lines to Hexadecimal-2)
 dnl      -------------------------------
 
 AT_CHECK(
-[recode ../x2 < $at_srcdir/dumps-data
+[recode /../x2 < $at_srcdir/dumps-data
 ], 0,
 [0x0A61, 0x0A61, 0x620A, 0x6162, 0x630A, 0x6162, 0x6364, 0x0A61,
 0x6263, 0x6465, 0x6667, 0x6869, 0x0A61, 0x6263, 0x6465, 0x6667,
@@ -415,8 +415,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../x2 output
-  recode /x2 output
+  recode /../x2 output
+  recode /x2../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -431,8 +431,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../x2 output
-recode /x2 output
+recode /../x2 output
+recode /x2../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -471,7 +471,7 @@ AT_SETUP(block of lines to Hexadecimal-4)
 dnl      -------------------------------
 
 AT_CHECK(
-[recode ../x4 < $at_srcdir/dumps-data
+[recode /../x4 < $at_srcdir/dumps-data
 ], 0,
 [0x0A610A61, 0x620A6162, 0x630A6162, 0x63640A61, 0x62636465, 0x66676869,
 0x0A616263, 0x64656667, 0x68696A6B, 0x6C6D6E6F, 0x70717273, 0x0A616263,
@@ -495,8 +495,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../x4 output
-  recode /x4 output
+  recode /../x4 output
+  recode /x4../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -511,8 +511,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../x4 output
-recode /x4 output
+recode /../x4 output
+recode /x4../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -559,7 +559,7 @@ AT_SETUP(block of lines to Octal-1)
 dnl      -------------------------
 
 AT_CHECK(
-[recode ../o1 < $at_srcdir/dumps-data
+[recode /../o1 < $at_srcdir/dumps-data
 ], 0,
 [0012, 0141, 0012, 0141, 0142, 0012, 0141, 0142, 0143, 0012, 0141, 0142,
 0143, 0144, 0012, 0141, 0142, 0143, 0144, 0145, 0146, 0147, 0150, 0151,
@@ -592,8 +592,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../o1 output
-  recode /o1 output
+  recode /../o1 output
+  recode /o1../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -608,8 +608,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../o1 output
-recode /o1 output
+recode /../o1 output
+recode /o1../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -652,7 +652,7 @@ AT_SETUP(block of lines to Octal-2)
 dnl      -------------------------
 
 AT_CHECK(
-[recode ../o2 < $at_srcdir/dumps-data
+[recode /../o2 < $at_srcdir/dumps-data
 ], 0,
 [0005141, 0005141, 0061012, 0060542, 0061412, 0060542, 0061544, 0005141,
 0061143, 0062145, 0063147, 0064151, 0005141, 0061143, 0062145, 0063147,
@@ -681,8 +681,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../o2 output
-  recode /o2 output
+  recode /../o2 output
+  recode /o2../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -697,8 +697,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../o2 output
-recode /o2 output
+recode /../o2 output
+recode /o2../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])
@@ -741,7 +741,7 @@ AT_SETUP(block of lines to Octal-4)
 dnl      -------------------------
 
 AT_CHECK(
-[recode ../o4 < $at_srcdir/dumps-data
+[recode /../o4 < $at_srcdir/dumps-data
 ], 0,
 [001230205141, 014202460542, 014302460542, 014331005141,
 014230662145, 014631664151, 001230261143, 014431263147,
@@ -770,8 +770,8 @@ AT_CHECK(
 while read line; do
   echo $line > input
   echo $line > output
-  recode ../o4 output
-  recode /o4 output
+  recode /../o4 output
+  recode /o4../ output
   diff input output
 done < $at_srcdir/dumps-data
 set +e
@@ -786,8 +786,8 @@ AT_CHECK(
 [set -e
 cp $at_srcdir/dumps-data output
 chmod +w output
-recode ../o4 output
-recode /o4 output
+recode /../o4 output
+recode /o4../ output
 diff $at_srcdir/dumps-data output
 set +e
 ])

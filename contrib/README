@@ -68,6 +68,14 @@
       ftp://nic.ddn.mil/rfc/rfc2044.txt
       François Yergeau <yergeau@alis.com>, 1997-10.
 
+.  - Various references
+
+.   : Unicode charset mappings
+      ftp://ftp.unicode.org:/Public/MAPPINGS/
+
+      The Unicode consortium makes available plenty of charset mappings
+      for converting "legacy" charsets to Unicode.
+
 .  - Normalisation et internationalisation: Inventaire et prospectives des
      normes clefs pour le traitement informatique du français.  (392p.)
 

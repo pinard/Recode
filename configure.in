@@ -5,11 +5,10 @@
 AC_INIT(src/recode.c)
 AC_PREREQ(2.12)
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(recode, 3.5)
+AM_INIT_AUTOMAKE(recode, 3.5a)
 AT_CONFIG(../src)
-ALL_LINGUAS="da de es fr nl pl pt sl sv"
+ALL_LINGUAS="da de el es fr it nl pl pt sl sv"
 
-AC_PROG_AWK
 AC_PROG_CC
 AC_AIX
 AC_MINIX
@@ -27,7 +26,13 @@ AC_CHECK_HEADERS(limits.h string.h stdbool.h unistd.h utime.h)
 AC_TYPE_SIGNAL
 
 AC_CHECK_FUNCS(dup2 rename strerror)
+AC_REPLACE_FUNCS(strtol strtoul)
+AC_FUNC_ALLOCA
 AC_FUNC_VPRINTF
+
+jm_FUNC_MALLOC
+jm_FUNC_REALLOC
+AC_SUBST(LIBOBJS)
 
 fp_OS_MICROSOFT
 AC_MSG_CHECKING(the default charset)
@@ -42,16 +47,17 @@ else
   AC_DEFINE(DEFAULT_CHARSET, "IBM-PC")
 fi
 
-jm_FUNC_MALLOC
-jm_FUNC_REALLOC
 AM_WITH_DMALLOC
+fp_WITH_GETTEXT
 
-AM_GNU_GETTEXT
+# This is necessary so that .o files in LIBOBJS are also built via
+# the ANSI2KNR-filtering rules.
+LIBOBJS=`echo $LIBOBJS | sed 's/\.o /\$U.o /g;s/\.o$/\$U.o/'`
 
-LTALLOCA=`echo "$ALLOCA" | sed 's/\.o/.lo/g'`
+LTALLOCA=`echo $ALLOCA | sed 's/\.o/.lo/g'`
 AC_SUBST(LTALLOCA)
-LTLIBOBJS=`echo "$LIBOBJS" | sed 's/\.o/.lo/g'`
+LTLIBOBJS=`echo $LIBOBJS | sed 's/\.o /.lo /g;s/\.o$/.lo/'`
 AC_SUBST(LTLIBOBJS)
 
-AC_OUTPUT(Makefile contrib/Makefile doc/Makefile intl/Makefile lib/Makefile
-m4/Makefile po/Makefile.in src/Makefile tests/Makefile tests/atconfig)
+AC_OUTPUT(Makefile contrib/Makefile doc/Makefile i18n/Makefile lib/Makefile
+m4/Makefile src/Makefile tests/Makefile tests/atconfig)

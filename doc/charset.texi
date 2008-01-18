@@ -1,616 +1,1147 @@
 
 @item ANSI_X3.4-1968
+@tindex ANSI_X3.4-1968@r{, aliases and source}
+@tindex 367
+@tindex ANSI_X3.4-1986
+@tindex ASCII
+@tindex CP367
+@tindex IBM367
+@tindex ISO646-US
+@tindex ISO_646.irv:1991
+@tindex US-ASCII
+@tindex iso-ir-6
+@tindex us
 @code{367}, @code{ANSI_X3.4-1986}, @code{ASCII}, @code{CP367}, @code{IBM367}, @code{ISO646-US}, @code{ISO_646.irv:1991}, @code{US-ASCII}, @code{iso-ir-6} and @code{us} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ASMO_449
+@tindex ASMO_449@r{, aliases and source}
+@tindex ISO_9036
+@tindex arabic7
+@tindex iso-ir-89
 @code{ISO_9036}, @code{arabic7} and @code{iso-ir-89} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item BS_4730
+@tindex BS_4730@r{, aliases and source}
+@tindex ISO646-GB
+@tindex gb
+@tindex iso-ir-4
+@tindex uk
 @code{ISO646-GB}, @code{gb}, @code{iso-ir-4} and @code{uk} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item BS_viewdata
+@tindex BS_viewdata@r{, aliases and source}
+@tindex iso-ir-47
 @code{iso-ir-47} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item CP1250
+@tindex CP1250@r{, aliases and source}
+@tindex 1250
+@tindex ms-ee
+@tindex windows-1250
 @code{1250}, @code{ms-ee} and @code{windows-1250} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1251
+@tindex CP1251@r{, aliases and source}
+@tindex 1251
+@tindex ms-cyrl
+@tindex windows-1251
 @code{1251}, @code{ms-cyrl} and @code{windows-1251} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1252
+@tindex CP1252@r{, aliases and source}
+@tindex 1252
+@tindex ms-ansi
+@tindex windows-1252
 @code{1252}, @code{ms-ansi} and @code{windows-1252} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1253
+@tindex CP1253@r{, aliases and source}
+@tindex 1253
+@tindex ms-greek
+@tindex windows-1253
 @code{1253}, @code{ms-greek} and @code{windows-1253} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1254
+@tindex CP1254@r{, aliases and source}
+@tindex 1254
+@tindex ms-turk
+@tindex windows-1254
 @code{1254}, @code{ms-turk} and @code{windows-1254} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1255
+@tindex CP1255@r{, aliases and source}
+@tindex 1255
+@tindex ms-hebr
+@tindex windows-1255
 @code{1255}, @code{ms-hebr} and @code{windows-1255} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1256
+@tindex CP1256@r{, aliases and source}
+@tindex 1256
+@tindex ms-arab
+@tindex windows-1256
 @code{1256}, @code{ms-arab} and @code{windows-1256} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item CP1257
+@tindex CP1257@r{, aliases and source}
+@tindex 1257
+@tindex WinBaltRim
+@tindex windows-1257
 @code{1257}, @code{WinBaltRim} and @code{windows-1257} are aliases for this charset.
 Source: CEN/TC304 N283.
 
 @item CSA_Z243.4-1985-1
+@tindex CSA_Z243.4-1985-1@r{, aliases and source}
+@tindex ISO646-CA
+@tindex ca
+@tindex csa7-1
+@tindex iso-ir-121
 @code{ISO646-CA}, @code{ca}, @code{csa7-1} and @code{iso-ir-121} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item CSA_Z243.4-1985-2
+@tindex CSA_Z243.4-1985-2@r{, aliases and source}
+@tindex ISO646-CA2
+@tindex csa7-2
+@tindex iso-ir-122
 @code{ISO646-CA2}, @code{csa7-2} and @code{iso-ir-122} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item CSA_Z243.4-1985-gr
+@tindex CSA_Z243.4-1985-gr@r{, aliases and source}
+@tindex iso-ir-123
 @code{iso-ir-123} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item CSN_369103
+@tindex CSN_369103@r{, aliases and source}
+@tindex KOI-8_L2
+@tindex iso-ir-139
+@tindex koi8l2
 @code{KOI-8_L2}, @code{iso-ir-139} and @code{koi8l2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item CWI
+@tindex CWI@r{, aliases and source}
+@tindex CWI-2
+@tindex cp-hu
 @code{CWI-2} and @code{cp-hu} are aliases for this charset.
 Source: Computerworld Sza'mita'stechnika vol 3 issue 13 1988-06-29.
 
 @item DEC-MCS
+@tindex DEC-MCS@r{, aliases and source}
+@tindex dec
 @code{dec} is an alias for this charset.
 VAX/VMS User's Manual, Order Number: AI-Y517A-TE, April 1986.
 
 @item DIN_66003
+@tindex DIN_66003@r{, aliases and source}
+@tindex ISO646-DE
+@tindex de
+@tindex iso-ir-21
 @code{ISO646-DE}, @code{de} and @code{iso-ir-21} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item DS_2089
+@tindex DS_2089@r{, aliases and source}
+@tindex DS2089
+@tindex ISO646-DK
+@tindex dk
 @code{DS2089}, @code{ISO646-DK} and @code{dk} are aliases for this charset.
 Source: Danish Standard, DS 2089, February 1974.
 
 @item EBCDIC-AT-DE
+@tindex EBCDIC-AT-DE@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-AT-DE-A
+@tindex EBCDIC-AT-DE-A@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-CA-FR
+@tindex EBCDIC-CA-FR@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-DK-NO
+@tindex EBCDIC-DK-NO@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-DK-NO-A
+@tindex EBCDIC-DK-NO-A@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-ES
+@tindex EBCDIC-ES@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-ES-A
+@tindex EBCDIC-ES-A@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-ES-S
+@tindex EBCDIC-ES-S@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-FI-SE
+@tindex EBCDIC-FI-SE@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-FI-SE-A
+@tindex EBCDIC-FI-SE-A@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-FR
+@tindex EBCDIC-FR@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-IS-FRISS
+@tindex EBCDIC-IS-FRISS@r{, aliases and source}
+@tindex friss
 @code{friss} is an alias for this charset.
 Source: Skyrsuvelar Rikisins og Reykjavikurborgar, feb 1982.
 
 @item EBCDIC-IT
+@tindex EBCDIC-IT@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-PT
+@tindex EBCDIC-PT@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-UK
+@tindex EBCDIC-UK@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item EBCDIC-US
+@tindex EBCDIC-US@r{, aliases and source}
 Source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987.
 
 @item ECMA-cyrillic
+@tindex ECMA-cyrillic@r{, aliases and source}
+@tindex ECMA-113
+@tindex ECMA-113:1986
+@tindex iso-ir-111
 @code{ECMA-113}, @code{ECMA-113:1986} and @code{iso-ir-111} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ES
+@tindex ES@r{, aliases and source}
+@tindex ISO646-ES
+@tindex iso-ir-17
 @code{ISO646-ES} and @code{iso-ir-17} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ES2
+@tindex ES2@r{, aliases and source}
+@tindex ISO646-ES2
+@tindex iso-ir-85
 @code{ISO646-ES2} and @code{iso-ir-85} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item GB_1988-80
+@tindex GB_1988-80@r{, aliases and source}
+@tindex ISO646-CN
+@tindex cn
+@tindex iso-ir-57
 @code{ISO646-CN}, @code{cn} and @code{iso-ir-57} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item GOST_19768-87
+@tindex GOST_19768-87@r{, aliases and source}
+@tindex ST_SEV_358-88
+@tindex iso-ir-153
 @code{ST_SEV_358-88} and @code{iso-ir-153} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item IBM037
+@tindex IBM037@r{, aliases and source}
+@tindex 037
+@tindex CP037
+@tindex ebcdic-cp-ca
+@tindex ebcdic-cp-nl
+@tindex ebcdic-cp-us
+@tindex ebcdic-cp-wt
 @code{037}, @code{CP037}, @code{ebcdic-cp-ca}, @code{ebcdic-cp-nl}, @code{ebcdic-cp-us} and @code{ebcdic-cp-wt} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM038
+@tindex IBM038@r{, aliases and source}
+@tindex 038
+@tindex CP038
+@tindex EBCDIC-INT
 @code{038}, @code{CP038} and @code{EBCDIC-INT} are aliases for this charset.
 Source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990.
 
 @item IBM1004
+@tindex IBM1004@r{, aliases and source}
+@tindex 1004
+@tindex CP1004
+@tindex os2latin1
 @code{1004}, @code{CP1004} and @code{os2latin1} are aliases for this charset.
 Source: CEN/TC304 N283, 1994-02-04.
 
 @item IBM1026
+@tindex IBM1026@r{, aliases and source}
+@tindex 1026
+@tindex CP1026
 @code{1026} and @code{CP1026} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM1047
+@tindex IBM1047@r{, aliases and source}
+@tindex 1047
+@tindex CP1047
 @code{1047} and @code{CP1047} are aliases for this charset.
 Source: IBM Character Data Representation Architecture.
 Registry SC09-1391-00 p 150.
 
 @item IBM256
+@tindex IBM256@r{, aliases and source}
+@tindex 256
+@tindex CP256
+@tindex EBCDIC-INT1
 @code{256}, @code{CP256} and @code{EBCDIC-INT1} are aliases for this charset.
 Source: IBM Registry C-H 3-3220-050.
 
 @item IBM273
+@tindex IBM273@r{, aliases and source}
+@tindex 273
+@tindex CP273
 @code{273} and @code{CP273} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM274
+@tindex IBM274@r{, aliases and source}
+@tindex 274
+@tindex CP274
+@tindex EBCDIC-BE
 @code{274}, @code{CP274} and @code{EBCDIC-BE} are aliases for this charset.
 Source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990.
 
 @item IBM275
+@tindex IBM275@r{, aliases and source}
+@tindex 275
+@tindex CP275
+@tindex EBCDIC-BR
 @code{275}, @code{CP275} and @code{EBCDIC-BR} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM277
+@tindex IBM277@r{, aliases and source}
+@tindex EBCDIC-CP-DK
+@tindex EBCDIC-CP-NO
 @code{EBCDIC-CP-DK} and @code{EBCDIC-CP-NO} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM278
+@tindex IBM278@r{, aliases and source}
+@tindex 278
+@tindex CP278
+@tindex ebcdic-cp-fi
+@tindex ebcdic-cp-se
 @code{278}, @code{CP278}, @code{ebcdic-cp-fi} and @code{ebcdic-cp-se} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM280
+@tindex IBM280@r{, aliases and source}
+@tindex 280
+@tindex CP280
+@tindex ebcdic-cp-it
 @code{280}, @code{CP280} and @code{ebcdic-cp-it} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM281
+@tindex IBM281@r{, aliases and source}
+@tindex 281
+@tindex CP281
+@tindex EBCDIC-JP-E
 @code{281}, @code{CP281} and @code{EBCDIC-JP-E} are aliases for this charset.
 Source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990.
 
 @item IBM284
+@tindex IBM284@r{, aliases and source}
+@tindex 284
+@tindex CP284
+@tindex ebcdic-cp-es
 @code{284}, @code{CP284} and @code{ebcdic-cp-es} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM285
+@tindex IBM285@r{, aliases and source}
+@tindex 285
+@tindex CP285
+@tindex ebcdic-cp-gb
 @code{285}, @code{CP285} and @code{ebcdic-cp-gb} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM290
+@tindex IBM290@r{, aliases and source}
+@tindex 290
+@tindex CP290
+@tindex EBCDIC-JP-kana
 @code{290}, @code{CP290} and @code{EBCDIC-JP-kana} are aliases for this charset.
 Source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990.
 
 @item IBM297
+@tindex IBM297@r{, aliases and source}
+@tindex 297
+@tindex CP297
+@tindex ebcdic-cp-fr
 @code{297}, @code{CP297} and @code{ebcdic-cp-fr} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM420
+@tindex IBM420@r{, aliases and source}
+@tindex 420
+@tindex CP420
+@tindex ebcdic-cp-ar1
 @code{420}, @code{CP420} and @code{ebcdic-cp-ar1} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 IBM NLS RM p 11-11.
 
 @item IBM423
+@tindex IBM423@r{, aliases and source}
+@tindex 423
+@tindex CP423
+@tindex ebcdic-cp-gr
 @code{423}, @code{CP423} and @code{ebcdic-cp-gr} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM424
+@tindex IBM424@r{, aliases and source}
+@tindex 424
+@tindex CP424
+@tindex ebcdic-cp-he
 @code{424}, @code{CP424} and @code{ebcdic-cp-he} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM437
+@tindex IBM437@r{, aliases and source}
+@tindex 437
+@tindex CP437
 @code{437} and @code{CP437} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM500
+@tindex IBM500@r{, aliases and source}
+@tindex 500
+@tindex 500V1
+@tindex CP500
+@tindex ebcdic-cp-be
+@tindex ebcdic-cp-ch
 @code{500}, @code{500V1}, @code{CP500}, @code{ebcdic-cp-be} and @code{ebcdic-cp-ch} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM850
+@tindex IBM850@r{, aliases and source}
+@tindex 850
+@tindex CP850
 @code{850} and @code{CP850} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 Source: UNICODE 1.0.
 
 @item IBM851
+@tindex IBM851@r{, aliases and source}
+@tindex 851
+@tindex CP851
 @code{851} and @code{CP851} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM852
+@tindex IBM852@r{, aliases and source}
+@tindex 852
+@tindex CP852
+@tindex pcl2
+@tindex pclatin2
 @code{852}, @code{CP852}, @code{pcl2} and @code{pclatin2} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM855
+@tindex IBM855@r{, aliases and source}
+@tindex 855
+@tindex CP855
 @code{855} and @code{CP855} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM857
+@tindex IBM857@r{, aliases and source}
+@tindex 857
+@tindex CP857
 @code{857} and @code{CP857} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM860
+@tindex IBM860@r{, aliases and source}
+@tindex 860
+@tindex CP860
 @code{860} and @code{CP860} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM861
+@tindex IBM861@r{, aliases and source}
+@tindex 861
+@tindex CP861
+@tindex cp-is
 @code{861}, @code{CP861} and @code{cp-is} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM862
+@tindex IBM862@r{, aliases and source}
+@tindex 862
+@tindex CP862
 @code{862} and @code{CP862} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM863
+@tindex IBM863@r{, aliases and source}
+@tindex 863
+@tindex CP863
 @code{863} and @code{CP863} are aliases for this charset.
 Source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991.
 
 @item IBM864
+@tindex IBM864@r{, aliases and source}
+@tindex 864
+@tindex CP864
 @code{864} and @code{CP864} are aliases for this charset.
 Source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991.
 
 @item IBM865
+@tindex IBM865@r{, aliases and source}
+@tindex 865
+@tindex CP865
 @code{865} and @code{CP865} are aliases for this charset.
 Source: IBM DOS 3.3 Ref (Abridged), 94X9575 (Feb 1987).
 
 @item IBM868
+@tindex IBM868@r{, aliases and source}
+@tindex 868
+@tindex CP868
+@tindex cp-ar
 @code{868}, @code{CP868} and @code{cp-ar} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM869
+@tindex IBM869@r{, aliases and source}
+@tindex 869
+@tindex CP869
+@tindex cp-gr
 @code{869}, @code{CP869} and @code{cp-gr} are aliases for this charset.
 Source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991.
 
 @item IBM870
+@tindex IBM870@r{, aliases and source}
+@tindex 870
+@tindex CP870
+@tindex ebcdic-cp-roece
+@tindex ebcdic-cp-yu
 @code{870}, @code{CP870}, @code{ebcdic-cp-roece} and @code{ebcdic-cp-yu} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM871
+@tindex IBM871@r{, aliases and source}
+@tindex 871
+@tindex CP871
+@tindex ebcdic-cp-is
 @code{871}, @code{CP871} and @code{ebcdic-cp-is} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM875
+@tindex IBM875@r{, aliases and source}
+@tindex 875
+@tindex CP875
+@tindex EBCDIC-Greek
 @code{875}, @code{CP875} and @code{EBCDIC-Greek} are aliases for this charset.
 Source: UNICODE 1.0.
 
 @item IBM880
+@tindex IBM880@r{, aliases and source}
+@tindex 880
+@tindex CP880
+@tindex EBCDIC-Cyrillic
 @code{880}, @code{CP880} and @code{EBCDIC-Cyrillic} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM891
+@tindex IBM891@r{, aliases and source}
+@tindex 891
+@tindex CP891
 @code{891} and @code{CP891} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM903
+@tindex IBM903@r{, aliases and source}
+@tindex 903
+@tindex CP903
 @code{903} and @code{CP903} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM904
+@tindex IBM904@r{, aliases and source}
+@tindex 904
+@tindex CP904
 @code{904} and @code{CP904} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IBM905
+@tindex IBM905@r{, aliases and source}
+@tindex 905
+@tindex CP905
+@tindex ebcdic-cp-tr
 @code{905}, @code{CP905} and @code{ebcdic-cp-tr} are aliases for this charset.
 Source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990.
 
 @item IBM918
+@tindex IBM918@r{, aliases and source}
+@tindex 918
+@tindex CP918
+@tindex ebcdic-cp-ar2
 @code{918}, @code{CP918} and @code{ebcdic-cp-ar2} are aliases for this charset.
 Source: IBM NLS RM Vol2 SE09-8002-01, March 1990.
 
 @item IEC_P27-1
+@tindex IEC_P27-1@r{, aliases and source}
+@tindex iso-ir-143
 @code{iso-ir-143} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item INIS
+@tindex INIS@r{, aliases and source}
+@tindex iso-ir-49
 @code{iso-ir-49} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item INIS-8
+@tindex INIS-8@r{, aliases and source}
+@tindex iso-ir-50
 @code{iso-ir-50} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item INIS-cyrillic
+@tindex INIS-cyrillic@r{, aliases and source}
+@tindex iso-ir-51
 @code{iso-ir-51} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item INVARIANT
+@tindex INVARIANT@r{, aliases and source}
+@tindex iso-ir-170
 @code{iso-ir-170} is an alias for this charset.
 
 @item ISO-8859-1
+@tindex ISO-8859-1@r{, aliases and source}
+@tindex 819
+@tindex CP819
+@tindex IBM819
+@tindex ISO_8859-1
+@tindex ISO_8859-1:1987
+@tindex iso-ir-100
+@tindex l1
+@tindex latin1
 @code{819}, @code{CP819}, @code{IBM819}, @code{ISO_8859-1}, @code{ISO_8859-1:1987}, @code{iso-ir-100}, @code{l1} and @code{latin1} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-10
+@tindex ISO-8859-10@r{, aliases and source}
+@tindex ISO_8859-10
+@tindex ISO_8859-10:1993
+@tindex iso-ir-157
+@tindex l6
+@tindex latin6
 @code{ISO_8859-10}, @code{ISO_8859-10:1993}, @code{iso-ir-157}, @code{l6} and @code{latin6} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-13
+@tindex ISO-8859-13@r{, aliases and source}
+@tindex ISO_8859-13
+@tindex ISO_8859-13:1998
+@tindex iso-baltic
+@tindex iso-ir-179a
+@tindex l7
+@tindex latin7
 @code{ISO_8859-13}, @code{ISO_8859-13:1998}, @code{iso-baltic}, @code{iso-ir-179a}, @code{l7} and @code{latin7} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-14
+@tindex ISO-8859-14@r{, aliases and source}
+@tindex ISO_8859-14
+@tindex ISO_8859-14:1998
+@tindex iso-celtic
+@tindex iso-ir-199
+@tindex l8
+@tindex latin8
 @code{ISO_8859-14}, @code{ISO_8859-14:1998}, @code{iso-celtic}, @code{iso-ir-199}, @code{l8} and @code{latin8} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-15
+@tindex ISO-8859-15@r{, aliases and source}
+@tindex ISO_8859-15
+@tindex ISO_8859-15:1998
+@tindex iso-ir-203
+@tindex l9
+@tindex latin9
 @code{ISO_8859-15}, @code{ISO_8859-15:1998}, @code{iso-ir-203}, @code{l9} and @code{latin9} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-2
+@tindex ISO-8859-2@r{, aliases and source}
+@tindex 912
+@tindex CP912
+@tindex IBM912
+@tindex ISO_8859-2
+@tindex ISO_8859-2:1987
+@tindex iso-ir-101
+@tindex l2
+@tindex latin2
 @code{912}, @code{CP912}, @code{IBM912}, @code{ISO_8859-2}, @code{ISO_8859-2:1987}, @code{iso-ir-101}, @code{l2} and @code{latin2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-3
+@tindex ISO-8859-3@r{, aliases and source}
+@tindex ISO_8859-3
+@tindex ISO_8859-3:1988
+@tindex iso-ir-109
+@tindex l3
+@tindex latin3
 @code{ISO_8859-3}, @code{ISO_8859-3:1988}, @code{iso-ir-109}, @code{l3} and @code{latin3} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-4
+@tindex ISO-8859-4@r{, aliases and source}
+@tindex ISO_8859-4
+@tindex ISO_8859-4:1988
+@tindex iso-ir-110
+@tindex l4
+@tindex latin4
 @code{ISO_8859-4}, @code{ISO_8859-4:1988}, @code{iso-ir-110}, @code{l4} and @code{latin4} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-5
+@tindex ISO-8859-5@r{, aliases and source}
+@tindex ISO_8859-5
+@tindex ISO_8859-5:1988
+@tindex cyrillic
+@tindex iso-ir-144
 @code{ISO_8859-5}, @code{ISO_8859-5:1988}, @code{cyrillic} and @code{iso-ir-144} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-6
+@tindex ISO-8859-6@r{, aliases and source}
+@tindex ASMO-708
+@tindex ECMA-114
+@tindex ISO_8859-6
+@tindex ISO_8859-6:1987
+@tindex arabic
+@tindex iso-ir-127
 @code{ASMO-708}, @code{ECMA-114}, @code{ISO_8859-6}, @code{ISO_8859-6:1987}, @code{arabic} and @code{iso-ir-127} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-7
+@tindex ISO-8859-7@r{, aliases and source}
+@tindex ECMA-118
+@tindex ELOT_928
+@tindex ISO_8859-7
+@tindex ISO_8859-7:1987
+@tindex greek
+@tindex greek8
+@tindex iso-ir-126
 @code{ECMA-118}, @code{ELOT_928}, @code{ISO_8859-7}, @code{ISO_8859-7:1987}, @code{greek}, @code{greek8} and @code{iso-ir-126} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-8
+@tindex ISO-8859-8@r{, aliases and source}
+@tindex ISO_8859-8
+@tindex ISO_8859-8:1988
+@tindex hebrew
+@tindex iso-ir-138
 @code{ISO_8859-8}, @code{ISO_8859-8:1988}, @code{hebrew} and @code{iso-ir-138} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO-8859-9
+@tindex ISO-8859-9@r{, aliases and source}
+@tindex ISO_8859-9
+@tindex ISO_8859-9:1989
+@tindex iso-ir-148
+@tindex l5
+@tindex latin5
 @code{ISO_8859-9}, @code{ISO_8859-9:1989}, @code{iso-ir-148}, @code{l5} and @code{latin5} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_10367-box
+@tindex ISO_10367-box@r{, aliases and source}
+@tindex iso-ir-155
 @code{iso-ir-155} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_2033-1983
+@tindex ISO_2033-1983@r{, aliases and source}
+@tindex e13b
+@tindex iso-ir-98
 @code{e13b} and @code{iso-ir-98} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_5427
+@tindex ISO_5427@r{, aliases and source}
+@tindex iso-ir-37
 @code{iso-ir-37} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_5427-ext
+@tindex ISO_5427-ext@r{, aliases and source}
+@tindex ISO_5427:1981
+@tindex iso-ir-54
 @code{ISO_5427:1981} and @code{iso-ir-54} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_5428
+@tindex ISO_5428@r{, aliases and source}
+@tindex ISO_5428:1980
+@tindex iso-ir-55
 @code{ISO_5428:1980} and @code{iso-ir-55} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_646.basic
+@tindex ISO_646.basic@r{, aliases and source}
+@tindex ISO_646.basic:1983
+@tindex ref
 @code{ISO_646.basic:1983} and @code{ref} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_646.irv
+@tindex ISO_646.irv@r{, aliases and source}
+@tindex ISO_646.irv:1983
+@tindex irv
+@tindex iso-ir-2
 @code{ISO_646.irv:1983}, @code{irv} and @code{iso-ir-2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_6937-2-25
+@tindex ISO_6937-2-25@r{, aliases and source}
+@tindex iso-ir-152
 @code{iso-ir-152} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item ISO_8859-supp
+@tindex ISO_8859-supp@r{, aliases and source}
+@tindex iso-ir-154
+@tindex latin1-2-5
 @code{iso-ir-154} and @code{latin1-2-5} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item IT
+@tindex IT@r{, aliases and source}
+@tindex ISO646-IT
+@tindex iso-ir-15
 @code{ISO646-IT} and @code{iso-ir-15} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6220-1969-jp
+@tindex JIS_C6220-1969-jp@r{, aliases and source}
+@tindex JIS_C6220-1969
+@tindex iso-ir-13
+@tindex katakana
+@tindex x0201-7
 @code{JIS_C6220-1969}, @code{iso-ir-13}, @code{katakana} and @code{x0201-7} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6220-1969-ro
+@tindex JIS_C6220-1969-ro@r{, aliases and source}
+@tindex ISO646-JP
+@tindex iso-ir-14
+@tindex jp
 @code{ISO646-JP}, @code{iso-ir-14} and @code{jp} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-a
+@tindex JIS_C6229-1984-a@r{, aliases and source}
+@tindex jp-ocr-a
 @code{jp-ocr-a} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-b
+@tindex JIS_C6229-1984-b@r{, aliases and source}
+@tindex ISO646-JP-OCR-B
+@tindex jp-ocr-b
 @code{ISO646-JP-OCR-B} and @code{jp-ocr-b} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-b-add
+@tindex JIS_C6229-1984-b-add@r{, aliases and source}
+@tindex iso-ir-93
+@tindex jp-ocr-b-add
 @code{iso-ir-93} and @code{jp-ocr-b-add} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-hand
+@tindex JIS_C6229-1984-hand@r{, aliases and source}
+@tindex iso-ir-94
+@tindex jp-ocr-hand
 @code{iso-ir-94} and @code{jp-ocr-hand} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-hand-add
+@tindex JIS_C6229-1984-hand-add@r{, aliases and source}
+@tindex iso-ir-95
+@tindex jp-ocr-hand-add
 @code{iso-ir-95} and @code{jp-ocr-hand-add} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_C6229-1984-kana
+@tindex JIS_C6229-1984-kana@r{, aliases and source}
+@tindex iso-ir-96
 @code{iso-ir-96} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item JIS_X0201
+@tindex JIS_X0201@r{, aliases and source}
+@tindex X0201
 @code{X0201} is an alias for this charset.
 
 @item JUS_I.B1.002
+@tindex JUS_I.B1.002@r{, aliases and source}
+@tindex ISO646-YU
+@tindex iso-ir-141
+@tindex js
+@tindex yu
 @code{ISO646-YU}, @code{iso-ir-141}, @code{js} and @code{yu} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JUS_I.B1.003-mac
+@tindex JUS_I.B1.003-mac@r{, aliases and source}
+@tindex iso-ir-147
+@tindex macedonian
 @code{iso-ir-147} and @code{macedonian} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item JUS_I.B1.003-serb
+@tindex JUS_I.B1.003-serb@r{, aliases and source}
+@tindex iso-ir-146
+@tindex serbian
 @code{iso-ir-146} and @code{serbian} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item KOI-7
+@tindex KOI-7@r{, aliases and source}
 Source: Andrey A. Chernov <ache@@nagual.pp.ru>.
 
 @item KOI-8
+@tindex KOI-8@r{, aliases and source}
+@tindex GOST_19768-74
 @code{GOST_19768-74} is an alias for this charset.
 Source: Andrey A. Chernov <ache@@nagual.pp.ru>.
 
 @item KOI8-R
+@tindex KOI8-R@r{, aliases and source}
 Source: RFC1489 via Gabor Kiss <kissg@@sztaki.hu>.
 And Andrey A. Chernov <ache@@nagual.pp.ru>.
 
 @item KOI8-RU
+@tindex KOI8-RU@r{, aliases and source}
 Source: http://cad.ntu-kpi.kiev.ua/multiling/koi8-ru/.
 
 @item KOI8-U
+@tindex KOI8-U@r{, aliases and source}
 Source: RFC 2319.
 Mibenum: 2088.
 Source: http://www.net.ua/KOI8-U/.
 
 @item KSC5636
+@tindex KSC5636@r{, aliases and source}
+@tindex ISO646-KR
 @code{ISO646-KR} is an alias for this charset.
 
 @item Latin-greek-1
+@tindex Latin-greek-1@r{, aliases and source}
+@tindex iso-ir-27
 @code{iso-ir-27} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item MSZ_7795.3
+@tindex MSZ_7795.3@r{, aliases and source}
+@tindex ISO646-HU
+@tindex hu
+@tindex iso-ir-86
 @code{ISO646-HU}, @code{hu} and @code{iso-ir-86} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NATS-DANO
+@tindex NATS-DANO@r{, aliases and source}
+@tindex iso-ir-9-1
 @code{iso-ir-9-1} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item NATS-DANO-ADD
+@tindex NATS-DANO-ADD@r{, aliases and source}
+@tindex iso-ir-9-2
 @code{iso-ir-9-2} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item NATS-SEFI
+@tindex NATS-SEFI@r{, aliases and source}
+@tindex iso-ir-8-1
 @code{iso-ir-8-1} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item NATS-SEFI-ADD
+@tindex NATS-SEFI-ADD@r{, aliases and source}
+@tindex iso-ir-8-2
 @code{iso-ir-8-2} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item NC_NC00-10
+@tindex NC_NC00-10@r{, aliases and source}
+@tindex ISO646-CU
+@tindex NC_NC00-10:81
+@tindex cuba
+@tindex iso-ir-151
 @code{ISO646-CU}, @code{NC_NC00-10:81}, @code{cuba} and @code{iso-ir-151} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NF_Z_62-010
+@tindex NF_Z_62-010@r{, aliases and source}
+@tindex ISO646-FR
+@tindex fr
+@tindex iso-ir-69
 @code{ISO646-FR}, @code{fr} and @code{iso-ir-69} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NF_Z_62-010_(1973)
+@tindex NF_Z_62-010_(1973)@r{, aliases and source}
+@tindex ISO646-FR1
+@tindex iso-ir-25
 @code{ISO646-FR1} and @code{iso-ir-25} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NS_4551-1
+@tindex NS_4551-1@r{, aliases and source}
+@tindex ISO646-NO
+@tindex iso-ir-60
+@tindex no
 @code{ISO646-NO}, @code{iso-ir-60} and @code{no} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NS_4551-2
+@tindex NS_4551-2@r{, aliases and source}
+@tindex ISO646-NO2
+@tindex iso-ir-61
+@tindex no2
 @code{ISO646-NO2}, @code{iso-ir-61} and @code{no2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item NeXTSTEP
+@tindex NeXTSTEP@r{, aliases and source}
+@tindex next
 @code{next} is an alias for this charset.
 Source: Peter Svanberg - psv@@nada.kth.se.
 
 @item PT
+@tindex PT@r{, aliases and source}
+@tindex ISO646-PT
+@tindex iso-ir-16
 @code{ISO646-PT} and @code{iso-ir-16} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item PT2
+@tindex PT2@r{, aliases and source}
+@tindex ISO646-PT2
+@tindex iso-ir-84
 @code{ISO646-PT2} and @code{iso-ir-84} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item SEN_850200_B
+@tindex SEN_850200_B@r{, aliases and source}
+@tindex FI
+@tindex ISO646-FI
+@tindex ISO646-SE
+@tindex SS636127
+@tindex iso-ir-10
+@tindex se
 @code{FI}, @code{ISO646-FI}, @code{ISO646-SE}, @code{SS636127}, @code{iso-ir-10} and @code{se} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item SEN_850200_C
+@tindex SEN_850200_C@r{, aliases and source}
+@tindex ISO646-SE2
+@tindex iso-ir-11
+@tindex se2
 @code{ISO646-SE2}, @code{iso-ir-11} and @code{se2} are aliases for this charset.
 Source: ISO 2375 registry.
 
 @item T.61-7bit
+@tindex T.61-7bit@r{, aliases and source}
+@tindex iso-ir-102
 @code{iso-ir-102} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item baltic
+@tindex baltic@r{, aliases and source}
+@tindex iso-ir-179
 @code{iso-ir-179} is an alias for this charset.
 Source: ISO 2375 registry.
 &g1esc x2d56 &g2esc x2e56 &g3esc x2f56.
 
 @item greek-ccitt
+@tindex greek-ccitt@r{, aliases and source}
+@tindex iso-ir-150
 @code{iso-ir-150} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item greek7
+@tindex greek7@r{, aliases and source}
+@tindex iso-ir-88
 @code{iso-ir-88} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item greek7-old
+@tindex greek7-old@r{, aliases and source}
+@tindex iso-ir-18
 @code{iso-ir-18} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item hp-roman8
+@tindex hp-roman8@r{, aliases and source}
+@tindex r8
+@tindex roman8
 @code{r8} and @code{roman8} are aliases for this charset.
 Source: LaserJet IIP Printer User's Manual,.
 HP part no 33471-90901, Hewlet-Packard, June 1989.
 
 @item latin-greek
+@tindex latin-greek@r{, aliases and source}
+@tindex iso-ir-19
 @code{iso-ir-19} is an alias for this charset.
 Source: ISO 2375 registry.
 
 @item mac-is
+@tindex mac-is@r{, aliases and source}
 
 @item macintosh
+@tindex macintosh@r{, aliases and source}
+@tindex mac
 @code{mac} is an alias for this charset.
 Source: The Unicode Standard ver 1.0, ISBN 0-201-56788-1, Oct 1991.
 
 @item macintosh_ce
+@tindex macintosh_ce@r{, aliases and source}
+@tindex macce
 @code{macce} is an alias for this charset.
 Source: Macintosh CE fonts.
 
 @item sami
+@tindex sami@r{, aliases and source}
+@tindex iso-ir-158
+@tindex lap
+@tindex latin-lap
 @code{iso-ir-158}, @code{lap} and @code{latin-lap} are aliases for this charset.
 Source: ISO 2375 registry.

@@ -1,5 +1,5 @@
 # Makefile for `recode' (own internal) library.
-# Copyright © 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
+# Copyright © 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -20,13 +20,26 @@
 AUTOMAKE_OPTIONS = gnits
 
 noinst_LIBRARIES = libreco.a
-noinst_HEADERS = error.h getopt.h pathmax.h xalloc.h xstring.h
-libreco_a_SOURCES = error.c getopt.c getopt1.c strtoul.c xmalloc.c \
-xstrdup.c
+noinst_HEADERS = error.h getopt.h gettext.h pathmax.h xalloc.h xstring.h
+libreco_a_SOURCES = error.c getopt.c getopt1.c xmalloc.c xstrdup.c
 
-EXTRA_DIST = strtol.c
+EXTRA_DIST = alloca.c gettext.c malloc.c realloc.c strtol.c strtoul.c
 
 INCLUDES = -I.. -I$(srcdir) -I../intl
 
-## libreco_a_LIBADD = @ALLOCA@ @LIBOBJS@
+libreco_a_LIBADD = @ALLOCA@ @LIBOBJS@
 ## libreco_a_DEPENDENCIES = $(libtar_a_LIBADD)
+localedir = $(prefix)/share/locale
+aliaspath = $(localedir):.
+
+gettext.o: gettext.c
+	$(COMPILE) -DALIASPATH=\"$(aliaspath)\" -DLOCALEDIR=\"$(localedir)\" \
+	  -c $(srcdir)/gettext.c
+
+gettext._o: gettext._c
+	@rm -f _gettext.c
+	@ln gettext._c _gettext.c
+	$(COMPILE) -DALIASPATH=\"$(aliaspath)\" -DLOCALEDIR=\"$(localedir)\" \
+	  -c _gettext.c
+	@mv _gettext.o $@
+	@rm _gettext.c

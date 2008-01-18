@@ -1,20 +1,20 @@
 * README file for `recode'			allout -*- outline -*-
 
-  Here is version 3.5 for the Free `recode' program and library.  Glance
+  Here is version 3.5a for the Free `recode' program and library.  Glance
   through this `README' file before starting configuration.  Make sure
   you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
   them already.
 
   The canonical distribution point for this version is either:
 
-     http://www.iro.umontreal.ca/contrib/recode/recode-3.5.tar.gz
-     ftp://ftp.iro.umontreal.ca/pub/recode/recode-3.5.tar.gz
+     http://www.iro.umontreal.ca/contrib/recode/recode-3.5a.tar.gz
+     ftp://ftp.iro.umontreal.ca/pub/recode/recode-3.5a.tar.gz
 
   yet the second URL (the FTP one) might disappear one day.  GNU mirrors
   usually hold a copy of non-pretest releases, the canonical distribution
   point for the last such release is:
 
-     ftp://ftp.gnu.org/pub/gnu/recode-3.4.tar.gz
+     ftp://ftp.gnu.org/pub/gnu/recode/recode-3.5.tar.gz
 
 .* Introduction
    ------------
@@ -71,20 +71,20 @@
 
     autoconf	ftp://ftp.gnu.org/pub/gnu/autoconf/autoconf-2.13.tar.gz
     automake	ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
-    flex	ftp://ftp.gnu.org/pub/gnu/flex-2.5.2.tar.gz
-    gawk	ftp://ftp.gnu.org/pub/gnu/gawk-3.0.3.tar.gz
+    flex	ftp://ftp.gnu.org/pub/gnu/flex/flex-2.5.4a.tar.gz
     gettext	ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
-    help2man	http://www.ozemail.com.au/~bod/help2man-1.008.tar.gz
-    libtool	ftp://ftp.gnu.org/pub/gnu/libtool/libtool-1.3.2.tar.gz
-    m4		ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4l.tar.gz
-    perl	ftp://ftp.gnu.org/pub/gnu/perl-5.003.tar.gz
-    tar		ftp://ftp.gnu.org/pub/gnu/tar-1.12.tar.gz
+    help2man	http://www.ozemail.com.au/~bod/help2man-1.019.tar.gz
+    libtool	http://www.oranda.demon.co.uk/dist/libtool-1.3.4.tar.gz
+    m4		ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4n.tar.gz
+    perl	ftp://ftp.gnu.org/pub/gnu/perl/perl-5.005.03.tar.gz
+    python	ftp://ftp.python.org/pub/python/src/py152.tgz
+    tar		ftp://ftp.gnu.org/pub/gnu/tar/tar-1.12.tar.gz
 
     Make sure GNU `m4' is fully installed before you start installing
     Autoconf.  Have Perl installed before Automake and `help2man'.
 
-    `mawk', GNU `awk' or `nawk', and also Flex 2.5 or better, are needed
-    for remaking `merged.c', after you modify or add an `.l' source file.
+    Python 1.5 and Flex 2.5, or better, are needed for remaking `merged.c',
+    after you modify or add an `.l' source file.
 
 . + Mailing lists and collaboration
 

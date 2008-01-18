@@ -1,6 +1,7 @@
-This is Info file recode.info, produced by Makeinfo version 1.68 from
-the input file recode.texi.
+This is recode.info, produced by makeinfo version 3.12n from
+recode.texi.
 
+INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
@@ -39,7 +40,7 @@ and is able to convert files between almost any pair.  Most RFC 1345
 character sets are supported.  The `recode' program is a handy
 front-end to the library.
 
-   The current `recode' release is 3.5.
+   The current `recode' release is 3.5a.
 
 * Menu:
 
@@ -56,8 +57,13 @@ front-end to the library.
 * Miscellaneous::       Various other charsets
 * Surfaces::            All about surfaces
 * Internals::           Internal aspects
+* Concept Index::
+* Option Index::
+* Library Index::
+* Charset and Surface Index::
 
- -- The Detailed Node Listing --
+
+ --- The Detailed Node Listing ---
 
 Terminology and purpose
 
@@ -98,7 +104,7 @@ ASCII and some derivatives
 
 * ASCII::               Usual ASCII
 * ISO 8859::            ASCII extended by Latin Alphabets
-* ASCII-BS::            ASCII 7-bits, `BS' to overstrike
+* ASCII-BS::            ASCII 7-bits, BS to overstrike
 * flat::                ASCII without diacritics nor underline
 
 Some IBM or Microsoft charsets
@@ -111,7 +117,7 @@ Charsets for CDC machines
 
 * Display Code::        Control Data's Display Code
 * CDC-NOS::             ASCII 6/12 from NOS
-* Bang-Bang::           ASCII "bang bang"
+* Bang-Bang::           ASCII ``bang bang''
 
 Other micro-computer charsets
 
@@ -163,8 +169,8 @@ intuition....
      software and sometimes it is a user using Mac software.  I myself
      am on a SPARC Solaris machine.
 
-   Your situation is similar to mine, except that I *often* receive
-email needing recoding, that is, much more than *occasionally*!  The
+   Your situation is similar to mine, except that I _often_ receive
+email needing recoding, that is, much more than _occasionally_!  The
 usual recodings I do are Mac to Latin-1, IBM page codes to Latin-1,
 Easy-French to Latin-1, remove Quoted-Printable, remove Base64.  These
 are so frequent that I made myself a few two-keystroke Emacs commands
@@ -172,7 +178,7 @@ to filter the Emacs region.  This is very convenient for me.  I also
 resort to many other email conversions, yet more rarely than the
 frequent cases above.
 
-     It *seems* like this should be doable using `recode'.  However,
+     It _seems_ like this should be doable using `recode'.  However,
      when I try something like `grecode mac macfile.txt' I get nothing
      out--no error, no output, nothing.
 
@@ -266,10 +272,10 @@ characters on the other side.  Codes are usually taken from a set of
 consecutive small integers, starting at 0.  Some characters have a
 graphical appearance (glyph) or displayable effect, others have special
 uses like, for example, to control devices or to interact with
-neighbouring codes to specify them more precisely.  So, a *charset* is
+neighbouring codes to specify them more precisely.  So, a _charset_ is
 roughly one of those tables, giving a meaning to each of the codes from
 the set of allowable values.  MIME also uses the term charset with
-approximately the same meaning.  It does *not* exactly corresponds to
+approximately the same meaning.  It does _not_ exactly corresponds to
 what ISO calls a "coded character set", that is, a set of characters
 with an encoding for them.  An coded character set does not necessarily
 use all available code positions, while a MIME charset usually tries to
@@ -305,7 +311,7 @@ single input file.  For example, there is no surface which currently
 addresses the problem of how lines are blocked into physical records,
 when the blocking information is added as binary markers or counters
 within files.  So, `recode' should be given textual streams which are
-rather *pure*.
+rather _pure_.
 
    This tool pays special attention to superimposition of diacritics
 for some French representations.  This orientation is mostly
@@ -333,7 +339,7 @@ which is described by RFC 1345 tables.  *Note Tabular::.  The `recode'
 library also handles some charsets in some specialised ways.  These are:
 
    * 6-bit charsets based on CDC display code: 6/12 code from NOS;
-     bang-bang code from Universit'e de Montr'eal;
+     bang-bang code from Universite' de Montre'al;
 
    * 7-bit ASCII: without any diacritics, or else: using backspace for
      overstriking; Unisys' Icon convention; TeX/LaTeX coding; easy
@@ -406,7 +412,7 @@ contributions going beyond a few lines of code here and there, the FSF
 definitely requires employer disclaimers and copyright assignments in
 writing.
 
-   When you contribute something to `recode', *please* explain what it
+   When you contribute something to `recode', _please_ explain what it
 is about.  Do not take for granted that I know those charsets which are
 familiar to you.  Once again, I'm no expert, and you have to help me.
 Your explanations could well find their way into this documentation,
@@ -421,16 +427,15 @@ somewhere when time comes to make a new release, about what would go in
 it and what would go in the next.
 
    Please send suggestions, documentation errors and bug reports to
-<recode-bugs@iro.umontreal.ca> or, if you prefer, directly to Franc,ois
-Pinard(2).  Do not be afraid to report details, because this program is
-the mere aggregation of hundreds of details.
+<recode-bugs@iro.umontreal.ca> or, if you prefer, directly to
+<pinard@iro.umontreal.ca>, Franc,ois Pinard.  Do not be afraid to
+report details, because this program is the mere aggregation of
+hundreds of details.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) I'm not prone at accepting a charset you just invented, and
 which nobody uses yet: convince your friends and community first!
-
-   (2) Use <pinard@iro.umontreal.ca> to reach me
 
 
 File: recode.info,  Node: Invoking recode,  Next: Library,  Prev: Introduction,  Up: Top
@@ -473,8 +478,8 @@ be given to an optional CHARSET parameter.  *Note Listings::.
    In other calls, the first parameter (REQUEST) always explains which
 transformations are expected on the files.  There are many variations to
 the aspect of this parameter.  We will discuss more complex situations
-later (*note Requests::.), but for many simple cases, this parameter
-merely looks like(1):
+later (*note Requests::), but for many simple cases, this parameter
+merely looks like this(1):
 
      BEFORE..AFTER
 
@@ -503,7 +508,7 @@ not be altered.  Let us make an example to illustrate this point.
 Suppose that someone has a file named `datum.txt', which is almost a
 TeX file, except that diacriticised characters are written using
 Latin-1.  To complete the recoding of the diacriticised characters
-*only* and produce a file `datum.tex', without destroying the original,
+_only_ and produce a file `datum.tex', without destroying the original,
 one could do:
 
      cp -p datum.txt datum.tex
@@ -517,7 +522,7 @@ neatly:
    This example also shows that `l1' could be used instead of
 `Latin-1'; charset names often have such aliases.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) In previous versions or `recode', a single colon `:' was used
 instead of the two dots `..' for separating charsets, but this was
@@ -541,10 +546,10 @@ charset names are currently limited to alphabetic letters (upper or
 lower case), digits, hyphens, underlines, periods, colons or round
 parentheses.
 
-   The complete syntax for allowable REQUEST allows for unusual things,
+   The complete syntax for a valid REQUEST allows for unusual things,
 which might surprise at first.  (Do not pay too much attention to these
-facilities on a first reading.)  For example, REQUEST may also contain
-intermediary charsets, like in:
+facilities on first reading.)  For example, REQUEST may also contain
+intermediate charsets, like in the following example:
 
      BEFORE..INTERIM1..INTERIM2..AFTER
 
@@ -570,11 +575,11 @@ following one.  For example, the two following requests are equivalent:
 
 In this example, the charset input for any recoding sub-request is
 identical to the charset output by the preceding sub-request.  But it
-does not have to be in the general case.  One might wonder what would
-be the meaning of declaring the charset input for a recoding
+does not have to be so in the general case.  One might wonder what
+would be the meaning of declaring the charset input for a recoding
 sub-request of being of different nature than the charset output by a
-preceding sub-request, when recodings are chained in this way.  These
-strange usages might have a meaning and be useful for the `recode'
+preceding sub-request, when recodings are chained in this way.  Such a
+strange usage might have a meaning and be useful for the `recode'
 expert, but they are quite uncommon in practice.
 
    More useful is the distinction between the concept of charset, and
@@ -595,13 +600,13 @@ should be removed.  The next step will be to translate the codes from
 charset BEFORE to charset AFTER, prior to applying SURFACE3 over the
 result.
 
-   Some charsets have one or more *implied* surfaces.  In this case, the
+   Some charsets have one or more _implied_ surfaces.  In this case, the
 implied surfaces are automatically handled merely by naming the charset,
 without any explicit surface to qualify it.  Let's take an example to
 illustrate this feature.  The request `pc..l1' will indeed decode MS-DOS
 end of lines prior to converting IBM-PC codes to Latin-1, because `pc'
 is the name of a charset(1) which has `CR-LF' for its usual surface.
-The request `pc/..l1' will *not* decode end of lines, since the slash
+The request `pc/..l1' will _not_ decode end of lines, since the slash
 introduces surfaces, and even if the surface list is empty, it
 effectively defeats the automatic removal of surfaces for this charset.
 So, empty surfaces are useful, indeed!
@@ -632,11 +637,11 @@ BEFORE charset.(2)
 
    When a charset name is omitted or left empty, the value of the
 `DEFAULT_CHARSET' variable in the environment is used instead.  If this
-variable is not defined, the `recode' library uses an *usual charset*
+variable is not defined, the `recode' library uses the "usual charset"
 which is installation dependent.  When this variable is defined but has
-an empty value, charset names may just not be omitted.  Unless overriden
-when `recode' was installed, this usual charset is `Latin-1' for Unix
-systems or `IBM-PC' for MS-DOS machines.
+an empty value, charset names may not be omitted.  Unless overriden
+when `recode' was installed, the usual charset is `Latin-1' for Unix
+systems or `IBM-PC' for MS-DOS/MS-Windows machines.
 
    If the charset name is omitted but followed by surfaces, the surfaces
 then qualify the usual or default charset.  For example, the request
@@ -646,20 +651,20 @@ text(3).
    The allowable values for BEFORE or AFTER charsets, and various
 surfaces, are described in the remainder of this document.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) More precisely, `pc' is an alias for the charset `IBM-PC'.
 
    (2) Both BEFORE and AFTER may be omitted, in which case the double
-dot separator may not.  This would not be very meaningful, as the
-recoding reduces to a mere copy in that case.
+dot separator is mandatory.  This is not very useful, as the recoding
+reduces to a mere copy in that case.
 
    (3) MS-DOS is one of those systems for which the default charset has
 implied surfaces, `CR-LF' here.  Such surfaces are automatically
 removed or applied whenever the default charset is read or written,
 exactly as it would go for any other charset.  In the example above, on
-such systems, the hexadecimal surface would then *replace* the implied
-surfaces.  For *adding* an hexadecimal surface without removing any,
+such systems, the hexadecimal surface would then _replace_ the implied
+surfaces.  For _adding_ an hexadecimal surface without removing any,
 one should write the request as `/../x'.
 
 
@@ -743,7 +748,7 @@ are:
           IBM865 865 cp865 ibm865
 
      You can give more than one clue at once, to restrict the list
-     further.  Suppose you have *also* guessed that code 211 of the
+     further.  Suppose you have _also_ guessed that code 211 of the
      unknown charset represents an upper case `E' with diaeresis, that
      is, code 203 in the usual charset.  By requesting:
 
@@ -778,25 +783,25 @@ are:
      which, of course, is identical to the result of the first example,
      since the code 142 for the Macintosh is a small `e' with acute.
 
-     More formally, option `-k' lists all possible *before* charsets
-     for the *after* charset given as the sole non-option argument to
+     More formally, option `-k' lists all possible _before_ charsets
+     for the _after_ charset given as the sole non-option argument to
      `recode', but subject to restrictions given in PAIRS.  If there is
-     no non-option argument, the *after* charset is taken to be the
+     no non-option argument, the _after_ charset is taken to be the
      default charset for this `recode'.
 
      The restrictions are given as a comma separated list of pairs,
      each pair consisting of two numbers separated by a colon.  The
      numbers are taken as decimal when the initial digit is between `1'
      and `9'; `0x' starts an hexadecimal number, or else `0' starts an
-     octal number.  The first number is a code in any *before* charset,
-     while the second number is a code in the specified *after* charset.
+     octal number.  The first number is a code in any _before_ charset,
+     while the second number is a code in the specified _after_ charset.
      If the first number would not be transformed into the second
-     number by recoding from some *before* charset to the *after*
-     charset, then this *before* charset is rejected.  A *before*
+     number by recoding from some _before_ charset to the _after_
+     charset, then this _before_ charset is rejected.  A _before_
      charset is listed only if it is not rejected by any pair.  The
-     program will only test those *before* charsets having a tabular
-     style internal description (*note Tabular::.), so should be the
-     selected *after* charset.
+     program will only test those _before_ charsets having a tabular
+     style internal description (*note Tabular::), so should be the
+     selected _after_ charset.
 
      The produced list is in fact a subset of the list produced by the
      option `-l'.  As for option `-l', the non-option argument is
@@ -821,12 +826,12 @@ are:
      There might be one non-option argument, in which case it is
      interpreted as a charset name, possibly abbreviated to any non
      ambiguous prefix.  This particular usage of the `-l' option is
-     obeyed *only* for charsets having a tabular style internal
-     description (*note Tabular::.).  Even if most charsets have this
-     property, some do not, then option `-l' cannot be used to detail
-     these particular charsets.  For knowing if a particular charset
-     can be listed this way, you should merely try and see if this
-     works.  The FORMAT value of the option is a keyword from the
+     obeyed _only_ for charsets having a tabular style internal
+     description (*note Tabular::).  Even if most charsets have this
+     property, some do not, and the option `-l' cannot be used to
+     detail these particular charsets.  For knowing if a particular
+     charset can be listed this way, you should merely try and see if
+     this works.  The FORMAT value of the option is a keyword from the
      following list.  Keywords may be abbreviated by dropping suffix
      letters, and even reduced to the first letter only:
 
@@ -865,8 +870,8 @@ are:
      This option is a maintainer tool for evaluating the redundancy of
      those charsets, in `recode', which are internally represented by
      an `UCS-2' data table.  After the listing has been produced, the
-     program exits without doing any recoding.  The output of is meant
-     to be sorted, like this: `recode -T | sort'.  The option triggers
+     program exits without doing any recoding.  The output is meant to
+     be sorted, like this: `recode -T | sort'.  The option triggers
      `recode' into comparing all pairs of charsets, seeking those which
      are subsets of others.  The concept and results are better
      explained through a few examples.  Consider these three sample
@@ -903,7 +908,7 @@ grain control over the recoding operation themselves.
 
 `-g'
 `--graphics'
-     This option is only meaningful while getting *out* of the `IBM-PC'
+     This option is only meaningful while getting _out_ of the `IBM-PC'
      charset.  In this charset, characters 176 to 223 are used for
      constructing rulers and boxes, using simple or double horizontal or
      vertical lines.  This option forces the automatic selection of
@@ -913,7 +918,7 @@ grain control over the recoding operation themselves.
 
 `-t'
 `--touch'
-     The *touch* option is meaningful only when files are recoded over
+     The _touch_ option is meaningful only when files are recoded over
      themselves.  Without it, the time-stamps associated with files are
      preserved, to reflect the fact that changing the code of a file
      does not really alter its informational contents.  When the user
@@ -922,19 +927,19 @@ grain control over the recoding operation themselves.
 
 `-v'
 `--verbose'
-     Before doing any recoding, the program will first print on `stderr'
-     the list of all intermediate charsets planned for recoding,
-     starting with the BEFORE charset and ending with the AFTER charset.
-     It also prints an indication of the recoding quality, as one of
-     the word `reversible', `one to one', `one to many', `many to one'
-     or `many to many'.
+     Before doing any recoding, the program will first print on the
+     `stderr' stream the list of all intermediate charsets planned for
+     recoding, starting with the BEFORE charset and ending with the
+     AFTER charset.  It also prints an indication of the recoding
+     quality, as one of the word `reversible', `one to one', `one to
+     many', `many to one' or `many to many'.
 
      This information will appear once or twice.  It is shown a second
      time only when the optimisation and step merging phase succeeds in
      replacing many single steps by a new one.
 
      This option also has a second effect.  The program will print on
-     `stderr' one message per FILE recoded, so to keep the user
+     `stderr' one message per recoded FILE, so as to keep the user
      informed of the progress of its command.
 
      An easy way to know beforehand the sequence or quality of a
@@ -942,8 +947,8 @@ grain control over the recoding operation themselves.
 
           recode -v BEFORE..AFTER < /dev/null
 
-     also using the fact that, in `recode', an empty input file produces
-     an empty output file.
+     using the fact that, in `recode', an empty input file produces an
+     empty output file.
 
 `-x CHARSET'
 `--ignore=CHARSET'
@@ -951,7 +956,7 @@ grain control over the recoding operation themselves.
      the specified CHARSET, so disabling any single step using this
      charset as a start or end point.  This may be used when the user
      wants to force `recode' into using an alternate recoding path (yet
-     using chained requests offers a finer control, *note Requests::.).
+     using chained requests offers a finer control, *note Requests::).
 
      CHARSET may be abbreviated to any unambiguous prefix.
 
@@ -994,7 +999,7 @@ Reversibility issues
 `--silent'
      This option has the sole purpose of inhibiting warning messages
      about irreversible recodings, and other such diagnostics.  It has
-     no other effect, in particular, it does *not* prevent recodings to
+     no other effect, in particular, it does _not_ prevent recodings to
      be aborted or `recode' to return a non-zero exit status when
      irreversible recodings are met.
 
@@ -1012,13 +1017,13 @@ Reversibility issues
      of counter-measure.
 
      Using `-s' without `-f' might render the `recode' program very
-     susceptible to the slighest file abnormalities.  Despite it might
-     be irritating to some users, such paranoia is sometimes wanted and
-     useful.
+     susceptible to the slighest file abnormalities.  Despite the fact
+     that it might be irritating to some users, such paranoia is
+     sometimes wanted and useful.
 
-   Even if `recode' tries hard at keeping the recodings reversible, you
+   Even if `recode' tries hard to keep the recodings reversible, you
 should not develop an unconditional confidence in its ability to do so.
-You *ought* to keep only reasonable expectations about reverse
+You _ought_ to keep only reasonable expectations about reverse
 recodings.  In particular, consider:
 
    * Most transformations are fully reversible for all inputs, but lose
@@ -1069,7 +1074,7 @@ section sign, which is 167 in `Latin-1'.  `recode' cannot reciprocate
 short permutation loop.
 
    As a consequence of this map filling, `recode' may sometimes produce
-*funny* characters.  They may look annoying, they are nevertheless
+_funny_ characters.  They may look annoying, they are nevertheless
 helpful when one changes his (her) mind and wants to revert to the prior
 recoding.  If you cannot stand these, use option `-s', which asks for a
 very strict recoding.
@@ -1078,44 +1083,44 @@ very strict recoding.
 some users wrongly interpreted as bugs.  Here are two examples.
 
   1. In some cases, `recode' seems to copy a file without recoding it.
-     But in fact, it does.  Consider you requested:
+     But in fact, it does.  Consider a request:
 
           recode l1..us < File-Latin1 > File-ASCII
           cmp File-Latin1 File-ASCII
 
      then `cmp' will not report any difference.  This is quite normal.
-     Latin-1 gets correctly recoded to ASCII for charsets commonalities
-     (which are the first 128 characters, in this case).  The remaining
-     last 128 Latin-1 characters have no ASCII correspondent.  Instead
-     of losing them, recode elects to map them to unspecified
-     characters of ASCII, so making the recoding reversible.  The
-     simplest way of achieving this is merely to keep those last 128
-     characters unchanged.  The overall effect is copying the file
-     verbatim.
+     `Latin-1' gets correctly recoded to ASCII for charsets
+     commonalities (which are the first 128 characters, in this case).
+     The remaining last 128 `Latin-1' characters have no ASCII
+     correspondent.  Instead of losing them, `recode' elects to map
+     them to unspecified characters of ASCII, so making the recoding
+     reversible.  The simplest way of achieving this is merely to keep
+     those last 128 characters unchanged.  The overall effect is
+     copying the file verbatim.
 
      If you feel this behaviour is too generous and if you do not wish
      to care about reversibility, simply use option `-s'.  By doing so,
-     `recode' will strictly map only those Latin-1 characters which have
-     an ASCII equivalent, and will merely drop those which do not.
+     `recode' will strictly map only those `Latin-1' characters which
+     have an ASCII equivalent, and will merely drop those which do not.
      Then, there is more chance that you will observe a difference
      between the input and the output file.
 
   2. Recoding the wrong way could sometimes give the false impression
-     that recoding has *almost* been done properly.  Consider you
-     request:
+     that recoding has _almost_ been done properly.  Consider the
+     requests:
 
           recode 437..l1 < File-Latin1 > Temp1
           recode 437..l1 < Temp1 > Temp2
 
      so declaring wrongly `File-Latin1' to be an IBM-PC file, and
-     recoding to Latin1.  This is surely ill defined and not meaningful.
-     Yet, if you repeat this step a second time, you might notice that
-     many (not all) characters in `Temp2' are identical to those in
-     `File-Latin1'.  A few people try to discover how `recode' works by
-     experimenting a little at random, rather than reading and
-     understanding the documentation; such results are surely confusing,
-     as they provide a feel to those people that they understood
-     something.
+     recoding to `Latin-1'.  This is surely ill defined and not
+     meaningful.  Yet, if you repeat this step a second time, you might
+     notice that many (not all) characters in `Temp2' are identical to
+     those in `File-Latin1'.  Sometimes, people try to discover how
+     `recode' works by experimenting a little at random, rather than
+     reading and understanding the documentation; results such as this
+     are surely confusing, as they provide those people with a false
+     feeling that they understood something.
 
      Reversible codings have this property that, if applied several
      times in the same direction, they will eventually bring any
@@ -1129,8 +1134,7 @@ some users wrongly interpreted as bugs.  Here are two examples.
      end, recoding six times in the same direction would recover all
      characters in cycles of length 1, 2, 3 or 6.
 
-
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) There are still some cases of ambiguous output which are rather
 difficult to detect, and for which the protection is not active.

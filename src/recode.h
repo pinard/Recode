@@ -55,6 +55,10 @@ enum recode_programming_language
 
 /* Function prototypes.  */
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*--------------------------------.
 | Recode library at OUTER level.  |
 `--------------------------------*/
@@ -109,3 +113,7 @@ bool recode_delete_task PARAMS ((RECODE_TASK));
 bool recode_perform_task PARAMS ((RECODE_TASK));
 /* FILE *recode_filter_open PARAMS ((RECODE_TASK, FILE *)); */
 /* bool recode_filter_close PARAMS ((RECODE_TASK)); */
+
+#ifdef __cplusplus
+}
+#endif

@@ -1,6 +1,39 @@
-1999-05-31  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-19  François Pinard  <pinard@iro.umontreal.ca>
 
-	* Makefile.am:
+	* names.m4: Adjusted for vietnamese charsets.
+
+1999-12-15  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (clean-local): Get rid of at-check-line, stderr,
+	stdout, input and output.
+
+1999-12-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* bigauto.sh: Protect against locale.
+
+1999-12-11  Eli Zaretskii  <eliz@is.elta.co.il>
+
+	* suite.m4: Add Latin-1 coding tag.
+	* atgeneral.m4: Use `diff' over `cmp' for DOSWIN.
+	* african.m4, base64.m4, dumps.m4, utf7.m4: Make the test suite
+	less Unix-chauvinist, so it could run on DOS/Windows in the DJGPP
+	environment.
+
+1999-11-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* atgeneral.m4: Increase the verbosity of verbose option.  Better
+	protect real exit status.  Add capability to ignore stdout or stderr.
+	Rewrite AT_CHECK so it is more legible.  Define and use AT_CASE.
+	Reported by Akim Demaille.
+
+1999-06-02  François Pinard  <pinard@iro.umontreal.ca>
+
+	* atgeneral.m4 (at_usage): Typo.
+
+1999-06-01  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (check-local): Do not warn for installed library, as
+	we now use a newer and better libtool.
 
 1999-04-02  François Pinard  <pinard@iro.umontreal.ca>
 

@@ -1,0 +1,24 @@
+A new pretest for the `recode' program and library is now available as:
+
+   http://www.iro.umontreal.ca/contrib/recode/recode-3.5a.tar.gz
+
+This is beta status software.  You are invited to use the mailing list
+mailto:recode-forum@iro.umontreal.ca, but you could also write to me either
+at mailto:recode-bugs@iro.umontreal.ca or mailto:pinard@iro.umontreal.ca.
+
+Most pretesters may skip this pretest, which is more a snapshot to help
+communication with some collaborators on specific matters.  There will
+be other pretests before 3.6 goes out.  A few reported bugs related to
+portability have been addressed.  In this snapshot, many matters are still
+pending.  I usually send a letter to a submitter once his/her report has
+been acted upon, you know if I replied to yours! :-)
+
+This pretest contains many changes in the installation engineering, first
+by using newer Autoconf, Automake, Libtool, Help2man, and such things,
+but also by using an experimental Makefile scheme for `gettext' matters.
+A few internal Perl or awk scripts have been rewritten into Python.
+
+Bugs have been corrected, and especially the following ones:
+- HTML with `-d' was spuriously repeating part of the input into the output.
+- Base64 decoding was uselessly requiring `-f' to complete, in many cases.
+- The validation suite should now work in DJGPP/DOSWIN environments.

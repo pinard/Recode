@@ -10,158 +10,6 @@ dnl but WITHOUT ANY WARRANTY, to the extent permitted by law; without
 dnl even the implied warranty of MERCHANTABILITY or FITNESS FOR A
 dnl PARTICULAR PURPOSE.
 
-# Like AC_CONFIG_HEADER, but automatically create stamp file.
-
-AC_DEFUN(AM_CONFIG_HEADER,
-[AC_PREREQ([2.12])
-AC_CONFIG_HEADER([$1])
-dnl When config.status generates a header, we must update the stamp-h file.
-dnl This file resides in the same directory as the config header
-dnl that is generated.  We must strip everything past the first ":",
-dnl and everything past the last "/".
-AC_OUTPUT_COMMANDS(changequote(<<,>>)dnl
-ifelse(patsubst(<<$1>>, <<[^ ]>>, <<>>), <<>>,
-<<test -z "<<$>>CONFIG_HEADERS" || echo timestamp > patsubst(<<$1>>, <<^\([^:]*/\)?.*>>, <<\1>>)stamp-h<<>>dnl>>,
-<<am_indx=1
-for am_file in <<$1>>; do
-  case " <<$>>CONFIG_HEADERS " in
-  *" <<$>>am_file "*<<)>>
-    echo timestamp > `echo <<$>>am_file | sed -e 's%:.*%%' -e 's%[^/]*$%%'`stamp-h$am_indx
-    ;;
-  esac
-  am_indx=`expr "<<$>>am_indx" + 1`
-done<<>>dnl>>)
-changequote([,]))])
-
-# Do all the work for Automake.  This macro actually does too much --
-# some checks are only needed if your package does certain things.
-# But this isn't really a big deal.
-
-# serial 1
-
-dnl Usage:
-dnl AM_INIT_AUTOMAKE(package,version, [no-define])
-
-AC_DEFUN(AM_INIT_AUTOMAKE,
-[AC_REQUIRE([AC_PROG_INSTALL])
-PACKAGE=[$1]
-AC_SUBST(PACKAGE)
-VERSION=[$2]
-AC_SUBST(VERSION)
-dnl test to see if srcdir already configured
-if test "`cd $srcdir && pwd`" != "`pwd`" && test -f $srcdir/config.status; then
-  AC_MSG_ERROR([source directory already configured; run "make distclean" there first])
-fi
-ifelse([$3],,
-AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
-AC_DEFINE_UNQUOTED(VERSION, "$VERSION", [Version number of package]))
-AC_REQUIRE([AM_SANITY_CHECK])
-AC_REQUIRE([AC_ARG_PROGRAM])
-dnl FIXME This is truly gross.
-missing_dir=`cd $ac_aux_dir && pwd`
-AM_MISSING_PROG(ACLOCAL, aclocal, $missing_dir)
-AM_MISSING_PROG(AUTOCONF, autoconf, $missing_dir)
-AM_MISSING_PROG(AUTOMAKE, automake, $missing_dir)
-AM_MISSING_PROG(AUTOHEADER, autoheader, $missing_dir)
-AM_MISSING_PROG(MAKEINFO, makeinfo, $missing_dir)
-AC_REQUIRE([AC_PROG_MAKE_SET])])
-
-#
-# Check to make sure that the build environment is sane.
-#
-
-AC_DEFUN(AM_SANITY_CHECK,
-[AC_MSG_CHECKING([whether build environment is sane])
-# Just in case
-sleep 1
-echo timestamp > conftestfile
-# Do `set' in a subshell so we don't clobber the current shell's
-# arguments.  Must try -L first in case configure is actually a
-# symlink; some systems play weird games with the mod time of symlinks
-# (eg FreeBSD returns the mod time of the symlink's containing
-# directory).
-if (
-   set X `ls -Lt $srcdir/configure conftestfile 2> /dev/null`
-   if test "[$]*" = "X"; then
-      # -L didn't work.
-      set X `ls -t $srcdir/configure conftestfile`
-   fi
-   if test "[$]*" != "X $srcdir/configure conftestfile" \
-      && test "[$]*" != "X conftestfile $srcdir/configure"; then
-
-      # If neither matched, then we have a broken ls.  This can happen
-      # if, for instance, CONFIG_SHELL is bash and it inherits a
-      # broken ls alias from the environment.  This has actually
-      # happened.  Such a system could not be considered "sane".
-      AC_MSG_ERROR([ls -t appears to fail.  Make sure there is not a broken
-alias in your environment])
-   fi
-
-   test "[$]2" = conftestfile
-   )
-then
-   # Ok.
-   :
-else
-   AC_MSG_ERROR([newly created file is older than distributed files!
-Check your system clock])
-fi
-rm -f conftest*
-AC_MSG_RESULT(yes)])
-
-dnl AM_MISSING_PROG(NAME, PROGRAM, DIRECTORY)
-dnl The program must properly implement --version.
-AC_DEFUN(AM_MISSING_PROG,
-[AC_MSG_CHECKING(for working $2)
-# Run test in a subshell; some versions of sh will print an error if
-# an executable is not found, even if stderr is redirected.
-# Redirect stdin to placate older versions of autoconf.  Sigh.
-if ($2 --version) < /dev/null > /dev/null 2>&1; then
-   $1=$2
-   AC_MSG_RESULT(found)
-else
-   $1="$3/missing $2"
-   AC_MSG_RESULT(missing)
-fi
-AC_SUBST($1)])
-
-
-# Single argument says where are built sources to test, relative to the
-# built test directory.  Maybe omitted if the same (flat distribution).
-
-AC_DEFUN(AT_CONFIG,
-[AT_TESTPATH=ifelse($1, , ., $1)
-AC_SUBST(AT_TESTPATH)
-fp_PROG_ECHO
-])
-
-
-# Once this macro is called, you may output with no echo in a Makefile or
-# script using:  echo @ECHO_N@ "STRING_TO_OUTPUT@ECHO_C@".
-
-AC_DEFUN(fp_PROG_ECHO,
-[AC_CACHE_CHECK(how to suppress newlines using echo, fp_cv_prog_echo_nonl,
-[if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null; then
-  if (echo -n testing; echo 1,2,3) | sed s/-n/xn/ | grep xn >/dev/null; then
-    fp_cv_prog_echo_nonl=no
-  else
-    fp_cv_prog_echo_nonl=option
-  fi
-else
-  fp_cv_prog_echo_nonl=escape
-fi
-])
-test $fp_cv_prog_echo_nonl = no \
-  && echo 2>&1 "WARNING: \`echo' not powerful enough for \`make check'"
-case $fp_cv_prog_echo_nonl in
-  no) ECHO_N= ECHO_C= ;;
-  option) ECHO_N=-n ECHO_C= ;;
-  escape) ECHO_N= ECHO_C='\c' ;;
-esac
-AC_SUBST(ECHO_N)dnl
-AC_SUBST(ECHO_C)dnl
-])
-
 
 # serial 40 AC_PROG_LIBTOOL
 AC_DEFUN(AC_PROG_LIBTOOL,
@@ -176,7 +24,7 @@ LD="$LD" LDFLAGS="$LDFLAGS" LIBS="$LIBS" \
 LN_S="$LN_S" NM="$NM" RANLIB="$RANLIB" \
 DLLTOOL="$DLLTOOL" AS="$AS" OBJDUMP="$OBJDUMP" \
 ${CONFIG_SHELL-/bin/sh} $ac_aux_dir/ltconfig --no-reexec \
-$libtool_flags --no-verify $ac_aux_dir/ltmain.sh $host \
+$libtool_flags --no-verify $ac_aux_dir/ltmain.sh $lt_target \
 || AC_MSG_ERROR([libtool configure failed])
 
 # Reload cache, that may have been modified by ltconfig
@@ -208,6 +56,11 @@ AC_REQUIRE([AC_PROG_NM])dnl
 AC_REQUIRE([AC_PROG_LN_S])dnl
 dnl
 
+case "$target" in
+NONE) lt_target="$host" ;;
+*) lt_target="$target" ;;
+esac
+
 # Check for any special flags to pass to ltconfig.
 libtool_flags="--cache-file=$cache_file"
 test "$enable_shared" = no && libtool_flags="$libtool_flags --disable-shared"
@@ -226,7 +79,7 @@ test x"$silent" = xyes && libtool_flags="$libtool_flags --silent"
 
 # Some flags need to be propagated to the compiler or linker for good
 # libtool support.
-case "$host" in
+case "$lt_target" in
 *-*-irix6*)
   # Find out which ABI we are using.
   echo '[#]line __oline__ "configure"' > conftest.$ac_ext
@@ -442,7 +295,6 @@ else
   AC_MSG_RESULT(no)
 fi
 test -z "$LD" && AC_MSG_ERROR([no acceptable ld found in \$PATH])
-AC_SUBST(LD)
 AC_PROG_LD_GNU
 ])
 
@@ -488,14 +340,13 @@ else
 fi])
 NM="$ac_cv_path_NM"
 AC_MSG_RESULT([$NM])
-AC_SUBST(NM)
 ])
 
 # AC_CHECK_LIBM - check for math library
 AC_DEFUN(AC_CHECK_LIBM,
 [AC_REQUIRE([AC_CANONICAL_HOST])dnl
 LIBM=
-case "$host" in
+case "$lt_target" in
 *-*-beos* | *-*-cygwin*)
   # These system don't have libm
   ;;
@@ -567,6 +418,158 @@ AC_DEFUN(AM_PROG_NM, [indir([AC_PROG_NM])])dnl
 
 dnl This is just to silence aclocal about the macro not being used
 ifelse([AC_DISABLE_FAST_INSTALL])dnl
+
+# Like AC_CONFIG_HEADER, but automatically create stamp file.
+
+AC_DEFUN(AM_CONFIG_HEADER,
+[AC_PREREQ([2.12])
+AC_CONFIG_HEADER([$1])
+dnl When config.status generates a header, we must update the stamp-h file.
+dnl This file resides in the same directory as the config header
+dnl that is generated.  We must strip everything past the first ":",
+dnl and everything past the last "/".
+AC_OUTPUT_COMMANDS(changequote(<<,>>)dnl
+ifelse(patsubst(<<$1>>, <<[^ ]>>, <<>>), <<>>,
+<<test -z "<<$>>CONFIG_HEADERS" || echo timestamp > patsubst(<<$1>>, <<^\([^:]*/\)?.*>>, <<\1>>)stamp-h<<>>dnl>>,
+<<am_indx=1
+for am_file in <<$1>>; do
+  case " <<$>>CONFIG_HEADERS " in
+  *" <<$>>am_file "*<<)>>
+    echo timestamp > `echo <<$>>am_file | sed -e 's%:.*%%' -e 's%[^/]*$%%'`stamp-h$am_indx
+    ;;
+  esac
+  am_indx=`expr "<<$>>am_indx" + 1`
+done<<>>dnl>>)
+changequote([,]))])
+
+# Do all the work for Automake.  This macro actually does too much --
+# some checks are only needed if your package does certain things.
+# But this isn't really a big deal.
+
+# serial 1
+
+dnl Usage:
+dnl AM_INIT_AUTOMAKE(package,version, [no-define])
+
+AC_DEFUN(AM_INIT_AUTOMAKE,
+[AC_REQUIRE([AC_PROG_INSTALL])
+PACKAGE=[$1]
+AC_SUBST(PACKAGE)
+VERSION=[$2]
+AC_SUBST(VERSION)
+dnl test to see if srcdir already configured
+if test "`cd $srcdir && pwd`" != "`pwd`" && test -f $srcdir/config.status; then
+  AC_MSG_ERROR([source directory already configured; run "make distclean" there first])
+fi
+ifelse([$3],,
+AC_DEFINE_UNQUOTED(PACKAGE, "$PACKAGE", [Name of package])
+AC_DEFINE_UNQUOTED(VERSION, "$VERSION", [Version number of package]))
+AC_REQUIRE([AM_SANITY_CHECK])
+AC_REQUIRE([AC_ARG_PROGRAM])
+dnl FIXME This is truly gross.
+missing_dir=`cd $ac_aux_dir && pwd`
+AM_MISSING_PROG(ACLOCAL, aclocal, $missing_dir)
+AM_MISSING_PROG(AUTOCONF, autoconf, $missing_dir)
+AM_MISSING_PROG(AUTOMAKE, automake, $missing_dir)
+AM_MISSING_PROG(AUTOHEADER, autoheader, $missing_dir)
+AM_MISSING_PROG(MAKEINFO, makeinfo, $missing_dir)
+AC_REQUIRE([AC_PROG_MAKE_SET])])
+
+#
+# Check to make sure that the build environment is sane.
+#
+
+AC_DEFUN(AM_SANITY_CHECK,
+[AC_MSG_CHECKING([whether build environment is sane])
+# Just in case
+sleep 1
+echo timestamp > conftestfile
+# Do `set' in a subshell so we don't clobber the current shell's
+# arguments.  Must try -L first in case configure is actually a
+# symlink; some systems play weird games with the mod time of symlinks
+# (eg FreeBSD returns the mod time of the symlink's containing
+# directory).
+if (
+   set X `ls -Lt $srcdir/configure conftestfile 2> /dev/null`
+   if test "[$]*" = "X"; then
+      # -L didn't work.
+      set X `ls -t $srcdir/configure conftestfile`
+   fi
+   if test "[$]*" != "X $srcdir/configure conftestfile" \
+      && test "[$]*" != "X conftestfile $srcdir/configure"; then
+
+      # If neither matched, then we have a broken ls.  This can happen
+      # if, for instance, CONFIG_SHELL is bash and it inherits a
+      # broken ls alias from the environment.  This has actually
+      # happened.  Such a system could not be considered "sane".
+      AC_MSG_ERROR([ls -t appears to fail.  Make sure there is not a broken
+alias in your environment])
+   fi
+
+   test "[$]2" = conftestfile
+   )
+then
+   # Ok.
+   :
+else
+   AC_MSG_ERROR([newly created file is older than distributed files!
+Check your system clock])
+fi
+rm -f conftest*
+AC_MSG_RESULT(yes)])
+
+dnl AM_MISSING_PROG(NAME, PROGRAM, DIRECTORY)
+dnl The program must properly implement --version.
+AC_DEFUN(AM_MISSING_PROG,
+[AC_MSG_CHECKING(for working $2)
+# Run test in a subshell; some versions of sh will print an error if
+# an executable is not found, even if stderr is redirected.
+# Redirect stdin to placate older versions of autoconf.  Sigh.
+if ($2 --version) < /dev/null > /dev/null 2>&1; then
+   $1=$2
+   AC_MSG_RESULT(found)
+else
+   $1="$3/missing $2"
+   AC_MSG_RESULT(missing)
+fi
+AC_SUBST($1)])
+
+
+# Single argument says where are built sources to test, relative to the
+# built test directory.  Maybe omitted if the same (flat distribution).
+
+AC_DEFUN(AT_CONFIG,
+[AT_TESTPATH=ifelse($1, , ., $1)
+AC_SUBST(AT_TESTPATH)
+fp_PROG_ECHO
+])
+
+
+# Once this macro is called, you may output with no echo in a Makefile or
+# script using:  echo @ECHO_N@ "STRING_TO_OUTPUT@ECHO_C@".
+
+AC_DEFUN(fp_PROG_ECHO,
+[AC_CACHE_CHECK(how to suppress newlines using echo, fp_cv_prog_echo_nonl,
+[if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null; then
+  if (echo -n testing; echo 1,2,3) | sed s/-n/xn/ | grep xn >/dev/null; then
+    fp_cv_prog_echo_nonl=no
+  else
+    fp_cv_prog_echo_nonl=option
+  fi
+else
+  fp_cv_prog_echo_nonl=escape
+fi
+])
+test $fp_cv_prog_echo_nonl = no \
+  && echo 2>&1 "WARNING: \`echo' not powerful enough for \`make check'"
+case $fp_cv_prog_echo_nonl in
+  no) ECHO_N= ECHO_C= ;;
+  option) ECHO_N=-n ECHO_C= ;;
+  escape) ECHO_N= ECHO_C='\c' ;;
+esac
+AC_SUBST(ECHO_N)dnl
+AC_SUBST(ECHO_C)dnl
+])
 
 
 # serial 1
@@ -687,20 +690,6 @@ AC_CHECK_PROGS(LEX, flex lex, "$missing_dir/missing flex")
 AC_PROG_LEX
 AC_DECL_YYTEXT])
 
-
-AC_DEFUN(fp_OS_MICROSOFT,
-[AC_CACHE_CHECK([for MSDOS, Win95 or WinNT], fp_cv_os_microsoft,
-[if test -n "$COMSPEC"; then
-  # MSDOS or Win95
-   fp_cv_os_microsoft=yes
-elif test -n "$ComSpec"; then
-  # WinNT
-  fp_cv_os_microsoft=yes
-else
-  fp_cv_os_microsoft=no
-fi
-])])
-
 #serial 1
 
 dnl From Jim Meyering.
@@ -792,6 +781,20 @@ AC_DEFUN(jm_FUNC_REALLOC,
 ])
 
 
+AC_DEFUN(fp_OS_MICROSOFT,
+[AC_CACHE_CHECK([for MSDOS, Win95 or WinNT], fp_cv_os_microsoft,
+[if test -n "$COMSPEC"; then
+  # MSDOS or Win95
+   fp_cv_os_microsoft=yes
+elif test -n "$ComSpec"; then
+  # WinNT
+  fp_cv_os_microsoft=yes
+else
+  fp_cv_os_microsoft=no
+fi
+])])
+
+
 # serial 1
 
 AC_DEFUN(AM_WITH_DMALLOC,
@@ -809,6 +812,138 @@ else
   AC_MSG_RESULT(no)
 fi], [AC_MSG_RESULT(no)])
 ])
+
+# Select gettext and choose translations to install.	-*- shell-script -*-
+# François Pinard <pinard@iro.umontreal.ca>, 1998.
+
+# Here is a check list about how one could use this macro.
+# - In the build directory, execute `make distclean'.
+# - Rename `po/' to `i18n/'.
+# - Recursively delete directory `intl/'.
+# - Add the following files:
+#    . `i18n/Makefile.am'
+#    . `m4/gettext.m4'
+#    . `lib/gettext.c'
+#    . `lib/gettext.h'.
+# - In top level `configure.in':
+#    . use `fp_WITH_GETTEXT'.
+#    . delete `AM_GNU_GETTEXT' and any `AC_LINK_FILES' for $nls variables.
+#    . add `i18n/Makefile' to `AC_OUTPUT'.
+#    . delete `intl/Makefile' and `po/Makefile.in' from `AC_OUTPUT'.
+# - In top level `Makefile.am':
+#    . add `i18n' in SUBDIRS, and remove `intl' and `po'.
+#    . define `POTFILES' (peek at previous `i18n/POTFILES.in).
+#    . add `$(srcdir)/stamp-pot' to `all-local'.
+#    . add rule for `$(srcdir)/stamp-pot'.
+# - In top level `acconfig.h':
+#    . document `HAVE_DCGETTEXT' and `LOCALEDIR'.
+#    . delete documentation for `HAVE_CATGETS'.
+# - In `lib/Makefile.am':
+#    . add `gettext.c' to `EXTRA_DIST'.
+#    . add `gettext.h' to `noinstl_HEADERS'.
+#    . add definitions for `localdir' and `aliaspath'.
+#    . add special rules for `gettext.o' and `gettext._o'.
+# - In `m4/Makefile.am':
+#    . add `gettext.m4' to `EXTRA_DIST'.
+# - In `src/Makefile.am':
+#    . delete `-I/..intl' from `INCLUDES'.
+#    . delete `@INTLLIBS@' from `LDADD'.
+#    . delete `localedir' and its references.
+# - Clean up directory `i18n/':
+#    . delete `Makefile.in.in' and `POTFILES.in'.
+#    . delete all `*.gmo' files, `cat-id-tbl.c' and `stamp-cat-id'.
+# - In the top level distribution directory:
+#    . run `aclocal -I m4'.
+#    . run `autoreconf'.
+# - In the build directory:
+#    . run `$top_srcdir/configure'.
+#    . run `make check'.
+
+AC_DEFUN(fp_WITH_GETTEXT, [
+
+  AC_MSG_CHECKING(whether NLS is wanted)
+  AC_ARG_ENABLE(nls,
+    [  --disable-nls           disallow Native Language Support],
+    enable_nls=$enableval, enable_nls=yes)
+  AC_MSG_RESULT($enable_nls)
+  use_nls=$enable_nls
+  AM_CONDITIONAL(USE_NLS, test $use_nls = yes)
+
+  if test $enable_nls = yes; then
+    AC_DEFINE(ENABLE_NLS)
+
+    AC_ARG_WITH(catgets,
+      [  --with-catgets          say that catgets is not supported],
+      [AC_MSG_WARN([catgets not supported, --with-catgets ignored])])
+
+    AC_CHECK_FUNCS(gettext)
+    AC_CHECK_LIB(intl, gettext, :)
+    if test $ac_cv_lib_intl_gettext$ac_cv_func_gettext != nono; then
+      AC_MSG_CHECKING(whether the included gettext is preferred)
+      AC_ARG_WITH(included-gettext,
+	[  --without-included-gettext avoid our provided version of gettext],
+	with_included_gettext=$withval, with_included_gettext=yes)
+      AC_MSG_RESULT($with_included_gettext)
+      if test $with_included_gettext$ac_cv_func_gettext = nono; then
+        LIBS="$LIBS -lintl"
+      fi
+    else
+      with_included_gettext=yes
+    fi
+    if test $with_included_gettext = yes; then
+      LIBOBJS="$LIBOBJS gettext.o"
+      AC_DEFINE(HAVE_GETTEXT)
+      AC_DEFINE(HAVE_DCGETTEXT)
+    else
+      AC_CHECK_HEADERS(libintl.h)
+      AC_CHECK_FUNCS(dcgettext gettext)
+    fi
+
+    AC_CHECK_HEADERS(locale.h)
+    AC_CHECK_FUNCS(getcwd setlocale stpcpy)
+    AM_LC_MESSAGES
+
+    if test -z "$ALL_LINGUAS"; then
+      AC_MSG_WARN(This package does not install translations yet.)
+    else
+      ac_items="$ALL_LINGUAS"
+      for ac_item in $ac_items; do
+	ALL_POFILES="$ALL_POFILES $ac_item.po"
+	ALL_MOFILES="$ALL_MOFILES $ac_item.mo"
+      done
+    fi
+    AC_SUBST(ALL_LINGUAS)
+    AC_SUBST(ALL_POFILES)
+    AC_SUBST(ALL_MOFILES)
+
+    AC_MSG_CHECKING(which translations to install)
+    if test -z "$LINGUAS"; then
+      ac_print="$ALL_LINGUAS"
+      MOFILES="$ALL_MOFILES"
+    else
+      ac_items="$LINGUAS"
+      for ac_item in $ac_items; do
+	case "$ALL_LINGUAS" in
+	  *$ac_item*)
+	    ac_print="$ac_print $ac_item"
+	    MOFILES="$MOFILES $ac_item.mo"
+	    ;;
+	esac
+      done
+    fi
+    AC_SUBST(MOFILES)
+    if test -z "$ac_print"; then
+      AC_MSG_RESULT(none)
+    else
+      AC_MSG_RESULT($ac_print)
+    fi
+
+    if test "x$prefix" = xNONE; then
+      AC_DEFINE_UNQUOTED(LOCALEDIR, "$ac_default_prefix/share/locale")
+    else
+      AC_DEFINE_UNQUOTED(LOCALEDIR, "$prefix/share/locale")
+    fi
+  fi])
 
 # Macro to add for using GNU gettext.
 # Ulrich Drepper <drepper@cygnus.com>, 1995.
@@ -1193,4 +1328,17 @@ AC_DEFUN(AM_LC_MESSAGES,
       AC_DEFINE(HAVE_LC_MESSAGES)
     fi
   fi])
+
+# Define a conditional.
+
+AC_DEFUN(AM_CONDITIONAL,
+[AC_SUBST($1_TRUE)
+AC_SUBST($1_FALSE)
+if $2; then
+  $1_TRUE=
+  $1_FALSE='#'
+else
+  $1_TRUE='#'
+  $1_FALSE=
+fi])
 

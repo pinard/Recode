@@ -1,6 +1,7 @@
-This is Info file recode.info, produced by Makeinfo version 1.68 from
-the input file recode.texi.
+This is recode.info, produced by makeinfo version 3.12n from
+recode.texi.
 
+INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
@@ -38,10 +39,10 @@ Markus Kuhn writes:
      `UTF-8' is an `ASCII' compatible multi-byte encoding of the
      ISO 10646 universal character set (`UCS').  `UCS' is a 31-bit
      superset of all other character set standards.  The first 256
-     characters of `UCS' are identical to those of ISO 8859-1 (Latin-1).
-     The `UCS-2' encoding of UCS is a sequence of bigendian 16-bit
-     words, the `UCS-4' encoding is a sequence of bigendian 32-bit
-     words.  The `UCS-2' subset of ISO 10646 is also known as
+     characters of `UCS' are identical to those of ISO 8859-1
+     (Latin-1).  The `UCS-2' encoding of UCS is a sequence of bigendian
+     16-bit words, the `UCS-4' encoding is a sequence of bigendian
+     32-bit words.  The `UCS-2' subset of ISO 10646 is also known as
      "Unicode".  As both `UCS-2' and `UCS-4' require heavy
      modifications to traditional `ASCII' oriented system designs (e.g.
      Unix), the `UTF-8' encoding has been designed for these
@@ -60,12 +61,12 @@ Markus Kuhn writes:
    `UTF-8' is the most common external surface of `UCS', each character
 uses from one to six bytes, and is able to encode all 2^31 characters
 of the `UCS'.  It is implemented as a charset, with the following
-properties.
+properties:
 
    * Strict 7-bit `ASCII' is completely invariant under `UTF-8', and
      those are the only one-byte characters.  `UCS' values and `ASCII'
      values coincide.  No multi-byte characters ever contain bytes less
-     than 128.  `NUL' *is* `NUL'.  A multi-byte character always starts
+     than 128.  `NUL' _is_ `NUL'.  A multi-byte character always starts
      with a byte of 192 or more, and is always followed by a number of
      bytes between 128 to 191.  That means that you may read at random
      on disk or memory, and easily discover the start of the current,
@@ -85,7 +86,7 @@ properties.
      bits of all remaining bytes (so keeping 6 bits per byte for
      those), the remaining bits concatenated are the UCS value.
 
-These properties also have a few nice consequences.
+These properties also have a few nice consequences:
 
    * Conversion to/from values is algorithmically simple, and
      reasonably speedy.
@@ -93,7 +94,7 @@ These properties also have a few nice consequences.
    * A sequence of N bytes can hold characters needing up to 2 + 5N
      bits in their `UCS' representation.  Here, N is a number between 1
      and 6.  So, `UTF-8' is most economical when mapping ASCII (1 byte),
-     then `UCS-2' (1 to 3 bytes), then `UCS-4' (1 to 6 bytes).
+     followed by `UCS-2' (1 to 3 bytes) and `UCS-4' (1 to 6 bytes).
 
    * The lexicographic sorting order of `UCS' strings is preserved.
 
@@ -121,7 +122,7 @@ Universal Transformation Format, 16 bits
 character using either two or four bytes.  It is usable for the subset
 defined by the first million characters (17 * 2^16) of `UCS'.
 
-   Martin J. D"urst writes (to `comp.std.internat', on 1995-03-28):
+   Martin J. Du"rst writes (to `comp.std.internat', on 1995-03-28):
 
      `UTF-16' is another method that reserves two times 1024 codepoints
      in Unicode and uses them to index around one million additional
@@ -175,31 +176,31 @@ conversion may be much, much bigger than the input file.
 rather than a surface.  This is surely debatable.  The current
 implementation allows for dumping charsets other than `UCS-2'.  For
 example, the command `recode l2..full < INPUT' implies a necessary
-conversion from `Latin-2' to `UCS-2', as `full-dump' is only connected
-out from `UCS-2'.  In such cases, `recode' does not display the
-original `Latin-2' codes in the dump, only the corresponding `UCS-2'
-values.  To give a simpler example, the command
+conversion from `Latin-2' to `UCS-2', as `dump-with-names' is only
+connected out from `UCS-2'.  In such cases, `recode' does not display
+the original `Latin-2' codes in the dump, only the corresponding
+`UCS-2' values.  To give a simpler example, the command
 
      echo 'Hello, world!' | recode us..dump
 
-produces the following output.
+produces the following output:
 
-     Mne   UCS2   Description
+     UCS2   Mne   Description
      
-     H     0048   latin capital letter h
-     e     0065   latin small letter e
-     l     006C   latin small letter l
-     l     006C   latin small letter l
-     o     006F   latin small letter o
-     ,     002C   comma
-     SP    0020   space
-     w     0077   latin small letter w
-     o     006F   latin small letter o
-     r     0072   latin small letter r
-     l     006C   latin small letter l
-     d     0064   latin small letter d
-     !     0021   exclamation mark
-     LF    000A   line feed (lf)
+     0048   H     latin capital letter h
+     0065   e     latin small letter e
+     006C   l     latin small letter l
+     006C   l     latin small letter l
+     006F   o     latin small letter o
+     002C   ,     comma
+     0020   SP    space
+     0077   w     latin small letter w
+     006F   o     latin small letter o
+     0072   r     latin small letter r
+     006C   l     latin small letter l
+     0064   d     latin small letter d
+     0021   !     exclamation mark
+     000A   LF    line feed (lf)
 
    The descriptive comment is given in English and `ASCII', yet if the
 English description is not available but a French one is, then the
@@ -247,9 +248,9 @@ library implements most of RFC 1345, however:
      `KS_C_5601-1987'.
 
    * It interprets the charset `isoir91' as `NATS-DANO' (alias
-     `iso-ir-9-1'), *not* as `JIS_C6229-1984-a' (alias `iso-ir-91').
+     `iso-ir-9-1'), _not_ as `JIS_C6229-1984-a' (alias `iso-ir-91').
      It also interprets the charset `isoir92' as `NATS-DANO-ADD' (alias
-     `iso-ir-9-2'), *not* as `JIS_C6229-1984-b' (alias `iso-ir-92').
+     `iso-ir-9-2'), _not_ as `JIS_C6229-1984-b' (alias `iso-ir-92').
      It might be better just avoiding these two alias names.
 
    Keld Simonsen <keld@dkuug.dk> did most of RFC 1345 himself, with
@@ -919,7 +920,7 @@ ASCII and some derivatives
 
 * ASCII::               Usual ASCII
 * ISO 8859::            ASCII extended by Latin Alphabets
-* ASCII-BS::            ASCII 7-bits, `BS' to overstrike
+* ASCII-BS::            ASCII 7-bits, BS to overstrike
 * flat::                ASCII without diacritics nor underline
 
 
@@ -953,8 +954,8 @@ Lasko <lasko@video.dec.com>, a long while ago:
 
      ISO Latin-1, or more completely ISO Latin Alphabet No 1, is now an
      international standard as of February 1987 (IS 8859, Part 1).  For
-     those American USEnet'rs that care, the 8-bit ASCII standard, which
-     is essentially the same code, is going through the final
+     those American USEnet'rs that care, the 8-bit ASCII standard,
+     which is essentially the same code, is going through the final
      administrative processes prior to publication.  ISO Latin-1 (IS
      8859/1) is actually one of an entire family of eight-bit one-byte
      character sets, all having ASCII on the left hand side, and with
@@ -980,7 +981,6 @@ Lasko <lasko@video.dec.com>, a long while ago:
 
         * Latin-Hebrew alphabet (right half Hebrew + symbols -
           proposed).
-
 
    The ISO Latin Alphabet 1 is available as a charset in `recode' under
 the name `Latin-1'.  In fact, it's true name is `ISO_8859-1:1987' as
@@ -1056,8 +1056,8 @@ represented by a sequence of two or three graphic characters.  The
 newline character, however, keeps its functionality and is not
 represented.
 
-   Note that charset `flat' is a terminal charset.  We can convert *to*
-`flat', but not *from* it.
+   Note that charset `flat' is a terminal charset.  We can convert _to_
+`flat', but not _from_ it.
 
 
 File: recode.info,  Node: IBM and MS,  Next: CDC,  Prev: ASCII misc,  Up: Top
@@ -1066,7 +1066,7 @@ Some IBM or Microsoft charsets
 ******************************
 
    The `recode' program provides various IBM or Microsoft code pages
-(*note Tabular::.).  An easy way to find them all at once out of the
+(*note Tabular::).  An easy way to find them all at once out of the
 `recode' program itself is through the command:
 
      recode -l | egrep -i '(CP|IBM)[0-9]'
@@ -1102,7 +1102,7 @@ variants were implemented in `recode' independently of RFC 1345:
      Elmer) relates EBCDIC to 8-bits ASCII.
 
 `EBCDIC-IBM'
-     In `recode', the `us..ebcdic-ibm' conversion is *almost* identical
+     In `recode', the `us..ebcdic-ibm' conversion is _almost_ identical
      to the GNU `dd conv=ibm' conversion.  Given the exact `dd
      conv=ibm' conversion table, `recode' once said:
 
@@ -1164,7 +1164,7 @@ All charset or aliases beginning with letters `CP' or `IBM' also have
 `CR-LF' as their implied surface.  The same is true for a purely
 numeric alias in the same family.  For example, all of `819', `CP819'
 and `IBM819' imply `CR-LF' as a surface.  Note that `ISO-8859-1' does
-*not* imply a surface, despite it shares the same tabular data as `819'.
+_not_ imply a surface, despite it shares the same tabular data as `819'.
 
    There are a few discrepancies between this `IBM-PC' charset and the
 very similar RFC 1345 charset `ibm437', which have not been analysed
@@ -1180,9 +1180,9 @@ The first command uses the charset prior to RFC 1345 introduction.
 Both methods give different recodings.  These differences are annoying,
 the fuzziness will have to be explained and settle down one day.
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
-   (1) On DOS/Windows, stock shells do not know that apostrohes quote
+   (1) On DOS/Windows, stock shells do not know that apostrophes quote
 special characters like `|', so one need to use double quotes instead
 of apostrophes.
 
@@ -1206,9 +1206,9 @@ Charsets for CDC machines
 *************************
 
    What is now `recode' evolved out, through many transformations
-really, from a set of programs which were originally written in Control
-Data Corporation's assembler (`COMPASS'), with bits in FORTRAN, and
-later, rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
+really, from a set of programs which were originally written in
+"COMPASS", Control Data Corporation's assembler, with bits in FORTRAN,
+and later rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
 fact some old CDC charsets are still supported.
 
    The `recode' author used to be familiar with CDC Scope-NOS/BE and
@@ -1233,7 +1233,7 @@ notation over Display Code already mapped to ASCII.
 
 * Display Code::        Control Data's Display Code
 * CDC-NOS::             ASCII 6/12 from NOS
-* Bang-Bang::           ASCII "bang bang"
+* Bang-Bang::           ASCII ``bang bang''
 
 
 File: recode.info,  Node: Display Code,  Next: CDC-NOS,  Prev: CDC,  Up: CDC
@@ -1277,10 +1277,10 @@ given N, in which case these two bytes are not to be interpreted as
 are to be considered as part of the end of line and not interpreted as
 `:'(1).
 
-   ---------- Footnotes ----------
+   --------- Notes en bas de page ---------
 
    (1) This convention replaced an older one saying that up to 4
-immediately preceeding *pairs* of zero bytes, going backward, are to be
+immediately preceeding _pairs_ of zero bytes, going backward, are to be
 considered as part of the end of line and not interpreted as `::'.
 
 
@@ -1292,7 +1292,7 @@ ASCII 6/12 from NOS
    This charset is available in `recode' under the name `CDC-NOS', with
 `NOS' as an acceptable alias.
 
-   This is one of the charset in use on CDC Cyber NOS systems to
+   This is one of the charsets in use on CDC Cyber NOS systems to
 represent ASCII, sometimes named "NOS 6/12" code for coding ASCII.
 This code is also known as "caret ASCII".  It is based on a six bits
 character set in which small letters and control characters are coded

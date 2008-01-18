@@ -1,7 +1,49 @@
-divert(-1)						-*- shell-script -*-
+divert(-1)						-*- Autoconf -*-
 # `m4' macros used in building test suites.
 # Copyright © 1998, 1999 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1998.
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+# This script is part of Autotest.  I, François Pinard, the author of
+# Autotest, give unlimited permission to copy, distribute and modify
+# the testing scripts that are the output of that Autotest script.
+# You need not follow the terms of the GNU General Public License when
+# using or distributing such scripts, even though portions of the text
+# of Autotest appear in them.  The GNU General Public License (GPL) does
+# govern all other use of the material that constitutes the Autotest.
+#
+# Certain portions of the Autotest source text are designed to be copied
+# (in certain cases, depending on the input) into the output of
+# Autotest.  We call these the "data" portions.  The rest of the Autotest
+# source text consists of comments plus executable code that decides which
+# of the data portions to output in any given case.  We call these
+# comments and executable code the "non-data" portions.  Autotest never
+# copies any of the non-data portions into its output.
+#
+# This special exception to the GPL applies to versions of Autotest
+# released by the Free Software Foundation.  When you make and
+# distribute a modified version of Autotest, you may extend this special
+# exception to the GPL to apply to your modified version as well, *unless*
+# your modified version has the potential to copy into its output some
+# of the text that was the non-data portion of the version that you started
+# with.  (In other words, unless your change moves or copies text from
+# the non-data portions to the data portions.)  If your modification has
+# such potential, you must delete any notice of this special exception
+# to the GPL from your modified version.
 
 changequote([, ])
 
@@ -19,6 +61,38 @@ undefine([include])
 undefine([shift])
 undefine([undefine])
 
+# AT_CASE(SWITCH, VAL1, IF-VAL1, VAL2, IF-VAL2, ..., DEFAULT)
+
+# m4 equivalent of
+# switch (SWITCH)
+# {
+#   case VAL1:
+#     IF-VAL1;
+#     break;
+#   case VAL2:
+#     IF-VAL2;
+#     break;
+#   ...
+#   default:
+#     DEFAULT;
+#     break;
+# }.
+# All the values are optional, and the macro is robust to active
+# symbols properly quoted.
+AT_DEFINE(AT_CASE,
+[ifelse([$#], 0, [],
+	[$#], 1, [],
+	[$#], 2, [$2],
+        [$1], [$2], [$3],
+        [AT_CASE([$1], AT_SHIFT(AT_SHIFT(AT_SHIFT($@))))])])
+
+
+# Use of diversions:
+#  0 - overall initialization; for each test group: skipping and cleanups;
+#  1 - for each test group: proper code, to reinsert between cleanups;
+#  2 - overall wrap up: generation of debugging scripts and statistics.
+
+
 # AT_LINE
 
 # Return the current file sans directory, a colon, and the current line.
@@ -26,11 +100,10 @@ undefine([undefine])
 AT_DEFINE(AT_LINE,
 [patsubst(__file__, ^.*/\(.*\), \1):__line__])
 
-# AT_INIT(PROGRAM, RELPATH)
+# AT_INIT(PROGRAM)
 
-# Begin testing suite, using PROGRAM to check version, and RELPATH as a
-# relative path (usually `../src') to find executable binaries to test.
-# RELPATH may be omitted; `.' is always added in front of the search path.
+# Begin testing suite, using PROGRAM to check version.  The search path
+# should be already preset so the proper executable will be selected.
 
 AT_DEFINE(AT_INIT,
 [AT_DEFINE(AT_ordinal, 0)
@@ -39,32 +112,38 @@ AT_DEFINE(AT_INIT,
 
 at_usage="Usage: [$]0 [OPTION]...
 
-  -e  Stop and inhibit normal clean up if a test of the full test suite fails
+  -e  Abort the full suite and inhibit normal clean up if a test fails
   -n  Do not redirect stdout and stderr and do not test their contents
-  -s  Inhibit verbosity in debugging scripts, at generation or at execution
+  -s  Inhibit verbosity while generating or executing debugging scripts
   -v  Force more detailed output, default for debugging scripts unless -s
-  -x  Have the shell to trace command execution; implies options -a"
+  -x  Have the shell to trace command execution; also implies option -n"
 
 while test [$][#] -gt 0; do
   case "[$]1" in
+    --help) echo "$at_usage"; exit 0 ;;
+    --version) echo "[$]0 ($at_package) $at_version"; exit 0 ;;
     -e) at_stop_on_error=1; shift ;;
     -n) at_no_redirs=1; shift ;;
     -s) at_verbose=; at_silent=1; shift ;;
     -v) at_verbose=1; at_silent=; shift ;;
-    -x) at_tracex=1; at_no_redirs=1; shift ;;
-    *) echo 1>&2 "$at_usage"; exit 1 ;;
+    -x) at_traceon='set -vx'; at_traceoff='set +vx'; at_no_redirs=1; shift ;;
+    *) echo 1>&2 "Try \`[$]0 --help' for more information."; exit 1 ;;
   esac
 done
 
 # In the testing suite, we only want to know if the test succeeded or failed.
 # But in debugging scripts, we want more information, so we prefer `diff -u'
-# to silent `cmp', even if it may happen that we compare binary files.
+# to the silent `cmp', even if it may happen that we compare binary files.
 # Option `-u' might be less portable, so either change it or use GNU `diff'.
 
 if test -n "$at_verbose"; then
   at_diff='diff -u'
 else
-  at_diff='cmp -s'
+  if test -n "$COMSPEC$ComSpec"; then
+    at_diff='diff -u'
+  else
+    at_diff='cmp -s'
+  fi
 fi
 
 # Each generated debugging script, containing a single test group, cleans
@@ -109,13 +188,24 @@ else
   for at_group in $at_failed_list; do
     echo $at_n " $at_group$at_c"
     ( echo '#!/bin/sh'
-      sed -n "/^[#] Snippet (1/,/^[#] Snippet )1/p" atconfig
+      sed -n '/^[#] Snippet (1/,/^[#] Snippet )1/p' atconfig
       test -z "$at_silent" && echo 'at_verbose=1'
-      sed -n "/^[#] Snippet (2/,/^[#] Snippet )2/p" atconfig
+      sed -n '/^[#] Snippet (2/,/^[#] Snippet )2/p' atconfig
       sed -n "/^[#] Snippet (3/,/^[#] Snippet )3/p" [$]0
       sed -n "/^[#] Snippet (c$at_group(/,/^[#] Snippet )c$at_group)/p" [$]0
-      echo 'test -n "$at_verbose" \
-        && echo "[$]0:1: =================================================="'
+      at_desc="`sed -n \
+        '/^[#] Snippet (d'$at_group'(/,/^[#] Snippet )d'$at_group')/p' [$]0 \
+        | sed -n '2s/^[#] //p'`"
+      echo 'if test -n "$at_verbose"; then'
+      echo '  at_banner="[$]0: '$at_desc'"'
+      echo '  at_dashes=`echo $at_banner | sed s/./=/g`'
+      echo '  echo'
+      echo '  echo "$at_dashes"'
+      echo '  echo "$at_banner"'
+      echo '  echo "$at_dashes"'
+      echo 'fi'
+      echo
+      sed -n "/^[#] Snippet (d$at_group(/,/^[#] Snippet )d$at_group)/p" [$]0
       sed -n "/^[#] Snippet (s$at_group(/,/^[#] Snippet )s$at_group)/p" [$]0
       echo 'exit 0'
     ) | grep -v '^[#] Snippet' > debug-$at_group.sh
@@ -124,7 +214,7 @@ else
   done
   echo ', done'
   if test -n "$at_stop_on_error"; then
-    at_banner="ERROR: One of the tests failed, inhibiting subsequent tests"
+    at_banner='ERROR: One of the tests failed, inhibiting subsequent tests'
   else
     at_banner="ERROR: Suite unsuccessful, $at_fail_count of $at_test_count tests failed"
   fi
@@ -138,8 +228,13 @@ echo "$at_dashes"
 if test -n "$at_failed_list"; then
   if test -z "$at_silent"; then
     echo
-    echo "Now, failed tests will be executed again, with more details..."
-    echo
+    echo 'When reporting failed tests to maintainers, do not merely list test'
+    echo 'numbers, as the numbering changes between releases and pretests.'
+    echo 'Be careful to give at least all the information you got about them.'
+    echo 'You may investigate any problem if you feel able to do so, in which'
+    echo 'case the generated debugging scripts provide good starting points.'
+    echo "Go on and modify them at will.  \`./debug-NN --help' gives usage"
+    echo 'information.  Now, failed tests will be executed again, verbosely.'
     for at_group in $at_failed_list; do
       ./debug-$at_group.sh
     done
@@ -170,12 +265,16 @@ divert(1)[]dnl
     echo $at_n "     $at_c"
   fi
   echo $at_n "substr(AT_ordinal. $srcdir/AT_LINE                            , 0, 30)[]$at_c"
-  (
+  if test -z "$at_skip_mode"; then
+    (
+[#] Snippet (d[]AT_ordinal[](
+[#] Testing AT_group_description
+[#] Snippet )d[]AT_ordinal[])
 [#] Snippet (s[]AT_ordinal[](
-
-[#] The test group starts at `AT_LINE'.  An error occurred while
-[#] testing AT_group_description.
+[#] starting from `AT_LINE'.
+$at_traceon
 ])
+
 
 # AT_CLEANUP(FILES)
 
@@ -184,18 +283,23 @@ divert(1)[]dnl
 # nor files created with AT_DATA.
 
 AT_DEFINE(AT_CLEANUP,
+$at_traceoff
 [[#] Snippet )s[]AT_ordinal[])
-  )
-  case [$]? in
-    0) echo ok
-       ;;
-    77) echo "ignored near \``cat at-check-line`'"
-        at_ignore_count=`expr $at_ignore_count + 1`
-	;;
-    *) echo "FAILED near \``cat at-check-line`'"
-       at_failed_list="$at_failed_list AT_ordinal"
-       ;;
-  esac
+    )
+    case [$]? in
+      0) echo ok
+	 ;;
+      77) echo "ignored near \``cat at-check-line`'"
+	  at_ignore_count=`expr $at_ignore_count + 1`
+	  ;;
+      *) echo "FAILED near \``cat at-check-line`'"
+	 at_failed_list="$at_failed_list AT_ordinal"
+	 ;;
+    esac
+  else
+     echo 'ignored (skipped)'
+     at_ignore_count=`expr $at_ignore_count + 1`
+  fi
   at_test_count=AT_ordinal
   if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 divert(0)[]dnl
@@ -212,10 +316,13 @@ popdef([AT_data_expout])
 popdef([AT_data_files])
 popdef([AT_group_description])])
 
+
 # AT_DATA(FILE, CONTENTS)
 
 # Initialize an input data FILE with given CONTENTS, which should end with
 # an end of line.
+# This macro is not robust to active symbols in CONTENTS *on purpose*.
+# If you don't want CONTENT to be evaluated, quote it twice.
 
 AT_DEFINE(AT_DATA,
 [AT_DEFINE([AT_data_files], AT_data_files[ ]$1)
@@ -223,39 +330,53 @@ cat > $1 <<'EOF'
 $2[]EOF
 ])
 
-# AT_CHECK(COMMANDS, STATUS, STDOUT, STDERR)
+
+# AT_CHECK(COMMANDS, [STATUS], STDOUT, STDERR)
 
 # Execute a test by performing given shell COMMANDS.  These commands
 # should normally exit with STATUS, while producing expected STDOUT and
 # STDERR contents.  The special word `expout' for STDOUT means that file
 # `expout' contents has been set to the expected stdout.  The special word
 # `experr' for STDERR means that file `experr' contents has been set to
-# the expected stderr.  STATUS is not checked if it is empty.
+# the expected stderr.
+# STATUS is not checked if it is empty.
+# STDOUT and STDERR can be the special value `ignore', in which case
+# their content is not checked.
 
 AT_DEFINE(AT_CHECK,
-[test -n "$at_verbose" \
-  && echo $srcdir'/AT_LINE: Testing AT_group_description'
+[$at_traceoff
+test -n "$at_verbose" \
+  && echo "$srcdir/AT_LINE: testing..."
 echo AT_LINE > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
-test -n "$at_tracex" && set -x
+$at_traceon
 $1
-ifelse([$2], , , [test $? = $2 || exit 1])
-test -n "$at_tracex" && set +x
+ifelse([$2],,,
+[at_status=$?
+if test $at_status != $2; then
+dnl Maybe there was an important message to read before it died.
+  test -n "$at_verbose" && cat stderr >&6
+dnl Exit with the same code, at least to preserve 77.
+  exit $at_status
+fi
+])dnl
+$at_traceoff
 if test -z "$at_no_redirs"; then
   exec 1>&5 2>&6
-  ifelse([$3], , [test ! -s stdout || exit 1
-], [$3], expout, [AT_DEFINE([AT_data_expout], [ expout])dnl
-$at_diff expout stdout || exit 1
-], [changequote({{, }})dnl
-echo $at_n "patsubst({{$3}}, \([\"`$]\), \\\1)$at_c" | $at_diff - stdout || exit 1
-changequote([, ])])dnl
-  ifelse([$4], , [test ! -s stderr || exit 1
-], [$4], experr, [AT_DEFINE([AT_data_experr], [ experr])dnl
-$at_diff experr stderr || exit 1
-], [changequote({{, }})dnl
-echo $at_n "patsubst({{$4}}, \([\"`$]\), \\\1)$at_c" | $at_diff - stderr || exit 1
-changequote([, ])])dnl
+  AT_CASE([$3],
+          ignore, [test -n "$at_verbose" && cat stdout;:],
+          expout, [AT_DEFINE([AT_data_expout], [ expout])dnl
+$at_diff expout stdout || exit 1],
+          [], [$at_diff /dev/null stdout || exit 1],
+          [echo $at_n "patsubst([$3], [\([\"`$]\)], \\\1)$at_c" | $at_diff - stdout || exit 1])
+  AT_CASE([$4],
+          ignore, [test -n "$at_verbose" && cat stderr;:],
+          experr, [AT_DEFINE([AT_data_experr], [ experr])dnl
+$at_diff experr stderr || exit 1],
+          [], [$at_diff /dev/null stderr || exit 1],
+          [echo $at_n "patsubst([$4], [\([\"`$]\)], \\\1)$at_c" | $at_diff - stderr || exit 1])
 fi
+$at_traceon
 ])
 
-divert[]dnl
+divert(0)dnl
