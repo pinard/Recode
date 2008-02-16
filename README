@@ -7,7 +7,7 @@
 
   The canonical distribution point for this version is:
 
-     http://www.iro.umontreal.ca/contrib/recode/recode-3.6.tar.gz
+     http://recode.progiciels-bpi.ca/archives/recode-3.6.tar.gz
 
   GNU mirrors usually hold a copy of non-pretest releases, the canonical
   distribution point for the last such release is:
@@ -34,7 +34,6 @@
 . + See files
 
 	ABOUT-NLS     how to customise this program to your language
-	BACKLOG       summary of pending mail and articles
 	COPYING       copying conditions for the program
 	COPYING.LIB   copying conditions for the library
 	INSTALL       compilation and installation instructions
@@ -99,14 +98,15 @@
 
 	subscribe recode-forum
 
-    Look into `http://www.iro.umontreal.ca/contrib/recode' for various
-    releases, pretests, and related files.  In particular, button `Browse'
-    gives access to a weekly mirror of the current unpackaged work files,
-    while button `Folders' gives access to saved or pending correspondence.
+    Look into `http://recode.progiciels-bpi.ca/' for various releases,
+    pretests, the current backlog of reports, and related files.  In
+    particular, button `Browse' gives access to a weekly mirror of the
+    current unpackaged work files, while button `Folders' gives access
+    to saved or pending correspondence.
 
     Please do _not_ widely redistribute releases having a letter after
-    the version numbers, as these are meant for pretesting only, and might
-    not be stable enough for other usages.
+    the version numbers, as these are meant for pretesting only, and
+    might not be stable enough for other usages.
 
 . + Report addresses
 

@@ -6,7 +6,7 @@
 # relative to the built test directory.  Empty for a flat distribution, as
 # `.' gets always added in front of the search path by the `atconfig' script.
 
-AC_DEFUN(AT_CONFIG,
+AC_DEFUN([AT_CONFIG],
 [AT_TESTPATH=$1
 AC_SUBST(AT_TESTPATH)
 fp_PROG_ECHO
@@ -19,7 +19,7 @@ fp_PROG_ECHO
 # Once this macro is called, you may output with no echo in a Makefile or
 # script using:  echo @ECHO_N@ "STRING_TO_OUTPUT@ECHO_C@".
 
-AC_DEFUN(fp_PROG_ECHO,
+AC_DEFUN([fp_PROG_ECHO],
 [AC_CACHE_CHECK(how to suppress newlines using echo, fp_cv_prog_echo_nonl,
 [if (echo "testing\c"; echo 1,2,3) | grep c >/dev/null; then
   if (echo -n testing; echo 1,2,3) | sed s/-n/xn/ | grep xn >/dev/null; then

@@ -394,7 +394,6 @@ main (int argc, char *const *argv)
     program_name += 3;
 
   setlocale (LC_ALL, "");
-  bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);
 
   /* Decode command options.  */

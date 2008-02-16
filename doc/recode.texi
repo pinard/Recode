@@ -758,7 +758,7 @@ not very useful, as the recoding reduces to a mere copy in that case.}
 When a charset name is omitted or left empty, the value of the
 @code{DEFAULT_CHARSET} variable in the environment is used instead.  If this
 variable is not defined, the @code{recode} library uses the current locale's
-encoding. On POSIX compliant systems, this depends on the first non-empty
+encoding.  On POSIX compliant systems, this depends on the first non-empty
 value among the environment variables LC_ALL, LC_CTYPE, LANG, and can be
 determined through the command @samp{locale charmap}.
 
@@ -2210,7 +2210,7 @@ pieces, each being recoded differently.
 
 If @code{input.name} is not @code{NULL} at start of a recoding, this is
 a request that a file by that name be first opened for reading and later
-automatically closed once the whole file has been read. If the file name is
+automatically closed once the whole file has been read.  If the file name is
 not @code{NULL} but an empty string, it means that standard input is to
 be used.  The opened file pointer is then held into @code{input.file}.
 

@@ -1,0 +1,540 @@
+# Recode Hungarian po file
+# Copyright (C) 2002 Free Software Foundation, Inc.
+# Andras Timar <timar_a@freemail.hu>, 2002.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: recode 3.6\n"
+"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
+"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"PO-Revision-Date: 2003-03-02 18:08+0100\n"
+"Last-Translator: Andras Timar <timar_a@freemail.hu>\n"
+"Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-2\n"
+"Content-Transfer-Encoding: 8-bit\n"
+
+#: src/main.c:142
+msgid "No error"
+msgstr "Hib�tlan"
+
+#: src/main.c:145
+msgid "Non canonical input"
+msgstr "Nem kanonikus bemenet"
+
+#: src/main.c:148
+msgid "Ambiguous output"
+msgstr "Nem egy�rtelm� kimenet"
+
+#: src/main.c:151
+msgid "Untranslatable input"
+msgstr "Leford�thatatlan bemenet"
+
+#: src/main.c:154
+msgid "Invalid input"
+msgstr "�rv�nytelen bemenet"
+
+#: src/main.c:157
+msgid "System detected problem"
+msgstr "Rendszerhiba"
+
+#: src/main.c:160
+msgid "Misuse of recoding library"
+msgstr "Az �tk�dol�k�nyvt�r t�ves haszn�lata"
+
+#: src/main.c:163
+msgid "Internal recoding bug"
+msgstr "Bels� �tk�dol�si hiba"
+
+#: src/main.c:208
+msgid ""
+"This program is free software; you can redistribute it and/or modify\n"
+"it under the terms of the GNU General Public License as published by\n"
+"the Free Software Foundation; either version 2, or (at your option)\n"
+"any later version.\n"
+"\n"
+"This program is distributed in the hope that it will be useful,\n"
+"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+"GNU General Public License for more details.\n"
+"\n"
+"You should have received a copy of the GNU General Public License\n"
+"along with this program; if not, write to the Free Software Foundation,\n"
+"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+msgstr ""
+"Ez a program szabad szoftver; terjeszthet� �s/vagy m�dos�that� a \n"
+"Free Software Foundation �ltal k�zz�tett GNU General Public License \n"
+"felt�teleinek megfelel�en. A licencszerz�d�s 2. vagy (szabadon\n"
+"v�laszthat�an) b�rmelyik k�s�bbi v�ltozata haszn�lhat�.\n"
+"\n"
+"A programot abban a rem�nyben adjuk k�zre, hogy hasznosnak bizonyul,\n"
+"de NINCS SEMMI GARANCIA; bele�rtve a K�ZREADHAT�S�GGAL vagy EGY\n"
+"BIZONYOS C�LRA VAL� ALKALMASS�GGAL kapcsolatos garanci�t is. "
+"Tov�bbi\n"
+"r�szletek�rt olvasd el a GNU General Public License teljes "
+"sz�veg�t.\n"
+"\n"
+"A programmal egy�tt meg kellett kapnod a GNU General Public License\n"
+"egy p�ld�ny�t. Ha nem kaptad meg, �rj a Free Software Foundation-"
+"nek\n"
+"a k�vetkez� c�mre: \n"
+"59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+
+#: src/main.c:233
+#, c-format
+msgid "Try `%s %s' for more information.\n"
+msgstr "Tov�bbi inform�ci��rt �rd be: `%s %s'.\n"
+
+#: src/main.c:237
+msgid ""
+"Free `recode' converts files between various character sets and surfaces.\n"
+msgstr ""
+"A `recode' karakterk�szletek �s fel�letek k�z�tti konverzi�t "
+"tesz lehet�v�.\n"
+
+#: src/main.c:241
+#, c-format
+msgid ""
+"\n"
+"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+msgstr ""
+"\n"
+"Haszn�lat: %s [KAPCSOL�K]... [ [KARAKTERK�SZLET] | K�R�S "
+"[F�JL]... ]\n"
+
+#: src/main.c:244
+msgid ""
+"\n"
+"If a long option shows an argument as mandatory, then it is mandatory\n"
+"for the equivalent short option also.  Similarly for optional arguments.\n"
+msgstr ""
+"\n"
+"Ha a hossz� kapcsol�hoz k�telez� argumentumot �rni, akkor az a "
+"megfelel�\n"
+"r�vid kapcsol�ra is vonatkozik. Hasonl� a helyzet a v�laszthat� \n"
+"argumentumokkal.\n"
+
+#: src/main.c:250
+msgid ""
+"\n"
+"Listings:\n"
+"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
+"list\n"
+"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
+"  -F, --freeze-tables        write out a C module holding all tables\n"
+"  -T, --find-subsets         report all charsets being subset of others\n"
+"  -C, --copyright            display Copyright and copying conditions\n"
+"      --help                 display this help and exit\n"
+"      --version              output version information and exit\n"
+msgstr ""
+"\n"
+"List�k:\n"
+"  -l, --list[=FORM�TUM]      ki�rja az �sszes ismert "
+"karakterk�szletet\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
+"list\n"
+"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
+"  -F, --freeze-tables        write out a C module holding all tables\n"
+"  -T, --find-subsets         ki�rja azokat a karakterk�szleteket, "
+"amelyeket \n"
+"                             m�sok magukba foglalnak\n"
+"  -C, --copyright            ki�rja a copyrightot �s a m�sol�s "
+"felt�teleit\n"
+"      --help                 ki�rja ezt a s�g�t �s kil�p\n"
+"      --version              ki�rja a verzi�inform�ci�kat �s "
+"kil�p\n"
+
+#: src/main.c:263
+msgid ""
+"\n"
+"Operation modes:\n"
+"  -v, --verbose           explain sequence of steps and report progress\n"
+"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
+"  -f, --force             force recodings even when not reversible\n"
+"  -t, --touch             touch the recoded files after replacement\n"
+"  -i, --sequence=files    use intermediate files for sequencing passes\n"
+"      --sequence=memory   use memory buffers for sequencing passes\n"
+msgstr ""
+"\n"
+"M�k�d�si m�dok:\n"
+"  -v, --verbose           ki�rja a l�p�seket �s az "
+"el�rehalad�st\n"
+"  -q, --quiet, --silent   nem �r ki �zeneteket visszaford�thatatlan\n"
+"                          �tk�dol�s eset�n\n"
+"  -f, --force             �tk�dol�s k�nyszer�t�se "
+"visszaford�thatatlan \n"
+"                          esetben is\n"
+"  -t, --touch             az �tk�dolt f�jlok d�tum�t "
+"m�dos�tja\n"
+"  -i, --sequence=files    k�zb�ls� f�jlokat haszn�l az egym�st "
+"k�vet� \n"
+"                          l�p�sekhez\n"
+"      --sequence=memory   mem�ri�ban elhelyezked� t�rol�kat "
+"haszn�l az \n"
+"                          egym�st k�vet� l�p�sekhez\n"
+
+#: src/main.c:275
+msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
+msgstr ""
+"  -p, --sequence=pipe     cs�vezet�keket haszn�l az egym�st "
+"k�vet� l�p�sekhez\n"
+
+#: src/main.c:280
+msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
+msgstr "  -p, --sequence=pipe     ugyanaz, mint a -i (ezen a rendszeren)\n"
+
+#: src/main.c:285
+msgid ""
+"\n"
+"Fine tuning:\n"
+"  -s, --strict           use strict mappings, even loose characters\n"
+"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
+"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
+"  -c, --colons           use colons instead of double quotes for diaeresis\n"
+"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
+"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+msgstr ""
+"\n"
+"Finomhangol�s:\n"
+"  -s, --strict           szigor� lek�pez�s haszn�lata, ak�r "
+"karakterveszt�s \n"
+"                         �r�n is\n"
+"  -d, --diacritics       csak a nemzeti karaktereket k�dolja �t HTML/"
+"LaTeX \n"
+"                         form�tumhoz\n"
+"  -S, --source[=NYELV]   csak a NYELV �ltal meghat�rozott "
+"karakterl�ncokat\n"
+"                         �s megjegyz�seket k�dolja �t\n"
+"  -c, --colons           `:' haszn�lata a `\"' helyett a k�tpontos "
+"�kezet \n"
+"                         jel�l�s�re az Easy French (egyfajta "
+"rep�l� �kezet)\n"
+"                         k�dol�sban\n"
+"  -g, --graphics         az IBMPC vonalrajzol� karakterek "
+"helyettes�t�se\n"
+"                         ASCII grafik�val\n"
+"  -x, --ignore=KARK�SZL  a KARK�SZL mell�z�se �tk�dol�si "
+"�tvonal v�laszt�s�n�l\n"
+
+#: src/main.c:296
+msgid ""
+"\n"
+"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
+"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+msgstr ""
+
+#: src/main.c:302
+msgid ""
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
+"locale\n"
+"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
+msgstr ""
+
+#: src/main.c:307
+msgid ""
+"With -k, possible before charsets are listed for the given after CHARSET,\n"
+"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
+"AFT2,...'\n"
+"and BEFs and AFTs being codes are given as decimal numbers.\n"
+msgstr ""
+
+#: src/main.c:312
+msgid ""
+"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
+msgstr ""
+"A NYELV valamilyen programnyelv, lehet `c', `perl' vagy `po'; a `c' az "
+"alap-\n"
+"�rtelmezett.\n"
+
+#: src/main.c:315
+msgid ""
+"\n"
+"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
+"ENCODING]...\n"
+"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
+"AFTER,\n"
+"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
+"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
+"a /\n"
+"with an empty surface name means no surfaces at all.  See the manual.\n"
+msgstr ""
+
+#: src/main.c:323
+msgid ""
+"\n"
+"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
+"Each FILE is recoded over itself, destroying the original.  If no\n"
+"FILE is specified, then act as a filter and recode stdin to stdout.\n"
+msgstr ""
+
+#: src/main.c:329
+msgid ""
+"\n"
+"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"A hib�kat jelentsd a <recode-bugs@iro.umontreal.ca> c�men.\n"
+
+#: src/main.c:429
+#, c-format
+msgid "Sequence `%s' is ambiguous"
+msgstr "A sorozat nem egy�rtelm�: `%s'"
+
+#: src/main.c:433
+#, c-format
+msgid "Sequence `%s' is unknown"
+msgstr "A sorozat ismeretlen: `%s'"
+
+#: src/main.c:463 src/main.c:521
+#, c-format
+msgid "Language `%s' is ambiguous"
+msgstr "A nyelv nem egy�rtelm�: `%s'"
+
+#: src/main.c:467 src/main.c:525
+#, c-format
+msgid "Language `%s' is unknown"
+msgstr "A nyelv ismeretlen: `%s'"
+
+#: src/main.c:559
+#, c-format
+msgid "Format `%s' is ambiguous"
+msgstr "A form�tum nem egy�rtelm�: `%s'"
+
+#: src/main.c:563
+#, c-format
+msgid "Format `%s' is unknown"
+msgstr "A form�tum ismeretlen: `%s'"
+
+#: src/main.c:620
+msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr "�rta Fran�ois Pinard <pinard@iro.umontreal.ca>.\n"
+
+#: src/main.c:623
+msgid ""
+"\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+msgstr ""
+"\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+
+#: src/main.c:627
+msgid ""
+"This is free software; see the source for copying conditions.  There is NO\n"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
+msgstr ""
+"Ez szabad szoftver; l�sd a forr�st a terjeszt�si felt�telek�rt. "
+"Nincs \n"
+"garancia, m�g az eladhat�s�gra vagy egy adott c�lra val� "
+"megfelel�sre sem.\n"
+
+#: src/main.c:668
+#, c-format
+msgid "Symbol `%s' is unknown"
+msgstr "A jel ismeretlen: `%s'"
+
+#: src/main.c:708 src/main.c:722
+#, c-format
+msgid "Charset `%s' is unknown or ambiguous"
+msgstr "A karakterk�szlet ismeretlen vagy nem egy�rtelm�: `%s'"
+
+#: src/main.c:753
+msgid "Required argument is missing"
+msgstr "Hi�nyzik egy k�telez� argumentum"
+
+#: src/main.c:796
+#, c-format
+msgid "Syntax is deprecated, please prefer `%s'"
+msgstr "A szintaxis elavult, haszn�ld ink�bb ezt: `%s'"
+
+#: src/main.c:802
+#, c-format
+msgid "Request `%s' is erroneous"
+msgstr "A k�r�s hib�s: `%s'"
+
+#: src/main.c:902
+#, c-format
+msgid "Recoding %s..."
+msgstr "%s �tk�dol�sa..."
+
+#: src/main.c:912
+#, c-format
+msgid " done\n"
+msgstr " k�sz\n"
+
+#: src/main.c:953
+#, c-format
+msgid " failed: %s in step `%s..%s'\n"
+msgstr " sikertelen: %s a `%s..%s' l�p�sben\n"
+
+#: src/main.c:960
+#, c-format
+msgid "%s failed: %s in step `%s..%s'"
+msgstr "%s sikertelen: %s a `%s..%s' l�p�sben"
+
+#: src/main.c:983
+#, c-format
+msgid "%s in step `%s..%s'"
+msgstr "%s a `%s..%s' l�p�sben"
+
+#: src/names.c:335
+#, c-format
+msgid "Charset %s already exists and is not %s"
+msgstr "%s karakterk�szlet m�r l�tezik �s nem %s."
+
+#: src/names.c:831
+#, c-format
+msgid "Cannot list `%s', no names available for this charset"
+msgstr ""
+
+#: src/names.c:984 src/names.c:1030
+#, c-format
+msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
+msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
+
+#: src/names.c:1049
+#, c-format
+msgid "Sorry, no names available for `%s'"
+msgstr ""
+
+#: src/outer.c:125
+#, c-format
+msgid "Resurfacer set more than once for `%s'"
+msgstr ""
+
+#: src/outer.c:133
+#, c-format
+msgid "Unsurfacer set more than once for `%s'"
+msgstr ""
+
+#: src/recode.c:115 src/recode.c:127
+msgid "Virtual memory exhausted"
+msgstr "A virtu�lis mem�ria betelt"
+
+#: src/recode.c:155
+#, c-format
+msgid "Codes %3d and %3d both recode to %3d"
+msgstr "A %3d �s %3d k�dok egyar�nt %3d k�dra v�ltoznak"
+
+#: src/recode.c:169
+#, c-format
+msgid "No character recodes to %3d"
+msgstr ""
+
+#: src/recode.c:170
+msgid "Cannot invert given one-to-one table"
+msgstr ""
+
+#: src/recode.c:224 src/recode.c:236
+#, c-format
+msgid "Following diagnostics for `%s' to `%s'"
+msgstr ""
+
+#: src/recode.c:229 src/recode.c:241
+#, c-format
+msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
+msgstr ""
+
+#: src/recode.c:272
+msgid "Cannot complete table from set of known pairs"
+msgstr ""
+
+#: src/recode.c:497
+msgid "Identity recoding, not worth a table"
+msgstr ""
+
+#: src/recode.c:504
+msgid "Recoding is too complex for a mere table"
+msgstr ""
+
+#: src/recode.c:536
+#, c-format
+msgid "%sConversion table generated mechanically by Free `%s' %s"
+msgstr ""
+
+#: src/recode.c:538
+#, c-format
+msgid "%sfor sequence %s.%s"
+msgstr ""
+
+#: src/recode.c:744
+msgid "No table to print"
+msgstr "Nincs nyomtathat� t�bl�zat"
+
+#: src/request.c:34
+msgid "reversible"
+msgstr "visszaford�that�"
+
+#: src/request.c:36
+#, c-format
+msgid "%s to %s"
+msgstr "%s -> %s"
+
+#: src/request.c:37 src/request.c:39
+msgid "byte"
+msgstr "byte"
+
+#: src/request.c:38 src/request.c:40
+msgid "ucs2"
+msgstr "ucs2"
+
+#: src/request.c:38 src/request.c:40
+msgid "variable"
+msgstr "v�ltoz�"
+
+#: src/request.c:111
+msgid "*Unachievable*"
+msgstr "*lehetetlen*"
+
+#: src/request.c:113
+msgid "*mere copy*"
+msgstr "*egyszer� m�sol�s*"
+
+#: src/request.c:246
+msgid "Virtual memory exhausted!"
+msgstr "A virtu�lis mem�ria betelt!"
+
+#: src/request.c:265
+msgid "Step initialisation failed"
+msgstr ""
+
+#: src/request.c:272
+msgid "Step initialisation failed (unprocessed options)"
+msgstr ""
+
+#: src/request.c:568
+#, c-format
+msgid "Request: %s\n"
+msgstr "K�r�s: %s\n"
+
+#: src/request.c:720
+#, c-format
+msgid "Shrunk to: %s\n"
+msgstr "Sz�k�tve erre: %s\n"
+
+#: src/request.c:823 src/request.c:932
+#, c-format
+msgid "Unrecognised surface name `%s'"
+msgstr "Ismeretlen fel�letn�v `%s'"
+
+#: src/request.c:903
+#, c-format
+msgid "No way to recode from `%s' to `%s'"
+msgstr "Nem lehets�ges az �tk�dol�s `%s' �s `%s' k�z�tt."
+
+#: src/request.c:1013
+msgid "Expecting `..' in request"
+msgstr "`..'-t kell megadni a k�r�sben"
+
+#: src/task.c:826 src/task.c:1002
+#, c-format
+msgid "Child process wait status is 0x%0.2x"
+msgstr "A gyermekfolyamat v�rakoz�si �llapota 0x%0.2x"
+
+#: src/testdump.c:298
+msgid ""
+"UCS2   Mne   Description\n"
+"\n"
+msgstr ""
+"UCS2   Mne   le�r�s\n"
+"\n"

@@ -1601,8 +1601,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:31: testing..."
-echo dumps.m4:31 > at-check-line
+  && echo "$srcdir/dumps.m4:6: testing..."
+echo dumps.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../d1 || exit 1; done
@@ -1687,8 +1687,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:56: testing..."
-echo dumps.m4:56 > at-check-line
+  && echo "$srcdir/dumps.m4:38: testing..."
+echo dumps.m4:38 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../d1 < $at_srcdir/dumps-data
@@ -1766,8 +1766,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:73: testing..."
-echo dumps.m4:73 > at-check-line
+  && echo "$srcdir/dumps.m4:63: testing..."
+echo dumps.m4:63 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -1833,8 +1833,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:88: testing..."
-echo dumps.m4:88 > at-check-line
+  && echo "$srcdir/dumps.m4:80: testing..."
+echo dumps.m4:80 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -1898,8 +1898,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:116: testing..."
-echo dumps.m4:116 > at-check-line
+  && echo "$srcdir/dumps.m4:95: testing..."
+echo dumps.m4:95 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../d2 || exit 1; done
@@ -1980,8 +1980,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:138: testing..."
-echo dumps.m4:138 > at-check-line
+  && echo "$srcdir/dumps.m4:123: testing..."
+echo dumps.m4:123 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../d2 < $at_srcdir/dumps-data
@@ -2056,8 +2056,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:155: testing..."
-echo dumps.m4:155 > at-check-line
+  && echo "$srcdir/dumps.m4:145: testing..."
+echo dumps.m4:145 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2123,8 +2123,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:170: testing..."
-echo dumps.m4:170 > at-check-line
+  && echo "$srcdir/dumps.m4:162: testing..."
+echo dumps.m4:162 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2188,8 +2188,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:198: testing..."
-echo dumps.m4:198 > at-check-line
+  && echo "$srcdir/dumps.m4:177: testing..."
+echo dumps.m4:177 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../d4 || exit 1; done
@@ -2270,8 +2270,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:220: testing..."
-echo dumps.m4:220 > at-check-line
+  && echo "$srcdir/dumps.m4:205: testing..."
+echo dumps.m4:205 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../d4 < $at_srcdir/dumps-data
@@ -2346,8 +2346,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:237: testing..."
-echo dumps.m4:237 > at-check-line
+  && echo "$srcdir/dumps.m4:227: testing..."
+echo dumps.m4:227 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2413,8 +2413,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:252: testing..."
-echo dumps.m4:252 > at-check-line
+  && echo "$srcdir/dumps.m4:244: testing..."
+echo dumps.m4:244 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2478,8 +2478,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:288: testing..."
-echo dumps.m4:288 > at-check-line
+  && echo "$srcdir/dumps.m4:259: testing..."
+echo dumps.m4:259 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../x1 || exit 1; done
@@ -2568,8 +2568,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:317: testing..."
-echo dumps.m4:317 > at-check-line
+  && echo "$srcdir/dumps.m4:295: testing..."
+echo dumps.m4:295 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../x1 < $at_srcdir/dumps-data
@@ -2651,8 +2651,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:334: testing..."
-echo dumps.m4:334 > at-check-line
+  && echo "$srcdir/dumps.m4:324: testing..."
+echo dumps.m4:324 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2718,8 +2718,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:349: testing..."
-echo dumps.m4:349 > at-check-line
+  && echo "$srcdir/dumps.m4:341: testing..."
+echo dumps.m4:341 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -2783,8 +2783,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:381: testing..."
-echo dumps.m4:381 > at-check-line
+  && echo "$srcdir/dumps.m4:356: testing..."
+echo dumps.m4:356 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../x2 || exit 1; done
@@ -2869,8 +2869,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:406: testing..."
-echo dumps.m4:406 > at-check-line
+  && echo "$srcdir/dumps.m4:388: testing..."
+echo dumps.m4:388 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../x2 < $at_srcdir/dumps-data
@@ -2948,8 +2948,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:423: testing..."
-echo dumps.m4:423 > at-check-line
+  && echo "$srcdir/dumps.m4:413: testing..."
+echo dumps.m4:413 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3015,8 +3015,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:438: testing..."
-echo dumps.m4:438 > at-check-line
+  && echo "$srcdir/dumps.m4:430: testing..."
+echo dumps.m4:430 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3080,8 +3080,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:466: testing..."
-echo dumps.m4:466 > at-check-line
+  && echo "$srcdir/dumps.m4:445: testing..."
+echo dumps.m4:445 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../x4 || exit 1; done
@@ -3162,8 +3162,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:486: testing..."
-echo dumps.m4:486 > at-check-line
+  && echo "$srcdir/dumps.m4:473: testing..."
+echo dumps.m4:473 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../x4 < $at_srcdir/dumps-data
@@ -3236,8 +3236,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:503: testing..."
-echo dumps.m4:503 > at-check-line
+  && echo "$srcdir/dumps.m4:493: testing..."
+echo dumps.m4:493 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3303,8 +3303,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:518: testing..."
-echo dumps.m4:518 > at-check-line
+  && echo "$srcdir/dumps.m4:510: testing..."
+echo dumps.m4:510 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3368,8 +3368,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:554: testing..."
-echo dumps.m4:554 > at-check-line
+  && echo "$srcdir/dumps.m4:525: testing..."
+echo dumps.m4:525 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../o1 || exit 1; done
@@ -3458,8 +3458,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:583: testing..."
-echo dumps.m4:583 > at-check-line
+  && echo "$srcdir/dumps.m4:561: testing..."
+echo dumps.m4:561 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../o1 < $at_srcdir/dumps-data
@@ -3541,8 +3541,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:600: testing..."
-echo dumps.m4:600 > at-check-line
+  && echo "$srcdir/dumps.m4:590: testing..."
+echo dumps.m4:590 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3608,8 +3608,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:615: testing..."
-echo dumps.m4:615 > at-check-line
+  && echo "$srcdir/dumps.m4:607: testing..."
+echo dumps.m4:607 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3673,8 +3673,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:647: testing..."
-echo dumps.m4:647 > at-check-line
+  && echo "$srcdir/dumps.m4:622: testing..."
+echo dumps.m4:622 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../o2 || exit 1; done
@@ -3759,8 +3759,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:672: testing..."
-echo dumps.m4:672 > at-check-line
+  && echo "$srcdir/dumps.m4:654: testing..."
+echo dumps.m4:654 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../o2 < $at_srcdir/dumps-data
@@ -3838,8 +3838,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:689: testing..."
-echo dumps.m4:689 > at-check-line
+  && echo "$srcdir/dumps.m4:679: testing..."
+echo dumps.m4:679 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3905,8 +3905,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:704: testing..."
-echo dumps.m4:704 > at-check-line
+  && echo "$srcdir/dumps.m4:696: testing..."
+echo dumps.m4:696 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -3970,8 +3970,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:736: testing..."
-echo dumps.m4:736 > at-check-line
+  && echo "$srcdir/dumps.m4:711: testing..."
+echo dumps.m4:711 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../o4 || exit 1; done
@@ -4056,8 +4056,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:761: testing..."
-echo dumps.m4:761 > at-check-line
+  && echo "$srcdir/dumps.m4:743: testing..."
+echo dumps.m4:743 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../o4 < $at_srcdir/dumps-data
@@ -4135,8 +4135,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:778: testing..."
-echo dumps.m4:778 > at-check-line
+  && echo "$srcdir/dumps.m4:768: testing..."
+echo dumps.m4:768 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -4202,8 +4202,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/dumps.m4:793: testing..."
-echo dumps.m4:793 > at-check-line
+  && echo "$srcdir/dumps.m4:785: testing..."
+echo dumps.m4:785 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -4269,8 +4269,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/base64.m4:22: testing..."
-echo base64.m4:22 > at-check-line
+  && echo "$srcdir/base64.m4:6: testing..."
+echo base64.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 ( while read line; do echo $line | recode ../64 || exit 1; done
@@ -4346,8 +4346,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/base64.m4:36: testing..."
-echo base64.m4:36 > at-check-line
+  && echo "$srcdir/base64.m4:29: testing..."
+echo base64.m4:29 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode /../64 < $at_srcdir/dumps-data
@@ -4414,8 +4414,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/base64.m4:53: testing..."
-echo base64.m4:53 > at-check-line
+  && echo "$srcdir/base64.m4:43: testing..."
+echo base64.m4:43 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -4481,8 +4481,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/base64.m4:68: testing..."
-echo base64.m4:68 > at-check-line
+  && echo "$srcdir/base64.m4:60: testing..."
+echo base64.m4:60 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -4548,8 +4548,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/quoted.m4:24: testing..."
-echo quoted.m4:24 > at-check-line
+  && echo "$srcdir/quoted.m4:6: testing..."
+echo quoted.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode qp..x1 < $at_srcdir/quoted-data
@@ -4627,8 +4627,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/quoted.m4:39: testing..."
-echo quoted.m4:39 > at-check-line
+  && echo "$srcdir/quoted.m4:31: testing..."
+echo quoted.m4:31 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -4723,8 +4723,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:31: testing..."
-echo african.m4:31 > at-check-line
+  && echo "$srcdir/african.m4:28: testing..."
+echo african.m4:28 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp transcript expout
@@ -4745,8 +4745,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:36: testing..."
-echo african.m4:36 > at-check-line
+  && echo "$srcdir/african.m4:33: testing..."
+echo african.m4:33 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp example expout
@@ -4826,8 +4826,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:62: testing..."
-echo african.m4:62 > at-check-line
+  && echo "$srcdir/african.m4:59: testing..."
+echo african.m4:59 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp transcript expout
@@ -4848,8 +4848,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:67: testing..."
-echo african.m4:67 > at-check-line
+  && echo "$srcdir/african.m4:64: testing..."
+echo african.m4:64 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp example expout
@@ -4937,8 +4937,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:101: testing..."
-echo african.m4:101 > at-check-line
+  && echo "$srcdir/african.m4:98: testing..."
+echo african.m4:98 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp transcript expout
@@ -4959,8 +4959,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:106: testing..."
-echo african.m4:106 > at-check-line
+  && echo "$srcdir/african.m4:103: testing..."
+echo african.m4:103 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp example expout
@@ -5042,8 +5042,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:134: testing..."
-echo african.m4:134 > at-check-line
+  && echo "$srcdir/african.m4:131: testing..."
+echo african.m4:131 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp transcript expout
@@ -5064,8 +5064,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:139: testing..."
-echo african.m4:139 > at-check-line
+  && echo "$srcdir/african.m4:136: testing..."
+echo african.m4:136 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp example expout
@@ -5142,8 +5142,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:162: testing..."
-echo african.m4:162 > at-check-line
+  && echo "$srcdir/african.m4:159: testing..."
+echo african.m4:159 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp transcript expout
@@ -5164,8 +5164,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/african.m4:167: testing..."
-echo african.m4:167 > at-check-line
+  && echo "$srcdir/african.m4:164: testing..."
+echo african.m4:164 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 cp example expout
@@ -5296,8 +5296,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/testdump.m4:11: testing..."
-echo testdump.m4:11 > at-check-line
+  && echo "$srcdir/testdump.m4:6: testing..."
+echo testdump.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test7..x,us..count < /dev/null
@@ -5320,8 +5320,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/testdump.m4:18: testing..."
-echo testdump.m4:18 > at-check-line
+  && echo "$srcdir/testdump.m4:13: testing..."
+echo testdump.m4:13 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test8..x,us..count < /dev/null
@@ -5344,8 +5344,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/testdump.m4:26: testing..."
-echo testdump.m4:26 > at-check-line
+  && echo "$srcdir/testdump.m4:20: testing..."
+echo testdump.m4:20 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test15..x2,us..count < /dev/null
@@ -5369,8 +5369,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/testdump.m4:34: testing..."
-echo testdump.m4:34 > at-check-line
+  && echo "$srcdir/testdump.m4:28: testing..."
+echo testdump.m4:28 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode test16..x2,us..count < /dev/null
@@ -5439,8 +5439,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/utf7.m4:20: testing..."
-echo utf7.m4:20 > at-check-line
+  && echo "$srcdir/utf7.m4:6: testing..."
+echo utf7.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5509,8 +5509,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/utf7.m4:37: testing..."
-echo utf7.m4:37 > at-check-line
+  && echo "$srcdir/utf7.m4:27: testing..."
+echo utf7.m4:27 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5578,8 +5578,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/utf8.m4:25: testing..."
-echo utf8.m4:25 > at-check-line
+  && echo "$srcdir/utf8.m4:6: testing..."
+echo utf8.m4:6 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode l1/qp..u8/x < $at_srcdir/quoted-data
@@ -5658,8 +5658,8 @@ $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/utf8.m4:41: testing..."
-echo utf8.m4:41 > at-check-line
+  && echo "$srcdir/utf8.m4:32: testing..."
+echo utf8.m4:32 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5713,25 +5713,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c60)
-  echo methods.m4:24 > at-check-line
+  echo methods.m4:23 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "60. $srcdir/methods.m4:24     $at_c"
+  echo $at_n "60. $srcdir/methods.m4:23     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d60(
 # Testing texte:texte through memory while filtering
 # Snippet )d60)
 # Snippet (s60(
-# starting from `methods.m4:24'.
+# starting from `methods.m4:23'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:24: testing..."
-echo methods.m4:24 > at-check-line
+  && echo "$srcdir/methods.m4:23: testing..."
+echo methods.m4:23 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5776,25 +5776,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c61)
-  echo methods.m4:27 > at-check-line
+  echo methods.m4:26 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "61. $srcdir/methods.m4:27     $at_c"
+  echo $at_n "61. $srcdir/methods.m4:26     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d61(
 # Testing texte:texte through memory while squashing
 # Snippet )d61)
 # Snippet (s61(
-# starting from `methods.m4:27'.
+# starting from `methods.m4:26'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:27: testing..."
-echo methods.m4:27 > at-check-line
+  && echo "$srcdir/methods.m4:26: testing..."
+echo methods.m4:26 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5841,25 +5841,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c62)
-  echo methods.m4:30 > at-check-line
+  echo methods.m4:29 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "62. $srcdir/methods.m4:30     $at_c"
+  echo $at_n "62. $srcdir/methods.m4:29     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d62(
 # Testing texte:texte through files while filtering
 # Snippet )d62)
 # Snippet (s62(
-# starting from `methods.m4:30'.
+# starting from `methods.m4:29'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:30: testing..."
-echo methods.m4:30 > at-check-line
+  && echo "$srcdir/methods.m4:29: testing..."
+echo methods.m4:29 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5904,25 +5904,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c63)
-  echo methods.m4:33 > at-check-line
+  echo methods.m4:32 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "63. $srcdir/methods.m4:33     $at_c"
+  echo $at_n "63. $srcdir/methods.m4:32     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d63(
 # Testing texte:texte through files while squashing
 # Snippet )d63)
 # Snippet (s63(
-# starting from `methods.m4:33'.
+# starting from `methods.m4:32'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:33: testing..."
-echo methods.m4:33 > at-check-line
+  && echo "$srcdir/methods.m4:32: testing..."
+echo methods.m4:32 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -5969,25 +5969,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c64)
-  echo methods.m4:36 > at-check-line
+  echo methods.m4:35 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "64. $srcdir/methods.m4:36     $at_c"
+  echo $at_n "64. $srcdir/methods.m4:35     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d64(
 # Testing texte:texte through pipe while filtering
 # Snippet )d64)
 # Snippet (s64(
-# starting from `methods.m4:36'.
+# starting from `methods.m4:35'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:36: testing..."
-echo methods.m4:36 > at-check-line
+  && echo "$srcdir/methods.m4:35: testing..."
+echo methods.m4:35 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6032,25 +6032,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c65)
-  echo methods.m4:39 > at-check-line
+  echo methods.m4:38 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:texte through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "65. $srcdir/methods.m4:39     $at_c"
+  echo $at_n "65. $srcdir/methods.m4:38     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d65(
 # Testing texte:texte through pipe while squashing
 # Snippet )d65)
 # Snippet (s65(
-# starting from `methods.m4:39'.
+# starting from `methods.m4:38'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:39: testing..."
-echo methods.m4:39 > at-check-line
+  && echo "$srcdir/methods.m4:38: testing..."
+echo methods.m4:38 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6097,25 +6097,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c66)
-  echo methods.m4:42 > at-check-line
+  echo methods.m4:41 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "66. $srcdir/methods.m4:42     $at_c"
+  echo $at_n "66. $srcdir/methods.m4:41     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d66(
 # Testing texte:latin1 through memory while filtering
 # Snippet )d66)
 # Snippet (s66(
-# starting from `methods.m4:42'.
+# starting from `methods.m4:41'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:42: testing..."
-echo methods.m4:42 > at-check-line
+  && echo "$srcdir/methods.m4:41: testing..."
+echo methods.m4:41 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6160,25 +6160,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c67)
-  echo methods.m4:45 > at-check-line
+  echo methods.m4:44 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "67. $srcdir/methods.m4:45     $at_c"
+  echo $at_n "67. $srcdir/methods.m4:44     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d67(
 # Testing texte:latin1 through memory while squashing
 # Snippet )d67)
 # Snippet (s67(
-# starting from `methods.m4:45'.
+# starting from `methods.m4:44'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:45: testing..."
-echo methods.m4:45 > at-check-line
+  && echo "$srcdir/methods.m4:44: testing..."
+echo methods.m4:44 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6225,25 +6225,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c68)
-  echo methods.m4:48 > at-check-line
+  echo methods.m4:47 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "68. $srcdir/methods.m4:48     $at_c"
+  echo $at_n "68. $srcdir/methods.m4:47     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d68(
 # Testing texte:latin1 through files while filtering
 # Snippet )d68)
 # Snippet (s68(
-# starting from `methods.m4:48'.
+# starting from `methods.m4:47'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:48: testing..."
-echo methods.m4:48 > at-check-line
+  && echo "$srcdir/methods.m4:47: testing..."
+echo methods.m4:47 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6288,25 +6288,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c69)
-  echo methods.m4:51 > at-check-line
+  echo methods.m4:50 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "69. $srcdir/methods.m4:51     $at_c"
+  echo $at_n "69. $srcdir/methods.m4:50     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d69(
 # Testing texte:latin1 through files while squashing
 # Snippet )d69)
 # Snippet (s69(
-# starting from `methods.m4:51'.
+# starting from `methods.m4:50'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:51: testing..."
-echo methods.m4:51 > at-check-line
+  && echo "$srcdir/methods.m4:50: testing..."
+echo methods.m4:50 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6353,25 +6353,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c70)
-  echo methods.m4:54 > at-check-line
+  echo methods.m4:53 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "70. $srcdir/methods.m4:54     $at_c"
+  echo $at_n "70. $srcdir/methods.m4:53     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d70(
 # Testing texte:latin1 through pipe while filtering
 # Snippet )d70)
 # Snippet (s70(
-# starting from `methods.m4:54'.
+# starting from `methods.m4:53'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:54: testing..."
-echo methods.m4:54 > at-check-line
+  && echo "$srcdir/methods.m4:53: testing..."
+echo methods.m4:53 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6416,25 +6416,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c71)
-  echo methods.m4:57 > at-check-line
+  echo methods.m4:56 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:latin1 through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "71. $srcdir/methods.m4:57     $at_c"
+  echo $at_n "71. $srcdir/methods.m4:56     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d71(
 # Testing texte:latin1 through pipe while squashing
 # Snippet )d71)
 # Snippet (s71(
-# starting from `methods.m4:57'.
+# starting from `methods.m4:56'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:57: testing..."
-echo methods.m4:57 > at-check-line
+  && echo "$srcdir/methods.m4:56: testing..."
+echo methods.m4:56 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6481,25 +6481,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c72)
-  echo methods.m4:60 > at-check-line
+  echo methods.m4:59 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "72. $srcdir/methods.m4:60     $at_c"
+  echo $at_n "72. $srcdir/methods.m4:59     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d72(
 # Testing texte:bangbang through memory while filtering
 # Snippet )d72)
 # Snippet (s72(
-# starting from `methods.m4:60'.
+# starting from `methods.m4:59'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:60: testing..."
-echo methods.m4:60 > at-check-line
+  && echo "$srcdir/methods.m4:59: testing..."
+echo methods.m4:59 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6544,25 +6544,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c73)
-  echo methods.m4:63 > at-check-line
+  echo methods.m4:62 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "73. $srcdir/methods.m4:63     $at_c"
+  echo $at_n "73. $srcdir/methods.m4:62     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d73(
 # Testing texte:bangbang through memory while squashing
 # Snippet )d73)
 # Snippet (s73(
-# starting from `methods.m4:63'.
+# starting from `methods.m4:62'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:63: testing..."
-echo methods.m4:63 > at-check-line
+  && echo "$srcdir/methods.m4:62: testing..."
+echo methods.m4:62 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6609,25 +6609,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c74)
-  echo methods.m4:66 > at-check-line
+  echo methods.m4:65 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "74. $srcdir/methods.m4:66     $at_c"
+  echo $at_n "74. $srcdir/methods.m4:65     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d74(
 # Testing texte:bangbang through files while filtering
 # Snippet )d74)
 # Snippet (s74(
-# starting from `methods.m4:66'.
+# starting from `methods.m4:65'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:66: testing..."
-echo methods.m4:66 > at-check-line
+  && echo "$srcdir/methods.m4:65: testing..."
+echo methods.m4:65 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6672,25 +6672,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c75)
-  echo methods.m4:69 > at-check-line
+  echo methods.m4:68 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "75. $srcdir/methods.m4:69     $at_c"
+  echo $at_n "75. $srcdir/methods.m4:68     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d75(
 # Testing texte:bangbang through files while squashing
 # Snippet )d75)
 # Snippet (s75(
-# starting from `methods.m4:69'.
+# starting from `methods.m4:68'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:69: testing..."
-echo methods.m4:69 > at-check-line
+  && echo "$srcdir/methods.m4:68: testing..."
+echo methods.m4:68 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6737,25 +6737,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c76)
-  echo methods.m4:72 > at-check-line
+  echo methods.m4:71 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "76. $srcdir/methods.m4:72     $at_c"
+  echo $at_n "76. $srcdir/methods.m4:71     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d76(
 # Testing texte:bangbang through pipe while filtering
 # Snippet )d76)
 # Snippet (s76(
-# starting from `methods.m4:72'.
+# starting from `methods.m4:71'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:72: testing..."
-echo methods.m4:72 > at-check-line
+  && echo "$srcdir/methods.m4:71: testing..."
+echo methods.m4:71 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6800,25 +6800,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c77)
-  echo methods.m4:75 > at-check-line
+  echo methods.m4:74 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:bangbang through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "77. $srcdir/methods.m4:75     $at_c"
+  echo $at_n "77. $srcdir/methods.m4:74     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d77(
 # Testing texte:bangbang through pipe while squashing
 # Snippet )d77)
 # Snippet (s77(
-# starting from `methods.m4:75'.
+# starting from `methods.m4:74'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:75: testing..."
-echo methods.m4:75 > at-check-line
+  && echo "$srcdir/methods.m4:74: testing..."
+echo methods.m4:74 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6865,25 +6865,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c78)
-  echo methods.m4:78 > at-check-line
+  echo methods.m4:77 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "78. $srcdir/methods.m4:78     $at_c"
+  echo $at_n "78. $srcdir/methods.m4:77     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d78(
 # Testing texte:ibmpc through memory while filtering
 # Snippet )d78)
 # Snippet (s78(
-# starting from `methods.m4:78'.
+# starting from `methods.m4:77'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:78: testing..."
-echo methods.m4:78 > at-check-line
+  && echo "$srcdir/methods.m4:77: testing..."
+echo methods.m4:77 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6928,25 +6928,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c79)
-  echo methods.m4:81 > at-check-line
+  echo methods.m4:80 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "79. $srcdir/methods.m4:81     $at_c"
+  echo $at_n "79. $srcdir/methods.m4:80     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d79(
 # Testing texte:ibmpc through memory while squashing
 # Snippet )d79)
 # Snippet (s79(
-# starting from `methods.m4:81'.
+# starting from `methods.m4:80'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:81: testing..."
-echo methods.m4:81 > at-check-line
+  && echo "$srcdir/methods.m4:80: testing..."
+echo methods.m4:80 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -6993,25 +6993,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c80)
-  echo methods.m4:84 > at-check-line
+  echo methods.m4:83 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "80. $srcdir/methods.m4:84     $at_c"
+  echo $at_n "80. $srcdir/methods.m4:83     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d80(
 # Testing texte:ibmpc through files while filtering
 # Snippet )d80)
 # Snippet (s80(
-# starting from `methods.m4:84'.
+# starting from `methods.m4:83'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:84: testing..."
-echo methods.m4:84 > at-check-line
+  && echo "$srcdir/methods.m4:83: testing..."
+echo methods.m4:83 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7056,25 +7056,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c81)
-  echo methods.m4:87 > at-check-line
+  echo methods.m4:86 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "81. $srcdir/methods.m4:87     $at_c"
+  echo $at_n "81. $srcdir/methods.m4:86     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d81(
 # Testing texte:ibmpc through files while squashing
 # Snippet )d81)
 # Snippet (s81(
-# starting from `methods.m4:87'.
+# starting from `methods.m4:86'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:87: testing..."
-echo methods.m4:87 > at-check-line
+  && echo "$srcdir/methods.m4:86: testing..."
+echo methods.m4:86 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7121,25 +7121,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c82)
-  echo methods.m4:90 > at-check-line
+  echo methods.m4:89 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "82. $srcdir/methods.m4:90     $at_c"
+  echo $at_n "82. $srcdir/methods.m4:89     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d82(
 # Testing texte:ibmpc through pipe while filtering
 # Snippet )d82)
 # Snippet (s82(
-# starting from `methods.m4:90'.
+# starting from `methods.m4:89'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:90: testing..."
-echo methods.m4:90 > at-check-line
+  && echo "$srcdir/methods.m4:89: testing..."
+echo methods.m4:89 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7184,25 +7184,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c83)
-  echo methods.m4:93 > at-check-line
+  echo methods.m4:92 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:ibmpc through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "83. $srcdir/methods.m4:93     $at_c"
+  echo $at_n "83. $srcdir/methods.m4:92     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d83(
 # Testing texte:ibmpc through pipe while squashing
 # Snippet )d83)
 # Snippet (s83(
-# starting from `methods.m4:93'.
+# starting from `methods.m4:92'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:93: testing..."
-echo methods.m4:93 > at-check-line
+  && echo "$srcdir/methods.m4:92: testing..."
+echo methods.m4:92 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7249,25 +7249,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c84)
-  echo methods.m4:96 > at-check-line
+  echo methods.m4:95 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "84. $srcdir/methods.m4:96     $at_c"
+  echo $at_n "84. $srcdir/methods.m4:95     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d84(
 # Testing texte:iconqnx through memory while filtering
 # Snippet )d84)
 # Snippet (s84(
-# starting from `methods.m4:96'.
+# starting from `methods.m4:95'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:96: testing..."
-echo methods.m4:96 > at-check-line
+  && echo "$srcdir/methods.m4:95: testing..."
+echo methods.m4:95 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7312,25 +7312,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c85)
-  echo methods.m4:99 > at-check-line
+  echo methods.m4:98 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "85. $srcdir/methods.m4:99     $at_c"
+  echo $at_n "85. $srcdir/methods.m4:98     $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d85(
 # Testing texte:iconqnx through memory while squashing
 # Snippet )d85)
 # Snippet (s85(
-# starting from `methods.m4:99'.
+# starting from `methods.m4:98'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:99: testing..."
-echo methods.m4:99 > at-check-line
+  && echo "$srcdir/methods.m4:98: testing..."
+echo methods.m4:98 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7377,25 +7377,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c86)
-  echo methods.m4:102 > at-check-line
+  echo methods.m4:101 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "86. $srcdir/methods.m4:102    $at_c"
+  echo $at_n "86. $srcdir/methods.m4:101    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d86(
 # Testing texte:iconqnx through files while filtering
 # Snippet )d86)
 # Snippet (s86(
-# starting from `methods.m4:102'.
+# starting from `methods.m4:101'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:102: testing..."
-echo methods.m4:102 > at-check-line
+  && echo "$srcdir/methods.m4:101: testing..."
+echo methods.m4:101 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7440,25 +7440,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c87)
-  echo methods.m4:105 > at-check-line
+  echo methods.m4:104 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "87. $srcdir/methods.m4:105    $at_c"
+  echo $at_n "87. $srcdir/methods.m4:104    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d87(
 # Testing texte:iconqnx through files while squashing
 # Snippet )d87)
 # Snippet (s87(
-# starting from `methods.m4:105'.
+# starting from `methods.m4:104'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:105: testing..."
-echo methods.m4:105 > at-check-line
+  && echo "$srcdir/methods.m4:104: testing..."
+echo methods.m4:104 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7505,25 +7505,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c88)
-  echo methods.m4:108 > at-check-line
+  echo methods.m4:107 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "88. $srcdir/methods.m4:108    $at_c"
+  echo $at_n "88. $srcdir/methods.m4:107    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d88(
 # Testing texte:iconqnx through pipe while filtering
 # Snippet )d88)
 # Snippet (s88(
-# starting from `methods.m4:108'.
+# starting from `methods.m4:107'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:108: testing..."
-echo methods.m4:108 > at-check-line
+  && echo "$srcdir/methods.m4:107: testing..."
+echo methods.m4:107 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7568,25 +7568,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c89)
-  echo methods.m4:111 > at-check-line
+  echo methods.m4:110 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing texte:iconqnx through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "89. $srcdir/methods.m4:111    $at_c"
+  echo $at_n "89. $srcdir/methods.m4:110    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d89(
 # Testing texte:iconqnx through pipe while squashing
 # Snippet )d89)
 # Snippet (s89(
-# starting from `methods.m4:111'.
+# starting from `methods.m4:110'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:111: testing..."
-echo methods.m4:111 > at-check-line
+  && echo "$srcdir/methods.m4:110: testing..."
+echo methods.m4:110 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7633,25 +7633,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c90)
-  echo methods.m4:114 > at-check-line
+  echo methods.m4:113 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through memory while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "90. $srcdir/methods.m4:114    $at_c"
+  echo $at_n "90. $srcdir/methods.m4:113    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d90(
 # Testing ascii-bs:ebcdic through memory while filtering
 # Snippet )d90)
 # Snippet (s90(
-# starting from `methods.m4:114'.
+# starting from `methods.m4:113'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:114: testing..."
-echo methods.m4:114 > at-check-line
+  && echo "$srcdir/methods.m4:113: testing..."
+echo methods.m4:113 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7696,25 +7696,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c91)
-  echo methods.m4:117 > at-check-line
+  echo methods.m4:116 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through memory while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "91. $srcdir/methods.m4:117    $at_c"
+  echo $at_n "91. $srcdir/methods.m4:116    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d91(
 # Testing ascii-bs:ebcdic through memory while squashing
 # Snippet )d91)
 # Snippet (s91(
-# starting from `methods.m4:117'.
+# starting from `methods.m4:116'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:117: testing..."
-echo methods.m4:117 > at-check-line
+  && echo "$srcdir/methods.m4:116: testing..."
+echo methods.m4:116 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7761,25 +7761,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c92)
-  echo methods.m4:120 > at-check-line
+  echo methods.m4:119 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through files while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "92. $srcdir/methods.m4:120    $at_c"
+  echo $at_n "92. $srcdir/methods.m4:119    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d92(
 # Testing ascii-bs:ebcdic through files while filtering
 # Snippet )d92)
 # Snippet (s92(
-# starting from `methods.m4:120'.
+# starting from `methods.m4:119'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:120: testing..."
-echo methods.m4:120 > at-check-line
+  && echo "$srcdir/methods.m4:119: testing..."
+echo methods.m4:119 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7824,25 +7824,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c93)
-  echo methods.m4:123 > at-check-line
+  echo methods.m4:122 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through files while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "93. $srcdir/methods.m4:123    $at_c"
+  echo $at_n "93. $srcdir/methods.m4:122    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d93(
 # Testing ascii-bs:ebcdic through files while squashing
 # Snippet )d93)
 # Snippet (s93(
-# starting from `methods.m4:123'.
+# starting from `methods.m4:122'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:123: testing..."
-echo methods.m4:123 > at-check-line
+  && echo "$srcdir/methods.m4:122: testing..."
+echo methods.m4:122 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7889,25 +7889,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c94)
-  echo methods.m4:126 > at-check-line
+  echo methods.m4:125 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through pipe while filtering'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "94. $srcdir/methods.m4:126    $at_c"
+  echo $at_n "94. $srcdir/methods.m4:125    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d94(
 # Testing ascii-bs:ebcdic through pipe while filtering
 # Snippet )d94)
 # Snippet (s94(
-# starting from `methods.m4:126'.
+# starting from `methods.m4:125'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:126: testing..."
-echo methods.m4:126 > at-check-line
+  && echo "$srcdir/methods.m4:125: testing..."
+echo methods.m4:125 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e
@@ -7952,25 +7952,25 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf data stdout stderr
 # Snippet )c95)
-  echo methods.m4:129 > at-check-line
+  echo methods.m4:128 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing ascii-bs:ebcdic through pipe while squashing'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "95. $srcdir/methods.m4:129    $at_c"
+  echo $at_n "95. $srcdir/methods.m4:128    $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d95(
 # Testing ascii-bs:ebcdic through pipe while squashing
 # Snippet )d95)
 # Snippet (s95(
-# starting from `methods.m4:129'.
+# starting from `methods.m4:128'.
 $at_traceon
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/methods.m4:129: testing..."
-echo methods.m4:129 > at-check-line
+  && echo "$srcdir/methods.m4:128: testing..."
+echo methods.m4:128 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 set -e

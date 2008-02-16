@@ -1,4 +1,4 @@
-This is a port of GNU Recode 3.4 to MSDOS/DJGPP.
+This is a port of Free Recode 3.4 to MSDOS/DJGPP.
 
 Installation
 ============
@@ -88,7 +88,7 @@ The configure script run by CONFIG.BAT supports a few options.  Run "sh
 How to patch the original source
 ================================
 
-You need the original sources of the GNU recode-3.4.1 package.
+You need the original sources of the Free recode-3.4.1 package.
 Ungzip and untar the sources, they'll be located in the directory named
 'recode-3.4.1'.  Change the name of that directory to 'recode.341', and
 create and empty directory named 'recode-3.4.1'.  In the parent directory

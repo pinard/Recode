@@ -23,23 +23,8 @@ noinst_LIBRARIES = libreco.a
 noinst_HEADERS = error.h getopt.h gettext.h pathmax.h xstring.h
 libreco_a_SOURCES = error.c getopt.c getopt1.c xstrdup.c
 
-EXTRA_DIST = alloca.c gettext.c malloc.c realloc.c strtol.c strtoul.c
+EXTRA_DIST = alloca.c malloc.c realloc.c strtol.c strtoul.c
 
 INCLUDES = -I.. -I$(srcdir)
 
 libreco_a_LIBADD = @ALLOCA@ @LIBOBJS@
-## libreco_a_DEPENDENCIES = $(libtar_a_LIBADD)
-localedir = $(prefix)/share/locale
-aliaspath = $(localedir):.
-
-gettext.o: gettext.c
-	$(COMPILE) -DALIASPATH=\"$(aliaspath)\" -DLOCALEDIR=\"$(localedir)\" \
-	  -c $(srcdir)/gettext.c
-
-gettext._o: gettext._c
-	@rm -f _gettext.c
-	@ln gettext._c _gettext.c
-	$(COMPILE) -DALIASPATH=\"$(aliaspath)\" -DLOCALEDIR=\"$(localedir)\" \
-	  -c _gettext.c
-	@mv _gettext.o $@
-	@rm _gettext.c

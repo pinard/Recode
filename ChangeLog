@@ -1,3 +1,57 @@
+2005-03-06  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (SUBDIRS): Add intl.
+	* configure.ac (AC_CONFIG_FILES): Add intl/Makefile.
+	(AM_GNU_GETTEXT_VERSION): Bump to 0.14.1.
+
+2005-03-06  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.am (EXTRA_DIST): Add config.rpath.
+	* configure.ac (AC_CONFIG_FILES): Add po/Makefile.in.
+
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	Adapt to autoconf 2.59 and automake 1.9.1.
+	* configure.ac: New name for configure.in.
+	Update AC_PREREQ.
+	Remove arguments on AC_INIT and AC_OUTPUT.
+	Use AC_CONFIG_SRCDIR and AC_CONFIG_FILES.
+	Use AC_CONFIG_HEADER instead of AM_CONFIG_HEADER, quote argument.
+
+	Use AC_PROG_LIBTOOL instead of AM_PROG_LIBTOOL.
+	Use AC_PROG_LEX instead of ad_AC_PROG_FLEX.
+	Do not substitute nor handle LIBOBJS.
+	Remove spurious AC_CANONICAL_HOST.
+	* depcomp: New file, from elsewhere.
+	* INSTALL, config.guess, config.sub, install-sh, mdate-sh, missing,
+	mkinstalldirs, doc/texinfo.tex, src/ansi2knr.c: Newer versions, from
+	elsewhere.
+	* m4/atconfig.m4, m4/codeset.m4, m4/gettext.m4, m4/glibc21.m4,
+	m4/malloc.m4, m4/realloc.m4, m4/utimbuf.m4: Quoted first argument of
+	AC_DEFUN.
+	* m4/gettext.m4, m4/malloc.m4, m4/realloc.m4: Use AC_LIBOBJ macro
+	instead of LIBOBJS variable.
+	* m4/lcmessage.m4: Move previously global AC_PREREQ into macro.
+	* m4/flex.m4: Deleted.
+	* m4/gettext.m4, m4/lcmessage.m4: Use third argument to AC_DEFINE or
+	AC_DEFINE_UNQUOTED.
+	* acconfig.h: Deleted.
+
+	Postpone libtool support, as it creates too many problems for now.
+	* configure.ac: Replace AC_PROG_LIBTOOL with AC_PROG_RANLIB.
+	Do not fiddle with LTALLOCA nor LTLIBOBJS.
+	* ltconfig, ltmain.sh, m4/libtool.m4: Deleted.
+	* src/Makefile.am: Replace lib_LTLIBRARIES by noinst_LIBRARIES.
+	Replace librecode.la by libcode.a and librecode_la by librecode_a.
+
+	* ChangeLog, config/ChangeLog, doc/ChangeLog, libiconv/ChangeLog,
+	tests/ChangeLog, m4/ChangeLog: Converted to UTF-8.
+
+	* PATCHES-AC: Deleted, hoping Autoconf has it by now.  I did not
+	check, because if it does not yet, it is a lost cause.
+
+	* rebox.el: Deleted.  It has been moved as rebox.py into Pymacs.
+
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 
 	* configure.in: Version 3.6.

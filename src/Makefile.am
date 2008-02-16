@@ -23,7 +23,7 @@ lib_LTLIBRARIES = librecode.la
 man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
-noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
+noinst_HEADERS = argmatch.h charname.h common.h decsteps.h exit.h exitfail.h \
 fr-charname.h hash.h inisteps.h libiconv.h quotearg.h rfc1345.h	tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
@@ -45,9 +45,10 @@ L_SURFACES =
 recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 
-librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
-hash.c iconv.c libiconv.c localcharset.c merged.c names.c outer.c quotearg.c \
-recode.c request.c strip-pool.c task.c xmalloc.c $(C_STEPS)
+librecode_la_SOURCES = argmatch.c charname.c combine.c exitfail.c \
+fr-charname.c hash.c iconv.c libiconv.c localcharset.c merged.c names.c \
+outer.c quotearg.c recode.c request.c strip-pool.c task.c \
+xalloc-die.c xmalloc.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
 INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
@@ -95,7 +96,7 @@ outer.o: stamp-steps
 $(srcdir)/merged.c: mergelex.py $(L_STEPS)
 	(cd $(srcdir) && cat $(L_STEPS)) \
 	| $(PYTHON) $(srcdir)/mergelex.py > merged.tm1
-	$(LEX) -t8 merged.tm1 > merged.tm2
+	$(LEX) -t -8 merged.tm1 > merged.tm2
 	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
 	rm merged.tm1 merged.tm2
 
