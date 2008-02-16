@@ -1,163 +1,241 @@
-* README file for `recode'			allout -*- outline -*-
+.. role:: code(strong)
+.. role:: file(literal)
 
-  Here is version 3.6 for the Free `recode' program and library.  Glance
-  through this `README' file before starting configuration.  Make sure
-  you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
-  them already.
+===================================
+README file for Free :code:`recode`
+===================================
 
-  The canonical distribution point for this version is:
+.. raw:: html
 
-     http://recode.progiciels-bpi.ca/archives/recode-3.6.tar.gz
+   <!--: Faire
+       import socket
+       if socket.gethostname() == 'phenix':
+           bpi = ':8080'
+       else:
+           bpi = '.progiciels-bpi.ca'
+   :-->
+   <!-- Traiter! -->
 
-  GNU mirrors usually hold a copy of non-pretest releases, the canonical
-  distribution point for the last such release is:
+..
 
-     ftp://ftp.gnu.org/pub/gnu/recode/recode-3.6.tar.gz
+.. contents::
+.. sectnum::
 
-.* Introduction
-   ------------
+Introduction
+============
 
-. + Presentation
+What is Recode?
+---------------
 
-    The `recode' library converts files between character sets and usages.
-    It recognises or produces more than 300 different character sets and
-    transliterates files between almost any pair.  When exact transliteration
-    are not possible, it gets rid of offending characters or falls back
-    on approximations.  The `recode' program is a handy front-end to
-    the library.
+Here is version 3.6 for the Free :code:`recode` program and library.
+Hereafter, Recode means the whole package, :code:`recode` means the
+executable program.  Glance through this :file:`README` file before
+starting configuration.  Make sure you read files :file:`ABOUT-NLS` and
+:file:`INSTALL` if you are not familiar with them already.
 
-    The `recode' program and library have been written by François Pinard,
-    yet it significantly reuses works from Keld Simonsen and Bruno Haible.
-    It is an evolving package, and specifications might change in future
-    releases.  Option `-f' is now fairly implemented, yet not fully.
+The Recode library converts files between character sets and usages.
+It recognises or produces more than 300 different character sets
+and transliterates files between almost any pair.  When exact
+transliteration are not possible, it gets rid of offending characters
+or falls back on approximations.  The :code:`recode` program is a handy
+front-end to the library.
 
-. + See files
+The Recode program and library have been written by FranÃ§ois Pinard,
+yet it significantly reuses works from Keld Simonsen and Bruno Haible.
+It is an evolving package, and specifications might change in future
+releases.  Option ``-f`` is now fairly implemented, yet not fully.
 
-	ABOUT-NLS     how to customise this program to your language
-	COPYING       copying conditions for the program
-	COPYING.LIB   copying conditions for the library
-	INSTALL       compilation and installation instructions
-	NEWS          major changes in the current release
-	THANKS        partial list of contributors
+In 1999, I gave a `presentation`__ of Recode in Japan.
 
-. + Configure options
+__ m17n99.html
 
-    Besides those configure options documented in files `INSTALL' and
-    `ABOUT-NLS', a few extra options may be accepted after `./configure':
+Reports and collaboration
+-------------------------
 
-.  - `--disable-shared'
-.  - `--disable-static'
+Send bug reports to mailto:recode-bugs@iro.umontreal.ca' . A bug
+report is an adequate description of the problem: your input, what you
+expected, what you got, and why this is wrong.  Diffs are welcome, but
+they only describe a solution, from which the problem might be uneasy
+to infer.  If needed, submit actual data files with your report.  Small
+data files are preferred.  Big files may sometimes be necessary, but do
+not send them on the mailing list; rather take special arrangement with
+the maintainer.
 
-     to inhibit the building of shared libraries or static libraries; the
-     default is to always build static libraries, and to attempt building
-     shared libraries if there is some known recipe for this.
+Your feedback will help us to make a better and more portable
+package.  Consider documentation errors as bugs, and report them
+as such.  If you develop anything pertaining to Recode or have
+suggestions, let us know and share your findings by writing at
+mailto:recode-forum@iro.umontreal.ca . You may also choose to directly
+write at mailto:pinard@iro.umontreal.ca, yet be warned that such
+correspondence is often visible for a while through the Recode Web site.
 
-.  - `--with-gnu-ld'
+If you feel like receiving releases and pretest announcements for the
+Recode package, send a message to mailto:majordomo@iro.umontreal.ca
+having, in its body, a line saying::
 
-     to force the assomption that the C compiler uses GNU ld.
+    subscribe recode-announce
 
-.  - `--with-dmalloc'
+If you rather want to participate actively in discussions, pretesting
+and development for Recode, do just as above, but this time, use::
 
-     to trigger a debugging feature for looking at memory management
-     problems, it pre-requires Gray Watson's package, which is available as
-     `ftp://ftp.letters.com/src/dmalloc/dmalloc.tar.gz'.
+    subscribe recode-forum
 
-. + Maintenance tools
+Look into http://recode%(bpi)s/ for various releases, pretests, the
+current backlog of reports, and related files.  In particular, button
+``Browse`` gives access to a weekly mirror of the current unpackaged
+work files, while button ``Folders`` gives access to saved or pending
+correspondence.
 
-    For comprehensive modifications to `recode', you might need tools beyond
-    those used in simple installations.  If not done already, get:
+However, please *do not* widely redistribute releases having a letter
+after the version numbers, as these are meant for pretesting only, and
+might not be stable enough for other usages.
 
-    autoconf	ftp://ftp.enst.fr/pub/unix/a2ps/autoconf-2.14a.tar.gz
-    automake	ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
-    flex	ftp://ftp.gnu.org/pub/gnu/flex/flex-2.5.4a.tar.gz
-    gettext	ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
-    help2man	http://www.ozemail.com.au/~bod/help2man-1.020.tar.gz
-    libtool	http://www.oranda.demon.co.uk/dist/libtool-1.3.4.tar.gz
-    m4		ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4n.tar.gz
-    perl	ftp://ftp.gnu.org/pub/gnu/perl/perl-5.005.03.tar.gz
-    python	ftp://ftp.python.org/pub/python/src/py152.tgz
-    tar		ftp://ftp.gnu.org/pub/gnu/tar/tar-1.12.tar.gz
+Development plan
+----------------
 
-    Make sure GNU `m4' is fully installed before you start installing
-    Autoconf.  Apply `PATCHES-AC' to Autoconf before installing it.
-    Have Perl installed before Automake and `help2man'.
+My plan has long been to end the 3.x series of this package, rather
+aiming 4.0 as a major internal rewrite.  As there is still a long
+way before 4.0 gets ready, and *especially* because some of my good
+collaborators insisted that I do so, there will be a Recode 3.7.  That
+release is meant to provide a selection of user-contributed patches.
 
-    Python 1.5 and Flex 2.5, or better, are needed for remaking `merged.c',
-    after you modify an `.l' source file.
+For prototyping what Recode will become and experimenting new concepts
+more easily, I created a subsidiary and standalone project named
+Recodec, meant to receive the best part of my development efforts in
+this particular area.  Once I'll be happy with the prototype, the plan
+is to rewrite it from Python to C, somehow.  Visit the Web pages for
+this `Recodec project`__ for more information and details.  For now at
+least, new features go to Recodec only.
 
-. + Mailing lists and collaboration
+__ http://recodec.progiciels-bpi.ca
 
-    If you feel like receiving releases and pretest announcements for the
-    `recode' package, send a message to mailto:majordomo@iro.umontreal.ca
-    having, in its body, a line saying:
+Installation
+============
 
-	subscribe recode-announce
+Getting your own copy
+---------------------
 
-    If you rather want to participate actively in discussions, pretesting
-    and development for `recode', do just as above, but this time, use:
+The canonical distribution point for this version is:
 
-	subscribe recode-forum
+  http://recode%(bpi)s/archives/recode-3.6.tar.gz
 
-    Look into `http://recode.progiciels-bpi.ca/' for various releases,
-    pretests, the current backlog of reports, and related files.  In
-    particular, button `Browse' gives access to a weekly mirror of the
-    current unpackaged work files, while button `Folders' gives access
-    to saved or pending correspondence.
+GNU mirrors usually hold a copy of non-pretest releases, the canonical
+distribution point for the last such release is:
 
-    Please do _not_ widely redistribute releases having a letter after
-    the version numbers, as these are meant for pretesting only, and
-    might not be stable enough for other usages.
+  ftp://ftp.gnu.org/pub/gnu/recode/recode-3.6.tar.gz
 
-. + Report addresses
+Some older distributions, and maybe beta pre-releases for testers,
+*might* be available in this directory:
 
-    Send bug reports to `mailto:recode-bugs@iro.umontreal.ca'.  A bug report
-    is an adequate description of the problem: your input, what you expected,
-    what you got, and why this is wrong.  Diffs are welcome, but they only
-    describe a solution, from which the problem might be uneasy to infer.
-    If needed, submit actual data files with your report.  Small data
-    files are preferred.  Big files may sometimes be necessary, but do
-    not send them on the mailing list; rather take special arrangement
-    with the maintainer.
+  http://recode%(bpi)s/archives/
 
-    Your feedback will help us to make a better and more portable
-    package.  Consider documentation errors as bugs, and report them
-    as such.  If you develop anything pertaining to `recode' or have
-    suggestions, let us know and share your findings by writing at
-    `mailto:recode-forum@iro.umontreal.ca'.
+There is a reachable copy of my own sandbox repository for Recode.  I
+experiment with it, and branches may be reset at any time.  The server
+might not even be up (then just tell me!).  To get your own copy, try
+these commands::
 
-.* Installation hints
-   ------------------
+    git clone git://recode%(bpi)s/recode
+    cd recode
+    sh after-git.sh
 
-   Here are a few hints which might help installing `recode' on some systems.
-   Many may be applied by temporary presetting environment variables while
-   calling `./configure'.  File `INSTALL' explains this.
+(or ``python after-git.py`` if you miss either :code:`sh` or GNU
+:code:`touch`).
 
-. + Compilation time
+Once you have an unpacked distribution, see files:
 
-    Some C compilers, like Apollo's, have a real hard time compiling
-    `merged.c'.  If this is your case, avoid compiler optimisation.
-    From within the Bourne shell, you may use:
+  ===================  =======================================================
+  :file:`ABOUT-NLS`    how to customise this program to your language
+  :file:`COPYING`      copying conditions for the program
+  :file:`COPYING.LIB`  copying conditions for the library
+  :file:`INSTALL`      compilation and installation instructions
+  :file:`NEWS`         major changes in the current release
+  :file:`THANKS`       partial list of contributors
+  ===================  =======================================================
 
-	CFLAGS= ./configure
+Configure options
+-----------------
 
-    But if you want to give a hard time to your C optimiser on `merged.c',
-    for getting code that runs only a bit faster, just try:
+Besides those configure options documented in files :file:`INSTALL`
+and :file:`ABOUT-NLS`, a few extra options may be accepted after
+``./configure``:
 
-	CPPFLAGS=-DINLINE_HARDER ./configure
++ Options ``--disable-shared`` or ``--disable-static``
 
-. + Smallish systems
+  to inhibit the building of shared libraries or static libraries; the
+  default is to always build static libraries, and to attempt building
+  shared libraries if there is some known recipe for this.
 
-    For 80286 based systems, it has been reported that some compilers
-    generate wrong code while optimising for *small* models.  So, from
-    within the Bourne shell, do:
++ Option ``--with-gnu-ld``
 
-	CFLAGS=-Ml LDFLAGS=-Ml ./configure
+  to force the assomption that the C compiler uses GNU ld.
 
-    to force large memory model.  For 80286 Xenix compiler, the last time
-    it was tried a while ago, one ought to use:
++ Option ``--with-dmalloc``
 
-	CFLAGS='-Ml -F2000' LDFLAGS=-Ml ./configure
+  to trigger a debugging feature for looking at memory management
+  problems, it pre-requires Gray Watson's package, which is available as
+  ftp://ftp.letters.com/src/dmalloc/dmalloc.tar.gz .
 
-    Other systems have poor `pipe'/`popen' support or trash heavily when
-    processes fork.  In this case, just before doing `make', edit `config.h'
-    and ensure `HAVE_PIPE' is *not* defined.
+Maintenance tools
+-----------------
+
+For comprehensive modifications to Recode, you might need tools
+beyond those used in simple installations.  If not done already, get:
+
+  ========  ===================================================================
+  autoconf  ftp://ftp.enst.fr/pub/unix/a2ps/autoconf-2.14a.tar.gz
+  automake  ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
+  flex      ftp://ftp.gnu.org/pub/gnu/flex/flex-2.5.4a.tar.gz
+  gettext   ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
+  help2man  http://www.ozemail.com.au/~bod/help2man-1.020.tar.gz
+  libtool   http://www.oranda.demon.co.uk/dist/libtool-1.3.4.tar.gz
+  m4        ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4n.tar.gz
+  perl      ftp://ftp.gnu.org/pub/gnu/perl/perl-5.005.03.tar.gz
+  python    ftp://ftp.python.org/pub/python/src/py152.tgz
+  tar       ftp://ftp.gnu.org/pub/gnu/tar/tar-1.12.tar.gz
+  ========  ===================================================================
+
+Make sure GNU :code:`m4` is fully installed before you start installing
+Autoconf.  Apply :file:`PATCHES-AC` to Autoconf before installing it.
+Have Perl installed before Automake and :code:`help2man`.
+
+Python 1.5 and Flex 2.5, or better, are needed for remaking
+:file:`merged.c`, after you modify an :file:`.l` source file.
+
+Installation hints
+------------------
+
+Here are a few hints which might help installing Recode on some systems.
+Many may be applied by temporary presetting environment variables while
+calling ``./configure``.  File :file:`INSTALL` explains this.
+
++ Compilation time
+
+  Some C compilers, like Apollo's, have a hard time compiling
+  :file:`merged.c`.  If this is your case, avoid compiler
+  optimisation.  From within the Bourne shell, you may use::
+
+    CFLAGS= ./configure
+
+  But if you want to give a real hard time to your C optimiser on
+  :file:`merged.c`, to get code that runs only a bit faster, merely
+  try::
+
+      CPPFLAGS=-DINLINE_HARDER ./configure
+
++ Smallish systems
+
+  For 80286 based systems (do some still exist?!), it has been
+  reported that some compilers generate wrong code while optimising
+  for *small* models.  So, from within the Bourne shell, do::
+
+      CFLAGS=-Ml LDFLAGS=-Ml ./configure
+
+  to force large memory model.  For 80286 Xenix compiler, the last time
+  it was tried a while ago, one ought to use::
+
+      CFLAGS='-Ml -F2000' LDFLAGS=-Ml ./configure
+
+  Other systems have poor :code:`pipe`/:code:`popen` support or trash
+  heavily when processes fork.  In this case, just before doing
+  ``make``, edit :file:`config.h` and ensure :code:`HAVE_PIPE` is
+  *not* defined.

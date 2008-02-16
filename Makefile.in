@@ -675,6 +675,26 @@ uninstall-am:
 	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
 	tags tags-recursive uninstall uninstall-am
 
+
+# The following goals for the maintainer of the Recode Web site.
+
+local:
+	ajuster-web $(top_srcdir)/web
+
+publish:
+	git archive --format=tar --prefix=recode-$(VERSION)/ HEAD . \
+	  | gzip > $(top_srcdir)/web/archives/recode-$(VERSION).tar.gz
+
+official: publish
+	rm -f $(top_srcdir)/web/archives/recode.tar.gz
+	ln -s recode-$(VERSION).tar.gz $(top_srcdir)/web/archives/recode.tar.gz
+
+synchro: local
+	du -s $(top_srcdir)/.git
+	git gc --prune
+	du -s $(top_srcdir)/.git
+	find $(top_srcdir) -name '*~' | xargs rm -fv
+	synchro -PD alcyon entretien
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

@@ -24,3 +24,23 @@ ACLOCAL_AMFLAGS = -I m4
 
 EXTRA_DIST = COPYING-LIB rebox.el recode.spec aclocal.sh
 SUBDIRS = m4 doc lib libiconv po src tests contrib
+
+# The following goals for the maintainer of the Recode Web site.
+
+local:
+	ajuster-web $(top_srcdir)/web
+
+publish:
+	git archive --format=tar --prefix=recode-$(VERSION)/ HEAD . \
+	  | gzip > $(top_srcdir)/web/archives/recode-$(VERSION).tar.gz
+
+official: publish
+	rm -f $(top_srcdir)/web/archives/recode.tar.gz
+	ln -s recode-$(VERSION).tar.gz $(top_srcdir)/web/archives/recode.tar.gz
+
+synchro: local
+	du -s $(top_srcdir)/.git
+	git gc --prune
+	du -s $(top_srcdir)/.git
+	find $(top_srcdir) -name '*~' | xargs rm -fv
+	synchro -PD alcyon entretien
