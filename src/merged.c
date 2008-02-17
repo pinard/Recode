@@ -3027,9 +3027,9 @@ void yyfree (void * ptr )
 
 
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright Â© 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
    This file is part of the GNU C Library.
-   Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
+   Contributed by FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1988.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License
@@ -3075,8 +3075,8 @@ delmodule_ascii_latin1 (RECODE_OUTER outer)
 {
 }
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 97, 98, 99, 00 Free Software Foundation, Inc.
-   Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
+   Copyright Â© 1990, 93, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Contributed by FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1988.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License
@@ -3122,8 +3122,8 @@ delmodule_latex_latin1 (RECODE_OUTER outer)
 {
 }
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
-   Contributed by François Pinard <pinard@iro.umontreal.ca>, 1989.
+   Copyright Â© 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Contributed by FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1989.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Library General Public License

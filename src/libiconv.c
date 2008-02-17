@@ -1,6 +1,6 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1999, 2000 Free Software Foundation, Inc.
-   Contributed by François Pinard <pinard@iro.umontreal.ca>, 1999,
+   Copyright Â© 1999, 2000 Free Software Foundation, Inc.
+   Contributed by FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1999,
    and Bruno Haible <haible@clisp.cons.org>, 2000.
 
    This library is free software; you can redistribute it and/or

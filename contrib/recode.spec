@@ -10,7 +10,7 @@ Name:		%nam
 Version:	%ver
 Release:	%rel
 Copyright:	GPL
-Vendor:		François Pinard et al.
+Vendor:		FranÃ§ois Pinard et al.
 Group:		Applications/Text
 Source:		http://www.iro.umontreal.ca/contrib/recode/%{nam}-%{ver}.tar.gz
 URL:		http://www.iro.umontreal.ca/~pinard/
@@ -26,7 +26,7 @@ offending characters or fall back on approximations.  Most RFC 1345
 character sets are supported.  The `recode' program is a handy
 front-end to the library.
 
-The `recode' program and library have been written by François Pinard.
+The `recode' program and library have been written by FranÃ§ois Pinard.
 It is an evolving package, and specifications might change in future
 releases.  Option `-f' is now fairly implemented, yet not fully.
 

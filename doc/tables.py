@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#                                                    -*- coding: latin-1 -*-
+#                                                    -*- coding: iso-8859-1 -*-
 # Automatically derive `recode' table files from various sources.
 # Copyright © 1993, 1994, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1993.
@@ -208,78 +208,78 @@ class Charnames(Options):
         self.max_length = 0
         ucs = 0x0000
         for text in (
-            "nul (nul)",                                        # 0000
-            "début d'en-tête (soh)",                            # 0001
-            "début de texte (stx)",                             # 0002
-            "fin de texte (etx)",                               # 0003
-            "fin de transmission (eot)",                        # 0004
-            "demande (enq)",                                    # 0005
-            "accusé de réception positif (ack)",                # 0006
-            "sonnerie (bel)",                                   # 0007
-            "espace arrière (bs)",                              # 0008
-            "tabulation horizontale (ht)",                      # 0009
-            "interligne (lf)",                                  # 000A
-            "tabulation verticale (vt)",                        # 000B
-            "page suivante (ff)",                               # 000C
-            "retour de chariot (cr)",                           # 000D
-            "hors code (so)",                                   # 000E
-            "en code (si)",                                     # 000F
-            "échappement transmission (dle)",                   # 0010
-            "commande d'appareil un (dc1)",                     # 0011
-            "commande d'appareil deux (dc2)",                   # 0012
-            "commande d'appareil trois (dc3)",                  # 0013
-            "commande d'appareil quatre (dc4)",                 # 0014
-            "accusé de réception négatif (nak)",                # 0015
-            "synchronisation (syn)",                            # 0016
-            "fin de transmission de bloc (etb)",                # 0017
-            "annulation (can)",                                 # 0018
-            "fin de support (em)",                              # 0019
-            "caractère de substitution (sub)",                  # 001A
-            "échappement (esc)",                                # 001B
-            "séparateur de fichier (fs)",                       # 001C
-            "séparateur de groupe (gs)",                        # 001D
-            "séparateur d'article (rs)",                        # 001E
-            "séparateur de sous-article (us)",                  # 001F
+            u"nul (nul)",                                        # 0000
+            u"début d'en-tête (soh)",                            # 0001
+            u"début de texte (stx)",                             # 0002
+            u"fin de texte (etx)",                               # 0003
+            u"fin de transmission (eot)",                        # 0004
+            u"demande (enq)",                                    # 0005
+            u"accusé de réception positif (ack)",                # 0006
+            u"sonnerie (bel)",                                   # 0007
+            u"espace arrière (bs)",                              # 0008
+            u"tabulation horizontale (ht)",                      # 0009
+            u"interligne (lf)",                                  # 000A
+            u"tabulation verticale (vt)",                        # 000B
+            u"page suivante (ff)",                               # 000C
+            u"retour de chariot (cr)",                           # 000D
+            u"hors code (so)",                                   # 000E
+            u"en code (si)",                                     # 000F
+            u"échappement transmission (dle)",                   # 0010
+            u"commande d'appareil un (dc1)",                     # 0011
+            u"commande d'appareil deux (dc2)",                   # 0012
+            u"commande d'appareil trois (dc3)",                  # 0013
+            u"commande d'appareil quatre (dc4)",                 # 0014
+            u"accusé de réception négatif (nak)",                # 0015
+            u"synchronisation (syn)",                            # 0016
+            u"fin de transmission de bloc (etb)",                # 0017
+            u"annulation (can)",                                 # 0018
+            u"fin de support (em)",                              # 0019
+            u"caractère de substitution (sub)",                  # 001A
+            u"échappement (esc)",                                # 001B
+            u"séparateur de fichier (fs)",                       # 001C
+            u"séparateur de groupe (gs)",                        # 001D
+            u"séparateur d'article (rs)",                        # 001E
+            u"séparateur de sous-article (us)",                  # 001F
             ):
-            self.declare(ucs, text)
+            self.declare(ucs, text.encode('ISO-8859-1'))
             ucs = ucs + 1
         ucs = 0x007F
         for text in (
-            "suppression (del)",                                # 007F
-            "caractère de bourre (pad)",                        # 0080
-            "octet supérieur prédéfini (hop)",                  # 0081
-            "arrêt permis ici (bph)",                           # 0082
-            "aucun arrêt ici (nbh)",                            # 0083
-            "index (ind)",                                      # 0084
-            "à la ligne (nel)",                                 # 0085
-            "début de zone sélectionnée (ssa)",                 # 0086
-            "fin de zone sélectionnée (esa)",                   # 0087
-            "arrêt de tabulateur horizontal (hts)",             # 0088
-            "tabulateur horizontal avec justification (htj)",   # 0089
-            "arrêt de tabulateur vertical (vts)",               # 008A
-            "interligne partiel vers <= bas (pld)",             # 008B
-            "interligne partiel vers <= haut (plu)",            # 008C
-            "index inversé (ri)",                               # 008D
-            "remplacement unique deux (ss2)",                   # 008E
-            "remplacement unique trois (ss3)",                  # 008F
-            "chaîne de commande d'appareil (dcs)",              # 0090
-            "usage privé un (pu1)",                             # 0091
-            "usage privé deux (pu2)",                           # 0092
-            "mise en mode transmission (sts)",                  # 0093
-            "annulation du caractère précédent (cch)",          # 0094
-            "message en attente (mw)",                          # 0095
-            "début de zone protégée (sga)",                     # 0096
-            "fin de zone protégée (ega)",                       # 0097
-            "début de chaîne (sos)",                            # 0098
-            "introducteur de caractère graphique unique (sgci)",# 0099
-            "introducteur de caractère unique (sci)",           # 009A
-            "introducteur de séquence de commande (csi)",       # 009B
-            "fin de chaîne (st)",                               # 009C
-            "commande de système d'exploitation (osc)",         # 009D
-            "message privé (pm)",                               # 009E
-            "commande de progiciel (apc)",                      # 009F
+            u"suppression (del)",                                # 007F
+            u"caractère de bourre (pad)",                        # 0080
+            u"octet supérieur prédéfini (hop)",                  # 0081
+            u"arrêt permis ici (bph)",                           # 0082
+            u"aucun arrêt ici (nbh)",                            # 0083
+            u"index (ind)",                                      # 0084
+            u"à la ligne (nel)",                                 # 0085
+            u"début de zone sélectionnée (ssa)",                 # 0086
+            u"fin de zone sélectionnée (esa)",                   # 0087
+            u"arrêt de tabulateur horizontal (hts)",             # 0088
+            u"tabulateur horizontal avec justification (htj)",   # 0089
+            u"arrêt de tabulateur vertical (vts)",               # 008A
+            u"interligne partiel vers <= bas (pld)",             # 008B
+            u"interligne partiel vers <= haut (plu)",            # 008C
+            u"index inversé (ri)",                               # 008D
+            u"remplacement unique deux (ss2)",                   # 008E
+            u"remplacement unique trois (ss3)",                  # 008F
+            u"chaîne de commande d'appareil (dcs)",              # 0090
+            u"usage privé un (pu1)",                             # 0091
+            u"usage privé deux (pu2)",                           # 0092
+            u"mise en mode transmission (sts)",                  # 0093
+            u"annulation du caractère précédent (cch)",          # 0094
+            u"message en attente (mw)",                          # 0095
+            u"début de zone protégée (sga)",                     # 0096
+            u"fin de zone protégée (ega)",                       # 0097
+            u"début de chaîne (sos)",                            # 0098
+            u"introducteur de caractère graphique unique (sgci)",# 0099
+            u"introducteur de caractère unique (sci)",           # 009A
+            u"introducteur de séquence de commande (csi)",       # 009B
+            u"fin de chaîne (st)",                               # 009C
+            u"commande de système d'exploitation (osc)",         # 009D
+            u"message privé (pm)",                               # 009E
+            u"commande de progiciel (apc)",                      # 009F
             ):
-            self.declare(ucs, text)
+            self.declare(ucs, text.encode('ISO-8859-1'))
             ucs = ucs + 1
 
     def declare(self, ucs, text):

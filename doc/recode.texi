@@ -3712,8 +3712,9 @@ character references between their mnemonic form and their numeric form,
 depending on aimed HTML standard level.  It also can, of course, convert
 between HTML and various other charsets.
 
-Here is a list of those HTML variants which @code{recode} supports.
-Some notes have been provided by François Yergeau @email{yergeau@@alis.com}.
+Here is a list of those HTML variants which @code{recode}
+supports.  Some notes have been provided by Fran@,{c}ois Yergeau
+@email{yergeau@@alis.com}.
 
 @table @code
 @item XML-standalone

@@ -1,6 +1,6 @@
 # Makefile for `recode' regression tests.
-# Copyright © 1996, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1988.
+# Copyright Â© 1996, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

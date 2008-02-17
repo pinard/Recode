@@ -1,48 +1,48 @@
-;;; recode.el --- Outils divers autour des jeux de caractères nationaux.
-;;; Copyright © 1995, 1997 Progiciels Bourbeau-Pinard inc.
-;;; François Pinard <pinard@iro.umontreal.ca>, Mars 1995.
+;;; recode.el --- Outils divers autour des jeux de caractÃ¨res nationaux.
+;;; Copyright Â© 1995, 1997 Progiciels Bourbeau-Pinard inc.
+;;; FranÃ§ois Pinard <pinard@iro.umontreal.ca>, Mars 1995.
 
 ;; Ce programme est un logiciel libre; vous pouvez le redistribuer ou le
-;; modifier selon les termes de la License Publique Générale de GNU, publiée
-;; par la Free Software Foundation (soit la version 2 ou soit, à votre
-;; discrétion, toute version ultérieure).
+;; modifier selon les termes de la License Publique GÃ©nÃ©rale de GNU, publiÃ©e
+;; par la Free Software Foundation (soit la version 2 ou soit, Ã  votre
+;; discrÃ©tion, toute version ultÃ©rieure).
 
-;; Ce programme est distribué pour être utile, mais SANS AUCUNE GARANTIE;
-;; sans même la garantie implicite qu'il est DE QUALITÉ LOYALE ET MARCHANDE
-;; ou APPROPRIÉ POUR UN BUT PARTICULIER.  Voir la Licence Publique Générale
-;; de GNU pour plus de détails.
+;; Ce programme est distribuÃ© pour Ãªtre utile, mais SANS AUCUNE GARANTIE;
+;; sans mÃªme la garantie implicite qu'il est DE QUALITÃ‰ LOYALE ET MARCHANDE
+;; ou APPROPRIÃ‰ POUR UN BUT PARTICULIER.  Voir la Licence Publique GÃ©nÃ©rale
+;; de GNU pour plus de dÃ©tails.
 
-;; Vous devriez avoir reçu copie de la Licence Publique Générale de GNU
-;; avec ce programme; sinon, écrire à la Free Software Foundation, Inc.,
+;; Vous devriez avoir reÃ§u copie de la Licence Publique GÃ©nÃ©rale de GNU
+;; avec ce programme; sinon, Ã©crire Ã  la Free Software Foundation, Inc.,
 ;; 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Les outils sont regroupés par thème fonctionnel, un par page.  ;;;
-;;; La documentation est au début de chacune de ces pages.	   ;;;
+;;; Les outils sont regroupÃ©s par thÃ¨me fonctionnel, un par page.  ;;;
+;;; La documentation est au dÃ©but de chacune de ces pages.	   ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Ces outils ne fonctionnent pleinement qu'avec Emacs 19.  Dans la
-;;; mesure où ces corrections ne brisent rien qui fonctionne déjà,
+;;; mesure oÃ¹ ces corrections ne brisent rien qui fonctionne dÃ©jÃ ,
 ;;; j'accepterai avec plaisir vos corrections pour les autres Emacs,
-;;; mais je ne prendrai pas le temps de les développer moi-même.
+;;; mais je ne prendrai pas le temps de les dÃ©velopper moi-mÃªme.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Installation rapide.  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Voici une recette d'installation rapide, à l'intention d'usagers
-;;; placés dans un environnement où les administrateurs des systèmes
-;;; ont une attitude amicale.  Elle présume qu'ils ont déjà installé
-;;; Emacs 19, metamail, procmail et recode dans le système, et qu'ils
-;;; ont aussi placé charset.el, mime.el, rmailmime.el et metamail.el
-;;; dans les répertoires déjà fouillés par Emacs pour son code LISP.
-;;; Cela suffira probablement aux débrouillards.  Je vous invite
-;;; néanmoins à lire la documentation détaillée qui apparaît, dans les
-;;; pages subséquentes de ce fichier.
+;;; Voici une recette d'installation rapide, Ã  l'intention d'usagers
+;;; placÃ©s dans un environnement oÃ¹ les administrateurs des systÃ¨mes
+;;; ont une attitude amicale.  Elle prÃ©sume qu'ils ont dÃ©jÃ  installÃ©
+;;; Emacs 19, metamail, procmail et recode dans le systÃ¨me, et qu'ils
+;;; ont aussi placÃ© charset.el, mime.el, rmailmime.el et metamail.el
+;;; dans les rÃ©pertoires dÃ©jÃ  fouillÃ©s par Emacs pour son code LISP.
+;;; Cela suffira probablement aux dÃ©brouillards.  Je vous invite
+;;; nÃ©anmoins Ã  lire la documentation dÃ©taillÃ©e qui apparaÃ®t, dans les
+;;; pages subsÃ©quentes de ce fichier.
 
-;;; Voici donc, succintement, une liste des ajouts que vous avez à
-;;; faire à quelques fichiers pour activer le tout au mieux (à mon
-;;; avis).  Il vous faut éliminer le «;;; » au début de chaque ligne.
+;;; Voici donc, succintement, une liste des ajouts que vous avez Ã 
+;;; faire Ã  quelques fichiers pour activer le tout au mieux (Ã  mon
+;;; avis).  Il vous faut Ã©liminer le Â«;;; Â» au dÃ©but de chaque ligne.
 
 ;;; Dans ~/.procmailrc:
 
@@ -89,17 +89,17 @@
 ;;; 	chmod 644 ~/.forward ~/.procmailrc
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Préparation générale.  ;;;
+;;; PrÃ©paration gÃ©nÃ©rale.  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Pour préparer Emacs à travailler en français avec vous et avec
-;;; l'aide des outils documentés ici, il faut copier ce fichier
-;;; «recode.el» dans un répertoire où vous placez vos fichiers «.el».
-;;; Si vous n'avez pas un tel répertoire, fabriquez-vous en un.  Pour
-;;; un, j'utilise ~pinard/share/site-lisp/ à cet effet.  Faites le
+;;; Pour prÃ©parer Emacs Ã  travailler en franÃ§ais avec vous et avec
+;;; l'aide des outils documentÃ©s ici, il faut copier ce fichier
+;;; Â«recode.elÂ» dans un rÃ©pertoire oÃ¹ vous placez vos fichiers Â«.elÂ».
+;;; Si vous n'avez pas un tel rÃ©pertoire, fabriquez-vous en un.  Pour
+;;; un, j'utilise ~pinard/share/site-lisp/ Ã  cet effet.  Faites le
 ;;; remplacement qui s'impose dans l'exemple qui suit.  Ajouter les
-;;; lignes suivantes dans votre fichier .emacs (sans les «;;;»), ou si
-;;; vous n'en avez pas, créez-le au besoin:
+;;; lignes suivantes dans votre fichier .emacs (sans les Â«;;;Â»), ou si
+;;; vous n'en avez pas, crÃ©ez-le au besoin:
 
 ;;;    (setq load-path
 ;;;          (cons (expand-file-name "~pinard/share/site-lisp")
@@ -110,43 +110,43 @@
 ;;;    (standard-display-european 1)
 ;;;    (require 'iso-syntax)
 
-;;; Vous n'avez pas à ajouter les lignes suivantes:
+;;; Vous n'avez pas Ã  ajouter les lignes suivantes:
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Décodages et réencodages de régions.  ;;;
+;;; DÃ©codages et rÃ©encodages de rÃ©gions.  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;; Fonctionne avec Emacs 18, Emacs 19, et probablement XEmacs.
 
-;;; Les outils suivants exigent la préinstallation de recode, qui peut être
-;;; obtenu de gnu.org, dans le répertoire pub/gnu, sous le nom
-;;; recode-3.4.tar.gz ou mieux, de ftp.iro.umontreal.ca, dans le répertoire
+;;; Les outils suivants exigent la prÃ©installation de recode, qui peut Ãªtre
+;;; obtenu de gnu.org, dans le rÃ©pertoire pub/gnu, sous le nom
+;;; recode-3.4.tar.gz ou mieux, de ftp.iro.umontreal.ca, dans le rÃ©pertoire
 ;;; pub/contrib/pinard/gnu, sous le nom recode-3.4d.tar.gz.
 
-;;; Pour décoder une région Emacs vers le Latin-1, il faut utiliser
+;;; Pour dÃ©coder une rÃ©gion Emacs vers le Latin-1, il faut utiliser
 ;;; l'une des commandes suivantes (attention aux majuscules):
 
-;;;    C-c B   si le texte est codé en Base64 de MIME
-;;;    C-c I   si le texte est codé en code d'IBM-PC
-;;;    C-c L   si le texte est codé en Latin-1 (avec demacs sur MSDOS)
-;;;    C-c M   si le texte est codé en code de Macintosh
-;;;    C-c Q   si le texte est codé en quoted-printable
-;;;    C-c T   si le texte est codé en texte (ou easy-french)
+;;;    C-c B   si le texte est codÃ© en Base64 de MIME
+;;;    C-c I   si le texte est codÃ© en code d'IBM-PC
+;;;    C-c L   si le texte est codÃ© en Latin-1 (avec demacs sur MSDOS)
+;;;    C-c M   si le texte est codÃ© en code de Macintosh
+;;;    C-c Q   si le texte est codÃ© en quoted-printable
+;;;    C-c T   si le texte est codÃ© en texte (ou easy-french)
 
-;;; Pour encoder une région de Latin-1 vers l'un des codes indiqués,
-;;; il suffit de préfixer la commande par «C-u», ce qui a pour effet
-;;; de provoquer le codage contraire, si l'on peut dire.  Undo («C-x u»
-;;; ou «C-_») permet de reculer sur un mauvais choix de décodage.
+;;; Pour encoder une rÃ©gion de Latin-1 vers l'un des codes indiquÃ©s,
+;;; il suffit de prÃ©fixer la commande par Â«C-uÂ», ce qui a pour effet
+;;; de provoquer le codage contraire, si l'on peut dire.  Undo (Â«C-x uÂ»
+;;; ou Â«C-_Â») permet de reculer sur un mauvais choix de dÃ©codage.
 
-;;; Pour décoder un message lu par RMAIL, il faut utiliser les
-;;; commandes d'édition de message du format RMAIL: d'abord «w»
-;;; pour éditer, «C-x h» pour placer la région autour du message
-;;; entier, puis la commande de décodage, et «C-c C-c» pour finir.
-;;; Par exemple, pour décoder un message en quoted-printable, faire:
+;;; Pour dÃ©coder un message lu par RMAIL, il faut utiliser les
+;;; commandes d'Ã©dition de message du format RMAIL: d'abord Â«wÂ»
+;;; pour Ã©diter, Â«C-x hÂ» pour placer la rÃ©gion autour du message
+;;; entier, puis la commande de dÃ©codage, et Â«C-c C-cÂ» pour finir.
+;;; Par exemple, pour dÃ©coder un message en quoted-printable, faire:
 
 ;;;    w C-x h C-c Q C-c C-c
 
-;;; Ces techniques n'ajustent pas les en-têtes MIME du message.
+;;; Ces techniques n'ajustent pas les en-tÃªtes MIME du message.
 
 ;;; Pour toutes ces fonctions, dans votre .emacs, placez:
 
@@ -164,11 +164,11 @@
 ;;;    (autoload 'recode-quoted-printable "recode" nil t)
 ;;;    (autoload 'recode-texte "recode" nil t)
 
-;;; Vous n'avez pas à ajouter les lignes suivantes:
+;;; Vous n'avez pas Ã  ajouter les lignes suivantes:
 
 (defun recode-base64 (flag)
-  "Décoder la région courante qui se trouve déjà en base64 de MIME.  Si
-cette commande est préfixée (par «C-u»), encoder la région courante en
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  en base64 de MIME.  Si
+cette commande est prÃ©fixÃ©e (par Â«C-uÂ»), encoder la rÃ©gion courante en
 base64 de MIME."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
@@ -176,18 +176,18 @@ base64 de MIME."
   (exchange-point-and-mark))
 
 (defun recode-ibmpc (flag)
-  "Décoder la région courante qui se trouve déjà exprimée avec le jeu
-de caractères de l'IBM-PC.  Si cette commande est préfixée (par «C-u»),
-encoder la région courante dans le jeu de caractères de l'IBM-PC."
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  exprimÃ©e avec le jeu
+de caractÃ¨res de l'IBM-PC.  Si cette commande est prÃ©fixÃ©e (par Â«C-uÂ»),
+encoder la rÃ©gion courante dans le jeu de caractÃ¨res de l'IBM-PC."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
 			   (concat "recode " (if flag "..437" "437..")) t)
   (exchange-point-and-mark))
 
 (defun recode-latin1 (flag)
-  "Décoder la région courante qui se trouve déjà exprimée avec le jeu
-de caractères ISO 8859-1 (ou Latin-1).  Si cette commande est préfixée
-(par «C-u»), encoder la région courante dans le jeu de caractères ISO
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  exprimÃ©e avec le jeu
+de caractÃ¨res ISO 8859-1 (ou Latin-1).  Si cette commande est prÃ©fixÃ©e
+(par Â«C-uÂ»), encoder la rÃ©gion courante dans le jeu de caractÃ¨res ISO
 8859-1 (ou Latin-1)."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
@@ -195,17 +195,17 @@ de caractères ISO 8859-1 (ou Latin-1).  Si cette commande est préfixée
   (exchange-point-and-mark))
 
 (defun recode-macintosh (flag)
-  "Décoder la région courante qui se trouve déjà exprimée avec le jeu
-de caractères du Macintosh.  Si cette commande est préfixée (par «C-u»),
-encoder la région courante dans le jeu de caractères du Macintosh."
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  exprimÃ©e avec le jeu
+de caractÃ¨res du Macintosh.  Si cette commande est prÃ©fixÃ©e (par Â«C-uÂ»),
+encoder la rÃ©gion courante dans le jeu de caractÃ¨res du Macintosh."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
 			   (concat "recode " (if flag "..mac" "mac..")) t)
   (exchange-point-and-mark))
 
 (defun recode-quoted-printable (flag)
-  "Décoder la région courante qui se trouve déjà en quoted-printable
-de MIME.  Si cette commande est préfixée (par «C-u»), encoder la région
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  en quoted-printable
+de MIME.  Si cette commande est prÃ©fixÃ©e (par Â«C-uÂ»), encoder la rÃ©gion
 courante en quoted-printable de MIME."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
@@ -213,54 +213,54 @@ courante en quoted-printable de MIME."
   (exchange-point-and-mark))
 
 (defun recode-texte (flag)
-  "Décoder la région courante qui se trouve déjà exprimée avec la
-convention Easy French, où l'accent est placée après la lettre plutôt
-qu'au-dessus.  Si cette commande est préfixée (par «C-u»), encoder la
-région courante avec la convention Easy French."
+  "DÃ©coder la rÃ©gion courante qui se trouve dÃ©jÃ  exprimÃ©e avec la
+convention Easy French, oÃ¹ l'accent est placÃ©e aprÃ¨s la lettre plutÃ´t
+qu'au-dessus.  Si cette commande est prÃ©fixÃ©e (par Â«C-uÂ»), encoder la
+rÃ©gion courante avec la convention Easy French."
   (interactive "P")
   (shell-command-on-region (region-beginning) (region-end)
 			   (concat "recode " (if flag "..txte" "txte..")) t)
   (exchange-point-and-mark))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; Affichage, fouilles, remplacements et tris français.  ;;;
+;;; Affichage, fouilles, remplacements et tris franÃ§ais.  ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;; Fonctionne généralement avec Emacs 18 sauf pour «C-c K»; «C-c E»
-;;; ne fonctionne que des versions spécialement modifiées par moi,
-;;; versions plutôt rares de nos jours.  Fonctionne avec Emacs 19.
+;;; Fonctionne gÃ©nÃ©ralement avec Emacs 18 sauf pour Â«C-c KÂ»; Â«C-c EÂ»
+;;; ne fonctionne que des versions spÃ©cialement modifiÃ©es par moi,
+;;; versions plutÃ´t rares de nos jours.  Fonctionne avec Emacs 19.
 ;;; J'ignore pour XEmacs.
 
-;;; Ces outils contrôlent l'effet de la capitalisation et des diacritiques
+;;; Ces outils contrÃ´lent l'effet de la capitalisation et des diacritiques
 ;;; sur l'affichage, sur les fouilles avec ou sans remplacement, et
 ;;; sur les tris dans Emacs.  Notez les majuscules dans les clefs de
-;;; commande décrites ci-après.
+;;; commande dÃ©crites ci-aprÃ¨s.
 
-;;; La commande «C-c E» est une bascule entre l'affichage français ou
-;;; l'affichage avec des séquences d'échappement en octal, dans les
-;;; fenêtres de Emacs.
+;;; La commande Â«C-c EÂ» est une bascule entre l'affichage franÃ§ais ou
+;;; l'affichage avec des sÃ©quences d'Ã©chappement en octal, dans les
+;;; fenÃªtres de Emacs.
 
-;;; La commande «C-c S» est une bascule entre le fait que les divers
+;;; La commande Â«C-c SÂ» est une bascule entre le fait que les divers
 ;;; outils de fouilles de Emacs ignoreront, ou non, la distinction
-;;; entre majuscules et minuscules.  Les diacritiques ne sont pas ignorés.
+;;; entre majuscules et minuscules.  Les diacritiques ne sont pas ignorÃ©s.
 
-;;; La commande «C-c R» est une bascule entre le fait que les
+;;; La commande Â«C-c RÂ» est une bascule entre le fait que les
 ;;; commandes de fouille et remplacement de Emacs essaient, ou non, de
-;;; rétablir dans la chaîne remplacée la capitalisation de la chaîne
-;;; appariant le gabarit de fouille.  Les diacritiques ne sont pas ignorés.
+;;; rÃ©tablir dans la chaÃ®ne remplacÃ©e la capitalisation de la chaÃ®ne
+;;; appariant le gabarit de fouille.  Les diacritiques ne sont pas ignorÃ©s.
 
-;;; La commande «C-c K» est une bascule entre le fait que les
+;;; La commande Â«C-c KÂ» est une bascule entre le fait que les
 ;;; commandes de tri de Emacs utiliseront, ou non, l'ordre
-;;; lexicographique français.  Dans les comparaisons françaises, les
-;;; diacritiques ne sont pris en considération que si les chaînes comparées
-;;; sont par ailleurs identiques.  Les commandes Emacs affectées par
+;;; lexicographique franÃ§ais.  Dans les comparaisons franÃ§aises, les
+;;; diacritiques ne sont pris en considÃ©ration que si les chaÃ®nes comparÃ©es
+;;; sont par ailleurs identiques.  Les commandes Emacs affectÃ©es par
 ;;; cette bascule sont:
 
-;;;     Fonction Emacs        Unité de tri     Clef
+;;;     Fonction Emacs        UnitÃ© de tri     Clef
 
 ;;;     sort-lines            lignes           toute la ligne
 ;;;     sort-columns          lignes           le contenu entre deux colonnes
-;;;     sort-fields           lignes           le champ indiqué en argument
+;;;     sort-fields           lignes           le champ indiquÃ© en argument
 ;;;     sort-pages            pages            toute la page
 ;;;     sort-paragraphs       paragraphes      tout le paragraphe
 ;;;     sort-regexp-fields    occurrences      toute l'occurrence ou \N
@@ -279,7 +279,7 @@ région courante avec la convention Easy French."
 ;;;    (autoload 'toggle-case-replace "charset" nil t)
 ;;;    (autoload 'toggle-case-fold-search "charset" nil t)
 
-;;; Vous n'avez pas à ajouter les lignes suivantes:
+;;; Vous n'avez pas Ã  ajouter les lignes suivantes:
 
 (defun toggle-variable (variable message-on message-off)
   (if (eval variable)
@@ -291,8 +291,8 @@ région courante avec la convention Easy French."
 
 (defun toggle-extended-charset ()
   "Basculer entre le mode d'affichage 8bit pour l'ISO 8859-1 (ou
-Latin-1) et le mode d'affichage 7bit, où les caractères dépassant 127
-sont exprimés par un «\\» suivi de la valeur octale du caractère."
+Latin-1) et le mode d'affichage 7bit, oÃ¹ les caractÃ¨res dÃ©passant 127
+sont exprimÃ©s par un Â«\\Â» suivi de la valeur octale du caractÃ¨re."
   (interactive)
   (toggle-variable 'extended-charset
 		   "Mode d'affichage 8bit pour l'ISO Latin-1"
@@ -300,23 +300,23 @@ sont exprimés par un «\\» suivi de la valeur octale du caractère."
   (standard-display-european (if extended-charset 1 -1))
   (redraw-display))
 
-;; N'est utile que sur des versions récentes de Emacs.  1995-05-04.
+;; N'est utile que sur des versions rÃ©centes de Emacs.  1995-05-04.
 ;;
 (defun toggle-sentence-spacing ()
-  "Basculer entre deux espaces requis, ou un espace suffisant, à la fin d'une
-phrase, pour les commandes de GNU Emacs opérant sur des phrases."
+  "Basculer entre deux espaces requis, ou un espace suffisant, Ã  la fin d'une
+phrase, pour les commandes de GNU Emacs opÃ©rant sur des phrases."
   (interactive)
   (toggle-variable 'sentence-end-double-space
 		   "Plus d'un espace requis pour terminer une phrase"
-		   "Une fin de phrase peut n'être suivie que d'un espace"))
+		   "Une fin de phrase peut n'Ãªtre suivie que d'un espace"))
 
 (defun toggle-sorting-charset ()
-  "Basculer l'ordre lexicographique utilisé pour les tris entre la
-convention utilisée pour ordonner des mots français, et la convention
-se basant uniquement sur la valeur numérique binaire des caractères."
+  "Basculer l'ordre lexicographique utilisÃ© pour les tris entre la
+convention utilisÃ©e pour ordonner des mots franÃ§ais, et la convention
+se basant uniquement sur la valeur numÃ©rique binaire des caractÃ¨res."
   (interactive)
   (toggle-variable 'sorting-charset
-		   "Tris en ordre lexicographique français"
+		   "Tris en ordre lexicographique franÃ§ais"
 		   "Tris en ordre lexicographique binaire")
   (charset-sorts sorting-charset))
 
@@ -329,12 +329,12 @@ fouilles, et l'absence de tels replis."
 		   "Fouilles sans repli majuscules/minuscules"))
 
 (defun toggle-case-replace ()
-  "Basculer entre le fait que les remplacements cherchent, ou non, à
-réajuster les majuscules/minuscules selon la capitalisation de chaque
-chaîne à remplacer."
+  "Basculer entre le fait que les remplacements cherchent, ou non, Ã 
+rÃ©ajuster les majuscules/minuscules selon la capitalisation de chaque
+chaÃ®ne Ã  remplacer."
   (interactive)
   (toggle-variable 'case-replace
-		   "Remplacements avec majuscules/minuscules réajustées"
+		   "Remplacements avec majuscules/minuscules rÃ©ajustÃ©es"
 		   "Remplacements sans ajustement de majuscule/minuscule"))
 
 (setq charset-to-base
@@ -380,7 +380,7 @@ chaîne à remplacer."
   (let (lstart lend rstart rend result)
     (save-excursion
 
-      ;; Préparer le tampon de gauche avec les bases.
+      ;; PrÃ©parer le tampon de gauche avec les bases.
 
       (set-buffer charset-sorts-left-buffer)
       (erase-buffer)
@@ -390,7 +390,7 @@ chaîne à remplacer."
       (translate-region lstart lend charset-to-base)
       (and case-fold-search (upcase-region lstart lend))
 
-      ;; Préparer le tampon de droite avec les bases.
+      ;; PrÃ©parer le tampon de droite avec les bases.
 
       (set-buffer charset-sorts-right-buffer)
       (erase-buffer)
@@ -408,7 +408,7 @@ chaîne à remplacer."
       (if (= result 0)
 	  (progn
 
-	    ;; Préparer le tampon de gauche avec les diacritiques.
+	    ;; PrÃ©parer le tampon de gauche avec les diacritiques.
 
 	    (set-buffer charset-sorts-left-buffer)
 	    (erase-buffer)
@@ -417,7 +417,7 @@ chaîne à remplacer."
 	    (setq lend (point-max))
 	    (translate-region lstart lend charset-to-diac)
 
-	    ;; Préparer le tampon de droite avec les diacritiques.
+	    ;; PrÃ©parer le tampon de droite avec les diacritiques.
 
 	    (set-buffer charset-sorts-right-buffer)
 	    (erase-buffer)
@@ -432,15 +432,15 @@ chaîne à remplacer."
 			  charset-sorts-left-buffer lstart lend
 			  charset-sorts-right-buffer rstart rend)))))
 
-    ;; Retourner le résultat de la comparaison.
+    ;; Retourner le rÃ©sultat de la comparaison.
 
     result))
 
 ;;; Faire en sorte que les tris utilisent l'ordre lexicographique
-;;; français sous-jacent à l'ISO Latin-1.  Ne comparer les
+;;; franÃ§ais sous-jacent Ã  l'ISO Latin-1.  Ne comparer les
 ;;; diacritiques qu'en dernier ressort, lorsque la comparaison donne
-;;; égal par ailleurs.  Un argument nil rétablit le traitement
-;;; implicite du départ.
+;;; Ã©gal par ailleurs.  Un argument nil rÃ©tablit le traitement
+;;; implicite du dÃ©part.
 
 (defun charset-sorts (latin1)
   (if latin1
@@ -460,9 +460,9 @@ chaîne à remplacer."
 
 ;;; Fonctionne avec Emacs 19.  J'ignore pour les autres.
 
-;;; Trois produits différents vous faciliteront l'usage de MIME dans
+;;; Trois produits diffÃ©rents vous faciliteront l'usage de MIME dans
 ;;; Emacs: ce sont metamail, procmail et emacs-mime.  Nous les
-;;; discutons séparément.
+;;; discutons sÃ©parÃ©ment.
 
 ;;; -------- ;;;
 ;;; metamail ;;;
@@ -470,8 +470,8 @@ chaîne à remplacer."
 
 ;;; Le metamail de Nathaniel Boreinstein est absolument requis, pour
 ;;; fournir, entre autres choses, les convertions de format de base.
-;;; Nous en avons déjà discuté, ailleurs dans ce fichier.  metamail
-;;; est disponible au site thumper.bellcore.com, dans le répertoire
+;;; Nous en avons dÃ©jÃ  discutÃ©, ailleurs dans ce fichier.  metamail
+;;; est disponible au site thumper.bellcore.com, dans le rÃ©pertoire
 ;;; pub/nsb, sous le nom mm2.7.tar.Z.  Il suffit de l'installer pour
 ;;; que les binaires soient accessibles de votre PATH.
 
@@ -482,19 +482,19 @@ chaîne à remplacer."
 ;;; Le procmail de Stephen R. van den Berg, n'est pas requis, mais
 ;;; c'est un outil luxueux que je vous recommande beaucoup.  Il
 ;;; convertira automatiquement les messages MIME en quoted-printable,
-;;; format simple mais habituel, directement en Latin-1, avant même
-;;; que vous récupériez vos messages.  procmail peut être obtenu de
+;;; format simple mais habituel, directement en Latin-1, avant mÃªme
+;;; que vous rÃ©cupÃ©riez vos messages.  procmail peut Ãªtre obtenu de
 ;;; ftp.informatik.rwth-aachen.de, dans pub/packages/procmail, sous le
 ;;; nom procmail.tar.gz.  Il vous suffit de l'installer quelque part.
 
-;;; Pour activer procmail, vous n'avez rien à faire dans Emacs à
+;;; Pour activer procmail, vous n'avez rien Ã  faire dans Emacs Ã 
 ;;; proprement parler.  Fabriquez-vous un fichier ~/.forward, lisible
 ;;; par tout le monde, et contenant (y compris les guillemets):
 
 ;;;    "|IFS=' ' && exec /usr/local/bin/procmail -f- || exit 75 #pinard"
 
-;;; en remplacant «pinard» par votre nom login et «/usr/local/bin» par
-;;; le répertoire contenant le binaire exécutable de procmail.
+;;; en remplacant Â«pinardÂ» par votre nom login et Â«/usr/local/binÂ» par
+;;; le rÃ©pertoire contenant le binaire exÃ©cutable de procmail.
 ;;; Fabriquez-vous ensuite un fichier ~/.procmailrc contenant:
 
 ;;;    :0 fbw
@@ -503,12 +503,12 @@ chaîne à remplacer."
 ;;;      :0 Afhw
 ;;;      | formail -i 'Content-Transfer-Encoding: 8bit'
 
-;;; Il est possible qu'il faille remplacer les appels à «recode» et
-;;; «formail» (distribué dans procmail) en y adjoignant le *path* complet,
-;;; puisque ces programmes seront exécutés par le système en dehors de votre
+;;; Il est possible qu'il faille remplacer les appels Ã  Â«recodeÂ» et
+;;; Â«formailÂ» (distribuÃ© dans procmail) en y adjoignant le *path* complet,
+;;; puisque ces programmes seront exÃ©cutÃ©s par le systÃ¨me en dehors de votre
 ;;; environnement habituel.
 
-;;; Compatibilité avec versions précédentes de ce fichier.
+;;; CompatibilitÃ© avec versions prÃ©cÃ©dentes de ce fichier.
 
 (fset 'toggle-sorting-latin1 (symbol-function 'toggle-sorting-charset))
 

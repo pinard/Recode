@@ -1,6 +1,6 @@
 # Makefile for `recode' related contributions.
-# Copyright © 1997, 1998, 2000 Free Software Foundation, Inc.
-# François Pinard <pinard@iro.umontreal.ca>
+# Copyright Â© 1997, 1998, 2000 Free Software Foundation, Inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by

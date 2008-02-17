@@ -1,10 +1,10 @@
-2000-06-29  François Pinard  <pinard@iro.umontreal.ca>
+2000-06-29  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.spec: New file, meant for RedHat.
 	* Makefile.am: Distribute it.
 	Reported by David Lebel.
 
-1998-11-28  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.amiga, Makefile.amiga-lib: Recoded /cl to Unix.
 	Reported by Stefan Haubenthal.
@@ -15,24 +15,24 @@
 	* Makefile.am: Adjusted.
 	Reported by Eli Zaretskii.
 
-1998-11-22  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.amiga: Updated.
 	* Makefile.amiga-lib: New file.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 	From Stefan Haubenthal.
 
-1998-10-23  François Pinard  <pinard@iro.umontreal.ca>
+1998-10-23  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.amiga: New file.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 	From Stefan Haubenthal.
 
-1998-03-09  François Pinard  <pinard@iro.umontreal.ca>
+1998-03-09  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* README: Include information from previous PORTS file.
 
-1997-12-05  François Pinard  <pinard@iro.umontreal.ca>
+1997-12-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am, README, djgpp-README, djgpp-diffs, recode.el,
 	utf8.el: New files.

@@ -1,6 +1,6 @@
 ;;; Handling of comment boxes in various styles.
-;;; Copyright © 1991,92,93,94,95,96,97,98,00 Progiciels Bourbeau-Pinard inc.
-;;; François Pinard <pinard@iro.umontreal.ca>, April 1991.
+;;; Copyright Â© 1991,92,93,94,95,96,97,98,00 Progiciels Bourbeau-Pinard inc.
+;;; FranÃ§ois Pinard <pinard@iro.umontreal.ca>, April 1991.
 
 ;;; This program is free software; you can redistribute it and/or modify
 ;;; it under the terms of the GNU General Public License as published by

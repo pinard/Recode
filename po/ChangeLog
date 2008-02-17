@@ -1,4 +1,4 @@
-2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+2005-11-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in.in, Makevars, LINGUAS, POTFILE.in: New files.
 	* Makefile.am: Deleted.
@@ -6,7 +6,7 @@
 	* po: New name for i18n.  Rename all .mo files to .gmo.
 	* remove-potcdate.sin: New file, from elsewhere.
 
-2005-10-28  François Pinard  <pinard@iro.umontreal.ca>
+2005-10-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (uninstall): Add missing backslash.
 
@@ -18,7 +18,7 @@
 
 	* : Save .mo files for new .po files.
 
-2005-10-27  François Pinard  <pinard@iro.umontreal.ca>
+2005-10-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* el.po: Replace all 0xD2 characters by 0xB7, to be
 	ISO 8859-7 as declared, and not CP 1253 as apparently used.
@@ -35,113 +35,113 @@
 	* remove-potcdate.sin: New file, from gettext-0.14.1.
 	* Rules-quot: New file, from gettext-0.14.1.
 
-2000-06-29  François Pinard  <pinard@iro.umontreal.ca>
+2000-06-29  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* gl.po: Updated.
 
-2000-05-31  François Pinard  <pinard@iro.umontreal.ca>
+2000-05-31  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* da.po: Updated.
 
-2000-02-07  François Pinard  <pinard@iro.umontreal.ca>
+2000-02-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* sl.po: Updated.
 
-2000-01-27  François Pinard  <pinard@iro.umontreal.ca>
+2000-01-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* gl.po: New file.
 
-1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-14  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: New file.
 	* Makefile.in.in, POTFILES.in, cat-id-tbl.c, stamp-cat-id: Deleted.
 
-1999-12-13  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-13  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* de.po, pl.po, sv.po: Updated.
 
-1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
+1999-11-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* it.po: New file.
 
-1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* el.po: New file.
 
-1999-06-14  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-14  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* de.po: Updated.
 
-1999-06-01  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-01  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* da.po, es.po, fr.po: Updated.
 
-1999-04-07  François Pinard  <pinard@iro.umontreal.ca>
+1999-04-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* POTFILES.in: Add renamed or new source files.
 	Reported by Laurent Bourbeau.
 
-1999-04-02  François Pinard  <pinard@iro.umontreal.ca>
+1999-04-02  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* sv.po: Updated.
 
-1999-03-18  François Pinard  <pinard@iro.umontreal.ca>
+1999-03-18  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* de.po: Updated.
 
-1998-12-11  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-11  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* es.po: Updated.
 
-1998-12-09  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-09  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* da.po: Updated.
 
-1998-12-07  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* fr.po: Updated.
 
-1998-11-03  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-03  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* POTFILES.in: Rename charset.c to names.c.
 
-1998-05-01  François Pinard  <pinard@iro.umontreal.ca>
+1998-05-01  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* da.po: Updated.
 
-1998-02-23  François Pinard  <pinard@iro.umontreal.ca>
+1998-02-23  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* es.po: Updated.
 
-1997-12-27  François Pinard  <pinard@iro.umontreal.ca>
+1997-12-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* es.po: Updated.
 
-1997-12-09  François Pinard  <pinard@iro.umontreal.ca>
+1997-12-09  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* POTFILES.in: Add src/main.c.
-	Reported by Erick Branderhorst, Niels Kr. Bech Jensen, Primo.BŽ¾
+	Reported by Erick Branderhorst, Niels Kr. Bech Jensen, PrimoÅ¾
 	Peterlin and Santiago Vila Doncel.
 
-1997-05-04  François Pinard  <pinard@iro.umontreal.ca>
+1997-05-04  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* sv.po: Updated.
 
-1997-04-28  François Pinard  <pinard@iro.umontreal.ca>
+1997-04-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* es.po: Updated.
 
-1996-03-06  François Pinard  <pinard@iro.umontreal.ca>
+1996-03-06  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* es.po: New, for Spanish.
 	Reported by Santiago Vila Doncel.
 
-1995-07-10  François Pinard  <pinard@iro.umontreal.ca>
+1995-07-10  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	Distribution unflattened, for using GNU gettext.
 	* Makefile.in: New file.
 
-1995-06-22  François Pinard  <pinard@iro.umontreal.ca>
+1995-06-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* pt.po: New, for Portuguese.
 	Reported by Vitor Duarte.

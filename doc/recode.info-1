@@ -1,5 +1,5 @@
-This is /home/pinard/entretien/recode/doc/recode.info, produced by
-makeinfo version 4.9 from /home/pinard/entretien/recode/doc/recode.texi.
+This is ../../doc/recode.info, produced by makeinfo version 4.9 from
+../../doc/recode.texi.
 
 INFO-DIR-SECTION Internationalization and character sets
 START-INFO-DIR-ENTRY
@@ -4175,7 +4175,7 @@ form and their numeric form, depending on aimed HTML standard level.
 It also can, of course, convert between HTML and various other charsets.
 
    Here is a list of those HTML variants which `recode' supports.  Some
-notes have been provided by François Yergeau <yergeau@alis.com>.
+notes have been provided by Franc,ois Yergeau <yergeau@alis.com>.
 
 `XML-standalone'
      This charset is available in `recode' under the name

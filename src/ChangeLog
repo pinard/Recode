@@ -1,21 +1,21 @@
-2008-02-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2008-02-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr.c: Modified by Automake 1.10.
 
 	* Makefile.am (merged.c): Split flex -t8 into flex -t -8.
 	* mergelex.py: Add coding cookie.
 
-2005-11-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2005-11-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* exit.h, exitfail.c, exitfail.h, xalloc-die.c: New, from coreutils.
 	* hash.c, hash.h, xalloc.h, xmalloc.c: Updated, from coreutils.
 	* Makefile.am: Adjusted.
 
-2005-11-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2005-11-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Do not call bindtextdomain.
 
-2005-03-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2005-03-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr.c: Newer version, from elsewhere.
 
@@ -72,7 +72,7 @@
 	* xmalloc.c, xalloc.h: Move here from lib/.
 	* Makefile.am (noinst_HEADERS): Add xalloc.h.
 	(librecode_la_SOURCES): Add xmalloc.c.
-	Reported by Tomasz K≈Çoczko <kloczek@wun.zie.pg.gda.pl>.
+	Reported by Tomasz K≈Çoczko.
 
 2000-10-24  Bruno Haible  <haible@clisp.cons.org>
 
@@ -88,17 +88,17 @@
 
 	* outer.c: Include "hash.h".
 
-2000-08-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-08-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c: Add XML-standalone, and h0 for an alias.
 	Reported by Frederic Gobry.
 
-2000-08-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-08-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c (transform_ucs2_html): Correctly encode decimal values.
 	Reported by Daniel Taupin.
 
-2000-07-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-07-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Free the rewritten request after decoding it.
 
@@ -116,7 +116,7 @@
 	with RECODE_SYSTEM_ERROR, not RECODE_INVALID_INPUT.  At EOF, don't
 	forget to drain the buffers and return to the initial state.
 
-2000-06-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-06-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	Prepare for further plugging of memory leaks.
 	* outer.c (unregister_all_modules): New function.
@@ -140,7 +140,7 @@
 	* testdump.c (produce_count): Free hash table entries and the table
 	itself after use.  Fix clean-up code.
 
-2000-06-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-06-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* task.c: Insert union wait portability from GNU make.
 	Reported by Bruno Haible.
@@ -149,12 +149,12 @@
 	(module_testdump): Renamed from test_debug.
 	* Makefile.am (C_STEPS): Adjusted.
 
-2000-06-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-06-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Check for HAVE_STRUCT_UTIMBUF, for OpenSTEP to work.
 	Reported by Jim Meyering and Tom Hageman.
 
-2000-06-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-06-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (stamp-steps): Remove p in s///p.
 
@@ -183,12 +183,12 @@
 	* utf16.c (transform_utf16_ucs4): Add superfluous braces.
 	Reported by Bruno Haible.
 
-2000-05-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-05-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* base64.c (transform_base64_data): Skip \r.
 	Reported by Eli Zaretskii.
 
-2000-04-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-04-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* debug.c (produce_full_dump): Do not produce header when no data.
 
@@ -237,7 +237,7 @@
 
 	* iconv.c: Updated to libiconv 0.3, 1.0, 1.1, then 1.2.
 
-2000-03-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-03-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (C_FALLBACKS): Replace lat1texi.c by texinfo.c.
 	* texinfo.c: New module.
@@ -248,7 +248,7 @@
 	* lat1texi.c: Add @exclamdown{}, @questiondown{}, @AA{}, @O{},
 	@ss{}, @aa{}, @`i, @'i, and @o{}.
 
-2000-02-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-02-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h: Some structures progressively shifted their meaning
 	with recode evolving, time for some global nomenclature changes:
@@ -257,17 +257,17 @@
 	charset_flag with type.
 	* All adjusted.
 
-2000-02-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-02-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h, freeze.c, request.c, outer.c: Implement tree_charset.
 
-2000-01-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-01-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* quotearg.c, quotearg.h: New files, from elsewhere.
 	* Makefile.am: Adjusted.
 	* common.h, names.c, main.c: Adjusted for new argmatch call.
 
-2000-01-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+2000-01-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Write version in two blocks rather than three.
 	Reported by Jim Meyering.
@@ -277,12 +277,12 @@
 	* lat1texi.c: Updated to newer Texinfo commands.  That is,
 	change @ptexc to @, and @ptexi to @dotless{i}.
 
-1999-12-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Rephrase some error messages so they are less
 	telegraphic, add a few messages to better explain some errors.
 
-1999-12-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mixed.c (struct mixed): Delete original_task.
 	(start_accumulation): New name for plumb_input_to_buffer.
@@ -290,7 +290,7 @@
 	a call to recode_perform_task, and previous plumb_input_to_output.
 	Usages adjusted accordingly.
 
-1999-12-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* iconv.c: New file, from Bruno Haible's libiconv 0.2.
 	* libiconv.c: Now unconditional.  Do not include <iconv.h>.
@@ -298,7 +298,7 @@
 	* Makefile.am: Adjusted.
 	(INCLUDES): Include $(top_srcdir)/libiconv.
 
-1999-12-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h: Introduce RECODE_SUBTASK.
 	* All: Adapt everywhere to use subtask instead of step/task pairs.
@@ -307,13 +307,13 @@
 	* recodext.h: Declare it.
 	(SET_TASK_ERROR, RETURN_IF_NOGO): Use it.
 
-1999-12-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* vn.c (viscii_viqr_data, viscii_vni_data): Final DONE was missing.
 	(viscii_vni_data): Latin-1 characters were sign extended.
-	Reported by NguyÍn-–ai Qu˝.
+	Reported by Nguy√™n-√êai Qu√Ω.
 
-1999-12-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* libiconv.c: New file.
 	* outer.c (internal_iconv, declare_libiconv) [WITH_LIBICONV]:
@@ -326,13 +326,13 @@
 	* Makefile.am (librecode_la_SOURCES): Add libiconv.c.
 	(noinst_HEADERS): Add libiconv.h.
 
-1999-12-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* vn.c: New file.
 	* Makefile.am: Adjusted.
-	Reported by NguyÍn-–ai Qu˝.
+	Reported by Nguy√™n-√êai Qu√Ω.
 
-1999-12-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.py: Python version of mergelex.awk.
 	* mergelex.awk: Deleted.
@@ -340,7 +340,7 @@
 
 	* Makefile.am: Adapt to the gettext scheme used in wdiff.
 
-1999-12-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (recode_error, recode_perror) [!__STDC__]: Use const.
 	Reported by Peter Turcan.
@@ -351,7 +351,7 @@
 	report canonicity errors and invalid input.
 	Reported by Hrvoje Niksic.
 
-1999-12-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-12-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* base64.c (transform_base64_data): Better handle end of lines.
 	Non canonical input was too often reported as invalid.
@@ -371,7 +371,7 @@
 	third arguments to ENTRY.
 	Reported by Tom Hageman.
 
-1999-11-10  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-11-10  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c (transform_ucs2_html): Pass HT undisturbed.
 	Reported by Andreas Frick.
@@ -381,19 +381,19 @@
 	* main.c (main): Always read the file attributes and restore the
 	permission bits when recoding in place.
 
-1999-08-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-08-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h, recodext.h: Make C++ safe.
 	Reported by Bruno Haible.
 
-	* html.c (transform_html_ucs2): ExpÈrimentation...  FIXME!
+	* html.c (transform_html_ucs2): Exp√©rimentation...  FIXME!
 
-1999-07-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-07-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Adjust diagnostics so to quote step names.
 	Reported by Per Starback.
 
-1999-06-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-06-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (recode.1): New goal, rewritten more simply that the
 	previous one in doc/.  Use --output with help2man.  Do not force
@@ -404,18 +404,18 @@
 	the man page with the correct version, in distributions.
 	Reported by Brendan O'Dea, Santiago Vila Doncel and Scott Schwartz.
 
-1999-04-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-04-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* request.c (scan_charset): Ignore implied surfaces when the only
 	goal is making headers.
 	Reported by Laurent Bourbeau.
 
-1999-04-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-04-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Update copyright years.
 	Reported by Laurent Bourbeau.
 
-1999-04-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-04-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* combine.c: Document from a message.
 
@@ -424,7 +424,7 @@
 	* atarist.c: Fix encoding table based on Omega (extended TeX with
 	Unicode) translation tables.
 
-1999-03-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-03-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ucs.c (module_ucs): Declare co as an alias for combined, so the
 	manual stays true.  count-characters was making it ambiguous.
@@ -434,7 +434,7 @@
 	* combine.c (init_explode, init_combine): Return early if there is
 	no step table.
 
-1999-03-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-03-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* debug.c (produce_count): Use hash_insert as per last hash.[ch].
 	* combine.c (init_explode, prepare_shifted_state): Idem.
@@ -442,18 +442,18 @@
 	* names.c (find_symbol, declare_alias): Idem.
 	* recode.c (init_ucs2_to_byte): Idem.
 
-1999-03-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-03-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h: Work around EXIT_FAILURE being defined to zero on Sony
 	NEWS-OS Release 4.0C.
 	Reported by Akim Demaille.
 
-1999-01-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* names.c (list_all_charsets): Include implied surfaces in listing.
 	(compare_struct_symbol): Sort charsets before aliases.
 
-1999-01-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h: Rename struct recode_entry to recode_symbol, and
 	recode_outer field entry_table to symbol_table.  Also introduce
@@ -478,7 +478,7 @@
 	* outer.c: Initialize them.
 	* applemac.c, freeze.c, ibmpc.c, request.c: Adjusted.  Use them.
 
-1999-01-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ucs.c (get_ucs2): Skip byte order marks, and never return them to
 	the application.  Also skip swapped byte order marks once processed.
@@ -490,13 +490,13 @@
 	because the & operator has less priority than ==.
 	Reported by Dominique Schmit.
 
-1999-01-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* debug.c (module_debug): Rename count to count-characters, and
 	full-dump to dump-with-names.
 	* ucs.c (module_ucs): Rename combined to combined-UCS-2.
 
-1999-01-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h (enum recode_step_type): Add RECODE_COMBINE_EXPLODE.
 	(struct recode_single): Add initial_step_table.
@@ -534,7 +534,7 @@
 	(module_varia): New name for module_cyrillic.  Add LUKAS and
 	MARTIN parametrisation.  Use Kamenicky instead of KAMENICKY.
 
-1999-01-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* outer.c (declare_explode_data): New function.
 	* combine.c (init_explode, init_combine): Adjusted.
@@ -545,7 +545,7 @@
 	and test-16 pseudo-surfaces.  Add count pseudo-charset.
 	* Makefile.am: Adjusted.
 
-1999-01-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* cyrillic.c: New file.
 	* combine.c (init_combine): Handle empty expansions.
@@ -590,7 +590,7 @@
 	Reorganise code so output may be inhibited on invalid input.
 	Reported by Andreas Schwab.
 
-1999-01-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_outer): Parallel the argmatch arrays
 	with realname arrays.
@@ -607,7 +607,7 @@
 
 	* html.c: Remove included space within RFC1866 and RFC2070 aliases.
 
-1999-01-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1999-01-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* african.c, fulldump.c, html.c, outer.c, rfc1345.c, ucs.c, utf16.c,
 	utf7.c, utf8.c: Use ISO-10646-UCS-2 and ISO-10646-UCS-4, previous
@@ -615,7 +615,7 @@
 	* utf7.c: Use UNICODE-1-1-UTF-7, previous UTF-7 becomes an alias.
 	* ucs.c: Add UNICODE-1-1 as an alias for UCS-2.
 
-1998-12-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (outer.o): Depend on stamp-steps, so parallel makes
 	rebuild decsteps.h and inisteps.h in time for compiling outer.c.
@@ -623,12 +623,12 @@
 	* names.c (clean_charset_name): Use DEFAULT_CHARSET in environment.
 	* main.c (usage): Tells about DEFAULT_CHARSET.
 
-1998-12-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* afrsort.c: Deleted, the experiment is driven elsewhere.
 	* Makefile.am (C_STEPS): Adjusted.
 
-1998-12-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (task_perror): Correct typo in message.
 	Reported by Martin Mares.
@@ -637,7 +637,7 @@
 
 	* combine.c (combine_byte_byte): Read bytes, not UCS2 codes.
 
-1998-12-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* fulldump.c: New module.
 	* Makefile.am: Adjusted.
@@ -647,11 +647,11 @@
 	* fr-charname.c: New module, adapated from charname.c.
 	* Makefile.am, common.h: Adjusted.
 
-1998-12-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* names.c (make_argmatch_arrays): Free previous arrays if any.
 
-1998-12-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c: Delete HTF and Entities as aliases.
 
@@ -667,7 +667,7 @@
 	the recode library has these.
 	* Makefile.am: Adjusted.
 
-1998-12-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* african.c: Rewritten to take better advantage of combining UCS-2.
 	* afrtran.c: Also part of rewriting to handle transliterations.
@@ -678,7 +678,7 @@
 	* main.c (main): Properly follow the chain of singles when
 	strict mode gets installed, so avoiding an infinite loop.
 
-1998-12-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (long_options): Recognise --find-subsets, it was missing.
 
@@ -691,7 +691,7 @@
 	* common.h: Rename GET_BYTE and PUT_BYTE to get_byte and put_byte.
 	* All callers adjusted.
 
-1998-12-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-12-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* outer.c (register_all_modules): Write ISO-8859-1 instead of
 	ISO_8859-1, so the -l sorted listing looks better.
@@ -715,7 +715,7 @@
 	RECODE_SEQUENCE_WITH_FILES, so that system which do not HAVE_PIPE
 	fall back on files.
 
-1998-11-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Implement --source=PO.
 	(transform_c_source): Moved into mixed.c.
@@ -725,14 +725,14 @@
 	* common.h: Add prototypes for mixed.c.
 	* Makefile.am (recode_SOURCES): Add mixed.c.
 
-1998-11-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h: Define DOSWIN and DOSWIN_OR_OS2 appropriately.
 	* task.c: Change MSDOS to DOSWIN and MSDOS_OR_OS2 to DOSWIN_OR_OS2.
 	* main.c: Idem.  Also remove old Borland compatibility code.
 	Reported by Eli Zaretskii.
 
-1998-11-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h: Do not use pipes on Amiga.
 	Reported by Stefan Haubenthal.
@@ -740,7 +740,7 @@
 	* common.h: Declare recode_freeze_tables.
 	Reported by Stefan Haubenthal.
 
-1998-11-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h: Declare errno.  Use error.h instead of prototypes.
 	* main.c, recode.c: Do not declare errno.
@@ -748,7 +748,7 @@
 	* outer.c, request.c, task.c: New files from parts of recode.c.
 	* Makefile.am, common.h, recode.c: Adjusted.
 
-1998-11-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* names.c: New name for charset.c.
 	* Makefile.am: Adjusted.
@@ -767,7 +767,7 @@
 	* Makefile.am: Adjusted.
 	Add L_SURFACES, H_FALLBACKS, C_FALLBACKS and L_FALLBACKS. Use them.
 
-1998-11-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-11-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ucs2html.c: Define V11, V20, V27, V32, V40 and ENTRY macros.
 	Use them while defining HTML initialisation tables.
@@ -787,12 +787,12 @@
 	* recode.c (scan_charset, scan_unsurfacers): Diagnose unrecognised
 	surface names.
 
-1998-10-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (decode_known_pairs): Revised to use strtoul, so
 	allowing octal and hexadecimal input, not only decimal.
 
-1998-10-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_outer): Add quality_byte_to_ucs2,
 	quality_ucs2_to_byte, quality_ucs2_to_variable and
@@ -823,7 +823,7 @@
 	contain actual steps, instead of pointers to steps.
 	* main.c, recode.c: Adjusted.
 
-1998-10-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (scan_charset): Return options in the before charset.
 	(scan_request): Save returned options and reinject them.
@@ -851,29 +851,29 @@
 	* dump.c (module_dump): Remove /h and /h1 as aliases for /x.
 	Remove /h2 as an alias for /x2.  Remove /h4 as an alias for /x4.
 
-1998-10-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Implement option -F, for experimenting.
 	* dynamic.c: New file.
 	* Makefile.am: Adjusted.
 
-1998-10-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mule.c: Implement Latin-2 correspondence, not only Latin-1.
 
-1998-10-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (main.o): Depend on config.status, for version.
 
-1998-10-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ucs2html.c: Corrected a comment from hybar to hibar.
 	Reported by Wiel Seuskens.
 
 	* htmlucs2.l: Accept &#XNNNN as well as &#xNNNN.
-	Reported by Martin J. D¸rst.
+	Reported by Martin J. D√ºrst.
 
-1998-10-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-10-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ucs2html.c: New file, adapted from lat1html.c.
 	Also generate decimal &NNNN; notation whenever needed.
@@ -882,9 +882,9 @@
 	* lat1html.c, htmllat1.l: Deleted.
 	* Makefile.am: Adjusted.
 	Reported by Christian Rolland, Florian Oelmaier, Markus Kuhn and
-	Martin J. D¸rst and Wiel Seuskens.
+	Martin J. D√ºrst and Wiel Seuskens.
 
-1998-09-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-09-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* african.c (transform_juca_to_translit): Use get_ucs2, for
 	handling possible byte order marks in input stream.
@@ -899,21 +899,21 @@
 	* main.c (main): Change format for reporting task being in error.
 	(task_perror): Capitalize task error messages.
 
-1998-03-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-03-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* endline.c (transform_cr_data): Copy character after CR.
 
-1998-02-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-02-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (usage): Do not refer to -o, which does not exist anymore.
 	Reported by Laurent Bourbeau.
 
-1998-01-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-01-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mule.c (transform_mule_latin): Remove strings of prefixes which
 	occur in a row.  Emacs sometimes does such things, sadly enough.
 
-1998-01-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-01-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (task_perror): New function.
 	(main): Use it to explain the error more precisely.
@@ -924,7 +924,7 @@
 	* All callers changed.
 	Reported by Santiago Vila Doncel.
 
-1998-01-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-01-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h, main.c: Check for the MSDOS define, not __DJGPP__.
 
@@ -933,12 +933,12 @@
 	* utf16.c (transform_utf16_ucs2): Write the replacement character
 	in two bytes, not four.
 
-1998-01-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1998-01-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* african.h, african.c, afrful.l, afrl1.l, afrlin.l: New files.
 	* Makefile.am: Adjusted.
 
-1997-12-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (BUFFER_SIZE): Make it 16K.  On the stack even for MSDOS.
 	* main.c (_stklen): Make it 64K.
@@ -948,12 +948,12 @@
 	autoconfigured, but DJGPP astonishingly offers a dummy pipe!
 	Reported by Eli Zaretskii.
 
-1997-12-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (edit_sequence): Do not check if last printed charset
 	is a surface, when there is no such last printed charset.
 
-1997-12-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* rfc1345.c: Use initialiser functions, and a local structure
 	containing the intro character.
@@ -972,7 +972,7 @@
 	* ibmpc.c (module_ibmpc): Properly set transform routines while
 	declaring steps.  They wrongly became NULL somewhere before 3.4f.
 
-1997-12-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (compare_struct_hash): Use if-tests for checking
 	packed bools, as doing arithmetic on them is not portable.
@@ -981,13 +981,13 @@
 	* charset.c (find_and_report_subsets): Ensure end of lines.
 	Reported by Andreas Schwab.
 
-1997-12-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h: Declare get_byte_helper and put_byte_helper, not
 	get_byte and put_byte, and get_byte_helper only when USE_HELPERS.
 	Reported by Eric Backus.
 
-1997-12-09  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-09  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (usage): Revise.
 
@@ -995,12 +995,12 @@
 	file over itself, abort recoding on first error, then discard the
 	temporary output file.
 
-1997-12-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* dump.c (module_dump): Return true if nothing fails!
 	Reported by Eric Backus.
 
-1997-12-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (get_byte_helper): New function.
 	* common.h: Introduce the USE_HELPERS switch, which may be used to
@@ -1011,7 +1011,7 @@
 	* recode.h: Get rid of all int's in favour of unsigned or size_t.
 	Reorganise structures a bit.
 
-1997-12-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mule.c: New file, implementing Latin-1 correspondence only.
 	* Makefile.am: Adjusted.
@@ -1023,7 +1023,7 @@
 	* recode.c (estimate_step_cost): New function.
 	(recode_init_outer): Initialise preset qualities.
 
-1997-12-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_task, struct recode_step): For enum type
 	bitfields other than bool, allow one more bit for the sign, as the
@@ -1033,13 +1033,13 @@
 
 	* ucs.c (get_ucs2): Read middle stream byte order marks as
 	perfectly valid, transmitted zero-width non-breaking spaces.
-	Reported by Martin J. D¸rst.
+	Reported by Martin J. D√ºrst.
 
 	* charset.c (find_and_report_subsets): New function.
 	* common.h: Add prototype.
 	* main.c: Implement --find-subsets option, also -T.
 
-1997-12-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Replace show_restricted_charsets, a flag, by the string
 	charset_restrictions, because decoding -k value should be delayed
@@ -1059,7 +1059,7 @@
 	(recode_init_task): Initialise byte_order_mark to true.
 	Reported by Mikko Silvonen.
 
-1997-12-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_request): Delete force_flag.
 	* main.c (main): Raise error threshold if -f is specified.
@@ -1080,9 +1080,9 @@
 	(rfc1345_to_ucs2, transform_ucs2_to_rfc1345,
 	transform_rfc1345_to_ucs2, module_rfc1345): New routines.
 	* Makefile.am (C_STEPS): Include rfc1345.c.
-	Reported by Keld J¯rn Simonsen and Roman Czyborra.
+	Reported by Keld J√∏rn Simonsen and Roman Czyborra.
 
-1997-12-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Declare struct recode_surface_list, then add a
 	usual_surfaces field to struct recode_charset.
@@ -1112,7 +1112,7 @@
 
 	* charset.c (list_all_charsets): Exclude ignored charsets.
 
-1997-12-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-12-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (list_full_charset): Better align columns after
 	mnemonics.  Also give UCS-2 values in hexadecimal.
@@ -1122,7 +1122,7 @@
 	* common.h: Define __P to PARAMS if not defined.
 	Reported by Erick Branderhorst.
 
-1997-11-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* endline.c: New file.
 	* Makefile.am (C_SURFACES): Adjusted.
@@ -1149,12 +1149,12 @@
 	of an alias for UCS-2.
 	Reported by Ulrich Drepper.
 
-1997-11-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* utf16.c (transform_ucs4_utf16): Report ambiguous output
 	rather than invalid input, when within reserved UTF-16 range.
 	(transform_utf16_ucs4): Report invalid chunks as such.
-	Reported by Keld J¯rn Simonsen and Martin J. D¸rst.
+	Reported by Keld J√∏rn Simonsen and Martin J. D√ºrst.
 
 	* utf16.c (transform_ucs2_utf16, transform_ucs2_utf16): New.
 	(module_utf16): Adjusted.  Declares aliases of UCS-2 and UCS-4.
@@ -1172,7 +1172,7 @@
 	line is not an error, just use `=' at end of last generated line.
 	Reported by Nathaniel Borenstein.
 
-1997-11-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Detect old syntax, then warn and rewrite the
 	request.  Move variables to local blocks, rename them for clarity.
@@ -1181,20 +1181,20 @@
 	* permut.c: New file.
 	* Makefile.am: Adjusted.  Introduce H_SURFACES and C_SURFACES.
 
-1997-11-21  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-21  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* dump.c: New file.
 	* Makefile.am (C_STEPS): Adjusted.
 	Reported by Markus Kuhn.
 
-1997-11-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (enum recode_error): New.
 	(struct recode_task): Add fail_level, abort_level and error_level.
 	* common.h (IS_NOGO, TASK_RETURN, RETURN_IF_NOGO): New macros.
 	* All: Use them.
 
-1997-11-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* base64.c: Rename char_to_value to base64_char_to_value, and make
 	it global, not static.  Declare and preset base64_char_to_value.
@@ -1208,7 +1208,7 @@
 	* common.h: Define NUL.
 	* All: Use it instead of `\0'.
 
-1997-11-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (edit_sequence): Rewritten.
 	(recode_scan_request): Echo the full sequence.
@@ -1217,7 +1217,7 @@
 	* recode.h: Include <stdbool.h> or use a replacement.
 	* All, Makefile.am, mergelex.awk: Use bool, false and true.
 
-1997-11-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_outer):  Replace charset_array by
 	charset_list and single_step_array by step_list.  Delete
@@ -1228,7 +1228,7 @@
 	* charset.c: Delete MAX_CHARSETS and so, any preset maximum.
 	* charset.c, recode.c: Adjusted consequently.
 
-1997-11-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-11-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Introduce data_charset.
 	* recode.c (recode_declare_surface): Deleted.
@@ -1245,7 +1245,7 @@
 	its expansion.
 	* flat.c (transform_ascii_flat): Idem.
 
-1997-10-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-10-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (register_all_modules): Preset l1 to ISO_8859-1:1987,
 	in view of a few incoming African charsets.
@@ -1255,7 +1255,7 @@
 	(simplify_sequence): Initialise the permutation accumulator with
 	the first one-to-one table, not with zero.  Idem for step quality.
 
-1997-10-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-10-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* htmllat1.l (module_html_latin1), lat1html.c (module_latin1_html):
 	Delete 8879, ISO 8879 and SGML as aliases for HTML, as this is wrong.
@@ -1268,28 +1268,28 @@
 	most functions to return a failure indication, instead of aborting.
 	Reported by Ulrich Drepper.
 
-1997-10-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-10-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (complete_double_ucs2_step): qsort wants size_t for the
 	number of items to sort, so just declare the count that way.
 
-1997-10-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-10-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* All: Replace `and usages' by `and surfaces', then encoding and
 	decoding, the recode_charset fields, by resurfacer and unsurfacer.
 	Replace all other encoding and ENCODING by surface and SURFACE.
 
-1997-10-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-10-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (usage): Explain what the program does.
 
-1997-09-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Include errno.h to declare errno.
 	Reported by Andreas Mueller, Larry W. Virden, Santiago Vila Doncel
 	and Ulrich Drepper.
 
-1997-09-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct recode_charset): Use const for the table field.
 	* recode.c: Ajudsted.
@@ -1302,11 +1302,11 @@
 	CHARSET_FIND_AS_EITHER.  All usages adjusted.
 	* recode.c (scan_charset): find_charset may return NULL.
 
-1997-09-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c, recode.c, recode.h: Remove popen support.
 
-1997-09-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Add Task as a last argument to GET_BYTE, PUT_BYTE and
 	PUT_NON_DIACRITIC_BYTE, do not just imply task.  Callers changed!
@@ -1318,13 +1318,13 @@
 	* recode.c (recode_init_task, recode_term_task): New routines.
 	* main.c, recode.c: Adjusted.
 
-1997-09-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* common.h [INLINE_HARDER]: Replacement for !USE_FPUTC.
 
 	* recode.h: Better pack a few structures.
 
-1997-09-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charname.pl, rfc1345.pl: Moved over to doc/.
 	* Makefile.am: Simplified accordinly.  Perl now done in doc/.
@@ -1332,7 +1332,7 @@
 	* Makefile.am (decsteps.h, inisteps.h): Use $(srcdir) in goals, so
 	dependencies are triggered.
 
-1997-09-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-09-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Implement STRIP_SIZE and a local pool for each table.
 	* common.h: Declare ucs2_data_pool.
@@ -1349,7 +1349,7 @@
 	that way.  Sort numerically instead of lexicographically.
 	Rename some of $code to $ucs2.
 
-1997-07-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-07-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c (main): Declare stamp_utime as struct utimbuf, instead
 	of an array of two time_t's.  Either include utime.h or declare
@@ -1372,7 +1372,7 @@
 	decsteps.h for prototypes, then inisteps.h for calls, instead of
 	stepinit.h.  Distribute those new files.
 
-1997-07-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-07-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (recode_auto_check, recode_auto_check_one): Renamed
 	from perform_auto_check and perform_auto_check_one.
@@ -1384,7 +1384,7 @@
 
 	* recode.h: Add RECODE_SEQUENCE_IN_MEMORY.
 
-1997-07-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-07-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.awk: Do not define the output macro, it is unused.
 	* recode.h [FLEX_SCANNER]: Define a special PUT_BYTE version.
@@ -1420,25 +1420,25 @@
 	* charname.pl: Add backslashes into comments, because this is
 	how the name references look in tables.
 
-1997-06-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-06-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* utf8.c (module_utf8): Make rune an alias for UCS-2.
 
-1997-06-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-06-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* htmllat1.l, lat1html.c: Prefer &macr to &hybar, per RFC 1866.
 	Reported by Jacques Madelaine.
 
-1997-04-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-04-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Change bug reporting address.
 
-1997-04-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-04-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Add a missing quote in the help string.
 	Reported by Niels Kr. Bech Jensen.
 
-1997-02-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-02-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (list_full_charset): Correctly check the return value
 	of code_to_ucs2.
@@ -1455,20 +1455,20 @@
 	* rfc1345.pl: Introduce MAX_MNEMONIC_LENGTH and use it.  Renamed
 	UNICODE to MNEMONICS.
 
-1997-02-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1997-02-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (EXTRA_DIST): Leave README-alpha to Automake 1.1l.
 	Add init-stamp, taken out of BUILT_SOURCES.
 	(LDADD): Use .o suffixes instead of $o.
 
-1996-10-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-10-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Update the localisation declaration block.
 	* recode.c (main): Update the localisation initialisation.
 	Reported by Erick Branderhorst, Niels Kr. Bech Jensen and Santiago
 	Vila Doncel.
 
-1996-09-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-09-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (find_sequence): Reset length_of_sequence to zero.
 	Reported by Andreas Schwab.
@@ -1482,35 +1482,35 @@
 	* Makefile.am: Adjusted.
 	Reported by Andreas Schwab.
 
-1996-09-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-09-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Add bug report address in --help output.
 	(decode_options): Add copyright and authors in --version output.
 
 	* recode.c (file_one_to_one): Use the table!
 
-1996-09-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-09-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1html.c (module_latin1_html): Declare RFC 1866 and 1866 as
 	aliases for HTML.
 	* htmllat1.l (module_html_latin1): Idem.
 	Reported by Arnaldo Mandel.
 
-1996-09-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-09-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (recode.o): Special rule for defining LOCALEDIR
 	flag, instead of having it defined on all compiles.
 
-1996-09-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-09-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: Remove check related lines, moved over to tests/.
 
-1996-08-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (CHECKING): COPYING is in top_srcdir, not srcdir.
 	* checkit: Find config.h in some directory above.
 
-1996-08-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Declare enum programming_language.
 	* recode.c: Accept and decode a programming language with -h.
@@ -1520,14 +1520,14 @@
 
 	* recode.c: Rename a few variables from *_mode into *_flag.
 
-1996-08-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (register_all_modules): Initialise ucs2_charset instead
 	of rfc1345.  Do not halve the cost anymore, since ucs2 is now a
 	genuine, full-fledged charset (yet the optimisations are retained).
 	(simplify_sequence): Require a table with ucs2 before simplifying.
 
-1996-08-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (code_to_ucs2): Function replacing code_to_symbol.
 	* charname.pl: Adjusted to read mnemonic.ds and mnemonic.ds2 and
@@ -1553,7 +1553,7 @@
 
 	* Makefile.am: New file, replacing Makefile.in.
 
-1996-08-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* base64.c, quoted.c: New files.
 	* Makefile.in: Adjusted.
@@ -1564,7 +1564,7 @@
 	* Makefile.in: Adjusted.
 	Reported by Markus Kuhn.
 
-1996-08-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-08-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (decode_known_pairs): Better detect bad usages.
 	Reported by Thomas M. Ott.
@@ -1572,7 +1572,7 @@
 	* charset.c (list_all_charsets): Initialize list_flag properly.
 	Reported by Thomas M. Ott.
 
-1996-01-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1996-01-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Define GET_BYTE, PUT_BYTE and PUT_YYTEXT.
 	* bangbang.c, recode.c, cdcnos.c, flat.c, ibmpc.c, iconqnx.c:
@@ -1583,23 +1583,23 @@
 	* ascilat1.l, htmllat1.l, ltexlat1.l, txtelat1.l: Replace output
 	(expr) by PUT_BYTE (expr) and ECHO by PUT_YYTEXT.
 
-1995-12-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-12-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h, txtelat1.l, recode.c: Replace __P by
 	PARAMS, to respect ANSI C.
 
-1995-11-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-11-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c, recode.c: Uniformly write nonzero instead of
 	non-zero.
 	Reported by Karl Berry.
 
-1995-07-10  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-07-10  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	Distribution unflattened, for using GNU gettext.
 	* Makefile.in: New file.
 
-1995-06-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-06-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Relate -d to HTML in --help output.
 	Reported by Bert Schweitzer.
@@ -1608,30 +1608,30 @@
 	* configure.in (LINGUAS): Adjusted.
 	Reported by Vitor Duarte.
 
-1995-05-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-05-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (HASH): Capitalize macro arguments.
 	* cdcnos.c (file_cdcnos_ascii): Use comma operator when assignment
 	in test.
 
-1995-04-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-04-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* The trend of redefining many tables in recode around Unicode
 	will solve problems reported by a few users, listed here.
 	Reported by Juliusz Chroboczek (l2), Lukas Petrlik (l2).
 
-1995-03-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-03-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Quote AC_MSG_WARN argument.
 
-1995-03-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-03-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Remove GLOCALE, add LINGUAS, use fp_WITH_CATALOGS.
 	* Makefile.in: Modify accordingly.
 	* acconfig.h: Add description for WITH_CATALOGS.
 	* recode.h: Use WITH_CATALOGS to define _() differently.
 
-1995-03-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-03-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (decode_request, scan_request, scan_charset,
 	scan_decodings, scan_check_last_charset, scan_name,
@@ -1642,7 +1642,7 @@
 	* recode.c (output_header_file): Clean up extra underscores, do
 	not use _to_ anymore.
 
-1995-02-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-02-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (struct charset): Add charset_flag, encoding and decoding.
 	* recode.h, recode.c (declare_encoding): New function.
@@ -1670,31 +1670,31 @@
 	(find_sequence): Reallocate sequence_array as needed.
 	(new_single_step): Reallocate single_step_array as needed.
 
-1995-02-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-02-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (declare_step): Let ansi2knr clean out functionnal
 	arguments, since it now can do it.
 
-1995-02-21  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-02-21  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in, Makefile.in: Replace `date' by `echo timestamp'.
 	Reported by Greg McGary and Jim Meyering.
 
-1995-02-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-02-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Support an ID file.  Do not distribute TAGS.
 	Reported by Greg McGary.
 
-1995-02-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-02-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (maintainer-clean): New name for realclean.
 
-1995-01-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-01-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (long_options): Add "known", which was forgotten.
 	Reported by Hennus Bergman and Thomas M. Ott.
 
-1995-01-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1995-01-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.awk: Use new Flex 2.5 start condition scopes; simplify
 	the script accordingly.  Generate %option noyywrap instead of an
@@ -1706,22 +1706,22 @@
 	purpose of removing the last period from step_name, so it will not
 	be any character.
 
-1994-12-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-12-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ibmpc.c (module_ibmpc): Accept dos, MSDOS and pc as new aliases
 	for the IBM-PC charset.
 
-1994-12-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-12-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* nl.tt: New, for Dutch.
 	Reported by Hennus Bergman.
 
-1994-12-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-12-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* de.tt: New, for German.
 	Reported by Ulrich Drepper.
 
-1994-12-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-12-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Do not unprotoize libintl.c, now done in sources.
 
@@ -1731,7 +1731,7 @@
 	copyright to stdout, not stderr.  Use fputs instead of printf.
 	(main): Use it for -C.
 
-1994-12-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-12-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Prerelease 3.4.1.
 
@@ -1745,19 +1745,19 @@
 	* Makefile.in: Define SOURCEX and use it to prepare the .cod file,
 	because extract-msgs cannot grok Flex sources yet.
 
-1994-11-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h, recode.c, txtelat1.l: Rename _ to __P.
 	* recode.h: For now, declare _ as a macro returning its argument.
 	* recode.c, charset.c: Use _ macro over all localizable strings.
 
-1994-11-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1ltex.c, ltexlat1.l: Add \copyright{} and \pound{}.
 	Use !` and ?` instead of erroneous !' and ?'.
 	Reported by Christian Rolland and Ricard Torres.
 
-1994-11-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1html.c: Added "other" code 34, and "normal" codes 160-191.
 	Changed &([AEIOUaeiou])circu; to &\1circ;, &([AEIOUaeiouy])diaer;
@@ -1774,14 +1774,14 @@
 
 	Reported by Arnaldo Mandel, Bernt Guldbrandtsen, Bert Schweitzer,
 	Christian Limpach, Christian Recktenwald, Christian Rolland, David
-	Mentre, Detlev Droege, Dominique Quatravaux, FranÁoise Audebrand,
-	Frederic Albrecht, FrËre Roy, Gabriel P. Silva, Georg Haefele, Guy
-	Lapalme, Jacques Madelaine, Jens Quade, Jˆrg Hˆhle, Jose Joao
+	Mentre, Detlev Droege, Dominique Quatravaux, Fran√ßoise Audebrand,
+	Frederic Albrecht, Fr√®re Roy, Gabriel P. Silva, Georg Haefele, Guy
+	Lapalme, Jacques Madelaine, Jens Quade, J√∂rg H√∂hle, Jose Joao
 	Almeida, Juergen Zeller, Kester Habermann, Kevin Stuckless, Farzad
-	Farid, Hennus Bergman, Martin J. D˘rst, Mikko Silvonen, Nicolas
+	Farid, Hennus Bergman, Martin J. D√ºrst, Mikko Silvonen, Nicolas
 	Thiery, Olivier Tharan, Per Steinar Iversen, Povl H. Pedersen,
 	Richard Plasun, Saverio Pangoli, Sebastian Huebner, Slaven Rezic,
-	Sumit Bose, Thomas Gebhardt, Thomas Seeling, Walter M¸ller, Wiel
+	Sumit Bose, Thomas Gebhardt, Thomas Seeling, Walter M√ºller, Wiel
 	Seuskens, Wolfgang Boerner and Wolfgang Wander.
 
 	* htmllat1.l (module_html_latin1): Declare ISO_8879:1886 as the
@@ -1790,7 +1790,7 @@
 	* lat1html.c (module_latin1_html): Idem.
 	Reported by Christian Rolland.
 
-1994-11-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.os2, config_h.dos: Updated.
 	Reported by Kai Uwe Rommel.
@@ -1809,14 +1809,14 @@
 	* recode.c (main): Abolish the distinction between program_name
 	and program_path.  Let program_name convey more information.
 
-1994-11-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (perform_auto_check): Avoid a NULL dereference.
 	Reported by Andreas Schwab, Colin Plumb, Harald Koenig, Julio
 	Sanchez, Hennus Bergman, Michael Schmidt, Nathanael Makarevitch,
 	Stefan Albertz, Wilhelm Zadrapa and Yves Arrouye.
 
-1994-11-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Define PERL as perl, and use it.
 	Reported by Michael Shields.
@@ -1829,7 +1829,7 @@
 	* dosfname: New Perl script.
 	* recode.c (setup_signals): Forget SIGPIPE if not defined.
 
-1994-11-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (stamp-vti): Use new -r option to date.
 
@@ -1847,7 +1847,7 @@
 	because of the HP-UX 9.01 compiler which needs it.
 	Reported by Daniel Taupin and Eric Backus.
 
-1994-11-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.4.
 
@@ -1862,12 +1862,12 @@
 	(usage): Insist on the fact that -f is currently always selected.
 	Reported by David E. A. Wilson.
 
-1994-11-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-11-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for const only after having found possible
 	ANSIfying compiler flags, this is of no use to check it before.
 
-1994-10-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-10-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* unhexify.l: Deleted.  Not up to GNU standards for distribution.
 	* Makefile.in (BACKLOG): Goal deleted.  It was depending on files
@@ -1883,17 +1883,17 @@
 	* acconfig.h: Document PRODUCT and VERSION.
 	* recode.h: Interface with dmalloc if WITH_DMALLOC.
 
-1994-10-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-10-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h, recode.c: Use #if rather than #ifdef to test __STDC__.
 
-1994-10-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-10-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.awk: Declare yywrap only if not already a preprocessor
 	symbol, because some versions of Flex define it.
 	Reported by David van Leeuwen.
 
-1994-10-10  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-10-10  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1asci.c: Implement O and o with stroke, y with diaeresis, and
 	german sharp s (as s overstroken with double quote).
@@ -1907,11 +1907,11 @@
 	* ascilat1.l: Remove all references to diaeresis_char, because
 	backspaced ASCII was never meant to be sensible to option -c.
 
-1994-10-09  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-10-09  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Get rid of CONFIG_BROKETS.
 
-1994-09-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-09-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Use fputs instead of printf when possible.
 
@@ -1929,24 +1929,24 @@
 	* Makefile.in: Put date in stamp files.
 	(DISTFILES): Adjust.
 
-1994-09-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-09-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (TAGS): Remove -t from etags call.
 
-1994-07-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-07-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr.1: New file, from elsewhere.
 	* Makefile.in (DISTFILES): Distribute it.
 
-1994-06-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-06-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Spell `Texinfo' with a capital.
 
-1994-04-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-04-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (Makefile, etc.): Adapt for Autoconf 1.8.
 
-1994-03-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-03-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1asci.c (init_latin1_ascii): Do not allocate pool separately
 	from table, so they can be freed at once.
@@ -1962,7 +1962,7 @@
 	* recode.h: Declare it.
 	Reported by Roman Czyborra.
 
-1994-03-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-03-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1ltex.c: Recode 160 as `~', not as `\ '.
 	* ltexlat1.l: Recode `~' (instead of `\ ') to 160.
@@ -1986,7 +1986,7 @@
 	* Makefile.in: Adjusted.
 	Reported by David Lebel.
 
-1994-02-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-02-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Avoid $(CFLAGS) while linking.
 
@@ -1999,7 +1999,7 @@
 	tar file.  Prepare the DOS makefile directly in distdos goal, also
 	put in distdos the preparation of libobjs.lst and objects.lst.
 
-1994-02-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-02-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (file_one_to_many): When an irreversibility is found,
 	run recoding to completion instead of interrupting it, then return
@@ -2011,7 +2011,7 @@
 	* iconqnx.c (file_ibmpc_iconqnx, file_iconqnx_ibmpc): Idem.
 	* recode.h: Do not declare force_option anymore.
 
-1994-01-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (declare_step): Rewrite the prototype differently if
 	not __STDC__, because ansi2knr does not clean prototypes in
@@ -2019,12 +2019,12 @@
 	* txtelat1.l: Declaring texte_latin1_diaeresis, use _((void)).
 	Reported by Rejean Payette.
 
-1994-01-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (main): With absolutely no arguments, imply --help.
 	Reported by Kai Uwe Rommel.
 
-1994-01-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Print the version string in --help.
 	Reported by Kai Uwe Rommel.
@@ -2036,19 +2036,19 @@
 
 	* recode.c (usage): Print a blank line after the first prototype.
 
-1994-01-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configdos.pl: Renaming GNUmakefile to makefile.gnu.
 
 	* recode.c (output_header_file): Use tabs instead of spaces before
 	generated comments.
 
-1994-01-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Condense "file = action(); if (file == NULL) ..." into
 	"if (file = action(), file == NULL) ..." consistently.
 
-1994-01-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check AC_RETSIGTYPE.
 	* recode.c: Include <setjmp.h>, <signal.h>, define RETSIGTYPE.
@@ -2071,7 +2071,7 @@
 	* lat1ltex.c (module_latin1_latex): Alias LaTeX to TeX.
 	* ltexlat1.l (module_latex_latin1): Alias LaTeX to TeX.
 
-1994-01-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.3.1, in the MSDOS world only.
 
@@ -2120,7 +2120,7 @@
 	(init_recode_rfc1345): Partial rewrite for replacing the quadratic
 	pairing algorithm with a logarithmic-linear one, cleaning up a bit.
 
-1994-01-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* txtelat1.l: Undo the 1990-03-15 change.  If there is still a bug
 	in this area, I will let it show its nose again...
@@ -2143,7 +2143,7 @@
 	USE_DOUBLE_STEP by making the code permanent, remove older code.
 	* charname.pl: Especially define f2 as florin.
 	* Makefile.in: Adjusted.
-	Reported by Keld J¯rn Simonsen.
+	Reported by Keld J√∏rn Simonsen.
 
 	* alloca.c: Deleted, not used anymore.
 	* configure.in: Remove AC_ALLOCA test.
@@ -2152,7 +2152,7 @@
 	* configure.in: Read DEFAULT_CHARSET from environment if set.
 	Reported by Andreas Schwab.
 
-1994-01-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (.stamp-collect): Say when initstep.h altered.
 
@@ -2181,11 +2181,11 @@
 	* configure.in: Remove LDEFS substitution, seemingly unused.
 	Reported by Richard Stallman.
 
-1994-01-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1994-01-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* flat.c: Transmit '\t' as is, it was erroneously changed to '\n'.
 
-1993-12-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	Begin work for implementing --force.  To be completed later.
 	* recode.c (file_one_to_one): Return 1 instead of void.
@@ -2232,37 +2232,37 @@
 	still unstudied, which are unable to make initstep.h properly.
 	Reported by Michael L. Dowling.
 
-1993-12-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* flat.c: Consider `~' as a diacritic character.
 	* File-Latin1: New file, intended to help testing/playing.
 	* Makefile.in: Distribute File-Latin1.
 	Reported by Martin Maechler.
 
-1993-12-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (merged.c): Split the pipe in parts, because
 	otherwise all status except the last of the pipe are lost for
 	make.  This is seemingly a feature of sh.
 	Reported by Vern Paxson.
 
-1993-12-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for vprintf and strerror, for error.c.
 
 	* recode.c (usage): Indicate that --help and --version exit.
 
-1993-12-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Remove all as dependency for uninstall.
 
 	* Makefile.in: Split HEADERS, giving also LIBHDRS.  Use it.
 
-1993-12-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.3.
 
-1993-12-21  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-21  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* *.c: Delete unused variables, add a few missing const's.
 
@@ -2279,7 +2279,7 @@
 	* Makefile.in (tags): Include $(HEADERS).
 	(TAGS): Idem.  Also use -t on etags.
 
-1993-12-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c (hash_string): Cast unsigned to int before modulo.
 	* recode.c (print_truncated_charset_name): Cast strlen result to
@@ -2298,9 +2298,9 @@
 
 	* recode.c (decode_before_after): Use backslash as escape.
 	(execute_popen_sequence): Clean up charset names before popen.
-	Reported by Keld J¯rn Simonsen.
+	Reported by Keld J√∏rn Simonsen.
 
-1993-12-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.pl: Send diagnostics to stderr instead of charset.LOG.
 
@@ -2322,16 +2322,16 @@
 	* charset.c (code_to_symbol): New routine for handling size field.
 	(list_full_charset, list_concise_charset): Adapt to using it.
 
-1993-12-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.c: Add cleanup_charset_name, use it in find_charset,
 	declare_alias and decode_charset_name.  Rename compare_hash_name
 	to compare_struct_hash.
 	(list_all_charsets): Repeat the name even if it is not alias,
 	because it has been cleaned up.
-	Reported by Keld J¯rn Simonsen.
+	Reported by Keld J√∏rn Simonsen.
 
-1993-12-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* charset.pl: Generating charset.h instead of charset.c.
 	* charset.c: New.
@@ -2342,7 +2342,7 @@
 	together with a few defines, struct hash and related declarations.
 	* Makefile.in: Adjusted.
 
-1993-12-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Renaming rfc1345.c into charset.c, rfc1345.pl into charset.pl,
 	rfc1345.sed into charset.sed and rfc1345.LOG into charset.LOG.
@@ -2372,7 +2372,7 @@
 
 	* recode.c (usage): Replace --include by --header in text.
 
-1993-12-11  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-11  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (list_charsets): Move all aliases of a charset after
 	the true charset name on its line, keeping lines sorted on the
@@ -2414,7 +2414,7 @@
 	the help of declare_step, this spares four probes in the charset
 	table per call.
 
-1993-12-10  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-10  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h: Add CHARSET and struct charset, use CHARSET *before
 	and after instead of int start_charset and goal_charset in STEP,
@@ -2476,7 +2476,7 @@
 	find_charset and declare_alias to use hashing.  Also adjust
 	list_charsets and decode_before_after.
 
-1993-12-09  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-09  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Delete name_from_value function, replace with an
 	array of same name.  Delete field refer from struct charset,
@@ -2490,7 +2490,7 @@
 	* rfc1345.pl: Print progress on stderr, for entertaining me.
 	Document aliases in rfc1345.texi through English sentences.
 
-1993-12-08  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-08  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* flexlib.c: New, for -lfl does not work everywhere.
 	* mergelex.awk: Produce a yywrap function in section 3.
@@ -2520,7 +2520,7 @@
 	instead of the empty string when calling argmatch.
 	(find_charset): Do not check for empty strings anymore.
 
-1993-12-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (install): Add recode.info in dependencies.
 
@@ -2558,7 +2558,7 @@
 	* recode.c: Implement --list (-l) to alleviate Usage message.
 	(compare_charset_names, list_charsets): New.
 
-1993-12-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* rfc1345.txt: New, from elsewhere.
 	* rfc1345.sed, rfc1345.pl: New.
@@ -2595,7 +2595,7 @@
 	* recode.h: Use the _((...)) device more systematically.
 	Declare xmalloc.
 
-1993-12-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ascilat1.l, bangbang.c, cdcnos.c, ibmpc.c, iconqnx.c,
 	lat1asci.c, lat1ltex.c, lat1txte.c, ltexlat1.l, macintosh.c,
@@ -2622,7 +2622,7 @@
 	* recode.c (complete_pairs): Produce better diagnostics.
 	Allow for NULs in known pairs, even if currently unused.
 
-1993-12-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Use .stamp-h.in to solve Autoconf problems.
 	Distribute mkinstalldirs and install.sh.  Use mkinstalldirs.
@@ -2653,7 +2653,7 @@
 	* Makefile.in: Adjusted.
 	(check): Write charsets in full.
 
-1993-12-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Add .stamp-collect for preventing initstep.h to be
 	uselessly touched, this was causing recode.c recompilations.
@@ -2684,7 +2684,7 @@
 	* ltexlat1.l: Use {After} at more places, "accro\^\i tre" was not
 	recoded at all.
 
-1993-12-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c, all $(C_STEPS), all $(L_STEPS): Include "recode.h"
 	instead of "config.h".
@@ -2724,7 +2724,7 @@
 	merely deleting them from C_STEPOBJS or L_STEPS in Makefile.
 	Reported by Claude Goutier.
 
-1993-12-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-12-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ltexlat1.l: Ensure \'{e} is recognized as \'e.
 	Reported by Pierre Girard.
@@ -2765,7 +2765,7 @@
 	external.  Use, document and revise CONVERT_GRAPHICS constant,
 	introducing "round" corners and more systematic principles.
 
-1993-11-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-11-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Process long options, then --help and --version.
 	Rename usage_and_exit() into usage(), accepting a parameter,
@@ -2791,11 +2791,11 @@
 	Use "cmp -s" instead of "diff" for comparing files.
 	* Makefile.in: Use $(SHELL) instead of sh in CHECKTEST. Remove -v.
 
-1993-11-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-11-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (main): Declare argv as "char *const *argv" instead of
 	"const char *argv[]", for avoiding conflicts with some getopt().
-	Reported by Andreas Schwab and StÈphane BerubÈ.
+	Reported by Andreas Schwab and St√©phane Berub√©.
 
 	* Makefile.in (Makefile): Use $(SHELL).
 	(config.status): Use "$(SHELL) config.status --recheck" instead	of
@@ -2815,12 +2815,12 @@
 	* Makefile.in (merged.c): Remove synchronization directives, they
 	are useless for now.  Delete new temporary files merged[123].tmp.
 
-1993-06-09  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-06-09  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (dist): Replace "echo `pwd`" by a mere "pwd".
 	Adapt to the .gz change.
 
-1993-05-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-05-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* asciflat.c: Transmit TAB and BKS, instead of using ^I or ^H.
 	However, BKS for applying a diacritic will still disappear.
@@ -2835,14 +2835,14 @@
 	txteasci.l: Remove spurious suffix whitespace.
 	Reported by Claude Goutier.
 
-1993-05-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-05-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (dist): Use a gzipping tar, not a compressing one.
 
 	* checkit: Make checkit.tmp writeable, so it can be removed.  It
 	is commonly obtained by cp'ing COPYING.
 
-1993-05-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-05-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (execute_pass_sequence): Reverse the test on
 	input_name, controlling the fclose (input_file).
@@ -2866,7 +2866,7 @@
 	Reported by Joelle Stemp: copy of Macintosh character tables.
 	Reported by Jacques Richer: end of lines represented by 0x0d.
 
-1993-02-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-02-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: In dist goal, ensure 777 mode for directories, so
 	older tar's will restore file modes properly.
@@ -2874,26 +2874,26 @@
 	* asciflat.c: Remove old commented lex code.  Remove a useless
 	`case EOF:' from inner switch, the logic will work anyway.
 
-1993-01-17  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-01-17  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Put $(CFLAGS) after $(CPPFLAGS), so the installer
 	can override automatically configured choices.
 	Reported by Karl Berry.
 
-1993-01-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-01-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* checkit: Do not call recode in verbose mode on /dev/null prior
 	to the first "Checking" message.  Rather call recode in verbose
 	mode only once, combined within the first test in a series.
 
-1993-01-14  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-01-14  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Use AC_CONST.
 
 	* Makefile.in: Distribute getopt.h.  Add as getopt.o dependency.
 	Reported by Pierre Gaumond.
 
-1993-01-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-01-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Merge in version.c.
 	* version.c: Deleted.
@@ -2942,19 +2942,19 @@
 
 	* recode.c: Remove unnecessary system prototypes.
 
-1993-01-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1993-01-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Reinstate $(CPPFLAGS), use it.  Richard wants it
 	there.
 
-1992-11-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-11-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (clean, distclean): Remove ansi2knr rubbish.
 	Reported by Pierre Gaumond.
 
 	* Makefile.in: Remove all .PHONY's.
 
-1992-11-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-11-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Add definition for INSTALL.
 	Reported by Bastian Schlueter, Larry W. Virden and Ronald
@@ -2977,24 +2977,24 @@
 	* steps.h [struct keyword_struct]: Separate type definition
 	and variable declaration.
 
-1992-11-13  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-11-13  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in (dist): chmod a+r before making the tar file.
 
-1992-11-12  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-11-12  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* aclocal.m4: Update FP_STDC_CHECK, replacing by FP_PROTOTYPES.
 	* configure.in: Adjust accordingly.
 
-1992-10-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-10-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.2.4 to alt.sources, and later on prep.
 
-1992-10-06  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-10-06  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Use exec_prefix.  Add `uninstall'.
 
-1992-09-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-09-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Define EXIT_SUCCESS and EXIT_FAILURE if not defined,
 	even after inclusion of <stdlib.h>, for SunOS 4.
@@ -3003,7 +3003,7 @@
 
 	* configure.in: Make the `WARNING:' bigger if no Flex.
 
-1992-09-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-09-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.2.3.
 
@@ -3014,7 +3014,7 @@
 	* steps.h: Replace XENIX by ENUM_INT_BUG.
 	* HINTS: Tell about Apollo's and 286 systems installation hints.
 
-1992-09-24  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-09-24  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Write `Recoding...' instead of `recoding...'.
 
@@ -3022,7 +3022,7 @@
 	This also solves a bug by which the second diacritic of a pair of
 	two diacritics in a row was not properly flattened out.
 
-1992-08-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-08-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ltexlat1.l: Given `*' is a diacritic operation, insure
 	swallowing '{}' in `\*\i{}'.  Recognize also `\*{\i}'.
@@ -3038,7 +3038,7 @@
 	* ltexasci.l: Idem.
 	* ltexlat1.l: Idem.
 
-1992-08-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-08-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Merging in some other separate documents.
 	* table.texi, DisplayCode: Deleted.
@@ -3051,7 +3051,7 @@
 	* version.c: Insure next version will be 3.2.3, skipping 3.2.1 and
 	3.2.2, jumping over parallel numbering at U. de Montre'al.
 
-1992-08-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-08-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr: New, from Ghostscript distribution.
 	* configure.in: Check for __STDC__ and define U.
@@ -3059,12 +3059,12 @@
 	* All .c's: Remove many __STDC__ checks.
 	* mergelex.awk: Remove generation of __STDC__ checks.
 
-1992-07-20  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-07-20  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Use various clean goals according to latest GNU
 	standards.  Moreover, add a recode.dvi goal and a texclean goal.
 
-1992-07-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-07-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Changes for Autoconf 0.120.  Also test for popen,
 	even if almost any UNIX has it; so the user can later undefine it from
@@ -3072,39 +3072,39 @@
 	* Makefile.in, recode.c, checkit, common.h: Replace all *_MISSING
 	by HAVE_*.
 
-1992-06-18  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-06-18  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Changes for Autoconf 0.118.  Use AWK and LEX
 	instead of GAWK and FLEX.
 
-1992-06-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-06-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Changes for Autoconf 0.115.  Use config.status to
 	recreate Makefile from Makefile.in.
 	* checkit: Retrieve DEFS value from config.status instead of
 	Makefile.
 
-1992-06-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-06-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in, configure.in: Changes for Autoconf 0.112.  Avoid
 	FP_PROG_MAKEINFO and use `makeinfo' directly.
 	* checkit: Get DEFS from Makefile instead of from config.status.
 
-1992-02-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-02-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (main): Returns int.
 
-1992-01-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1992-01-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in: Use new names for clean goals.
 
-1991-12-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-12-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* steps.h, recode.c: Removed comma at end of enum's.
 
 	* version.c: Added a few const's.
 
-1991-11-30  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-11-30  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Use EXIT_FAILURE and EXIT_SUCCESS; define them if not
 	STDC_HEADERS.
@@ -3112,7 +3112,7 @@
 	* recode.c: Prototypes added for fstat, getopt, link, perror,
 	unlink and utime, if __STDC__.
 
-1991-11-07  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-11-07  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Should now be TeXable.
 	* Makefile.in: Insure distributing texinfo.tex.
@@ -3122,7 +3122,7 @@
 
 	* configure.in: Take care of POSIXish ISC.
 
-1991-11-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-11-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in, Makefile.in: Do not absolutize $(srcdir), because
 	this could create problems with automounters.
@@ -3131,12 +3131,12 @@
 	solving a problem caused only by non timestamping shars, and
 	recode is now distributed in tar or zoo format.
 
-1991-11-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-11-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Get rid of the head program, using sed.  I would
 	also like, eventually, to get rid of file and grep programs too.
 
-1991-11-01  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-11-01  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (main): Use rename library routine if available.
 	* configure.in: Check for rename availability.
@@ -3150,13 +3150,13 @@
 	* recode.c (code_index): Reject partial matches for keywords.
 	Reported by Laurent Bourbeau.
 
-1991-10-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-10-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: New.
 	* configure: Automatically regenerated from file configure.in
 	and David MacKenzie's autoconf.
 
-1991-10-28  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-10-28  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.2.
 
@@ -3169,7 +3169,7 @@
 
 	* recode.c: Force binary mode on files for MSDOS.
 
-1991-10-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-10-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: MSDOS port.  tempnam(), utime(), link() and getopt()
 	were missing; replacements inspired from by Rahul Dhesi's flip.
@@ -3177,7 +3177,7 @@
 	* getopt.c: New, AT&T freed code.
 	* Makefile.in: Adjustements for MSDOS port, dist.dos goal.
 
-1991-10-25  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-10-25  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (execute_popen_sequence, execute_pipe_sequence):
 	Accept non filter mode.
@@ -3189,7 +3189,7 @@
 	* checkit: New.
 	* Makefile.in: Use checkit in check goal.
 
-1991-10-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-10-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c: Revert back to -v instead of -q.  Give the user some
 	more control on the sequencing strategy through -i, -o and -p.
@@ -3203,21 +3203,21 @@
 	on those systems which do not have the machinery to remake it.
 	* GNUmakefile, Makefile, Depends: deleted.
 
-1991-03-31  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-03-31  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.awk: remove exit() and read() definitions.
 
-1991-01-22  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-01-22  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* ibmpicon.c, ibmplat1.c, ibmpmaci.c: Recognize old DOS end of
 	file (0x1A).
 
-1991-01-21  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-01-21  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* lat1bang.c, lat1txte.c: Have the no-break space converted to a
 	single space.
 
-1991-01-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1991-01-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* all: While/if ((var=exp) [test]) -> while/if (var=exp, var [test]),
 	switch (var=exp) -> var=exp; switch (var).
@@ -3240,11 +3240,11 @@
 	* steps.h: Remove DONT_LEX conditionals; merged.c is always
 	available for installation.
 
-1990-07-04  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-07-04  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* all: Copyright directly assigned to the FSF.
 
-1990-03-26  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-03-26  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* txteasci.l, txteibmp.l, txtelat1.l: Change occurrences of a NUL
 	terminated cursor by a counter from 0 to yyleng-1.  This will
@@ -3255,18 +3255,18 @@
 	documentation, insure proper pre-declarations of Flex variables
 	yytext, yyleng, yyint and yyout.
 
-1990-03-23  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-03-23  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (execute_popen_sequence): Get rid of unused variables.
 
 	* recode.c (code_index): Change index to counter, because on BSD
 	index is a library function.
 
-1990-03-16  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-03-16  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.1.
 
-1990-03-15  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-03-15  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* version.c, recode.c (usage_and_exit): Change -V to -C to give
 	the Copyright conditions, print version identification.
@@ -3281,7 +3281,7 @@
 	variables.
 	* common.h: New.
 
-1990-02-09  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-02-09  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c, Makefile: If no files are specified, recode stdin on
 	stdout as before.  But if files are specified, each of them is now
@@ -3294,27 +3294,27 @@
 
 	* recode.c (usage_and_exit): Rewritten.
 
-1990-02-05  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-02-05  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.c (usage): Added commas to improve readability.
 
 	* lat1bang.c: Have lower case output instead of upper case, this
 	is more readable.
 
-1990-02-03  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-02-03  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.0.1.
 
 	* recode.c: Corrected bugs related to USE_POPEN; recode step path
 	is now echoed once, and diaeresis selection is now propagated.
 
-1990-02-02  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-02-02  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* mergelex.awk: Option USE_FPUTC, so to compile merged.c using
 	fputc instead of putc.  It will hopefully ease Apollo C compiler,
 	which litterally trashes on merged.c.
 
-1990-01-27  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1990-01-27  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* all: Adaptation for Flex.  A few yyleng problems short-circuited
 	here and there in some .l's.
@@ -3334,7 +3334,7 @@
 	* lat1bang.c: Replacement for disappearing ascibang.l.
 	* ascibang.l: Removed.
 
-1989-11-19  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1989-11-19  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* banglat1.c, lat1bang.c, iconibmp.c, cdcnasci.c, ascicdcn.c,
 	asciflat.c: Replacements for banglat1.l, ascibang.l, iconibmp.l,
@@ -3346,13 +3346,13 @@
 	* Most files: Removal of the dash to restrict each file name
 	into eight character, for MS-DOS.
 
-1989-11-10  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1989-11-10  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* version.c: Added.
 
 	* recode.c: Provision for -V option.
 
-1989-10-29  FranÁois Pinard  <pinard@iro.umontreal.ca>
+1989-10-29  Fran√ßois Pinard  <pinard@iro.umontreal.ca>
 
 	* Version 3.0.
 

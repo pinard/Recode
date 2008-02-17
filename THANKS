@@ -1,11 +1,11 @@
-Free `recode' has originally been written by FranÁois Pinard.  Other people
+Free `recode' has originally been written by Fran√ßois Pinard.  Other people
 contributed to Free recode by reporting problems, suggesting various
 improvements or submitting actual code.  Here is a list of these people.
 Help me keeping it complete and exempt of errors.  See various ChangeLogs
 for a detailed description of contributions.
 
 Akim Demaille		demaille@inf.enst.fr
-Alain LabontÈ		alb@riq.qc.ca
+Alain Labont√©		alb@riq.qc.ca
 Alain Magloire		alainm@macs.ee.mcgill.ca
 Alan J. Flavell		flavell@a5.ph.gla.ac.uk
 Alexander L. Belikoff	abel@vallinor4.com
@@ -59,16 +59,16 @@ Erwan Mas		erwanmas@chez.com
 			http://www.chez.com/erwanmas/
 Farzad Farid
 Florian Oelmaier	100265.2501@compuserve.com
-FranÁois Pinard		pinard@iro.umontreal.ca
+Fran√ßois Pinard		pinard@iro.umontreal.ca
 			http://www.iro.umontreal.ca/~pinard
-FranÁois Robitaille
-FranÁois Yergeau	yergeau@alis.com
+Fran√ßois Robitaille
+Fran√ßois Yergeau	yergeau@alis.com
 			http://www.alis.com/~yergeau/
 Francois-Xavier Bergot	bergotfx@com.enst.fr
-FranÁoise Audebrand	audebran@ere.umontreal.ca
+Fran√ßoise Audebrand	audebran@ere.umontreal.ca
 Frederic Albrecht
 Frederic Gobry		frederic.gobry@epfl.ch
-FrËre Roy		roy@taize.fr
+Fr√®re Roy		roy@taize.fr
 			http://www.taize.fr
 Gabriel P. Silva	gpsilva@geocities.com
 			http://www.nce.ufrj.br/~gabriel
@@ -94,7 +94,7 @@ Jim Meyering		meyering@na-net.ornl.gov
 Joelle Stemp
 John van Krieken	John.van.Krieken@ATComputing.nl
 			http://www.ATComputing.nl/images/pasfotos/john.jpg
-Jˆrg Hˆhle		Joerg.Hoehle@gmd.de
+J√∂rg H√∂hle		Joerg.Hoehle@gmd.de
 			http://fit.gmd.de/~hoehle/
 Jose Joao Almeida	jj@di.uminho.pt
 			http://www.di.uminho.pt/~jj
@@ -104,12 +104,12 @@ Juergen Zeller		zet@rupert.franken.de
 Kai Uwe Rommel
 Karl Berry		karl@cs.umb.edu
 			http://www.cs.umb.edu/~karl/
-Keld J¯rn Simonsen	keld@dkuug.dk
+Keld J√∏rn Simonsen	keld@dkuug.dk
 Kester Habermann	kester@unix-ag.uni-kl.de
 			http://www.unix-ag.uni-kl.de/~kester/
 Kevin Stuckless		kevins@stuck.warped.com
 			http://stuck.warped.com/~kevins
-Kristian Kˆhntopp	kk@netuse.de
+Kristian K√∂hntopp	kk@netuse.de
 Laurent Bourbeau	bourbeau@progiciels-bpi.ca
 Larry W. Virden		lvirden@cas.org
 			http://purl.org/net/lvirden/
@@ -124,7 +124,7 @@ Marc Verreault
 Mario Gay		mgay@ti-edu.ch
 Markus Kuhn		Markus.Kuhn@cl.cam.ac.uk
 			http://www.cl.cam.ac.uk/~mgk25/
-Martin J. D¸rst		duerst@w3.org
+Martin J. D√ºrst		duerst@w3.org
 			http://www.w3.org/People/D%C3%BCrst
 Martin Maechler		maechler@stat.math.ethz.ch
 Martin Mares		mj@ucw.cz
@@ -140,7 +140,7 @@ Mikko Silvonen		silvonen@iki.fi
 Nathanael Makarevitch
 Nathaniel Borenstein	nsb@aa.fv.com
 Neal McBurnett		http://bcn.boulder.co.us/~neal/
-NguyÍn-–ai Qu˝		daiquy.nguyen@ulg.ac.be
+Nguy√™n-√êai Qu√Ω		daiquy.nguyen@ulg.ac.be
 Nicolas Anquetil
 Nicolas Thiery		Nicolas.Thiery@jonas.univ-lyon1.fr
 			http://www.lmd.univ-lyon1.fr/home/nthiery/
@@ -163,9 +163,9 @@ Pierre Gaumond		gaumondp@ere.umontreal.ca
 Pierre Girard		pierreg@crt.umontreal.ca
 Pierre Mathieu		mathieu@geod.emr.ca
 Povl H. Pedersen	pope@netguide.dk
-Primoæ Peterlin		primoz.peterlin@biofiz.mf.uni-lj.si
+Primo≈æ Peterlin		primoz.peterlin@biofiz.mf.uni-lj.si
 			http://sizif.mf.uni-lj.si/~peterlin/
-Rejean Payette		rejean.payette@rtsq.qc.ca
+R√©jean Payette		rejean.payette@rtsq.qc.ca
 Ricard Torres		torres@upf.es
 Richard Plasun		plasun@iue.tuwien.ac.at
 Richard Stallman	rms@gnu.org
@@ -194,12 +194,13 @@ Thomas Seeling
 Tom Hageman		tom@basil.icce.rug.nl
 Tom Tromey		tromey@cygnus.com
 			http://cafe.colorado.edu/~tromey/
+Tomasz K≈Çoczko		kloczek@wun.zie.pg.gda.pl
 Ulrich Drepper		drepper@gnu.org
 Ulrich Windl		Ulrich.Windl@rz.uni-regensburg.de
 			http://www.uni-regensburg.de/Einrichtungen/Rechenzentrum/Orientierung/Mitarbeiter/windl.html
 Vern Paxson		vern@ee.lbl.gov
 Vitor Duarte		vad@di.fct.unl.pt
-Walter M¸ller		walt@pi4.informatik.uni-mannheim.de
+Walter M√ºller		walt@pi4.informatik.uni-mannheim.de
 Wiel Seuskens		wiel@xs4all.nl
 			http://www.xs4all.nl/~wiel/
 Wilhelm Zadrapa		wfz@aon.at

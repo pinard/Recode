@@ -1,7 +1,7 @@
 divert(-1)						-*- Autoconf -*-
 # `m4' macros used in building test suites.
-# Copyright © 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1998.
+# Copyright Â© 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1998.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,7 +18,7 @@ divert(-1)						-*- Autoconf -*-
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-# This script is part of Autotest.  I, François Pinard, the author of
+# This script is part of Autotest.  I, FranÃ§ois Pinard, the author of
 # Autotest, give unlimited permission to copy, distribute and modify
 # the testing scripts that are the output of that Autotest script.
 # You need not follow the terms of the GNU General Public License when

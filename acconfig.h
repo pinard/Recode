@@ -1,6 +1,6 @@
 /* Special definitions for Free recode, processed by autoheader.
-   Copyright © 1993, 1998, 1999, 2000 Free Software Foundation, Inc.
-   François Pinard <pinard@iro.umontreal.ca>, 1993.
+   Copyright Â© 1993, 1998, 1999, 2000 Free Software Foundation, Inc.
+   FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1993.
 */
 
 /* Default charset is `Latin-1' on UNIX, `IBM-PC' on MSDOS.  */

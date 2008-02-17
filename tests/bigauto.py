@@ -1,6 +1,7 @@
 #!/usr/bin/env python
-# Copyright © 1997, 1999, 2000 Progiciels Bourbeau-Pinard inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1997.
+# -*- coding: utf-8 -*-
+# Copyright Â© 1997, 1999, 2000 Progiciels Bourbeau-Pinard inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1997.
 
 """\
 Produce statistics from the results of the bigauto check.

@@ -1,8 +1,8 @@
 #!/bin/sh
 #                                                      -*- coding: latin-1 -*-
 # Validation suite for the Free `recode' program and library.
-# Copyright © 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1998.
+# Copyright Â© 1998, 1999, 2000 Progiciels Bourbeau-Pinard inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1998.
 
 # Still many parts of `recode' are not exercised by the test suite.  A few
 # FIXME's, below, are used to list tests that we would need.  Do you feel

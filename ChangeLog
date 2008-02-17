@@ -1,4 +1,4 @@
-2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
+2008-02-16  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* README: Do not mention AC-PATCHES anymore.
 	* TODO: Do not mention BACKLOG anymore.
@@ -16,14 +16,14 @@
 
 	* ABOUT-NLS: Updated from an old, but less old copy.
 
-2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
+2005-11-06  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* BACKLOG, PATCHES-AC: Deleted.
 	* : Documentation details, here and there.
 	* ABOUT-NLS, INSTALL, COPYING: New files, from elsewhere.
 	* Makefile.am: Adjusted.
 
-2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+2005-11-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* config.guess, config.sub, ltmain.sh: Updated.
 
@@ -34,14 +34,14 @@
 
 	* po: New name for i18n.
 
-2005-10-28  François Pinard  <pinard@iro.umontreal.ca>
+2005-10-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (EXTRA_DIST): Include stamp-pot.
 	* stamp-pot: Save it.
 
 	* configure.ac (ALL_LINGUAS): Adjusted.
 
-2005-10-27  François Pinard  <pinard@iro.umontreal.ca>
+2005-10-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.ac: New name for configure.in.  Adjusted for Autoconf 2.59
 	instead of 2.13, and Automake 1.9.6 instead of 1.4.
@@ -65,7 +65,7 @@
 	* Makefile.am (EXTRA_DIST): Add config.rpath.
 	* configure.ac (AC_CONFIG_FILES): Add po/Makefile.in.
 
-2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+2005-03-06  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	Adapt to autoconf 2.59 and automake 1.9.1.
 	* configure.ac: New name for configure.in.
@@ -95,7 +95,7 @@
 
 	* rebox.el: Deleted.  It has been moved as rebox.py into Pymacs.
 
-2001-12-28  François Pinard  <pinard@iro.umontreal.ca>
+2001-12-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	Get Autoconf 2.14a, Automake 1.4 and Libtool 1.3.5 working together.
 	* configure.in: Use AC_PROG_CC_STDC between AC_MINIX and AC_C_CONST.
@@ -125,13 +125,13 @@
 	* aclocal.sh: New file.
 	* Makefile.am (EXTRA_DIST): Add it.
 
-2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
+2000-06-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5e.
 
 	* Makefile.am (POTFILES): Rename debug.c to testdump.c.
 
-2000-06-27  François Pinard  <pinard@iro.umontreal.ca>
+2000-06-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for struct utimbuf.
 	Reported by Jim Meyering and Tom Hageman.
@@ -139,59 +139,59 @@
 	* configure.in: Use ad_AC_PROG_FLEX instead of AM_PROG_LEX.
 	Reported by Akim Demaille.
 
-2000-05-07  François Pinard  <pinard@iro.umontreal.ca>
+2000-05-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* PATCHES-AC: New for Autoconf 2.14a.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-2000-04-25  François Pinard  <pinard@iro.umontreal.ca>
+2000-04-25  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* acconfig.h: Remove LIBICONV_PLUG.
 	Reported by Bruno Haible.
 
-2000-03-28  François Pinard  <pinard@iro.umontreal.ca>
+2000-03-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5d.
 
-2000-03-28  François Pinard  <pinard@iro.umontreal.ca>
+2000-03-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.spec: New file.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-2000-03-21  François Pinard  <pinard@iro.umontreal.ca>
+2000-03-21  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* acconfig.h: Define LIBICONV_PLUG.
 
-2000-01-28  François Pinard  <pinard@iro.umontreal.ca>
+2000-01-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (install-stow): New goal.
 
-2000-01-27  François Pinard  <pinard@iro.umontreal.ca>
+2000-01-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Add gl.
 
-1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Remove --with-libiconv test.
 	(AC_OUTPUT): Produce libiconv/Makefile.
 	* Makefile.am (SUBDIRS): Add libiconv.
 
-1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5c.
 
-1999-12-20  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-20  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5b.
 
 	* configure.in: Add --with-libiconv.
 	* acconfig.h: Document WITH_LIBICONV.
 
-1999-12-19  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-19  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (BABYL): Adjusted.
 
-1999-12-14  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-14  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (LIBOBJS): Manage for ANSI2KNR.
 	(LTLIBOBJS): Adjusted to fit the style of the above.
@@ -209,52 +209,52 @@
 	* acinclude.m4: New file, containing file libtool.m4 from the
 	libtool distribution, which suggest that it should be distributed.
 
-1999-12-12  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-12  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Replace strtol and strtoul only when missing.
 	Reported by Tom Hageman.
 
-1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
+1999-11-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Add it.
 
-1999-06-22  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Add el.
 
-1999-06-15  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-15  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Substitute LIBOBJS, so jm_FUNC_MALLOC and
 	jm_FUNC_REALLOC has some chance to work.
 	Reported by Alexandre Oliva.
 
-1999-06-02  François Pinard  <pinard@iro.umontreal.ca>
+1999-06-02  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5a.
 
-1999-05-31  François Pinard  <pinard@iro.umontreal.ca>
+1999-05-31  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5.
 
-1999-04-01  François Pinard  <pinard@iro.umontreal.ca>
+1999-04-01  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4r.
 
-1999-01-07  François Pinard  <pinard@iro.umontreal.ca>
+1999-01-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4q.
 
-1999-01-05  François Pinard  <pinard@iro.umontreal.ca>
+1999-01-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4p.
 
-1998-12-31  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-31  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Accept defining DEFAULT_CHARSET to the empty
 	string, when it is set but empty at configure time.  This is the
 	way to inhibit any usual charset.
 
-1998-12-18  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-18  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4o.
 
@@ -263,66 +263,66 @@
 	* configure.in: Remove command to create po/Makefile, already done
 	by AM_WITH_NLS.
 
-1998-12-14  François Pinard  <pinard@iro.umontreal.ca>
+1998-12-14  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4n.
 
-1998-11-24  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for inline.
 
-1998-11-23  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-23  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4m.
 
-1998-11-13  François Pinard  <pinard@iro.umontreal.ca>
+1998-11-13  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* PATCHES-AM: Deleted.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-1998-10-28  François Pinard  <pinard@iro.umontreal.ca>
+1998-10-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4l.
 
-1998-10-20  François Pinard  <pinard@iro.umontreal.ca>
+1998-10-20  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Make tests/atconfig instead of tests/testsuite.
 	Do not make tests/test-one.  Use AT_CONFIG instead of fp_PROG_ECHO.
 
-1998-10-13  François Pinard  <pinard@iro.umontreal.ca>
+1998-10-13  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.4k.
 
 	* configure.in (AC_OUTPUT): Prepare tests/test-one and
 	tests/testsuite instead of tests/preset.  Make them executable.
 
-1998-09-30  François Pinard  <pinard@iro.umontreal.ca>
+1998-09-30  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* PATCHES-AC, PATCHES-AM: New names for AC-PATCHES and AM-PATCHES.
 	* PATCHES-LT: New file.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-1998-08-24  François Pinard  <pinard@iro.umontreal.ca>
+1998-08-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (BABYL): Adjusted after last reorganisation, here.
 
-1998-06-22  François Pinard  <pinard@iro.umontreal.ca>
+1998-06-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* COPYING-LIB: New name for COPYING.LIB, around Automake with
 	--gnits not allowing COPYING.LIB.
 	* Makefile.am (EXTRA_DIST): Distribute it.
 
-1998-06-21  François Pinard  <pinard@iro.umontreal.ca>
+1998-06-21  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Remove AC_LINK_FILES, as AM_GETTEXT does it now.
 
-1998-04-22  François Pinard  <pinard@iro.umontreal.ca>
+1998-04-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* AC-PATCHES: Revised patches for Autoconf 2.12.
 	* AM-PATCHES: Patches for Automake 1.3.
 	* Makefile.am: Distribute them.
 
-1998-03-31  François Pinard  <pinard@iro.umontreal.ca>
+1998-03-31  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Use jm_FUNC_MALLOC and jm_FUNC_REALLOC.
 	* acconfig.h: Document malloc and realloc.
@@ -334,68 +334,68 @@
 
 	* configure.in: Use AM_PROG_LEX instead of AC_PROG_LEX.
 
-1998-03-09  François Pinard  <pinard@iro.umontreal.ca>
+1998-03-09  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* AC-PATCHES: New file, from elsewhere.
 	* PORTS: Deleted.  Integrated into contrib/README.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-1998-01-08  François Pinard  <pinard@iro.umontreal.ca>
+1998-01-08  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* acinclude.m4 (fp_OS_MICROSOFT): New.
 	* configure.in: Maybe select IBM-PC as the default default charset.
 
-1997-12-25  François Pinard  <pinard@iro.umontreal.ca>
+1997-12-25  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Do not check for the pipe function.
 
-1997-12-05  François Pinard  <pinard@iro.umontreal.ca>
+1997-12-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (AC_OUTPUT): Create contrib/Makefile.
 	* Makefile.am (SUBDIRS): Visit the contrib/ subdirectory.
 
-1997-11-24  François Pinard  <pinard@iro.umontreal.ca>
+1997-11-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (AUTOMAKE_OPTIONS): Replace gnits by gnu, so
 	COPYING.LIB gets distributed.
 
-1997-11-16  François Pinard  <pinard@iro.umontreal.ca>
+1997-11-16  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for stdbool.h.
 
-1997-10-05  François Pinard  <pinard@iro.umontreal.ca>
+1997-10-05  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Add a missing AC_LINK_FILES for gettext.
 	Reported by Alain Magloire, Eric Backus, Jean-Claude Nadeau, Niels
 	Kr. Bech Jensen and Santiago Vila Doncel.
 
-1997-09-28  François Pinard  <pinard@iro.umontreal.ca>
+1997-09-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* PORTS: New file.
 	* Makefile.am (EXTRA_DIST): Adjusted.
 
-1997-09-26  François Pinard  <pinard@iro.umontreal.ca>
+1997-09-26  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Remove popen support.
 
-1997-09-24  François Pinard  <pinard@iro.umontreal.ca>
+1997-09-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Add AM_PROG_LIBTOOL, delete AC_PROG_RANLIB.
 	Define LTALLOCA and LTLIBOBJS.
 
-1997-07-30  François Pinard  <pinard@iro.umontreal.ca>
+1997-07-30  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Check for unistd.h and utime.h.
 
-1997-04-01  François Pinard  <pinard@iro.umontreal.ca>
+1997-04-01  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Add da.
 
-1997-02-26  François Pinard  <pinard@iro.umontreal.ca>
+1997-02-26  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* missing: New file, from elsewhere.
 
-1997-02-25  François Pinard  <pinard@iro.umontreal.ca>
+1997-02-25  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Use AM_CONFIG_HEADER instead of AC_CONFIG_HEADER,
 	AM_GNU_GETTEXT instead of ud_GNU_GETTEXT.  Delete README-alpha
@@ -405,56 +405,56 @@
 
 	* configure.in (ALL_LINGUAS): Add pt.
 
-1997-02-12  François Pinard  <pinard@iro.umontreal.ca>
+1997-02-12  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Simplify AC_OUTPUT, per new Autoconf and Automake.
 
-1996-11-08  François Pinard  <pinard@iro.umontreal.ca>
+1996-11-08  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Switch to the letter scheme for pretests.
 
-1996-09-20  François Pinard  <pinard@iro.umontreal.ca>
+1996-09-20  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Remove pt, disclaimer not received.
 
-1996-09-03  François Pinard  <pinard@iro.umontreal.ca>
+1996-09-03  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (AC_OUTPUT): Prepare tests/Makefile and tests/preset.
 	* Makefile.am (SUBDIRS): Add tests/.
 
-1996-08-27  François Pinard  <pinard@iro.umontreal.ca>
+1996-08-27  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Distribute README-alpha.
 	(ALL_LINGUAS): Add `pl', `sl' and `sv'.
 	* Makefile.am (EXTRA_DIST): Add acinclude.m4 for the time being.
 
-1996-08-24  François Pinard  <pinard@iro.umontreal.ca>
+1996-08-24  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: New file, replacing Makefile.in.
 
-1996-08-23  François Pinard  <pinard@iro.umontreal.ca>
+1996-08-23  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Use AM_ macros more than fp_ macros.
 
-1996-03-06  François Pinard  <pinard@iro.umontreal.ca>
+1996-03-06  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (ALL_LINGUAS): Add `es'.
 
-1996-01-07  François Pinard  <pinard@iro.umontreal.ca>
+1996-01-07  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* acconfig.h: Document HAVE_STPCPY.
 
-1995-07-23  François Pinard  <pinard@iro.umontreal.ca>
+1995-07-23  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in, acconfig.h: Adapt for GNU gettext 0.8.
 
-1995-07-10  François Pinard  <pinard@iro.umontreal.ca>
+1995-07-10  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	Distribution unflattened, for using GNU gettext.
 	* Makefile.in: New file.
 	* configure.in: Substitute all Makefile's.
 
-1995-06-22  François Pinard  <pinard@iro.umontreal.ca>
+1995-06-22  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in (LINGUAS): Adjusted for pt.po.
 
@@ -470,7 +470,7 @@ August 1988:
 	merged and made more uniform, usage of Unix pipes
 	instead of translating chunks one at a time.
 
-	Loïc Dachary first exposed me to Easy French.  Claude
+	LoÃ¯c Dachary first exposed me to Easy French.  Claude
 	Goutier, through numerous discussions, was helpful in
 	evaluating various work hypotheses.
 
@@ -520,12 +520,12 @@ December 1980:
 
 	A few speedups and improvements.  My own definition of
 	extended ASCII, quite compatible with various usages at
-	Université de Montréal.
+	UniversitÃ© de MontrÃ©al.
 
 July 1980:
 
 	Module GEN broken into several modules: ASC (ascii), BNG
-	(bang-bang), CAF (format for CAFÉ project), DPC (usual
+	(bang-bang), CAF (format for CAFÃ‰ project), DPC (usual
 	display code), and TEL (TELUM packing).  Made in context
 	of some research for the PPMF group and the BLOPS project.
 
@@ -533,7 +533,7 @@ January 1980:
 
 	Unified module named GEN and program named GENCOP, in
 	Cyber Pascal and assembler, partly inspired from NOS/BE
-	Record Manager, partly from Claude Schnéegans' PESTUM
+	Record Manager, partly from Claude SchnÃ©egans' PESTUM
 	protocol.
 
 Before 1980:

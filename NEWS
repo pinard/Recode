@@ -1,7 +1,7 @@
 Free recode NEWS - User visible changes.	-*- outline -*- (allout)
-Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
+Copyright Â© 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 
-* Version 3.6 - François Pinard, Bruno Haible, 2001-01.
+* Version 3.6 - FranÃ§ois Pinard, Bruno Haible, 2001-01.
 
 .* General changes
 . + The recode manual is now indexed, by charset, by concept, etc.
@@ -82,7 +82,7 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 .* New surfaces
    tree (experimental).
 
-* Version 3.5 - François Pinard, 1999-05.
+* Version 3.5 - FranÃ§ois Pinard, 1999-05.
 
 .* Incompatible changes
 . + A double dot `..' should now be used instead of a colon `:'.
@@ -193,7 +193,7 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
    Octal-1 (o, o1); Octal-2 (o2); Octal-4 (o4).
    data; test7; test8; test15; test16.
 
-* Version 3.4 - François Pinard, 1994-11.
+* Version 3.4 - FranÃ§ois Pinard, 1994-11.
 
 .* Charset HTML is new, it handles `&...;' sequences for Latin-1.
 .* Charset AtariST handling is more general, --list may be used with it.
@@ -210,7 +210,7 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 .* Program initialization is almost three times faster on average.
 .* Corrected reported bugs, added small improvements, some aesthetic.
 
-* Version 3.3 - François Pinard, 1993-12.
+* Version 3.3 - FranÃ§ois Pinard, 1993-12.
 
 .* Charsets atarist, ebcdic-ccc, ebcdic-ibm and nextstep have been added.
 .* Also, most RFC 1345 charsets and aliases are handled.  That's a bunch!
@@ -231,11 +231,11 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 .* Charsets may be edited out by modifying the Makefile only.
 .* Configuration is made through the use of an external config.h file.
 
-* Version 3.2.4 - François Pinard, 1992-10.
+* Version 3.2.4 - FranÃ§ois Pinard, 1992-10.
 
 .* None.
 
-* Version 3.2.3 - François Pinard, 1992-09.
+* Version 3.2.3 - FranÃ§ois Pinard, 1992-09.
 
 .* New -d `diacritics_only' option for LaTeX.
 .* A few bugs have been corrected.
@@ -243,7 +243,7 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 .* Increased portability, now uses Autoconf.
 .* A few bugs solved.
 
-* Version 3.2 - François Pinard, 1991-10.
+* Version 3.2 - FranÃ§ois Pinard, 1991-10.
 
 .* MSDOS port redone.
 .* New check goal at installation time.
@@ -252,20 +252,20 @@ Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 .* A few bugs corrected.
 .* Embedded NULs should now be transmitted.
 
-* Version 3.1 - François Pinard, 1990-03.
+* Version 3.1 - FranÃ§ois Pinard, 1990-03.
 
 .* Rename -V to -C for showing Copyright.
 .* Calling sequence changed, said files now recoded on themselves.
 .* Add -t option for touching files.
 .* Better on-line help.
 
-* Version 3.0.1 - François Pinard, 1990-02.
+* Version 3.0.1 - FranÃ§ois Pinard, 1990-02.
 
 .* Add -q option for quiet processing.
 .* Executable file now considerably smaller, also speedier.
 .* A few bugs corrected.
 
-* Version 3.0 - François Pinard, 1989-10.
+* Version 3.0 - FranÃ§ois Pinard, 1989-10.
 
 .* New Text to Latin1 processing, should be faster.
 .* A few bugs corrected.

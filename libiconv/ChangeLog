@@ -1,4 +1,4 @@
-2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+2005-03-06  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* ChangeLog: Converted to UTF-8.
 
@@ -182,7 +182,7 @@
 
 	* utf7.h (utf7_mbtowc): Fix combining of UTF-16 surrogates.
 
-2000-07-10  François Pinard  <pinard@iro.umontreal.ca>
+2000-07-10  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* README: New file.
 	Reported by Bruno Haible.
@@ -192,7 +192,7 @@
 	* ucs2internal.h, ucs2swapped.h, ucs4internal.h, ucs4swapped.h:
 	Cosmetic changes to avoid compiler warnings.
 
-2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
+2000-06-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (noinst_HEADERS): Distribute iconv.h.
 
@@ -205,7 +205,7 @@
 
 	* Updated to libiconv 0.3, 1.0, 1.1, then 1.2.
 
-1999-12-28  François Pinard  <pinard@iro.umontreal.ca>
+1999-12-28  FranÃ§ois Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am: New file.
 	* encoding.def, all .h files: From Bruno Haible's libiconv 0.2.

@@ -15,8 +15,8 @@
 @SET_MAKE@
 
 # Makefile for `recode' sources.
-# Copyright © 1991,92,93,94,95,96,97,98,99, 00 Free Software Foundation, Inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1988.
+# Copyright Â© 1991,92,93,94,95,96,97,98,99, 00 Free Software Foundation, Inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
