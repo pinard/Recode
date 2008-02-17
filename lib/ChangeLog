@@ -1,3 +1,14 @@
+2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* gettext.h: New, from coreutils.
+	* alloca.c, error.c, error.h, malloc.c, pathmax.h,
+	realloc.c, strtol.c, strtoul.c: Updated, from coreutils.
+
+2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* gettext.c, gettext.h: Deleted.
+	* Makefile.am: Adujsted.
+
 2000-10-24  Bruno Haible  <haible@clisp.cons.org>
 
 	* xmalloc.c, xalloc.h: Move to src/.

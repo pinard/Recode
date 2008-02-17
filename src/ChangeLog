@@ -1,3 +1,28 @@
+2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ansi2knr.c: Modified by Automake 1.10.
+
+	* Makefile.am (merged.c): Split flex -t8 into flex -t -8.
+	* mergelex.py: Add coding cookie.
+
+2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* exit.h, exitfail.c, exitfail.h, xalloc-die.c: New, from coreutils.
+	* hash.c, hash.h, xalloc.h, xmalloc.c: Updated, from coreutils.
+	* Makefile.am: Adjusted.
+
+2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Do not call bindtextdomain.
+
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ansi2knr.c: Newer version, from elsewhere.
+
+	Postpone libtool support, as it creates too many problems for now.
+	* Makefile.am: Replace lib_LTLIBRARIES by noinst_LIBRARIES.
+	Replace librecode.la by libcode.a and librecode_la by librecode_a.
+
 2001-01-22  Bruno Haible  <haible@clisp.cons.org>
 
 	* hash.c: Avoid use of undefined macros HAVE_DECL_MALLOC/FREE.

@@ -1,3 +1,59 @@
+2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* README: Do not mention AC-PATCHES anymore.
+	* TODO: Do not mention BACKLOG anymore.
+
+	* Makefile.in, TODO, acconfig.h, configure.ac: Write Free Recode,
+	not GNU Recode.
+
+	* INSTALL, Makefile.in, config.guess, config.sub, depcomp, install-sh,
+	missing, mkinstalldirs: Modified by Automake 1.10.
+
+	* README: Tell about the maintainer git sandbox.
+	Reformatted from Allout to reST, and reorganised.
+	* Makefile.am: New goals for the Recode site maintainer.
+	* after-git.py, after-git.sh: New files.
+
+	* ABOUT-NLS: Updated from an old, but less old copy.
+
+2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* BACKLOG, PATCHES-AC: Deleted.
+	* : Documentation details, here and there.
+	* ABOUT-NLS, INSTALL, COPYING: New files, from elsewhere.
+	* Makefile.am: Adjusted.
+
+2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* config.guess, config.sub, ltmain.sh: Updated.
+
+	* configure.ac (ALL_LINGUAS): Deleted.
+	* acconfig.h: Deleted.
+	* configure.ac: Use AM_GNU_GETTEXT rather than fp_WITH_GETTEXT.
+	* Makefile.am (POTFILES, all-local, stamp-pot): Deleted.
+
+	* po: New name for i18n.
+
+2005-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Include stamp-pot.
+	* stamp-pot: Save it.
+
+	* configure.ac (ALL_LINGUAS): Adjusted.
+
+2005-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.ac: New name for configure.in.  Adjusted for Autoconf 2.59
+	instead of 2.13, and Automake 1.9.6 instead of 1.4.
+	* : Automatic derivation of many files.
+	* depcomp: New file, automatically added.
+
+	* config.guess, config.sub, ltmain.sh: From libtool 1.5.18 instead of
+	1.3.4.
+	
+	* acinclude.m4: Deleted.
+	* doc: Delete old, extraneous info files.
+
 2005-03-06  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.am (SUBDIRS): Add intl.
@@ -24,33 +80,25 @@
 	Remove spurious AC_CANONICAL_HOST.
 	* depcomp: New file, from elsewhere.
 	* INSTALL, config.guess, config.sub, install-sh, mdate-sh, missing,
-	mkinstalldirs, doc/texinfo.tex, src/ansi2knr.c: Newer versions, from
-	elsewhere.
-	* m4/atconfig.m4, m4/codeset.m4, m4/gettext.m4, m4/glibc21.m4,
-	m4/malloc.m4, m4/realloc.m4, m4/utimbuf.m4: Quoted first argument of
-	AC_DEFUN.
-	* m4/gettext.m4, m4/malloc.m4, m4/realloc.m4: Use AC_LIBOBJ macro
-	instead of LIBOBJS variable.
-	* m4/lcmessage.m4: Move previously global AC_PREREQ into macro.
-	* m4/flex.m4: Deleted.
-	* m4/gettext.m4, m4/lcmessage.m4: Use third argument to AC_DEFINE or
-	AC_DEFINE_UNQUOTED.
+	mkinstalldirs: Newer versions, from elsewhere.
 	* acconfig.h: Deleted.
 
 	Postpone libtool support, as it creates too many problems for now.
 	* configure.ac: Replace AC_PROG_LIBTOOL with AC_PROG_RANLIB.
 	Do not fiddle with LTALLOCA nor LTLIBOBJS.
-	* ltconfig, ltmain.sh, m4/libtool.m4: Deleted.
-	* src/Makefile.am: Replace lib_LTLIBRARIES by noinst_LIBRARIES.
-	Replace librecode.la by libcode.a and librecode_la by librecode_a.
+	* ltconfig, ltmain.sh: Deleted.
 
-	* ChangeLog, config/ChangeLog, doc/ChangeLog, libiconv/ChangeLog,
-	tests/ChangeLog, m4/ChangeLog: Converted to UTF-8.
+	* ChangeLog: Converted to UTF-8.
 
 	* PATCHES-AC: Deleted, hoping Autoconf has it by now.  I did not
 	check, because if it does not yet, it is a lost cause.
 
 	* rebox.el: Deleted.  It has been moved as rebox.py into Pymacs.
+
+2001-12-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	Get Autoconf 2.14a, Automake 1.4 and Libtool 1.3.5 working together.
+	* configure.in: Use AC_PROG_CC_STDC between AC_MINIX and AC_C_CONST.
 
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 
@@ -80,7 +128,7 @@
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5e.
-
+
 	* Makefile.am (POTFILES): Rename debug.c to testdump.c.
 
 2000-06-27  François Pinard  <pinard@iro.umontreal.ca>

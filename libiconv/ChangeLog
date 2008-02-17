@@ -1,3 +1,7 @@
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ChangeLog: Converted to UTF-8.
+
 2000-12-18  Bruno Haible  <haible@clisp.cons.org>
 
 	* config.charset: Add support for BeOS.
@@ -187,7 +191,7 @@
 
 	* ucs2internal.h, ucs2swapped.h, ucs4internal.h, ucs4swapped.h:
 	Cosmetic changes to avoid compiler warnings.
-
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (noinst_HEADERS): Distribute iconv.h.

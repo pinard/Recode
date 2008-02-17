@@ -1,3 +1,17 @@
+2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* mdate-sh, texinfo.tex: Modified by Automake 1.10.
+
+2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* version.texi, help2man, texinfo.tex: New files, from elsewhere.
+
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* texinfo.tex: Newer version, from elsewhere.
+
+	* ChangeLog: Converted to UTF-8.
+
 2000-12-06  Bruno Haible  <haible@clisp.cons.org>
 
 	* Makefile.am (MAKEINFO): New definition, forcing English titles in

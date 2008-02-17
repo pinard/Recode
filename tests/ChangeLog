@@ -1,3 +1,7 @@
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* ChangeLog: Converted to UTF-8.
+
 2001-01-02  Bruno Haible  <haible@clisp.cons.org>
 
 	* names.m4: Adjusted for libiconv-1.5 (BIG5HKSCS, GB18030, CHAR,

@@ -1,3 +1,19 @@
+2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* gettext.m4, lcmessage.m4: Deleted.
+	* Makefile.am: Adjusted.
+
+2005-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (EXTRA_DIST): Adjusted for deleted .m4 files.
+
+2005-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* atconfig.m4, codeset.m4, gettext.m4, glibc21.m4, lcmessage.m4,
+	malloc.m4, realloc.m4, utimbuf.m4: Quote arguments.
+	* gettext.m4, malloc.m4, realloc.m4: Use AC_LIBOBJ.
+	* flex.m4, libtool.m4: Deleted.
+
 2005-03-06  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* codeset.m4: Upgrade to gettext-0.14.1.
@@ -29,6 +45,22 @@
 	* wint_t.m4: New file, from gettext-0.14.1.
 	* xsize.m4: New file, from gettext-0.14.1.
 	* Makefile.am (EXTRA_DIST): Add the new files.
+
+2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* atconfig.m4, codeset.m4, gettext.m4, glibc21.m4, malloc.m4,
+	realloc.m4, utimbuf.m4: Quoted first argument of AC_DEFUN.
+	* gettext.m4, malloc.m4, realloc.m4: Use AC_LIBOBJ macro
+	instead of LIBOBJS variable.
+	* lcmessage.m4: Move previously global AC_PREREQ into macro.
+	* flex.m4: Deleted.
+	* gettext.m4, lcmessage.m4: Use third argument to AC_DEFINE or
+	AC_DEFINE_UNQUOTED.
+
+	Postpone libtool support, as it creates too many problems for now.
+	* libtool.m4: Deleted.
+
+	* ChangeLog: Converted to UTF-8.
 
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 

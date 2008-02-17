@@ -1,3 +1,29 @@
+2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.in.in, Makevars, LINGUAS, POTFILE.in: New files.
+	* Makefile.am: Deleted.
+
+	* po: New name for i18n.  Rename all .mo files to .gmo.
+	* remove-potcdate.sin: New file, from elsewhere.
+
+2005-10-28  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (uninstall): Add missing backslash.
+
+	* be.po, ca.po, eo.po, ga.po, he.po, hr.po, hu.po, id.po, pt_BR.po,
+	ro.po, ru.po, rw.po, tr.po, vi.po: New files.
+
+	* da.po, de.po, el.po, es.po, fr.po, it.po, nl.po, pl.po, pt.po,
+	sl.po, sv.po: Updated, from the Translation Project.
+
+	* : Save .mo files for new .po files.
+
+2005-10-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* el.po: Replace all 0xD2 characters by 0xB7, to be
+	ISO 8859-7 as declared, and not CP 1253 as apparently used.
+	Reported by Christian Weisgerber.
+
 2005-03-06  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.in.in: New file, from gettext-0.14.1.
