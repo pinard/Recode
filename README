@@ -195,8 +195,7 @@ beyond those used in simple installations.  If not done already, get:
   ========  ===================================================================
 
 Make sure GNU :code:`m4` is fully installed before you start installing
-Autoconf.  Apply :file:`PATCHES-AC` to Autoconf before installing it.
-Have Perl installed before Automake and :code:`help2man`.
+Autoconf.  Have Perl installed before Automake and :code:`help2man`.
 
 Python 1.5 and Flex 2.5, or better, are needed for remaking
 :file:`merged.c`, after you modify an :file:`.l` source file.
