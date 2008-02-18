@@ -20,7 +20,7 @@
 # This Python script merges several Flex sources intended for `recode'.
 # It requires Flex 2.5 or later.
 
-import re, string, sys
+import re, sys
 
 # Initial comments.
 section0 = ["/* This file is generated automatically by `mergelex.py'.  */\n"]
@@ -39,12 +39,11 @@ section2 = ["%%\n"
 # Rest of C code.
 section3 = ["%%\n"]
 
-comment_done = 0
-within_C_code = 0
+within_C_code = False
 definitions = {}
 section = 3
 
-while 1:
+while True:
     line = sys.stdin.readline()
     if not line:
         break
@@ -91,14 +90,14 @@ while 1:
     # by a %} line.
 
     if line[:2] == '%{':
-        within_C_code = 1
+        within_C_code = True
         section1.append('\n')
         section1.append(line)
         continue
     if line[:2] == '%}':
         section1.append(line)
         section1.append('\n')
-        within_C_code = 0
+        within_C_code = False
         continue
     if within_C_code:
         section1.append(line)
@@ -108,8 +107,8 @@ while 1:
     # Conflicting declaractions are reported at beginning of output.
 
     if section == 1 and line[0] not in (' ', '\t', '\n'):
-        key, rest = string.split(line, None, 1)
-        if definitions.has_key(key):
+        key, rest = line.split(None, 1)
+        if key in definitions:
             if definitions[key] != line:
                 sys.stderr.write("** Conflicting definition: %s" % line)
         else:

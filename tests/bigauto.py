@@ -22,7 +22,7 @@ both as a starting and ending points.  If there is no such non-option
 argument, all possible possible recodings are considered.
 """
 
-import os, string, sys
+import os, sys
 
 def main(*arguments):
     recode_options = []
@@ -37,7 +37,7 @@ def main(*arguments):
         os.remove(work_name)
     create_data(work_name, recode_options, charset_options)
     report = Report()
-    report.digest_data(open(work_name).readline)
+    report.digest_data(file(work_name).readline)
     report.produce_report(sys.stdout.write)
     os.remove(work_name)
 
@@ -47,13 +47,13 @@ def create_data(name, recode_options, charset_options):
         charsets = charset_options
     else:
         charsets = []
-        for line in os.popen('recode -l').readlines():
-            charset = string.split(line)[0]
+        for line in os.popen('recode -l'):
+            charset = line.split()[0]
             if charset[0] in ':/':
                 continue
             charsets.append(charset)
     # Do the work, calling a subshell once per `before' value.
-    recode_call = 'recode </dev/null -v %s' % string.join(recode_options)
+    recode_call = "recode </dev/null -v %s" % ' '.join(recode_options)
     for before in charsets:
         if before in ('count-characters', 'dump-with-names',
                       'flat', 'Texinfo'):
@@ -82,15 +82,15 @@ class Report:
         lensep = len(os.linesep)
         line = readline()
         while line:
-            type, request = string.split(line[:-lensep], ':', 1)
+            type, request = line[:-lensep].split(':', 1)
             if type == 'Request':
                 steps = self.get_steps(request)
                 self.count_original_request(steps, request)
                 line = readline()
                 if line:
-                    if len(string.split(line[:-lensep], ':', 1)) != 2:
+                    if len(line[:-lensep].split(':', 1)) != 2:
                         print '*', line,
-                    type, shrunk_to = string.split(line[:-lensep], ':', 1)
+                    type, shrunk_to = line[:-lensep].split(':', 1)
                     if type == 'Shrunk to':
                         steps = self.get_steps(shrunk_to)
                         self.count_shrunk_request(steps, shrunk_to)
@@ -108,19 +108,19 @@ class Report:
             return 0
         if text[-1] == '/':
             text = text[:-1]
-        text = string.replace(text, '/..', '..')
+        text = text.replace('/..', '..')
         count = 0
-        for fragment in string.split(text, '..'):
-            count = count + len(string.split(fragment, '/'))
+        for fragment in text.split('..'):
+            count += len(fragment.split('/'))
         return count - 1
 
     def count_original_request(self, steps, text):
-        self.recode_calls = self.recode_calls + 1
-        if self.original_count.has_key(steps):
-            self.original_count[steps] = self.original_count[steps] + 1
+        self.recode_calls += 1
+        if steps in self.original_count:
+            self.original_count[steps] += 1
         else:
             self.original_count[steps] = 1
-            self.original_example[steps] = string.strip(text)
+            self.original_example[steps] = text.strip()
             if self.original_total == 0:
                 self.original_minimum = self.original_maximum = steps
             else:
@@ -131,11 +131,11 @@ class Report:
         self.original_total = self.original_total + steps
 
     def count_shrunk_request(self, steps, text):
-        if self.shrunk_count.has_key(steps):
-            self.shrunk_count[steps] = self.shrunk_count[steps] + 1
+        if steps in self.shrunk_count:
+            self.shrunk_count[steps] += 1
         else:
             self.shrunk_count[steps] = 1
-            self.shrunk_example[steps] = string.strip(text)
+            self.shrunk_example[steps] = text.strip()
             if self.shrunk_total == 0:
                 self.shrunk_minimum = self.shrunk_maximum = steps
             else:
@@ -161,18 +161,18 @@ class Report:
                  float(self.shrunk_total) / float(self.recode_calls)))
         write("\n"
               "Histogram for original requests\n")
-        for steps in range(self.original_minimum, self.original_maximum+1):
-            if self.original_count.has_key(steps):
+        for steps in range(self.original_minimum, self.original_maximum + 1):
+            if steps in self.original_count:
                 write("%5d steps, %5d times  %s\n"
                       % (steps, self.original_count[steps],
                          self.original_example[steps]))
         write("\n"
               "Histogram for shrunk requests\n")
-        for steps in range(self.shrunk_minimum, self.shrunk_maximum+1):
-            if self.shrunk_count.has_key(steps):
+        for steps in range(self.shrunk_minimum, self.shrunk_maximum + 1):
+            if steps in self.shrunk_count:
                 write("%5d steps, %5d times  %s\n"
                       % (steps, self.shrunk_count[steps],
                          self.shrunk_example[steps]))
 
 if __name__ == '__main__':
-    apply(main, tuple(sys.argv[1:]))
+    main(*sys.argv[1:])
