@@ -1,0 +1,77 @@
+   Private use
+   group 000
+   plane 000
+   row 224
+   cell 000
+
+   The NON-SPACING entries are for convenience only, as they
+   do not constitute a character, but are used as part of the
+   coding for a character.
+   The reference to the character is first the name of the coded character
+   set, and after the _ the hexadecimal code in the coded character set
+"3 NON-SPACING UMLAUT <ISO-IR-53_C9> (not a real character)
+"1 NON-SPACING DIAERESIS WITH ACCENT <ISO-IR-70_C0> (not a real character)
+"! NON-SPACING GRAVE ACCENT <ISO-IR-103_C1> (not a real character)
+"' NON-SPACING ACUTE ACCENT <ISO-IR-103_C2> (not a real character)
+"> NON-SPACING CIRCUMFLEX ACCENT <ISO-IR-103_C3> (not a real character)
+"? NON-SPACING TILDE <ISO-IR-103_C4> (not a real character)
+"- NON-SPACING MACRON <ISO-IR-103_C5> (not a real character)
+"( NON-SPACING BREVE <ISO-IR-103_C6> (not a real character)
+". NON-SPACING DOT ABOVE <ISO-IR-103_C7> (not a real character)
+": NON-SPACING DIAERESIS <ISO-IR-103_C8> (not a real character)
+"0 NON-SPACING RING ABOVE <ISO-IR-103_CA> (not a real character)
+", NON-SPACING CEDILLA <ISO-IR-103_CB> (not a real character)
+"_ NON-SPACING LOW LINE <ISO-IR-103_CC> (not a real character)
+"" NON-SPACING DOUBLE ACCUTE ACCENT <ISO-IR-103_CD> (not a real character)
+"; NON-SPACING OGONEK <ISO-IR-103_CE> (not a real character)
+"< NON-SPACING CARON <ISO-IR-103_CF> (not a real character)
+"= NON-SPACING DOUBLE LOW LINE <ISO-IR-38_D9> (not a real character)
+"/ NON-SPACING LONG SOLIDUS OVERLAY <ISO-IR-128_C9> (not a real character)
+"p GREEK NON-SPACING PSILI PNEUMATA <ISO-IR-55_25> (not a real character)
+"d GREEK NON-SPACING DASIA PNEUMATA <ISO-IR-55_26> (not a real character)
+"i GREEK NON-SPACING IOTA BELOW <ISO-IR-55_27> (not a real character)
++_ IDEOGRAPHIC DITTO MARK <ISO-IR-87_2138>
+a+: ARABIC LETTER ALEF FINAL FORM COMPATIBILITY <IBM868_90>
+Tel TEL COMPATIBILITY SIGN <ISO-IR-149_2265>
+UA Unit space A <ISO-IR-8-1_40>
+UB Unit space B <ISO-IR-8-1_60>
+t3 GREEK SMALL LETTER STIGMA <ISO-IR-55_47>
+m3 GREEK SMALL LETTER DIGAMMA <ISO-IR-55_48>
+k3 GREEK SMALL LETTER KOPPA <ISO-IR-55_54>
+p3 GREEK SMALL LETTER SAMPI <ISO-IR-55_5E>
+Mc APPLE LOGO (Macintosh_F0)
+Fl HUNGARIAN FLORINTH (CWI_9F)
+Ss LATIN CAPITAL LIGATURE SS (German) (CORK_FF)
+Ch LATIN SMALL LIGATURE CH (Slovak) (KOI-8_CS2_C7)
+CH LATIN CAPITAL LIGATURE CH (Slovak) (KOI-8_CS2_E7)
+   J LATIN CAPITAL LETTER J WITH CARON (the lowercase exist U01f0)
+
+a8
+b8
+c8
+d8
+e8
+f8
+g8
+h8
+i8
+j8
+k8
+l8
+m8
+n8
+o8
+p8
+q8
+r8
+s8
+t8
+u8
+v8
+w8
+x8
+y8
+z8
+
+__ indicates unfinished (Mnemonic)
+/c JOIN THIS LINE WITH NEXT LINE (Mnemonic)

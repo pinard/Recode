@@ -1,0 +1,3681 @@
+&referenceset
+ !"  %&'()*+,-./0123456789:;<=>?
+ ABCDEFGHIJKLMNOPQRSTUVWXYZ    _
+ abcdefghijklmnopqrstuvwxyz
+
+ &charset ISO_646.basic
+ &rem source: ISO 2375 registry
+ &alias ref
+ &alias ISO_646.basic:1983
+ &bits 7
+ &code 32
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ ?? A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?? ?? ?? ?? _
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+ &charset INVARIANT
+ &alias iso-ir-170
+ &g0esc x2840 &g1esc x2940 &g2esc x2a40 &g3esc x2b40
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ ?? A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?? ?? ?? ?? _
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z ?? ?? ?? ?? DT
+
+ &charset ISO_646.irv
+ &rem source: ISO 2375 registry
+ &alias iso-ir-2
+ &alias ISO_646.irv:1983
+ &alias irv
+ &g0esc x2840 &g1esc x2940 &g2esc x2a40 &g3esc x2b40
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+
+ &charset BS_4730
+ &rem source: ISO 2375 registry
+ &alias iso-ir-4
+ &alias ISO646-GB
+ &alias gb
+ &alias uk
+ &g0esc x2841 &g1esc x2941 &g2esc x2a41 &g3esc x2b41
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+
+ &charset ANSI_X3.4-1968
+ &rem source: ISO 2375 registry
+ &alias iso-ir-6
+ &alias ANSI_X3.4-1986
+ &alias ISO_646.irv:1991
+ &alias ASCII
+ &alias ISO646-US
+ &alias US-ASCII
+ &alias us
+ &alias IBM367
+ &alias CP367
+ &alias 367
+ &g0esc x2842 &g1esc x2942 &g2esc x2a42 &g3esc x2b42
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+
+ &charset NATS-SEFI
+ &rem source: ISO 2375 registry
+ &alias iso-ir-8-1
+ &g0esc x2843 &g1esc x2943 &g2esc x2a43 &g3esc x2b43
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ UA A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A: O: AA fS _
+ UB a b c d e f g h i j k l m n o p q r s t u v w x y z a: o: aa -N DT
+
+ &charset NATS-SEFI-ADD
+ &rem source: ISO 2375 registry
+ &alias iso-ir-8-2
+ &g0esc x2844 &g1esc x2944 &g2esc x2a44 &g3esc x2b44
+ &bits 7
+ &code 0
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A! ?? ?? D/ E' ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ TH ?? ?? ?? ?? U: ?? ?? ?? ?? ?? AE O/ ?? ?? ??
+ ?? a! ?? ?? d/ e' ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ th ?? ?? ?? ?? u: ?? ?? ?? ?? ?? ae o/ ?? ?? ??
+
+ &charset NATS-DANO
+ &rem source: ISO 2375 registry
+ &alias iso-ir-9-1
+ &g0esc x2845 &g1esc x2945 &g2esc x2a45 &g3esc x2b45
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! << >> DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ UA A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AE O/ AA fS _
+ UB a b c d e f g h i j k l m n o p q r s t u v w x y z ae o/ aa -N DT
+
+ &charset NATS-DANO-ADD
+ &rem source: ISO 2375 registry
+ &alias iso-ir-9-2
+ &g0esc x2846 &g1esc x2946 &g2esc x2a46 &g3esc x2b46
+ &bits 7
+ &code 0
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A! ?? ?? D/ E' ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ TH ?? ?? ?? ?? U: ?? ?? ?? ?? ?? A: O: ?? ?? ??
+ ?? a! ?? ?? d/ e' ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ th ?? ?? ?? ?? u: ?? ?? ?? ?? ?? a: o: ?? ?? ??
+
+ &charset SEN_850200_B
+ &rem source: ISO 2375 registry
+ &alias iso-ir-10
+ &alias FI
+ &alias ISO646-FI
+ &alias ISO646-SE
+ &alias se
+ &alias SS636127
+ &g0esc x2847 &g1esc x2947 &g2esc x2a47 &g3esc x2b47
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A: O: AA '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z a: o: aa '- DT
+
+ &charset SEN_850200_C
+ &rem source: ISO 2375 registry
+ &alias iso-ir-11
+ &alias ISO646-SE2
+ &alias se2
+ &g0esc x2848 &g1esc x2948 &g2esc x2a48 &g3esc x2b48
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ E' A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A: O: AA U: _
+ e' a b c d e f g h i j k l m n o p q r s t u v w x y z a: o: aa u: DT
+
+ &charset JIS_C6220-1969-jp
+ &rem source: ISO 2375 registry
+ &alias JIS_C6220-1969
+ &alias iso-ir-13
+ &alias katakana
+ &alias x0201-7
+ &g0esc x2849 &g1esc x2949 &g2esc x2a49 &g3esc x2b49
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ._ <' >' ,_ .6 Wo a6 i6 u6 e6 o6 YA YU YO TU
+ -6 A6 I6 U6 E6 O6 Ka Ki Ku Ke Ko Sa Si Su Se So
+ Ta Ti Tu Te To Na Ni Nu Ne No Ha Hi Hu He Ho Ma
+ Mi Mu Me Mo Ya Yu Yo Ra Ri Ru Re Ro Wa N6 "5 05
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset JIS_C6220-1969-ro
+ &rem source: ISO 2375 registry
+ &alias iso-ir-14
+ &alias jp
+ &alias ISO646-JP
+ &g0esc x284a &g1esc x294a &g2esc x2a4a &g3esc x2b4a
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( Ye )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+
+ &charset IT
+ &rem source: ISO 2375 registry
+ &alias iso-ir-15
+ &alias ISO646-IT
+ &g0esc x2859 &g1esc x2959 &g2esc x2a59 &g3esc x2b59
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ SE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z DG c, e' '> _
+ u! a b c d e f g h i j k l m n o p q r s t u v w x y z a! o! e! i! DT
+
+ &charset PT
+ &rem source: ISO 2375 registry
+ &alias iso-ir-16
+ &alias ISO646-PT
+ &g0esc x284c &g1esc x294c &g2esc x2a4c &g3esc x2b4c
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ SE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A? C, O? '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z a? c, o? DG DT
+
+ &charset ES
+ &rem source: ISO 2375 registry
+ &alias iso-ir-17
+ &alias ISO646-ES
+ &g0esc x285a &g1esc x295a &g2esc x2a5a &g3esc x2b5a
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ SE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z !I N? ?I '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z DG n? c, '? DT
+
+ &charset greek7-old
+ &rem source: ISO 2375 registry
+ &alias iso-ir-18
+ &g0esc x285b &g1esc x295b &g2esc x2a5b &g3esc x2b5b
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ '' a* b* q* d* e* f* g* y* i* c* k* l* m* n* o*
+ p* j3 r* s* t* h* w* *s x* u* z* ?, ,, ,' '? _
+ '! A* B* Q* D* E* F* G* Y* I* C* K* L* M* N* O*
+ P* ?? R* S* T* H* W* .M X* U* Z* ?; ;; ;' ': DT
+
+ &charset latin-greek
+ &rem source: ISO 2375 registry
+ &alias iso-ir-19
+ &g0esc x285c &g1esc x295c &g2esc x2a5c &g3esc x2b5c
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A  B  C  D  E  F  G  H  I  J  K  L  M  N  O
+ P  Q  R  S  T  U  V  W  X  Y  Z  <( // )> '> _
+ '! A* B* Q* D* E* F* G* Y* I* C* K* L* M* N* O*
+ P* ?? R* S* T* H* W* .M X* U* Z* (! !! !) ': DT
+
+ &charset DIN_66003
+ &rem source: ISO 2375 registry
+ &alias iso-ir-21
+ &alias de
+ &alias ISO646-DE
+ &g0esc x284b &g1esc x294b &g2esc x2a4b &g3esc x2b4b
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ SE A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A: O: U: '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z a: o: u: ss DT
+
+ &charset NF_Z_62-010_(1973)
+ &rem source: ISO 2375 registry
+ &alias iso-ir-25
+ &alias ISO646-FR1
+ &g0esc x2852 &g1esc x2952 &g2esc x2a52 &g3esc x2b52
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ a! A B C D E F G H I J K L M N O P Q R S T U V W X Y Z DG c, SE '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z e' u! e! ': DT
+
+ &charset Latin-greek-1
+ &rem source: ISO 2375 registry
+ &alias iso-ir-27
+ &g0esc x2855 &g1esc x2955 &g2esc x2a55 &g3esc x2b55
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP C* " G* Cu % & ' ( ) * + , - . /
+ 0 1 2 3 4 5 6 7 8 9 Q* ; < = > P*
+ D* A B C D E F G H I J K L M N O
+ P Q R S T U V W X Y Z W* H* F* L* S*
+ '! a b c d e f g h i j k l m n o
+ p q r s t u v w x y z (! !! !) '- DT
+
+ &charset ISO_5427
+ &rem source: ISO 2375 registry
+ &alias iso-ir-37
+ &g0esc x284e &g1esc x294e &g2esc x2a4e &g3esc x2b4e
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% DT
+
+ &charset JIS_C6226-1978
+ &rem source: ISO 2375 registry
+ &alias iso-ir-42
+ &g0esc x2440 &g1esc x242940 &g2esc x242a40 &g3esc x242b40
+ &bits 14
+ &code2 1 1
+ SP ,_ ._ , . .6 : ; ! "5 05 '' '! ': '> '- _ *6 +6 *5 +5 +"
+ +_ *_ ;_ 0_ -6 -? -N
+ &code2 1 31
+ FD BD ?1 PP !! .3 .. '6 '9 "6 "9 ( ) (' )' <( )>
+ (! !) <1 >1 </ /> <' >' <" >" (" )" + - +- *X -: = != < > =< >= 00
+ .: Ml Fm DG 1' 2' oC Ye DO Ct Pd % Nb & * At SE *1 *2 0m 0M 0o LZ
+ &code2 2 1
+ Db OS fS uT UT dT DT :X =T -> <- -! -v =_
+ &code2 3 16
+ 0 1 2 3 4 5 6 7 8 9
+ &code2 3 33
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+ &code2 3 65
+ a b c d e f g h i j k l m n o p q r s t u v w x y z
+ &code2 4 1
+    A5 a5 I5 i5 U5 u5 E5 e5 O5 o5 ka ga ki gi ku
+ gu ke ge ko go sa za si zi su zu se ze so zo ta
+ da ti di tU tu du te de to do na ni nu ne no ha
+ ba pa hi bi pi hu bu pu he be pe ho bo po ma mi
+ mu me mo yA ya yU yu yO yo ra ri ru re ro wA wa
+ wi we wo n5
+ &code2 5 1
+    a6 A6 i6 I6 u6 U6 e6 E6 o6 O6 Ka Ga Ki Gi Ku
+ Gu Ke Ge Ko Go Sa Za Si Zi Su Zu Se Ze So Zo Ta
+ Da Ti Di TU Tu Du Te De To Do Na Ni Nu Ne No Ha
+ Ba Pa Hi Bi Pi Hu Bu Pu He Be Pe Ho Bo Po Ma Mi
+ Mu Me Mo YA Ya YU Yu YO Yo Ra Ri Ru Re Ro WA Wa
+ Wi We Wo N6 Vi KA KE
+ &code2 6 1
+ A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* S* T* U* F* X* Q* W*
+ &code2 6 33
+ a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* s* t* u* f* x* q* w*
+ &code2 7 1
+ A= B= V= G= D= E= IO Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ &code2 7 49
+ a= b= v= g= d= e= io z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ &codex j 16 46 1 94
+ &codex j 47 47 1 51
+ &codex j 48 83 1 94
+
+ &charset BS_viewdata
+ &rem source: ISO 2375 registry
+ &alias iso-ir-47
+ &g0esc x2856 &g1esc x2956 &g2esc x2a56 &g3esc x2b56
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <- 12 -> -! OS
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z 14 PP 34 -: DT
+
+ &charset INIS
+ &rem source: ISO 2375 registry
+ &alias iso-ir-49
+ &g0esc x2857 &g1esc x2957 &g2esc x2a57 &g3esc x2b57
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? DO % ?? ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ??
+ ?? A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( ?? )> ?? ??
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z ?? !! ?? ?? DT
+
+ &charset INIS-8
+ &rem source: ISO 2375 registry
+ &alias iso-ir-50
+ &g0esc x285d &g1esc x295d &g2esc x2a5d &g3esc x2b5d
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? a* b* g* d* C* ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? -> In
+ 0S 1S 2S 3S 4S 5S 6S 7S 8S 9S +S -S Ru D* L* W*
+ 0s 1s 2s 3s 4s 5s 6s 7s 8s 9s S* m* n* w* p* DT
+
+ &charset INIS-cyrillic
+ &rem source: ISO 2375 registry
+ &alias iso-ir-51
+ &g0esc x285e &g1esc x295e &g2esc x2a5e &g3esc x2b5e
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? RT ?? -> In
+ a* b* g* d* S* m* n* w* p* C* D* L* W* =" -S +S
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% DT
+
+ &charset ISO_5427-ext
+ &rem source: ISO 2375 registry
+ &alias iso-ir-54
+ &alias ISO_5427:1981
+ &g0esc x2851 &g1esc x2951 &g2esc x2a51 &g3esc x2b51
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ g3 d% g% ie io ds ii yi j% lj nj ts kj v% dz ??
+ y3 f3 v3 o3 ?? ?? ?? ?? ?? ?? ?? <( ?? )> ?? _
+ G3 D% G% IE IO DS II YI J% LJ NJ Ts KJ V% DZ ="
+ Y3 F3 V3 O3 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset ISO_5428
+ &rem source: ISO 2375 registry
+ &alias iso-ir-55
+ &alias ISO_5428:1980
+ &g0esc x2853 &g1esc x2953 &g2esc x2a53 &g3esc x2b53
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP "! "' ": "? "p "d "i ?? ?? ?? ?? ?? ?? ?? ??
+ << >> "9 "6 'G ,G ?? ?? ?? ?? ?? .M ?? ?? ?? ;
+ ?? A* B* ?? G* D* E* T3 M3 Z* Y* H* I* K* L* M*
+ N* C* O* P* K3 R* S* ?? T* U* F* X* Q* W* P3 ??
+ ?? a* b* b3 g* d* e* t3 m3 z* y* h* i* k* l* m*
+ n* c* o* p* k3 r* s* *s t* u* f* x* q* w* p3 DT
+
+ &charset GB_1988-80
+ &rem source: ISO 2375 registry
+ &alias iso-ir-57
+ &alias cn
+ &alias ISO646-CN
+ &g0esc x2854 &g1esc x2954 &g2esc x2a54 &g3esc x2b54
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Ye % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+
+ &charset GB_2312-80
+ &rem source: ISO 2375 registry
+ &alias iso-ir-58
+ &alias chinese
+ &g0esc x2441 &g1esc x242941 &g2esc x242a41 &g3esc x242b41
+ &bits 14
+ &code2 1 1
+ SP ,_ .6 .M 'm '< ': +" *_ -6 ?1
+ !2 .3 '6 '9 "6 "9 (' )'
+ <1 >1 << >> <+ >+ <7 7> (I )I (" )" +- *X -: :R AN OR +Z *P (U )U (-
+ :: RT -T PP -L
+ (A 0. In Io =3 =? ?2 CG 0( != !< !> =< >= 00 :. .: Ml Fm DG 1' 2' oC DO
+ Cu Ct Pd %0 SE NB *1 *2 0m 0M 0o Dw Db OS fS uT UT :X -> <- -! -v =_
+ &code2 2 17
+ 1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11. 12. 13. 14. 15. 16. 17. 18. 19. 20.
+ (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) (12) (13) (14)
+ (15) (16) (17) (18) (19) (20) 1-o 2-o 3-o 4-o 5-o 6-o 7-o 8-o 9-o
+ &code2 2 69
+ 1c 2c 3c 4c 5c 6c 7c 8c 9c 10c
+ &code2 2 81
+ 1R 2R 3R 4R 5R 6R 7R 8R 9R aR bR cR
+ &code2 3 1
+ ! " Nb Ye % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7
+ 8 9 : ; < = > ? At A B C D E F G H I J K L M N O
+ P Q R S T U V W X Y Z <( // )> '> _ '! a b c d e f g
+ h i j k l m n o p q r s t u v w x y z (! !! !) '-
+ &code2 4 1
+    A5 a5 I5 i5 U5 u5 E5 e5 O5 o5 ka ga ki gi ku
+ gu ke ge ko go sa za si zi su zu se ze so zo ta
+ da ti di tU tu du te de to do na ni nu ne no ha
+ ba pa hi bi pi hu bu pu he be pe ho bo po ma mi
+ mu me mo yA ya yU yu yO yo ra ri ru re ro wA wa
+ wi we wo n5
+ &code2 5 1
+    a6 A6 i6 I6 u6 U6 e6 E6 o6 O6 Ka Ga Ki Gi Ku
+ Gu Ke Ge Ko Go Sa Za Si Zi Su Zu Se Ze So Zo Ta
+ Da Ti Di TU Tu Du Te De To Do Na Ni Nu Ne No Ha
+ Ba Pa Hi Bi Pi Hu Bu Pu He Be Pe Ho Bo Po Ma Mi
+ Mu Me Mo YA Ya YU Yu YO Yo Ra Ri Ru Re Ro WA Wa
+ Wi We Wo N6 Vi KA KE
+ &code2 6 1
+ A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* S* T* U* F* X* Q* W*
+ &code2 6 33
+ a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* s* t* u* f* x* q* w*
+ &code2 7 1
+ A= B= V= G= D= E= IO Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ &code2 7 49
+ a= b= v= g= d= e= io z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ &code2 8 1
+ a- a' a< a! e- e' e< e! i- i' i< i! o- o' o< o! u- u' u< u! u:- u:<
+ u:! u: e>
+ &code2 8 37
+ b4 p4 m4 f4 d4 t4 n4 l4 g4 k4 h4 j4 q4 x4 zh ch sh r4 z4 c4
+ s4 a4 o4 e4 eh4 ai ei au ou an en aN eN er i4 u4 iu
+ &code2 9 4
+ hh HH vv VV 3- 3_ 3! 3/ 4- 4_ 4! 4/ dr dR Dr DR dl dL Dl LD
+ ur uR Ur UR ul uL Ul UL vr vR Udr uDr Vr UdR uDR VR
+ vl vL Udl uDl Vl UdL uDL VL
+ dh dLr dlR dH Dh DLr DlR DH
+ vh vLr vlR vH Udh uDh Vh UdLr
+ UdlR uDLr uDlR UdH uDH VLr VlR VH
+ &codex c 16 54 1 94
+ &codex c 55 55 1 89
+ &codex c 56 87 1 94
+
+ &charset NS_4551-1
+ &rem source: ISO 2375 registry
+ &alias iso-ir-60
+ &alias ISO646-NO
+ &alias no
+ &g0esc x2860 &g1esc x2960 &g2esc x2a60 &g3esc x2b60
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AE O/ AA '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z ae o/ aa '- DT
+
+ &charset NS_4551-2
+ &rem source: ISO 2375 registry
+ &alias ISO646-NO2
+ &alias iso-ir-61
+ &alias no2
+ &g0esc x2861 &g1esc x2961 &g2esc x2a61 &g3esc x2b61
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " SE DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AE O/ AA '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z ae o/ aa !! DT
+
+ &charset NF_Z_62-010
+ &rem source: ISO 2375 registry
+ &alias iso-ir-69
+ &alias ISO646-FR
+ &alias fr
+ &g0esc x2866 &g1esc x2966 &g2esc x2a66 &g3esc x2b66
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ a! A B C D E F G H I J K L M N O P Q R S T U V W X Y Z DG c, SE '> _
+ My a b c d e f g h i j k l m n o p q r s t u v w x y z e' u! e! ': DT
+
+ &charset videotex-suppl
+ &rem source: ISO 2375 registry
+ &alias iso-ir-70
+ &g0esc x2862 &g1esc x2962 &g2esc x2a62 &g3esc x2b62
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd DO Ye Nb SE Cu '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ "1 "! "' "> "? "- "( ". ": ?? "0 ", ?? "" "; "<
+ -M 1S Rg Co TM M8 ?? ?? ?? ?? ?? ?? 18 38 58 78
+ Om AE D- -a H/ ?? IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng ??
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "-       a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "? SP '? a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset PT2
+ &rem source: ISO 2375 registry
+ &alias iso-ir-84
+ &alias ISO646-PT2
+ &g0esc x2867 &g1esc x2967 &g2esc x2a67 &g3esc x2b67
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ '' A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A? C, O? '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z a? c, o? '? DT
+
+ &charset ES2
+ &rem source: ISO 2375 registry
+ &alias iso-ir-85
+ &alias ISO646-ES2
+ &g0esc x2868 &g1esc x2968 &g2esc x2a68 &g3esc x2b68
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ sb A B C D E F G H I J K L M N O P Q R S T U V W X Y Z !I N? C, ?I _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z '' n? c, ': DT
+
+ &charset MSZ_7795.3
+ &rem source: ISO 2375 registry
+ &alias iso-ir-86
+ &alias ISO646-HU
+ &alias hu
+ &g0esc x2869 &g1esc x2969 &g2esc x2a69 &g3esc x2b69
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ A' A B C D E F G H I J K L M N O P Q R S T U V W X Y Z E' O: U: '> _
+ a' a b c d e f g h i j k l m n o p q r s t u v w x y z e' o: u: '" DT
+
+ &charset JIS_C6226-1983
+ &rem source: ISO 2375 registry
+ &alias iso-ir-87
+ &alias x0208
+ &alias JIS_X0208-1983
+ &g0esc x2442 &g1esc x242942 &g2esc x242a42 &g3esc x242b42
+ &bits 14
+ &code2 1 1
+ SP ,_ ._ , . .6 : ; ! "5 05 '' '! ': '> '- _ *6 +6 *5 +5 +"
+ +_ *_ ;_ 0_ -6 -? -N
+ &code2 1 31
+ FD BD ?1 PP !! .3 .. '6 '9 "6 "9 ( ) (' )' <( )>
+ (! !) <1 >1 </ /> <' >' <" >" (" )" + - +- *X -: = != < > =< >= 00
+ .: Ml Fm DG 1' 2' oC Ye DO Ct Pd % Nb & * At SE *1 *2 0m 0M 0o LZ
+ &code2 2 1
+ Db OS fS uT UT dT DT :X =T -> <- -! -v =_
+ &code2 2 26
+ (- -) (_ )_ (C )C (U )U
+ &code2 2 42
+ AN OR NO => <= FA TE
+ &code2 2 60
+ -V -T (A dP NB =3 HI <* *> RT CG 0( :. In DI
+ &code2 2 82
+ AA %0 MX Mb M8 /- /= PI
+ &code2 2 94
+ Ci
+ &code2 3 16
+ 0 1 2 3 4 5 6 7 8 9
+ &code2 3 33
+ A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+ &code2 3 65
+ a b c d e f g h i j k l m n o p q r s t u v w x y z
+ &code2 4 1
+    A5 a5 I5 i5 U5 u5 E5 e5 O5 o5 ka ga ki gi ku
+ gu ke ge ko go sa za si zi su zu se ze so zo ta
+ da ti di tU tu du te de to do na ni nu ne no ha
+ ba pa hi bi pi hu bu pu he be pe ho bo po ma mi
+ mu me mo yA ya yU yu yO yo ra ri ru re ro wA wa
+ wi we wo n5
+ &code2 5 1
+    a6 A6 i6 I6 u6 U6 e6 E6 o6 O6 Ka Ga Ki Gi Ku
+ Gu Ke Ge Ko Go Sa Za Si Zi Su Zu Se Ze So Zo Ta
+ Da Ti Di TU Tu Du Te De To Do Na Ni Nu Ne No Ha
+ Ba Pa Hi Bi Pi Hu Bu Pu He Be Pe Ho Bo Po Ma Mi
+ Mu Me Mo YA Ya YU Yu YO Yo Ra Ri Ru Re Ro WA Wa
+ Wi We Wo N6 Vi KA KE
+ &code2 6 1
+ A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* S* T* U* F* X* Q* W*
+ &code2 6 33
+ a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* s* t* u* f* x* q* w*
+ &code2 7 1
+ A= B= V= G= D= E= IO Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ &code2 7 49
+ a= b= v= g= d= e= io z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ &code2 8 1
+ hh vv dr dl ul ur vr dh vl uh vh
+ HH VV DR LD UL UR VR DH VL UH VH
+ Vr dH Vl uH vH vR Dh vL Uh Vh
+ &codex j 16 46 1 94
+ &codex j 47 47 1 51
+ &codex j 48 83 1 94
+ &codex j 84 84 1 4
+
+ &charset greek7
+ &rem source: ISO 2375 registry
+ &alias iso-ir-88
+ &g0esc x286a &g1esc x296a &g2esc x2a6a &g3esc x2b6a
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A* B* G* D* E* Z* Y* H* I* ?? K* L* M* N* C*
+ O* P* R* S* T* U* F* ?? X* Q* W* <( // )> '> _
+ '! a* b* g* d* e* z* y* h* i* ?? k* l* m* n* c*
+ o* p* r* s* t* u* f* *s x* q* w* (! !! !) '- DT
+
+ &charset ASMO_449
+ &rem source: ISO 2375 registry
+ &alias ISO_9036
+ &alias arabic7
+ &alias iso-ir-89
+ &g0esc x286b &g1esc x296b &g2esc x2a6b &g3esc x2b6b
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + ,+ - . / 0 1 2 3 4 5 6 7 8 9 : ;+ < = > ?+
+ At H' aM aH wH ah yH a+ b+ tm t+ tk g+ hk x+ d+
+ dk r+ z+ s+ sn c+ dd tj zH e+ i+ <( // )> '> _
+ ++ f+ q+ k+ l+ m+ n+ h+ w+ j+ y+ :+ "+ =+ /+ '+
+ 1+ 3+ 0+ ?? ?? ?? ?? ?? ?? ?? ?? (! !! !) '- DT
+
+ &charset iso-ir-90
+ &rem source: ISO 2375 registry
+ &alias ISO_6937-2:1983
+ &g0esc x286c &g1esc x296c &g2esc x2a6c &g3esc x2b6c
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd DO Ye ?? SE ?? '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": ?? "0 ", "_ "" "; "<
+ -M 1S Rg Co TM M8 ?? ?? ?? ?? ?? ?? 18 38 58 78
+ Om AE D- -a H/ ?? IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng ??
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "-       a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "? SP '? a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset JIS_C6229-1984-a
+ &rem source: ISO 2375 registry
+ &alias iso-ir-91
+ &alias jp-ocr-a
+ &g0esc x286d &g1esc x296d &g2esc x2a6d &g3esc x2b6d
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? " Pd DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; 1h = 3h ?
+ ?? A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ?? Ye 2h '> _
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 4h ?? ?? DT
+
+ &charset JIS_C6229-1984-b
+ &rem source: ISO 2375 registry
+ &alias iso-ir-92
+ &alias ISO646-JP-OCR-B
+ &alias jp-ocr-b
+ &g0esc x286e &g1esc x296e &g2esc x2a6e &g3esc x2b6e
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </ Ye /> '> _
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) ?? DT
+
+ &charset JIS_C6229-1984-b-add
+ &rem source: ISO 2375 registry
+ &alias iso-ir-93
+ &alias jp-ocr-b-add
+ &g0esc x286f &g1esc x296f &g2esc x2a6f &g3esc x2b6f
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? Pd Cu // ?? SE ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset JIS_C6229-1984-hand
+ &rem source: ISO 2375 registry
+ &alias iso-ir-94
+ &alias jp-ocr-hand
+ &g0esc x2870 &g1esc x2970 &g2esc x2a70 &g3esc x2b70
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z </ Ye /> '> _
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? !! ?? ?? DT
+
+ &charset JIS_C6229-1984-hand-add
+ &rem source: ISO 2375 registry
+ &alias iso-ir-95
+ &alias jp-ocr-hand-add
+ &g0esc x2871 &g1esc x2971 &g2esc x2a71 &g3esc x2b71
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? ?? // ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset JIS_C6229-1984-kana
+ &rem source: ISO 2375 registry
+ &alias iso-ir-96
+ &g0esc x2872 &g1esc x2972 &g2esc x2a72 &g3esc x2b72
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? <' >' ?? ?? Wo ?? ?? ?? ?? ?? ?? ?? ?? ??
+ -6 A6 I6 U6 E6 O6 Ka Ki Ku Ke Ko Sa Si Su Se So
+ Ta Ti Tu Te To Na Ni Nu Ne No Ha Hi Hu He Ho Ma
+ Mi Mu Me Mo Ya Yu Yo Ra Ri Ru Re Ro Wa N6 "5 05
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset ISO_2033-1983
+ &rem source: ISO 2375 registry
+ &alias iso-ir-98
+ &alias e13b
+ &g0esc x2873 &g1esc x2973 &g2esc x2a73 &g3esc x2b73
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  1j 2j 3j 4j ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? DT
+
+ &charset ANSI_X3.110-1983
+ &rem source: ISO 2375 registry
+ &alias iso-ir-99
+ &alias CSA_T500-1983
+ &alias NAPLPS
+ &g0esc x2874 &g1esc x2974 &g2esc x2a74 &g3esc x2b74
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd DO Ye Nb SE Cu '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": "/ "0 ", "_ "" "; "<
+ -M 1S Rg Co TM M8 hh vv FD BD Fd Bd 18 38 58 78
+ Om AE D- -a H/ vh IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng ??
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "- SP 'm a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "?       a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset ISO-8859-1
+ &rem source: ISO 2375 registry
+ &alias iso-ir-100
+ &alias ISO_8859-1:1987
+ &alias ISO_8859-1
+ &alias ISO8859-1
+ &alias latin1
+ &alias l1
+ &alias IBM819
+ &alias CP819
+ &alias 819
+ &g1esc x2d41 &g2esc x2e41 &g3esc x2f41
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd Cu Ye BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S '' My PI .M ', 1S -o >> 14 12 34 ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ D- N? O! O' O> O? O: *X O/ U! U' U> U: Y' TH ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ d- n? o! o' o> o? o: -: o/ u! u' u> u: y' th y:
+
+ &charset ISO-8859-2
+ &rem source: ISO 2375 registry
+ &alias iso-ir-101
+ &alias ISO_8859-2:1987
+ &alias ISO_8859-2
+ &alias ISO8859-2
+ &alias latin2
+ &alias l2
+ &alias IBM912
+ &alias CP912
+ &alias 912
+ &g1esc x2d42 &g2esc x2e42 &g3esc x2f42
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS A; '( L/ Cu L< S' SE ': S< S, T< Z' -- Z< Z.
+ DG a; '; l/ '' l< s' '< ', s< s, t< z' '" z< z.
+ R' A' A> A( A: L' C' C, C< E' E; E: E< I' I> D<
+ D/ N' N< O' O> O" O: *X R< U0 U' U" U: Y' T, ss
+ r' a' a> a( a: l' c' c, c< e' e; e: e< i' i> d<
+ d/ n' n< o' o> o" o: -: r< u0 u' u" u: y' t, '.
+
+ &charset T.61-7bit
+ &rem source: ISO 2375 registry
+ &alias iso-ir-102
+ &g0esc x2875 &g1esc x2975 &g2esc x2a75 &g3esc x2b75
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( ?? )> ?? _
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z ?? !! ?? ?? DT
+
+ &charset T.61-8bit
+ &rem source: ISO 2375 registry
+ &alias T.61
+ &alias iso-ir-103
+ &g0esc x2876 &g1esc x2976 &g2esc x2a76 &g3esc x2b76
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( ?? )> ?? _
+ ?? a b c d e f g h i j k l m n o p q r s t u v w x y z ?? !! ?? ?? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd DO Ye Nb SE Cu ?? ?? << ?? ?? ?? ??
+ DG +- 2S 3S *X My PI .M -: ?? ?? >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": ?? "0 ", "_ "" "; "<
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ Om AE D- -a H/ ?? IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng ??
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "- SP 'm a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "?       a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset ISO-8859-3
+ &rem source: ISO 2375 registry
+ &alias iso-ir-109
+ &alias ISO_8859-3:1988
+ &alias ISO_8859-3
+ &alias ISO8859-3
+ &alias latin3
+ &alias l3
+ &g1esc x2d43 &g2esc x2e43 &g3esc x2f43
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS H/ '( Pd Cu ?? H> SE ': I. S, G( J> -- ?? Z.
+ DG h/ 2S 3S '' My h> .M ', i. s, g( j> 12 ?? z.
+ A! A' A> ?? A: C. C> C, E! E' E> E: I! I' I> I:
+ ?? N? O! O' O> G. O: *X G> U! U' U> U: U( S> ss
+ a! a' a> ?? a: c. c> c, e! e' e> e: i! i' i> i:
+ ?? n? o! o' o> g. o: -: g> u! u' u> u: u( s> '.
+
+ &charset ISO-8859-4
+ &rem source: ISO 2375 registry
+ &alias iso-ir-110
+ &alias ISO_8859-4:1988
+ &alias ISO_8859-4
+ &alias ISO8859-4
+ &alias latin4
+ &alias l4
+ &g1esc x2d44 &g2esc x2e44 &g3esc x2f44
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS A; kk R, Cu I? L, SE ': S< E- G, T/ -- Z< 'm
+ DG a; '; r, '' i? l, '< ', s< e- g, t/ NG z< ng
+ A- A' A> A? A: AA AE I; C< E' E; E: E. I' I> I-
+ D/ N, O- K, O> O? O: *X O/ U; U' U> U: U? U- ss
+ a- a' a> a? a: aa ae i; c< e' e; e: e. i' i> i-
+ d/ n, o- k, o> o? o: -: o/ u; u' u> u: u? u- '.
+
+ &charset ECMA-cyrillic
+ &rem source: ISO 2375 registry
+ &alias iso-ir-111
+ &alias ECMA-113:1986
+ &alias ECMA-113
+ &g1esc x2d40 &g2esc x2e40 &g3esc x2f40
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS d% g% io ie ds ii yi j% lj nj ts kj -- v% dz
+ N0 D% G% IO IE DS II YI J% LJ NJ Ts KJ Cu V% DZ
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ="
+
+ &charset CSA_Z243.4-1985-1
+ &rem source: ISO 2375 registry
+ &alias iso-ir-121
+ &alias ISO646-CA
+ &alias csa7-1
+ &alias ca
+ &g0esc x2877 &g1esc x2977 &g2esc x2a77 &g3esc x2b77
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ a! A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a> c, e> i> _
+ o> a b c d e f g h i j k l m n o p q r s t u v w x y z e' u! e! u> DT
+
+ &charset CSA_Z243.4-1985-2
+ &rem source: ISO 2375 registry
+ &alias iso-ir-122
+ &alias ISO646-CA2
+ &alias csa7-2
+ &g0esc x2878 &g1esc x2978 &g2esc x2a78 &g3esc x2b78
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ a! A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a> c, e> E' _
+ o> a b c d e f g h i j k l m n o p q r s t u v w x y z e' u! e! u> DT
+
+ &charset CSA_Z243.4-1985-gr
+ &rem source: ISO 2375 registry
+ &alias iso-ir-123
+ &g1esc x2d45 &g2esc x2e45 &g3esc x2f45
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I ': Pd Ct Ye +- '' (S )S 12 +S ', -- .M -S
+ 0S 1S 2S 3S 4S 5S 6S 7S 8S 9S 14 34 <= != >= ?I
+ A! A' A> C, E! E' E> E: I' I> I: N? O' O> U! U'
+ U> U: Rg SE PI My -a -o '6 '9 "6 "9 << >> DG BB
+ a! a' a> c, e! e' e> e: i' i> i: n? o' o> u! u'
+ u> u: Co hh vv ur ul dl dr vr uh vl dh vh NO FB
+
+ &charset ISO-8859-7
+ &rem source: ISO 2375 registry
+ &alias iso-ir-126
+ &alias ISO_8859-7:1987
+ &alias ISO_8859-7
+ &alias ISO8859-7
+ &alias ELOT_928
+ &alias ECMA-118
+ &alias greek
+ &alias greek8
+ &g1esc x2d46 &g2esc x2e46 &g3esc x2f46
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS 9' '9 Pd ?? ?? BB SE ': Co ?? << NO -- ?? -M
+ DG +- 2S 3S '' '% A% .M E% Y% I% >> O% 12 U% W%
+ i3 A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* ?? S* T* U* F* X* Q* W* J* V* a% e% y% i%
+ u3 a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* *s s* t* u* f* x* q* w* j* v* o% u% w% ??
+
+ &charset ISO-8859-6
+ &rem source: ISO 2375 registry
+ &alias iso-ir-127
+ &alias ISO_8859-6:1987
+ &alias ISO_8859-6
+ &alias ISO8859-6
+ &alias ECMA-114
+ &alias ASMO-708
+ &alias arabic
+ &g1esc x2d47 &g2esc x2e47 &g3esc x2f47
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS ?? ?? ?? Cu ?? ?? ?? ?? ?? ?? ?? ,+ -- ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ;+ ?? ?? ?? ?+
+ ?? H' aM aH wH ah yH a+ b+ tm t+ tk g+ hk x+ d+
+ dk r+ z+ s+ sn c+ dd tj zH e+ i+ ?? ?? ?? ?? ??
+ ++ f+ q+ k+ l+ m+ n+ h+ w+ j+ y+ :+ "+ =+ /+ '+
+ 1+ 3+ 0+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset T.101-G2
+ &rem source: ISO 2375 registry
+ &alias iso-ir-128
+ &g0esc x287c &g1esc x297c &g2esc x2a7c &g3esc x2b7c
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " ?? ?? % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd DO Ye Nb SE Cu '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": "/ "0 ", "_ "" "; "<
+ -M 1S Rg Co TM M8 hh vv FD BD Fd Bd 18 38 58 78
+ Om AE D- -a H/ vh IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng ??
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "- SP 'm a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "?       a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset ISO-8859-8
+ &rem source: ISO 2375 registry
+ &alias iso-ir-138
+ &alias ISO_8859-8:1988
+ &alias ISO_8859-8
+ &alias ISO8859-8
+ &alias hebrew
+ &g1esc x2d48 &g2esc x2e48 &g3esc x2f48
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS ?? Ct Pd Cu Ye BB SE ': Co *X << NO -- Rg '-
+ DG +- 2S 3S '' My PI .M ', 1S -: >> 14 12 34 ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? =2
+ A+ B+ G+ D+ H+ W+ Z+ X+ Tj J+ K% K+ L+ M% M+ N%
+ N+ S+ E+ P% P+ Zj ZJ Q+ R+ Sh T+ ?? ?? ?? ?? ??
+
+ &charset CSN_369103
+ &rem source: ISO 2375 registry
+ &alias iso-ir-139
+ &alias KOI-8_L2
+ &alias koi8l2
+ &g1esc x2d49 &g2esc x2e49 &g3esc x2f49
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS A; '( L/ DO L< S' SE ': S< S, T< Z' -- Z< Z.
+ DG a; '; l/ '' l< s' '< ', s< s, t< z' '" z< z.
+ R' A' A> A( A: L' C' C, C< E' E; E: E< I' I> D<
+ D/ N' N< O' O> O" O: *X R< U0 U' U" U: Y' T, ss
+ r' a' a> a( a: l' c' c, c< e' e; e: e< i' i> d<
+ d/ n' n< o' o> o" o: -: r< u0 u' u" u: y' t, '.
+
+ &charset JUS_I.B1.002
+ &rem source: ISO 2375 registry
+ &alias iso-ir-141
+ &alias ISO646-YU
+ &alias js
+ &alias yu
+ &g0esc x287a &g1esc x297a &g2esc x2a7a &g3esc x2b7a
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ Z< A B C D E F G H I J K L M N O P Q R S T U V W X Y Z S< D/ C' C< _
+ z< a b c d e f g h i j k l m n o p q r s t u v w x y z s< d/ c' c< DT
+
+ &charset ISO_6937-2-add
+ &rem source: ISO 2375 registry and ISO 6937-2:1983
+ &alias iso-ir-142
+ &g1esc x2d4a &g2esc x2e4a &g3esc x2f4a
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd DO Ye ?? SE ?? '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": ?? "0 ", "_ "" "; "<
+ -M 1S Rg Co TM M8 NO BB ?? ?? ?? ?? 18 38 58 78
+ Om AE D- -a H/ ?? IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng --
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "- SP 'm a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "?       a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset IEC_P27-1
+ &rem source: ISO 2375 registry
+ &alias iso-ir-143
+ &g1esc x2d4b &g2esc x2e4b &g3esc x2f4b
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ '< =3 AN OR (U )U (C )C <= => .: :. (- -) (_ )_
+ In Io 00 NB dP ?1 ?2 ?- ?= =< != >= <> NO FA TE
+ A+ OS PP G* D* -T -V -L H* </ /> L* 1' 2' C* -+
+ P* 2S S* *X 3S U* F* .M Q* W* /0 >V RT f2 0( +-
+ DG a* b* g* d* e* z* y* h* i* k* l* m* n* c* %0
+ p* r* s* -: t* u* f* x* q* w* /- <- -! -> -v '-
+
+ &charset ISO-8859-5
+ &rem source: ISO 2375 registry
+ &alias iso-ir-144
+ &alias ISO_8859-5:1988
+ &alias ISO_8859-5
+ &alias ISO8859-5
+ &alias cyrillic
+ &g1esc x2d4c &g2esc x2e4c &g3esc x2f4c
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS IO D% G% IE DS II YI J% LJ NJ Ts KJ -- V% DZ
+ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ N0 io d% g% ie ds ii yi j% lj nj ts kj SE v% dz
+
+ &charset JUS_I.B1.003-serb
+ &rem source: ISO 2375 registry
+ &alias iso-ir-146
+ &alias serbian
+ &g0esc x287b &g1esc x297b &g2esc x2a7b &g3esc x2b7b
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ Z% A= B= C= D= E= F= G= H= I= J% K= L= M= N= O=
+ P= LJ R= S= T= U= V= NJ DZ DS Z= S% D% Ts C% _
+ z% a= b= c= d= e= f= g= h= i= j% k= l= m= n= o=
+ p= lj r= s= t= u= v= nj dz ds z= s% d% ts c% DT
+
+ &charset JUS_I.B1.003-mac
+ &rem source: ISO 2375 registry
+ &alias macedonian
+ &alias iso-ir-147
+ &g0esc x287d &g1esc x297d &g2esc x2a7d &g3esc x2b7d
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ Z% A= B= C= D= E= F= G= H= I= J% K= L= M= N= O=
+ P= LJ R= S= T= U= V= NJ DZ DS Z= S% G% KJ C% _
+ z% a= b= c= d= e= f= g= h= i= j% k= l= m= n= o=
+ p= lj r= s= t= u= v= nj dz ds z= s% g% kj c% DT
+
+ &charset ISO-8859-9
+ &rem source: ISO 2375 registry
+ &alias iso-ir-148
+ &alias ISO_8859-9:1989
+ &alias ISO_8859-9
+ &alias ISO8859-9
+ &alias latin5
+ &alias l5
+ &g1esc x2d4d &g2esc x2e4d &g3esc x2f4d
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd Cu Ye BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S '' My PI .M ', 1S -o >> 14 12 34 ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ G( N? O! O' O> O? O: *X O/ U! U' U> U: I. S, ss
+ a! a' a> a? a: aa ae c, e! e' e; e: e. i' i> i-
+ g( n? o! o' o> o? o: -: o/ u! u' u> u: i. s, y:
+
+ &charset KS_C_5601-1987
+ &rem source: ISO 2375 registry
+ &alias iso-ir-149
+ &alias KS_C_5601-1989
+ &alias KSC_5601
+ &alias korean
+ &g0esc x242843 &g1esc x242943 &g2esc x242a43 &g3esc x242b43
+ &bits 14
+ &code2 1 1
+ SP ,_ .6 .M .. .3 ': +" -N -M PP // ?1 '6 '9 "6 "9 (' )' <1 >1 <+ >+
+ <' >' <" >" (" )" +- *X -: != =< >= 00 .: DG 1' 2' oC Ye AA Ct Pd Ml Fm
+ -V -T (A dP NB =3 HI SE :X *1 *2 0m 0M 0o Dw Db OS fS uT UT dT DT -> <-
+ -! -v <> =2 <* *> RT CG 0( :. In DI
+ &code2 2 1
+ => == FA TE '' '? '< '( '" '0 '. ', '; !I ?I :R Io +Z *P Cu oF %0 Tl
+ PL Tr PR cS- cS cH cH- cC- cC 0. cD-
+ Rr 0L 0R .S RF RY RK RZ RH RX =T:) tel TEL
+ <H >H PI /- /= UD //> <// <!! !!>
+ Mb Md M8 M16 KSC (JU) N0 Co TM am pm Tel
+ &code2 3 1
+ ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7
+ 8 9 : ; < = > ? At A B C D E F G H I J K L M N O
+ P Q R S T U V W X Y Z <( W= )> '> _ '! a b c d e f g
+ h i j k l m n o p q r s t u v w x y z (! !! !) '-
+ &codex k 4 4 1 94
+ &code2 5 1
+ 1r 2r 3r 4r 5r 6r 7r 8r 9r ar br cr
+ &code2 5 16
+ 1R 2R 3R 4R 5R 6R 7R 8R 9R aR bR cR
+ &code2 5 33
+ A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* S* T* U* F* X* Q* W*
+ &code2 5 65
+ a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* s* t* u* f* x* q* w*
+ &code2 6 1
+ hh vv dr dl ul ur vr dh vl uh vh
+ HH VV DR LD UL UR VR DH VL UH VH Vr
+ dH Vl uH vH vR Dh vL Uh Vh Dl dL Ul uL Ur uR Dr dR
+ Udr uDr UdR uDR Udl uDl UdL
+ uDL dLr dlR DLr DlR uLr ulR UlR vLr vlR Udh uDh
+ UdLr UdlR uDLr uDlR UdH uDH VLr VlR
+ &codex k 7 7 1 79
+ &code2 8 1
+ AE D- -a H/ ?? IJ ?? L. L/ O/ OE -o TH T/ NG
+ &codex k 8 8 17 44
+ &code2 8 45
+ a-o b-o c-o d-o e-o f-o g-o h-o i-o j-o k-o l-o m-o n-o o-o
+ p-o q-o r-o s-o t-o u-o v-o w-o x-o y-o z-o
+ 1-o 2-o 3-o 4-o 5-o 6-o 7-o 8-o 9-o 10-o 11-o 12-o 13-o 14-o 15-o
+ 12 13 23 14 34 18 38 58 78
+ &code2 9 1
+ ae d/ d- h/ i. ij kk l. l/ o/ oe ss th t/ ng 'n
+ &codex k 9 9 17 44
+ &code2 9 45
+ (a) (b) (c) (d) (e) (f) (g) (h) (i) (j) (k) (l) (m) (n) (o)
+ (p) (q) (r) (s) (t) (u) (v) (w) (x) (y) (z)
+ (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) (12) (13) (14) (15)
+ 1S 2S 3S 4S nS 1s 2s 3s 4s
+ &code2 10 1
+    A5 a5 I5 i5 U5 u5 E5 e5 O5 o5 ka ga ki gi ku
+ gu ke ge ko go sa za si zi su zu se ze so zo ta
+ da ti di tU tu du te de to do na ni nu ne no ha
+ ba pa hi bi pi hu bu pu he be pe ho bo po ma mi
+ mu me mo yA ya yU yu yO yo ra ri ru re ro wA wa
+ wi we wo n5
+ &code2 11 1
+    a6 A6 i6 I6 u6 U6 e6 E6 o6 O6 Ka Ga Ki Gi Ku
+ Gu Ke Ge Ko Go Sa Za Si Zi Su Zu Se Ze So Zo Ta
+ Da Ti Di TU Tu Du Te De To Do Na Ni Nu Ne No Ha
+ Ba Pa Hi Bi Pi Hu Bu Pu He Be Pe Ho Bo Po Ma Mi
+ Mu Me Mo YA Ya YU Yu YO Yo Ra Ri Ru Re Ro WA Wa
+ Wi We Wo N6 Vi KA KE
+ &code2 12 1
+ A= B= V= G= D= E= IO Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ &code2 12 49
+ a= b= v= g= d= e= io z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ &codex k 16 40 1 94
+ &codex k 42 93 1 94
+
+ &charset greek-ccitt
+ &rem source: ISO 2375 registry
+ &alias iso-ir-150
+ &g0esc x282140 &g1esc x292140 &g2esc x2a2140 &g3esc x2b2140
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* ?? S* T* U* F* X* Q* W* ?? <( // )> '> _
+ ?? a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* *s s* t* u* f* x* q* w* ?? (! !! !) 'm DT
+
+ &charset NC_NC00-10
+ &rem source: ISO 2375 registry
+ &alias cuba
+ &alias NC_NC00-10:81
+ &alias iso-ir-151
+ &alias ISO646-CU
+ &g0esc x282141 &g1esc x292141 &g2esc x2a2141 &g3esc x2b2141
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z !I N? )> ?I _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z '' n? <( ': DT
+
+ &charset ISO_6937-2-25
+ &rem source: ISO 2375 registry
+ &alias iso-ir-152
+ &g1esc x2d4e &g2esc x2e4e &g3esc x2f4e
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS ?? ?? ?? ?? ?? ?? ?? ?? ?? "6 ?? <- -! -> -v
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? "9 ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? TM M8 ?? ?? ?? ?? ?? ?? 18 38 58 78
+ Om ?? ?? ?? ?? ?? IJ L. ?? ?? OE ?? W> Y> Y: 'n
+ ?? ?? ?? ?? ?? ?? ij l. ?? ?? oe ?? w> y> ?? ??
+
+ &charset GOST_19768-87
+ &rem source: ISO 2375 registry
+ &alias ST_SEV_358-88
+ &alias iso-ir-153
+ &g1esc x2d4f &g2esc x2e4f &g3esc x2f4f
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS IO ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? -- ?? ??
+ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+ ?? io ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset ISO_8859-supp
+ &rem source: ISO 2375 registry
+ &alias iso-ir-154
+ &alias latin1-2-5
+ &g1esc x2d50 &g2esc x2e50 &g3esc x2f50
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? ?? A- C> C. ?? E. E- G> '6 "6 TM <- -! -> -v
+ ?? ?? a- c> c. d- e. e- g> '9 "9 M8 18 38 58 78
+ ?? G( G. G, H> H/ I? I. I- I; IJ J> K, L, L. N,
+ -M NG O- OE R, S> T/ TH U? U( U- U; W> Y' Y> Y:
+ Om g( g. g, h> h/ i? i. i- i; ij j> k, l, l. n,
+ kk ng o- oe r, s> t/ th u? u( u- u; w> y' y> 'n
+
+ &charset ISO_10367-box
+ &rem source: ISO 2375 registry
+ &alias iso-ir-155
+ &g1esc x2d51 &g2esc x2e51 &g3esc x2f51
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ VV HH DR LD UR UL VR VL DH UH VH UB LB FB sB ??
+ vv hh dr dl ur ul vr vl dh uh vh .S :S ?S ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset ISO_6937
+ &rem source: ISO 2375 registry and ISO/IEC 6937:1992
+ &alias iso-ir-156
+ &alias ISO_6937:1992
+ &alias ISO6937
+ &g1esc x2d52 &g2esc x2e52 &g3esc x2f52
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd ?? Ye ?? SE Cu '6 "6 << <- -! -> -v
+ DG +- 2S 3S *X My PI .M -: '9 "9 >> 14 12 34 ?I
+ ?? "! "' "> "? "- "( ". ": "_ "0 ", ?? "" "; "<
+ -M 1S Rg Co TM M8 NO BB ?? ?? ?? ?? 18 38 58 78
+ Om AE D- -a H/ ?? IJ L. L/ O/ OE -o TH T/ NG 'n
+ kk ae d/ d- h/ i. ij l. l/ o/ oe ss th t/ ng --
+ &comb2 "' SP '' a a' A A' e e' E E' i i' I I' o o' O O' u u' U U'
+                 y y' Y Y' c c' C C' l l' L L' n n' N N' r r' R R'
+                 s s' S S' z z' Z Z'
+ &comb2 "( SP '( a a( A A( g g( G G(                     u u( U U(
+ &comb2 "< SP '< c c< C C< d d< D D< e e< E E< l l< L L< n n< N N<
+                 r r< R R< s s< S S< t t< T T< z z< Z Z<
+ &comb2 ", SP ', c c, C C, g g, G G, k k, K K, l l, L L, n n, N N,
+                 r r, R R, s s, S S, t t, T T,
+ &comb2 ">       a a> A A> e e> E E> i i> I I> o o> O O> u u> U U>
+                 y y> Y Y> c c> C C> g g> G G> h h> H H> j j> J J>
+                 s s> S S> w w> W W>
+ &comb2 ": SP ': a a: A A: e e: E E: i i: I I: o o: O O: u u: U U:
+                 y y: Y Y:
+ &comb2 ". SP '. c c. C C. e e. E E. g g. G G.      I I. z z. Z Z.
+ &comb2 "" SP '"                               o o" O O" u u" U U"
+ &comb2 "!       a a! A A! e e! E E! i i! I I! o o! O O! u u! U U!
+ &comb2 "- SP 'm a a- A A- e e- E E- i i- I I- o o- O O- u u- U U-
+ &comb2 "; SP '; a a; A A; e e; E E; i i; I I; u u; U U;
+ &comb2 "0 SP '0 a aa A AA                               u u0 U U0
+ &comb2 "?       a a? A A? n n? N N? i i? I I? o o? O O? u u? U U?
+
+ &charset ISO-8859-10
+ &rem source: ISO 2375 registry
+ &alias iso-ir-157
+ &alias ISO_8859-10:1993
+ &alias ISO_8859-10
+ &alias ISO8859-10
+ &alias L6
+ &alias latin6
+ &g1esc x2d56 &g2esc x2e56 &g3esc x2f56
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS A; E- G, I- I? K, SE L, D/ S< T/ Z< -- U- NG
+ DG a; e- g, i- i? k, .M l, d/ s< t/ z< -M u- ng
+ A- A' A> A? A: AA AE I; C< E' E; E: E. I' I> I:
+ D- N, O- O' O> O? O: U? O/ U; U' U> U: Y' TH ss
+ a- a' a> a? a: aa ae i; c< e' e; e: e. i' i> i:
+ d- n, o- o' o> o? o: u? o/ u; u' u> u: y' th kk
+
+ &charset ISO-8859-13
+ &rem source: ISO 2375 registry
+ &alias iso-ir-179a
+ &alias ISO_8859-13:1998
+ &alias ISO_8859-13
+ &alias ISO8859-13
+ &alias latin7
+ &alias iso-baltic
+ &alias l7
+ &g1esc x2d41 &g2esc x2e41 &g3esc x2f41
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd Cu :9 BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S "6 My PI .M ', 1S -o >> 14 12 34 ?I
+ A; I; A- C' A: AA E; E- C< E' Z' E. G, K, I- L,
+ S< N' N, O' O- O? O: *X U; L/ S' U- U: Z. Z< ss
+ a; i; a- c' a: aa e; e- c< e' z' e. g, k, i- l,
+ s< n' n, o' o- o? o: -: u; l/ s' u- u: z. z< '9
+
+ &charset ISO-8859-14
+ &rem source: ISO 2375 registry
+ &alias iso-ir-199
+ &alias ISO_8859-14:1998
+ &alias ISO_8859-14
+ &alias ISO8859-14
+ &alias latin8
+ &alias iso-celtic
+ &alias l8
+ &g1esc x2d5f &g2esc x2e5f &g3esc x2f5f
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS B. b. Pd C. c. D. SE W! Co W' d. Y! -- Rg s.
+ F. f. G. g. M. m. PI P. w! p. w' S. y! W: w: Y:
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ W> N? O! O' O> O? O: T. O/ U! U' U> U: Y' Y> ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ w> n? o! o' o> o? o: t. o/ u! u' u> u: y' y> y:
+
+ &charset ISO-8859-15
+ &rem source: ISO 2375 registry
+ &alias iso-ir-203
+ &alias ISO_8859-15:1998
+ &alias ISO_8859-15
+ &alias ISO8859-15
+ &alias latin9
+ &alias l9
+ &g1esc x2d62 &g2esc x2e62 &g3esc x2f62
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS !I Ct Pd Eu Ye S< SE s< Co -a << NO -- Rg 'm
+ DG +- 2S 3S Z< My PI .M z< 1S -o >> OE oe Y: ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ D- N? O! O' O> O? O: *X O/ U! U' U> U: Y' TH ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ d- n? o! o' o> o? o: -: o/ u! u' u> u: y' th y:
+
+ &charset sami
+ &rem source: ISO 2375 registry
+ &alias latin-lap
+ &alias lap
+ &alias iso-ir-158
+ &g2esc x2d58 &g2esc x2e58 &g3esc x2f58
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ '' ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ;S ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ A( A! A1 A7 A3 E( E! G/ G< K< O( O! O; O1 ED EZ
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ a( a! a1 a7 a3 e( e! g/ g< k< o( o! o; o1 ed ez
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset JIS_X0212-1990
+ &rem source: ISO 2375 registry
+ &alias x0212
+ &alias iso-ir-159
+ &g0esc x242844 &g1esc x242944 &g2esc x242a44 &g3esc x242b44
+ &bits 14
+ &code2 2 15
+ '( '< ', '. '" '- '; '0 '?
+ '' '%
+ &code2 2 34
+ !I BB ?I
+ &code2 2 75
+ -o -a Co Rg TM Cu N0
+ &code2 6 65
+ A% E% Y% I% J* ?? O% ?? U% V* ?? W%
+ &code2 6 81
+ a% e% y% i% j* i3 o% *s u% v* u3 w%
+ &code2 7 34
+ D% G% IE DS II YI J% LJ NJ Ts KJ V% DZ
+ &code2 7 82
+ d% g% ie ds ii yi j% lj nj ts kj v% dz
+ &code2 9 1
+ AE D/ ?? H/ ?? IJ ?? L/ L. ?? NG O/ OE ?? T/ TH
+ &code2 9 33
+ ae d/ d- h/ i. ij kk l/ l. 'n ng o/ oe ss t/ th
+ &code2 10 1
+ A' A! A: A> A( A< A- A; AA A? C' C> C< C, C. D< E' E! E: E> E( E. E-
+ E; ?? G> G( G, G. H> I' I! I: I> I< I. I- I; I? J> K, L' L< L, N' N< N,
+ N? O' O! O: O> O< O" O- O? R' R< R, S' S> S< S, T< T, U' U! U: U> U( U<
+ U" U- U; U0 U? U:' U:! U:< U:- W. Y' Y: Y> Z' Z< Z.
+ &code2 11 1
+ a' a! a: a> a( a< a- a; aa a? c' c> c< c, c. d< e' e! e: e> e( e. e-
+ e; g' g> g( ?? g. h> i' i! i: i> i< ?? i- i; i? j> k, l' l< l, n' n< n,
+ n? o' o! o: o> o< o" o- o? r' r< r, s' s> s< s, t< t, u' u! u: u> u( u<
+ u" u- u; u0 u? u:' u:! u:< u:- w. y' y: y> z' z< z.
+ &codex J 16 76 1 94
+ &codex J 77 77 1 67
+
+ &charset baltic
+ &rem source: ISO 2375 registry
+ &rem &g1esc x2d56 &g2esc x2e56 &g3esc x2f56
+ &alias iso-ir-179
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS "9 Ct Pd Cu Ye BB SE O/ Co :9 << NO -- Rg AE
+ DG +- 2S 3S '' My PI .M o/ 1S "6 >> 14 12 34 ae
+ I; E. A- C' A: AA A; C< G, E' Z< E; E- K, I- L,
+ L/ N, N' O' O- O? O: *X U; S< S' U- U: Z. Z' ss
+ i; e. a- c' a: aa a; c< g, e' z< e; e- k, i- l,
+ l/ n, n' o' o- o? o: -: u; s< s' u- u: z. z' kk
+
+ &charset DS_2089
+ &rem source: Danish Standard, DS 2089, February 1974
+ &alias DS2089
+ &alias ISO646-DK
+ &alias dk
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AE O/ AA '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z ae o/ aa '? DT
+
+ &charset us-dk
+ &rem for compatibility with ASCII
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ &duplicate 91 AE
+ &duplicate 92 O/
+ &duplicate 93 AA
+ &duplicate 123 ae
+ &duplicate 124 o/
+ &duplicate 125 aa
+ &duplicate 91 A:
+ &duplicate 92 O:
+ &duplicate 123 a:
+ &duplicate 124 o:
+
+ &charset dk-us
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z AE O/ AA '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z ae o/ aa '? DT
+ &duplicate 91 <(
+ &duplicate 92 //
+ &duplicate 93 )>
+ &duplicate 123 (!
+ &duplicate 124 !!
+ &duplicate 125 !)
+ &duplicate 91 A:
+ &duplicate 92 O:
+ &duplicate 123 a:
+ &duplicate 124 o:
+
+ &charset JIS_X0201
+ &alias X0201
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( Ye )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '- DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? ._ <' >' ,_ .6 Wo a6 i6 u6 e6 o6 YA YU YO TU
+ -6 A6 I6 U6 E6 O6 Ka Ki Ku Ke Ko Sa Si Su Se So
+ Ta Ti Tu Te To Na Ni Nu Ne No Ha Hi Hu He Ho Ma
+ Mi Mu Me Mo Ya Yu Yo Ra Ri Ru Re Ro Wa N6 "5 05
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset KSC5636
+ &alias ISO646-KR
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( W= )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+
+ &charset DEC-MCS
+ &rem VAX/VMS User's Manual, Order Number: AI-Y517A-TE, April 1986.
+ &alias dec
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ ?? !I Ct Pd ?? Ye ?? SE Cu Co -a << ?? ?? ?? ??
+ DG +- 2S 3S ?? My PI .M ?? 1S -o >> 14 12 ?? ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ ?? N? O! O' O> O? O: OE O/ U! U' U> U: Y: ?? ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ ?? n? o! o' o> o? o: oe o/ u! u' u> u: y: ?? ??
+
+ &charset hp-roman8
+ &rem source: LaserJet IIP Printer User's Manual,
+ &rem HP part no 33471-90901, Hewlet-Packard, June 1989.
+ &alias roman8
+ &alias r8
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ PA HO BH NH IN NL SA ES HS HJ VS PD PU RI S2 S3
+ DC P1 P2 TS CC MW SG EG SS GC SC CI ST OC PM AC
+ NS A! A> E! E> E: I> I: '' 1! 1> ': 1? U! U> Li
+ 'm Y' y' DG C, c, N? n? !I ?I Cu Pd Ye SE f2 Ct
+ a> e> o> u> a' e' o' u' a! e! o! u! a: e: o: u:
+ AA i> O/ AE aa i' o/ ae A: i! O: U: E' i: ss O>
+ A' A? a? D- d- I' I! O' O! O? o? S< s< U' Y: y:
+ TH th .M My PI 34 -M 14 12 -a -o << fS >> +- ??
+
+ &charset NeXTSTEP
+ &rem source: Peter Svanberg - psv@nada.kth.se
+ &alias next
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ NS A! A' A> A? A: AA C, E! E' E> E: I! I' I> I:
+ D- N? O! O' O> O? O: U! U' U> U: Y' TH My *X -:
+ Co !I Ct Pd /f Ye f2 SE Cu ?? "6 << ?? ?? fi fl
+ Rg -N /- /= .M BB PI sb ?? ?? "9 >> .3 %0 NO ?I
+ 1S 1! '' 1> 1? 'm '( '. ': 2S '0 ', 3S '" '; '<
+ -M +- 14 12 34 a! a' a> a? a: aa c, e! e' e> e:
+ i! AE i' -a i> i: d- n? L/ O/ OE -o o! o' o> o?
+ o: ae u! u' u> i. u: y' l/ o/ oe ss th y: ?? ??
+
+ &charset macintosh
+ &rem source: The Unicode Standard ver 1.0, ISBN 0-201-56788-1, Oct 1991
+ &alias mac
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ A: AA C, E' N? O: U: a' a! a> a: a? aa c, e' e!
+ e> e: i' i! i> i: n? o' o! o> o: o? u' u! u> u:
+ /- DG Ct Pd SE sb PI ss Rg Co TM '' ': != AE O/
+ 00 +- =< >= Ye My dP +Z *P p* In -a -o W* ae o/
+ ?I !I NO RT f2 ?2 D* << >> .3 NS A! A? Om OE oe
+ -N -M "6 "9 '6 '9 -: LZ y: Y: /f Cu <1 >1 fi fl
+ /= .M .9 :9 %0 A> E> A' E: E! I' I> I: I! O' O>
+ Mc O! U' U> U! i. ?? ?? 'm '( '. '0 ', '" '; '<
+
+ &charset mac-is
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ A: AA C, E' N? O: U: a' a! a> a: a? aa c, e' e!
+ e> e: i' i! i> i: n? o' o! o> o: o? u' u! u> u:
+ /- DG Ct Pd SE sb PI ss Rg Co TM '' ': != AE O/
+ 00 +- =< >= Ye My dP +Z *P p* In -a -o W* ae o/
+ ?I !I NO RT f2 ?2 D* << >> .3 NS A! A? O? OE oe
+ -M -N "6 "9 '6 '9 -: Db y: Y: /f Cu D/ d/ TH th
+ /= .M .9 :9 %0 A> E> A' E: E! I' I> I: I! O' O>
+ Mc O! U' U> U! i. ?? ?? 'm '( '. '0 ', '" '; '<
+
+ &charset IBM037
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP037
+ &alias 037
+ &alias ebcdic-cp-us
+ &alias ebcdic-cp-ca
+ &alias ebcdic-cp-wt
+ &alias ebcdic-cp-nl
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? Ct .  <  (  +  !!
+ &  e' e> e: e! i' i> i: i! ss !  DO *  )  ;  NO
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My '? s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ '> Pd Ye .M Co SE PI 14 12 34 <( )> 'm ': '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM038
+ &rem source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+ &alias EBCDIC-INT
+ &alias CP038
+ &alias 038
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? <( .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? )> DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? '? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset IBM256
+ &rem source: IBM Registry C-H 3-3220-050
+ &alias EBCDIC-INT1
+ &alias CP256
+ &alias 256
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? <( .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss )> DO *  )  ;  '>
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My '? s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye Pt f2 SE PI 14 12 34 NO !! '- ': '' =2
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // 1M S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM273
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP273
+ &alias 273
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> (! a! a' a? aa c, n? A: .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! '? U: DO *  )  ;  '>
+ -  /  A> <( A! A' A? AA C, N? o: ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb SE '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My ss s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye .M Co At PI 14 12 34 NO !! '- ': '' *X
+ a: A  B  C  D  E  F  G  H  I  -- o> BB o! o' o?
+ u: J  K  L  M  N  O  P  Q  R  1S u> !) u! u' y:
+ O: -: S  T  U  V  W  X  Y  Z  2S O> // O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> )> U! U' AC
+
+ &charset IBM274
+ &rem source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+ &alias EBCDIC-BE
+ &alias CP274
+ &alias 274
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? <( .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? )> DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? u! ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb a! '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ': s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ e' A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ e! J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ c, ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset IBM275
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias EBCDIC-BR
+ &alias CP275
+ &alias 275
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? E' .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? DO C, *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? c, ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? a? :  O? A? '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? '? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ o? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ e' J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset IBM277
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias EBCDIC-CP-DK
+ &alias EBCDIC-CP-NO
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? !) c, n? Nb .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss Cu AA *  )  ;  '>
+ -  /  A> A: A! A' A? DO C, N? o/ ,  %  _  >  ?
+ BB E' E> E: E! I' I> I: I! '! :  AE O/ '  =  "
+ At a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o (! ', <( )>
+ My u: s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye .M Co SE PI 14 12 34 NO !! '- ': '' *X
+ ae A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ aa J  K  L  M  N  O  P  Q  R  1S u> '? u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM278
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP278
+ &alias 278
+ &alias ebcdic-cp-fi
+ &alias ebcdic-cp-se
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> (! a! a' a? !) c, n? SE .  <  (  +  !
+ &  '! e> e: e! i' i> i: i! ss Cu AA *  )  ;  '>
+ -  /  A> Nb A! A' A? DO C, N? o: ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! e' :  A: O: '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE )>
+ My u: s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye .M Co <( PI 14 12 34 NO !! '- ': '' *X
+ a: A  B  C  D  E  F  G  H  I  -- o> BB o! o' o?
+ aa J  K  L  M  N  O  P  Q  R  1S u> '? u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> At O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM280
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP280
+ &alias 280
+ &alias ebcdic-cp-it
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: (! a' a? aa // n? DG .  <  (  +  !
+ &  )> e> e: !) i' i> i: '? ss e' DO *  )  ;  '>
+ -  /  A> A: A! A' A? AA C, N? o! ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! u! :  Pd SE '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ <( j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My i! s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Nb Ye .M Co At PI 14 12 34 NO !! '- ': '' *X
+ a! A  B  C  D  E  F  G  H  I  -- o> o: BB o' o?
+ e! J  K  L  M  N  O  P  Q  R  1S u> u: '! u' y:
+ c, -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM281
+ &rem source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+ &alias EBCDIC-JP-E
+ &alias CP281
+ &alias 281
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Pd .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  Ye *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? '- s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ DO ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset IBM284
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP284
+ &alias 284
+ &alias ebcdic-cp-es
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, BB <( .  <  (  +  !!
+ &  e' e> e: e! i' i> i: i! ss )> DO *  )  ;  NO
+ -  /  A> A: A! A' A? AA C, Nb n? ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  N? At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My ': s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye .M Co SE PI 14 12 34 '> !  '- '? '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM285
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP285
+ &alias 285
+ &alias ebcdic-cp-gb
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? DO .  <  (  +  !!
+ &  e' e> e: e! i' i> i: i! ss !  Pd *  )  ;  NO
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My '- s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct <( Ye .M Co SE PI 14 12 34 '> )> '? ': '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM290
+ &rem source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+ &alias CP290
+ &alias 290
+ &alias EBCDIC-JP-kana
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ._ <' >' ,_ .6 Wo a6 i6 u6 Pd .  <  (  +  !!
+ &  e6 o6 YA YU YO TU ?? -6 ?? !  Ye *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb At '  =  "
+ ?? A6 I6 U6 E6 O6 Ka Ki Ku Ke Ko ?? Sa Si Su Se
+ So Ta Ti Tu Te To Na Ni Nu Ne No ?? ?? Ha Hi Hu
+ ?? '- He Ho Ma Mi Mu Me Mo Ya Yu ?? Yo Ra Ri Ru
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? Re Ro Wa N6 "5 05
+ ?? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ ?? J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ DO ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset IBM297
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP297
+ &alias 297
+ &alias ebcdic-cp-fr
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: At a' a? aa // n? DG .  <  (  +  !
+ &  (! e> e: !) i' i> i: i! ss SE DO *  )  ;  '>
+ -  /  A> A: A! A' A? AA C, N? u! ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! My :  Pd a! '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ <( j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ '! ': s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Nb Ye .M Co )> PI 14 12 34 NO !! '- '? '' *X
+ e' A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ e! J  K  L  M  N  O  P  Q  R  1S u> u: BB u' y:
+ c, -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM420
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &rem IBM NLS RM p 11-11
+ &alias CP420
+ &alias 420
+ &alias ebcdic-cp-ar1
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP  NS  3+  3+; ++  ??  H'  aM  aM. aH  Ct  .   <   (   +   !!
+ &   aH. wH  ??  ??  yH  a+  a+. b+  b+, !   DO  *   )   ;   NO
+ -   /   tm  t+  t+, tk  tk, g+  g+, hk  BB  ,   %   _   >   ?
+ hk, x+  x+, d+  dk  r+  z+  s+  s+, ,+  :   Nb  At  '   =   "
+ sn  a   b   c   d   e   f   g   h   i   sn, c+  c+, dd  dd, tj
+ zH  j   k   l   m   n   o   p   q   r   e+  e+. e+, e+; i+  i+.
+ i+, -:  s   t   u   v   w   x   y   z   i+; f+  f+, q+  q+, k+
+ k+, l+  lM- lM. lH- lH. ??  ??  la- la. l+, m+  m+, n+  n+, h+
+ ;+  A   B   C   D   E   F   G   H   I   --  h+, ??  h+; ??  w+
+ ?+  J   K   L   M   N   O   P   Q   R   j+  j+. y+  y+. y+, 0a
+ *X  ??  S   T   U   V   W   X   Y   Z   1a  2a  ??  3a  4a  5a
+ 0   1   2   3   4   5   6   7   8   9   ??  6a  7a  8a  9a  AC
+
+ &charset IBM423
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP423
+ &alias 423
+ &alias ebcdic-cp-gr
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP A* B* G* D* E* Z* Y* H* I* <( .  <  (  +  !
+ &  K* L* M* N* C* O* P* R* S* )> DO *  )  ;  '>
+ -  /  T* U* F* X* Q* W* ?? ?? ?? ,  %  _  >  ?
+ ?? A% E% Y% ?? I% O% U% W% '! :  Pd SE '  =  "
+ A: a  b  c  d  e  f  g  h  i  a* b* g* d* e* z*
+ O: j  k  l  m  n  o  p  q  r  y* h* i* k* l* m*
+ U: ': s  t  u  v  w  x  y  z  n* c* o* p* r* *s
+ ?? a% e% y% j* i% o% u% v* w% s* t* u* f* x* q*
+ ', A  B  C  D  E  F  G  H  I  ?? w* A> a! a: e>
+ '' J  K  L  M  N  O  P  Q  R  +- e' e! e: i> i:
+ DG ?? S  T  U  V  W  X  Y  Z  12 o: o> u> u! u:
+ 0  1  2  3  4  5  6  7  8  9  y: c, C, ?? ?? AC
+
+ &charset IBM424
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP424
+ &alias 424
+ &alias ebcdic-cp-he
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP A+ B+ G+ D+ H+ W+ Z+ X+ Tj Ct .  <  (  +  !!
+ &  J+ K% K+ L+ M% M+ N% N+ S+ !  DO *  )  ;  NO
+ -  /  E+ P% P+ Zj ZJ Q+ R+ Sh BB ,  %  _  >  ?
+ ?? T+ ?? ?? NS ?? ?? ?? == '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  << >> ?? ?? ?? ??
+ DG j  k  l  m  n  o  p  q  r  ?? ?? ?? ', ?? Cu
+ My '? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? Rg
+ '> Pd Ye .M Co SE PI 14 12 34 <( )> '- ': '' *X
+ (! A  B  C  D  E  F  G  H  I  -- ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  1S ?? ?? ?? ?? ??
+ // -: S  T  U  V  W  X  Y  Z  2S ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  3S ?? ?? ?? ?? AC
+
+ &charset IBM437
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP437
+ &alias 437
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! i: i> i! A: AA
+ E' ae AE o> o: o! u> u! y: O: U: Ct Pd Ye Pt f2
+ a' i' o' u' n? N? -a -o ?I NI NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 f* e* (U
+ =3 +- >= =< Iu Il -: ?2 DG .M sb RT nS 2S fS NS
+
+ &charset IBM500
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP500
+ &alias 500
+ &alias 500V1
+ &alias ebcdic-cp-be
+ &alias ebcdic-cp-ch
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? <( .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss )> DO *  )  ;  '>
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My '? s  t  u  v  w  x  y  z  !I ?I D- Y' TH Rg
+ Ct Pd Ye .M Co SE PI 14 12 34 NO !! 'm ': '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM850
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &rem source: UNICODE 1.0
+ &alias CP850
+ &alias 850
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! i: i> i! A: AA
+ E' ae AE o> o: o! u> u! y: O: U: o/ Pd O/ *X f2
+ a' i' o' u' n? N? -a -o ?I Rg NO 12 14 !I << >>
+ .S :S ?S vv vl A' A> A! Co VL VV LD UL Ct Ye dl
+ ur uh dh vr hh vh a? A? UR DR UH DH VR HH VH Cu
+ d- D- E> E: E! i. I' I> I: ul dr FB LB BB I! TB
+ O' ss O> O! o? O? My th TH U' U> U! y' Y' 'm ''
+ -- +- =2 34 PI SE -: ', DG ': .M 1S 3S 2S fS NS
+
+ &charset IBM851
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP851
+ &alias 851
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! A% c, e> e: e! i: i> E% A: Y%
+ I% ?? O% o> o: U% u> u! W% O: U: a% Pd e% y% i%
+ j* i3 o% u% A* B* G* D* E* Z* Y* 12 H* I* << >>
+ .S :S ?S vv vl K* L* N* M* VL VV LD UL C* O* dl
+ ur uh dh vr hh vh P* R* UR DR UH DH VR HH VH S*
+ T* U* F* X* Q* W* a* b* g* ul dr FB LB d* e* TB
+ z* y* h* i* k* l* m* n* c* o* p* r* s* *s t* ''
+ -- +- u* f* x* SE q* '; DG ': w* v* u3 w% fS NS
+
+ &charset IBM852
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP852
+ &alias 852
+ &alias pcl2
+ &alias pclatin2
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: u0 c' c, l/ e: O" o" i> Z' A: C'
+ E' L' l' o> o: L< l< S' s' O: U: T< t< L/ *X c<
+ a' i' o' u' A; a; Z< z< E; e; NO z' C< s, << >>
+ .S :S ?S vv vl A' A> E< S, VL VV LD UL Z. z. dl
+ ur uh dh vr hh vh A( a( UR DR UH DH VR HH VH Cu
+ d/ D/ D< E: d< N< I' I> e< ul dr FB LB T, U0 TB
+ O' ss O> N' n' n< S< s< R' U' r' U" y' Y' t, ''
+ -- '" '; '< '( SE -: ', DG ': '. u" R< r< fS NS
+
+ &charset IBM855
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP855
+ &alias 855
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ d% D% g% G% io IO ie IE ds DS ii II yi YI j% J%
+ lj LJ nj NJ ts TS kj KJ v% V% dz DZ ju JU =' ="
+ a= A= b= B= c= C= d= D= e= E= f= F= g= G= << >>
+ .S :S ?S vv vl h= H= i= I= VL VV LD UL j= J= dl
+ ur uh dh vr hh vh k= K= UR DR UH DH VR HH VH Cu
+ l= L= m= M= n= N= o= O= p= ul dr FB LB P= ja TB
+ JA r= R= s= S= t= T= u= U= z% Z% v= V= %' %" ''
+ -- y= Y= z= Z= s% S% je JE sc Sc c% C% ?? fS NS
+
+ &charset IBM857
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP857
+ &alias 857
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! i: i> i. A: AA
+ E' ae AE o> o: o! u> u! I. O: U: o/ Pd O/ S, s,
+ a' i' o' u' n? N? G( g( ?I Rg NO 12 14 !I << >>
+ .S :S ?S vv vl A' A> A! Co VL VV LD UL Ct Ye dl
+ ur uh dh vr hh vh a? A? UR DR UH DH VR HH VH Cu
+ -o -a E> E: E! ?? I' I> I: ul dr FB LB BB I! TB
+ O' ss O> O! o? O? My ?? *X U' U> U! i! y: -M ''
+ -- +- ?? 34 PI SE -: '; DG ': '. 1S 3S 2S fS NS
+
+ &charset IBM860
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP860
+ &alias 860
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a? a! A' c, e> E> e! I> O> i! A? A>
+ E' A! E! o> o? o! U' u! I! O? U: Ct Pd U! Pt O!
+ a' i' o' u' n? N? -a -o ?I O' NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 f* e* (U
+ =3 +- >= =< Iu Il -: ?2 DG .M sb RT nS 2S fS NS
+
+ &charset IBM861
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP861
+ &alias 861
+ &alias cp-is
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! D- d- TH A: AA
+ E' ae AE o> o: th u> Y' y' O: U: o/ Pd O/ Pt O!
+ a' i' o' u' A' I' O' U' ?I ?? NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 f* e* (U
+ =3 +- >= =< Iu Il -: ?2 DG .M sb RT nS 2S fS NS
+
+ &charset IBM862
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP862
+ &alias 862
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ A+ B+ G+ D+ H+ W+ Z+ X+ Tj J+ K% K+ L+ M% M+ N%
+ N+ S+ E+ P% P+ Zj ZJ Q+ R+ Sh T+ Ct Pd U! Pt O!
+ a' i' o' u' n? N? -a -o ?I ?? NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 f* e* (U
+ =3 +- >= =< Iu Il -: ?2 DG .M sb RT nS 2S fS NS
+
+ &charset IBM863
+ &rem source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+ &alias CP863
+ &alias 863
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> A> a! PI c, e> e: e! i: i> i! A! SE
+ E' E! E> o> E: I: u> u! Cu O> U: Ct Pd U! U> f2
+ BB '' o' u' ': ', 3S 'm I> NI NO 12 14 34 << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 /0 e* (U
+ =3 +- >= =< Iu Il -: ?2 Ob .M sb RT nS 2S fS NS
+
+ &charset IBM864
+ &rem source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+ &alias CP864
+ &alias 864
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ DG  .M  Ob  RT  :S  hh  vv  vh  vl  dh  vr  uh  dl  dr  ur  ul
+ ss  00  o/  +-  12  14  ?2  <<  >>  lH- lH. ??  ??  la- la. a+:
+ ??  --  aM. Pd  Cu  aH. ??  ??  a+. b+  t+  tk  ,+  g+  hk  x+
+ 0a  1a  2a  3a  4a  5a  6a  7a  8a  9a  v+  ;+  s+  sn  c+  ?+
+ Ct  H'  aM  aH  wH  e+. yH  a+  b+, tm  t+, tk, g+, hk, x+, d+
+ dk  r+  z+  s+, sn, c+, dd, tj  zH  e+, i+, BB  NO  -:  *X  e+
+ ++  f+. q+. k+, l+. m+, n+. h+, w+  j+  y+, dd  m+. i+. i+  m+
+ 3+; 3+  n+  h+  h+; j+. y+. f+  q+  lM- lM. l+  k+  y+  fS  NS
+
+ &charset IBM865
+ &rem source: IBM DOS 3.3 Ref (Abridged), 94X9575 (Feb 1987)
+ &alias CP865
+ &alias 865
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! i: i> i! A: AA
+ E' ae AE o> o: o! u> u! y: O: U: o/ Pd O/ Pt f2
+ a' i' o' u' n? N? -a -o ?I NI NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* ss G* p* S* s* My t* F* H* W* d* 00 /0 e* (U
+ =3 +- >= =< Iu Il -: ?2 Ob .M sb RT nS 2S fS NS
+
+ &charset IBM868
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP868
+ &alias 868
+ &alias cp-ar
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ 0a  1a  2a  3a  4a  5a  6a  7a  8a  9a  ,+  ;+  ?+  aM  a+  a+.
+ a+: b+  b+, p+  ??  tm  t+  t+, ??  ??  tk  tk, g+  g+, ??  ??
+ hk  hk, x+  x+, d+  ??  dk  r+  ??  z+  ??  s+  s+, sn  <<  >>
+ sn, c+  .S  :S  ?S  vv  vl  c+, dd  dd, tj  VL  VV  LD  UL  zH
+ e+  dl  ur  uh  dh  vr  hh  vh  e+. e+, UR  DR  UH  DH  VR  HH
+ VH  e+; i+  i+. i+, i+; f+  f+, q+  q+, k+. ul  dr  FB  TB  k+,
+ ??  LB  ??  l+  l+. l+; m+  m+, ??  n+  n+, ??  w+  ??  ??  ??
+ ??  H'  --  ??  ??  ??  ??  ??  ??  ??  ??  3+  3+; ??  fS  NS
+
+ &charset IBM869
+ &rem source: IBM Keyboard layouts and code pages, PN 07G4586 June 1991
+ &alias CP869
+ &alias 869
+ &alias cp-gr
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ ?? ?? ?? ?? ?? ?? A% ?? .M NO BB 9' '9 E% -M Y%
+ I% J* O% ?? ?? U% V* Co W% 2S 3S a% Pd e% y% i%
+ j* i3 o% u% A* B* G* D* E* Z* Y* 12 H* I* << >>
+ .S :S ?S vv vl K* L* M* N* VL VV LD UL C* O* dl
+ ur uh dh vr hh vh P* R* UR DR UH DH VR HH VH S*
+ T* U* F* X* Q* W* a* b* g* ul dr FB LB d* e* TB
+ z* y* h* i* k* l* m* n* c* o* p* r* s* *s t* ''
+ -- +- u* f* x* SE q* '% DG ': w* v* u3 w% fS NS
+
+ &charset IBM870
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP870
+ &alias 870
+ &alias ebcdic-cp-roece
+ &alias ebcdic-cp-yu
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS ?? a: ?? a' a( c< c, c' <( .  <  (  +  !
+ &  e' ?? e: u0 i' ?? l< l' ss )> DO *  )  ;  '>
+ -  /  ?? A: '" A' ?? C< C, C' !! ,  %  _  >  ?
+ '< E' ?? E: U0 I' ?? L< L' '! :  Nb At '  =  "
+ '( a  b  c  d  e  f  g  h  i  s' n< d/ y' r< ??
+ DG j  k  l  m  n  o  p  q  r  l/ n' s< ', '; Cu
+ a; '? s  t  u  v  w  x  y  z  S' N< D/ Y' R< ??
+ .M A; z. ?? Z. SE PI z< z' Z< Z' N' S< ': '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: r' o' o"
+ !) J  K  L  M  N  O  P  Q  R  E< u" u: t< u' e<
+ // -: S  T  U  V  W  X  Y  Z  d< O> O: R' O' O"
+ 0  1  2  3  4  5  6  7  8  9  D< U" U: T< U' AC
+
+ &charset IBM871
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP871
+ &alias 871
+ &alias ebcdic-cp-is
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? th .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss AE DO *  )  ;  O:
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! d- :  Nb D- '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> '! y' (! +-
+ DG j  k  l  m  n  o  p  q  r  -a -o !) ', )> Cu
+ My o: s  t  u  v  w  x  y  z  !I ?I At Y' <( Rg
+ Ct Pd Ye .M Co SE PI 14 12 34 NO !! 'm ': // *X
+ TH A  B  C  D  E  F  G  H  I  -- o> '? o! o' o?
+ ae J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ '' -: S  T  U  V  W  X  Y  Z  2S O> '> O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset IBM875
+ &rem source: UNICODE 1.0
+ &alias CP875
+ &alias 875
+ &alias EBCDIC-Greek
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP A* B* G* D* E* Z* Y* H* I* <( .  <  (  +  !
+ &  K* L* M* N* C* O* P* R* S* )> DO *  )  ;  '>
+ -  /  T* U* F* X* Q* W* J* V* ?? ,  %  _  >  ?
+ ': A% E% Y% NB I% O% U% W% '! :  Nb At '  =  "
+ '% a  b  c  d  e  f  g  h  i  a* b* g* d* e* z*
+ DG j  k  l  m  n  o  p  q  r  y* h* i* k* l* m*
+ '' '? s  t  u  v  w  x  y  z  n* c* o* p* r* s*
+ Pd a% e% y% i3 i% o% u% u3 w% *s t* u* f* x* q*
+ (! A  B  C  D  E  F  G  H  I  -- w* j* v* '6 -3
+ !) J  K  L  M  N  O  P  Q  R  +- 12 ?? .M '9 BB
+ // ?? S  T  U  V  W  X  Y  Z  2S SE ?? ?? << NO
+ 0  1  2  3  4  5  6  7  8  9  3S Co ?? ?? >> AC
+
+ &charset IBM880
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP880
+ &alias 880
+ &alias EBCDIC-Cyrillic
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? d% g% io ?? ds ii yi j% <( .  <  (  +  !
+ &  lj nj ts kj ?? dz =" N0 D% )> DO *  )  ;  '>
+ -  /  G% IO ?? DS II YI J% LJ BB ,  %  _  >  ?
+ NJ Ts KJ ?? ?? DZ ju a= b= ?? :  Nb At '  =  "
+ c= a  b  c  d  e  f  g  h  i  d= e= f= g= h= i=
+ j= j  k  l  m  n  o  p  q  r  k= l= m= n= o= p=
+ ja ?? s  t  u  v  w  x  y  z  r= s= t= u= z% v=
+ %' y= z= s% je sc c% =' JU A= B= C= D= E= F= G=
+ ?? A  B  C  D  E  F  G  H  I  H= I= J= K= L= M=
+ ?? J  K  L  M  N  O  P  Q  R  N= O= P= JA R= S=
+ // Cu S  T  U  V  W  X  Y  Z  T= U= Z% V= %" Y=
+ 0  1  2  3  4  5  6  7  8  9  Z= S% JE Sc C% AC
+
+ &charset IBM891
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP891
+ &alias 891
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset IBM903
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP903
+ &alias 903
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+
+ &charset IBM904
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP904
+ &alias 904
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Ct ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? NO BB ??
+
+ &charset IBM905
+ &rem source: IBM 3174 Character Set Ref, GA27-3831-02, March 1990
+ &alias CP905
+ &alias 905
+ &alias ebcdic-cp-tr
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? a> a: a! a' ?? c. (! n? C, .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss G( I. *  )  ;  '>
+ -  /  A> A: A! A' ?? C. <( N? s, ,  %  _  >  ?
+ ?? E' E> E: E! I' I> I: I! i. :  O: S, '  =  U:
+ '( a  b  c  d  e  f  g  h  i  h/ c> s> u( ?? !!
+ DG j  k  l  m  n  o  p  q  r  h> g> j> '; ?? Cu
+ My o: s  t  u  v  w  x  y  z  H/ C> S> U( ?? At
+ .M Pd z. !) Z. SE )> ?? 12 DO H> G> J> ': '' *X
+ c, A  B  C  D  E  F  G  H  I  -- o> '? o! o' g.
+ g( J  K  L  M  N  O  P  Q  R  '! u> // u! u' ??
+ u: -: S  T  U  V  W  X  Y  Z  2S O> Nb O! O' G.
+ 0  1  2  3  4  5  6  7  8  9  3S U> "  U! U' AC
+
+ &charset IBM918
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP918
+ &alias 918
+ &alias ebcdic-cp-ar2
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP  NS  ,+  ;+  ?+  aH  a+  a+. ??  b+  <(  .   <   (   +   !
+ &   b+, p+  ??  tm  t+  t+, ??  ??  tk  )>  DO  *   )   ;   '>
+ -   /   tk, g+  g+, ??  ??  hk  hk, x+  '!  ,   %   _   >   ?
+ 0a  1a  2a  3a  4a  5a  6a  7a  8a  9a  :   Nb  At  '   =   "
+ x+, a   b   c   d   e   f   g   h   i   d+  ??  dk  r+  ??  z+
+ ??  j   k   l   m   n   o   p   q   r   s+  s+, sn  sn, c+  c+,
+ dd  '?  s   t   u   v   w   x   y   z   dd, tj  zH  e+  e+. e+,
+ e+; i+  i+. i+, i+; f+  f+, q+  q+, k+  k+, !!  ??  ??  l+  l+.
+ (!  A   B   C   D   E   F   G   H   I   --  ??  m+  m+, ??  n+
+ !)  J   K   L   M   N   O   P   Q   R   n+, ??  w+  ??  ??  ??
+ //  ??  S   T   U   V   W   X   Y   Z   H'  ??  ??  ??  ??  ??
+ 0   1   2   3   4   5   6   7   8   9   ??  ??  ??  3+  3+; AC
+
+ &charset IBM1004
+ &rem source: CEN/TC304 N283, 1994-02-04
+ &alias CP1004
+ &alias 1004
+ &alias os2latin1
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ ?? ?? .9 ?? :9 .3 /- /= 1> %0 S< <1 OE ?? ?? ??
+ ?? '6 '9 "6 "9 sb -N -M 1? TM s< >1 oe ?? ?? Y:
+ NS !I Ct Pd Cu Ye BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S '' My PI .M ', 1S -o >> 14 12 34 ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ D- N? O! O' O> O? O: *X O/ U! U' U> U: Y' TH ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ d- n? o! o' o> o? o: -: o/ u! u' u> u: y' th y:
+
+ &charset IBM1026
+ &rem source: IBM NLS RM Vol2 SE09-8002-01, March 1990
+ &alias CP1026
+ &alias 1026
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa (! n? C, .  <  (  +  !
+ &  e' e> e: e! i' i> i: i! ss G( I. *  )  ;  '>
+ -  /  A> A: A! A' A? AA <( N? s, ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! i. :  O: S, '  =  U:
+ O/ a  b  c  d  e  f  g  h  i  << >> !) '! BB +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae '; AE Cu
+ My o: s  t  u  v  w  x  y  z  !I ?I )> DO At Rg
+ Ct Pd Ye .M Co SE PI 14 12 34 NO !! -M ': '' *X
+ c, A  B  C  D  E  F  G  H  I  -- o> '? o! o' o?
+ g( J  K  L  M  N  O  P  Q  R  1S u> // u! u' y:
+ u: -: S  T  U  V  W  X  Y  Z  2S O> Nb O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> "  U! U' AC
+
+ &charset IBM1047
+ &rem source: IBM Character Data Representation Architecture
+ &rem Registry SC09-1391-00 p 150.
+ &alias CP1047
+ &alias 1047
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP NS a> a: a! a' a? aa c, n? Ct .  <  (  +  !!
+ &  e' e> e: e! i' i> i: i! ss !  DO *  )  ;  '>
+ -  /  A> A: A! A' A? AA C, N? BB ,  %  _  >  ?
+ o/ E' E> E: E! I' I> I: I! '! :  Nb At '  =  "
+ O/ a  b  c  d  e  f  g  h  i  << >> d- y' th +-
+ DG j  k  l  m  n  o  p  q  r  -a -o ae ', AE Cu
+ My '? s  t  u  v  w  x  y  z  !I ?I D- <( TH Rg
+ NO Pd Ye .M Co SE PI 14 12 34 Y' ': 'm )> '' *X
+ (! A  B  C  D  E  F  G  H  I  -- o> o: o! o' o?
+ !) J  K  L  M  N  O  P  Q  R  1S u> u: u! u' y:
+ // -: S  T  U  V  W  X  Y  Z  2S O> O: O! O' O?
+ 0  1  2  3  4  5  6  7  8  9  3S U> U: U! U' AC
+
+ &charset CP1250
+ &rem source: UNICODE 1.0
+ &alias ms-ee
+ &alias 1250
+ &rem &alias windows-1250
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 ?? :9 .3 /- /= ?? %0 S< <1 S' T< Z< Z'
+ ?? '6 '9 "6 "9 sb -N -M ?? TM s< >1 s' t< z< z'
+ NS '< '( L/ Cu A; BB SE ': Co S, << NO -- Rg Z.
+ DG +- '; l/ '' My PI .M ', a; s, >> L< '" l< z.
+ R' A' A> A( A: L' C' C, C< E' E; E: E< I' I> D<
+ D/ N' N< O' O> O" O: *X R< U0 U' U" U: Y' T, ss
+ r' a' a> a( a: l' c' c, c< e' e; e: e< i' i> d<
+ d/ n' n< o' o> o" o: -: r< u0 u' u" u: y' t, '.
+
+ &charset CP1251
+ &rem source: UNICODE 1.0
+ &alias ms-cyrl
+ &alias 1251
+ &rem &alias windows-1251
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ D% G% .9 g% :9 .3 /- /= Eu %0 LJ <1 NJ KJ Ts DZ
+ d% '6 '9 "6 "9 sb -N -M ?? TM lj >1 nj kj ts dz
+ NS V% v% J% Cu G3 BB SE IO Co IE << NO -- Rg YI
+ DG +- II ii g3 My PI .M io N0 ie >> j% DS ds yi
+ A= B= V= G= D= E= Z% Z= I= J= K= L= M= N= O= P=
+ R= S= T= U= F= H= C= C% S% Sc =" Y= %" JE JU JA
+ a= b= v= g= d= e= z% z= i= j= k= l= m= n= o= p=
+ r= s= t= u= f= h= c= c% s% sc =' y= %' je ju ja
+
+ &charset CP1252
+ &rem source: UNICODE 1.0
+ &alias ms-ansi
+ &alias 1252
+ &rem &alias windows-1252
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 f2 :9 .3 /- /= 1> %0 S< <1 OE ?? Z< z<
+ ?? '6 '9 "6 "9 sb -N -M 1? TM s< >1 oe ?? ?? Y:
+ NS !I Ct Pd Cu Ye BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S '' My PI .M ', 1S -o >> 14 12 34 ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ D- N? O! O' O> O? O: *X O/ U! U' U> U: Y' TH ss
+ a! a' a> a? a: aa ae c, e! e' e> e: i! i' i> i:
+ d- n? o! o' o> o? o: -: o/ u! u' u> u: y' th y:
+
+ &charset CP1253
+ &rem source: UNICODE 1.0
+ &alias ms-greek
+ &alias 1253
+ &rem &alias windows-1253
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 f2 :9 .3 /- /= ?? %0 ?? <1 ?? ?? ?? ??
+ ?? '6 '9 "6 "9 sb -N -M ?? TM ?? >1 ?? ?? ?? ??
+ NS '% A% Pd Cu Ye BB SE ': Co ?? << NO -- Rg -3
+ DG +- 2S 3S '* My PI .M E% Y% I% >> O% 12 U% W%
+ i3 A* B* G* D* E* Z* Y* H* I* K* L* M* N* C* O*
+ P* R* ?? S* T* U* F* X* Q* W* J* V* a% e% y% i%
+ u3 a* b* g* d* e* z* y* h* i* k* l* m* n* c* o*
+ p* r* *s s* t* u* f* x* q* w* j* v* o% u% w% ??
+
+ &charset CP1254
+ &rem source: UNICODE 1.0
+ &alias ms-turk
+ &alias 1254
+ &rem &alias windows-1254
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 f2 :9 .3 /- /= 1> %0 S< <1 OE ?? ?? ??
+ ?? '6 '9 "6 "9 sb -N -M 1? TM s< >1 oe ?? ?? Y:
+ NS !I Ct Pd Cu Ye BB SE ': Co -a << NO -- Rg 'm
+ DG +- 2S 3S '' My PI .M ', 1S -o >> 14 12 34 ?I
+ A! A' A> A? A: AA AE C, E! E' E> E: I! I' I> I:
+ G( N? O! O' O> O? O: *X O/ U! U' U> U: I. S, ss
+ a! a' a> a? a: aa ae c, e! e' e; e: e. i' i> i-
+ g( n? o! o' o> o? o: -: o/ u! u' u> u: i. s, y:
+
+ &charset CP1255
+ &rem source: UNICODE 1.0
+ &alias ms-hebr
+ &alias 1255
+ &rem &alias windows-1255
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 f2 :9 .3 /- /= ?? %0 ?? <1 ?? ?? ?? ??
+ ?? '6 '9 "6 "9 sb -N -M ?? TM ?? >1 ?? ?? ?? ??
+ NS ?? Ct Pd Cu Ye BB SE ': Co *X << NO -- Rg '-
+ DG +- 2S 3S '' My PI .M ', 1S -: >> 14 12 34 ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? =2
+ A+ B+ G+ D+ H+ W+ Z+ X+ Tj J+ K% K+ L+ M% M+ N%
+ N+ S+ E+ P% P+ Zj ZJ Q+ R+ Sh T+ ?? ?? LR RL ??
+
+ &charset CP1256
+ &rem source: UNICODE 1.0
+ &alias ms-arab
+ &alias 1256
+ &rem &alias windows-1256
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu 0a .9 1a :9 .3 /- /= 2a 3a 4a <1 5a 6a 7a 8a
+ 9a '6 '9 "6 "9 sb -N -M ;+ TM ?+ >1 H' aM aH Y:
+ NS wH ah Pd Cu yH BB SE a+ Co b+ << NO -- Rg p+
+ DG +- tm t+ tk My PI .M g+ tc hk >> x+ d+ dk r+
+ A! z+ A> zj s+ sn c+ C, E! E' E> E: dd tj I> I:
+ zh e+ i+ ++ O> f+ q+ *X k+ U! gf U> U: l+ m+ n+
+ a! h+ a> hH w+ j+ y+ c, e! e' e> e: :+ "+ i> i:
+ =+ /+ '+ 1+ o> 3+ 0+ -: ?? u! ?? u> u: LR RL y:
+
+ &charset CP1257
+ &rem source: CEN/TC304 N283
+ &alias WinBaltRim
+ &alias 1257
+ &rem &alias windows-1257
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ Eu ?? .9 ?? :9 .3 /- /= ?? %0 ?? <1 ?? ?? ?? ??
+ ?? '6 '9 "6 "9 sb -N -M ?? TM ?? >1 ?? ?? ?? ??
+ NS ?? Ct Pd Cu ?? BB SE O/ Co R, << NO -- Rg AE
+ DG +- 2S 3S ?? My PI .M o/ 1S r, >> 14 12 34 ae
+ A; I; A- C' A: AA E; E- C< E' Z' E. G, K, I- L,
+ S< N' N, O' O- O? O: *X U; L/ S' U- U: Z. Z< ss
+ a; i; a- c' a: aa e; e- c< e' z' e. g, k, i- l,
+ s< n' n, o' o- o? o: -: u; l/ s' u- u: z. z< ??
+
+ &charset EBCDIC-AT-DE
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? A: .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? U: DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? o: ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb SE '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ss s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ a: A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ u: J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ O: ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-AT-DE-A
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? o: .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? u: U: *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? ss ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? :  A: O: '  =  a:
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ?? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ ?? J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ ?? ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-CA-FR
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? a> ?? ?? ?? ?? ?? c, ?? a! .  <  (  +  !
+ &  ?? e> e: ?? ?? i> i: ?? ?? '' DO *  )  ;  '>
+ -  /  A> ?? A! ?? ?? ?? C, ?? u! ,  %  _  >  ?
+ ?? E' E> E: ?? I> I: ?? ?? '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ': s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ e' A  B  C  D  E  F  G  H  I  ?? o> ?? ?? ?? ??
+ e! J  K  L  M  N  O  P  Q  R  ?? u> u: ?? ?? ??
+ ', ?? S  T  U  V  W  X  Y  Z  ?? O> ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? U> U: U! ?? AC
+
+ &charset EBCDIC-DK-NO
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Nb .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? Cu AA *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? o/ ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  AE O/ '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? u: s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ae A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ aa J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-DK-NO-A
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? o/ .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? aa AA *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? :  AE O/ '  =  ae
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ?? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ ?? J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ ?? ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-FI-SE
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? SE .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? Cu AA *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? o: ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? e' :  A: O: '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? u: s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ a: A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ aa J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ E' ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-FI-SE-A
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? o: .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? aa AA *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? :  A: O: '  =  a:
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ?? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ ?? J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ ?? ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-FR
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? DG .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? SE DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? u! ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Pd a! '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ': s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ e' A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ e! J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ c, ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-IT
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? DG .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? e' DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? o! ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? u! :  Pd SE '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? i! s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ a! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ e! J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ c, ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-PT
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? <( .  <  (  +  !
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? )> DO *  )  ;  '>
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? o? ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  A? O? '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? c, s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ a? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ '' J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ C, ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-ES
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Ct .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  Pt *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? n? ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  N? At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ': s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-ES-A
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Ct .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  Pt *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? :  N? At '  =  n?
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ?? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ ?? J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ ?? ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-ES-S
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Ct .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  DO *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? n? ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  N? At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? ': s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-UK
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? DO .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  Pd *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? '- s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-US
+ &rem source: IBM 3270 Char Set Ref Ch 10, GA27-2837-9, April 1987
+ &bits 8
+ &code 0
+ NU SH SX EX ST HT SA DT EG RI S2 VT FF CR SO SI
+ DL D1 D2 D3 OC NL BS ES CN EM P2 S3 FS GS RS US
+ PA HO BH NH IN LF EB EC HS HJ VS PD PU EQ AK BL
+ DC P1 SY TS CC MW SG ET SS GC SC CI D4 NK PM SB
+ SP ?? ?? ?? ?? ?? ?? ?? ?? ?? Ct .  <  (  +  !!
+ &  ?? ?? ?? ?? ?? ?? ?? ?? ?? !  DO *  )  ;  NO
+ -  /  ?? ?? ?? ?? ?? ?? ?? ?? BB ,  %  _  >  ?
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? '! :  Nb At '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? ?? ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ ?? '? s  t  u  v  w  x  y  z  ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ (! A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? ?? ??
+ !) J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? ?? ??
+ // ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? ?? ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? ?? AC
+
+ &charset EBCDIC-IS-FRISS
+ &rem source: Skyrsuvelar Rikisins og Reykjavikurborgar, feb 1982
+ &alias friss
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ SP ?? ?? ?? ?? a' ?? ?? ?? ?? <  .  A' (  +  !
+ D- e' ?? ?? ?? i' ?? ?? ?? DO %  E' *  )  ;  &
+ -  /  ?? ?? ?? ?? ?? ?? ?? Nb '6 ,  TH _  >  ?
+ ?? ?? ?? ?? ?? I' ?? ?? !! d- :  AE O: '  =  "
+ ?? a  b  c  d  e  f  g  h  i  ?? ?? ?? Y' ?? ??
+ ?? j  k  l  m  n  o  p  q  r  ?? ?? ?? ?? ?? ??
+ DG o: s  t  u  v  w  x  y  z  ?? ?? <( y' ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? )> ': ?? ??
+ th A  B  C  D  E  F  G  H  I  ?? ?? ?? ?? o' ??
+ ae J  K  L  M  N  O  P  Q  R  ?? ?? ?? ?? u' ??
+ '' ?? S  T  U  V  W  X  Y  Z  ?? ?? ?? ?? O' ??
+ 0  1  2  3  4  5  6  7  8  9  ?? ?? ?? ?? U' DT
+
+ &charset KOI-7
+ &rem source: Andrey A. Chernov <ache@nagual.pp.ru>
+ &bits 7
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb Cu % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% DT
+
+ &charset KOI-8
+ &rem source: Andrey A. Chernov <ache@nagual.pp.ru>
+ &alias GOST_19768-74
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ??
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ??
+
+ &charset KOI8-R
+ &rem source: RFC1489 via Gabor Kiss <kissg@sztaki.hu>
+ &rem and Andrey A. Chernov <ache@nagual.pp.ru>
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ hh vv dr dl ur ul vr vl dh uh vh TB LB FB lB RB
+ .S :S ?S Iu fS sb RT ?2 =< >= NS Il DG 2S .M -:
+ HH VV dR io Dr DR dL Dl LD uR Ur UR uL Ul UL vR
+ Vr VR vL IO Vl VL dH Dh DH uH Uh UH vH Vh VH Co
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ="
+
+ &charset KOI8-RU
+ &rem source: http://cad.ntu-kpi.kiev.ua/multiling/koi8-ru/
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ hh vv dr dl ur ul vr vl dh uh vh TB LB FB lB RB
+ .S :S ?S "6 fS sb "9 -M N0 TM NS >> Rg << .M Cu
+ HH VV dR io ie DR ii yi LD uR Ur UR uL g3 v% vR
+ Vr VR vL IO IE VL II YI DH uH Uh UH vH G3 V% Co
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+ P= JA R= S= T= U= Z% V= %" Y= Z= S% JE Sc C% ="
+
+ &charset KOI8-U
+ &rem source: RFC 2319
+ &rem Mibenum: 2088
+ &rem source: http://www.net.ua/KOI8-U/
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ hh vv dr dl ur ul vr vl dh uh vh TB LB FB lB RB
+ .S :S ?S Iu fS Sb RT ?2 =< >= NS Il DG 2S .M -:
+ HH VV dR io ie DR ii yi LD uR Ur UR uL g3 UL vR
+ Vr VR vL IO IE VL II YI DH uH Uh UH vH G3 VH Co
+ ju a= b= c= d= e= f= g= h= i= j= k= l= m= n= o=
+ p= ja r= s= t= u= z% v= %' y= z= s% je sc c% ='
+ JU A= B= C= D= E= F= G= H= I= J= K= L= M= N= O=
+
+ &charset CWI
+ &rem source: Computerworld Sza'mita'stechnika vol 3 issue 13 1988-06-29
+ &alias CWI-2
+ &alias cp-hu
+ &bits 8
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ C, u: e' a> a: a! aa c, e> e: e! i: i> I' A: A'
+ E' ae AE o" o: O' u" U' U" O: U: Ct Pd Ye Pt Fl
+ a' i' o' u' n? N? -a O" ?I NI NO 12 14 !I << >>
+ .S :S ?S vv vl vL Vl Dl dL VL VV LD UL Ul uL dl
+ ur uh dh vr hh vh vR Vr UR DR UH DH VR HH VH uH
+ Uh dH Dh Ur uR dR Dr Vh vH ul dr FB LB lB RB TB
+ a* b* G* p* S* s* m* t* F* H* W* d* 00 /0 e* (U
+ =3 +- >= =< Iu Il -: ?2 Ob .M sb RT nS 2S fS NS
+
+ &charset macintosh_ce
+ &rem source: Macintosh CE fonts
+ &alias macce
+ &code 0
+ NU SH SX EX ET EQ AK BL BS HT LF VT FF CR SO SI
+ DL D1 D2 D3 D4 NK SY EB CN EM SB EC FS GS RS US
+ SP ! " Nb DO % & ' ( ) * + , - . / 0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+ At A B C D E F G H I J K L M N O P Q R S T U V W X Y Z <( // )> '> _
+ '! a b c d e f g h i j k l m n o p q r s t u v w x y z (! !! !) '? DT
+ A: A- a- E' A; O: U: a' a; C< a: c< C' c' e' Z'
+ z' D< i' d< E- e- E. o' e. o> o: o? u' E< e< u:
+ /- DG E; Pd SE Sb PI ss Rg Co TM e; ': != g' I;
+ i; I- =< >= i- K, dP +Z l/ L, l, L< l< L' l' N,
+ n, N' NO RT n' N< D* << >> .3 NS n< O" O? o" O-
+ -N -M "6 "9 '6 '9 -: Db o- R' r' R< <1 >1 r< R,
+ r, S< .9 :9 s< S' s' A' T< t< I' Z< z< U- O' O>
+ u- U0 U' u0 U" u" U; u; Y' y' k, Z. L/ z. G, '<
+

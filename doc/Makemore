@@ -37,49 +37,50 @@ include Makefile
 ## I do not want to commit myself at maintaining the derivation stuff
 ## at the same level as for the the remainder of `recode'.
 
-CHSET = chset32a
-LIBICONV =
-MAPURL = ftp://ftp.unicode.org/MAPPINGS
+# The following paths are relative to $(srcdir).
+CHSET = $(KELD)/chset32a
+ALAIN = $(KELD)
+BRUNO = ../libiconv
+KELD = ../keld
 
-MNEMONICS_DS = mnemonic,ds
+MNEMONICS_DS = $(KELD)/mnemonic,ds
+MNEMONICS_DS = $(KELD)/iso10646.def
+MNEMONICS_DS = $(KELD)/iso10646.def $(KELD)/other.def $(KELD)/control.def
+
 ISO10646_DEF = $(CHSET)/iso10646.def
+ISO10646_DEF = $(KELD)/iso10646.def
+
 CHARSETS_DEF = $(CHSET)/charsets.def
-ENCODINGS_DEF = ../libiconv/encodings.def ../libiconv/encodings_local.def
-MNEMONICS_DS = keld-email/iso10646.def
-ISO10646_DEF = keld-email/iso10646.def
-CHARSETS_DEF = keld-email/charsets.def
-MNEMONICS_DS = keld-email/iso10646.def keld-email/other.def keld-email/control.def
-NOMS_CARACS = noms_juc_19981216.txt
-NOMS_CARACS = NomsSeulsfinal.lst
+CHARSETS_DEF = $(KELD)/charsets.def
+
+RFC1345_TXT = $(KELD)/rfc1345.txt
+
+ENCODINGS_DEF = $(BRUNO)/encodings.def $(BRUNO)/encodings_local.def
+
+NOMS_CARACS = $(ALAIN)/noms_juc_19981216.txt
+NOMS_CARACS = $(ALAIN)/NomsSeulsfinal.lst
 
 PYTHON = python
 SURF = netscape
 WGET = wget
 
+# Completely external paths.
+MAPURL = ftp://ftp.unicode.org/MAPPINGS
+
 # Merely add our things to standard `all' goal.
 all: $(srcdir)/libiconv.texi $(srcdir)/rfc1345.texi \
-$(srcdir)/fr-libiconv.texi $(srcdir)/fr-rfc1345.texi \
 $(top_srcdir)/src/libiconv.h $(top_srcdir)/src/rfc1345.h \
 $(top_srcdir)/src/charname.h $(top_srcdir)/src/fr-charname.h
 
-doc-check: all
-	-cd $(top_srcdir)/src && diff -u charname.h{-,}
-	-cd $(top_srcdir)/src && diff -u fr-charname.h{-,}
-	-cd $(top_srcdir)/src && diff -u rfc1345.h{-,}
-	-cd $(top_srcdir)/src && diff -u strip-data.c{-,}
-	-cd $(top_srcdir)/src && diff -u strip-pool.c{-,}
-	-cd $(srcdir) && diff -u libiconv.texi{-,}
-	-cd $(srcdir) && diff -u fr-libiconv.texi{-,}
-	-cd $(srcdir) && diff -u rfc1345.texi{-,}
-	-cd $(srcdir) && diff -u fr-rfc1345.texi{-,}
+#$(srcdir)/fr-libiconv.texi $(srcdir)/fr-rfc1345.texi \
 
 # The next rules, when written, for example:
 #rfc1345.texi pool.c tables.c: ...
 # may launch many parallel occurrences of the action.  This is bad.
 # Any idea, someone?  For now, just list one of them.
 
-$(top_srcdir)/src/charname.h: tables.py $(MNEMONICS_DS) rfc1345.txt
-	cd $(srcdir) && $(PYTHON) tables.py -n $(MNEMONICS_DS) rfc1345.txt
+$(top_srcdir)/src/charname.h: tables.py $(MNEMONICS_DS) $(RFC1345_TXT)
+	cd $(srcdir) && $(PYTHON) tables.py -n $(MNEMONICS_DS) $(RFC1345_TXT)
 	mv $(srcdir)/charname.h $@
 
 $(top_srcdir)/src/fr-charname.h: tables.py $(NOMS_CARACS)
@@ -126,9 +127,9 @@ $(srcdir)/mnemonic,ds:
 	$(WGET) ftp://dkuug.dk/i18n/WG15-collection/repertoiremaps/mnemonic,ds
 	test $(srcdir) = . || mv mnemonic,ds $@
 
-$(srcdir)/rfc1345.txt:
-	$(WGET) ftp://nic.ddn.mil/rfc/rfc1345.txt
-	test $(srcdir) = . || mv rfc1345.txt $@
+#$(srcdir)/rfc1345.txt:
+#	$(WGET) ftp://nic.ddn.mil/rfc/rfc1345.txt
+#	test $(srcdir) = . || mv rfc1345.txt $@
 
 # -------------------------------------------------#
 # Useful external files, but unbuilt into recode.  #

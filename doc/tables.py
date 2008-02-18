@@ -1,8 +1,8 @@
 #!/usr/bin/python
-#                                                    -*- coding: iso-8859-1 -*-
+# -*- coding: utf-8 -*-
 # Automatically derive `recode' table files from various sources.
-# Copyright © 1993, 1994, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
-# François Pinard <pinard@iro.umontreal.ca>, 1993.
+# Copyright Â© 1993, 1994, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+# FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1993.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -37,7 +37,7 @@ from Keld's chset* packages.  The digesting order is usually important.
 When `-F' and `-n' are used, process Alain's tables.
 """
 
-import re, string, sys
+import re, sys
 
 # Character constants.
 REPLACEMENT_CHARACTER = 0xFFFD
@@ -48,53 +48,53 @@ def main(*arguments):
     import getopt
     global explodes
     charnames = explodes = libiconv = mnemonics = rfc1345 = strips = None
-    French_option = 0
+    French_option = False
     options, arguments = getopt.getopt(arguments, 'Felmnpst')
     for option, value in options:
         if option == '-F':
-            French_option = 1
+            French_option = True
         elif option == '-e':
             if not explodes:
                 explodes = Explodes()
-            explodes.do_sources = 1
+            explodes.do_sources = True
         elif option == '-l':
             if not libiconv:
                 libiconv = Libiconv()
-            libiconv.do_sources = 1
+            libiconv.do_sources = True
         elif option == '-m':
             if not mnemonics:
                 mnemonics = Mnemonics()
-            mnemonics.do_sources = 1
+            mnemonics.do_sources = True
         elif option == '-n':
             if not charnames:
                 charnames = Charnames()
-            charnames.do_sources = 1
+            charnames.do_sources = True
         elif option == '-p':
             if not strips:
                 strips = Strips()
-            strips.do_sources = 1
+            strips.do_sources = True
         elif option == '-s':
             if not libiconv:
                 libiconv = Libiconv()
-            libiconv.do_texinfo = 1
+            libiconv.do_texinfo = True
         elif option == '-t':
             if not strips:
                 strips = Strips()
-            strips.do_texinfo = 1
+            strips.do_texinfo = True
     if not arguments:
         raise __doc__
 
     # Read all data tables.
     for name in arguments:
         input = Input(name)
-        while 1:
+        while True:
             line = input.readline()
             if not line:
                 break
             if line[0] == '\n':
                 continue
-            if line[0:2] == '/*':
-                while string.find(line, '*/') < 0:
+            if line[:2] == '/*':
+                while line.find('*/') < 0:
                     line = input.readline()
                 continue
             if input.begins('DEFENCODING'):
@@ -160,8 +160,8 @@ def main(*arguments):
 class Options:
 
     def __init__(self):
-        self.do_sources = 0
-        self.do_texinfo = 0
+        self.do_sources = False
+        self.do_texinfo = False
 
 # Charnames.
 
@@ -180,25 +180,30 @@ class Charnames(Options):
     def digest_french(self, input):
         self.preset_french()
         fold_table = range(256)
-        for before, after in map(None,
-                                 'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÂÇÈÉÊÎÏÑÔÖÛ',
-                                 'abcdefghijklmnopqrstuvwxyzàâçèéêîïñôöû'):
+        for before, after in map(
+                None,
+                u'ABCDEFGHIJKLMNOPQRSTUVWXYZÃ€Ã‚Ã‡ÃˆÃ‰ÃŠÃŽÃÃ‘Ã”Ã–Ã›'.encode('ISO-8859-1'),
+                u'abcdefghijklmnopqrstuvwxyzÃ Ã¢Ã§Ã¨Ã©ÃªÃ®Ã¯Ã±Ã´Ã¶Ã»'.encode('ISO-8859-1')):
             fold_table[ord(before)] = ord(after)
-        folding = string.join(map(chr, fold_table), '')
-        while 1:
+        folding = ''.join(map(chr, fold_table))
+        ignorables = (
+                u'<commande>'.encode('ISO-8859-1'),
+                u'<rÃ©servÃ©>'.encode('ISO-8859-1'),
+                u'<pas un caractÃ¨re>'.encode('ISO-8859-1'))
+        while True:
             line = input.readline()
             if not line:
                 break
             if input.begins('@@\t'):
                 continue
-            # Pour éliminer la fin de ligne.
-            line = string.rstrip(line)
+            # Pour Ã©liminer la fin de ligne.
+            line = line.rstrip()
             input.line = line
             match = input.match('([0-9A-F]{4})\t([^(]+)( \\(.*\\))?( \\*)?$')
             if match:
-                ucs = string.atoi(match.group(1), 16)
-                text = string.translate(match.group(2), folding)
-                if text in ('<commande>', '<réservé>', '<pas un caractère>'):
+                ucs = int(match.group(1), 16)
+                text = match.group(2).translate(folding)
+                if text in ignorables:
                     continue
                 self.declare(ucs, re.sub(r' +\*$', '', text, 1))
             else:
@@ -209,14 +214,14 @@ class Charnames(Options):
         ucs = 0x0000
         for text in (
             u"nul (nul)",                                        # 0000
-            u"début d'en-tête (soh)",                            # 0001
-            u"début de texte (stx)",                             # 0002
+            u"dÃ©but d'en-tÃªte (soh)",                            # 0001
+            u"dÃ©but de texte (stx)",                             # 0002
             u"fin de texte (etx)",                               # 0003
             u"fin de transmission (eot)",                        # 0004
             u"demande (enq)",                                    # 0005
-            u"accusé de réception positif (ack)",                # 0006
+            u"accusÃ© de rÃ©ception positif (ack)",                # 0006
             u"sonnerie (bel)",                                   # 0007
-            u"espace arrière (bs)",                              # 0008
+            u"espace arriÃ¨re (bs)",                              # 0008
             u"tabulation horizontale (ht)",                      # 0009
             u"interligne (lf)",                                  # 000A
             u"tabulation verticale (vt)",                        # 000B
@@ -224,69 +229,69 @@ class Charnames(Options):
             u"retour de chariot (cr)",                           # 000D
             u"hors code (so)",                                   # 000E
             u"en code (si)",                                     # 000F
-            u"échappement transmission (dle)",                   # 0010
+            u"Ã©chappement transmission (dle)",                   # 0010
             u"commande d'appareil un (dc1)",                     # 0011
             u"commande d'appareil deux (dc2)",                   # 0012
             u"commande d'appareil trois (dc3)",                  # 0013
             u"commande d'appareil quatre (dc4)",                 # 0014
-            u"accusé de réception négatif (nak)",                # 0015
+            u"accusÃ© de rÃ©ception nÃ©gatif (nak)",                # 0015
             u"synchronisation (syn)",                            # 0016
             u"fin de transmission de bloc (etb)",                # 0017
             u"annulation (can)",                                 # 0018
             u"fin de support (em)",                              # 0019
-            u"caractère de substitution (sub)",                  # 001A
-            u"échappement (esc)",                                # 001B
-            u"séparateur de fichier (fs)",                       # 001C
-            u"séparateur de groupe (gs)",                        # 001D
-            u"séparateur d'article (rs)",                        # 001E
-            u"séparateur de sous-article (us)",                  # 001F
+            u"caractÃ¨re de substitution (sub)",                  # 001A
+            u"Ã©chappement (esc)",                                # 001B
+            u"sÃ©parateur de fichier (fs)",                       # 001C
+            u"sÃ©parateur de groupe (gs)",                        # 001D
+            u"sÃ©parateur d'article (rs)",                        # 001E
+            u"sÃ©parateur de sous-article (us)",                  # 001F
             ):
             self.declare(ucs, text.encode('ISO-8859-1'))
-            ucs = ucs + 1
+            ucs += 1
         ucs = 0x007F
         for text in (
             u"suppression (del)",                                # 007F
-            u"caractère de bourre (pad)",                        # 0080
-            u"octet supérieur prédéfini (hop)",                  # 0081
-            u"arrêt permis ici (bph)",                           # 0082
-            u"aucun arrêt ici (nbh)",                            # 0083
+            u"caractÃ¨re de bourre (pad)",                        # 0080
+            u"octet supÃ©rieur prÃ©dÃ©fini (hop)",                  # 0081
+            u"arrÃªt permis ici (bph)",                           # 0082
+            u"aucun arrÃªt ici (nbh)",                            # 0083
             u"index (ind)",                                      # 0084
-            u"à la ligne (nel)",                                 # 0085
-            u"début de zone sélectionnée (ssa)",                 # 0086
-            u"fin de zone sélectionnée (esa)",                   # 0087
-            u"arrêt de tabulateur horizontal (hts)",             # 0088
+            u"Ã  la ligne (nel)",                                 # 0085
+            u"dÃ©but de zone sÃ©lectionnÃ©e (ssa)",                 # 0086
+            u"fin de zone sÃ©lectionnÃ©e (esa)",                   # 0087
+            u"arrÃªt de tabulateur horizontal (hts)",             # 0088
             u"tabulateur horizontal avec justification (htj)",   # 0089
-            u"arrêt de tabulateur vertical (vts)",               # 008A
+            u"arrÃªt de tabulateur vertical (vts)",               # 008A
             u"interligne partiel vers <= bas (pld)",             # 008B
             u"interligne partiel vers <= haut (plu)",            # 008C
-            u"index inversé (ri)",                               # 008D
+            u"index inversÃ© (ri)",                               # 008D
             u"remplacement unique deux (ss2)",                   # 008E
             u"remplacement unique trois (ss3)",                  # 008F
-            u"chaîne de commande d'appareil (dcs)",              # 0090
-            u"usage privé un (pu1)",                             # 0091
-            u"usage privé deux (pu2)",                           # 0092
+            u"chaÃ®ne de commande d'appareil (dcs)",              # 0090
+            u"usage privÃ© un (pu1)",                             # 0091
+            u"usage privÃ© deux (pu2)",                           # 0092
             u"mise en mode transmission (sts)",                  # 0093
-            u"annulation du caractère précédent (cch)",          # 0094
+            u"annulation du caractÃ¨re prÃ©cÃ©dent (cch)",          # 0094
             u"message en attente (mw)",                          # 0095
-            u"début de zone protégée (sga)",                     # 0096
-            u"fin de zone protégée (ega)",                       # 0097
-            u"début de chaîne (sos)",                            # 0098
-            u"introducteur de caractère graphique unique (sgci)",# 0099
-            u"introducteur de caractère unique (sci)",           # 009A
-            u"introducteur de séquence de commande (csi)",       # 009B
-            u"fin de chaîne (st)",                               # 009C
-            u"commande de système d'exploitation (osc)",         # 009D
-            u"message privé (pm)",                               # 009E
+            u"dÃ©but de zone protÃ©gÃ©e (sga)",                     # 0096
+            u"fin de zone protÃ©gÃ©e (ega)",                       # 0097
+            u"dÃ©but de chaÃ®ne (sos)",                            # 0098
+            u"introducteur de caractÃ¨re graphique unique (sgci)",# 0099
+            u"introducteur de caractÃ¨re unique (sci)",           # 009A
+            u"introducteur de sÃ©quence de commande (csi)",       # 009B
+            u"fin de chaÃ®ne (st)",                               # 009C
+            u"commande de systÃ¨me d'exploitation (osc)",         # 009D
+            u"message privÃ© (pm)",                               # 009E
             u"commande de progiciel (apc)",                      # 009F
             ):
             self.declare(ucs, text.encode('ISO-8859-1'))
-            ucs = ucs + 1
+            ucs += 1
 
     def declare(self, ucs, text):
         self.charname_map[ucs] = text
         if len(text) > self.max_length:
             self.max_length = len(text)
-        for word in string.split(text):
+        for word in text.split():
             self.code_map[word] = self.code_map.get(word, 0) + 1
 
     def presort_word(self, word):
@@ -300,7 +305,7 @@ class Charnames(Options):
             write = Output('fr-%s' % self.SOURCES).write
         else:
             write = Output(self.SOURCES).write
-        # Establish a mild compression scheme.  Words word[0:singles]
+        # Establish a mild compression scheme.  Words word[:singles]
         # will be represented by a single byte running from 1 to
         # singles.  All remaining words will be represented by two
         # bytes, the first one running slowly from singles+1 to 255,
@@ -336,17 +341,17 @@ class Charnames(Options):
             write('    %-28s/* \\%0.3o */\n'
                   % ('"%s",' % re.sub('"', r'\"', word), char1))
             self.code_map[words[counter]] = char1
-            char1 = char1 + 1
+            char1 += 1
         for counter in range(singles, count):
             word = words[counter]
             write('    %-28s/* \\%0.3o\\%0.3o */\n'
                   % ('"%s",' % re.sub('"', r'\"', word, 1), char1, char2))
             self.code_map[words[counter]] = 256 * char1 + char2
             if char2 == 255:
-                char1 = char1 + 1
+                char1 += 1
                 char2 = 1
             else:
-                char2 = char2 + 1
+                char2 += 1
         write('  };\n')
         sys.stderr.write("  writing names\n")
         write('\n'
@@ -360,8 +365,8 @@ class Charnames(Options):
               '  {\n')
         for ucs2 in ucs2_table:
             write('    {0x%04X, "' % ucs2)
-            for word in string.split(self.charname_map[ucs2]):
-                if self.code_map.has_key(word):
+            for word in self.charname_map[ucs2].split():
+                if word in self.code_map:
                     code = self.code_map[word]
                     if code < 256:
                         write('\\%0.3o' % code)
@@ -401,7 +406,7 @@ class Explodes(Options):
                   '    return false;\n'
                   % (count, self.declare_charset[0]))
             del self.declare_charset[0]
-            count = count + 1
+            count += 1
         write('\n')
         while declare_alias:
             write('  if (!declare_alias (outer, "%s", "%s"))\n'
@@ -432,7 +437,7 @@ class Libiconv(Options):
                         'MacCroatian', 'MacCyrillic', 'MacGreek', 'MacHebrew',
                         'MacIceland', 'MacRoman', 'MacRomania', 'MacThai',
                         'MacTurkish', 'MacUkraine'):
-            canonical[string.upper(charset)] = charset
+            canonical[charset.upper()] = charset
 
         comment = None
         # Read in the encodings.def file.
@@ -443,18 +448,18 @@ class Libiconv(Options):
                 match = re.search('"(.*)"', line)
                 if match:
                     alias = match.group(1)
-                    if canonical.has_key(alias):
+                    if alias in canonical:
                         alias = canonical[alias]
                     aliases.append(alias)
-                line = string.lstrip(input.readline())
+                line = input.readline().lstrip()
                 while line != '),\n':
                     match = re.search('"(.*)"', line)
                     if match:
                         alias = match.group(1)
-                        if canonical.has_key(alias):
+                        if alias in canonical:
                             alias = canonical[alias]
                         aliases.append(alias)
-                    line = string.lstrip(input.readline())
+                    line = input.readline().lstrip()
                 while line and line != '\n':
                     line = input.readline()
                 self.data.append((comment, aliases[0], aliases[1:]))
@@ -505,9 +510,9 @@ class Libiconv(Options):
         if not self.do_texinfo:
             return
         if french:
-            write = Output('fr-%s' % self.TEXINFO, noheader=1).write
+            write = Output('fr-%s' % self.TEXINFO, noheader=True).write
         else:
-            write = Output(self.TEXINFO, noheader=1).write
+            write = Output(self.TEXINFO, noheader=True).write
         write('\n'
               '@itemize @bullet\n')
         block = None
@@ -536,8 +541,7 @@ class Libiconv(Options):
                 else:
                     write('@code{%s} and @code{%s} are aliases'
                           ' for this charset.\n'
-                          % (string.join(aliases[:-1], '}, @code{'),
-                             aliases[-1]))
+                          % ('}, @code{'.join(aliases[:-1]), aliases[-1]))
             else:
                 write('@tindex %s\n' % re.sub(':([0-9]+)', r'(\1)', charset))
         write('@end table\n'
@@ -563,12 +567,12 @@ class Mnemonics(Options):
             match = input.match('<([^ \t\n]+)>\t<U(....)>')
             if match:
                 mnemonic = re.sub('/(.)', r'\1', match.group(1))
-                ucs2 = string.atoi(match.group(2), 16)
+                ucs2 = int(match.group(2), 16)
                 self.declare(mnemonic, ucs2, input.warn)
 
     # Read in Keld's list of 10646 characters.
     def digest_iso10646_def(self, input):
-        while 1:
+        while True:
             line = input.readline()
             if not line:
                 break
@@ -600,7 +604,7 @@ class Mnemonics(Options):
             if input.match('   [^ ].*'):
                 if cell == 256:
                     input.warn("Over 256 cells in row %d", row)
-                cell = cell + 1
+                cell += 1
                 continue
             match = (input.match('([^ ])  [^ ].*')
                      or input.match('([^ ][^ ]+) [^ ].*'))
@@ -608,31 +612,31 @@ class Mnemonics(Options):
                 if cell == 256:
                     input.warn("Over 256 cells in row %d", row)
                 self.declare(match.group(1), 256*row + cell, input.warn)
-                cell = cell + 1
+                cell += 1
                 continue
             input.warn("Unrecognised line")
 
     # Read the text of RFC 1345, saving all character names it declares.
     def digest_rfc1345(self, input, charnames):
         def read_line(input=input):
-            skip = 0
-            while 1:
+            skip = False
+            while True:
                 line = input.readline()
                 if not line:
                     break
                 if input.begins('Simonsen'):
-                    skip = 1
+                    skip = True
                     continue
                 if skip:
                     if input.begins('RFC 1345'):
-                        skip = 0
+                        skip = False
                     continue
                 if input.begins('4.  CHARSETS'):
                     break
                 if line == '\n':
                     continue
                 if line[0] == ' ':
-                    return string.lstrip(line[:-1])
+                    return line[:-1].lstrip()
             return None
         self.max_length = 0
         # Read the character descriptions.  Count words in charnames.
@@ -644,14 +648,14 @@ class Mnemonics(Options):
                 match = re.match('             *( .*)', next)
                 if not match:
                     break
-                line = line + match.group(1)
+                line += match.group(1)
                 next = read_line()
             # Separate fields and save needed information.
             match = re.search('([^ ]+) +[0-9a-f]+ +(.*)', line)
             if match:
                 mnemo = match.group(1)
-                text = string.lower(match.group(2))
-                if self.ucs2_map.has_key(mnemo):
+                text = match.group(2).lower()
+                if mnemo in self.ucs2_map:
                     charnames.declare(self.ucs2_map[mnemo], text)
                 elif len(mnemo) <= self.MAX_MNEMONIC_LENGTH:
                     input.warn("No known UCS-2 code for `%s'", mnemo)
@@ -664,7 +668,7 @@ class Mnemonics(Options):
         if len(mnemonic) > self.MAX_MNEMONIC_LENGTH:
             return
         if self.do_sources:
-            if self.mnemonic_map.has_key(ucs2):
+            if ucs2 in self.mnemonic_map:
                 if self.mnemonic_map[ucs2] != mnemonic:
                     warn("U+%04X `%s' known as `%s'",
                                ucs2, mnemonic, self.mnemonic_map[ucs2])
@@ -672,8 +676,8 @@ class Mnemonics(Options):
                         self.mnemonic_map[ucs2] = mnemonic
             else:
                 self.mnemonic_map[ucs2] = mnemonic
-                self.table_length = self.table_length + 1
-        if self.ucs2_map.has_key(mnemonic):
+                self.table_length += 1
+        if mnemonic in self.ucs2_map:
             if self.ucs2_map[mnemonic] != ucs2:
                 warn("`%s' U+%04X known as U+%04X",
                      mnemonic, ucs2, self.ucs2_map[mnemonic])
@@ -710,7 +714,7 @@ class Mnemonics(Options):
             inverse_map[text] = count
             write('    /* %4d */ {0x%04X, "%s"},\n'
                   % (count, ucs2, re.sub(r'([\"])', r'\\\1', text)))
-            count = count + 1
+            count += 1
         write('  };\n')
 
         write('\n'
@@ -727,7 +731,7 @@ class Mnemonics(Options):
             else:
                 write(', ')
             write('%4d' % inverse_map[text])
-            count = count + 1
+            count += 1
         write('\n'
               '  };\n')
 
@@ -762,7 +766,7 @@ class Strips(Options):
         self.declare_charset = []
         # Prepare to read various tables.
         self.charset_ordinal = 0
-        self.discard_charset = 0
+        self.discard_charset = False
         self.alias_count = 0
         self.comment = ''
 
@@ -781,17 +785,17 @@ class Strips(Options):
         # Informal canonical order of presentation.
         CHARSET, REM, ALIAS, ESC, BITS, CODE = range(6)
         charset = None
-        skip = 0
-        while 1:
+        skip = False
+        while True:
             line = input.readline()
             if not line:
                 break
             if input.begins('Simonsen'):
-                skip = 1
+                skip = True
                 continue
             if skip:
                 if input.begins('RFC 1345'):
-                    skip = 0
+                    skip = False
                 continue
             if line == '\n':
                 continue
@@ -816,11 +820,11 @@ class Strips(Options):
                                  % (self.charset_ordinal + 1, charset))
                 status = CHARSET
                 self.comment = '\n/* %s\n' % charset
-                hashname = re.sub('[^a-z0-9]', '', string.lower(charset))
-                if self.used_map.has_key(hashname):
+                hashname = re.sub('[^a-z0-9]', '', charset.lower())
+                if hashname in self.used_map:
                     input.warn("Duplicate of %s (discarded)",
                                self.used_map[hashname])
-                    self.discard_charset = 1
+                    self.discard_charset = True
                     continue
                 self.used_map[hashname] = charset
                 self.alias_count = 0
@@ -835,7 +839,7 @@ class Strips(Options):
                     self.implied_surface['CP' + match.group(2)] = 'crlf'
                     self.implied_surface['IBM' + match.group(2)] = 'crlf'
                     self.declare_alias.append((charset, charset))
-                    self.alias_count = self.alias_count + 1
+                    self.alias_count += 1
                     continue
                 #FIXME:match = re.match('windows-([0-9]+)$', charset)
                 #FIXME:if match:
@@ -848,7 +852,7 @@ class Strips(Options):
                 if charset in ('macintosh', 'macintosh_ce'):
                     self.implied_surface[charset] = 'cr'
                     self.declare_alias.append((charset, charset))
-                    self.alias_count = self.alias_count + 1
+                    self.alias_count += 1
                     continue
                 continue
             # Recognize other `&' directives.
@@ -872,10 +876,10 @@ class Strips(Options):
                 alias = match.group(2)
                 if alias[-1] == ' ':
                     input.warn("Spurious trailing whitespace")
-                    alias = string.rstrip(alias)
+                    alias = alias.rstrip()
                 self.comment = self.comment + '   %s\n' % alias
-                hashname = re.sub('[^a-z0-9]', '', string.lower(alias))
-                if self.used_map.has_key(hashname):
+                hashname = re.sub('[^a-z0-9]', '', alias.lower())
+                if hashname in self.used_map:
                     if self.used_map[hashname] != charset:
                         input.warn("Duplicate of %s", self.used_map[hashname])
                         continue
@@ -890,7 +894,7 @@ class Strips(Options):
                 elif alias in ('mac', 'macce'):
                     self.implied_surface[alias] = 'cr'
                 self.declare_alias.append((alias, charset))
-                self.alias_count = self.alias_count + 1
+                self.alias_count += 1
                 continue
             if input.match('&g[0-4]esc'):
                 if status > ESC:
@@ -905,7 +909,7 @@ class Strips(Options):
                 if int(match.group(1)) > 8:
                     input.warn("`&bits %s' not accepted (charset discarded)",
                                match.group(1))
-                    self.discard_charset = 1
+                    self.discard_charset = True
                 continue
             match = input.match('&code (.*)')
             if match:
@@ -921,23 +925,23 @@ class Strips(Options):
                 if not self.discard_charset:
                     input.warn("`&%s' not accepted (charset discarded)",
                                match.group(1))
-                    self.discard_charset = 1
+                    self.discard_charset = True
             if self.discard_charset:
                 continue
             # Save all other tokens into the double table.
-            for token in string.split(line):
+            for token in line.split():
                 if token == '??':
                     self.table[code] = NOT_A_CHARACTER
                 elif token == '__':
                     self.table[code] = REPLACEMENT_CHARACTER
-                elif mnemonics.ucs2_map.has_key(token):
+                elif token in mnemonics.ucs2_map:
                     self.table[code] = mnemonics.ucs2_map[token]
                     if len(token) > codedim:
                         codedim = len(token)
                 else:
                     input.warn("Unknown mnemonic for code: %s", token)
                     self.table[code] = REPLACEMENT_CHARACTER
-                code = code + 1
+                code += 1
         # Push the last charset out.
         self.charset_done(charset, remark, aliases)
 
@@ -948,16 +952,16 @@ class Strips(Options):
         match = input.match('# +Name: +([^ ]+) to Unicode table$')
         if match:
             # Set comment.
-            name = string.split(match.group(1))
+            name = match.group(1).split()
             charset = name[0]
             del name[0]
             self.comment = '\n/* %s\n' % charset
             # Set charset.
-            hashname = re.sub('[^a-z0-9]', '', string.lower(charset))
+            hashname = re.sub('[^a-z0-9]', '', charset.lower())
             if self.used_map[hashname]:
                 input.warn("`%s' duplicates `%s' (charset discarded)",
                            hashname, self.used_map[hashname])
-                self.discard_charset = 1
+                self.discard_charset = True
                 return
             self.used_map[hashname] = charset
             # Prepare for read.
@@ -973,7 +977,7 @@ class Strips(Options):
         for alias in name:
             self.comment = self.comment + '   %s\n' % alias
 
-            hashname = re.sub('[^a-z0-9]', '', string.lower(alias))
+            hashname = re.sub('[^a-z0-9]', '', alias.lower())
             if self.used_map[hashname] and self.used_map[hashname] != charset:
                 input.warn("`%s' duplicates `%s'", hashname,
                            self.used_map[hashname])
@@ -982,9 +986,9 @@ class Strips(Options):
 
             aliases.append(alias)
             self.declare_alias.append((alias, charset))
-            self.alias_count = self.alias_count + 1
+            self.alias_count += 1
         # Read table contents.
-        while 1:
+        while True:
             line = input.readline()
             if not line:
                 break
@@ -999,8 +1003,7 @@ class Strips(Options):
                 break
             match = input.match('0x([0-9A-F]+)\t0x([0-9A-F]+)\t\#')
             if match:
-                self.table[string.atoi(
-                    match.group(1), 16)] = string.atoi(match.group(2), 16)
+                self.table[int(match.group(1), 16)] = int(match.group(2), 16)
             else:
                 input.warn("Unrecognised input line")
         # Complete processing.
@@ -1012,8 +1015,8 @@ class Strips(Options):
         if self.discard_charset:
             while self.alias_count > 0:
                 del self.declare_alias[-1]
-                self.alias_count = self.alias_count - 1
-            self.discard_charset = 0
+                self.alias_count -= 1
+            self.discard_charset = False
             self.comment = ''
         if not self.comment:
             return
@@ -1062,22 +1065,22 @@ class Strips(Options):
                     write(', ')
                 strip = self.table[code:code+self.STRIP_SIZE]
                 write('%4d' % self.pool_index(strip))
-                count = count + 1
+                count += 1
             write('\n'
                   '    }\n'
                   '  };\n')
             # Register the table.
             self.declare_charset.append(charset)
-        self.charset_ordinal = self.charset_ordinal + 1
+        self.charset_ordinal += 1
         self.comment = ''
 
     # Return the pool index for strip.  Add to the pool as required.
     def pool_index(self, strip):
         def format(item):
             return '%04X' % item
-        self.pool_refs = self.pool_refs + 1
-        text = string.join (map(format, strip), '')
-        if not self.strip_map.has_key(text):
+        self.pool_refs += 1
+        text = ''.join(map(format, strip))
+        if text not in self.strip_map:
             self.strip_map[text] = self.pool_size
             self.pool_size = self.pool_size + self.STRIP_SIZE
             self.strips.append(text)
@@ -1111,11 +1114,11 @@ class Strips(Options):
                   '    return false;\n'
                   % (count, self.declare_charset[0]))
             del self.declare_charset[0]
-            count = count + 1
+            count += 1
         write('\n')
         while self.declare_alias:
             alias, charset = self.declare_alias[0]
-            if self.implied_surface.has_key(alias):
+            if alias in self.implied_surface:
                 write('  if (alias = declare_alias (outer, "%s", "%s"),'
                       ' !alias)\n'
                       '    return false;\n'
@@ -1156,15 +1159,15 @@ class Strips(Options):
                 else:
                     write(', ')
                 write('0x' + strip[pos:pos+4])
-                count = count + 1
+                count += 1
         write('\n'
               '  };\n')
 
     def complete_texinfo(self, french):
         if french:
-            write = Output('fr-%s' % self.TEXINFO, noheader=1).write
+            write = Output('fr-%s' % self.TEXINFO, noheader=True).write
         else:
-            write = Output(self.TEXINFO, noheader=1).write
+            write = Output(self.TEXINFO, noheader=True).write
         charsets = self.remark_map.keys()
         charsets.sort()
         for charset in charsets:
@@ -1186,12 +1189,11 @@ class Strips(Options):
                               % re.sub(':([0-9]+)', r'(\1)', alias))
                     write('@code{%s} and @code{%s} are aliases'
                           ' for this charset.\n'
-                          % (string.join(aliases[:-1], '}, @code{'),
-                             aliases[-1]))
+                          % ('}, @code{'.join(aliases[:-1]), aliases[-1]))
             for line in self.remark_map[charset]:
-                if line[0] in string.lowercase:
-                    line = string.upper(line[0]) + line[1:]
-                write(string.replace(line, '@', '@@'))
+                if line[0].islower():
+                    line = line[0].upper() + line[1:]
+                write(line.replace('@', '@@'))
                 if line[-1] != '.':
                     write('.')
                 write('\n')
@@ -1202,13 +1204,13 @@ class Input:
 
     def __init__(self, name):
         self.name = name
-        self.input = open(name)
+        self.input = file(name)
         self.line_count = 0
         sys.stderr.write("Reading %s\n" % name)
 
     def readline(self):
         self.line = self.input.readline()
-        self.line_count = self.line_count + 1
+        self.line_count += 1
         return self.line
 
     def warn(self, format, *args):
@@ -1231,17 +1233,17 @@ class Input:
 
 class Output:
 
-    def __init__(self, name, noheader=0):
+    def __init__(self, name, noheader=False):
         self.name = name
-        self.write = open(name, 'w').write
+        self.write = file(name, 'w').write
         sys.stderr.write("Writing %s\n" % name)
         if not noheader:
             self.write("""\
 /* DO NOT MODIFY THIS FILE!  It was generated by `recode/doc/tables.py'.  */
 
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1999 Free Software Foundation, Inc.
-   Contributed by François Pinard <pinard@iro.umontreal.ca>, 1993, 1997.
+   Copyright Â© 1999 Free Software Foundation, Inc.
+   Contributed by FranÃ§ois Pinard <pinard@iro.umontreal.ca>, 1993, 1997.
 
    This library is free software; you can redistribute it and/or
    modify it under the terms of the GNU Lesser General Public License
@@ -1260,4 +1262,4 @@ class Output:
 """)
 
 if __name__ == '__main__':
-    apply(main, tuple(sys.argv[1:]))
+    main(*sys.argv[1:])
