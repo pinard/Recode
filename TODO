@@ -35,6 +35,9 @@ Significant contributions require written assignments and disclaimers.
 .  - Unicode/W3C short-comings
 .   : Lithuanian
 
+.* Linus
+. @ ~/méthodes/rtf/
+
 .* Particular notes
 
 . + feuille Tamil
@@ -53,6 +56,7 @@ Significant contributions require written assignments and disclaimers.
 . + Support VT320 support and related character sets.  (Alain Simon)
 . + Support @code{[nt]roff} diacritics.
 . + Support Universite de Montreal ``accent'' convention.
+. @ ~/entretien/codes/mule/courriel/
 
 .* Surfaces
 . + Implement some invbits over 8, 7 or 6 bits, maybe more.

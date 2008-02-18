@@ -98,7 +98,10 @@
 2001-12-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	Get Autoconf 2.14a, Automake 1.4 and Libtool 1.3.5 working together.
-	* configure.in: Use AC_PROG_CC_STDC between AC_MINIX and AC_C_CONST.
+	* configure.in: Use AC_PROG_CC_STDC between AC_MINIX and AC_C_CONST,
+	so patched Autoconf 2.14 is happy.
+	* ltconfig, ltmain.sh: From Libtool 1.3.5.
+	* config.guess, config.sub: From Automake 1.4.
 
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 
