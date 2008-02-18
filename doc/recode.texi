@@ -826,13 +826,31 @@ Strings @var{before} and @var{after} are cleaned before being used according
 to the syntax of @var{language}.
 
 Even if @code{recode} tries its best, this option does not always succeed in
-producing the requested source table.  It will however, provided the recoding
+producing the requested source table, it then prints @samp{Recoding is too
+complex for a mere table}.  It will succeed however, provided the recoding
 can be internally represented by only one step after the optimisation phase,
 and if this merged step conveys a one-to-one or a one-to-many explicit
 table.  Also, when attempting to produce sources tables, @code{recode}
 relaxes its checking a tiny bit: it ignores the algorithmic part of some
 tabular recodings, it also avoids the processing of implied surfaces.
 But this is all fairly technical.  Better try and see!
+
+Most tables are produced using decimal numbers to refer to character
+values@footnote{The author of @code{recode} by far prefer expressing numbers
+in decimal than octal or hexadecimal, as he considers that the current
+state of technology should not force users anymore in such strange things.
+But Unicode people see things differently, to the point @code{recode}
+cannot escape being tainted with some hexadecimal.}.  Yet, users who know
+all @code{recode} tricks and stunts could indeed force octal or hexadecimal
+output for the table contents.  For example:
+
+@example
+recode ibm297/test8..cp1252/x < /dev/null
+@end example
+
+@noindent
+produces a sequence of hexadecimal values which represent a conversion
+table from @code{IBM297} to @code{CP1252}.
 
 Beware that other options might affect the produced source tables, these
 are: @samp{-d}, @samp{-g} and, particularly, @samp{-s}.
