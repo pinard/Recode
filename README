@@ -80,15 +80,14 @@ and development for Recode, do just as above, but this time, use::
 
     subscribe recode-forum
 
-Look into http://recode%(bpi)s/ for various releases, pretests, the
-current backlog of reports, and related files.  In particular, button
-``Browse`` gives access to a weekly mirror of the current unpackaged
-work files, while button ``Folders`` gives access to saved or pending
-correspondence.
+Look into http://recode%(bpi)s/ for releases or pretests, and related
+files.  In particular, button ``Browse`` gives access to a weekly mirror
+of the current unpackaged work files, while button ``Folders`` gives
+access to saved or pending correspondence.
 
-However, please *do not* widely redistribute releases having a letter
-after the version numbers, as these are meant for pretesting only, and
-might not be stable enough for other usages.
+Please *do not* widely redistribute releases having a letter after the
+version numbers, as these are meant for pretesting only, and might not
+be stable enough for other usages.
 
 Development plan
 ----------------
@@ -117,7 +116,7 @@ Getting your own copy
 
 The canonical distribution point for this version is:
 
-  http://recode%(bpi)s/archives/recode-3.6.tar.gz
+  http://recode%(bpi)s/archives/recode.tar.gz
 
 GNU mirrors usually hold a copy of non-pretest releases, the canonical
 distribution point for the last such release is:
@@ -143,6 +142,8 @@ these commands::
 
 Once you have an unpacked distribution, see files:
 
+  ===================  =======================================================
+  File name            Description
   ===================  =======================================================
   :file:`ABOUT-NLS`    how to customise this program to your language
   :file:`COPYING`      copying conditions for the program
@@ -178,27 +179,38 @@ and :file:`ABOUT-NLS`, a few extra options may be accepted after
 Maintenance tools
 -----------------
 
-For comprehensive modifications to Recode, you might need tools
-beyond those used in simple installations.  If not done already, get:
+For simple modifications to Recode, you should not need special tools
+beyond those usual for installing GNU packages.  However, if you modify
+any :file:`.l` source file, Python and Flex are both needed for remaking
+:file:`merged.c`.
 
-  ========  ===================================================================
-  autoconf  ftp://ftp.enst.fr/pub/unix/a2ps/autoconf-2.14a.tar.gz
-  automake  ftp://sourceware.cygnus.com/pub/automake/automake-1.4.tar.gz
-  flex      ftp://ftp.gnu.org/pub/gnu/flex/flex-2.5.4a.tar.gz
-  gettext   ftp://ftp.cygnus.com/pub/home/drepper/gettext-0.10.35.tar.gz
-  help2man  http://www.ozemail.com.au/~bod/help2man-1.020.tar.gz
-  libtool   http://www.oranda.demon.co.uk/dist/libtool-1.3.4.tar.gz
-  m4        ftp://ftp.seindal.dk/pub/rene/gnu/m4-1.4n.tar.gz
-  perl      ftp://ftp.gnu.org/pub/gnu/perl/perl-5.005.03.tar.gz
-  python    ftp://ftp.python.org/pub/python/src/py152.tgz
-  tar       ftp://ftp.gnu.org/pub/gnu/tar/tar-1.12.tar.gz
-  ========  ===================================================================
+For more comprehensive modifications, you might need more tools.  If not
+done already, make sure you have a copy of the packages listed in the
+following table.  You may also choose to establish a link in your build
+:file:`doc/` directory, as explained within :file:`doc/Makemore`.
 
-Make sure GNU :code:`m4` is fully installed before you start installing
-Autoconf.  Have Perl installed before Automake and :code:`help2man`.
+  ================   ==========   ==========   =============
+  Package name       Current      Minimum      Install after
+  ================   ==========   ==========   =============
+  :code:`autoconf`   2.61         2.12         :code:`m4`
+  :code:`automake`   1.10         1.4          :code:`Perl`
+  :code:`Flex`       2.5.33       2.5.4a
+  :code:`gettext`    0.16         0.14.3
+  :code:`Help2man`   1.36         1.020        :code:`Perl`
+  :code:`libtool`    1.5.24       1.3.4
+  :code:`m4`         1.4.10       1.4n
+  :code:`Make`       3.81
+  :code:`Perl`       5.8.8        5.005.03
+  :code:`Python`     2.5.1        2.2
+  :code:`tar`        1.17         1.12
+  :code:`wget`       1.10.2
+  ================   ==========   ==========   =============
 
-Python 1.5 and Flex 2.5, or better, are needed for remaking
-:file:`merged.c`, after you modify an :file:`.l` source file.
+The *current* version numbers just happen to be those used for
+development, it is often likely that older versions would work just as
+well.  The *minimum* version numbers were once acceptable, they might
+not be anymore, this has not been verified; any updating information is
+welcome!
 
 Installation hints
 ------------------
