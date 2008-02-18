@@ -55,7 +55,7 @@ CHARSETS_DEF = $(KELD)/charsets.def
 
 RFC1345_TXT = $(KELD)/rfc1345.txt
 
-ENCODINGS_DEF = $(BRUNO)/encodings.def $(BRUNO)/encodings_local.def
+ENCODINGS_DEF = $(BRUNO)/encodings.def $(wildcard $(BRUNO)/encodings_*.def)
 
 NOMS_CARACS = $(ALAIN)/noms_juc_19981216.txt
 NOMS_CARACS = $(ALAIN)/NomsSeulsfinal.lst
