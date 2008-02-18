@@ -223,7 +223,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnits
 ACLOCAL_AMFLAGS = -I m4
-EXTRA_DIST = COPYING-LIB rebox.el recode.spec aclocal.sh
+EXTRA_DIST = COPYING-LIB recode.spec aclocal.sh
 SUBDIRS = m4 doc lib libiconv po src tests contrib
 all: config.h
 	$(MAKE) $(AM_MAKEFLAGS) all-recursive

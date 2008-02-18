@@ -719,14 +719,25 @@ are not meant to accompany actual file recodings.  These options are:
      LANGUAGE.
 
      Even if `recode' tries its best, this option does not always
-     succeed in producing the requested source table.  It will however,
-     provided the recoding can be internally represented by only one
-     step after the optimisation phase, and if this merged step conveys
-     a one-to-one or a one-to-many explicit table.  Also, when
-     attempting to produce sources tables, `recode' relaxes its
+     succeed in producing the requested source table, it then prints
+     `Recoding is too complex for a mere table'.  It will succeed
+     however, provided the recoding can be internally represented by
+     only one step after the optimisation phase, and if this merged
+     step conveys a one-to-one or a one-to-many explicit table.  Also,
+     when attempting to produce sources tables, `recode' relaxes its
      checking a tiny bit: it ignores the algorithmic part of some
      tabular recodings, it also avoids the processing of implied
      surfaces.  But this is all fairly technical.  Better try and see!
+
+     Most tables are produced using decimal numbers to refer to
+     character values(1).  Yet, users who know all `recode' tricks and
+     stunts could indeed force octal or hexadecimal output for the
+     table contents.  For example:
+
+          recode ibm297/test8..cp1252/x < /dev/null
+
+     produces a sequence of hexadecimal values which represent a
+     conversion table from `IBM297' to `CP1252'.
 
      Beware that other options might affect the produced source tables,
      these are: `-d', `-g' and, particularly, `-s'.
@@ -904,6 +915,14 @@ are not meant to accompany actual file recodings.  These options are:
      `CSA_Z243.4-1985-1' without being in `INVARIANT'.  The whole
      output might most probably be reduced and made more significant
      through a transitivity study.
+
+   ---------- Footnotes ----------
+
+   (1) The author of `recode' by far prefer expressing numbers in
+decimal than octal or hexadecimal, as he considers that the current
+state of technology should not force users anymore in such strange
+things.  But Unicode people see things differently, to the point
+`recode' cannot escape being tainted with some hexadecimal.
 
 
 File: recode.info,  Node: Recoding,  Next: Reversibility,  Prev: Listings,  Up: Invoking recode
@@ -5290,7 +5309,7 @@ Concept Index
 * charsets for CDC machines:             CDC.                 (line   6)
 * charsets, aliases:                     Requests.            (line  81)
 * charsets, chaining in a request:       Requests.            (line  23)
-* charsets, guessing:                    Listings.            (line  52)
+* charsets, guessing:                    Listings.            (line  63)
 * charsets, overview:                    Charset overview.    (line   6)
 * chset tools:                           Tabular.             (line   6)
 * codepages:                             IBM and MS.          (line   6)
@@ -5332,8 +5351,8 @@ Concept Index
 * file time stamps:                      Recoding.            (line  26)
 * filter operation:                      Synopsis.            (line  27)
 * force recoding:                        Reversibility.       (line  10)
-* French description of charsets:        Listings.            (line 187)
-* guessing charsets:                     Listings.            (line  52)
+* French description of charsets:        Listings.            (line 198)
+* guessing charsets:                     Listings.            (line  63)
 * Haible, Bruno:                         libiconv.            (line   6)
 * handling errors:                       Errors.              (line   6)
 * help page, printing:                   Listings.            (line  14)
@@ -5343,11 +5362,11 @@ Concept Index
 * IBM graphics characters:               Recoding.            (line  16)
 * iconv:                                 Design.              (line  98)
 * iconv library:                         libiconv.            (line   6)
-* identifying subsets in charsets:       Listings.            (line 199)
+* identifying subsets in charsets:       Listings.            (line 210)
 * ignore charsets:                       Recoding.            (line  60)
 * implied surfaces:                      Requests.            (line  70)
 * impossible conversions:                Charset overview.    (line  32)
-* information about charsets:            Listings.            (line 142)
+* information about charsets:            Listings.            (line 153)
 * initialisation functions, outer:       Outer level.         (line  84)
 * initialisation functions, request:     Request level.       (line  42)
 * initialisation functions, task:        Task level.          (line  52)
@@ -5367,7 +5386,7 @@ Concept Index
 * letter case, in charset and surface names: Requests.        (line  94)
 * libiconv:                              libiconv.            (line   6)
 * library, iconv:                        libiconv.            (line   6)
-* listing charsets:                      Listings.            (line 142)
+* listing charsets:                      Listings.            (line 153)
 * Macintosh charset:                     Apple-Mac.           (line   6)
 * map filling:                           Reversibility.       (line  98)
 * map filling, disable:                  Reversibility.       (line  49)
@@ -5425,7 +5444,7 @@ Concept Index
 * strict operation:                      Reversibility.       (line  49)
 * string and comments conversion:        Mixed.               (line  39)
 * structural surfaces:                   Surfaces.            (line  36)
-* subsets in charsets:                   Listings.            (line 199)
+* subsets in charsets:                   Listings.            (line 210)
 * super-charsets:                        Mule.                (line   6)
 * supported programming languages:       Listings.            (line  26)
 * suppressing diagnostic messages:       Reversibility.       (line  37)
@@ -5450,7 +5469,7 @@ Concept Index
 * tutorial:                              Tutorial.            (line   6)
 * unavailable conversions:               Charset overview.    (line  32)
 * Unicode:                               UCS-2.               (line   6)
-* unknown charsets:                      Listings.            (line  52)
+* unknown charsets:                      Listings.            (line  63)
 * unreachable charsets:                  Charset overview.    (line  32)
 * untranslatable input, error message:   Errors.              (line  50)
 * valid characters in charset names:     Requests.            (line  10)
@@ -5476,14 +5495,14 @@ This is an alphabetical list of all command-line options accepted by
 * --colons:                              Recoding.            (line  11)
 * --copyright:                           Listings.            (line  19)
 * --diacritics:                          Mixed.               (line  20)
-* --find-subsets:                        Listings.            (line 199)
+* --find-subsets:                        Listings.            (line 210)
 * --force:                               Reversibility.       (line  10)
 * --graphics:                            Recoding.            (line  16)
 * --header:                              Listings.            (line  26)
 * --help:                                Listings.            (line  14)
 * --ignore:                              Recoding.            (line  60)
-* --known=:                              Listings.            (line  52)
-* --list:                                Listings.            (line 142)
+* --known=:                              Listings.            (line  63)
+* --list:                                Listings.            (line 153)
 * --quiet:                               Reversibility.       (line  37)
 * --sequence:                            Sequencing.          (line  23)
 * --silent:                              Reversibility.       (line  37)
@@ -5499,14 +5518,14 @@ This is an alphabetical list of all command-line options accepted by
 * -g:                                    Recoding.            (line  16)
 * -h:                                    Listings.            (line  26)
 * -i:                                    Sequencing.          (line  29)
-* -k:                                    Listings.            (line  52)
-* -l:                                    Listings.            (line 142)
+* -k:                                    Listings.            (line  63)
+* -l:                                    Listings.            (line 153)
 * -p:                                    Sequencing.          (line  40)
 * -q:                                    Reversibility.       (line  37)
 * -S:                                    Mixed.               (line  39)
 * -s:                                    Reversibility.       (line  49)
 * -t:                                    Recoding.            (line  26)
-* -T:                                    Listings.            (line 199)
+* -T:                                    Listings.            (line 210)
 * -v:                                    Recoding.            (line  35)
 * -x:                                    Recoding.            (line  60)
 
@@ -5534,8 +5553,8 @@ and variables in the `recode' library.
 * file_one_to_many:                      New charsets.        (line  71)
 * file_one_to_one:                       New charsets.        (line  59)
 * find_charset:                          Charset level.       (line  15)
-* LANG, when listing charsets:           Listings.            (line 187)
-* LANGUAGE, when listing charsets:       Listings.            (line 187)
+* LANG, when listing charsets:           Listings.            (line 198)
+* LANGUAGE, when listing charsets:       Listings.            (line 198)
 * list_all_charsets:                     Charset level.       (line  15)
 * list_concise_charset:                  Charset level.       (line  15)
 * list_full_charset:                     Charset level.       (line  15)
