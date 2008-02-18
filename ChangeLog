@@ -1,3 +1,7 @@
+2008-02-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* acconfig.h: Deleted.
+
 2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* README: Do not mention AC-PATCHES anymore.
