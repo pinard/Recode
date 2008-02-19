@@ -23,6 +23,13 @@
 	* Makefile.am: Replace lib_LTLIBRARIES by noinst_LIBRARIES.
 	Replace librecode.la by libcode.a and librecode_la by librecode_a.
 
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* task.c (perform_pass_sequence): Call recode_if_nogo before
+	returning false.  Otherwise task->error_at_step is not set, and
+	main() dumps core.
+	Reported by David Necas, Konstantin Osipov and Stephen Grecni.
+
 2001-01-22  Bruno Haible  <haible@clisp.cons.org>
 
 	* hash.c: Avoid use of undefined macros HAVE_DECL_MALLOC/FREE.
