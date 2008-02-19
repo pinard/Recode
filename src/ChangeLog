@@ -67,6 +67,11 @@
 	* iconv.c (iconv_open): Strip off //TRANSLIT suffix from names.
 	  Set transliteration on if and only if tocode ends in //TRANSLIT.
 
+2000-11-04  Alexandre Duret-Lutz  <duret_g@epita.fr>
+
+	* hash.c (hash_get_next): Fix a thinko: when ENTRY is the last one
+	in a bucket, advance to the next bucket.
+
 2000-10-24  Bruno Haible  <haible@clisp.cons.org>
 
 	* xmalloc.c, xalloc.h: Move here from lib/.
@@ -96,7 +101,7 @@
 2000-08-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c (transform_ucs2_html): Correctly encode decimal values.
-	Reported by Daniel Taupin.
+	Reported by Ben Sittler and Daniel Taupin.
 
 2000-07-01  François Pinard  <pinard@iro.umontreal.ca>
 
@@ -182,6 +187,13 @@
 	* ucs.c (get_ucs2): Add superfluous parentheses.
 	* utf16.c (transform_utf16_ucs4): Add superfluous braces.
 	Reported by Bruno Haible.
+
+2000-05-18  Jim Meyering  <meyering@lucent.com>
+
+	* hash.c (hash_rehash): Fix a nasty bug: copy the free entry list
+	back, too, since it may have been modified by allocate_entry.
+	(hash_delete): Rewrite to use neither the assignment operator nor the
+	comma operator in an if-expression.
 
 2000-05-08  François Pinard  <pinard@iro.umontreal.ca>
 
