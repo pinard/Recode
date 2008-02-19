@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00,01 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This library is free software; you can redistribute it and/or
@@ -1073,14 +1073,13 @@ guarantee_nul_terminator (RECODE_TASK task)
   if (task->output.cursor + 4 >= task->output.limit)
     {
       RECODE_OUTER outer = task->request->outer;
-      size_t old_size = task->output.limit - task->output.buffer;
-      size_t new_size = task->output.cursor + 4 - task->output.buffer;
+      size_t size = task->output.cursor + 4 - task->output.buffer;
 
       /* FIXME: Rethink about how the error should be reported.  */
-      if (REALLOC (task->output.buffer, new_size, char))
+      if (REALLOC (task->output.buffer, size, char))
 	{
-	  task->output.cursor = task->output.buffer + old_size;
-	  task->output.limit = task->output.buffer + new_size;
+	  task->output.cursor = task->output.buffer + size - 4;
+	  task->output.limit = task->output.buffer + size;
 	}
     }
   task->output.cursor[0] = NUL;
