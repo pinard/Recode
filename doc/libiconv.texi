@@ -615,11 +615,5 @@
 @tindex csISO2022KR
 @tindex ISO2022KR
 @code{csISO2022KR} and @code{ISO2022KR} are aliases for this charset.
-
-@item CHAR
-@tindex CHAR
-
-@item WCHAR_T
-@tindex WCHAR_T
 @end table
 @end itemize

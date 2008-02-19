@@ -24,14 +24,14 @@
 /* Internal typedefs, to supplement those in "recode.h".  */
 
 typedef struct recode_symbol *			RECODE_SYMBOL;
-typedef struct recode_option_list * 		RECODE_OPTION_LIST;
+typedef struct recode_option_list *		RECODE_OPTION_LIST;
 typedef struct recode_single *			RECODE_SINGLE;
 typedef struct recode_step *			RECODE_STEP;
 typedef struct recode_alias *			RECODE_ALIAS;
 typedef struct recode_subtask *			RECODE_SUBTASK;
 
 typedef const struct recode_option_list *	RECODE_CONST_OPTION_LIST;
-typedef const struct recode_outer * 		RECODE_CONST_OUTER;
+typedef const struct recode_outer *		RECODE_CONST_OUTER;
 typedef const struct recode_step *		RECODE_CONST_STEP;
 typedef const struct recode_alias *		RECODE_CONST_ALIAS;
 typedef const struct recode_task *		RECODE_CONST_TASK;
@@ -685,7 +685,7 @@ bool transform_byte_to_variable PARAMS ((RECODE_SUBTASK));
    equivalent.  It is not used for ill-formed characters, however.  */
 #define REPLACEMENT_CHARACTER 0xFFFD
 
-/* Device for detetcing if bytes are swapped.  This value should appear first
+/* Device for detecting if bytes are swapped.  This value should appear first
    in UCS-2 files.  */
 #define BYTE_ORDER_MARK 0xFEFF
 #define BYTE_ORDER_MARK_SWAPPED 0xFFFE
