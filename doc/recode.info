@@ -29,7 +29,7 @@ translation approved by the Foundation.
 
 Indirect:
 recode.info-1: 1138
-recode.info-2: 244475
+recode.info-2: 244436
 
 Tag Table:
 (Indirect)
@@ -75,54 +75,54 @@ Node: UTF-16108566
 Node: count-characters109716
 Node: dump-with-names110389
 Node: libiconv112942
-Node: Tabular124526
-Node: ASCII misc146792
-Node: ASCII147158
-Node: ISO 8859147979
-Node: ASCII-BS150278
-Node: flat152117
-Node: IBM and MS152790
-Node: EBCDIC153363
-Node: IBM-PC155477
-Ref: IBM-PC-Footnote-1157599
-Node: Icon-QNX157757
-Node: CDC158184
-Node: Display Code159888
-Ref: Display Code-Footnote-1162172
-Node: CDC-NOS162377
-Node: Bang-Bang164341
-Node: Micros166272
-Node: Apple-Mac166657
-Node: AtariST168713
-Node: Miscellaneous169703
-Node: HTML170440
-Node: LaTeX176468
-Node: Texinfo177244
-Node: Vietnamese178024
-Node: African179004
-Node: Others180360
-Node: Texte181818
-Ref: Texte-Footnote-1186373
-Ref: Texte-Footnote-2186453
-Ref: Texte-Footnote-3186928
-Node: Mule187025
-Ref: Mule-Footnote-1188812
-Node: Surfaces189331
-Ref: Surfaces-Footnote-1192319
-Node: Permutations192425
-Node: End lines193270
-Node: MIME195477
-Node: Dump196668
-Node: Test200862
-Node: Internals203342
-Node: Main flow204581
-Node: New charsets207701
-Node: New surfaces212244
-Node: Design212972
-Ref: Design-Footnote-1222198
-Node: Concept Index222302
-Node: Option Index237045
-Node: Library Index239898
-Node: Charset and Surface Index244475
+Node: Tabular124499
+Node: ASCII misc146765
+Node: ASCII147131
+Node: ISO 8859147951
+Node: ASCII-BS150249
+Node: flat152088
+Node: IBM and MS152761
+Node: EBCDIC153334
+Node: IBM-PC155448
+Ref: IBM-PC-Footnote-1157570
+Node: Icon-QNX157729
+Node: CDC158156
+Node: Display Code159860
+Ref: Display Code-Footnote-1162144
+Node: CDC-NOS162349
+Node: Bang-Bang164313
+Node: Micros166244
+Node: Apple-Mac166629
+Node: AtariST168685
+Node: Miscellaneous169675
+Node: HTML170412
+Node: LaTeX176440
+Node: Texinfo177216
+Node: Vietnamese177996
+Node: African178976
+Node: Others180332
+Node: Texte181790
+Ref: Texte-Footnote-1186345
+Ref: Texte-Footnote-2186425
+Ref: Texte-Footnote-3186900
+Node: Mule186997
+Ref: Mule-Footnote-1188784
+Node: Surfaces189303
+Ref: Surfaces-Footnote-1192291
+Node: Permutations192397
+Node: End lines193242
+Node: MIME195449
+Node: Dump196640
+Node: Test200834
+Node: Internals203314
+Node: Main flow204553
+Node: New charsets207673
+Node: New surfaces212216
+Node: Design212944
+Ref: Design-Footnote-1222159
+Node: Concept Index222263
+Node: Option Index237006
+Node: Library Index239859
+Node: Charset and Surface Index244436
 
 End Tag Table

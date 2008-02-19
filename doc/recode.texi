@@ -3131,7 +3131,7 @@ implemented in some future version, however.
 @tindex iso-ir-6
 @tindex us
 This charset is available in @code{recode} under the name @code{ASCII}.
-In fact, it's true name is @code{ANSI_X3.4-1968} as per @w{RFC 1345},
+In fact, its true name is @code{ANSI_X3.4-1968} as per @w{RFC 1345},
 accepted aliases being @code{ANSI_X3.4-1986}, @code{ASCII},
 @code{IBM367}, @code{ISO646-US}, @code{ISO_646.irv:1991},
 @code{US-ASCII}, @code{cp367}, @code{iso-ir-6} and @code{us}.  The
@@ -3187,7 +3187,7 @@ Latin-Hebrew alphabet (right half Hebrew + symbols - proposed).
 
 @tindex Latin-1
 The ISO Latin Alphabet 1 is available as a charset in @code{recode} under
-the name @code{Latin-1}.  In fact, it's true name is @code{ISO_8859-1:1987}
+the name @code{Latin-1}.  In fact, its true name is @code{ISO_8859-1:1987}
 as per @w{RFC 1345}, accepted aliases being @code{CP819}, @code{IBM819},
 @code{ISO-8859-1}, @code{ISO_8859-1}, @code{iso-ir-100}, @code{l1}
 and @code{Latin-1}.  The shortest way of specifying it in @code{recode}
@@ -3381,7 +3381,7 @@ recode pc/..l2 < @var{input} > @var{output}
 @w{RFC 1345} brings into @code{recode} 44 @samp{IBM} charsets or code pages,
 and also 8 other code pages.  You can get a list of these all these by
 executing:@footnote{On DOS/Windows, stock shells do not know that apostrophes
-quote special characters like @kbd{|}, so one need to use double quotes
+quote special characters like @kbd{|}, so one needs to use double quotes
 instead of apostrophes.}
 
 @example
@@ -4868,11 +4868,11 @@ When long sequences of decodings, stepwise recodings, and re-encodings
 are involved, as it happens in true life, synchronising the input buffer
 back to where it should have stopped, when the output buffer becomes full,
 is a difficult problem.  Oh, we could make it simpler at the expense of
-loosing space or speed: by inserting markers between each input character
+losing space or speed: by inserting markers between each input character
 and counting them at the output end; by processing only one character in a
 time through the whole sequence; by repeatedly attempting to recode various
 subsets of the input buffer, binary searching on their length until the
-output just fits.  The overhead of such solutions looks fully prohibitive
+output just fits.  The overhead of such solutions looks prohibitive
 to me, and the gain very minimal.  I do not see a real advantage, nowadays,
 imposing a fixed length to an output buffer.  It makes things so much
 simpler and efficient to just let the output buffer size float a bit.
@@ -4893,7 +4893,7 @@ always has to wrap @code{iconv} into something more refined, extending it
 for real cases.  From past experience, I think it is unduly hard to fully
 implement this scheme.  It would be awkward that we do contortions for
 the sole purpose of implementing exactly its specification, without real,
-fairly sounded reasons (other then the fact some people once thought it
+properly grounded reasons (other then the fact some people once thought it
 was worth standardising).  It is much better to immediately aim for the
 refinement we need, without uselessly forcing us into the dubious detour
 @code{iconv} represents.
@@ -4910,7 +4910,7 @@ the @code{recode} library, whatever its form, would not like to have such
 arbitrary limitations.  In the long run, we should not have to explain
 to our users that some recodings may not be made available just because
 they do not fit the simple model we had in mind when we did it.  Instead,
-we should try to stay opened to the difficulties of real life.  There is
+we should try to stay open to the difficulties of real life.  There is
 still a lot of complex needs for Asian people, say, that @code{recode}
 does not currently address, while it should.  Not only the doors should
 stay open, but we should force them wider!

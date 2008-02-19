@@ -1,3 +1,8 @@
+2008-02-19  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: English corrections.
+	Reported by Reuben Thomas.
+
 2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* mdate-sh, texinfo.tex: Modified by Automake 1.10.
