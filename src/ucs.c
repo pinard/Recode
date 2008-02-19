@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1996, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright © 1996-1999, 2000-2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1996.
 
    This library is free software; you can redistribute it and/or
@@ -613,7 +613,11 @@ module_ucs (RECODE_OUTER outer)
     && declare_alias (outer, "u4", "ISO-10646-UCS-4")
 
     && declare_alias (outer, "UCS-2", "ISO-10646-UCS-2")
+#if 0
+    /* This is wrong.  "UNICODE-1-1" is explicitly defined as big-endian,
+       and must not carry a byte order mark.  */
     && declare_alias (outer, "UNICODE-1-1", "ISO-10646-UCS-2") /* RFC1641 */
+#endif
     && declare_alias (outer, "BMP", "ISO-10646-UCS-2")
     && declare_alias (outer, "u2", "ISO-10646-UCS-2")
     && declare_alias (outer, "rune", "ISO-10646-UCS-2")

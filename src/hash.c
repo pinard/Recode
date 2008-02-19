@@ -258,7 +258,7 @@ hash_get_first (const Hash_table *table)
 
 /* Return the user data for the entry following ENTRY, where ENTRY has been
    returned by a previous call to either `hash_get_first' or `hash_get_next'.
-   Return NULL if there is no more entries.  */
+   Return NULL if there are no more entries.  */
 
 void *
 hash_get_next (const Hash_table *table, const void *entry)
@@ -275,7 +275,7 @@ hash_get_next (const Hash_table *table, const void *entry)
       return cursor->next->data;
 
   /* Find first entry in any subsequent bucket.  */
-  for (; bucket < table->bucket_limit; bucket++)
+  while (++bucket < table->bucket_limit)
     if (bucket->data)
       return bucket->data;
 
@@ -443,8 +443,8 @@ hash_reset_tuning (Hash_tuning *tuning)
 
 /* For the given hash TABLE, check the user supplied tuning structure for
    reasonable values, and return true if there is no gross error with it.
-   Otherwise, definitvely reset the TUNING field to some acceptable default in
-   the hash table (that is, the user loses the right of further modifying
+   Otherwise, definitively reset the TUNING field to some acceptable default
+   in the hash table (that is, the user loses the right of further modifying
    tuning arguments), and return false.  */
 
 static bool
@@ -714,7 +714,7 @@ hash_find_entry (Hash_table *table, const void *entry,
   if (bucket->data == NULL)
     return NULL;
 
-  /* Check if then entry is found as the bucket head.  */
+  /* See if the entry is the first in the bucket.  */
   if ((*table->comparator) (entry, bucket->data))
     {
       void *data = bucket->data;
@@ -845,6 +845,7 @@ hash_rehash (Hash_table *table, unsigned candidate)
   table->bucket_limit = new_table->bucket_limit;
   table->n_buckets = new_table->n_buckets;
   table->n_buckets_used = new_table->n_buckets_used;
+  table->free_entry_list = new_table->free_entry_list;
   /* table->n_entries already holds its value.  */
 #if USE_OBSTACK
   table->entry_stack = new_table->entry_stack;
@@ -934,7 +935,8 @@ hash_delete (Hash_table *table, const void *entry)
   void *data;
   struct hash_entry *bucket;
 
-  if (data = hash_find_entry (table, entry, &bucket, true), !data)
+  data = hash_find_entry (table, entry, &bucket, true);
+  if (!data)
     return NULL;
 
   table->n_entries--;

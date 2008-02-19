@@ -1,5 +1,5 @@
 # Main Makefile for GNU recode.
-# Copyright © 1992,93,94,95,96,97,98,99,00 Free Software Foundation, Inc.
+# Copyright © 1992-1999, 2000, 2001 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1992.
 
 # This program is free software; you can redistribute it and/or modify
@@ -23,15 +23,7 @@ ACLOCAL_AMFLAGS = -I m4
 
 BABYL = ../rmail/* ../*/rmail/* ../*/*/RMAIL ../*/*/rmail/*
 EXTRA_DIST = COPYING-LIB PATCHES-AC rebox.el recode.spec aclocal.sh
-SUBDIRS = m4 doc lib libiconv i18n src tests contrib
-
-POTFILES = src/main.c src/names.c src/outer.c src/recode.c \
-src/request.c src/strip-data.c src/task.c src/testdump.c
-
-all-local: $(srcdir)/stamp-pot
-
-$(srcdir)/stamp-pot: $(POTFILES)
-	@echo "$(POTFILES)" > $@
+SUBDIRS = m4 doc intl lib libiconv src po tests contrib
 
 install-stow:
 	$(MAKE) install \

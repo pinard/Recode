@@ -1,5 +1,5 @@
 # Makefile for `recode' sources.
-# Copyright © 1991,92,93,94,95,96,97,98,99, 00 Free Software Foundation, Inc.
+# Copyright © 1991-1999, 2000-2001 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
@@ -17,16 +17,19 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
+localedir = $(datadir)/locale
+
 AUTOMAKE_OPTIONS = gnits ansi2knr
 bin_PROGRAMS = recode
+noinst_PROGRAMS = table-from table-to
 lib_LTLIBRARIES = librecode.la
 man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
-noinst_HEADERS = argmatch.h charname.h common.h decsteps.h \
+noinst_HEADERS = argmatch.h charname.h common.h decsteps.h endline.h error.h \
 fr-charname.h hash.h inisteps.h libiconv.h quotearg.h rfc1345.h	tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
-EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
+EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS) tables.sh
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
 ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
@@ -45,13 +48,19 @@ L_SURFACES =
 recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 
-librecode_la_SOURCES = argmatch.c charname.c combine.c fr-charname.c \
+librecode_la_SOURCES = argmatch.c charname.c combine.c error.c fr-charname.c \
 hash.c iconv.c libiconv.c localcharset.c merged.c names.c outer.c quotearg.c \
 recode.c request.c strip-pool.c task.c xmalloc.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
+table_from_SOURCES = table-from.c iconv.c
+table_from_LDADD = librecode.la ../lib/libreco.a
+
+table_to_SOURCES = table-to.c iconv.c
+table_to_LDADD = librecode.la ../lib/libreco.a
+
 INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
-DEFS = -DLIBDIR=\"$(libdir)\" @DEFS@
+DEFS = -DLIBDIR=\"$(libdir)\" -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 ETAGS_ARGS = $(L_STEPS)
 TAGS_DEPENDENCIES = $(L_STEPS)

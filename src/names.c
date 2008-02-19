@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1993, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright © 1993-1994, 1997-1999, 2000-2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1993.
 
    This library is free software; you can redistribute it and/or
@@ -171,7 +171,7 @@ disambiguate_name (RECODE_OUTER outer,
       case ALIAS_FIND_AS_CHARSET:
       case ALIAS_FIND_AS_EITHER:
 	name = getenv ("DEFAULT_CHARSET");
-	if (!name)
+	if (!name || !*name)
 	  name = "char"; /* locale dependent */
 	break;
 
@@ -242,6 +242,7 @@ find_alias (RECODE_OUTER outer, const char *name,
   RECODE_ALIAS alias;
   RECODE_SYMBOL symbol;
   enum recode_symbol_type type = RECODE_NO_SYMBOL_TYPE;
+  int i;
 
   switch (find_type)
     {
@@ -285,8 +286,11 @@ find_alias (RECODE_OUTER outer, const char *name,
   symbol->ignore = false;
   symbol->data_type = RECODE_NO_CHARSET_DATA;
   symbol->data = NULL;
-  symbol->resurfacer = NULL;
-  symbol->unsurfacer = NULL;
+  for (i = 0; i < RECODE_UNIT_MAX; i++)
+    symbol->resurfacer[i] = NULL;
+  for (i = 0; i < RECODE_UNIT_MAX; i++)
+    symbol->unsurfacer[i] = NULL;
+  symbol->minunit = RECODE_UNIT_1;
 
   if (!ALLOC (alias, 1, struct recode_alias))
     {

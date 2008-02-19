@@ -92,6 +92,20 @@ struct recode_alias
     struct recode_surface_list *implied_surfaces;
   };
 
+/* Stream unit of an encoding.  */
+
+enum recode_unit
+  {
+    RECODE_UNIT_1,		/* byte unit */
+    RECODE_UNIT_2,		/* two bytes, with byte order mark */
+    RECODE_UNIT_2BE,		/* two bytes, big endian */
+    RECODE_UNIT_2LE,		/* two bytes, little endian */
+    RECODE_UNIT_4,		/* four bytes, with byte order mark */
+    RECODE_UNIT_4BE,		/* four bytes, big endian */
+    RECODE_UNIT_4LE,		/* four bytes, little endian */
+    RECODE_UNIT_MAX
+  };
+
 /* The sole purpose of qualities is for later attributing step costs.  */
 
 enum recode_size
@@ -153,7 +167,8 @@ struct recode_outer
     const unsigned char *one_to_same;
 
     /* Preset charsets and surfaces.  */
-    RECODE_SYMBOL data_symbol;/* special charset defining surfaces */
+    RECODE_SYMBOL data_symbol; /* special charset for defining surfaces */
+    RECODE_SYMBOL unit_symbol[RECODE_UNIT_MAX]; /* for defining surfaces */
     RECODE_SYMBOL tree_symbol; /* special charset defining structures */
     RECODE_SYMBOL ucs2_charset; /* UCS-2 */
     RECODE_SYMBOL libiconv_pivot; /* `libiconv' internal UCS */
@@ -209,13 +224,16 @@ struct recode_symbol
     void *data;
 
     /* Step for data..CHARSET transformation, if any, or NULL.  */
-    struct recode_single *resurfacer;
+    struct recode_single *resurfacer[RECODE_UNIT_MAX];
 
     /* Step for CHARSET..data transformation, if any, or NULL.  */
-    struct recode_single *unsurfacer;
+    struct recode_single *unsurfacer[RECODE_UNIT_MAX];
 
     /* Non zero if this is an acceptable charset (not only a surface).  */
     enum recode_symbol_type type : 3;
+
+    /* Number of bytes per unit.  */
+    enum recode_unit minunit : 4;
 
     /* Non zero if this one should be ignored.  */
     bool ignore : 2;
@@ -591,6 +609,7 @@ enum alias_find_type
   SYMBOL_CREATE_CHARSET,	/* charset as given, create as needed */
   SYMBOL_CREATE_DATA_SURFACE,	/* data surface as given, create as needed */
   SYMBOL_CREATE_TREE_SURFACE,	/* tree surface as given, create as needed */
+  /* Note the following do argmatch like matching: FOO may match FOOBAR !!! */
   ALIAS_FIND_AS_CHARSET,	/* disambiguate only as a charset */
   ALIAS_FIND_AS_SURFACE,	/* disambiguate only as a surface */
   ALIAS_FIND_AS_EITHER		/* disambiguate as a charset or a surface */
@@ -685,7 +704,7 @@ bool transform_byte_to_variable PARAMS ((RECODE_SUBTASK));
    equivalent.  It is not used for ill-formed characters, however.  */
 #define REPLACEMENT_CHARACTER 0xFFFD
 
-/* Device for detetcing if bytes are swapped.  This value should appear first
+/* Device for detecting if bytes are swapped.  This value should appear first
    in UCS-2 files.  */
 #define BYTE_ORDER_MARK 0xFEFF
 #define BYTE_ORDER_MARK_SWAPPED 0xFFFE

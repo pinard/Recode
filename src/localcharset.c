@@ -1,6 +1,6 @@
 /* Determine a canonical name for the current locale's character encoding.
 
-   Copyright (C) 2000 Free Software Foundation, Inc.
+   Copyright (C) 2000-2001 Free Software Foundation, Inc.
 
    This program is free software; you can redistribute it and/or modify it
    under the terms of the GNU Library General Public License as published
@@ -69,16 +69,19 @@
    'charset_aliases' simultaneously, both will produce the same value,
    and everything will be ok if the two assignments to 'charset_aliases'
    are atomic. But I don't know what will happen if the two assignments mix.  */
+#if __STDC__ != 1
+# define volatile /* empty */
+#endif
 /* Pointer to the contents of the charset.alias file, if it has already been
    read, else NULL.  Its format is:
    ALIAS_1 '\0' CANONICAL_1 '\0' ... ALIAS_n '\0' CANONICAL_n '\0' '\0'  */
-static char * volatile charset_aliases;
+static const char * volatile charset_aliases;
 
 /* Return a pointer to the contents of the charset.alias file.  */
 static const char *
 get_charset_aliases ()
 {
-  char *cp;
+  const char *cp;
 
   cp = charset_aliases;
   if (cp == NULL)
@@ -191,7 +194,7 @@ get_charset_aliases ()
    into one of the canonical names listed in config.charset.
    The result must not be freed; it is statically allocated.
    If the canonical name cannot be determined, the result is a non-canonical
-   name or NULL.  */
+   name.  */
 
 #ifdef STATIC
 STATIC
@@ -211,10 +214,14 @@ locale_charset ()
 
 # else
 
-  /* On old systems which lack it, use setlocale and getenv.  */
+  /* On old systems which lack it, use setlocale or getenv.  */
   const char *locale = NULL;
 
-#  if HAVE_SETLOCALE
+  /* But most old systems don't have a complete set of locales.  Some
+     (like SunOS 4 or DJGPP) have only the C locale.  Therefore we don't
+     use setlocale here; it would return "C" when it doesn't support the
+     locale name the user has set.  */
+#  if HAVE_SETLOCALE && 0
   locale = setlocale (LC_CTYPE, NULL);
 #  endif
   if (locale == NULL || locale[0] == '\0')
@@ -245,18 +252,20 @@ locale_charset ()
 
 #endif
 
-  if (codeset != NULL && codeset[0] != '\0')
-    {
-      /* Resolve alias. */
-      for (aliases = get_charset_aliases ();
-	   *aliases != '\0';
-	   aliases += strlen (aliases) + 1, aliases += strlen (aliases) + 1)
-	if (!strcmp (codeset, aliases))
-	  {
-	    codeset = aliases + strlen (aliases) + 1;
-	    break;
-	  }
-    }
+  if (codeset == NULL)
+    /* The canonical name cannot be determined.  */
+    codeset = "";
+
+  /* Resolve alias. */
+  for (aliases = get_charset_aliases ();
+       *aliases != '\0';
+       aliases += strlen (aliases) + 1, aliases += strlen (aliases) + 1)
+    if (strcmp (codeset, aliases) == 0
+	|| (aliases[0] == '*' && aliases[1] == '\0'))
+      {
+	codeset = aliases + strlen (aliases) + 1;
+	break;
+      }
 
   return codeset;
 }

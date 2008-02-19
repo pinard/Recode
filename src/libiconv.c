@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1999, 2000 Free Software Foundation, Inc.
+   Copyright © 1999, 2000, 2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1999,
    and Bruno Haible <haible@clisp.cons.org>, 2000.
 
@@ -195,12 +195,17 @@ wrapped_transform (iconv_t conversion, iconv_t conversion_to_utf8,
 	 memcpy() doesn't do here, because the regions might overlap.
 	 memmove() isn't worth it, because we rarely have to move more
 	 than 12 bytes.  */
-      if (input > input_buffer && input_left > 0)
+      cursor = input_buffer;
+      if (input_left > 0)
 	{
-	  cursor = input_buffer;
-	  do
-	    *cursor++ = *input++;
-	  while (--input_left > 0);
+	  if (input > input_buffer)
+	    {
+	      do
+		*cursor++ = *input++;
+	      while (--input_left > 0);
+	    }
+	  else
+	    cursor += input_left;
 	}
     }
 
@@ -260,6 +265,10 @@ module_libiconv (RECODE_OUTER outer)
 	  RECODE_ALIAS alias
 	    = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
 
+	  /* We want exact matches, not approximate matches.  */
+	  if (alias && strcasecmp (alias->name, *cursor))
+	    alias = NULL;
+
 	  if (alias)
 	    {
 	      charset_name = alias->symbol->name;
@@ -271,6 +280,10 @@ module_libiconv (RECODE_OUTER outer)
       if (!declare_libiconv (outer, charset_name))
 	return false;
 
+#ifdef DEBUG
+      fprintf (stderr, "libiconv %s -> recode %s\n", *aliases, charset_name);
+#endif
+
       /* Declare all aliases, given they bring something we do not already
 	 know.  Even then, we still declare too many useless aliases, as the
 	 desambiguating tables are not recomputed as we go.  FIXME!  */
@@ -280,6 +293,10 @@ module_libiconv (RECODE_OUTER outer)
 	  RECODE_ALIAS alias
 	    = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
 
+	  /* We want exact matches, not approximate matches.  */
+	  if (alias && strcasecmp (alias->name, *cursor))
+	    alias = NULL;
+
 	  /* If there is a charset contradiction, call declare_alias
 	     nevertheless, as the error processing will occur there.  */
 	  if (!alias || alias->symbol->name != charset_name)
@@ -287,6 +304,82 @@ module_libiconv (RECODE_OUTER outer)
 	      return false;
 	}
     }
+
+  /* Declare unit size of the charsets.  This is used by the CR-LF surface.  */
+  {
+    static const char *names_unit_1[] = { NULL };
+    static const char *names_unit_2[] =
+    {
+      "UCS-2", "UTF-16", NULL
+    };
+    static const char *names_unit_2be[] =
+    {
+      "UCS-2BE", "UTF-16BE",
+#if WORDS_BIGENDIAN
+      "UCS-2-INTERNAL",
+#else
+      "UCS-2-SWAPPED",
+#endif
+      NULL
+    };
+    static const char *names_unit_2le[] =
+    {
+      "UCS-2LE", "UTF-16LE",
+#if WORDS_BIGENDIAN
+      "UCS-2-SWAPPED",
+#else
+      "UCS-2-INTERNAL",
+#endif
+      NULL
+    };
+    static const char *names_unit_4[] =
+    {
+      "UCS-4", "UTF-32", NULL
+    };
+    static const char *names_unit_4be[] =
+    {
+      "UCS-4BE", "UTF-32BE",
+#if WORDS_BIGENDIAN
+      "UCS-4-INTERNAL",
+#else
+      "UCS-4-SWAPPED",
+#endif
+      NULL
+    };
+    static const char *names_unit_4le[] =
+    {
+      "UCS-4LE", "UTF-32LE",
+#if WORDS_BIGENDIAN
+      "UCS-4-SWAPPED",
+#else
+      "UCS-4-INTERNAL",
+#endif
+      NULL
+    };
+    static const char **names_unit[RECODE_UNIT_MAX] =
+    {
+      /* RECODE_UNIT_1 */	names_unit_1,
+      /* RECODE_UNIT_2 */	names_unit_2,
+      /* RECODE_UNIT_2BE */	names_unit_2be,
+      /* RECODE_UNIT_2LE */	names_unit_2le,
+      /* RECODE_UNIT_4 */	names_unit_4,
+      /* RECODE_UNIT_4BE */	names_unit_4be,
+      /* RECODE_UNIT_4LE */	names_unit_4le
+    };
+    int i;
+
+    for (i = 0; i < RECODE_UNIT_MAX; i++)
+      for (cursor = names_unit[i]; *cursor; cursor++)
+	{
+	  RECODE_ALIAS alias =
+	    find_alias (outer, *cursor, SYMBOL_CREATE_CHARSET);
+
+	  if (!alias)
+	    return false;
+
+	  alias->symbol->minunit = i;
+	}
+  }
 
   return true;
 }

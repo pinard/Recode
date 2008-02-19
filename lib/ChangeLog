@@ -1,3 +1,19 @@
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* error.c, error.h: Move to src/.
+	* Makefile.am (noinst_HEADERS): Remove error.h.
+	(libreco_a_SOURCES): Remove error.c.
+	Reported by Dave Yearke <yearke@eng.buffalo.edu>.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* gettext.c: Remove file.
+	* gettext.h: Remove file.
+	* Makefile.am (noinst_HEADERS): Remove gettext.h.
+	(EXTRA_DIST): Remove gettext.c.
+	(localedir, aliaspath): Remove variables.
+	(gettext.o, gettext._o): Remove targets.
+
 2000-10-24  Bruno Haible  <haible@clisp.cons.org>
 
 	* xmalloc.c, xalloc.h: Move to src/.

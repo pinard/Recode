@@ -1,3 +1,53 @@
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in: Invoke AC_C_BIGENDIAN.
+
+2001-06-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* aclocal.sh: Tweak last patch for automake-1.4f.
+	* aclocal.sh: Don't fail if aclocal isn't available.
+
+2001-06-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* ltmain.sh: Upgrade to libtool-1.4.
+	* ltconfig: Remove file.
+	* acinclude.m4: Remove file.
+
+2001-06-27  Bruno Haible  <haible@clisp.cons.org>
+
+	* INSTALL (Particular Systems): Generalize section about /usr/local to
+	"most systems".
+
+2001-05-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* ABOUT-NLS: Update to gettext-0.10.38.
+
+2001-06-11  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in (ALL_LINGUAS): Add ru.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* INSTALL: New section "Particular Systems".
+
+	* configure.in: Call AC_MBSTATE_T.
+
+	* configure.in (ALL_LINGUAS): Remove el.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* po/: Renamed from i18n/.
+	* intl/: New directory, installed from gettext-0.10.36.
+	* ABOUT-NLS: Update to gettext-0.10.36.
+	* Makefile.am (SUBDIRS): Remove i18n, add intl and po.
+	(POTFILES): Remove variable.
+	(all-local, stamp-pot): Remove targets.
+	* stamp-pot: Remove file.
+	* configure.in: Require autoconf-2.13. Bump version number.
+	Call AM_LANGINFO_CODESET instead of jm_LANGINFO_CODESET.
+	Call AM_GNU_GETTEXT instead of fp_WITH_GETTEXT.
+	(AC_OUTPUT): Remove i18n/Makefile, add intl/Makefile, po/Makefile.in.
+
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 
 	* configure.in: Version 3.6.

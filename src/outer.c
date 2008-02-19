@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
+   Copyright © 1990,1992-94,1996-1999,2000-2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This library is free software; you can redistribute it and/or
@@ -68,6 +68,7 @@ declare_single (RECODE_OUTER outer,
 		Recode_init init_routine, Recode_transform transform_routine)
 {
   RECODE_SINGLE single = new_single_step (outer);
+  int i;
 
   if (!single)
     return NULL;
@@ -78,11 +79,95 @@ declare_single (RECODE_OUTER outer,
       single->after = find_alias (outer, after_name,
 				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
     }
-  else if (strcmp(after_name, "data") == 0)
+  else if (strcmp (after_name, "data") == 0)
     {
       single->before = find_alias (outer, before_name,
 				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
       single->after = outer->data_symbol;
+    }
+  else if (strcmp (before_name, "data1") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_1];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data1") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_1];
+    }
+  else if (strcmp (before_name, "data2") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_2];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data2") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_2];
+    }
+  else if (strcmp (before_name, "data2be") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_2BE];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data2be") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_2BE];
+    }
+  else if (strcmp (before_name, "data2le") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_2LE];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data2le") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_2LE];
+    }
+  else if (strcmp (before_name, "data4") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_4];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data4") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_4];
+    }
+  else if (strcmp (before_name, "data4be") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_4BE];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data4be") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_4BE];
+    }
+  else if (strcmp (before_name, "data4le") == 0)
+    {
+      single->before = outer->unit_symbol[RECODE_UNIT_4LE];
+      single->after = find_alias (outer, after_name,
+				  SYMBOL_CREATE_DATA_SURFACE)->symbol;
+    }
+  else if (strcmp (after_name, "data4le") == 0)
+    {
+      single->before = find_alias (outer, before_name,
+				   SYMBOL_CREATE_DATA_SURFACE)->symbol;
+      single->after = outer->unit_symbol[RECODE_UNIT_4LE];
     }
   else if (strcmp (before_name, "tree") == 0)
     {
@@ -90,7 +175,7 @@ declare_single (RECODE_OUTER outer,
       single->after = find_alias (outer, after_name,
 				  SYMBOL_CREATE_TREE_SURFACE)->symbol;
     }
-  else if (strcmp(after_name, "tree") == 0)
+  else if (strcmp (after_name, "tree") == 0)
     {
       single->before = find_alias (outer, before_name,
 				   SYMBOL_CREATE_TREE_SURFACE)->symbol;
@@ -118,21 +203,26 @@ declare_single (RECODE_OUTER outer,
   single->init_routine = init_routine;
   single->transform_routine = transform_routine;
 
-  if (single->before == outer->data_symbol
-      || single->before == outer->tree_symbol)
+  for (i = 0; i < RECODE_UNIT_MAX; i++)
     {
-      if (single->after->resurfacer)
-	recode_error (outer, _("Resurfacer set more than once for `%s'"),
-		      after_name);
-      single->after->resurfacer = single;
-    }
-  else if (single->after == outer->data_symbol
-	   || single->after == outer->tree_symbol)
-    {
-      if (single->before->unsurfacer)
-	recode_error (outer, _("Unsurfacer set more than once for `%s'"),
-		      before_name);
-      single->before->unsurfacer = single;
+      if (single->before == outer->data_symbol
+	  || single->before == outer->unit_symbol[i]
+	  || (i == RECODE_UNIT_1 && single->before == outer->tree_symbol))
+	{
+	  if (single->after->resurfacer[i])
+	    recode_error (outer, _("Resurfacer set more than once for `%s'"),
+			  after_name);
+	  single->after->resurfacer[i] = single;
+	}
+      else if (single->after == outer->data_symbol
+	       || single->after == outer->unit_symbol[i]
+	       || (i == RECODE_UNIT_1 && single->after == outer->tree_symbol))
+	{
+	  if (single->before->unsurfacer[i])
+	    recode_error (outer, _("Unsurfacer set more than once for `%s'"),
+			  before_name);
+	  single->before->unsurfacer[i] = single;
+	}
     }
 
   return single;
@@ -191,12 +281,10 @@ declare_libiconv (RECODE_OUTER outer, const char *name)
   RECODE_ALIAS alias;
   RECODE_SINGLE single;
 
-  if (alias = find_alias (outer, name, ALIAS_FIND_AS_EITHER),
+  if (alias = find_alias (outer, name, SYMBOL_CREATE_CHARSET),
       !alias)
-    if (alias = find_alias (outer, name, SYMBOL_CREATE_CHARSET),
-	!alias)
-      return false;
-  assert(alias->symbol->type == RECODE_CHARSET);
+    return false;
+  assert (alias->symbol->type == RECODE_CHARSET);
 
   if (single = new_single_step (outer), !single)
     return false;
@@ -457,6 +545,34 @@ register_all_modules (RECODE_OUTER outer)
   if (alias = find_alias (outer, "data", SYMBOL_CREATE_CHARSET), !alias)
     return false;
   outer->data_symbol = alias->symbol;
+
+  if (alias = find_alias (outer, "data1", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_1] = alias->symbol;
+
+  if (alias = find_alias (outer, "data2", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_2] = alias->symbol;
+
+  if (alias = find_alias (outer, "data2be", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_2BE] = alias->symbol;
+
+  if (alias = find_alias (outer, "data2le", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_2LE] = alias->symbol;
+
+  if (alias = find_alias (outer, "data4", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_4] = alias->symbol;
+
+  if (alias = find_alias (outer, "data4be", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_4BE] = alias->symbol;
+
+  if (alias = find_alias (outer, "data4le", SYMBOL_CREATE_CHARSET), !alias)
+    return false;
+  outer->unit_symbol[RECODE_UNIT_4LE] = alias->symbol;
 
   if (alias = find_alias (outer, "tree", SYMBOL_CREATE_CHARSET), !alias)
     return false;

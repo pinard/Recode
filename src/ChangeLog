@@ -1,3 +1,158 @@
+2002-09-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* next.c:
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* libiconv.h: Regenerated using ../doc/Makemore.
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* recodext.h (enum recode_unit): New type.
+	(struct recode_outer): Add unit_symbol field.
+	(struct recode_symbol): Change resurfacer, unsurfacer to arrays.
+	Add minunit field.
+	* outer.c (declare_single): Accept "data1", ..., "data4le" arguments
+	that designate a single unit only. Set the right resurfacer or
+	unsurfacer depending on the unit.
+	(register_all_modules): Allocate symbols for "data1", ..., "data4le".
+	* names.c (find_alias): Update.
+	* request.c (edit_sequence): Treat the unit_symbols like the
+	data_symbol.
+	(scan_unsurfacers): Add charset argument. Choose appropriate
+	unsurfacer.
+	(add_unsurfacers_to_sequence): Likewise.
+	(scan_charset): Choose appropriate resurfacer.
+	* libiconv.c (module_libiconv): Assign the right unit to UCS-2*,
+	UCS-4* and UTF-16* encodings.
+	* endline.h: New file.
+	* endline.c (OLD_EOF): Remove macro.
+	(transform_data1_cr): Renamed from transform_data_cr.
+	(transform_cr_data1): Renamed from transform_cr_data.
+	(transform_data1_crlf): Renamed from transform_data_crlf. Remove DOS
+	Ctrl-Z handling.
+	(transform_crlf_data1): Renamed from transform_crlf_data. Remove DOS
+	Ctrl-Z handling.
+	(get_ucs2be, put_ucs2be, get_ucs2le, put_ucs2le): New functions.
+	(transform_data2be_cr, transform_cr_data2be, transform_data2be_crlf,
+	transform_crlf_data2be, transform_data2le_cr, transform_cr_data2le,
+	transform_data2le_crlf, transform_crlf_data2le, transform_data2_cr,
+	transform_cr_data2, transform_data2_crlf, transform_crlf_data2): New
+	functions.
+	(get_ucs4be, put_ucs4be, get_ucs4le, put_ucs4le): New functions.
+	(transform_data4be_cr, transform_cr_data4be, transform_data4be_crlf,
+	transform_crlf_data4be, transform_data4le_cr, transform_cr_data4le,
+	transform_data4le_crlf, transform_crlf_data4le, transform_data4_cr,
+	transform_cr_data4, transform_data4_crlf, transform_crlf_data4): New
+	functions.
+	(module_endline): Register "CR" and "CR-LF" as surfaces for each of
+	the units.
+	* Makefile.am (noinst_HEADERS): Add endline.h.
+
+	* ucs.c (module_ucs): Don't register "UNICODE-1-1" alias.
+
+	* libiconv.c (module_libiconv): Ignore non-exact matches, like
+	"UNICODE-1-1" and "UNICODE-1-1-UTF-7".
+	* outer.c (declare_libiconv): Don't call inexact alias lookup.
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* request.c (scan_charset): Translate empty charset name to "char"
+	together with OS dependent implied surface.
+	* names.c (disambiguate_name): Treat empty environment variable value
+	like absent.
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* error.c, error.h: Move here from lib/.
+	* Makefile.am (noinst_HEADERS): Add error.h.
+	(librecode_la_SOURCES): Add error.c.
+	Reported by Dave Yearke <yearke@eng.buffalo.edu>.
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* task.c (perform_pass_sequence): Call recode_if_nogo before returning
+	false. Otherwise task->error_at_step is not set, and main() dumps core.
+
+2001-05-24  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Add an argument to the DEFENCODING macro.
+
+2001-04-30  Bruno Haible  <haible@clisp.cons.org>
+
+	Silence "gcc -Wall -Wwrite-strings" warnings.
+	* localcharset.c (charset_aliases): Change type to 'const char *'.
+	(get_charset_aliases): Change type of 'cp' to 'const char *'.
+
+2001-06-17  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Fix misapplied patch.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Always define USE_RECODE. Include encodings_recode.def.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* table-from.c: New file.
+	* table-to.c: New file.
+	* tables.sh: New file.
+	* Makefile.am (noinst_PROGRAMS): New variable.
+	(EXTRA_DIST): Add tables.sh.
+	(table_from_SOURCES, table_from_LDADD, table_to_SOURCES,
+	table_to_LDADD): New variables.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Always define USE_AIX, USE_OSF1, USE_DOS.
+	(sysdep_aliases): Never define.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* localcharset.c: Upgrade to libiconv-1.6.1.
+
+2001-03-05  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Define USE_OSF1 on OSF/1.
+	Include encodings_osf1.def and aliases_osf1.h.
+
+2001-02-24  Bruno Haible  <haible@clisp.cons.org>
+
+	* iconv.c: Define USE_DOS on DJGPP.
+	Include encodings_dos.def and aliases_dos.h.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* Makefile.am (localedir): New variable.
+	(DEFS): Define LOCALEDIR.
+
+2000-11-04  Alexandre Duret-Lutz  <duret_g@epita.fr>
+
+	* hash.c (hash_get_next): Fix a thinko:  when ENTRY is the last one
+	in a bucket, advance to the next bucket.
+
+2000-05-18  Jim Meyering  <meyering@lucent.com>
+
+	* hash.c (hash_rehash): Fix a nasty bug: copy the free entry list
+	back, too, since it may have been modified by allocate_entry.
+	(hash_delete): Rewrite to use neither the assignment operator nor the
+	comma operator in an if-expression.
+
+2001-03-08  Bruno Haible  <haible@clisp.cons.org>
+
+	* Updated to libiconv 1.6.
+
+	* localcharset.c (locale_charset): Don't return NULL.
+	* iconv.c (iconv_open): locale_charset() doesn't return NULL any more.
+
+	* localcharset.c (locale_charset): Don't use setlocale(LC_CTYPE,NULL).
+
+2001-03-08  Bruno Haible  <haible@clisp.cons.org>
+
+	* libiconv.c (wrapped_transform): In the shift_input loop, always
+	set 'cursor' even if input == input_buffer || input_left == 0.
+	Reported by Eric Bischoff <eric@caldera.de>.
+
 2001-01-22  Bruno Haible  <haible@clisp.cons.org>
 
 	* hash.c: Avoid use of undefined macros HAVE_DECL_MALLOC/FREE.

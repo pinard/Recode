@@ -1,3 +1,32 @@
+2001-06-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* libtool.m4: Upgrade to libtool-1.4.
+
+2001-05-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* gettext.m4 (AM_WITH_NLS): Look only for GNU msgfmt and GNU xgettext.
+	Set the variables to ":" if not found.
+	* progtest.m4 (AM_PATH_PROG_WITH_TEST): If not found, print "no", not
+	the default value.
+
+	* gettext.m4: Upgrade to gettext-0.10.38.
+	* glibc21.m4: Likewise.
+	* iconv.m4: Likewise.
+
+2001-03-25  Bruno Haible  <haible@clisp.cons.org>
+
+	* gettext.m4: Update to gettext-0.10.36.
+	* codeset.m4: Likewise.
+	* lcmessage.m4: Likewise.
+	* iconv.m4: New file, from gettext-0.10.36.
+	* isc-posix.m4: New file, from gettext-0.10.36.
+	* progtest.m4: New file, from gettext-0.10.36.
+
+	* mbstate_t.m4: New file, from textutils-2.0.10.
+
+	* Makefile.am (EXTRA_DIST): Add iconv.m4, isc-posix.m4, progtest.m4,
+	mbstate_t.m4.
+
 2001-01-03  Bruno Haible  <haible@clisp.cons.org>
 
 	* gettext.m4: Check for argz.h, limits.h, malloc.h, string.h,

@@ -1,5 +1,17 @@
 Free recode NEWS - User visible changes.	-*- outline -*- (allout)
-Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
+Copyright © 1993, 94, 96, 97, 98, 99, 00, 01 Free Software Foundation, Inc.
+
+* Version 3.7 - Bruno Haible, 2001-XX.
+
+.. New charsets (from libiconv)
+   CP437 (IBM437, 437, csPC8CodePage437), CP737, CP775 (IBM775, csPC775Baltic),
+   CP852 (IBM852, 852, csPCp852), CP853, CP855 (IBM855, 855, csIBM855), CP856,
+   CP857 (IBM857, 857, csIBM857), CP860 (IBM860, 860, csIBM860)
+   CP861 (IBM861, 861, CP-IS, csIBM861),
+   CP862 (IBM862, 862, csPC862LatinHebrew), CP863 (IBM863, 863, csIBM863),
+   CP864 (IBM864, csIBM864), CP865 (IBM865, 865, csIBM865),
+   CP869 (IBM869, 869, CP-GR, csIBM869), CP922, CP943, CP1046, CP1124, CP1129,
+   DEC-KANJI, DEC-HANYU, RISCOS-LATIN1
 
 * Version 3.6 - François Pinard, Bruno Haible, 2001-01.
 

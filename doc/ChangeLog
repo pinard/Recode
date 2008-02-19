@@ -1,3 +1,12 @@
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* libiconv.texi: Regenerated using Makemore.
+	* fr-libiconv.texi: Likewise.
+
+2001-07-01  Bruno Haible  <haible@clisp.cons.org>
+
+	* Makemore (ENCODINGS_DEF): Use all the encodings*.def files.
+
 2000-12-06  Bruno Haible  <haible@clisp.cons.org>
 
 	* Makefile.am (MAKEINFO): New definition, forcing English titles in
@@ -6,6 +15,11 @@
 	* recode.texi: Reformulate paragraphs mentioning DEFAULT_CHARSET.
 
 	* Makemore (ENCODINGS_DEF): Add encodings_local.def.
+
+2000-10-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Listings): Document how to produce hexadecimal
+	conversion tables.
 
 2000-08-30  Bruno Haible  <haible@clisp.cons.org>
 

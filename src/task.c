@@ -485,6 +485,9 @@ perform_pass_sequence (RECODE_TASK task)
 	 && task->error_so_far < task->abort_level;
        sequence_index++)
     {
+      step = request->sequence_array + sequence_index;
+      subtask->step = step;
+
       /* Select the input text for this step.  */
 
       if (sequence_index == 0)
@@ -499,6 +502,7 @@ perform_pass_sequence (RECODE_TASK task)
 		       subtask->input.file == NULL)
 		{
 		  recode_perror (NULL, "fopen (%s)", subtask->input.name);
+		  recode_if_nogo (RECODE_SYSTEM_ERROR, subtask);
 		  return false;
 		}
 	    }
@@ -510,6 +514,7 @@ perform_pass_sequence (RECODE_TASK task)
 	      subtask->input.file == NULL)
 	    {
 	      recode_perror (outer, "fopen (%s)", input.name);
+	      recode_if_nogo (RECODE_SYSTEM_ERROR, subtask);
 	      return false;
 	    }
 #endif
@@ -535,6 +540,7 @@ perform_pass_sequence (RECODE_TASK task)
 	      subtask->output.file == NULL)
 	    {
 	      recode_perror (outer, "fopen (%s)", subtask->output.name);
+	      recode_if_nogo (RECODE_SYSTEM_ERROR, subtask);
 	      return false;
 	    }
 #endif
@@ -543,6 +549,7 @@ perform_pass_sequence (RECODE_TASK task)
 	  if (subtask->output.file = tmpfile (), subtask->output.file == NULL)
 	    {
 	      recode_perror (NULL, "tmpfile ()");
+	      recode_if_nogo (RECODE_SYSTEM_ERROR, subtask);
 	      return false;
 	    }
 #endif
@@ -560,6 +567,7 @@ perform_pass_sequence (RECODE_TASK task)
 		       subtask->output.file == NULL)
 		{
 		  recode_perror (NULL, "fopen (%s)", subtask->output.name);
+		  recode_if_nogo (RECODE_SYSTEM_ERROR, subtask);
 		  return false;
 		}
 	    }
@@ -567,8 +575,6 @@ perform_pass_sequence (RECODE_TASK task)
 
       /* Execute one recoding step.  */
 
-      step = request->sequence_array + sequence_index;
-      subtask->step = step;
       (*step->transform_routine) (subtask);
 
       /* Post-step clean up.  */

@@ -1,26 +1,38 @@
-/* Copyright (C) 1999-2000 Free Software Foundation, Inc.
-   This file is part of the GNU ICONV Library.
-
-   The GNU ICONV Library is free software; you can redistribute it and/or
-   modify it under the terms of the GNU Lesser General Public License as
-   published by the Free Software Foundation; either version 2 of the
-   License, or (at your option) any later version.
-
-   The GNU ICONV Library is distributed in the hope that it will be useful,
-   but WITHOUT ANY WARRANTY; without even the implied warranty of
-   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-   Lesser General Public License for more details.
-
-   You should have received a copy of the GNU Lesser General Public
-   License along with the GNU ICONV Library; see the file COPYING.LIB.  If not,
-   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
-   Boston, MA 02111-1307, USA.  */
+/*
+ * Copyright (C) 1999-2001 Free Software Foundation, Inc.
+ * This file is part of the GNU LIBICONV Library.
+ *
+ * The GNU LIBICONV Library is free software; you can redistribute it
+ * and/or modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * The GNU LIBICONV Library is distributed in the hope that it will be
+ * useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public
+ * License along with the GNU LIBICONV Library; see the file COPYING.LIB.
+ * If not, write to the Free Software Foundation, Inc., 59 Temple Place -
+ * Suite 330, Boston, MA 02111-1307, USA.
+ */
 
 #include "common.h"
 #include "iconv.h"
 #include "libcharset.h"
 
-#if 0
+#if 1
+
+/*
+ * Inside recode, offer all available encodings.
+ */
+#define USE_AIX
+#define USE_OSF1
+#define USE_DOS
+#define USE_RECODE
+
+#else
 
 /*
  * Consider those system dependent encodings that are needed for the
@@ -28,6 +40,12 @@
  */
 #ifdef _AIX
 #define USE_AIX
+#endif
+#ifdef __osf__
+#define USE_OSF1
+#endif
+#ifdef __DJGPP__
+#define USE_DOS
 #endif
 
 #endif
@@ -63,11 +81,20 @@ struct encoding {
   int oflags;                 /* flags for unicode -> multibyte conversion */
 };
 enum {
-#define DEFENCODING(xxx_names,xxx,xxx_ifuncs,xxx_ofuncs1,xxx_ofuncs2) \
+#define DEFENCODING(xxx_names,xxx,xxx_ifuncs1,xxx_ifuncs2,xxx_ofuncs1,xxx_ofuncs2) \
   ei_##xxx ,
 #include "encodings.def"
 #ifdef USE_AIX
 #include "encodings_aix.def"
+#endif
+#ifdef USE_OSF1
+#include "encodings_osf1.def"
+#endif
+#ifdef USE_DOS
+#include "encodings_dos.def"
+#endif
+#ifdef USE_RECODE
+#include "encodings_recode.def"
 #endif
 #include "encodings_local.def"
 #undef DEFENCODING
@@ -75,15 +102,24 @@ ei_for_broken_compilers_that_dont_like_trailing_commas
 };
 #include "flags.h"
 static struct encoding const all_encodings[] = {
-#define DEFENCODING(xxx_names,xxx,xxx_ifuncs,xxx_ofuncs1,xxx_ofuncs2) \
-  { xxx_ifuncs, xxx_ofuncs1,xxx_ofuncs2, ei_##xxx##_oflags },
+#define DEFENCODING(xxx_names,xxx,xxx_ifuncs1,xxx_ifuncs2,xxx_ofuncs1,xxx_ofuncs2) \
+  { xxx_ifuncs1,xxx_ifuncs2, xxx_ofuncs1,xxx_ofuncs2, ei_##xxx##_oflags },
 #include "encodings.def"
 #ifdef USE_AIX
 #include "encodings_aix.def"
 #endif
+#ifdef USE_OSF1
+#include "encodings_osf1.def"
+#endif
+#ifdef USE_DOS
+#include "encodings_dos.def"
+#endif
+#ifdef USE_RECODE
+#include "encodings_recode.def"
+#endif
 #undef DEFENCODING
-#define DEFENCODING(xxx_names,xxx,xxx_ifuncs,xxx_ofuncs1,xxx_ofuncs2) \
-  { xxx_ifuncs, xxx_ofuncs1,xxx_ofuncs2, 0 },
+#define DEFENCODING(xxx_names,xxx,xxx_ifuncs1,xxx_ifuncs2,xxx_ofuncs1,xxx_ofuncs2) \
+  { xxx_ifuncs1,xxx_ifuncs2, xxx_ofuncs1,xxx_ofuncs2, 0 },
 #include "encodings_local.def"
 #undef DEFENCODING
 };
@@ -107,10 +143,16 @@ static struct encoding const all_encodings[] = {
  * Defines
  *   const struct alias * aliases2_lookup (const char *str);
  */
-#if defined(USE_AIX) /* || ... */
+#if 0
 static struct alias sysdep_aliases[] = {
 #ifdef USE_AIX
 #include "aliases_aix.h"
+#endif
+#ifdef USE_OSF1
+#include "aliases_osf1.h"
+#endif
+#ifdef USE_DOS
+#include "aliases_dos.h"
 #endif
 };
 #ifdef __GNUC__
@@ -197,9 +239,7 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
     }
     if (ap->encoding_index == ei_local_char) {
       tocode = locale_charset();
-      if (tocode != NULL)
-        continue;
-      goto invalid;
+      continue;
     }
     if (ap->encoding_index == ei_local_wchar_t) {
 #if __STDC_ISO_10646__
@@ -219,8 +259,7 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
 #if HAVE_MBRTOWC
       to_wchar = 1;
       tocode = locale_charset();
-      if (tocode != NULL)
-        continue;
+      continue;
 #endif
       goto invalid;
     }
@@ -253,9 +292,7 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
     }
     if (ap->encoding_index == ei_local_char) {
       fromcode = locale_charset();
-      if (fromcode != NULL)
-        continue;
-      goto invalid;
+      continue;
     }
     if (ap->encoding_index == ei_local_wchar_t) {
 #if __STDC_ISO_10646__
@@ -275,8 +312,7 @@ iconv_t iconv_open (const char* tocode, const char* fromcode)
 #if HAVE_WCRTOMB
       from_wchar = 1;
       fromcode = locale_charset();
-      if (fromcode != NULL)
-        continue;
+      continue;
 #endif
       goto invalid;
     }

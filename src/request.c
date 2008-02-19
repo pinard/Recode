@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
+   Copyright © 1990,1992-94,1996-1999,2000-2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This library is free software; you can redistribute it and/or
@@ -125,6 +125,13 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 
 	  while (step < request->sequence_array + request->sequence_length
 		 && (step->after == outer->data_symbol
+		     || step->after == outer->unit_symbol[RECODE_UNIT_1]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_2]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_2BE]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_2LE]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_4]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_4BE]
+		     || step->after == outer->unit_symbol[RECODE_UNIT_4LE]
 		     || step->after == outer->tree_symbol))
 	    step++;
 	  unsurfacer_end = step;
@@ -163,16 +170,30 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 
 	  add_work_string (request, "..");
 	  if (step < request->sequence_array + request->sequence_length
-	      && step->before != outer->data_symbol
-	      && step->before != outer->tree_symbol)
+	      && !(step->before == outer->data_symbol
+		   || step->before == outer->unit_symbol[RECODE_UNIT_1]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_2]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_2BE]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_2LE]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_4]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_4BE]
+		   || step->before == outer->unit_symbol[RECODE_UNIT_4LE]
+		   || step->before == outer->tree_symbol))
 	    {
 	      last_charset_printed = step->after;
 	      add_work_string (request, last_charset_printed->name);
 	      step++;
 #if 0
 	      if ((step == request->sequence_array + request->sequence_length
-		   || (step->before != outer->data_symbol
-		       && step->before != outer->tree_symbol))
+		   || !(step->before == outer->data_symbol
+			|| step->before == outer->unit_symbol[RECODE_UNIT_1]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_2]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_2BE]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_2LE]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_4]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_4BE]
+			|| step->before == outer->unit_symbol[RECODE_UNIT_4LE]
+			|| step->before == outer->tree_symbol))
 		  && last_charset_printed
 		  && last_charset_printed->implied_surfaces)
 		add_work_character (request, '/');
@@ -181,7 +202,7 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 	  else
 	    {
 	      last_charset_printed = outer->data_symbol;
-	      /* FIXME: why not outer->tree_symbol?  */
+	      /* FIXME: why not outer->unit_symbol[i] or outer->tree_symbol?  */
 	      add_work_string (request, last_charset_printed->name);
 	    }
 
@@ -189,6 +210,13 @@ edit_sequence (RECODE_REQUEST request, bool edit_quality)
 
 	  while (step < request->sequence_array + request->sequence_length
 		 && (step->before == outer->data_symbol
+		     || step->before == outer->unit_symbol[RECODE_UNIT_1]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_2]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_2BE]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_2LE]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_4]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_4BE]
+		     || step->before == outer->unit_symbol[RECODE_UNIT_4LE]
 		     || step->before == outer->tree_symbol))
 	    {
 	      add_work_character (request, '/');
@@ -805,7 +833,7 @@ scan_check_if_last_charset (RECODE_REQUEST request)
 `------------------------------------------------------------------------*/
 
 static bool
-scan_unsurfacers (RECODE_REQUEST request)
+scan_unsurfacers (RECODE_REQUEST request, RECODE_SYMBOL charset)
 {
   RECODE_OUTER outer = request->outer;
   RECODE_SYMBOL surface = NULL;
@@ -831,12 +859,16 @@ scan_unsurfacers (RECODE_REQUEST request)
     surface_options = scan_options (request);
 
   if (*request->scan_cursor == '/')
-    if (!scan_unsurfacers (request))
+    if (!scan_unsurfacers (request, charset))
       return false;
 
-  if (surface && surface->unsurfacer)
-    return
-      add_to_sequence (request, surface->unsurfacer, surface_options, NULL);
+  if (surface)
+    {
+      struct recode_single *unsurfacer = surface->unsurfacer[charset->minunit];
+
+      if (unsurfacer)
+	return add_to_sequence (request, unsurfacer, surface_options, NULL);
+    }
 
   return true;
 }
@@ -847,16 +879,22 @@ scan_unsurfacers (RECODE_REQUEST request)
 `------------------------------------------------------------------------*/
 
 static bool
-add_unsurfacers_to_sequence (RECODE_REQUEST request,
+add_unsurfacers_to_sequence (RECODE_REQUEST request, RECODE_SYMBOL charset,
 			     struct recode_surface_list *list)
 {
+  RECODE_CONST_SYMBOL surface;
+  struct recode_single *unsurfacer;
+
+  /* Recurse.  */
   if (list->next)
-    if (!add_unsurfacers_to_sequence (request, list->next))
+    if (!add_unsurfacers_to_sequence (request, charset, list->next))
       return false;
 
-  if (list->surface->unsurfacer)
-    return
-      add_to_sequence (request, list->surface->unsurfacer, NULL, NULL);
+  surface = list->surface;
+  unsurfacer = surface->unsurfacer[charset->minunit];
+
+  if (unsurfacer)
+    return add_to_sequence (request, unsurfacer, NULL, NULL);
 
   return true;
 }
@@ -874,6 +912,10 @@ add_unsurfacers_to_sequence (RECODE_REQUEST request,
 | going on if VERBOSE.                                                       |
 `---------------------------------------------------------------------------*/
 
+#if defined _WIN32 || defined __WIN32__ || defined __EMX__ || defined __DJGPP__
+# define CRLF_PLATFORM
+#endif
+
 static RECODE_SYMBOL
 scan_charset (RECODE_REQUEST request,
 	      RECODE_CONST_SYMBOL before,
@@ -881,16 +923,43 @@ scan_charset (RECODE_REQUEST request,
 	      RECODE_OPTION_LIST *options_pointer)
 {
   RECODE_OUTER outer = request->outer;
+  const char *alias_name;
   RECODE_ALIAS alias;
+#ifdef CRLF_PLATFORM
+  struct recode_surface_list crlf_surface_list;
+#endif
+  struct recode_surface_list *implied_surfaces = NULL;
   RECODE_SYMBOL charset;
   RECODE_OPTION_LIST charset_options = NULL;
 
   scan_identifier (request);
-  alias = find_alias (outer, request->scanned_string, ALIAS_FIND_AS_EITHER);
+  alias_name = request->scanned_string;
+  if (!*alias_name)
+    {
+      alias_name = getenv ("DEFAULT_CHARSET");
+      if (!alias_name || !*alias_name)
+	{
+	  alias_name = "char"; /* uses locale_charset() from libiconv */
+	  /* On Windows, OS/2, DOS, the CRLF surface is implied by default.
+	     We must deal with it here because libiconv and the
+	     config.charset file do not know about surfaces.  This is
+	     really recode specific because only recode opens text files
+	     in O_BINARY mode.  All other programs use O_TEXT and thus
+	     have the C library do the conversion for them.  */
+#ifdef CRLF_PLATFORM
+	  crlf_surface_list.surface = outer->crlf_surface;
+	  crlf_surface_list.next = NULL;
+	  implied_surfaces = &crlf_surface_list;
+#endif
+	}
+    }
+  alias = find_alias (outer, alias_name, ALIAS_FIND_AS_EITHER);
   if (*request->scan_cursor == '+')
     charset_options = scan_options (request);
   if (!alias)
     return NULL;
+  if (alias->implied_surfaces)
+    implied_surfaces = alias->implied_surfaces;
   charset = alias->symbol;
 
   if (before)
@@ -940,21 +1009,32 @@ scan_charset (RECODE_REQUEST request,
 		  if (*request->scan_cursor == '+')
 		    surface_options = scan_options (request);
 
-		  if (surface && surface->resurfacer)
-		    if (!add_to_sequence (request, surface->resurfacer,
-					  NULL, surface_options))
-		      return NULL;
+		  if (surface)
+		    {
+		      struct recode_single *resurfacer =
+			surface->resurfacer[charset->minunit];
+
+		      if (resurfacer)
+			if (!add_to_sequence (request, resurfacer,
+					      NULL, surface_options))
+			  return NULL;
+		    }
 		}
 	    }
-	  else if (alias->implied_surfaces && !request->make_header_flag)
+	  else if (implied_surfaces && !request->make_header_flag)
 	    {
 	      struct recode_surface_list *list;
 
-	      for (list = alias->implied_surfaces; list; list = list->next)
-		if (list->surface->resurfacer)
-		  if (!add_to_sequence (request, list->surface->resurfacer,
-					NULL, NULL))
-		    return NULL;
+	      for (list = implied_surfaces; list; list = list->next)
+		{
+		  RECODE_CONST_SYMBOL surface = list->surface;
+		  struct recode_single *resurfacer =
+		    surface->resurfacer[charset->minunit];
+
+		  if (resurfacer)
+		    if (!add_to_sequence (request, resurfacer, NULL, NULL))
+		      return NULL;
+		}
 	    }
 	}
     }
@@ -966,12 +1046,12 @@ scan_charset (RECODE_REQUEST request,
 
       if (*request->scan_cursor == '/')
 	{
-	  if (!scan_unsurfacers (request))
+	  if (!scan_unsurfacers (request, charset))
 	    return NULL;
 	}
-      else if (alias->implied_surfaces && !request->make_header_flag)
+      else if (implied_surfaces && !request->make_header_flag)
 	{
-	  if (!add_unsurfacers_to_sequence (request, alias->implied_surfaces))
+	  if (!add_unsurfacers_to_sequence (request, charset, implied_surfaces))
 	    return NULL;
 	}
     }
