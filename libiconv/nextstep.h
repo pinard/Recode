@@ -31,17 +31,17 @@ static const unsigned short nextstep_2uni[128] = {
 };
 
 static int
-nextstep_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+nextstep_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80) {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     return 1;
   }
   else {
     unsigned short wc = nextstep_2uni[c-0x80];
     if (wc != 0xfffd) {
-      *pwc = (wchar_t) wc;
+      *pwc = (ucs4_t) wc;
       return 1;
     }
   }
@@ -97,7 +97,7 @@ static const unsigned char nextstep_pagefb[8] = {
 };
 
 static int
-nextstep_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+nextstep_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

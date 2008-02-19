@@ -3986,3 +3986,8 @@ module_strips (struct recode_outer *outer)
 
   return true;
 }
+
+void
+delmodule_strips (struct recode_outer *outer)
+{
+}

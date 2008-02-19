@@ -2679,7 +2679,7 @@ static const Summary16 cns11643_inv_uni2indx_pagefe[31] = {
 };
 
 static int
-cns11643_inv_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cns11643_inv_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     const Summary16 *summary = NULL;

@@ -1,3 +1,12 @@
+2001-01-02  Bruno Haible  <haible@clisp.cons.org>
+
+	* names.m4: Adjusted for libiconv-1.5 (BIG5HKSCS, GB18030, CHAR,
+	WCHAR_T).
+
+2000-08-18  François Pinard  <pinard@iro.umontreal.ca>
+
+	* names.m4: Adjusted for XML-standalone.
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* testdump.m4: New name for debug.m4.
@@ -16,7 +25,7 @@
 2000-02-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* names.m4: Adjusted for tree, a special charset like data.
-
+
 1999-12-24  François Pinard  <pinard@iro.umontreal.ca>
 
 	* names.m4: Adjusted for defaulted libiconv.

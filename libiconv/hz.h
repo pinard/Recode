@@ -10,7 +10,7 @@
  */
 
 static int
-hz_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+hz_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   state_t state = conv->istate;
   unsigned int count = 0;
@@ -23,7 +23,7 @@ hz_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
       c = s[1];
       if (state == 0) {
         if (c == '~') {
-          *pwc = (wchar_t) '~';
+          *pwc = (ucs4_t) '~';
           conv->istate = state;
           return count+2;
         }
@@ -54,7 +54,7 @@ hz_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
     break;
   }
   if (state == 0) {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     conv->istate = state;
     return count+1;
   } else {
@@ -75,7 +75,7 @@ none:
 }
 
 static int
-hz_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+hz_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   state_t state = conv->ostate;
   unsigned char buf[2];

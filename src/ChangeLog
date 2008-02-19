@@ -1,3 +1,68 @@
+2001-01-22  Bruno Haible  <haible@clisp.cons.org>
+
+	* hash.c: Avoid use of undefined macros HAVE_DECL_MALLOC/FREE.
+
+2001-01-03  Bruno Haible  <haible@clisp.cons.org>
+
+	* recodext.h (put_byte): Don't use "void" type expressions in
+	conditional expressions. Works around a compilation failure with
+	old Solaris cc.
+
+2000-12-19  Jim Meyering  <jim@meyering.net>
+
+	* localcharset.c: Improve WIN32 macrology.
+	(locale_charset): Increase size of buffer.
+
+2000-12-06  Bruno Haible  <haible@clisp.cons.org>
+
+	* names.c (disambiguate_name): When DEFAULT_CHARSET is not set, use
+	"char".
+	* main.c (usage): Modified default charset.
+
+2000-12-05  Bruno Haible  <haible@clisp.cons.org>
+
+	* Updated to libiconv 1.5.
+
+	* iconv.c (_libiconv_version): New variable.
+
+	* iconv.c: Include libcharset.h.
+	  (loop_funcs): New structure.
+	  Treat encodings_local.def like encodings.def.
+	  Include loops.h.
+	  (iconv): Move the bulk of the code to loop_unicode.h.
+	  (iconvctl): Extend determination of TRIVIALP to wchar_t conversion
+	  descriptors.
+	* localcharset.c: New file, from libiconv-1.5.
+	* Makefile.am (librecode_la_SOURCES): Add localcharset.c.
+	(DEFS): Override automake default.
+
+	* iconv.c (iconv): Use ucs4_t instead of wchar_t.
+
+	Make transliteration optional.
+	* iconv.c (iconv_open): Strip off //TRANSLIT suffix from names.
+	  Set transliteration on if and only if tocode ends in //TRANSLIT.
+
+2000-10-24  Bruno Haible  <haible@clisp.cons.org>
+
+	* xmalloc.c, xalloc.h: Move here from lib/.
+	* Makefile.am (noinst_HEADERS): Add xalloc.h.
+	(librecode_la_SOURCES): Add xmalloc.c.
+	Reported by Tomasz KÅ‚oczko <kloczek@wun.zie.pg.gda.pl>.
+
+2000-10-24  Bruno Haible  <haible@clisp.cons.org>
+
+	* main.c (main): Remove libtool's "lt-" prefix from program_name.
+
+2000-10-15  Bruno Haible  <haible@clisp.cons.org>
+
+	* Makefile.am (inisteps.h): New target, depend on stamp-steps.
+	(tersteps.h): Likewise.
+	(noinst_HEADERS): Add tersteps.h.
+
+2000-08-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* outer.c: Include "hash.h".
+
 2000-08-18  François Pinard  <pinard@iro.umontreal.ca>
 
 	* html.c: Add XML-standalone, and h0 for an alias.
@@ -137,7 +202,7 @@
 	wait() declaration and W* macros.
 	(recode_perform_task): Silence gcc warning.
 	* utf16.c (transform_ucs4_utf16): Remove unused variables 'character',
-        'chunk'.
+	'chunk'.
 	* utf7.c (transform_utf16_utf7): Remove unused variable 'character'.
 	* vn.c (module_vietnamese): Return true.
 

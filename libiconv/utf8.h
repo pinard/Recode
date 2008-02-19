@@ -5,7 +5,7 @@
 /* Specification: RFC 2279 */
 
 static int
-utf8_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+utf8_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = s[0];
 
@@ -19,8 +19,8 @@ utf8_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
       return RET_TOOFEW(0);
     if (!((s[1] ^ 0x80) < 0x40))
       return RET_ILSEQ;
-    *pwc = ((wchar_t) (c & 0x1f) << 6)
-           | (wchar_t) (s[1] ^ 0x80);
+    *pwc = ((ucs4_t) (c & 0x1f) << 6)
+           | (ucs4_t) (s[1] ^ 0x80);
     return 2;
   } else if (c < 0xf0) {
     if (n < 3)
@@ -28,36 +28,36 @@ utf8_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
     if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
           && (c >= 0xe1 || s[1] >= 0xa0)))
       return RET_ILSEQ;
-    *pwc = ((wchar_t) (c & 0x0f) << 12)
-           | ((wchar_t) (s[1] ^ 0x80) << 6)
-           | (wchar_t) (s[2] ^ 0x80);
+    *pwc = ((ucs4_t) (c & 0x0f) << 12)
+           | ((ucs4_t) (s[1] ^ 0x80) << 6)
+           | (ucs4_t) (s[2] ^ 0x80);
     return 3;
-  } else if (c < 0xf8 && sizeof(wchar_t)*8 >= 32) {
+  } else if (c < 0xf8 && sizeof(ucs4_t)*8 >= 32) {
     if (n < 4)
       return RET_TOOFEW(0);
     if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
           && (s[3] ^ 0x80) < 0x40
           && (c >= 0xf1 || s[1] >= 0x90)))
       return RET_ILSEQ;
-    *pwc = ((wchar_t) (c & 0x07) << 18)
-           | ((wchar_t) (s[1] ^ 0x80) << 12)
-           | ((wchar_t) (s[2] ^ 0x80) << 6)
-           | (wchar_t) (s[3] ^ 0x80);
+    *pwc = ((ucs4_t) (c & 0x07) << 18)
+           | ((ucs4_t) (s[1] ^ 0x80) << 12)
+           | ((ucs4_t) (s[2] ^ 0x80) << 6)
+           | (ucs4_t) (s[3] ^ 0x80);
     return 4;
-  } else if (c < 0xfc && sizeof(wchar_t)*8 >= 32) {
+  } else if (c < 0xfc && sizeof(ucs4_t)*8 >= 32) {
     if (n < 5)
       return RET_TOOFEW(0);
     if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
           && (s[3] ^ 0x80) < 0x40 && (s[4] ^ 0x80) < 0x40
           && (c >= 0xf9 || s[1] >= 0x88)))
       return RET_ILSEQ;
-    *pwc = ((wchar_t) (c & 0x03) << 24)
-           | ((wchar_t) (s[1] ^ 0x80) << 18)
-           | ((wchar_t) (s[2] ^ 0x80) << 12)
-           | ((wchar_t) (s[3] ^ 0x80) << 6)
-           | (wchar_t) (s[4] ^ 0x80);
+    *pwc = ((ucs4_t) (c & 0x03) << 24)
+           | ((ucs4_t) (s[1] ^ 0x80) << 18)
+           | ((ucs4_t) (s[2] ^ 0x80) << 12)
+           | ((ucs4_t) (s[3] ^ 0x80) << 6)
+           | (ucs4_t) (s[4] ^ 0x80);
     return 5;
-  } else if (c < 0xfe && sizeof(wchar_t)*8 >= 32) {
+  } else if (c < 0xfe && sizeof(ucs4_t)*8 >= 32) {
     if (n < 6)
       return RET_TOOFEW(0);
     if (!((s[1] ^ 0x80) < 0x40 && (s[2] ^ 0x80) < 0x40
@@ -65,19 +65,19 @@ utf8_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
           && (s[5] ^ 0x80) < 0x40
           && (c >= 0xfd || s[1] >= 0x84)))
       return RET_ILSEQ;
-    *pwc = ((wchar_t) (c & 0x01) << 30)
-           | ((wchar_t) (s[1] ^ 0x80) << 24)
-           | ((wchar_t) (s[2] ^ 0x80) << 18)
-           | ((wchar_t) (s[3] ^ 0x80) << 12)
-           | ((wchar_t) (s[4] ^ 0x80) << 6)
-           | (wchar_t) (s[5] ^ 0x80);
+    *pwc = ((ucs4_t) (c & 0x01) << 30)
+           | ((ucs4_t) (s[1] ^ 0x80) << 24)
+           | ((ucs4_t) (s[2] ^ 0x80) << 18)
+           | ((ucs4_t) (s[3] ^ 0x80) << 12)
+           | ((ucs4_t) (s[4] ^ 0x80) << 6)
+           | (ucs4_t) (s[5] ^ 0x80);
     return 6;
   } else
     return RET_ILSEQ;
 }
 
 static int
-utf8_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n) /* n == 0 is acceptable */
+utf8_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n) /* n == 0 is acceptable */
 {
   int count;
   if (wc < 0x80)

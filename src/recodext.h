@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright © 1990, 93, 94, 96-99, 2000, 2001 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
 
    This library is free software; you can redistribute it and/or
@@ -726,10 +726,10 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
 
 # define put_byte(Byte, Subtask) \
     ((Subtask)->output.file					\
-     ? (void) putc ((char) (Byte), (Subtask)->output.file)		\
+     ? (putc ((char) (Byte), (Subtask)->output.file), 0)	\
      : (Subtask)->output.cursor == (Subtask)->output.limit	\
-     ? put_byte_helper ((int) (Byte), (Subtask))		\
-     : (void) (*(Subtask)->output.cursor++ = (Byte)))
+     ? (put_byte_helper ((int) (Byte), (Subtask)), 0)		\
+     : (*(Subtask)->output.cursor++ = (Byte), 0))
 
 #endif /* not USE_HELPERS */
 

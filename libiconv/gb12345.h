@@ -13,7 +13,7 @@
 #include "gb12345ext.h"
 
 static int
-gb12345_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+gb12345_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   int ret;
 
@@ -28,7 +28,7 @@ gb12345_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-gb12345_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+gb12345_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   int ret;
 

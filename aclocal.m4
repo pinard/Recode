@@ -811,19 +811,53 @@ AC_DEFUN(jm_FUNC_REALLOC,
   fi
 ])
 
+#serial 2
 
-AC_DEFUN(fp_OS_MICROSOFT,
-[AC_CACHE_CHECK([for MSDOS, Win95 or WinNT], fp_cv_os_microsoft,
-[if test -n "$COMSPEC"; then
-  # MSDOS or Win95
-   fp_cv_os_microsoft=yes
-elif test -n "$ComSpec"; then
-  # WinNT
-  fp_cv_os_microsoft=yes
-else
-  fp_cv_os_microsoft=no
-fi
-])])
+dnl From Bruno Haible.
+
+AC_DEFUN(jm_LANGINFO_CODESET,
+[
+  AC_CHECK_HEADERS(langinfo.h)
+  AC_CHECK_FUNCS(nl_langinfo)
+
+  AC_CACHE_CHECK([for nl_langinfo and CODESET], jm_cv_langinfo_codeset,
+    [AC_TRY_LINK([#include <langinfo.h>],
+      [char* cs = nl_langinfo(CODESET);],
+      jm_cv_langinfo_codeset=yes,
+      jm_cv_langinfo_codeset=no)
+    ])
+  if test $jm_cv_langinfo_codeset = yes; then
+    AC_DEFINE(HAVE_LANGINFO_CODESET, 1,
+      [Define if you have <langinfo.h> and nl_langinfo(CODESET).])
+  fi
+])
+
+#serial 2
+
+# Test for the GNU C Library, version 2.1 or newer.
+# From Bruno Haible.
+
+AC_DEFUN(jm_GLIBC21,
+  [
+    AC_CACHE_CHECK(whether we are using the GNU C Library 2.1 or newer,
+      ac_cv_gnu_library_2_1,
+      [AC_EGREP_CPP([Lucky GNU user],
+	[
+#include <features.h>
+#ifdef __GNU_LIBRARY__
+ #if (__GLIBC__ == 2 && __GLIBC_MINOR__ >= 1) || (__GLIBC__ > 2)
+  Lucky GNU user
+ #endif
+#endif
+	],
+	ac_cv_gnu_library_2_1=yes,
+	ac_cv_gnu_library_2_1=no)
+      ]
+    )
+    AC_SUBST(GLIBC21)
+    GLIBC21="$ac_cv_gnu_library_2_1"
+  ]
+)
 
 
 # serial 1
@@ -930,8 +964,9 @@ AC_DEFUN(fp_WITH_GETTEXT, [
       AC_CHECK_FUNCS(dcgettext gettext)
     fi
 
-    AC_CHECK_HEADERS(locale.h)
-    AC_CHECK_FUNCS(getcwd setlocale stpcpy)
+    AC_CHECK_HEADERS(argz.h limits.h locale.h malloc.h string.h unistd.h sys/param.h)
+    AC_FUNC_MMAP
+    AC_CHECK_FUNCS(getcwd mempcpy munmap setlocale stpcpy strcasecmp strchr strdup __argz_count __argz_stringify __argz_next)
     AM_LC_MESSAGES
 
     if test -z "$ALL_LINGUAS"; then

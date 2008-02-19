@@ -227,3 +227,8 @@ module_iconqnx (RECODE_OUTER outer)
 		       NULL, transform_iconqnx_ibmpc)
     && declare_alias (outer, "QNX", "Icon-QNX");
 }
+
+void
+delmodule_iconqnx (RECODE_OUTER outer)
+{
+}

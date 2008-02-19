@@ -4,7 +4,7 @@
  */
 
 static int
-euc_jp_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+euc_jp_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   /* Code set 0 (ASCII or JIS X 0201-1976 Roman) */
@@ -89,7 +89,7 @@ euc_jp_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-euc_jp_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+euc_jp_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char buf[2];
   int ret;

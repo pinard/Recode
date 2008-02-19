@@ -49,6 +49,11 @@
     These makefiles allow building `recode' 3.4k on Amiga.
     Submitted by Stefan Haubenthal, 1998-11.
 
+. + recode.spec
+
+    RPM spec file to prepare `recode' on RedHat.
+    Submitted by David Lebel, 2000-06.
+
 .* External pointers
 
 . + Documentation

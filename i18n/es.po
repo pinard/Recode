@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNU recode 3.4r\n"
-"POT-Creation-Date: 1999-05-18 08:46-0400\n"
+"POT-Creation-Date: 2001-01-02 22:35+0100\n"
 "PO-Revision-Date: 1999-05-21 18:45+0200\n"
 "Last-Translator: Santiago Vila Doncel <sanvila@unex.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -13,50 +13,41 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
-#. Dump all characters.
-#: src/debug.c:287
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Nem   Descripción\n"
-"\n"
-
-#: src/main.c:140
+#: src/main.c:142
 msgid "No error"
 msgstr "No hay ningún error"
 
-#: src/main.c:143
+#: src/main.c:145
 msgid "Non canonical input"
 msgstr "La entrada no es canónica"
 
-#: src/main.c:146
+#: src/main.c:148
 msgid "Ambiguous output"
 msgstr "Resultado ambiguo"
 
-#: src/main.c:149
+#: src/main.c:151
 msgid "Untranslatable input"
 msgstr "Entrada no convertible"
 
-#: src/main.c:152
+#: src/main.c:154
 msgid "Invalid input"
 msgstr "Entrada inválida"
 
 # FIXME: "System-detected problem" or
 # "The system has detected a problem"?
-#: src/main.c:155
+#: src/main.c:157
 msgid "System detected problem"
 msgstr "Problema detectado por el sistema"
 
-#: src/main.c:158
+#: src/main.c:160
 msgid "Misuse of recoding library"
 msgstr "Uso inadecuado de la biblioteca de conversión"
 
-#: src/main.c:161
+#: src/main.c:163
 msgid "Internal recoding bug"
 msgstr "Bug interno de conversión"
 
-#: src/main.c:206
+#: src/main.c:208
 msgid ""
 "This program is free software; you can redistribute it and/or modify\n"
 "it under the terms of the GNU General Public License as published by\n"
@@ -87,20 +78,20 @@ msgstr ""
 "a la Free Software Foundation, Inc., 59 Temple Place - Suite 330,\n"
 "Boston, MA 02111-1307, EE.UU.\n"
 
-#: src/main.c:231
+#: src/main.c:233
 #, c-format
 msgid "Try `%s %s' for more information.\n"
 msgstr "Pruebe `%s %s' para más información.\n"
 
 # FUZZY. GNU/Free.
-#: src/main.c:235
+#: src/main.c:237
 msgid ""
 "Free `recode' converts files between various character sets and surfaces.\n"
 msgstr ""
 "GNU `recode' convierte ficheros entre varios juegos de caracteres y "
 "facetas.\n"
 
-#: src/main.c:239
+#: src/main.c:241
 #, c-format
 msgid ""
 "\n"
@@ -109,7 +100,7 @@ msgstr ""
 "\n"
 "Modo de empleo: %s [OPCIÓN]... [ [JUEGO] | PETICIÓN [FICHERO]... ]\n"
 
-#: src/main.c:242
+#: src/main.c:244
 msgid ""
 "\n"
 "If a long option shows an argument as mandatory, then it is mandatory\n"
@@ -120,11 +111,12 @@ msgstr ""
 "obligatorio también para la opción corta equivalente. Lo mismo para los\n"
 "argumentos opcionales.\n"
 
-#: src/main.c:248
+#: src/main.c:250
+#, fuzzy
 msgid ""
 "\n"
 "Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets\n"
+"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
 "  -k, --known=PAIRS          restrict charsets according to known PAIRS "
 "list\n"
 "  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
@@ -151,7 +143,7 @@ msgstr ""
 "      --help                 muestra esta ayuda y finaliza\n"
 "      --version              muestra la versión y finaliza\n"
 
-#: src/main.c:261
+#: src/main.c:263
 msgid ""
 "\n"
 "Operation modes:\n"
@@ -183,15 +175,15 @@ msgstr ""
 # Pero en este caso concreto, no hace falta porque la palabra pipe forma
 # parte del nombre de la opción (a la izquierda se ve). sv
 #
-#: src/main.c:273
+#: src/main.c:275
 msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
 msgstr "  -p, --sequence=pipe     utiliza tuberías para las pasadas\n"
 
-#: src/main.c:278
+#: src/main.c:280
 msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
 msgstr "  -p, --sequence=pipe     lo mismo que -i (en este sistema)\n"
 
-#: src/main.c:283
+#: src/main.c:285
 msgid ""
 "\n"
 "Fine tuning:\n"
@@ -216,7 +208,7 @@ msgstr ""
 "  -g, --graphics         aproxima gráficos IBMPC mediante gráficos ASCII\n"
 "  -x, --ignore=JUEGO     descarta JUEGO al escoger un camino de conversión\n"
 
-#: src/main.c:294
+#: src/main.c:296
 msgid ""
 "\n"
 "Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
@@ -230,20 +222,16 @@ msgstr ""
 "entre `dohf').\n"
 
 #: src/main.c:302
-#, c-format
+#, fuzzy
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n"
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
+"locale\n"
+"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
 msgstr ""
 "A menos que se establezca DEFAULT_CHARSET en el entorno,\n"
 "CHARSET es `%s' por omisión.\n"
 
-#: src/main.c:308
-msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
-msgstr ""
-"CHARSET no tiene ningún valor predeterminado, defina DEFAULT_CHARSET en el\n"
-"entorno.\n"
-
-#: src/main.c:313
+#: src/main.c:307
 msgid ""
 "With -k, possible before charsets are listed for the given after CHARSET,\n"
 "both being tabular charsets, with PAIRS of the form "
@@ -256,7 +244,7 @@ msgstr ""
 "`ANT1:DES1,ANT2:DES2,...' y siendo los ANTs y los DESs códigos dados\n"
 "como números decimales.\n"
 
-#: src/main.c:318
+#: src/main.c:312
 msgid ""
 "LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
 msgstr ""
@@ -264,7 +252,7 @@ msgstr ""
 "es `c'\n"
 
 # FIXME: [SURFACE]... means the usual surfaces or the usual surface?
-#: src/main.c:321
+#: src/main.c:315
 msgid ""
 "\n"
 "REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is "
@@ -286,7 +274,7 @@ msgstr ""
 "implícita para el JUEGO; una / con una faceta vacía significa que no hay\n"
 "ninguna faceta. Véase el manual.\n"
 
-#: src/main.c:329
+#: src/main.c:323
 msgid ""
 "\n"
 "If none of -i and -p are given, presume -p if no FILE, else -i.\n"
@@ -300,7 +288,7 @@ msgstr ""
 "funciona\n"
 "como filtro y convierte la entrada estándar en la salida estándar.\n"
 
-#: src/main.c:335
+#: src/main.c:329
 msgid ""
 "\n"
 "Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
@@ -308,39 +296,47 @@ msgstr ""
 "\n"
 "Comunicar `bugs' a <recode-bugs@iro.umontreal.ca>.\n"
 
-#: src/main.c:431
+#: src/main.c:430
 #, c-format
-msgid "Ambiguous sequence `%s'"
-msgstr "Sucesión ambigua `%s'"
+msgid "Sequence `%s' is ambiguous"
+msgstr ""
 
-#: src/main.c:435
+#: src/main.c:434
 #, c-format
-msgid "Unknown sequence `%s'"
-msgstr "Sucesión desconocida `%s'"
+msgid "Sequence `%s' is unknown"
+msgstr ""
 
-#: src/main.c:465 src/main.c:523
+#: src/main.c:464 src/main.c:522
 #, c-format
-msgid "Ambiguous language `%s'"
-msgstr "Idioma ambiguo `%s'"
+msgid "Language `%s' is ambiguous"
+msgstr ""
 
 #. -1
-#: src/main.c:469 src/main.c:527
+#: src/main.c:468 src/main.c:526
 #, c-format
-msgid "Unknown language `%s'"
-msgstr "Idioma desconocido `%s'"
+msgid "Language `%s' is unknown"
+msgstr ""
 
-#: src/main.c:561
+#: src/main.c:560
 #, c-format
-msgid "Ambiguous format `%s'"
-msgstr "Formato ambiguo `%s'"
+msgid "Format `%s' is ambiguous"
+msgstr ""
 
-#: src/main.c:565
+#: src/main.c:564
 #, c-format
-msgid "Unknown format `%s'"
-msgstr "Formato desconocido `%s'"
+msgid "Format `%s' is unknown"
+msgstr ""
+
+# Se entiende que los usuarios españoles sí tendrán iso-8859-1.
+#: src/main.c:621
+#, fuzzy
+msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr ""
+"\n"
+"Escrito por François Pinard <pinard@iro.umontreal.ca>.\n"
 
 # FIXME: Añadir 1998 (?).
-#: src/main.c:622
+#: src/main.c:624
 msgid ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -348,7 +344,7 @@ msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
 
-#: src/main.c:626
+#: src/main.c:628
 msgid ""
 "This is free software; see the source for copying conditions.  There is NO\n"
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
@@ -357,55 +353,60 @@ msgstr ""
 "No hay NINGUNA garantía; ni siquiera de COMERCIABILIDAD o IDONEIDAD PARA UN\n"
 "FIN DETERMINADO.\n"
 
-# Se entiende que los usuarios españoles sí tendrán iso-8859-1.
-#: src/main.c:630
-msgid ""
-"\n"
-"Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Escrito por François Pinard <pinard@iro.umontreal.ca>.\n"
-
-#: src/main.c:775
+#: src/main.c:669
 #, c-format
-msgid "Deprecated syntax, please prefer `%s'"
+msgid "Symbol `%s' is unknown"
+msgstr ""
+
+#: src/main.c:709 src/main.c:723
+#, c-format
+msgid "Charset `%s' is unknown or ambiguous"
+msgstr ""
+
+#: src/main.c:754
+msgid "Required argument is missing"
+msgstr ""
+
+#: src/main.c:797
+#, fuzzy, c-format
+msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "Sintaxis antigua, por favor utilice `%s'"
 
-#: src/main.c:781
+#: src/main.c:803
 #, c-format
-msgid "Erroneous request `%s'"
-msgstr "Petición errónea `%s'"
+msgid "Request `%s' is erroneous"
+msgstr ""
 
-#: src/main.c:878
+#: src/main.c:903
 #, c-format
 msgid "Recoding %s..."
 msgstr "Convirtiendo %s..."
 
-#: src/main.c:888
+#: src/main.c:913
 msgid " done\n"
 msgstr " hecho\n"
 
-#: src/main.c:924
-#, c-format
-msgid " failed: %s in %s..%s\n"
+#: src/main.c:954
+#, fuzzy, c-format
+msgid " failed: %s in step `%s..%s'\n"
 msgstr " falló: %s en %s..%s\n"
 
-#: src/main.c:931
-#, c-format
-msgid "%s failed: %s in %s..%s"
+#: src/main.c:961
+#, fuzzy, c-format
+msgid "%s failed: %s in step `%s..%s'"
 msgstr "%s falló: %s en %s..%s"
 
-#: src/main.c:954
-#, c-format
-msgid "%s in %s..%s"
+#: src/main.c:984
+#, fuzzy, c-format
+msgid "%s in step `%s..%s'"
 msgstr "%s en %s..%s"
 
-#: src/names.c:317
+#: src/names.c:335
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "El juego de caracteres %s ya existe y no es %s"
 
-#: src/names.c:819
+#: src/names.c:831
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
@@ -415,27 +416,26 @@ msgstr ""
 # "Nem" de "Nemónico", supongo.
 #. code counter
 #. expected value for code counter
-#. UCS-2 translation
 #. insert a while line before printing
 #. Print the long table according to explode data.
-#: src/names.c:974 src/names.c:1020
+#: src/names.c:984 src/names.c:1030
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Nem  %s\n"
 
-#: src/names.c:1039
+#: src/names.c:1049
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Lo siento, no hay nombres disponibles para `%s'"
 
 # FIXME: ¿La palabra "Resurface" había desaparecido o no?
-#: src/outer.c:95
+#: src/outer.c:125
 #, c-format
 msgid "Resurfacer set more than once for `%s'"
 msgstr "Se ha establecido `resurfacer' más de una vez para `%s'"
 
 # FIXME: Lo mismo. ¿?
-#: src/outer.c:102
+#: src/outer.c:133
 #, c-format
 msgid "Unsurfacer set more than once for `%s'"
 msgstr "Se ha establecido `unsurfacer' más de una vez para `%s'"
@@ -445,12 +445,12 @@ msgid "Virtual memory exhausted"
 msgstr "Memoria virtual agotada"
 
 #: src/recode.c:155
-#, c-format
+#, c-format, ycp-format
 msgid "Codes %3d and %3d both recode to %3d"
 msgstr "Los códigos %3d y %3d se convierten ambos en %3d"
 
 #: src/recode.c:169
-#, c-format
+#, c-format, ycp-format
 msgid "No character recodes to %3d"
 msgstr "Ningún carácter se convierte en %3d"
 
@@ -475,11 +475,11 @@ msgid "Cannot complete table from set of known pairs"
 msgstr ""
 "No se puede completar la tabla a partir del conjunto de pares conocidos"
 
-#: src/recode.c:492
+#: src/recode.c:497
 msgid "Identity recoding, not worth a table"
 msgstr "Conversión identidad, no merece una tabla"
 
-#: src/recode.c:499
+#: src/recode.c:504
 msgid "Recoding is too complex for a mere table"
 msgstr "La conversión es demasiado compleja para una simple tabla"
 
@@ -488,89 +488,123 @@ msgstr "La conversión es demasiado compleja para una simple tabla"
 # ## (creo que ese mensaje anterior ya no existe (?))
 #
 #. Print the header of the header file.
-#: src/recode.c:531
+#: src/recode.c:536
 #, c-format
 msgid "%sConversion table generated mechanically by Free `%s' %s"
 msgstr "%sTabla de conversión generada automáticamente por GNU %s %s"
 
-#: src/recode.c:533
+#: src/recode.c:538
 #, c-format
 msgid "%sfor sequence %s.%s"
 msgstr "%spara la sucesión %s.%s"
 
-#: src/recode.c:724
+#: src/recode.c:744
 msgid "No table to print"
 msgstr "No hay tabla que mostrar"
 
-#: src/request.c:35
+#: src/request.c:34
 msgid "reversible"
 msgstr "reversible"
 
-#: src/request.c:37
+#: src/request.c:36
 #, c-format
 msgid "%s to %s"
 msgstr "%s a %s"
 
-#: src/request.c:38 src/request.c:40
+#: src/request.c:37 src/request.c:39
 msgid "byte"
 msgstr "byte"
 
-#: src/request.c:39 src/request.c:41
+#: src/request.c:38 src/request.c:40
 msgid "ucs2"
 msgstr "ucs2"
 
-#: src/request.c:39 src/request.c:41
+#: src/request.c:38 src/request.c:40
 msgid "variable"
 msgstr "variable"
 
-#: src/request.c:112
+#: src/request.c:111
 msgid "*Unachievable*"
 msgstr "*Imposible*"
 
-#: src/request.c:114
+#: src/request.c:113
 msgid "*mere copy*"
 msgstr "*copia pura y simple*"
 
-#: src/request.c:244
+#: src/request.c:246
 msgid "Virtual memory exhausted!"
 msgstr "¡Memoria virtual agotada!"
 
-#: src/request.c:263
+#: src/request.c:265
 msgid "Step initialisation failed"
 msgstr "Falló la etapa de inicialización"
 
-#: src/request.c:270
+#: src/request.c:272
 msgid "Step initialisation failed (unprocessed options)"
 msgstr "Falló la etapa de inicialización (opciones sin procesar)"
 
-#: src/request.c:566
+#: src/request.c:568
 #, c-format
 msgid "Request: %s\n"
 msgstr "Petición: %s\n"
 
-#: src/request.c:702
+#: src/request.c:720
 #, c-format
 msgid "Shrunk to: %s\n"
 msgstr "Encogido a: %s\n"
 
-#: src/request.c:806 src/request.c:912
+#: src/request.c:823 src/request.c:932
 #, c-format
 msgid "Unrecognised surface name `%s'"
 msgstr "Nombre de faceta no reconocido `%s'"
 
-#: src/request.c:884
+#: src/request.c:903
 #, c-format
 msgid "No way to recode from `%s' to `%s'"
 msgstr "No se puede convertir de `%s' a `%s'"
 
-#: src/request.c:992
+#: src/request.c:1013
 msgid "Expecting `..' in request"
 msgstr "Se esperaba `..' en la petición"
 
-#: src/task.c:751 src/task.c:915
+#: src/task.c:826 src/task.c:1002
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "El estado de espera del proceso hijo es 0x%0.2x"
+
+#: src/testdump.c:298
+msgid ""
+"UCS2   Mne   Description\n"
+"\n"
+msgstr ""
+"UCS2   Nem   Descripción\n"
+"\n"
+
+#~ msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
+#~ msgstr ""
+#~ "CHARSET no tiene ningún valor predeterminado, defina DEFAULT_CHARSET en el\n"
+#~ "entorno.\n"
+
+#~ msgid "Ambiguous sequence `%s'"
+#~ msgstr "Sucesión ambigua `%s'"
+
+#~ msgid "Unknown sequence `%s'"
+#~ msgstr "Sucesión desconocida `%s'"
+
+#~ msgid "Ambiguous language `%s'"
+#~ msgstr "Idioma ambiguo `%s'"
+
+#~ msgid "Unknown language `%s'"
+#~ msgstr "Idioma desconocido `%s'"
+
+#~ msgid "Ambiguous format `%s'"
+#~ msgstr "Formato ambiguo `%s'"
+
+#~ msgid "Unknown format `%s'"
+#~ msgstr "Formato desconocido `%s'"
+
+#~ msgid "Erroneous request `%s'"
+#~ msgstr "Petición errónea `%s'"
 
 # Este es difícil. Se admiten sugerencias.
 # Especialmente de alguien que conozca bien el programa.

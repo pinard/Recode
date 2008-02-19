@@ -31,13 +31,13 @@ static const unsigned short mac_ukraine_2uni[128] = {
 };
 
 static int
-mac_ukraine_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+mac_ukraine_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c >= 0x80)
-    *pwc = (wchar_t) mac_ukraine_2uni[c-0x80];
+    *pwc = (ucs4_t) mac_ukraine_2uni[c-0x80];
   else
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
   return 1;
 }
 
@@ -95,7 +95,7 @@ static const unsigned char mac_ukraine_page22[104] = {
 };
 
 static int
-mac_ukraine_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+mac_ukraine_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

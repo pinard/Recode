@@ -172,13 +172,7 @@ disambiguate_name (RECODE_OUTER outer,
       case ALIAS_FIND_AS_EITHER:
 	name = getenv ("DEFAULT_CHARSET");
 	if (!name)
-	  {
-#ifdef DEFAULT_CHARSET
-	    name = DEFAULT_CHARSET;
-	    if (!*name)
-#endif
-	      return NULL;
-	  }
+	  name = "char"; /* locale dependent */
 	break;
 
       default:

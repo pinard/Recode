@@ -285,3 +285,8 @@ module_rfc1345 (RECODE_OUTER outer)
     && declare_alias (outer, "1345", "RFC1345")
     && declare_alias (outer, "mnemonic", "RFC1345");
 }
+
+void
+delmodule_rfc1345 (RECODE_OUTER outer)
+{
+}

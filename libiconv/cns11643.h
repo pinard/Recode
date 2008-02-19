@@ -14,7 +14,7 @@
 
 /* Returns the plane number (0,1,2) in r[0], the two bytes in r[1],r[2]. */
 static int
-cns11643_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cns11643_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 3) {
     int ret = cns11643_inv_wctomb(conv,r+1,wc,2);

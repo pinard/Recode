@@ -179,3 +179,8 @@ module_applemac (RECODE_OUTER outer)
 #endif
   return true;
 }
+
+void
+delmodule_applemac (RECODE_OUTER outer)
+{
+}

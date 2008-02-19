@@ -126,9 +126,14 @@ bool
 module_latex_latin1 (RECODE_OUTER outer)
 {
   return
-declare_single (outer, "LaTeX", "Latin-1",
-outer->quality_variable_to_byte,
-NULL, transform_latex_latin1)
+    declare_single (outer, "LaTeX", "Latin-1",
+                    outer->quality_variable_to_byte,
+                    NULL, transform_latex_latin1)
     && declare_alias (outer, "TeX", "LaTeX")
     && declare_alias (outer, "ltex", "LaTeX");
+}
+
+void
+delmodule_latex_latin1 (RECODE_OUTER outer)
+{
 }

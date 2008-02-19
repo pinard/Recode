@@ -209,3 +209,8 @@ module_utf16 (RECODE_OUTER outer)
     && declare_alias (outer, "TF-16", "UTF-16")
     && declare_alias (outer, "u6", "UTF-16");
 }
+
+void
+delmodule_utf16 (RECODE_OUTER outer)
+{
+}

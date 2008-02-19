@@ -91,3 +91,8 @@ module_ascii_latin1 (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_ascii_latin1 (RECODE_OUTER outer)
+{
+}

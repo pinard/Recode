@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This library is free software; you can redistribute it and/or
@@ -425,14 +425,21 @@ init_ucs2_to_byte (RECODE_STEP step,
     return false;
 
   if (!ALLOC (data, 256, struct ucs2_to_byte))
-    return false;
+    {
+      hash_free (table);
+      return false;
+    }
 
   for (counter = 0; counter < 256; counter++)
     {
       data[counter].code = code_to_ucs2 (step->after, counter);
       data[counter].byte = counter;
       if (!hash_insert (table, data + counter))
-	return false;
+	{
+	  hash_free (table);
+	  free (data);
+	  return false;
+	}
     }
 
   step->local = table;

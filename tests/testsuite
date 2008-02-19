@@ -141,9 +141,11 @@ AtariST
 baltic iso-ir-179
 Bang-Bang
 BIG5 BIG-5 BIG-FIVE BIGFIVE CN-BIG5 csBig5
+BIG5HKSCS
 BS_4730 gb ISO646-GB iso-ir-4 uk
 BS_viewdata iso-ir-47
 CDC-NOS NOS
+CHAR
 combined-UCS-2 co
 CORK T1
 count-characters
@@ -199,6 +201,7 @@ EUC-JP csEUCPkdFmtJapanese EUCJP EUC_JP Extended_UNIX_Code_Packed_Format_for_Jap
 EUC-KR csEUCKR EUCKR EUC_KR
 EUC-TW csEUCTW EUCTW EUC_TW
 flat
+GB18030
 GBK CP936
 GB_1988-80 cn csISO57GB1988 ISO646-CN iso-ir-57
 GB_2312-80 CHINESE csISO58GB231280 GB2312.1980-0 ISO-IR-58
@@ -383,12 +386,14 @@ VIQR
 VISCII csVISCII VISCII1.1-1
 VNI
 VPS
+WCHAR_T
+XML-standalone h0
 EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/names.m4:285: testing..."
-echo names.m4:285 > at-check-line
+  && echo "$srcdir/names.m4:290: testing..."
+echo names.m4:290 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode -l
@@ -433,19 +438,19 @@ if test -z "$at_stop_on_error" || test -z "$at_failed_list"; then
 
 rm -rf stdout stderr expout
 # Snippet )c2)
-  echo names.m4:289 > at-check-line
+  echo names.m4:294 > at-check-line
   if test -n "$at_verbose"; then
     echo 'testing the --find-subsets option'
     echo $at_n "     $at_c"
   fi
-  echo $at_n "2. $srcdir/names.m4:289       $at_c"
+  echo $at_n "2. $srcdir/names.m4:294       $at_c"
   if test -z "$at_skip_mode"; then
     (
 # Snippet (d2(
 # Testing the --find-subsets option
 # Snippet )d2)
 # Snippet (s2(
-# starting from `names.m4:289'.
+# starting from `names.m4:294'.
 $at_traceon
 
 cat >expout <<'EOF'
@@ -896,8 +901,8 @@ EOF
 
 $at_traceoff
 test -n "$at_verbose" \
-  && echo "$srcdir/names.m4:740: testing..."
-echo names.m4:740 > at-check-line
+  && echo "$srcdir/names.m4:745: testing..."
+echo names.m4:745 > at-check-line
 test -z "$at_no_redirs" && exec 5>&1 6>&2 1>stdout 2>stderr
 $at_traceon
 recode -T | sort

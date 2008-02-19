@@ -1,19 +1,18 @@
 * README file for `recode'			allout -*- outline -*-
 
-  Here is version 3.5d for the Free `recode' program and library.  Glance
+  Here is version 3.6 for the Free `recode' program and library.  Glance
   through this `README' file before starting configuration.  Make sure
   you read files `ABOUT-NLS' and `INSTALL' if you are not familiar with
   them already.
 
   The canonical distribution point for this version is:
 
-     http://www.iro.umontreal.ca/contrib/recode/recode-3.5d.tar.gz
+     http://www.iro.umontreal.ca/contrib/recode/recode-3.6.tar.gz
 
-  yet the second URL (the FTP one) might disappear one day.  GNU mirrors
-  usually hold a copy of non-pretest releases, the canonical distribution
-  point for the last such release is:
+  GNU mirrors usually hold a copy of non-pretest releases, the canonical
+  distribution point for the last such release is:
 
-     ftp://ftp.gnu.org/pub/gnu/recode/recode-3.5.tar.gz
+     ftp://ftp.gnu.org/pub/gnu/recode/recode-3.6.tar.gz
 
 .* Introduction
    ------------
@@ -23,7 +22,7 @@
     The `recode' library converts files between character sets and usages.
     It recognises or produces more than 300 different character sets and
     transliterates files between almost any pair.  When exact transliteration
-    are not possible, it gets rid of offending characters or fall back
+    are not possible, it gets rid of offending characters or falls back
     on approximations.  The `recode' program is a handy front-end to
     the library.
 
@@ -85,7 +84,7 @@
     Have Perl installed before Automake and `help2man'.
 
     Python 1.5 and Flex 2.5, or better, are needed for remaking `merged.c',
-    after you modify or add an `.l' source file.
+    after you modify an `.l' source file.
 
 . + Mailing lists and collaboration
 
@@ -100,7 +99,7 @@
 
 	subscribe recode-forum
 
-    Look into `http://www.iro.umontreal.ca/contrib/recode for various
+    Look into `http://www.iro.umontreal.ca/contrib/recode' for various
     releases, pretests, and related files.  In particular, button `Browse'
     gives access to a weekly mirror of the current unpackaged work files,
     while button `Folders' gives access to saved or pending correspondence.
@@ -132,23 +131,6 @@
    Here are a few hints which might help installing `recode' on some systems.
    Many may be applied by temporary presetting environment variables while
    calling `./configure'.  File `INSTALL' explains this.
-
-. + Default charset
-
-    You may override the usual charset while configuring.  The usual
-    charset is implied when a charset name is omitted or empty, and when
-    `DEFAULT_CHARSET' is unset in the environment at run time.  For example,
-    on an AtariST using `bash', one could do:
-
-	DEFAULT_CHARSET=AtariST ./configure
-
-    If you prefer to not have any usual charset at all, then use:
-
-	DEFAULT_CHARSET= ./configure
-
-    that is, define `DEFAULT_CHARSET' to the empty string before configuring.
-    When installed this way, `recode' will not accept omitted charsets at
-    run time, unless `DEFAULT_CHARSET' is set to some value in the environment.
 
 . + Compilation time
 

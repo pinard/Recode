@@ -127,7 +127,7 @@ static const unsigned short cp932ext_2uni_pagefa[388] = {
 };
 
 static int
-cp932ext_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cp932ext_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 == 0x87) || (c1 >= 0xed && c1 <= 0xee) || (c1 >= 0xfa && c1 <= 0xfc)) {
@@ -147,7 +147,7 @@ cp932ext_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
             wc = cp932ext_2uni_pagefa[i-10716];
         }
         if (wc != 0xfffd) {
-          *pwc = (wchar_t) wc;
+          *pwc = (ucs4_t) wc;
           return 2;
         }
       }
@@ -635,7 +635,7 @@ static const Summary16 cp932ext_uni2indx_pageff[15] = {
 };
 
 static int
-cp932ext_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cp932ext_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     const Summary16 *summary = NULL;

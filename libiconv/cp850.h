@@ -31,13 +31,13 @@ static const unsigned short cp850_2uni[128] = {
 };
 
 static int
-cp850_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cp850_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80)
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
   else
-    *pwc = (wchar_t) cp850_2uni[c-0x80];
+    *pwc = (ucs4_t) cp850_2uni[c-0x80];
   return 1;
 }
 
@@ -80,7 +80,7 @@ static const unsigned char cp850_page25[168] = {
 };
 
 static int
-cp850_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cp850_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

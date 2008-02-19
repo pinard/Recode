@@ -31,13 +31,13 @@ static const unsigned short koi8_ru_2uni[128] = {
 };
 
 static int
-koi8_ru_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+koi8_ru_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80)
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
   else
-    *pwc = (wchar_t) koi8_ru_2uni[c-0x80];
+    *pwc = (ucs4_t) koi8_ru_2uni[c-0x80];
   return 1;
 }
 
@@ -115,7 +115,7 @@ static const unsigned char koi8_ru_page25[168] = {
 };
 
 static int
-koi8_ru_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+koi8_ru_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

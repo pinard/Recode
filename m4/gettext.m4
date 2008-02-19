@@ -84,8 +84,9 @@ AC_DEFUN(fp_WITH_GETTEXT, [
       AC_CHECK_FUNCS(dcgettext gettext)
     fi
 
-    AC_CHECK_HEADERS(locale.h)
-    AC_CHECK_FUNCS(getcwd setlocale stpcpy)
+    AC_CHECK_HEADERS(argz.h limits.h locale.h malloc.h string.h unistd.h sys/param.h)
+    AC_FUNC_MMAP
+    AC_CHECK_FUNCS(getcwd mempcpy munmap setlocale stpcpy strcasecmp strchr strdup __argz_count __argz_stringify __argz_next)
     AM_LC_MESSAGES
 
     if test -z "$ALL_LINGUAS"; then

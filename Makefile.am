@@ -18,10 +18,11 @@
 # 02111-1307, USA.
 
 AUTOMAKE_OPTIONS = gnits
+ACLOCAL = ./aclocal.sh @ACLOCAL@
 ACLOCAL_AMFLAGS = -I m4
 
 BABYL = ../rmail/* ../*/rmail/* ../*/*/RMAIL ../*/*/rmail/*
-EXTRA_DIST = COPYING-LIB PATCHES-AC rebox.el recode.spec
+EXTRA_DIST = COPYING-LIB PATCHES-AC rebox.el recode.spec aclocal.sh
 SUBDIRS = m4 doc lib libiconv i18n src tests contrib
 
 POTFILES = src/main.c src/names.c src/outer.c src/recode.c \

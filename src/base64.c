@@ -256,3 +256,8 @@ module_base64 (RECODE_OUTER outer)
     && declare_alias (outer, "b64", "Base64")
     && declare_alias (outer, "64", "Base64");
 }
+
+void
+delmodule_base64 (RECODE_OUTER outer)
+{
+}

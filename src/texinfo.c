@@ -82,3 +82,8 @@ module_texinfo (RECODE_OUTER outer)
     && declare_alias (outer, "texi", "Texinfo")
     && declare_alias (outer, "ti", "Texinfo");
 }
+
+void
+delmodule_texinfo (RECODE_OUTER outer)
+{
+}

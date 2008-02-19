@@ -46,7 +46,7 @@ static const unsigned char xbase64_tab[128/8] = {
  */
 
 static int
-utf7_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+utf7_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   state_t state = conv->istate;
   int count = 0; /* number of input bytes already read */
@@ -63,7 +63,7 @@ inactive:
     {
       unsigned char c = *s;
       if (isxdirect(c)) {
-        *pwc = (wchar_t) c;
+        *pwc = (ucs4_t) c;
         conv->istate = state;
         return count+1;
       }
@@ -71,7 +71,7 @@ inactive:
         if (n < count+2)
           goto none;
         if (s[1] == '-') {
-          *pwc = (wchar_t) '+';
+          *pwc = (ucs4_t) '+';
           conv->istate = state;
           return count+2;
         }
@@ -145,11 +145,11 @@ active:
     /* Here k = kmax > 0, hence base64count > 0. */
     if ((base64state & 3) == 0) abort();
     if (kmax == 4) {
-      wchar_t wc1 = wc >> 16;
-      wchar_t wc2 = wc & 0xffff;
+      ucs4_t wc1 = wc >> 16;
+      ucs4_t wc2 = wc & 0xffff;
       if (!(wc1 >= 0xd800 && wc1 < 0xdc00)) abort();
       if (!(wc2 >= 0xdc00 && wc2 < 0xe000)) return RET_ILSEQ;
-      *pwc = 0x10000 + ((wc - 0xd800) << 10) + (wc2 - 0xdc00);
+      *pwc = 0x10000 + ((wc1 - 0xd800) << 10) + (wc2 - 0xdc00);
     } else {
       *pwc = wc;
     }
@@ -183,7 +183,7 @@ none:
 #define UTF7_ENCODE_OPTIONAL_CHARS 1
 
 static int
-utf7_wctomb (conv_t conv, unsigned char *r, wchar_t iwc, int n)
+utf7_wctomb (conv_t conv, unsigned char *r, ucs4_t iwc, int n)
 {
   state_t state = conv->ostate;
   unsigned int wc = iwc;

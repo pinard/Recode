@@ -23,34 +23,34 @@ static const unsigned short cp1254_2uni_3[16] = {
 };
 
 static int
-cp1254_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cp1254_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80) {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     return 1;
   }
   else if (c < 0xa0) {
     unsigned short wc = cp1254_2uni_1[c-0x80];
     if (wc != 0xfffd) {
-      *pwc = (wchar_t) wc;
+      *pwc = (ucs4_t) wc;
       return 1;
     }
   }
   else if (c < 0xd0) {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     return 1;
   }
   else if (c < 0xe0) {
-    *pwc = (wchar_t) cp1254_2uni_2[c-0xd0];
+    *pwc = (ucs4_t) cp1254_2uni_2[c-0xd0];
     return 1;
   }
   else if (c < 0xf0) {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     return 1;
   }
   else {
-    *pwc = (wchar_t) cp1254_2uni_3[c-0xf0];
+    *pwc = (ucs4_t) cp1254_2uni_3[c-0xf0];
     return 1;
   }
   return RET_ILSEQ;
@@ -98,7 +98,7 @@ static const unsigned char cp1254_page20[48] = {
 };
 
 static int
-cp1254_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cp1254_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

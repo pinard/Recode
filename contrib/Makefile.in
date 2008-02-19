@@ -11,7 +11,7 @@
 # PARTICULAR PURPOSE.
 
 # Makefile for `recode' related contributions.
-# Copyright © 1997, 1998 Free Software Foundation, Inc.
+# Copyright © 1997, 1998, 2000 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -87,6 +87,7 @@ CPP = @CPP@
 DLLTOOL = @DLLTOOL@
 ECHO_C = @ECHO_C@
 ECHO_N = @ECHO_N@
+GLIBC21 = @GLIBC21@
 LEX = @LEX@
 LEX_OUTPUT_ROOT = @LEX_OUTPUT_ROOT@
 LIBOBJS = @LIBOBJS@
@@ -108,7 +109,7 @@ AMIGA_PORT = lib-Makefile.Amiga src-Makefile.Amiga
 DJGPP_PORT = djgpp-README djgpp-diffs
 ELISP_FILES = recode.el utf8.el
 
-EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES)
+EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) recode.spec
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = ../config.h
 CONFIG_CLEAN_FILES = 

@@ -20,8 +20,8 @@
 AUTOMAKE_OPTIONS = gnits
 
 noinst_LIBRARIES = libreco.a
-noinst_HEADERS = error.h getopt.h gettext.h pathmax.h xalloc.h xstring.h
-libreco_a_SOURCES = error.c getopt.c getopt1.c xmalloc.c xstrdup.c
+noinst_HEADERS = error.h getopt.h gettext.h pathmax.h xstring.h
+libreco_a_SOURCES = error.c getopt.c getopt1.c xstrdup.c
 
 EXTRA_DIST = alloca.c gettext.c malloc.c realloc.c strtol.c strtoul.c
 

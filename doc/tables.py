@@ -410,6 +410,11 @@ class Explodes(Options):
             del declare_alias[0]
         write('\n'
               '  return true;\n'
+              '}\n'
+              '\n'
+              'void\n'
+              'delmodule_explodes (struct recode_outer *outer)\n'
+              '{\n'
               '}\n')
 
 # Libiconv.
@@ -1126,6 +1131,11 @@ class Strips(Options):
             del self.declare_alias[0]
         write('\n'
               '  return true;\n'
+              '}\n'
+              '\n'
+              'void\n'
+              'delmodule_strips (struct recode_outer *outer)\n'
+              '{\n'
               '}\n')
 
         # Write the pool file.

@@ -357,3 +357,8 @@ module_quoted_printable (RECODE_OUTER outer)
     && declare_alias (outer, "quote-printable", "Quoted-Printable")
     && declare_alias (outer, "QP", "Quoted-Printable");
 }
+
+void
+delmodule_quoted_printable (RECODE_OUTER outer)
+{
+}

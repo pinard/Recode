@@ -24,3 +24,7 @@ haible@clisp.cons.org
 LIBICONV        Bruno Haible    Germany/France 1965     1999-12-08
 Assigns program and future changes.
 haible@clisp.cons.org
+
+RECODE	Linus Walleij	Sweden 1972	2000-07-03
+Assigns past and future changes (rtf.c).
+triad@df.lth.se

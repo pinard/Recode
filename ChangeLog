@@ -1,3 +1,28 @@
+2001-01-03  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in: Version 3.6.
+
+2001-01-03  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in: Test for memory.h and strndup.
+
+2000-12-06  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in: Remove determination of compile-time DEFAULT_CHARSET.
+	* README: Remove section about DEFAULT_CHARSET at installation time.
+
+2000-12-05  Bruno Haible  <haible@clisp.cons.org>
+
+	* configure.in: Call AC_CANONICAL_HOST, jm_LANGINFO_CODESET,
+	jm_GLIBC21. Check for locale.h, stddef.h, stdlib.h, mbrtowc, wcrtomb,
+	setlocale.
+
+2000-08-30  Bruno Haible  <haible@clisp.cons.org>
+
+	* Makefile.am (ACLOCAL): New definition.
+	* aclocal.sh: New file.
+	* Makefile.am (EXTRA_DIST): Add it.
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.in: Version 3.5e.

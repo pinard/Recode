@@ -18,6 +18,7 @@
    Suite 330, Boston, MA 02111-1307, USA.  */
 
 #include "common.h"
+#include "hash.h"
 
 /*-----------------------------------------------------------------------.
 | This dummy fallback routine is used to flag the intent of a reversible |

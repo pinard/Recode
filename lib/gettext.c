@@ -811,8 +811,10 @@ static struct loaded_l10nfile *_nl_find_domain PARAMS ((const char *__dirname,
      internal_function;
 static void _nl_load_domain PARAMS ((struct loaded_l10nfile *__domain))
      internal_function;
+#ifdef _LIBC
 static void _nl_unload_domain PARAMS ((struct loaded_domain *__domain))
      internal_function;
+#endif
 
 #endif /* gettextP.h  */
 

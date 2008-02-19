@@ -593,3 +593,8 @@ module_varia (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_varia (RECODE_OUTER outer)
+{
+}

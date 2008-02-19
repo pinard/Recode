@@ -18,6 +18,7 @@
 
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
+MAKEINFO = LANG= LANGUAGE= @MAKEINFO@
 
 EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore \
 tables.py

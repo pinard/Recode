@@ -2880,6 +2880,11 @@ module_ascii_latin1 (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_ascii_latin1 (RECODE_OUTER outer)
+{
+}
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 97, 98, 99, 00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1988.
@@ -2916,11 +2921,16 @@ bool
 module_latex_latin1 (RECODE_OUTER outer)
 {
   return
-declare_single (outer, "LaTeX", "Latin-1",
-outer->quality_variable_to_byte,
-NULL, transform_latex_latin1)
+    declare_single (outer, "LaTeX", "Latin-1",
+                    outer->quality_variable_to_byte,
+                    NULL, transform_latex_latin1)
     && declare_alias (outer, "TeX", "LaTeX")
     && declare_alias (outer, "ltex", "LaTeX");
+}
+
+void
+delmodule_latex_latin1 (RECODE_OUTER outer)
+{
 }
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1990, 93, 94, 97, 98, 99, 00 Free Software Foundation, Inc.
@@ -2995,4 +3005,9 @@ module_texte_latin1 (RECODE_OUTER outer)
 		    outer->quality_variable_to_byte, NULL,
 		    transform_texte_latin1)
     && declare_alias (outer, "txte", "Texte");
+}
+
+void
+delmodule_texte_latin1 (RECODE_OUTER outer)
+{
 }

@@ -25,7 +25,7 @@
  */
 
 static int
-sjis_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+sjis_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80 || (c >= 0xa1 && c <= 0xdf))
@@ -61,7 +61,7 @@ sjis_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-sjis_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+sjis_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char buf[2];
   int ret;

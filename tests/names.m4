@@ -38,9 +38,11 @@ AtariST
 baltic iso-ir-179
 Bang-Bang
 BIG5 BIG-5 BIG-FIVE BIGFIVE CN-BIG5 csBig5
+BIG5HKSCS
 BS_4730 gb ISO646-GB iso-ir-4 uk
 BS_viewdata iso-ir-47
 CDC-NOS NOS
+CHAR
 combined-UCS-2 co
 CORK T1
 count-characters
@@ -96,6 +98,7 @@ EUC-JP csEUCPkdFmtJapanese EUCJP EUC_JP Extended_UNIX_Code_Packed_Format_for_Jap
 EUC-KR csEUCKR EUCKR EUC_KR
 EUC-TW csEUCTW EUCTW EUC_TW
 flat
+GB18030
 GBK CP936
 GB_1988-80 cn csISO57GB1988 ISO646-CN iso-ir-57
 GB_2312-80 CHINESE csISO58GB231280 GB2312.1980-0 ISO-IR-58
@@ -280,6 +283,8 @@ VIQR
 VISCII csVISCII VISCII1.1-1
 VNI
 VPS
+WCHAR_T
+XML-standalone h0
 EOF
 
 AT_CHECK(recode -l, 0, expout)

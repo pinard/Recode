@@ -25,18 +25,18 @@ static const unsigned short iso8859_8_2uni[96] = {
 };
 
 static int
-iso8859_8_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+iso8859_8_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c >= 0xa0) {
     unsigned short wc = iso8859_8_2uni[c-0xa0];
     if (wc != 0xfffd) {
-      *pwc = (wchar_t) wc;
+      *pwc = (ucs4_t) wc;
       return 1;
     }
   }
   else {
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
     return 1;
   }
   return RET_ILSEQ;
@@ -67,7 +67,7 @@ static const unsigned char iso8859_8_page20[16] = {
 };
 
 static int
-iso8859_8_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+iso8859_8_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x00a0) {

@@ -1,0 +1,6 @@
+The files in this directory (except Makefile.am, Makefile.in,ChangeLog
+and this README) are taken from Bruno Haible's libiconv library, homepage
+    http://clisp.cons.org/~haible/packages-libiconv.html
+
+The copyright owner is the Free Software Foundation, Inc., and the
+files are covered by the GNU LGPL.

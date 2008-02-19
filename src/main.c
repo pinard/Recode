@@ -299,19 +299,11 @@ Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n\
 FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n\
 "),
 	     stdout);
-#ifdef DEFAULT_CHARSET
-      if (*DEFAULT_CHARSET)
-	printf (_("\
-Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n\
-"),
-		DEFAULT_CHARSET);
-      else
-#else
-	fputs (_("\
-CHARSET has no default, define DEFAULT_CHARSET in the environment.\n\
+      fputs (_("\
+Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the locale\n\
+dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n\
 "),
 	       stdout);
-#endif
       fputs (_("\
 With -k, possible before charsets are listed for the given after CHARSET,\n\
 both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:AFT2,...'\n\
@@ -396,6 +388,11 @@ main (int argc, char *const *argv)
   RECODE_REQUEST request;
 
   program_name = argv[0];
+  /* libtool creates a temporary executable whose names is prefixed with
+     "lt-".  Remove this prefix here.  */
+  if (strncmp (program_name, "lt-", 3) == 0)
+    program_name += 3;
+
   setlocale (LC_ALL, "");
   bindtextdomain (PACKAGE, LOCALEDIR);
   textdomain (PACKAGE);

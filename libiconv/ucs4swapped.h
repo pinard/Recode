@@ -3,11 +3,14 @@
  */
 
 static int
-ucs4swapped_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+ucs4swapped_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
+  /* This function assumes that 'unsigned int' has exactly 32 bits. */
+  if (sizeof(unsigned int) != 4) abort();
+
   if (n >= 4) {
-    unsigned int x = *(unsigned int *)s;
-    x = ((x & 0xffffffff) >> 24) | ((x >> 8) & 0xff00) | ((x & 0xff00) << 8) | ((x << 24) & 0xffffffff);
+    unsigned int x = *(const unsigned int *)s;
+    x = (x >> 24) | ((x >> 8) & 0xff00) | ((x & 0xff00) << 8) | (x << 24);
     *pwc = x;
     return 4;
   }
@@ -15,11 +18,14 @@ ucs4swapped_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-ucs4swapped_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+ucs4swapped_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
+  /* This function assumes that 'unsigned int' has exactly 32 bits. */
+  if (sizeof(unsigned int) != 4) abort();
+
   if (n >= 4) {
     unsigned int x = wc;
-    x = ((x & 0xffffffff) >> 24) | ((x >> 8) & 0xff00) | ((x & 0xff00) << 8) | ((x << 24) & 0xffffffff);
+    x = (x >> 24) | ((x >> 8) & 0xff00) | ((x & 0xff00) << 8) | (x << 24);
     *(unsigned int *)r = x;
     return 4;
   } else

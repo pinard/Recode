@@ -107,3 +107,8 @@ module_flat (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_flat (RECODE_OUTER outer)
+{
+}

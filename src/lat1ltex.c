@@ -173,3 +173,8 @@ module_latin1_latex (RECODE_OUTER outer)
     && declare_alias (outer, "TeX", "LaTeX")
     && declare_alias (outer, "ltex", "LaTeX");
 }
+
+void
+delmodule_latin1_latex (RECODE_OUTER outer)
+{
+}

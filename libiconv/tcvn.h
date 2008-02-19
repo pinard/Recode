@@ -39,15 +39,15 @@ static const unsigned short tcvn_2uni_2[128] = {
 };
 
 static int
-tcvn_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+tcvn_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x20)
-    *pwc = (wchar_t) tcvn_2uni_1[c];
+    *pwc = (ucs4_t) tcvn_2uni_1[c];
   else if (c < 0x80)
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
   else
-    *pwc = (wchar_t) tcvn_2uni_2[c-0x80];
+    *pwc = (ucs4_t) tcvn_2uni_2[c-0x80];
   return 1;
 }
 
@@ -112,7 +112,7 @@ static const unsigned char tcvn_page1e[96] = {
 };
 
 static int
-tcvn_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+tcvn_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080 && (wc >= 0x0020 || (0x00fe0076 & (1 << wc)) == 0)) {

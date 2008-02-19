@@ -226,3 +226,8 @@ module_atarist (RECODE_OUTER outer)
 
 #endif
 }
+
+void
+delmodule_atarist (RECODE_OUTER outer)
+{
+}

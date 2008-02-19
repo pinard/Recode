@@ -1,3 +1,23 @@
+2001-01-03  Bruno Haible  <haible@clisp.cons.org>
+
+	* gettext.m4: Check for argz.h, limits.h, malloc.h, string.h,
+	unistd.h, sys/param.h, mmap, mempcpy, munmap, stpcpy, strcasecmp,
+	strchr, strdup, __argz_count, __argz_stringify, __argz_next.
+
+2000-12-06  Bruno Haible  <haible@clisp.cons.org>
+
+	* microsoft.m4: Remove file.
+	* Makefile.am (EXTRA_DIST): Remove it.
+
+2000-12-05  Bruno Haible  <haible@clisp.cons.org>
+
+	* codeset.m4: New file, from libiconv-1.5.
+	* glibc21.m4: New file, from libiconv-1.5.
+	* Makefile.am (EXTRA_DIST): Add them.
+
+	* libtool.m4: New file.
+	* Makefile.am (EXTRA_DIST): Add it.
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (EXTRA_DIST):

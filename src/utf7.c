@@ -295,3 +295,8 @@ module_utf7 (RECODE_OUTER outer)
 		       outer->quality_variable_to_variable,
 		       NULL, transform_utf16_utf7);
 }
+
+void
+delmodule_utf7 (RECODE_OUTER outer)
+{
+}

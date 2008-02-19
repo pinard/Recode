@@ -1,38 +1,43 @@
 Free recode NEWS - User visible changes.	-*- outline -*- (allout)
-Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
+Copyright © 1993-1999, 2000, 2001 Free Software Foundation, Inc.
 
-* Version 3.5d - François Pinard, 2000-03.
+* Version 3.6 - François Pinard, Bruno Haible, 2001-01.
 
 .* General changes
-. + The Texinfo manual is now indexed, by charset, by concept, etc.
+. + The recode manual is now indexed, by charset, by concept, etc.
 . + Program messages are also available in Greek, Gallicean and Italian.
 . + Bruno Haible's nice portable iconv library has been integrated.
 . + RFC 1345 tables and French character names have been updated.
 . + The Texinfo charset has been refreshed, and made reversible.
 
-.* New charsets (most from libiconv) [list to be revised]
+.* New charsets (most from libiconv)
 
 . + Japanese
-    EUC-JP (csEUCPkdFmtJapanese,
+    EUC-JP (csEUCPkdFmtJapanese, EUC_JP,
       Extended_UNIX_Code_Packed_Format_for_Japanese);
     ISO-2022-JP (csISO2022JP); ISO-2022-JP-1; ISO-2022-JP-2 (csISO2022JP2);
-    JIS_X0201 (csHalfWidthKatakana, JISX0201-1976, JISX0201.1976-0, X0201);
-    JIS_X0208 (JIS0208, JIS_X0208.1983-0, JIS_X0208-1983, JIS_X0208-1990,
-      JIS_X0208.1983-1);
-    JIS_X0212 (csISO159JISX02121990, ISO-IR-159, JIS_X0212.1990-0,
+    JIS_C6220-1969-ro (csISO14JISC6220ro, ISO646-JP, iso-ir-14, jp);
+    JIS_X0201 (csHalfWidthKatakana, JIS0201, JISX0201-1976, JISX0201.1976-0,
+       X0201);
+    JIS_X0208 (csISO87JISX0208, ISO-IR-87, JIS0208, JIS_X0208.1983-0,
+       JIS_X0208.1983-1, JIS_X0208-1990-0, JIS_X0208.1983-1, X0208);
+    JIS_X0212 (csISO159JISX02121990, ISO-IR-159, JIS0212, JIS_X0212.1990-0,
       JIS_X0212-1990, X0212);
     SJIS (csShiftJIS, MS_KANJI, SHIFT-JIS).
 
 . + Chinese
-    BIG5 (BIG-5, BIG-FIVE, BIGFIVE, csBig5);
-    EUC-CN (csGB2312, EUCCN, GB2312); EUC-TW (csEUCTW, EUCTW);
-    HZ (HZ-GB-2312); ISO-2022-CN (csISO2022CN); ISO-2022-CN-EXT.
+    BIG5 (BIG-5, BIG-FIVE, BIGFIVE, CN-BIG5 csBig5); BIG5HKSCS;
+    EUC-CN (CN-GB, csGB2312, EUC_CN, GB2312); EUC-TW (csEUCTW, EUC_TW);
+    GB18030; HZ (HZ-GB-2312); ISO-2022-CN (csISO2022CN); ISO-2022-CN-EXT;
+    GB_1988-80 (cn, csISO57GB1988, ISO646-CN, iso-ir-57);
+    GB_2312-80 (CHINESE, csISO58GB231280, GB2312.1980-0, ISO-IR-58);
+    ISO-IR-165 (CN-GB-ISOIR165).
 
 . + Korean
-    JOHAB (CP1361); EUC-KR (csEUCKR, EUCKR); GBK (CP936);
+    JOHAB (CP1361); EUC-KR (csEUCKR, EUC_KR); GBK (CP936);
     ISO-2022-KR (csISO2022KR);
     KSC_5601 (CP949, csKSC56011987, ISO-IR-149, KOREAN, KSC5601.1987-0,
-      KS_C_5601-1987, KS_C_5601-1989).
+      KS_C_5601-1987, KS_C_5601-1989, KSX1001:1992).
 
 . + Vietnamese (independently of libiconv)
     TCVN; VIQR; VISCII; VNI; VPS.
@@ -48,12 +53,12 @@ Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
     MacHebrew; MacIceland; MacRomania; MacThai; MacTurkish; MacUkraine
 
 . + Unicode
-    JAVA; UCS-2-BE (csUnicode11, UNICODE-1-1, UnicodeBIG); UCS-2-INTERNAL;
-    UCS-2-LE (UnicodeLITTLE); UCS-2-SWAPPED; UCS-4-BE; UCS-4-INTERNAL;
-    UCS-4-LE; UCS-4-SWAPPED; UCS-2BE; UCS-2LE; UCS-4BE; UCS-4LE.
+    JAVA; UCS-2-INTERNAL; UCS-2LE (UnicodeLITTLE); UCS-2-SWAPPED; UCS-4BE;
+    UCS-4-INTERNAL; UCS-4LE; UCS-4-SWAPPED; UTF-16BE; UTF-16LE.
 
 . + Others
-    CP932; CP950; CP866 (866, csIBM866, IBM866).
+    CP932; CP949 (UHC); CP950; CP866 (866, csIBM866, IBM866).
+    ISO-8859-16 (ISO-IR-226, ISO_8859-16:2000).
 
 . + Recode internal
     :libiconv: (:)   [so option -x: avoids going through libiconv]
@@ -67,11 +72,15 @@ Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
    csISOLatinArabic (for ISO-8859-6); csISOLatinCyrillic (for ISO-8859-5);
    csISOLatinGreek (for ISO-8859-7); csISOLatinHebrew (for ISO-8859-8);
    csKOI8R (for KOI8-R); csPC850Multilingual (for IBM850);
-   csUCS4 (for ISO-10646-UCS-4); csUnicode (for ISO-10646-UCS-2);
+   csUCS4 (for ISO-10646-UCS-4);
+   csUnicode, csUnicode11, UCS-2BE, UnicodeBIG (for ISO-10646-UCS-2);
    csUnicode11UTF7 (for UNICODE-1-1-UTF-7);
    csVISCII and VISCII1.1-1 (for VISCII);
    ISO-IR-179 (for ISO-8859-13); csMacintosh and MacRoman (for macintosh);
    TCVN5712-1, TCVN5712-1:1993 and TCVN-5712 (for TCVN).
+
+.* New surfaces
+   tree (experimental).
 
 * Version 3.5 - François Pinard, 1999-05.
 
@@ -111,20 +120,22 @@ Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 .  - combined-UCS-2: pseudo-charset.
 .  - count-characters: pseudo-charset.
 .  - dump-with-names: pseudo-charset.
-.  - ISO-10646-UCS-2: aliases are UNICODE-1-1, BMP, rune and u2.
-.  - ISO-10646-UCS-4: aliases are 10646, ISO-10646, UCS-4 and u4.
-.  - UNICODE-1-1-UTF-7: aliases are TF-7 and u7.
-.  - UTF-8: aliases are UTF-2, UTF-FSS, FSS_UTF, TF-8 and u8.
-.  - UTF-16: aliases are Unicode, TF-16 and u6.
+.  - ISO-10646-UCS-2 (UNICODE-1-1, BMP, rune, u2).
+.  - ISO-10646-UCS-4 (10646, ISO-10646, UCS-4, u4).
+.  - UNICODE-1-1-UTF-7 (TF-7, u7).
+.  - UTF-8 (UTF-2, UTF-FSS, FSS_UTF, TF-8, u8).
+.  - UTF-16 (Unicode, TF-16, u6).
 
 . + RFC 1345.bis matters
 .  - Deleted charsets
      dk-us, us-dk (because of &duplicate which `recode' does not handle yet).
 .  - New charsets
      baltic (alias is iso-ir-179); CP1250 (1250, ms-ee, windows-1250);
-     CP1251 (1251, ms-cyrl, windows-1251); CP1252 (1252, ms-ansi, windows-1252);
+     CP1251 (1251, ms-cyrl, windows-1251);
+     CP1252 (1252, ms-ansi, windows-1252);
      CP1253 (1253, ms-greek, windows-1253);
-     CP1254 (1254, ms-turk, windows-1254); CP1255 (1255, ms-hebr, windows-1255);
+     CP1254 (1254, ms-turk, windows-1254);
+     CP1255 (1255, ms-hebr, windows-1255);
      CP1256 (1256, ms-arab, windows-1256);
      CP1257 (1257, WinBaltRim, windows-1257);
      CWI (CWI-2, cp-hu); EBCDIC-IS-FRISS (friss);
@@ -160,52 +171,27 @@ Copyright © 1993, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
      KOI8_L2 (CSN_369103); pclatin2, pcl2 (IBM852); SS636127 (SEN_850200_B).
 
 . + New African charsets
-.  - AFRL1-101-BPI_OCIL: aliases are t-francais and t-fra.
-.  - AFRFUL-102-BPI_OCIL: aliases are bambara, bra, ewondo and fulfulde.
-.  - AFRFUL-103-BPI_OCIL: aliases are t-bambara, t-bra, t-ewondo and t-fulfulde.
-.  - AFRLIN-104-BPI_OCIL: aliases are lingala, lin, sango and wolof.
-.  - AFRLIN-105-BPI_OCIL: aliases are t-lingala, t-lin, t-sango and t-wolof.
+    AFRL1-101-BPI_OCIL (t-francais, t-fra);
+    AFRFUL-102-BPI_OCIL (bambara, bra, ewondo, fulfulde);
+    AFRFUL-103-BPI_OCIL (t-bambara, t-bra, t-ewondo, t-fulfulde);
+    AFRLIN-104-BPI_OCIL (lingala, lin, sango, wolof);
+    AFRLIN-105-BPI_OCIL (t-lingala, t-lin, t-sango, t-wolof).
 
 . + Extra miscellaneous charsets
-.  - KEYBCS2, Kamenicky.
-.  - CORK, T1.
-.  - KOI-8_CS2.
+     KEYBCS2 (Kamenicky); CORK (T1); KOI-8_CS2.
 
 . + New HTML pseudo-charsets
-.  - HTML_1.1: alias is h1.
-.  - HTML_2.0: aliases are RFC 1866, 1866 and h2.
-.  - HTML-i18n: alias is RFC 2070.
-.  - HTML_3.2: reimplemented; alias is h3.
-.  - HTML_4.0: aliases are h4, HTML and h.
-.  - Deleted aliases: HTF, 8859, ISO 8859, Entities, SGML, WWW, w3.
+    HTML_1.1 (h1);  HTML_2.0 (RFC 1866, 1866, h2); HTML-i18n (RFC 2070);
+    HTML_3.2 (h3) reimplemented; HTML_4.0 (h4, HTML, h);
+    deleted aliases HTF, 8859, ISO 8859, Entities, SGML, WWW, w3.
 
 .* Surfaces & aliases
-
-. + New MIME encoding surfaces
-.  - Base64: aliases are 64 and b64.
-.  - Quoted-Printable: aliases are qp and Quote-Printable.
-
-. + New permutation surfaces
-.  - 21-Permutation: alias is swabytes.
-.  - 4321-Permutation.
-
-. + New end of line surfaces
-.  - CR.
-.  - CR-LF: alias is cl.
-
-. + New (fully reversible) dump surfaces
-.  - Decimal-1: aliases are d and d1.
-.  - Decimal-2: alias is d2.
-.  - Decimal-4: alias is d4.
-.  - Hexadecimal-1: aliases are x and x1.
-.  - Hexadecimal-2: alias is x2.
-.  - Hexadecimal-4: alias is x4.
-.  - Octal-1: aliases are o and o1.
-.  - Octal-2: alias is o2.
-.  - Octal-4: alias is o4.
-
-. + New miscellaneous surfaces.
-.  - data, test7, test8, test15, test16.
+   Base64 (64, b64); Quoted-Printable (qp, Quote-Printable);
+   21-Permutation (swabytes); 4321-Permutation; CR; CR-LF (cl);
+   Decimal-1 (d, d1); Decimal-2 (d2), Decimal-4 (d4);
+   Hexadecimal-1 (x, x1); Hexadecimal-2 (x2); Hexadecimal-4 (x4);
+   Octal-1 (o, o1); Octal-2 (o2); Octal-4 (o4).
+   data; test7; test8; test15; test16.
 
 * Version 3.4 - François Pinard, 1994-11.
 

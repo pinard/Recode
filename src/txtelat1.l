@@ -185,3 +185,8 @@ module_texte_latin1 (RECODE_OUTER outer)
 		    transform_texte_latin1)
     && declare_alias (outer, "txte", "Texte");
 }
+
+void
+delmodule_texte_latin1 (RECODE_OUTER outer)
+{
+}

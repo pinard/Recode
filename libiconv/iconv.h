@@ -21,7 +21,8 @@
 #ifndef _LIBICONV_H
 #define _LIBICONV_H
 
-#define _LIBICONV_VERSION 0x0103    /* version number: (major<<8) + minor */
+#define _LIBICONV_VERSION 0x0105    /* version number: (major<<8) + minor */
+extern int _libiconv_version;       /* Likewise */
 
 /* We would like to #include any system header file which could define
    iconv_t, 1. in order to eliminate the risk that the user gets compilation

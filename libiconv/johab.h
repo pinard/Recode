@@ -29,14 +29,14 @@
  */
 
 static int
-johab_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+johab_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80) {
     if (c == 0x5c)
-      *pwc = (wchar_t) 0x20a9;
+      *pwc = (ucs4_t) 0x20a9;
     else
-      *pwc = (wchar_t) c;
+      *pwc = (ucs4_t) c;
     return 1;
   } else if (c < 0xd8) {
     return johab_hangul_mbtowc(conv,pwc,s,n);
@@ -66,7 +66,7 @@ johab_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-johab_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+johab_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char buf[2];
   int ret;

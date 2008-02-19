@@ -153,7 +153,7 @@ produce_count (RECODE_SUBTASK subtask)
   struct ucs2_to_count **array;	/* array into hash table items */
 
   table = hash_initialize (0, NULL,
-			   ucs2_to_count_hash, ucs2_to_count_compare, NULL);
+			   ucs2_to_count_hash, ucs2_to_count_compare, free);
   if (!table)
     return false;
 
@@ -174,11 +174,18 @@ produce_count (RECODE_SUBTASK subtask)
 	else
 	  {
 	    if (!ALLOC (entry, 1, struct ucs2_to_count))
-	      return false;
+	      {
+		hash_free (table);
+		return false;
+	      }
 	    entry->code = character;
 	    entry->count = 1;
 	    if (!hash_insert (table, entry))
-	      return false;
+	      {
+		hash_free (table);
+		free (entry);
+		return false;
+	      }
 	  }
       }
   }
@@ -188,7 +195,10 @@ produce_count (RECODE_SUBTASK subtask)
   size = hash_get_n_entries (table);
 
   if (!ALLOC (array, size, struct ucs2_to_count *))
-    return false;
+    {
+      hash_free (table);
+      return false;
+    }
   hash_get_entries (table, (void **) array, size);
 
   qsort (array, size, sizeof (struct ucs2_to_count *), compare_item);
@@ -249,12 +259,7 @@ produce_count (RECODE_SUBTASK subtask)
 
   /* Clean-up.  */
 
-  {
-    struct ucs2_to_count **cursor;
-
-    for (cursor = array; cursor < array + size; cursor++)
-      free (*cursor);
-  }
+  free (array);
   hash_free (table);
 
   SUBTASK_RETURN (subtask);
@@ -368,4 +373,9 @@ module_testdump (RECODE_OUTER outer)
     return false;
 
   return true;
+}
+
+void
+delmodule_testdump (RECODE_OUTER outer)
+{
 }

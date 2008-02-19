@@ -261,3 +261,8 @@ module_ebcdic (RECODE_OUTER outer)
 		       outer->quality_byte_reversible,
 		       init_ebcdic_ibm_ascii, transform_byte_to_byte);
 }
+
+void
+delmodule_ebcdic (RECODE_OUTER outer)
+{
+}

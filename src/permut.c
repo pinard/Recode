@@ -111,3 +111,8 @@ module_permutations (RECODE_OUTER outer)
 		       NULL, permute_4321)
     && declare_alias (outer, "swabytes", "21-Permutation");
 }
+
+void
+delmodule_permutations (RECODE_OUTER outer)
+{
+}

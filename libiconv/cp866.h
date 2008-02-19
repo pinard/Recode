@@ -22,15 +22,15 @@ static const unsigned short cp866_2uni[80] = {
 };
 
 static int
-cp866_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cp866_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   if (c < 0x80)
-    *pwc = (wchar_t) c;
+    *pwc = (ucs4_t) c;
   else if (c < 0xb0)
-    *pwc = (wchar_t) c + 0x0390;
+    *pwc = (ucs4_t) c + 0x0390;
   else
-    *pwc = (wchar_t) cp866_2uni[c-0xb0];
+    *pwc = (ucs4_t) cp866_2uni[c-0xb0];
   return 1;
 }
 
@@ -81,7 +81,7 @@ static const unsigned char cp866_page25[168] = {
 };
 
 static int
-cp866_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cp866_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char c = 0;
   if (wc < 0x0080) {

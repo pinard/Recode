@@ -1,5 +1,5 @@
 # Makefile for `recode' related contributions.
-# Copyright © 1997, 1998 Free Software Foundation, Inc.
+# Copyright © 1997, 1998, 2000 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 
 # This program is free software; you can redistribute it and/or modify
@@ -22,4 +22,4 @@ AMIGA_PORT = lib-Makefile.Amiga src-Makefile.Amiga
 DJGPP_PORT = djgpp-README djgpp-diffs
 ELISP_FILES = recode.el utf8.el
 
-EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES)
+EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) recode.spec

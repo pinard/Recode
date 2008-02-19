@@ -110,3 +110,8 @@ module_mule (RECODE_OUTER outer)
 		       outer->quality_variable_to_byte,
 		       NULL, transform_mule_latin2);
 }
+
+void
+delmodule_mule (RECODE_OUTER outer)
+{
+}

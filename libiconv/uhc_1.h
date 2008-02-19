@@ -785,7 +785,7 @@ static const unsigned char uhc_1_2uni_page81[5696] = {
 };
 
 static int
-uhc_1_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+uhc_1_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 >= 0x81 && c1 <= 0xa0)) {
@@ -796,7 +796,7 @@ uhc_1_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
         unsigned int col = c2 - (c2 >= 0x81 ? 0x4d : c2 >= 0x61 ? 0x47 : 0x41);
         unsigned int i = 178 * row + col;
         if (i < 5696) {
-          *pwc = (wchar_t) (uhc_1_2uni_main_page81[2*row+(col>=89?1:0)] + uhc_1_2uni_page81[i]);
+          *pwc = (ucs4_t) (uhc_1_2uni_main_page81[2*row+(col>=89?1:0)] + uhc_1_2uni_page81[i]);
           return 2;
         }
       }
@@ -1678,7 +1678,7 @@ static const Summary16 uhc_1_uni2indx_pageac[459] = {
 };
 
 static int
-uhc_1_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+uhc_1_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     if (wc >= 0xac00 && wc < 0xc8b0) {

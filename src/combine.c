@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1990, 92, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
+   Copyright © 1990,92,93,94,96,97,98,99,00 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1990.
 
    This library is free software; you can redistribute it and/or
@@ -279,6 +279,21 @@ state_compare (const void *void_first, const void *void_second)
   return first->character == second->character;
 }
 
+static void
+state_free (void *void_state)
+{
+  struct state *state = void_state;
+  struct state *shift = state->shift;
+
+  while (shift != NULL)
+    {
+      struct state *next_shift = shift->next;
+      free (shift);
+      shift = next_shift;
+    }
+  free (state);
+}
+
 static struct state *
 prepare_shifted_state (struct state *state, unsigned character,
 		       RECODE_CONST_STEP step)
@@ -367,7 +382,7 @@ init_combine (RECODE_STEP step,
   if (before_options || after_options)
     return false;
 
-  table = hash_initialize (0, NULL, state_hash, state_compare, NULL);
+  table = hash_initialize (0, NULL, state_hash, state_compare, state_free);
 
   if (!table)
     return false;

@@ -695,6 +695,11 @@ DEFENCODING(( "GBK",                    /* JDK 1.1 */
             ces_gbk,
             { ces_gbk_mbtowc },           { ces_gbk_wctomb, NULL })
 
+DEFENCODING(( "GB18030",                /* glibc */
+            ),
+            gb18030,
+            { gb18030_mbtowc },           { gb18030_wctomb, NULL })
+
 DEFENCODING(( "ISO-2022-CN",            /* IANA, RFC 1922 */
               "csISO2022CN",
             /*"ISO2022CN",                 JDK 1.1 */
@@ -735,6 +740,11 @@ DEFENCODING(( "CP950",                  /* JDK 1.1 */
             ),
             cp950,
             { cp950_mbtowc },             { cp950_wctomb, NULL })
+
+DEFENCODING(( "BIG5HKSCS",              /* glibc */
+            ),
+            big5hkscs,
+            { big5hkscs_mbtowc },         { big5hkscs_wctomb, NULL })
 
 DEFENCODING(( "EUC-KR",                 /* IANA, RFC 1557 */
               "EUCKR",                  /* glibc */

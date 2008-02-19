@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2000-06-28 15:16-0400\n"
+"POT-Creation-Date: 2001-01-02 22:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,17 +141,14 @@ msgid ""
 "FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
 msgstr ""
 
-#: src/main.c:304
-#, c-format
+#: src/main.c:302
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to `%s'.\n"
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
+"locale\n"
+"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
 msgstr ""
 
-#: src/main.c:310
-msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
-msgstr ""
-
-#: src/main.c:315
+#: src/main.c:307
 msgid ""
 "With -k, possible before charsets are listed for the given after CHARSET,\n"
 "both being tabular charsets, with PAIRS of the form "
@@ -159,12 +156,12 @@ msgid ""
 "and BEFs and AFTs being codes are given as decimal numbers.\n"
 msgstr ""
 
-#: src/main.c:320
+#: src/main.c:312
 msgid ""
 "LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
 msgstr ""
 
-#: src/main.c:323
+#: src/main.c:315
 msgid ""
 "\n"
 "REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is "
@@ -177,7 +174,7 @@ msgid ""
 "with an empty surface name means no surfaces at all.  See the manual.\n"
 msgstr ""
 
-#: src/main.c:331
+#: src/main.c:323
 msgid ""
 "\n"
 "If none of -i and -p are given, presume -p if no FILE, else -i.\n"
@@ -185,79 +182,79 @@ msgid ""
 "FILE is specified, then act as a filter and recode stdin to stdout.\n"
 msgstr ""
 
-#: src/main.c:337
+#: src/main.c:329
 msgid ""
 "\n"
 "Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:430
 #, c-format
 msgid "Sequence `%s' is ambiguous"
 msgstr ""
 
-#: src/main.c:437
+#: src/main.c:434
 #, c-format
 msgid "Sequence `%s' is unknown"
 msgstr ""
 
-#: src/main.c:467 src/main.c:525
+#: src/main.c:464 src/main.c:522
 #, c-format
 msgid "Language `%s' is ambiguous"
 msgstr ""
 
 #. -1
-#: src/main.c:471 src/main.c:529
+#: src/main.c:468 src/main.c:526
 #, c-format
 msgid "Language `%s' is unknown"
 msgstr ""
 
-#: src/main.c:563
+#: src/main.c:560
 #, c-format
 msgid "Format `%s' is ambiguous"
 msgstr ""
 
-#: src/main.c:567
+#: src/main.c:564
 #, c-format
 msgid "Format `%s' is unknown"
 msgstr ""
 
-#: src/main.c:624
+#: src/main.c:621
 msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr ""
 
-#: src/main.c:627
+#: src/main.c:624
 msgid ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
 msgstr ""
 
-#: src/main.c:631
+#: src/main.c:628
 msgid ""
 "This is free software; see the source for copying conditions.  There is NO\n"
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 msgstr ""
 
-#: src/main.c:672
+#: src/main.c:669
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr ""
 
-#: src/main.c:712 src/main.c:726
+#: src/main.c:709 src/main.c:723
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr ""
 
-#: src/main.c:757
+#: src/main.c:754
 msgid "Required argument is missing"
 msgstr ""
 
-#: src/main.c:799
+#: src/main.c:797
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr ""
 
-#: src/main.c:805
+#: src/main.c:803
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr ""
@@ -286,12 +283,12 @@ msgstr ""
 msgid "%s in step `%s..%s'"
 msgstr ""
 
-#: src/names.c:341
+#: src/names.c:335
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr ""
 
-#: src/names.c:837
+#: src/names.c:831
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
@@ -300,22 +297,22 @@ msgstr ""
 #. expected value for code counter
 #. insert a while line before printing
 #. Print the long table according to explode data.
-#: src/names.c:990 src/names.c:1036
+#: src/names.c:984 src/names.c:1030
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr ""
 
-#: src/names.c:1055
+#: src/names.c:1049
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr ""
 
-#: src/outer.c:124
+#: src/outer.c:125
 #, c-format
 msgid "Resurfacer set more than once for `%s'"
 msgstr ""
 
-#: src/outer.c:132
+#: src/outer.c:133
 #, c-format
 msgid "Unsurfacer set more than once for `%s'"
 msgstr ""
@@ -352,26 +349,26 @@ msgstr ""
 msgid "Cannot complete table from set of known pairs"
 msgstr ""
 
-#: src/recode.c:490
+#: src/recode.c:497
 msgid "Identity recoding, not worth a table"
 msgstr ""
 
-#: src/recode.c:497
+#: src/recode.c:504
 msgid "Recoding is too complex for a mere table"
 msgstr ""
 
 #. Print the header of the header file.
-#: src/recode.c:529
+#: src/recode.c:536
 #, c-format
 msgid "%sConversion table generated mechanically by Free `%s' %s"
 msgstr ""
 
-#: src/recode.c:531
+#: src/recode.c:538
 #, c-format
 msgid "%sfor sequence %s.%s"
 msgstr ""
 
-#: src/recode.c:737
+#: src/recode.c:744
 msgid "No table to print"
 msgstr ""
 
@@ -445,7 +442,7 @@ msgstr ""
 msgid "Child process wait status is 0x%0.2x"
 msgstr ""
 
-#: src/testdump.c:293
+#: src/testdump.c:298
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

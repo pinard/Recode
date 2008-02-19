@@ -19,9 +19,8 @@
 /* This file defines all the converters. */
 
 
-/* Define our own notion of wchar_t, as UCS-4, according to ISO-10646-1. */
-#undef wchar_t
-#define wchar_t  unsigned int
+/* Our own notion of wide character, as UCS-4, according to ISO-10646-1. */
+typedef unsigned int ucs4_t;
 
 /* State used by a conversion. 0 denotes the initial state. */
 typedef unsigned int state_t;
@@ -33,9 +32,9 @@ typedef struct conv_struct * conv_t;
  * Data type for conversion multibyte -> unicode
  */
 struct mbtowc_funcs {
-  int (*xxx_mbtowc) (conv_t conv, wchar_t *pwc, unsigned char const *s, int n);
+  int (*xxx_mbtowc) (conv_t conv, ucs4_t *pwc, unsigned char const *s, int n);
   /*
-   * int xxx_mbtowc (conv_t conv, wchar_t *pwc, unsigned char const *s, int n)
+   * int xxx_mbtowc (conv_t conv, ucs4_t *pwc, unsigned char const *s, int n)
    * converts the byte sequence starting at s to a wide character. Up to n bytes
    * are available at s. n is >= 1.
    * Result is number of bytes consumed (if a wide character was read),
@@ -48,9 +47,9 @@ struct mbtowc_funcs {
  * Data type for conversion unicode -> multibyte
  */
 struct wctomb_funcs {
-  int (*xxx_wctomb) (conv_t conv, unsigned char *r, wchar_t wc, int n);
+  int (*xxx_wctomb) (conv_t conv, unsigned char *r, ucs4_t wc, int n);
   /*
-   * int xxx_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+   * int xxx_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
    * converts the wide character wc to the character set xxx, and stores the
    * result beginning at r. Up to n bytes may be written at r. n is >= 1.
    * Result is number of bytes written, or 0 if invalid, or -1 if n too small.
@@ -75,6 +74,7 @@ struct wctomb_funcs {
  * Contents of a conversion descriptor.
  */
 struct conv_struct {
+  struct loop_funcs lfuncs;
   /* Input (conversion multibyte -> unicode) */
   int iindex;
   struct mbtowc_funcs ifuncs;
@@ -199,12 +199,14 @@ typedef struct {
 
 #include "euc_cn.h"
 #include "ces_gbk.h"
+#include "gb18030.h"
 #include "iso2022_cn.h"
 #include "iso2022_cnext.h"
 #include "hz.h"
 #include "euc_tw.h"
 #include "ces_big5.h"
 #include "cp950.h"
+#include "big5hkscs.h"
 
 #include "euc_kr.h"
 #include "cp949.h"

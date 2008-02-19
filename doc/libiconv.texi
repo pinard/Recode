@@ -554,6 +554,9 @@
 @tindex CP936
 @code{CP936} is an alias for this charset.
 
+@item GB18030
+@tindex GB18030
+
 @item ISO-2022-CN
 @tindex ISO-2022-CN@r{, aliases}
 @tindex csISO2022CN
@@ -587,6 +590,9 @@
 @item CP950
 @tindex CP950
 
+@item BIG5HKSCS
+@tindex BIG5HKSCS
+
 @item EUC-KR
 @tindex EUC-KR@r{, aliases}
 @tindex EUCKR
@@ -609,5 +615,11 @@
 @tindex csISO2022KR
 @tindex ISO2022KR
 @code{csISO2022KR} and @code{ISO2022KR} are aliases for this charset.
+
+@item CHAR
+@tindex CHAR
+
+@item WCHAR_T
+@tindex WCHAR_T
 @end table
 @end itemize

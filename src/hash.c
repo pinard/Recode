@@ -1,5 +1,5 @@
 /* hash - hashing table processing.
-   Copyright (C) 1998, 1999 Free Software Foundation, Inc.
+   Copyright (C) 1998, 1999, 2001 Free Software Foundation, Inc.
    Written by Jim Meyering, 1992.
 
    This program is free software; you can redistribute it and/or modify
@@ -35,10 +35,8 @@ typedef enum {false = 0, true = 1} bool;
 #include <stdio.h>
 #include <assert.h>
 
-#if !HAVE_DECL_FREE
+#if !HAVE_STDLIB_H
 void free ();
-#endif
-#if !HAVE_DECL_MALLOC
 char *malloc ();
 #endif
 

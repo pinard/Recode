@@ -459,3 +459,8 @@ module_dump (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_dump (RECODE_OUTER outer)
+{
+}

@@ -195,3 +195,8 @@ module_latin1_ascii (RECODE_OUTER outer)
 
   return true;
 }
+
+void
+delmodule_latin1_ascii (RECODE_OUTER outer)
+{
+}

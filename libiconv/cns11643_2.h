@@ -1066,7 +1066,7 @@ static const unsigned short cns11643_2_2uni_page21[7650] = {
 };
 
 static int
-cns11643_2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cns11643_2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 >= 0x21 && c1 <= 0x72)) {
@@ -1080,7 +1080,7 @@ cns11643_2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
             wc = cns11643_2_2uni_page21[i];
         }
         if (wc != 0xfffd) {
-          *pwc = (wchar_t) wc;
+          *pwc = (ucs4_t) wc;
           return 2;
         }
       }

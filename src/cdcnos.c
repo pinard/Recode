@@ -331,3 +331,8 @@ module_cdcnos (RECODE_OUTER outer)
 		       NULL, transform_cdcnos_ascii)
     && declare_alias (outer, "NOS", "CDC-NOS");
 }
+
+void
+delmodule_cdcnos (RECODE_OUTER outer)
+{
+}

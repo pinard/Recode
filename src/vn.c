@@ -453,3 +453,8 @@ module_vietnamese (RECODE_OUTER outer)
     return false;
   return true;
 }
+
+void
+delmodule_vietnamese (RECODE_OUTER outer)
+{
+}

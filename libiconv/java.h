@@ -4,10 +4,10 @@
  */
 
 static int
-java_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+java_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c;
-  wchar_t wc;
+  ucs4_t wc;
   int i;
 
   c = s[0];
@@ -32,7 +32,7 @@ java_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
       c -= 'a'-10;
     else
       goto simply_backslash;
-    wc |= (wchar_t) c << (4 * (5-i));
+    wc |= (ucs4_t) c << (4 * (5-i));
   }
   *pwc = wc;
   return 6;
@@ -42,7 +42,7 @@ simply_backslash:
 }
 
 static int
-java_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+java_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (wc < 0x80) {
     *r = wc;

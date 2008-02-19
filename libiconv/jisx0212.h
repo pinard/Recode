@@ -892,7 +892,7 @@ static const unsigned short jisx0212_2uni_page30[5801] = {
 };
 
 static int
-jisx0212_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+jisx0212_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 == 0x22) || (c1 >= 0x26 && c1 <= 0x27) || (c1 >= 0x29 && c1 <= 0x2b) || (c1 >= 0x30 && c1 <= 0x6d)) {
@@ -915,7 +915,7 @@ jisx0212_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
             wc = jisx0212_2uni_page30[i-1410];
         }
         if (wc != 0xfffd) {
-          *pwc = (wchar_t) wc;
+          *pwc = (ucs4_t) wc;
           return 2;
         }
       }
@@ -2130,7 +2130,7 @@ static const Summary16 jisx0212_uni2indx_page4e[1307] = {
 };
 
 static int
-jisx0212_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+jisx0212_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     const Summary16 *summary = NULL;

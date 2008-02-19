@@ -1,5 +1,5 @@
 /* Traitement de certaines tables africaines.
-   Copyright © 1999 Progiciels Bourbeau-Pinard inc.
+   Copyright © 1999, 2000 Progiciels Bourbeau-Pinard inc.
    François Pinard <pinard@iro.umontreal.ca>, 1997.  */
 
 #include "common.h"
@@ -344,4 +344,9 @@ module_afrtran (RECODE_OUTER outer)
     return false;
 
   return true;
+}
+
+void
+delmodule_afrtran (RECODE_OUTER outer)
+{
 }

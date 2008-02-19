@@ -1167,7 +1167,7 @@ static const unsigned short ksc5601_2uni_page4a[4888] = {
 };
 
 static int
-ksc5601_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+ksc5601_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 >= 0x21 && c1 <= 0x2c) || (c1 >= 0x30 && c1 <= 0x48) || (c1 >= 0x4a && c1 <= 0x7d)) {
@@ -1187,7 +1187,7 @@ ksc5601_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
             wc = ksc5601_2uni_page4a[i-3854];
         }
         if (wc != 0xfffd) {
-          *pwc = (wchar_t) wc;
+          *pwc = (ucs4_t) wc;
           return 2;
         }
       }
@@ -2961,7 +2961,7 @@ static const Summary16 ksc5601_uni2indx_pageff[15] = {
 };
 
 static int
-ksc5601_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+ksc5601_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     const Summary16 *summary = NULL;

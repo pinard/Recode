@@ -467,7 +467,7 @@ static const unsigned char uhc_2_2uni_pagea1[3126] = {
 };
 
 static int
-uhc_2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+uhc_2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 >= 0xa1 && c1 <= 0xc6)) {
@@ -478,7 +478,7 @@ uhc_2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
         unsigned int col = c2 - (c2 >= 0x81 ? 0x4d : c2 >= 0x61 ? 0x47 : 0x41);
         unsigned int i = 84 * row + col;
         if (i < 3126) {
-          *pwc = (wchar_t) (uhc_2_2uni_main_pagea1[2*row+(col>=42?1:0)] + uhc_2_2uni_pagea1[i]);
+          *pwc = (ucs4_t) (uhc_2_2uni_main_pagea1[2*row+(col>=42?1:0)] + uhc_2_2uni_pagea1[i]);
           return 2;
         }
       }
@@ -975,7 +975,7 @@ static const Summary16 uhc_2_uni2indx_pagec8[251] = {
 };
 
 static int
-uhc_2_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+uhc_2_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   if (n >= 2) {
     if (wc >= 0xc800 && wc < 0xd7b0) {

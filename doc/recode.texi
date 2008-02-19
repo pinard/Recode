@@ -374,9 +374,12 @@ problem of how lines are blocked into physical records, when the blocking
 information is added as binary markers or counters within files.  So,
 @code{recode} should be given textual streams which are rather @emph{pure}.
 
-This tool pays special attention to superimposition of diacritics for some
-French representations.  This orientation is mostly historical, it does
-not impair the usefulness, generality or extensibility of the program.
+This tool pays special attention to superimposition of diacritics for
+some French representations.  This orientation is mostly historical, it
+does not impair the usefulness, generality or extensibility of the program.
+@samp{recode} is both a French and English word.  For those who pay attention
+to those things, the proper pronunciation is French (that is, @samp{racud},
+with @samp{a} like in @samp{above}, and @samp{u} like in @samp{cut}).
 
 The program @code{recode} has been written by Fran@,{c}ois Pinard.
 With time, it got to reuse works from other contributors, and notably,
@@ -754,11 +757,10 @@ not very useful, as the recoding reduces to a mere copy in that case.}
 @vindex DEFAULT_CHARSET
 When a charset name is omitted or left empty, the value of the
 @code{DEFAULT_CHARSET} variable in the environment is used instead.  If this
-variable is not defined, the @code{recode} library uses the @dfn{usual
-charset} which is installation dependent.  When this variable is defined but
-has an empty value, charset names may not be omitted.  Unless overriden
-when @code{recode} was installed, the usual charset is @code{Latin-1} for
-Unix systems or @code{IBM-PC} for MS-DOS/MS-Windows machines.
+variable is not defined, the @code{recode} library uses the current locale's
+encoding. On POSIX compliant systems, this depends on the first non-empty
+value among the environment variables LC_ALL, LC_CTYPE, LANG, and can be
+determined through the command @samp{locale charmap}.
 
 If the charset name is omitted but followed by surfaces, the surfaces
 then qualify the usual or default charset.  For example, the request
@@ -846,8 +848,8 @@ This particular option is meant to help identifying an unknown charset,
 using as hints some already identified characters of the charset.  Some
 examples will help introducing the idea.
 
-Let's presume here that @code{recode} is run on Unix, where @w{Latin-1} is the
-usual charset, and that @code{DEFAULT_CHARSET} is unset in the environment.
+Let's presume here that @code{recode} is run in an ISO-8859-1 locale, and
+that @code{DEFAULT_CHARSET} is unset in the environment.
 Suppose you have guessed that code 130 (decimal) of the unknown charset
 represents a lower case @samp{e} with an acute accent.  That is to say
 that this code should map to code 233 (decimal) in the usual charset.
@@ -3682,16 +3684,101 @@ knows how to handle these particularly well for French texts.
 @node HTML, LaTeX, Miscellaneous, Miscellaneous
 @section World Wide Web representations
 
-@tindex HTML@r{, a charset}
-This charset is available in @code{recode} under the name @code{HTML},
-with @code{h4} as an acceptable alias.
-@c FIXME - untrue
+@cindex HTML
+@cindex SGML
+@cindex XML
+@cindex Web
+@cindex World Wide Web
+@cindex WWW
+@cindex markup language
+@cindex entities
+@cindex character entities
+@cindex character entity references
+@cindex numeric character references
+Character entities have been introduced by SGML and made widely popular
+through HTML, the markup language in use for the World Wide Web, or Web or
+WWW for short.  For representing @emph{unusual} characters, HTML texts use
+special sequences, beginning with an ampersand @kbd{&} and ending with a
+semicolon @kbd{;}.  The sequence may itself start with a number sigh @kbd{#}
+and be followed by digits, so forming a @dfn{numeric character reference},
+or else be an alphabetic identifier, so forming a @dfn{character entity
+reference}.
 
-HTML texts used by World Wide Web often use special sequences, beginning with
-an ampersand @kbd{&} and ending with a semicolon @kbd{;}, for representing
-characters.  The sequence may itself start with a number sigh @kbd{#} and be
-followed by digits, so forming a @dfn{numeric character reference}, or else
-be an alphabetic identifier, so forming a @dfn{character entity reference}.
+The HTML standards have been revised into different HTML levels over time,
+and the list of allowable character entities differ in them.  The later XML,
+meant to simplify many things, has an option (@samp{standalone=yes}) which
+much restricts that list.  The @code{recode} library is able to convert
+character references between their mnemonic form and their numeric form,
+depending on aimed HTML standard level.  It also can, of course, convert
+between HTML and various other charsets.
+
+Here is a list of those HTML variants which @code{recode} supports.
+Some notes have been provided by François Yergeau @email{yergeau@@alis.com}.
+
+@table @code
+@item XML-standalone
+@tindex h0
+@tindex XML-standalone
+This charset is available in @code{recode} under the name
+@code{XML-standalone}, with @code{h0} as an acceptable alias.  It is
+documented in section 4.1 of @uref{http://www.w3.org/TR/REC-xml}.
+It only knows @samp{&amp;}, @samp{&gt;}, @samp{&lt;}, @samp{&quot;}
+and @samp{&apos;}.
+
+@item HTML_1.1
+@tindex HTML_1.1
+@tindex h1
+This charset is available in @code{recode} under the name @code{HTML_1.1},
+with @code{h1} as an acceptable alias.  HTML 1.0 was never really documented.
+
+@item HTML_2.0
+@tindex HTML_2.0
+@tindex RFC1866
+@tindex 1866
+@tindex h2
+This charset is available in @code{recode} under the name @code{HTML_2.0},
+and has @code{RFC1866}, @code{1866} and @code{h2} for aliases.  HTML 2.0
+entities are listed in @w{RFC 1866}.  Basically, there is an entity for
+each @emph{alphabetical} character in the right part of @w{ISO 8859-1}.
+In addition, there are four entities for syntax-significant ASCII characters:
+@samp{&amp;}, @samp{&gt;}, @samp{&lt;} and @samp{&quot;}.
+
+@item HTML-i18n
+@tindex HTML-i18n
+@tindex RFC2070
+@tindex 2070
+This charset is available in @code{recode} under the name
+@code{HTML-i18n}, and has @code{RFC2070} and @code{2070} for
+aliases.  @w{RFC 2070} added entities to cover the whole right
+part of @w{ISO 8859-1}.  The list is conveniently accessible at
+@uref{http://www.alis.com:8085/ietf/html/html-latin1.sgml}.  In addition,
+four i18n-related entities were added: @samp{&zwnj;} (@samp{&#8204;}),
+@samp{&zwj;} (@samp{&#8205;}), @samp{&lrm;} (@samp{&#8206}) and @samp{&rlm;}
+(@samp{&#8207;}).
+
+@item HTML_3.2
+@tindex HTML_3.2
+@tindex h3
+This charset is available in @code{recode} under the name
+@code{HTML_3.2}, with @code{h3} as an acceptable alias.
+@uref{http://www.w3.org/TR/REC-html32.html, HTML 3.2} took up the full
+@w{Latin-1} list but not the i18n-related entities from @w{RFC 2070}.
+
+@item HTML_4.0
+@tindex h4
+@tindex h
+This charset is available in @code{recode} under the name @code{HTML_4.0},
+and has @code{h4} and @code{h} for aliases.  Beware that the particular
+alias @code{h} is not @emph{tied} to HTML 4.0, but to the highest HTML
+level supported by @code{recode}; so it might later represent HTML level
+5 if this is ever created.  @uref{http://www.w3.org/TR/REC-html40/,
+HTML 4.0} has the whole @w{Latin-1} list, a set of entities for
+symbols, mathematical symbols, and Greek letters, and another set for
+markup-significant and internationalization characters comprising the
+4 ASCII entities, the 4 i18n-related from @w{RFC 2070} plus some more.
+See @uref{http://www.w3.org/TR/REC-html40/sgml/entities.html}.
+
+@end table
 
 Printable characters from @w{Latin-1} may be used directly in an HTML text.
 However, partly because people have deficient keyboards, partly because
@@ -3722,45 +3809,11 @@ This is documented in:
 http://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.3
 @end example
 
-About levels of HTML, François Yergeau @email{yergeau@@alis.com} writes:
-
-@itemize @bullet
-@item
-HTML 1.0 was never really documented.
-
-@item
-HTML 2.0 entities are listed in @w{RFC 1866}.  Basically, there is an entity
-for each @emph{alphabetical} character in the right part of @w{ISO 8859-1}.
-In addition, there are four entities for syntax-significant ASCII characters:
-@samp{&amp;}, @samp{&gt;}, @samp{&lt;} and @samp{&quot;}.
-
-@item
-@w{RFC 2070} (HTML-i18n) added entities to cover the whole right
-part of @w{ISO 8859-1}.  The list is conveniently accessible at
-@uref{http://www.alis.com:8085/ietf/html/html-latin1.sgml}.  In addition,
-four i18n-related entities were added: @samp{&zwnj;} (@samp{&#8204;}),
-@samp{&zwj;} (@samp{&#8205;}), @samp{&lrm;} (@samp{&#8206}) and @samp{&rlm;}
-(@samp{&#8207;}).
-
-@item
-@uref{http://www.w3.org/TR/REC-html32.html, HTML 3.2} took up the full
-@w{Latin-1} list but not the i18n-related entities from @w{RFC 2070}.
-
-@item
-@uref{http://www.w3.org/TR/REC-html40/, HTML 4.0} has the whole
-@w{Latin-1} list,
-a set of entities for symbols, mathematical symbols, and Greek letters,
-and another set for markup-significant and internationalization characters
-comprising the 4 ASCII entities, the 4 i18n-related from @w{RFC 2070} plus
-some more.
-@end itemize
-
-When @code{recode} translates to HTML, the translation occurs according
-to @uref{http://www.w3.org/TR/REC-html40/sgml/entities.html}.
-@c Previously: http://www.uni-passau.de/~ramsch/iso8859-1.html
-It is also assumed that @w{RFC 1866} has an equivalent contents.  When
-translating @emph{from} HTML, @code{recode} accepts some alternative
-special sequences, to be forgiving when files use older HTML tables.
+When @code{recode} translates to HTML, the translation occurs according to
+the HTML level as selected by the goal charset.  When translating @emph{from}
+HTML, @code{recode} not only accepts the character entity references known at
+that level, but also those of all other levels, as well as a few alternative
+special sequences, to be forgiving to files using other HTML standards.
 
 @cindex normilise an HTML file
 @cindex HTML normalization

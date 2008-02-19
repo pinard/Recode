@@ -32,7 +32,7 @@
   state = (state3 << 16) | (state2 << 8) | state1
 
 static int
-iso2022_cn_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+iso2022_cn_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   state_t state = conv->istate;
   SPLIT_STATE;
@@ -155,7 +155,7 @@ none:
 }
 
 static int
-iso2022_cn_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+iso2022_cn_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   state_t state = conv->ostate;
   SPLIT_STATE;

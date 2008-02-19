@@ -221,3 +221,8 @@ module_latin1_texte (RECODE_OUTER outer)
 		    init_latin1_texte, transform_byte_to_variable)
     && declare_alias (outer, "txte", "Texte");
 }
+
+void
+delmodule_latin1_texte (RECODE_OUTER outer)
+{
+}

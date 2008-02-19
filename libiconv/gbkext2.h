@@ -1128,7 +1128,7 @@ static const unsigned short gbkext2_2uni_pagea8[8272] = {
 };
 
 static int
-gbkext2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+gbkext2_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c1 = s[0];
   if ((c1 >= 0xa8 && c1 <= 0xfe)) {
@@ -1142,7 +1142,7 @@ gbkext2_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
             wc = gbkext2_2uni_pagea8[i-3744];
         }
         if (wc != 0xfffd) {
-          *pwc = (wchar_t) wc;
+          *pwc = (ucs4_t) wc;
           return 2;
         }
       }

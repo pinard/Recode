@@ -7,7 +7,7 @@
 #include "uhc_2.h"
 
 static int
-cp949_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
+cp949_mbtowc (conv_t conv, ucs4_t *pwc, const unsigned char *s, int n)
 {
   unsigned char c = *s;
   /* Code set 0 (ASCII) */
@@ -36,7 +36,7 @@ cp949_mbtowc (conv_t conv, wchar_t *pwc, const unsigned char *s, int n)
 }
 
 static int
-cp949_wctomb (conv_t conv, unsigned char *r, wchar_t wc, int n)
+cp949_wctomb (conv_t conv, unsigned char *r, ucs4_t wc, int n)
 {
   unsigned char buf[2];
   int ret;

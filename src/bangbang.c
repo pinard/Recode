@@ -389,3 +389,8 @@ module_bangbang (RECODE_OUTER outer)
 		       outer->quality_variable_to_byte,
 		       NULL, transform_bangbang_latin1);
 }
+
+void
+delmodule_bangbang (RECODE_OUTER outer)
+{
+}

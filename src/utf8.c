@@ -269,3 +269,8 @@ module_utf8 (RECODE_OUTER outer)
 		       outer->quality_variable_to_variable,
 		       NULL, transform_ucs2_utf8);
 }
+
+void
+delmodule_utf8 (RECODE_OUTER outer)
+{
+}

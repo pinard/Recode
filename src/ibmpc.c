@@ -382,3 +382,8 @@ module_ibmpc (RECODE_OUTER outer)
 #endif
   return true;
 }
+
+void
+delmodule_ibmpc (RECODE_OUTER outer)
+{
+}

@@ -20,7 +20,7 @@
    Suite 330, Boston, MA 02111-1307, USA.  */
 
 /* This is derived from Bruno Haible's `libiconv' package.  */
-static const char *iconv_name_list[426] =
+static const char *iconv_name_list[434] =
   {
     "US-ASCII",
 	"ASCII",
@@ -352,6 +352,7 @@ static const char *iconv_name_list[426] =
 	"EUC_CN", NULL,
     "GBK",
 	"CP936", NULL,
+    "GB18030", NULL,
     "ISO-2022-CN",
 	"csISO2022CN",
 	"ISO2022CN", NULL,
@@ -369,6 +370,7 @@ static const char *iconv_name_list[426] =
 	"CN-BIG5",
 	"csBig5", NULL,
     "CP950", NULL,
+    "BIG5HKSCS", NULL,
     "EUC-KR",
 	"EUCKR",
 	"csEUCKR",
@@ -380,5 +382,7 @@ static const char *iconv_name_list[426] =
     "ISO-2022-KR",
 	"csISO2022KR",
 	"ISO2022KR", NULL,
+    "CHAR", NULL,
+    "WCHAR_T", NULL,
     NULL
   };

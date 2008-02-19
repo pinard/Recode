@@ -39,7 +39,7 @@ sets and is able to convert files between almost any pair.  Most
 RFC 1345 character sets, and all `libiconv' character sets, are
 supported.  The `recode' program is a handy front-end to the library.
 
-   The current `recode' release is 3.5d.
+   The current `recode' release is 3.6.
 
 * Menu:
 
@@ -314,10 +314,12 @@ when the blocking information is added as binary markers or counters
 within files.  So, `recode' should be given textual streams which are
 rather _pure_.
 
-   This tool pays special attention to superimposition of diacritics
-for some French representations.  This orientation is mostly
-historical, it does not impair the usefulness, generality or
-extensibility of the program.
+   This tool pays special attention to superimposition of diacritics for
+some French representations.  This orientation is mostly historical, it
+does not impair the usefulness, generality or extensibility of the
+program.  `recode' is both a French and English word.  For those who
+pay attention to those things, the proper pronunciation is French (that
+is, `racud', with `a' like in `above', and `u' like in `cut').
 
    The program `recode' has been written by Franc,ois Pinard.  With
 time, it got to reuse works from other contributors, and notably, those
@@ -649,11 +651,10 @@ BEFORE charset.(2)
 
    When a charset name is omitted or left empty, the value of the
 `DEFAULT_CHARSET' variable in the environment is used instead.  If this
-variable is not defined, the `recode' library uses the "usual charset"
-which is installation dependent.  When this variable is defined but has
-an empty value, charset names may not be omitted.  Unless overriden
-when `recode' was installed, the usual charset is `Latin-1' for Unix
-systems or `IBM-PC' for MS-DOS/MS-Windows machines.
+variable is not defined, the `recode' library uses the current locale's
+encoding. On POSIX compliant systems, this depends on the first
+non-empty value among the environment variables LC_ALL, LC_CTYPE, LANG,
+and can be determined through the command `locale charmap'.
 
    If the charset name is omitted but followed by surfaces, the surfaces
 then qualify the usual or default charset.  For example, the request
@@ -736,12 +737,12 @@ are:
      charset, using as hints some already identified characters of the
      charset.  Some examples will help introducing the idea.
 
-     Let's presume here that `recode' is run on Unix, where Latin-1 is
-     the usual charset, and that `DEFAULT_CHARSET' is unset in the
-     environment.  Suppose you have guessed that code 130 (decimal) of
-     the unknown charset represents a lower case `e' with an acute
-     accent.  That is to say that this code should map to code 233
-     (decimal) in the usual charset.  By executing:
+     Let's presume here that `recode' is run in an ISO-8859-1 locale,
+     and that `DEFAULT_CHARSET' is unset in the environment.  Suppose
+     you have guessed that code 130 (decimal) of the unknown charset
+     represents a lower case `e' with an acute accent.  That is to say
+     that this code should map to code 233 (decimal) in the usual
+     charset.  By executing:
 
           recode -k 130:233
 
@@ -971,183 +972,4 @@ grain control over the recoding operation themselves.
      using chained requests offers a finer control, *note Requests::).
 
      CHARSET may be abbreviated to any unambiguous prefix.
-
-
-File: recode.info,  Node: Reversibility,  Next: Sequencing,  Prev: Recoding,  Up: Invoking recode
-
-Reversibility issues
-====================
-
-   The following options are somewhat related to reversibility issues:
-
-`-f'
-`--force'
-     With this option, irreversible or otherwise erroneous recodings
-     are run to completion, and `recode' does not exit with a non-zero
-     status if it would be only because irreversibility matters.  *Note
-     Reversibility::.
-
-     Without this option, `recode' tries to protect you against recoding
-     a file irreversibly over itself(1).  Whenever an irreversible
-     recoding is met, or any other recoding error, `recode' produces a
-     warning on standard error.  The current input file does not get
-     replaced by its recoded version, and `recode' then proceeds with
-     the recoding of the next file.
-
-     When the program is merely used as a filter, standard output will
-     have received a partially recoded copy of standard input, up to
-     the first error point.  After all recodings have been done or
-     attempted, and if some recoding has been aborted, `recode' exits
-     with a non-zero status.
-
-     In releases of `recode' prior to version 3.5, this option was
-     always selected, so it was rather meaningless.  Nevertheless,
-     users were invited to start using `-f' right away in scripts
-     calling `recode' whenever convenient, in preparation for the
-     current behaviour.
-
-`-q'
-`--quiet'
-`--silent'
-     This option has the sole purpose of inhibiting warning messages
-     about irreversible recodings, and other such diagnostics.  It has
-     no other effect, in particular, it does _not_ prevent recodings to
-     be aborted or `recode' to return a non-zero exit status when
-     irreversible recodings are met.
-
-     This option is set automatically for the children processes, when
-     recode splits itself in many collaborating copies.  Doing so, the
-     diagnostic is issued only once by the parent.  See option `-p'.
-
-`-s'
-`--strict'
-     By using this option, the user requests that `recode' be very
-     strict while recoding a file, merely losing in the transformation
-     any character which is not explicitly mapped from a charset to
-     another.  Such a loss is not reversible and so, will bring
-     `recode' to fail, unless the option `-f' is also given as a kind
-     of counter-measure.
-
-     Using `-s' without `-f' might render the `recode' program very
-     susceptible to the slighest file abnormalities.  Despite the fact
-     that it might be irritating to some users, such paranoia is
-     sometimes wanted and useful.
-
-   Even if `recode' tries hard to keep the recodings reversible, you
-should not develop an unconditional confidence in its ability to do so.
-You _ought_ to keep only reasonable expectations about reverse
-recodings.  In particular, consider:
-
-   * Most transformations are fully reversible for all inputs, but lose
-     this property whenever `-s' is specified.
-
-   * A few transformations are not meant to be reversible, by design.
-
-   * Reversibility sometimes depends on actual file contents and cannot
-     be ascertained beforehand, without reading the file.
-
-   * Reversibility is never absolute across successive versions of this
-     program.  Even correcting a small bug in a mapping could induce
-     slight discrepancies later.
-
-   * Reversibility is easily lost by merging.  This is best explained
-     through an example.  If you reversibly recode a file from charset
-     A to charset B, then you reversibly recode the result from charset
-     B to charset C, you cannot expect to recover the original file by
-     merely recoding from charset C directly to charset A.  You will
-     instead have to recode from charset C back to charset B, and only
-     then from charset B to charset A.
-
-   * Faulty files create a particular problem.  Consider an example,
-     recoding from `IBM-PC' to `Latin-1'.  End of lines are represented
-     as `\r\n' in `IBM-PC' and as `\n' in `Latin-1'.  There is no way
-     by which a faulty `IBM-PC' file containing a `\n' not preceded by
-     `\r' be translated into a `Latin-1' file, and then back.
-
-   * There is another difficulty arising from code equivalences.  For
-     example, in a `LaTeX' charset file, the string `\^\i{}' could be
-     recoded back and forth through another charset and become
-     `\^{\i}'.  Even if the resulting file is equivalent to the
-     original one, it is not identical.
-
-   Unless option `-s' is used, `recode' automatically tries to fill
-mappings with invented correspondences, often making them fully
-reversible.  This filling is not made at random.  The algorithm tries to
-stick to the identity mapping and, when this is not possible, it prefers
-generating many small permutation cycles, each involving only a few
-codes.
-
-   For example, here is how `IBM-PC' code 186 gets translated to
-`control-U' in `Latin-1'.  `Control-U' is 21.  Code 21 is the `IBM-PC'
-section sign, which is 167 in `Latin-1'.  `recode' cannot reciprocate
-167 to 21, because 167 is the masculine ordinal indicator within
-`IBM-PC', which is 186 in `Latin-1'.  Code 186 within `IBM-PC' has no
-`Latin-1' equivalent; by assigning it back to 21, `recode' closes this
-short permutation loop.
-
-   As a consequence of this map filling, `recode' may sometimes produce
-_funny_ characters.  They may look annoying, they are nevertheless
-helpful when one changes his (her) mind and wants to revert to the prior
-recoding.  If you cannot stand these, use option `-s', which asks for a
-very strict recoding.
-
-   This map filling sometimes has a few surprising consequences, which
-some users wrongly interpreted as bugs.  Here are two examples.
-
-  1. In some cases, `recode' seems to copy a file without recoding it.
-     But in fact, it does.  Consider a request:
-
-          recode l1..us < File-Latin1 > File-ASCII
-          cmp File-Latin1 File-ASCII
-
-     then `cmp' will not report any difference.  This is quite normal.
-     `Latin-1' gets correctly recoded to ASCII for charsets
-     commonalities (which are the first 128 characters, in this case).
-     The remaining last 128 `Latin-1' characters have no ASCII
-     correspondent.  Instead of losing them, `recode' elects to map
-     them to unspecified characters of ASCII, so making the recoding
-     reversible.  The simplest way of achieving this is merely to keep
-     those last 128 characters unchanged.  The overall effect is
-     copying the file verbatim.
-
-     If you feel this behaviour is too generous and if you do not wish
-     to care about reversibility, simply use option `-s'.  By doing so,
-     `recode' will strictly map only those `Latin-1' characters which
-     have an ASCII equivalent, and will merely drop those which do not.
-     Then, there is more chance that you will observe a difference
-     between the input and the output file.
-
-  2. Recoding the wrong way could sometimes give the false impression
-     that recoding has _almost_ been done properly.  Consider the
-     requests:
-
-          recode 437..l1 < File-Latin1 > Temp1
-          recode 437..l1 < Temp1 > Temp2
-
-     so declaring wrongly `File-Latin1' to be an IBM-PC file, and
-     recoding to `Latin-1'.  This is surely ill defined and not
-     meaningful.  Yet, if you repeat this step a second time, you might
-     notice that many (not all) characters in `Temp2' are identical to
-     those in `File-Latin1'.  Sometimes, people try to discover how
-     `recode' works by experimenting a little at random, rather than
-     reading and understanding the documentation; results such as this
-     are surely confusing, as they provide those people with a false
-     feeling that they understood something.
-
-     Reversible codings have this property that, if applied several
-     times in the same direction, they will eventually bring any
-     character back to its original value.  Since `recode' seeks small
-     permutation cycles when creating reversible codings, besides
-     characters unchanged by the recoding, most permutation cycles will
-     be of length 2, and fewer of length 3, etc.  So, it is just
-     expectable that applying the recoding twice in the same direction
-     will recover most characters, but will fail to recover those
-     participating in permutation cycles of length 3.  On the other
-     end, recoding six times in the same direction would recover all
-     characters in cycles of length 1, 2, 3 or 6.
-
-   ---------- Footnotes ----------
-
-   (1) There are still some cases of ambiguous output which are rather
-difficult to detect, and for which the protection is not active.
 

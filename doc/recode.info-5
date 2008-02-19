@@ -26,6 +26,695 @@ versions, except that this permission notice may be stated in a
 translation approved by the Foundation.
 
 
+File: recode.info,  Node: HTML,  Next: LaTeX,  Prev: Miscellaneous,  Up: Miscellaneous
+
+World Wide Web representations
+==============================
+
+   Character entities have been introduced by SGML and made widely
+popular through HTML, the markup language in use for the World Wide
+Web, or Web or WWW for short.  For representing _unusual_ characters,
+HTML texts use special sequences, beginning with an ampersand `&' and
+ending with a semicolon `;'.  The sequence may itself start with a
+number sigh `#' and be followed by digits, so forming a "numeric
+character reference", or else be an alphabetic identifier, so forming a
+"character entity reference".
+
+   The HTML standards have been revised into different HTML levels over
+time, and the list of allowable character entities differ in them.  The
+later XML, meant to simplify many things, has an option
+(`standalone=yes') which much restricts that list.  The `recode'
+library is able to convert character references between their mnemonic
+form and their numeric form, depending on aimed HTML standard level.
+It also can, of course, convert between HTML and various other charsets.
+
+   Here is a list of those HTML variants which `recode' supports.  Some
+notes have been provided by François Yergeau <yergeau@alis.com>.
+
+`XML-standalone'
+     This charset is available in `recode' under the name
+     `XML-standalone', with `h0' as an acceptable alias.  It is
+     documented in section 4.1 of `http://www.w3.org/TR/REC-xml'.  It
+     only knows `&amp;', `&gt;', `&lt;', `&quot;' and `&apos;'.
+
+`HTML_1.1'
+     This charset is available in `recode' under the name `HTML_1.1',
+     with `h1' as an acceptable alias.  HTML 1.0 was never really
+     documented.
+
+`HTML_2.0'
+     This charset is available in `recode' under the name `HTML_2.0',
+     and has `RFC1866', `1866' and `h2' for aliases.  HTML 2.0 entities
+     are listed in RFC 1866.  Basically, there is an entity for each
+     _alphabetical_ character in the right part of ISO 8859-1.  In
+     addition, there are four entities for syntax-significant ASCII
+     characters: `&amp;', `&gt;', `&lt;' and `&quot;'.
+
+`HTML-i18n'
+     This charset is available in `recode' under the name `HTML-i18n',
+     and has `RFC2070' and `2070' for aliases.  RFC 2070 added entities
+     to cover the whole right part of ISO 8859-1.  The list is
+     conveniently accessible at
+     `http://www.alis.com:8085/ietf/html/html-latin1.sgml'.  In
+     addition, four i18n-related entities were added: `&zwnj;'
+     (`&#8204;'), `&zwj;' (`&#8205;'), `&lrm;' (`&#8206') and `&rlm;'
+     (`&#8207;').
+
+`HTML_3.2'
+     This charset is available in `recode' under the name `HTML_3.2',
+     with `h3' as an acceptable alias.  HTML 3.2
+     (http://www.w3.org/TR/REC-html32.html) took up the full Latin-1
+     list but not the i18n-related entities from RFC 2070.
+
+`HTML_4.0'
+     This charset is available in `recode' under the name `HTML_4.0',
+     and has `h4' and `h' for aliases.  Beware that the particular
+     alias `h' is not _tied_ to HTML 4.0, but to the highest HTML level
+     supported by `recode'; so it might later represent HTML level 5 if
+     this is ever created.  HTML 4.0 (http://www.w3.org/TR/REC-html40/)
+     has the whole Latin-1 list, a set of entities for symbols,
+     mathematical symbols, and Greek letters, and another set for
+     markup-significant and internationalization characters comprising
+     the 4 ASCII entities, the 4 i18n-related from RFC 2070 plus some
+     more.  See `http://www.w3.org/TR/REC-html40/sgml/entities.html'.
+
+   Printable characters from Latin-1 may be used directly in an HTML
+text.  However, partly because people have deficient keyboards, partly
+because people want to transmit HTML texts over non 8-bit clean
+channels while not using MIME, it is common (yet debatable) to use
+character entity references even for Latin-1 characters, when they fall
+outside ASCII (that is, when they have the 8th bit set).
+
+   When you recode from another charset to `HTML', beware that all
+occurrences of double quotes, ampersands, and left or right angle
+brackets are translated into special sequences.  However, in practice,
+people often use ampersands and angle brackets in the other charset for
+introducing HTML commands, compromising it: it is not pure HTML, not it
+is pure other charset.  These particular translations can be rather
+inconvenient, they may be specifically inhibited through the command
+option `-d' (*note Mixed::).
+
+   Codes not having a mnemonic entity are output by `recode' using the
+`&#NNN;' notation, where NNN is a decimal representation of the UCS
+code value.  When there is an entity name for a character, it is always
+preferred over a numeric character reference.  ASCII printable
+characters are always generated directly.  So is the newline.  While
+reading HTML, `recode' supports numeric character reference as alternate
+writings, even when written as hexadecimal numbers, as in `&#xfffd'.
+This is documented in:
+
+     http://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.3
+
+   When `recode' translates to HTML, the translation occurs according to
+the HTML level as selected by the goal charset.  When translating _from_
+HTML, `recode' not only accepts the character entity references known at
+that level, but also those of all other levels, as well as a few
+alternative special sequences, to be forgiving to files using other
+HTML standards.
+
+   The `recode' program can be used to _normalise_ an HTML file using
+oldish conventions.  For example, it accepts `&AE;', as this once was a
+valid writing, somewhere.  However, it should always produce `&AElig;'
+instead of `&AE;'.  Yet, this is not completely true.  If one does:
+
+     recode h3..h3 < INPUT
+
+the operation will be optimised into a mere copy, and you can get `&AE;'
+this way, if you had some in your input file.  But if you explicitly
+defeat the optimisation, like this maybe:
+
+     recode h3..u2,u2..h3 < INPUT
+
+then `&AE;' should be normalised into `&AElig;' by the operation.
+
+
+File: recode.info,  Node: LaTeX,  Next: Texinfo,  Prev: HTML,  Up: Miscellaneous
+
+LaTeX macro calls
+=================
+
+   This charset is available in `recode' under the name `LaTeX' and has
+`ltex' as an alias.  It is used for ASCII files coded to be read by
+LaTeX or, in certain cases, by TeX.
+
+   Whenever you recode from another charset to `LaTeX', beware that all
+occurrences of backslashes `\' are translated into the string
+`\backslash{}'.  However, in practice, people often use backslashes in
+the other charset for introducing TeX commands, compromising it: it is
+not pure TeX, nor it is pure other charset.  This translation of
+backslashes into `\backslash{}' can be rather inconvenient, it may be
+inhibited through the command option `-d' (*note Mixed::).
+
+
+File: recode.info,  Node: Texinfo,  Next: Vietnamese,  Prev: LaTeX,  Up: Miscellaneous
+
+GNU project documentation files
+===============================
+
+   This charset is available in `recode' under the name `Texinfo' and
+has `texi' and `ti' for aliases.  It is used by the GNU project for its
+documentation.  Texinfo files may be converted into Info files by the
+`makeinfo' program and into nice printed manuals by the TeX system.
+
+   Even if `recode' may transform other charsets to Texinfo, it may not
+read Texinfo files yet.  In these times, usages are also changing
+between versions of Texinfo, and `recode' only partially succeeds in
+correctly following these changes.  So, for now, Texinfo support in
+`recode' should be considered as work still in progress (!).
+
+
+File: recode.info,  Node: Vietnamese,  Next: African,  Prev: Texinfo,  Up: Miscellaneous
+
+Vietnamese charsets
+===================
+
+   We are currently experimenting the implementation, in `recode', of a
+few character sets and transliterated forms to handle the Vietnamese
+language.  They are quite briefly summarised, here.
+
+`TCVN'
+     The TCVN charset has an incomplete name.  It might be one of the
+     three charset `VN1', `VN2' or `VN3'.  Yes `VN2' might be a second
+     version of `VISCII'.  To be clarified.
+
+`VISCII'
+     This is an 8-bit character set which seems to be rather popular for
+     writing Vietnamese.
+
+`VPS'
+     This is an 8-bit character set for Vietnamese.  No much reference.
+
+`VIQR'
+     The VIQR convention is a 7-bit, `ASCII' transliteration for
+     Vietnamese.
+
+`VNI'
+     The VNI convention is a 8-bit, `Latin-1' transliteration for
+     Vietnamese.
+
+   Still lacking for Vietnamese in `recode', are the charsets `CP1129'
+and `CP1258'.
+
+
+File: recode.info,  Node: African,  Next: Others,  Prev: Vietnamese,  Up: Miscellaneous
+
+African charsets
+================
+
+   Some African character sets are available for a few languages, when
+these are heavily used in countries where French is also currently
+spoken.
+
+   One African charset is usable for Bambara, Ewondo and Fulfude, as
+well as for French.  This charset is available in `recode' under the
+name `AFRFUL-102-BPI_OCIL'.  Accepted aliases are `bambara', `bra',
+`ewondo' and `fulfude'.  Transliterated forms of the same are available
+under the name `AFRFUL-103-BPI_OCIL'.  Accepted aliases are
+`t-bambara', `t-bra', `t-ewondo' and `t-fulfude'.
+
+   Another African charset is usable for Lingala, Sango and Wolof, as
+well as for French.  This charset is available in `recode' under the
+name `AFRLIN-104-BPI_OCIL'.  Accepted aliases are `lingala', `lin',
+`sango' and `wolof'.  Transliterated forms of the same are available
+under the name `AFRLIN-105-BPI_OCIL'.  Accepted aliases are
+`t-lingala', `t-lin', `t-sango' and `t-wolof'.
+
+   To ease exchange with `ISO-8859-1', there is a charset conveying
+transliterated forms for Latin-1 in a way which is compatible with the
+other African charsets in this series.  This charset is available in
+`recode' under the name `AFRL1-101-BPI_OCIL'.  Accepted aliases are
+`t-fra' and `t-francais'.
+
+
+File: recode.info,  Node: Others,  Next: Texte,  Prev: African,  Up: Miscellaneous
+
+Cyrillic and other charsets
+===========================
+
+   The following Cyrillic charsets are already available in `recode'
+through RFC 1345 tables: `CP1251' with aliases `1251', ` ms-cyrl' and
+`windows-1251'; `CSN_369103' with aliases `ISO-IR-139' and `KOI8_L2';
+`ECMA-cyrillic' with aliases `ECMA-113', `ECMA-113:1986' and
+`iso-ir-111', `IBM880' with aliases `880', `CP880' and
+`EBCDIC-Cyrillic'; `INIS-cyrillic' with alias `iso-ir-51'; `ISO-8859-5'
+with aliases `cyrillic', ` ISO-8859-5:1988' and `iso-ir-144'; `KOI-7';
+`KOI-8' with alias `GOST_19768-74'; `KOI8-R'; `KOI8-RU' and finally
+`KOI8-U'.
+
+   There seems to remain some confusion in Roman charsets for Cyrillic
+languages, and because a few users requested it repeatedly, `recode'
+now offers special services in that area.  Consider these charsets as
+experimental and debatable, as the extraneous tables describing them are
+still a bit fuzzy or non-standard.  Hopefully, in the long run, these
+charsets will be covered in Keld Simonsen's works to the satisfaction of
+everybody, and this section will merely disappear.
+
+`KEYBCS2'
+     This charset is available under the name `KEYBCS2', with
+     `Kamenicky' as an accepted alias.
+
+`CORK'
+     This charset is available under the name `CORK', with `T1' as an
+     accepted alias.
+
+`KOI-8_CS2'
+     This charset is available under the name `KOI-8_CS2'.
+
+
+File: recode.info,  Node: Texte,  Next: Mule,  Prev: Others,  Up: Miscellaneous
+
+Easy French conventions
+=======================
+
+   This charset is available in `recode' under the name `Texte' and has
+`txte' for an alias.  It is a seven bits code, identical to `ASCII-BS',
+save for French diacritics which are noted using a slightly different
+convention.
+
+   At text entry time, these conventions provide a little speed up.  At
+read time, they slightly improve the readability over a few alternate
+ways of coding diacritics.  Of course, it would better to have a
+specialised keyboard to make direct eight bits entries and fonts for
+immediately displaying eight bit ISO Latin-1 characters.  But not
+everybody is so fortunate.  In a few mailing environments, and sadly
+enough, it still happens that the eight bit is often willing-fully
+destroyed.
+
+   Easy French has been in use in France for a while.  I only slightly
+adapted it (the diaeresis option) to make it more comfortable to several
+usages in Que'bec originating from Universite' de Montre'al.  In fact,
+the main problem for me was not to necessarily to invent Easy French,
+but to recognise the "best" convention to use, (best is not being
+defined, here) and to try to solve the main pitfalls associated with
+the selected convention.  Shortly said, we have:
+
+`e''
+     for `e' (and some other vowels) with an acute accent,
+
+`e`'
+     for `e' (and some other vowels) with a grave accent,
+
+`e^'
+     for `e' (and some other vowels) with a circumflex accent,
+
+`e"'
+     for `e' (and some other vowels) with a diaeresis,
+
+`c,'
+     for `c' with a cedilla.
+
+There is no attempt at expressing the `ae' and `oe' diphthongs.  French
+also uses tildes over `n' and `a', but seldomly, and this is not
+represented either.  In some countries, `:' is used instead of `"' to
+mark diaeresis.  `recode' supports only one convention per call,
+depending on the `-c' option of the `recode' command.  French quotes
+(sometimes called "angle quotes") are noted the same way English quotes
+are noted in TeX, _id est_ by ```' and `'''.  No effort has been put to
+preserve Latin ligatures (`ae', `oe') which are representable in
+several other charsets.  So, these ligatures may be lost through Easy
+French conventions.
+
+   The convention is prone to losing information, because the diacritic
+meaning overloads some characters that already have other uses.  To
+alleviate this, some knowledge of the French language is boosted into
+the recognition routines.  So, the following subtleties are
+systematically obeyed by the various recognisers.
+
+  1. A comma which follows a `c' is interpreted as a cedilla only if it
+     is followed by one of the vowels `a', `o' or `u'.
+
+  2. A single quote which follows a `e' does not necessarily means an
+     acute accent if it is followed by a single other one.  For example:
+
+    `e''
+          will give an `e' with an acute accent.
+
+    `e'''
+          will give a simple `e', with a closing quotation mark.
+
+    `e''''
+          will give an `e' with an acute accent, followed by a closing
+          quotation mark.
+
+     There is a problem induced by this convention if there are English
+     quotations with a French text.  In sentences like:
+
+          There's a meeting at Archie's restaurant.
+
+     the single quotes will be mistaken twice for acute accents.  So
+     English contractions and suffix possessives could be mangled.
+
+  3. A double quote or colon, depending on `-c' option, which follows a
+     vowel is interpreted as diaeresis only if it is followed by
+     another letter.  But there are in French several words that _end_
+     with a diaeresis, and the `recode' library is aware of them.
+     There are words ending in "igue", either feminine words without a
+     relative masculine (besaigue" and cigue"), or feminine words with
+     a relative masculine(1) (aigue", ambigue", contigue", exigue",
+     subaigue" and suraigue").  There are also words not ending in
+     "igue", but instead, either ending by "i"(2) (ai", congai", goi",
+     hai"kai", inoui", sai", samurai", thai" and tokai"), ending by "e"
+     (canoe") or ending by "u"(3) (Esau").
+
+     Just to complete this topic, note that it would be wrong to make a
+     rule for all words ending in "igue" as needing a diaerisis, as
+     there are counter-examples (becfigue, be`sigue, bigue, bordigue,
+     bourdigue, brigue, contre-digue, digue, d'intrigue, fatigue,
+     figue, garrigue, gigue, igue, intrigue, ligue, prodigue, sarigue
+     and zigue).
+
+   ---------- Footnotes ----------
+
+   (1) There are supposed to be seven words in this case.  So, one is
+missing.
+
+   (2) Look at one of the following sentences (the second has to be
+interpreted with the `-c' option):
+
+     "Ai"e!  Voici le proble`me que j'ai"
+     Ai:e!  Voici le proble`me que j'ai:
+
+   There is an ambiguity between an ai", the small animal, and the
+indicative future of _avoir_ (first person singular), when followed by
+what could be a diaeresis mark.  Hopefully, the case is solved by the
+fact that an apostrophe always precedes the verb and almost never the
+animal.
+
+   (3) I did not pay attention to proper nouns, but this one showed up
+as being fairly evident.
+
+
+File: recode.info,  Node: Mule,  Prev: Texte,  Up: Miscellaneous
+
+Mule as a multiplexed charset
+=============================
+
+   This version of `recode' barely starts supporting multiplexed or
+super-charsets, that is, those encoding methods by which a single text
+stream may contain a combination of more than one constituent charset.
+The only multiplexed charset in `recode' is `Mule', and even then, it
+is only very partially implemented: the only correspondence available
+is with `Latin-1'.  The author fastly implemented this only because he
+needed this for himself.  However, it is intended that Mule support to
+become more real in subsequent releases of `recode'.
+
+   Multiplexed charsets are not to be confused with mixed charset texts
+(*note Mixed::).  For mixed charset input, the rules allowing to
+distinguish which charset is current, at any given place, are kind of
+informal, and driven from the semantics of what the file contains.  On
+the other side, multiplexed charsets are _designed_ to be interpreted
+fairly precisely, and quite independently of any informational context.
+
+   The spelling `Mule' originally stands for `_mul_tilingual
+_e_nhancement to GNU Emacs', it is the result of a collective effort
+orchestrated by Handa Ken'ichi since 1993.  When `Mule' got rewritten
+in the main development stream of GNU Emacs 20, the FSF renamed it
+`MULE', meaning `_mul_tilingual _e_nvironment in GNU Emacs'.  Even if
+the charset `Mule' is meant to stay internal to GNU Emacs, it sometimes
+breaks loose in external files, and as a consequence, a recoding tool
+is sometimes needed.  Within Emacs, `Mule' comes with `Leim', which
+stands for `_l_ibraries of _e_macs _i_nput _m_ethods'.  One of these
+libraries is named `quail'(1).
+
+   ---------- Footnotes ----------
+
+   (1) Usually, quail means quail egg in Japanese, while egg alone is
+usually chicken egg.  Both quail egg and chicken egg are popular food
+in Japan.  The `quail' input system has been named because it is
+smaller that the previous `EGG' system.  As for `EGG', it is the
+translation of `TAMAGO'.  This word comes from the Japanese sentence
+`_ta_kusan _ma_tasete _go_mennasai', meaning `sorry to have let you
+wait so long'.  Of course, the publication of `EGG' has been delayed
+many times...  (Story by Takahashi Naoto)
+
+
+File: recode.info,  Node: Surfaces,  Next: Internals,  Prev: Miscellaneous,  Up: Top
+
+All about surfaces
+******************
+
+   The "trivial surface" consists of using a fixed number of bits
+(often eight) for each character, the bits together hold the integer
+value of the index for the character in its charset table.  There are
+many kinds of surfaces, beyond the trivial one, all having the purpose
+of increasing selected qualities for the storage or transmission.  For
+example, surfaces might increase the resistance to channel limits
+(`Base64'), the transmission speed (`gzip'), the information privacy
+(`DES'), the conformance to operating system conventions (`CR-LF'), the
+blocking into records (`VB'), and surely other things as well(1).  Many
+surfaces may be applied to a stream of characters from a charset, the
+order of application of surfaces is important, and surfaces should be
+removed in the reverse order of their application.
+
+   Even if surfaces may generally be applied to various charsets, some
+surfaces were specifically designed for a particular charset, and would
+not make much sense if applied to other charsets.  In such cases, these
+conceptual surfaces have been implemented as `recode' charsets, instead
+of as surfaces.  This choice yields to cleaner syntax and usage.  *Note
+Universal::.
+
+   Surfaces are implemented within `recode' as special charsets which
+may only transform to or from the `data' or `tree' special charsets.
+Clever users may use this knowledge for writing surface names in
+requests exactly as if they were pure charsets, when the only need is
+to change surfaces without any kind of recoding between real charsets.
+In such contexts, either `data' or `tree' may also be used as if it
+were some kind of generic, anonymous charset: the request
+`data..SURFACE' merely adds the given SURFACE, while the request
+`SURFACE..data' removes it.
+
+   The `recode' library distinguishes between mere data surfaces, and
+structural surfaces, also called tree surfaces for short.  Structural
+surfaces might allow, in the long run, transformations between a few
+specialised representations of structural information like MIME parts,
+Perl or Python initialisers, LISP S-expressions, XML, Emacs outlines,
+etc.
+
+   We are still experimenting with surfaces in `recode'.  The concept
+opens the doors to many avenues; it is not clear yet which ones are
+worth pursuing, and which should be abandoned.  In particular,
+implementation of structural surfaces is barely starting, there is not
+even a commitment that tree surfaces will stay in `recode', if they do
+prove to be more cumbersome than useful.  This chapter presents all
+surfaces currently available.
+
+* Menu:
+
+* Permutations::        Permuting groups of bytes
+* End lines::           Representation for end of lines
+* MIME::                MIME contents encodings
+* Dump::                Interpreted character dumps
+* Test::                Artificial data for testing
+
+   ---------- Footnotes ----------
+
+   (1) These are mere examples to explain the concept, `recode' only
+has `Base64' and `CR-LF', actually.
+
+
+File: recode.info,  Node: Permutations,  Next: End lines,  Prev: Surfaces,  Up: Surfaces
+
+Permuting groups of bytes
+=========================
+
+   A permutation is a surface transformation which reorders groups of
+eight-bit bytes.  A _21_ permutation exchanges pairs of successive
+bytes.  If the text contains an odd number of bytes, the last byte is
+merely copied.  An _4321_ permutation inverts the order of quadruples
+of bytes.  If the text does not contains a multiple of four bytes, the
+remaining bytes are nevertheless permuted as _321_ if there are three
+bytes, _21_ if there are two bytes, or merely copied otherwise.
+
+`21'
+     This surface is available in `recode' under the name
+     `21-Permutation' and has `swabytes' for an alias.
+
+`4321'
+     This surface is available in `recode' under the name
+     `4321-Permutation'.
+
+
+File: recode.info,  Node: End lines,  Next: MIME,  Prev: Permutations,  Up: Surfaces
+
+Representation for end of lines
+===============================
+
+   The same charset might slightly differ, from one system to another,
+for the single fact that end of lines are not represented identically
+on all systems.  The representation for an end of line within `recode'
+is the `ASCII' or `UCS' code with value 10, or `LF'.  Other conventions
+for representing end of lines are available through surfaces.
+
+`CR'
+     This convention is popular on Apple's Macintosh machines.  When
+     this surface is applied, each line is terminated by `CR', which has
+     `ASCII' value 13.  Unless the library is operating in strict mode,
+     adding or removing the surface will in fact _exchange_ `CR' and
+     `LF', for better reversibility.  However, in strict mode, the
+     exchange does not happen, any `CR' will be copied verbatim while
+     applying the surface, and any `LF' will be copied verbatim while
+     removing it.
+
+     This surface is available in `recode' under the name `CR', it does
+     not have any aliases.  This is the implied surface for the Apple
+     Macintosh related charsets.
+
+`CR-LF'
+     This convention is popular on Microsoft systems running on IBM PCs
+     and compatible.  When this surface is applied, each line is
+     terminated by a sequence of two characters: one `CR' followed by
+     one `LF', in that order.
+
+     For compatibility with oldish MS-DOS systems, removing a `CR-LF'
+     surface will discard the first encountered `C-z', which has
+     `ASCII' value 26, and everything following it in the text.  Adding
+     this surface will not, however, append a `C-z' to the result.
+
+     This surface is available in `recode' under the name `CR-LF' and
+     has `cl' for an alias.  This is the implied surface for the IBM or
+     Microsoft related charsets or code pages.
+
+   Some other charsets might have their own representation for an end of
+line, which is different from `LF'.  For example, this is the case of
+various `EBCDIC' charsets, or `Icon-QNX'.  The recoding of end of lines
+is intimately tied into such charsets, it is not available separately
+as surfaces.
+
+
+File: recode.info,  Node: MIME,  Next: Dump,  Prev: End lines,  Up: Surfaces
+
+MIME contents encodings
+=======================
+
+   RFC 2045 defines two 7-bit surfaces, meant to prepare 8-bit messages
+for transmission.  Base64 is especially usable for binary entities,
+while Quoted-Printable is especially usable for text entities, in those
+case the lower 128 characters of the underlying charset coincide with
+ASCII.
+
+`Base64'
+     This surface is available in `recode' under the name `Base64',
+     with `b64' and `64' as acceptable aliases.
+
+`Quoted-Printable'
+     This surface is available in `recode' under the name
+     `Quoted-Printable', with `quote-printable' and `QP' as acceptable
+     aliases.
+
+   Note that `UTF-7', which may be also considered as a MIME surface,
+is provided as a genuine charset instead, as it necessary relates to
+`UCS-2' and nothing else.  *Note UTF-7::.
+
+   A little historical note, also showing the three levels of
+acceptance of Internet standards.  MIME changed from a "Proposed
+Standard" (RFC 1341-1344, 1992) to a "Draft Standard" (RFC 1521-1523)
+in 1993, and was _recycled_ as a "Draft Standard" in 1996-11.  It is
+not yet a "Full Standard".
+
+
+File: recode.info,  Node: Dump,  Next: Test,  Prev: MIME,  Up: Surfaces
+
+Interpreted character dumps
+===========================
+
+   Dumps are surfaces meant to express, in ways which are a bit more
+readable, the bit patterns used to represent characters.  They allow
+the inspection or debugging of character streams, but also, they may
+assist a bit the production of C source code which, once compiled,
+would hold in memory a copy of the original coding.  However, `recode'
+does not attempt, in any way, to produce complete C source files in
+dumps.  User hand editing or `Makefile' trickery is still needed for
+adding missing lines.  Dumps may be given in decimal, hexadecimal and
+octal, and be based over chunks of either one, two or four eight-bit
+bytes.  Formatting has been chosen to respect the C language syntax for
+number constants, with commas and newlines inserted appropriately.
+
+   However, when dumping two or four byte chunks, the last chunk may be
+incomplete.  This is observable through the usage of narrower expression
+for that last chunk only.  Such a shorter chunk would not be compiled
+properly within a C initialiser, as all members of an array share a
+single type, and so, have identical sizes.
+
+`Octal-1'
+     This surface corresponds to an octal expression of each input byte.
+
+     It is available in `recode' under the name `Octal-1', with `o1'
+     and `o' as acceptable aliases.
+
+`Octal-2'
+     This surface corresponds to an octal expression of each pair of
+     input bytes, except for the last pair, which may be short.
+
+     It is available in `recode' under the name `Octal-2' and has `o2'
+     for an alias.
+
+`Octal-4'
+     This surface corresponds to an octal expression of each quadruple
+     of input bytes, except for the last quadruple, which may be short.
+
+     It is available in `recode' under the name `Octal-4' and has `o4'
+     for an alias.
+
+`Decimal-1'
+     This surface corresponds to an decimal expression of each input
+     byte.
+
+     It is available in `recode' under the name `Decimal-1', with `d1'
+     and `d' as acceptable aliases.
+
+`Decimal-2'
+     This surface corresponds to an decimal expression of each pair of
+     input bytes, except for the last pair, which may be short.
+
+     It is available in `recode' under the name `Decimal-2' and has
+     `d2' for an alias.
+
+`Decimal-4'
+     This surface corresponds to an decimal expression of each
+     quadruple of input bytes, except for the last quadruple, which may
+     be short.
+
+     It is available in `recode' under the name `Decimal-4' and has
+     `d4' for an alias.
+
+`Hexadecimal-1'
+     This surface corresponds to an hexadecimal expression of each
+     input byte.
+
+     It is available in `recode' under the name `Hexadecimal-1', with
+     `x1' and `x' as acceptable aliases.
+
+`Hexadecimal-2'
+     This surface corresponds to an hexadecimal expression of each pair
+     of input bytes, except for the last pair, which may be short.
+
+     It is available in `recode' under the name `Hexadecimal-2', with
+     `x2' for an alias.
+
+`Hexadecimal-4'
+     This surface corresponds to an hexadecimal expression of each
+     quadruple of input bytes, except for the last quadruple, which may
+     be short.
+
+     It is available in `recode' under the name `Hexadecimal-4', with
+     `x4' for an alias.
+
+   When removing a dump surface, that is, when reading a dump results
+back into a sequence of bytes, the narrower expression for a short last
+chunk is recognised, so dumping is a fully reversible operation.
+However, in case you want to produce dumps by other means than through
+`recode', beware that for decimal dumps, the library has to rely on the
+number of spaces to establish the original byte size of the chunk.
+
+   Although the library might report reversibility errors, removing a
+dump surface is a rather forgiving process: one may mix bases, group a
+variable number of data per source line, or use shorter chunks in
+places other than at the far end.  Also, source lines not beginning
+with a number are skipped.  So, `recode' should often be able to read a
+whole C header file, wrapping the results of a previous dump, and
+regenerate the original byte string.
+
+
 File: recode.info,  Node: Test,  Prev: Dump,  Up: Surfaces
 
 Artificial data for testing
@@ -265,491 +954,4 @@ meant to remove the surface.
 recognises when a charset is so related to `data' or `tree', and then
 takes appropriate actions so that charset gets indeed installed as a
 surface.
-
-
-File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
-
-Comments on the library design
-==============================
-
-   * Why a shared library?
-
-     There are many different approaches to reduce system requirements
-     to handle all tables needed in the `recode' library.  One of them
-     is to have the tables in an external format and only read them in
-     on demand.  After having pondered this for a while, I finally
-     decided against it, mainly because it involves its own kind of
-     installation complexity, and it is not clear to me that it would
-     be as interesting as I first imagined.
-
-     It looks more efficient to see all tables and algorithms already
-     mapped into virtual memory from the start of the execution, yet
-     not loaded in actual memory, than to go through many disk accesses
-     for opening various data files once the program is already
-     started, as this would be needed with other solutions.  Using a
-     shared library also has the indirect effect of making various
-     algorithms handily available, right in the same modules providing
-     the tables.  This alleviates much the burden of the maintenance.
-
-     Of course, I would like to later make an exception for only a few
-     tables, built locally by users for their own particular needs once
-     `recode' is installed.  `recode' should just go and fetch them.
-     But I do not perceive this as very urgent, yet useful enough to be
-     worth implementing.
-
-     Currently, all tables needed for recoding are precompiled into
-     binaries, and all these binaries are then made into a shared
-     library.  As an initial step, I turned `recode' into a main
-     program and a non-shared library, this allowed me to tidy up the
-     API, get rid of all global variables, etc.  It required a
-     surprising amount of program source massaging.  But once this
-     cleaned enough, it was easy to use Gordon Matzigkeit's `libtool'
-     package, and take advantage of the Automake interface to neatly
-     turn the non-shared library into a shared one.
-
-     Sites linking with the `recode' library, whose system does not
-     support any form of shared libraries, might end up with bulky
-     executables.  Surely, the `recode' library will have to be used
-     statically, and might not very nicely usable on such systems.  It
-     seems that progress has a price for those being slow at it.
-
-     There is a locality problem I did not address yet.  Currently, the
-     `recode' library takes many cycles to initialise itself, calling
-     each module in turn for it to set up associated knowledge about
-     charsets, aliases, elementary steps, recoding weights, etc.
-     _Then_, the recoding sequence is decided out of the command given.
-     I would not be surprised if initialisation was taking a
-     perceivable fraction of a second on slower machines.  One thing to
-     do, most probably not right in version 3.5, but the version after,
-     would have `recode' to pre-load all tables and dump them at
-     installation time.  The result would then be compiled and added to
-     the library.  This would spare many initialisation cycles, but more
-     importantly, would avoid calling all library modules, scattered
-     through the virtual memory, and so, possibly causing many spurious
-     page exceptions each time the initialisation is requested, at
-     least once per program execution.
-
-   * Why not a central charset?
-
-     It would be simpler, and I would like, if something like ISO 10646
-     was used as a turning template for all charsets in `recode'.  Even
-     if I think it could help to a certain extent, I'm still not fully
-     sure it would be sufficient in all cases.  Moreover, some people
-     disagree about using ISO 10646 as the central charset, to the
-     point I cannot totally ignore them, and surely, `recode' is not a
-     mean for me to force my own opinions on people.  I would like that
-     `recode' be practical more than dogmatic, and reflect usage more
-     than religions.
-
-     Currently, if you ask `recode' to go from CHARSET1 to CHARSET2
-     chosen at random, it is highly probable that the best path will be
-     quickly found as:
-
-          CHARSET1..`UCS-2'..CHARSET2
-
-     That is, it will almost always use the `UCS' as a trampoline
-     between charsets.  However, `UCS-2' will be immediately be
-     optimised out, and CHARSET1..CHARSET2 will often be performed in a
-     single step through a permutation table generated on the fly for
-     the circumstance (1).
-
-     In those few cases where `UCS-2' is not selected as a conceptual
-     intermediate, I plan to study if it could be made so.  But I guess
-     some cases will remain where `UCS-2' is not a proper choice.  Even
-     if `UCS' is often the good choice, I do not intend to forcefully
-     restrain `recode' around `UCS-2' (nor `UCS-4') for now.  We might
-     come to that one day, but it will come out of the natural
-     evolution of `recode'.  It will then reflect a fact, rather than a
-     preset dogma.
-
-   * Why not `iconv'?
-
-     The `iconv' routine and library allows for converting characters
-     from an input buffer to an input buffer, synchronously advancing
-     both buffer cursors.  If the output buffer is not big enough to
-     receive all of the conversion, the routine returns with the input
-     cursor set at the position where the conversion could later be
-     resumed, and the output cursor set to indicate until where the
-     output buffer has been filled.  Despite this scheme is simple and
-     nice, the `recode' library does not offer it currently.  Why not?
-
-     When long sequences of decodings, stepwise recodings, and
-     re-encodings are involved, as it happens in true life,
-     synchronising the input buffer back to where it should have
-     stopped, when the output buffer becomes full, is a difficult
-     problem.  Oh, we could make it simpler at the expense of loosing
-     space or speed: by inserting markers between each input character
-     and counting them at the output end; by processing only one
-     character in a time through the whole sequence; by repeatedly
-     attempting to recode various subsets of the input buffer, binary
-     searching on their length until the output just fits.  The
-     overhead of such solutions looks fully prohibitive to me, and the
-     gain very minimal.  I do not see a real advantage, nowadays,
-     imposing a fixed length to an output buffer.  It makes things so
-     much simpler and efficient to just let the output buffer size
-     float a bit.
-
-     Of course, if the above problem was solved, the `iconv' library
-     should be easily emulated, given that `recode' has similar
-     knowledge about charsets, of course.  This either solved or not,
-     the `iconv' program remains trivial (given similar knowledge about
-     charsets).  I also presume that the `genxlt' program would be easy
-     too, but I do not have enough detailed specifications of it to be
-     sure.
-
-     A lot of years ago, `recode' was using a similar scheme, and I
-     found it rather hard to manage for some cases.  I rethought the
-     overall structure of `recode' for getting away from that scheme,
-     and never regretted it.  I perceive `iconv' as an artificial
-     solution which surely has some elegances and virtues, but I do not
-     find it really useful as it stands: one always has to wrap `iconv'
-     into something more refined, extending it for real cases.  From
-     past experience, I think it is unduly hard to fully implement this
-     scheme.  It would be awkward that we do contortions for the sole
-     purpose of implementing exactly its specification, without real,
-     fairly sounded reasons (other then the fact some people once
-     thought it was worth standardising).  It is much better to
-     immediately aim for the refinement we need, without uselessly
-     forcing us into the dubious detour `iconv' represents.
-
-     Some may argue that if `recode' was using a comprehensive charset
-     as a turning template, as discussed in a previous point, this
-     would make `iconv' easier to implement.  Some may be tempted to
-     say that the cases which are hard to handle are not really needed,
-     nor interesting, anyway.  I feel and fear a bit some pressure
-     wanting that `recode' be split into the part that well fits the
-     `iconv' model, and the part that does not fit, considering this
-     second part less important, with the idea of dropping it one of
-     these days, maybe.  My guess is that users of the `recode'
-     library, whatever its form, would not like to have such arbitrary
-     limitations.  In the long run, we should not have to explain to
-     our users that some recodings may not be made available just
-     because they do not fit the simple model we had in mind when we
-     did it.  Instead, we should try to stay opened to the difficulties
-     of real life.  There is still a lot of complex needs for Asian
-     people, say, that `recode' does not currently address, while it
-     should.  Not only the doors should stay open, but we should force
-     them wider!
-
-   ---------- Footnotes ----------
-
-   (1) If strict mapping is requested, another efficient device will be
-used instead of a permutation.
-
-
-File: recode.info,  Node: Concept Index,  Next: Option Index,  Prev: Internals,  Up: Top
-
-Concept Index
-*************
-
-* Menu:
-
-* abbreviated names for charsets and surfaces: Requests.
-* adding new charsets:                   New charsets.
-* adding new surfaces:                   New surfaces.
-* African charsets:                      African.
-* aliases:                               Requests.
-* alternate names for charsets and surfaces: Requests.
-* ambiguous output, error message:       Errors.
-* ASCII table, recreating with recode:   ASCII.
-* average number of recoding steps:      Main flow.
-* bool data type:                        Outer level.
-* box-drawing characters:                Recoding.
-* bug reports, where to send:            Contributing.
-* byte order mark:                       UCS-2.
-* byte order swapping:                   Permutations.
-* caret ASCII code:                      CDC-NOS.
-* CDC charsets:                          CDC.
-* CDC Display Code, a table:             Display Code.
-* chaining of charsets in a request:     Requests.
-* character mnemonics, documentation:    Tabular.
-* character streams, description:        dump-with-names.
-* charset level functions:               Charset level.
-* charset names, valid characters:       Requests.
-* charset, default:                      Requests.
-* charset, pure:                         Surface overview.
-* charset, what it is:                   Introduction.
-* charsets for CDC machines:             CDC.
-* charsets, aliases:                     Requests.
-* charsets, chaining in a request:       Requests.
-* charsets, guessing:                    Listings.
-* charsets, overview:                    Charset overview.
-* chset tools:                           Tabular.
-* codepages:                             IBM and MS.
-* combining characters:                  UCS-2.
-* commutativity of surfaces:             Requests.
-* contributing charsets:                 Contributing.
-* conversions, unavailable:              Charset overview.
-* convert a subset of characters:        Mixed.
-* convert strings and comments:          Mixed.
-* copyright conditions, printing:        Listings.
-* counting characters:                   count-characters.
-* CR surface, in Macintosh charsets:     Apple-Mac.
-* CR-LF surface, in IBM-PC charsets:     IBM-PC.
-* Ctrl-Z, discarding:                    End lines.
-* Cyrillic charsets:                     Others.
-* debugging surfaces:                    Test.
-* default charset:                       Requests.
-* description of individual characters:  dump-with-names.
-* details about recoding:                Recoding.
-* deviations from RFC 1345:              Tabular.
-* diacritics and underlines, removing:   flat.
-* diacritics, with ASCII-BS charset:     ASCII-BS.
-* diaeresis:                             Recoding.
-* disable map filling:                   Reversibility.
-* double step:                           Main flow.
-* dumping characters:                    Dump.
-* dumping characters, with description:  dump-with-names.
-* Easy French:                           Texte.
-* EBCDIC charsets:                       EBCDIC.
-* end of line format:                    End lines.
-* endiannes, changing:                   Permutations.
-* error handling:                        Errors.
-* error level threshold:                 Errors.
-* error messages:                        Errors.
-* error messages, suppressing:           Reversibility.
-* exceptions to available conversions:   Charset overview.
-* file sequencing:                       Sequencing.
-* file time stamps:                      Recoding.
-* filter operation:                      Synopsis.
-* force recoding:                        Reversibility.
-* French description of charsets:        Listings.
-* guessing charsets:                     Listings.
-* Haible, Bruno:                         libiconv.
-* handling errors:                       Errors.
-* help page, printing:                   Listings.
-* HTML normalization:                    HTML.
-* IBM codepages:                         IBM and MS.
-* IBM graphics characters:               Recoding.
-* iconv:                                 Design.
-* iconv library:                         libiconv.
-* identifying subsets in charsets:       Listings.
-* ignore charsets:                       Recoding.
-* implied surfaces:                      Requests.
-* impossible conversions:                Charset overview.
-* information about charsets:            Listings.
-* initialisation functions, outer:       Outer level.
-* initialisation functions, request:     Request level.
-* initialisation functions, task:        Task level.
-* interface, with iconv library:         libiconv.
-* intermediate charsets:                 Requests.
-* internal functions:                    Charset level.
-* internal recoding bug, error message:  Errors.
-* internals:                             Internals.
-* invalid input, error message:          Errors.
-* invocation of recode, synopsis:        Synopsis.
-* irreversible recoding:                 Reversibility.
-* ISO 10646:                             Universal.
-* languages, programming:                Listings.
-* LaTeX files:                           LaTeX.
-* Latin charsets:                        ISO 8859.
-* Latin-1 table, recreating with recode: ISO 8859.
-* letter case, in charset and surface names: Requests.
-* libiconv:                              libiconv.
-* library, iconv:                        libiconv.
-* listing charsets:                      Listings.
-* Macintosh charset:                     Apple-Mac.
-* map filling:                           Reversibility.
-* map filling, disable:                  Reversibility.
-* memory sequencing:                     Sequencing.
-* MIME encodings:                        MIME.
-* misuse of recoding library, error message: Errors.
-* MS-DOS charsets:                       IBM-PC.
-* MULE, in Emacs:                        Mule.
-* multiplexed charsets:                  Mule.
-* names of charsets and surfaces, abbreviation: Requests.
-* new charsets, how to add:              New charsets.
-* new surfaces, how to add:              New surfaces.
-* NeXT charsets:                         Micros.
-* non canonical input, error message:    Errors.
-* normilise an HTML file:                HTML.
-* NOS 6/12 code:                         CDC-NOS.
-* outer level functions:                 Outer level.
-* partial conversion:                    Mixed.
-* permutations of groups of bytes:       Permutations.
-* pipe sequencing:                       Sequencing.
-* program_name variable:                 Outer level.
-* programming language support:          Listings.
-* pseudo-charsets:                       Charset overview.
-* pure charset:                          Surface overview.
-* quality of recoding:                   Recoding.
-* recode internals:                      Internals.
-* recode request syntax:                 Requests.
-* recode use, a tutorial:                Tutorial.
-* recode version, printing:              Listings.
-* recode, a Macintosh port:              Apple-Mac.
-* recode, and RFC 1345:                  Tabular.
-* recode, main flow of operation:        Main flow.
-* recode, operation as filter:           Synopsis.
-* recode, synopsis of invocation:        Synopsis.
-* recoding details:                      Recoding.
-* recoding library:                      Library.
-* recoding path, rejection:              Recoding.
-* recoding steps, statistics:            Main flow.
-* removing diacritics and underlines:    flat.
-* reporting bugs:                        Contributing.
-* request level functions:               Request level.
-* request, syntax:                       Requests.
-* reversibility of recoding:             Reversibility.
-* RFC 1345:                              Tabular.
-* RFC 2045:                              MIME.
-* sequencing:                            Sequencing.
-* shared library implementation:         Design.
-* silent operation:                      Reversibility.
-* single step:                           Main flow.
-* source file generation:                Listings.
-* stdbool.h header:                      Outer level.
-* strict operation:                      Reversibility.
-* string and comments conversion:        Mixed.
-* structural surfaces:                   Surfaces.
-* subsets in charsets:                   Listings.
-* super-charsets:                        Mule.
-* supported programming languages:       Listings.
-* suppressing diagnostic messages:       Reversibility.
-* surface, what it is <1>:               Surfaces.
-* surface, what it is:                   Introduction.
-* surfaces, aliases:                     Requests.
-* surfaces, commutativity:               Requests.
-* surfaces, implementation in recode:    Surfaces.
-* surfaces, implied:                     Requests.
-* surfaces, overview:                    Surface overview.
-* surfaces, structural:                  Surfaces.
-* surfaces, syntax:                      Requests.
-* surfaces, trees:                       Surfaces.
-* system detected problem, error message: Errors.
-* task execution:                        Task level.
-* task level functions:                  Task level.
-* TeX files:                             LaTeX.
-* Texinfo files:                         Texinfo.
-* threshold for error reporting:         Errors.
-* time stamps of files:                  Recoding.
-* trivial surface:                       Surfaces.
-* tutorial:                              Tutorial.
-* unavailable conversions:               Charset overview.
-* Unicode:                               UCS-2.
-* unknown charsets:                      Listings.
-* unreachable charsets:                  Charset overview.
-* untranslatable input, error message:   Errors.
-* valid characters in charset names:     Requests.
-* verbose operation:                     Recoding.
-* Vietnamese charsets:                   Vietnamese.
-
-
-File: recode.info,  Node: Option Index,  Next: Library Index,  Prev: Concept Index,  Up: Top
-
-Option Index
-************
-
-   This is an alphabetical list of all command-line options accepted by
-`recode'.
-
-* Menu:
-
-* --colons:                              Recoding.
-* --copyright:                           Listings.
-* --diacritics:                          Mixed.
-* --find-subsets:                        Listings.
-* --force:                               Reversibility.
-* --graphics:                            Recoding.
-* --header:                              Listings.
-* --help:                                Listings.
-* --ignore:                              Recoding.
-* --known=:                              Listings.
-* --list:                                Listings.
-* --quiet:                               Reversibility.
-* --sequence:                            Sequencing.
-* --silent:                              Reversibility.
-* --source:                              Mixed.
-* --strict:                              Reversibility.
-* --touch:                               Recoding.
-* --verbose:                             Recoding.
-* --version:                             Listings.
-* -c:                                    Recoding.
-* -C:                                    Listings.
-* -d:                                    Mixed.
-* -f:                                    Reversibility.
-* -g:                                    Recoding.
-* -h:                                    Listings.
-* -i:                                    Sequencing.
-* -k:                                    Listings.
-* -l:                                    Listings.
-* -p:                                    Sequencing.
-* -q:                                    Reversibility.
-* -S:                                    Mixed.
-* -s:                                    Reversibility.
-* -t:                                    Recoding.
-* -T:                                    Listings.
-* -v:                                    Recoding.
-* -x:                                    Recoding.
-
-
-File: recode.info,  Node: Library Index,  Next: Charset and Surface Index,  Prev: Option Index,  Up: Top
-
-Library Index
-*************
-
-   This is an alphabetical index of important functions, data
-structures, and variables in the `recode' library.
-
-* Menu:
-
-* abort_level:                           Task level.
-* ascii_graphics:                        Request level.
-* byte_order_mark:                       Task level.
-* declare_step:                          New surfaces.
-* DEFAULT_CHARSET:                       Requests.
-* diacritics_only:                       Request level.
-* diaeresis_char:                        Request level.
-* error_so_far:                          Task level.
-* fail_level:                            Task level.
-* file_one_to_many:                      New charsets.
-* file_one_to_one:                       New charsets.
-* find_charset:                          Charset level.
-* LANG, when listing charsets:           Listings.
-* LANGUAGE, when listing charsets:       Listings.
-* list_all_charsets:                     Charset level.
-* list_concise_charset:                  Charset level.
-* list_full_charset:                     Charset level.
-* make_header_flag:                      Request level.
-* RECODE_AMBIGUOUS_OUTPUT:               Errors.
-* recode_buffer_to_buffer:               Request level.
-* recode_buffer_to_file:                 Request level.
-* recode_delete_outer:                   Outer level.
-* recode_delete_request:                 Request level.
-* recode_delete_task:                    Task level.
-* recode_file_to_buffer:                 Request level.
-* recode_file_to_file:                   Request level.
-* recode_filter_close:                   Task level.
-* recode_filter_close, not available:    Request level.
-* recode_filter_open:                    Task level.
-* recode_filter_open, not available:     Request level.
-* recode_format_table:                   Request level.
-* RECODE_INTERNAL_ERROR:                 Errors.
-* RECODE_INVALID_INPUT:                  Errors.
-* RECODE_MAXIMUM_ERROR <1>:              Errors.
-* RECODE_MAXIMUM_ERROR:                  Task level.
-* recode_new_outer:                      Outer level.
-* recode_new_request:                    Request level.
-* recode_new_task:                       Task level.
-* RECODE_NO_ERROR:                       Errors.
-* RECODE_NOT_CANONICAL:                  Errors.
-* RECODE_OUTER structure:                Outer level.
-* recode_perform_task:                   Task level.
-* recode_request structure:              Request level.
-* RECODE_REQUEST structure:              Request level.
-* recode_scan_request:                   Request level.
-* RECODE_SEQUENCE_IN_MEMORY:             Task level.
-* RECODE_SEQUENCE_WITH_FILES:            Task level.
-* RECODE_SEQUENCE_WITH_PIPE:             Task level.
-* RECODE_STRATEGY_UNDECIDED:             Task level.
-* recode_string:                         Request level.
-* recode_string_to_buffer:               Request level.
-* recode_string_to_file:                 Request level.
-* RECODE_SYSTEM_ERROR:                   Errors.
-* RECODE_TASK structure:                 Task level.
-* RECODE_UNTRANSLATABLE:                 Errors.
-* RECODE_USER_ERROR:                     Errors.
-* strategy:                              Task level.
-* task_request structure:                Task level.
-* verbose_flag:                          Request level.
 
