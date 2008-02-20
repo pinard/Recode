@@ -1,0 +1,21 @@
+Validation suite for the Free `recode' program and library.
+Copyright © 1998, 1999, 2000, 2008 Progiciels Bourbeau-Pinard inc.
+François Pinard <pinard@iro.umontreal.ca>, 1998.
+
+t20 - Charset listings.
+
+t30 - Individual surfaces.
+Missing tests for endline and permut.
+
+t40 - Individual charsets.
+Missing tests for atarist, next, ebcdic, tables, applemac, ibmpc, iconqnx,
+cdcnos, bangbang, ascii, flat, html, latex, texinfo, texte and utf16.
+
+t60 - Inter-step mechanics.
+
+t80 - Big auto tests.
+echo
+echo "WARNING: The \`bigauto' test will be skipped, as it takes a long time to"
+echo "         complete.  To launch it, get into the build \`tests/' directory"
+echo "         and do either \`make bigtest' or \`make bigtest-strict'.  The"
+echo "         later forces \`-s' on all \`recode' calls."

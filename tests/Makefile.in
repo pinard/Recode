@@ -53,14 +53,14 @@ host_triplet = @host@
 subdir = tests
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in ChangeLog
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
-am__aclocal_m4_deps = $(top_srcdir)/m4/atconfig.m4 \
-	$(top_srcdir)/m4/codeset.m4 $(top_srcdir)/m4/gettext.m4 \
-	$(top_srcdir)/m4/glibc21.m4 $(top_srcdir)/m4/iconv.m4 \
-	$(top_srcdir)/m4/lib-ld.m4 $(top_srcdir)/m4/lib-link.m4 \
-	$(top_srcdir)/m4/lib-prefix.m4 $(top_srcdir)/m4/malloc.m4 \
-	$(top_srcdir)/m4/nls.m4 $(top_srcdir)/m4/po.m4 \
-	$(top_srcdir)/m4/progtest.m4 $(top_srcdir)/m4/realloc.m4 \
-	$(top_srcdir)/m4/utimbuf.m4 $(top_srcdir)/configure.ac
+am__aclocal_m4_deps = $(top_srcdir)/m4/codeset.m4 \
+	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/glibc21.m4 \
+	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/malloc.m4 $(top_srcdir)/m4/nls.m4 \
+	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
+	$(top_srcdir)/m4/realloc.m4 $(top_srcdir)/m4/utimbuf.m4 \
+	$(top_srcdir)/configure.ac
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
@@ -73,7 +73,6 @@ ACLOCAL = @ACLOCAL@
 ALLOCA = @ALLOCA@
 AMTAR = @AMTAR@
 AR = @AR@
-AT_TESTPATH = @AT_TESTPATH@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -201,9 +200,7 @@ AUTOMAKE_OPTIONS = gnits
 SUITE = african.m4 base64.m4 combine.m4 dumps.m4 lists.m4 methods.m4 \
 names.m4 quoted.m4 testdump.m4 utf7.m4 utf8.m4
 
-EXTRA_DIST = atgeneral.m4 suite.m4 testsuite $(SUITE) \
-bigauto.py dumps-data quoted-data utf7-data
-
+EXTRA_DIST = common.py $(SUITE) bigauto.py
 PYTHON = python
 all: all-am
 
@@ -279,7 +276,7 @@ distdir: $(DISTFILES)
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
-all-am: Makefile all-local
+all-am: Makefile
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -361,36 +358,22 @@ uninstall-am:
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am all-local check check-am check-local clean \
-	clean-generic clean-libtool clean-local distclean \
-	distclean-generic distclean-libtool distdir dvi dvi-am html \
-	html-am info info-am install install-am install-data \
-	install-data-am install-dvi install-dvi-am install-exec \
-	install-exec-am install-html install-html-am install-info \
-	install-info-am install-man install-pdf install-pdf-am \
-	install-ps install-ps-am install-strip installcheck \
-	installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am
+.PHONY: all all-am check check-am check-local clean clean-generic \
+	clean-libtool clean-local distclean distclean-generic \
+	distclean-libtool distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	uninstall uninstall-am
 
 
-all-local: atconfig testsuite
-
-# I have been told that the `libtool' bug who warranted the following
-# diagnostic has been corrected by now, so I silenced it out of `check-local'.
-#	@if test -f $(libdir)/librecode.so; then \
-#	  echo; \
-#	  echo "WARNING: A recode library is already installed.  Sadly, it"; \
-#	  echo "         _might_ interfere with checking.  You might want to"; \
-#	  echo "         delete it first, or rename it out of the way."; \
-#	  echo; \
-#	fi
-check-local: atconfig testsuite
-	$(SHELL) $(srcdir)/testsuite
-
-$(srcdir)/testsuite: atgeneral.m4 suite.m4 $(SUITE)
-	m4 -I $(srcdir) atgeneral.m4 suite.m4 | cat -s > $@-tmp
-	mv $@-tmp $@
+check-local:
+	PATH=../src:$$PATH PYTHONPATH=$(srcdir) \
+	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
 
 bigtest: warning
 	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py
@@ -399,12 +382,11 @@ bigtest-strict: warning
 	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py -s
 
 warning:
-	echo 1>&2 '==============================================='
-	echo 1>&2 "The \`bigauto' test may take hours.  Be patient."
-	echo 1>&2 '==============================================='
+	@echo 1>&2 '==============================================='
+	@echo 1>&2 "The \`bigauto' test may take hours.  Be patient."
+	@echo 1>&2 '==============================================='
 
 clean-local:
-	rm -f at-check-line debug-*.sh stderr stdout
 	rm -f input output big-s-off.res big-s-on.res
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

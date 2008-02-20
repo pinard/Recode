@@ -6,7 +6,6 @@ AC_INIT(src/recode.c)
 AC_PREREQ(2.12)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(recode, 3.6)
-AT_CONFIG(../src)
 
 AC_PROG_CC
 AC_AIX

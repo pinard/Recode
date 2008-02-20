@@ -1,0 +1,3 @@
+2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile, Recode.pyx, setup.py: New files.

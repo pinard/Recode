@@ -1,3 +1,7 @@
+2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.ac: Delete AT_CONFIG.
+
 2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
 
 	* README: Tell about contrib/README.

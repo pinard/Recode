@@ -40,10 +40,21 @@ build_triplet = @build@
 host_triplet = @host@
 subdir = i18n
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+<<<<<<< HEAD:po/Makefile.in
 am__aclocal_m4_deps = $(top_srcdir)/m4/atconfig.m4 \
 	$(top_srcdir)/m4/codeset.m4 $(top_srcdir)/m4/glibc21.m4 \
 	$(top_srcdir)/m4/malloc.m4 $(top_srcdir)/m4/realloc.m4 \
 	$(top_srcdir)/m4/utimbuf.m4 $(top_srcdir)/configure.ac
+=======
+am__aclocal_m4_deps = $(top_srcdir)/m4/codeset.m4 \
+	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/glibc21.m4 \
+	$(top_srcdir)/m4/iconv.m4 $(top_srcdir)/m4/lib-ld.m4 \
+	$(top_srcdir)/m4/lib-link.m4 $(top_srcdir)/m4/lib-prefix.m4 \
+	$(top_srcdir)/m4/malloc.m4 $(top_srcdir)/m4/nls.m4 \
+	$(top_srcdir)/m4/po.m4 $(top_srcdir)/m4/progtest.m4 \
+	$(top_srcdir)/m4/realloc.m4 $(top_srcdir)/m4/utimbuf.m4 \
+	$(top_srcdir)/configure.ac
+>>>>>>> Switching to pytest:m4/Makefile.in
 am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in.in ChangeLog
@@ -59,7 +70,6 @@ AMDEP_FALSE = @AMDEP_FALSE@
 AMDEP_TRUE = @AMDEP_TRUE@
 AMTAR = @AMTAR@
 AR = @AR@
-AT_TESTPATH = @AT_TESTPATH@
 AUTOCONF = @AUTOCONF@
 AUTOHEADER = @AUTOHEADER@
 AUTOMAKE = @AUTOMAKE@
@@ -172,6 +182,7 @@ sharedstatedir = @sharedstatedir@
 sysconfdir = @sysconfdir@
 target_alias = @target_alias@
 AUTOMAKE_OPTIONS = gnits
+<<<<<<< HEAD:po/Makefile.in
 localedir = $(prefix)/share/locale
 ALL_POFILES = @ALL_POFILES@
 ALL_MOFILES = @ALL_MOFILES@
@@ -179,6 +190,9 @@ MOFILES = @MOFILES@
 EXTRA_DIST = $(PACKAGE).pot $(ALL_POFILES) $(ALL_MOFILES)
 SUFFIXES = .po .pox .mo
 MAINTAINER_CLEAN = $(PACKAGE).pot $(MOFILES)
+=======
+EXTRA_DIST = gettext.m4 iconv.m4 lib-ld.m4 lib-link.m4 lib-prefix.m4 nls.m4 po.m4 progtest.m4 codeset.m4 glibc21.m4 malloc.m4 realloc.m4 utimbuf.m4
+>>>>>>> Switching to pytest:m4/Makefile.in
 all: all-am
 
 .SUFFIXES:

@@ -1,9 +1,12 @@
-#							-*- shell-script -*-
+# -*- coding: utf-8 -*-
+import common
+from common import setup_module, teardown_module
 
-AT_SETUP(decimal listing of a charset)
-dnl      ----------------------------
+class Test_decimal:
 
-cat > expect <<'EOF'
+    # Decimal listing of a charset.
+
+    expected = '''\
 ISO-8859-1
 
   0 NU    16 DL    32 SP    48 0     64 At    80 P     96 '!   112 p
@@ -39,16 +42,17 @@ ISO-8859-1
 141 RI   157 OC   173 --   189 12   205 I'   221 Y'   237 i'   253 y'
 142 S2   158 PM   174 Rg   190 34   206 I>   222 TH   238 i>   254 th
 143 S3   159 AC   175 'm   191 ?I   207 I:   223 ss   239 i:   255 y:
-EOF
+'''
 
-AT_CHECK(recode -ld latin-1 | cmp -s - expect, 0)
+    def test_1(self):
+        output = common.external_output('$R -ld latin-1')
+        common.assert_or_diff(output, self.expected)
 
-AT_CLEANUP(expect)
+class Test_hexadecimal:
 
-AT_SETUP(hexadecimal listing of a charset)
-dnl      --------------------------------
+    # Hexadecimal listing of a charset.
 
-cat > expect <<'EOF'
+    expected = '''\
 ISO-8859-1
 
 00 NU   10 DL   20 SP   30 0    40 At   50 P    60 '!   70 p
@@ -84,16 +88,17 @@ ISO-8859-1
 8d RI   9d OC   ad --   bd 12   cd I'   dd Y'   ed i'   fd y'
 8e S2   9e PM   ae Rg   be 34   ce I>   de TH   ee i>   fe th
 8f S3   9f AC   af 'm   bf ?I   cf I:   df ss   ef i:   ff y:
-EOF
+'''
 
-AT_CHECK(recode -lh latin-1 | cmp -s - expect, 0)
+    def test_1(self):
+        output = common.external_output('$R -lh latin-1')
+        common.assert_or_diff(output, self.expected)
 
-AT_CLEANUP(expect)
+class Test_octal:
 
-AT_SETUP(octal listing of a charset)
-dnl      --------------------------
+    # Octal listing of a charset.
 
-cat > expect <<'EOF'
+    expected = '''\
 ISO-8859-1
 
 000 NU   020 DL   040 SP   060 0    100 At   120 P    140 '!   160 p
@@ -129,16 +134,17 @@ ISO-8859-1
 215 RI   235 OC   255 --   275 12   315 I'   335 Y'   355 i'   375 y'
 216 S2   236 PM   256 Rg   276 34   316 I>   336 TH   356 i>   376 th
 217 S3   237 AC   257 'm   277 ?I   317 I:   337 ss   357 i:   377 y:
-EOF
+'''
 
-AT_CHECK(recode -lo latin-1 | cmp -s - expect, 0)
+    def test_1(self):
+        output = common.external_output('$R -lo latin-1')
+        common.assert_or_diff(output, self.expected)
 
-AT_CLEANUP(expect)
+class Test_full:
 
-AT_SETUP(full listing of a charset)
-dnl      -------------------------
+    # Full listing of a charset.
 
-cat > expect <<'EOF'
+    expected = '''\
 Dec  Oct Hex   UCS2  Mne  ISO-8859-1
 
   0  000  00   0000  NU   null (nul)
@@ -397,8 +403,8 @@ Dec  Oct Hex   UCS2  Mne  ISO-8859-1
 253  375  fd   00FD  y'   latin small letter y with acute
 254  376  fe   00FE  th   latin small letter thorn (icelandic)
 255  377  ff   00FF  y:   latin small letter y with diaeresis
-EOF
+'''
 
-AT_CHECK(recode -lf latin-1 | cmp -s - expect, 0)
-
-AT_CLEANUP(expect)
+    def test_1(self):
+        output = common.external_output('$R -lf latin-1')
+        common.assert_or_diff(output, self.expected)

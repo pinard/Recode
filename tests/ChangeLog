@@ -1,3 +1,21 @@
+2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	Swithching from Autotest to Pytest.
+	* NOTES, pytest, common.py: New files.
+	* atgeneral.m4, suite.m4, testsuite: Deleted.
+	* t21_names.py, t25_subsets.py: Rewrite of names.m4.
+	* t22_lists.py: Rewrite of lists.m4.
+	* t30_base64.py: Rewrite of base64.m4.
+	* t30_dumps.py: Rewrite of dumps.m4 and dumps-data.
+	* t30_quoted.py: Rewrite of quoted.m4 and quoted-data.
+	* t40_african.py: Rewrite of african.m4.
+	* t40_combine.py: Rewrite of combine.m4.
+	* t40_testdump.py: Rewrite of testdump.m4.
+	* t40_utf7.py: Rewrite of utf7.m4 and utf7-data.
+	* t40_utf8.py: Rewrite of utf8.m4.
+	* t60_methods.py: Rewrite of methods.m4.
+	* Makefile: Adjusted.
+
 2005-03-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	* ChangeLog: Converted to UTF-8.
@@ -10,7 +28,7 @@
 2000-08-18  François Pinard  <pinard@iro.umontreal.ca>
 
 	* names.m4: Adjusted for XML-standalone.
-
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* testdump.m4: New name for debug.m4.
