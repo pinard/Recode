@@ -3,16 +3,16 @@
 Tell `mailto:recode-bugs@iro.umontreal.ca' if you feel like volunteering
 for any of these ideas, listed more or less in decreasing order
 of priority.  Some TODO items are implicit within received email.
-Significant contributions require written assignments and disclaimers.
 
 .* Before next official release
+. + SIGSEGV when merged.c is involved
+. + recode_string does not always work
+. + Problem while installing in po/
 . + Memory leaks: see add_to_sequence, ALLOC, recode_{m,re}alloc}.
 . + Revise everything about explodes.
 . + Update NEWS for latest libiconv and latest Keld tables.
 . + Remove TeX edition warnings, rephrase whatever required.
 . + Complete inter-node and menu references, as necessary.
-. + Resolve THANKS, which Emacs does not save correctly.
-. + Check with recent versions for Autoconf, Automake, Libtool.
 . + See make and configure HAVE_UNION_WAIT, see `lr /conf-wait-'.
 . + Solaris cc 4.2 with option "-O" miscompiles src/libiconv.c, probably
     the function module_libiconv. The symptom is that
@@ -39,7 +39,6 @@ Significant contributions require written assignments and disclaimers.
 . @ ~/méthodes/rtf/
 
 .* Particular notes
-
 . + feuille Tamil
 . + Autoconf and DOSWIN
 . + New RFC 1345 tables, still some diagnostics
@@ -69,7 +68,6 @@ Significant contributions require written assignments and disclaimers.
 . + Option -M (implying -i) to process MIME headers
 
 .* Mechanics
-. + Create a Python prototype of full `recode'.
 . + Intercept signals to cleanup the temporary files in any event.
 . + Revise --sequence=pipe thoroughly.
 . + Rewrite execute_pipe_sequence for having only one child per parent.
