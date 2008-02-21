@@ -1,3 +1,15 @@
+2008-02-21  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* gettext.m4: New file, from gettext-0.16.
+	* iconv.m4: New file, from gettext-0.16.
+	* lib-ld.m4: New file, from gettext-0.16.
+	* lib-link.m4: New file, from gettext-0.16.
+	* lib-prefix.m4: New file, from gettext-0.16.
+	* nls.m4: New file, from gettext-0.16.
+	* po.m4: New file, from gettext-0.16.
+	* progtest.m4: New file, from gettext-0.16.
+	* Makefile.am (EXTRA_DIST): Add the new files.
+
 2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* gettext.m4, lcmessage.m4: Deleted.

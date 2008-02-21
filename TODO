@@ -7,7 +7,6 @@ of priority.  Some TODO items are implicit within received email.
 .* Before next official release
 . + SIGSEGV when merged.c is involved
 . + recode_string does not always work
-. + Problem while installing in po/
 . + Memory leaks: see add_to_sequence, ALLOC, recode_{m,re}alloc}.
 . + Revise everything about explodes.
 . + Update NEWS for latest libiconv and latest Keld tables.

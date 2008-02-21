@@ -1,3 +1,13 @@
+2008-02-21  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* Makefile.in.in: Upgrade to gettext-0.16.
+	* boldquot.sed: New file, from gettext-0.16.
+	* en@boldquot.header: New file, from gettext-0.16.
+	* en@quot.header: New file, from gettext-0.16.
+	* insert-header.sin: New file, from gettext-0.16.
+	* quot.sed: New file, from gettext-0.16.
+	* Rules-quot: New file, from gettext-0.16.
+
 2005-11-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.in.in, Makevars, LINGUAS, POTFILE.in: New files.

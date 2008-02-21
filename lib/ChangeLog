@@ -1,3 +1,7 @@
+2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* gettext.h: Updated from gettext 0.16.
+
 2005-11-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	* gettext.h: New, from coreutils.

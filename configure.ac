@@ -39,7 +39,7 @@ jm_GLIBC21
 AM_WITH_DMALLOC
 
 AM_GNU_GETTEXT(external)
-AM_GNU_GETTEXT_VERSION(0.14.3)
+AM_GNU_GETTEXT_VERSION([0.16])
 
 AC_OUTPUT(Makefile contrib/Makefile doc/Makefile po/Makefile.in
           lib/Makefile libiconv/Makefile m4/Makefile src/Makefile
