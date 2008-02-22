@@ -2,6 +2,9 @@
 
 	* README: Tell about contrib/README.
 
+	* Makefile.am (EXTRA_DIST): Add m4/ChangeLog.
+	Reported by Jim Meyering.
+
 2008-02-21  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.16.

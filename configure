@@ -24016,7 +24016,7 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile contrib/Makefile doc/Makefile po/Makefile.in lib/Makefile libiconv/Makefile m4/Makefile src/Makefile tests/Makefile tests/atconfig"
+ac_config_files="$ac_config_files Makefile contrib/Makefile doc/Makefile po/Makefile.in lib/Makefile libiconv/Makefile src/Makefile tests/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -24618,10 +24618,8 @@ do
     "po/Makefile.in") CONFIG_FILES="$CONFIG_FILES po/Makefile.in" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;
     "libiconv/Makefile") CONFIG_FILES="$CONFIG_FILES libiconv/Makefile" ;;
-    "m4/Makefile") CONFIG_FILES="$CONFIG_FILES m4/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "tests/Makefile") CONFIG_FILES="$CONFIG_FILES tests/Makefile" ;;
-    "tests/atconfig") CONFIG_FILES="$CONFIG_FILES tests/atconfig" ;;
 
   *) { { echo "$as_me:$LINENO: error: invalid argument: $ac_config_target" >&5
 echo "$as_me: error: invalid argument: $ac_config_target" >&2;}

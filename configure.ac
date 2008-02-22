@@ -42,5 +42,4 @@ AM_GNU_GETTEXT(external)
 AM_GNU_GETTEXT_VERSION([0.16])
 
 AC_OUTPUT(Makefile contrib/Makefile doc/Makefile po/Makefile.in
-          lib/Makefile libiconv/Makefile m4/Makefile src/Makefile
-          tests/Makefile tests/atconfig)
+          lib/Makefile libiconv/Makefile src/Makefile tests/Makefile)
