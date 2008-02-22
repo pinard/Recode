@@ -1,8 +1,9 @@
-Free `recode' has originally been written by François Pinard.  Other people
-contributed to Free recode by reporting problems, suggesting various
-improvements or submitting actual code.  Here is a list of these people.
-Help me keeping it complete and exempt of errors.  See various ChangeLogs
-for a detailed description of contributions.
+Free `recode' has originally been written by François Pinard.  Other
+people contributed to Free recode by reporting problems, suggesting
+various improvements or submitting actual code.  Here is a list of these
+people.  Help me keeping it complete and exempt of errors.  See various
+ChangeLogs for a detailed description of contributions.  Santiago Vila
+Doncel deserves a special mention for his dedication and patience!
 
 Akim Demaille		demaille@inf.enst.fr
 Alain Labonté		alb@riq.qc.ca
@@ -96,6 +97,7 @@ Jacques Richer		Jacques.Richer@CERCA.UMontreal.CA
 			http://www.CERCA.UMontreal.CA/~richer
 Jan Djarv		jan.djarv@mbox200.swipnet.se
 Jean-Claude Nadeau	nadeau@jsp.umontreal.ca
+Jean-Michel Dault	jmdault@mandrakesoft.com
 Jens Quade		jens@ronja.dinoco.de
 Jim Meyering		meyering@na-net.ornl.gov
 Joelle Stemp
@@ -125,6 +127,7 @@ Liisa R{ih{		lr@cs.uta.fi
 Loic Dachary
 Lukas Petrlik
 Mac Pigman		gwp@dido.caltech.edu
+Magnus Määttä		novell@kiruna.se
 Marc Gingold		gingold@spht.saclay.cea.fr
 			http:////www-spht.cea.fr/doc.html
 Marc Shapiro		shapiro@prof.inria.fr
@@ -154,6 +157,7 @@ Nicolas Thiery		Nicolas.Thiery@jonas.univ-lyon1.fr
 			http://www.lmd.univ-lyon1.fr/home/nthiery/
 Niels Kr. Bech Jensen	nkbj@image.dk
 			http://www.image.dk/~nkbj/
+Noel Koethe		noel@debian.org
 Olivier Lecarme		Olivier.Lecarme@unice.fr
 Olivier Tharan		olive@laria.u-picardie.fr
 			http://www.laria.u-picardie.fr/~olive/
@@ -164,6 +168,7 @@ Per Andersson		perand@stacken.kth.se
 Per Starback		starback@ling.uu.se
 			http://stp.ling.uu.se/~starback/me.html
 Per Steinar Iversen
+Peter Poeml		
 Peter Turcan		peter.turcan@minerva-is.sk
 Phyllis Frankl		phyllis@morph.poly.edu
 			http://ebbets.poly.edu/~pfrankl
@@ -194,10 +199,12 @@ Slaven Rezic		eserte@cs.tu-berlin.de
 Stefan Albertz		Stefan.Albertz@rus.uni-stuttgart.de
 Stefan Haubenthal	haubi@geocities.com
 			http://home.pages.de/~haubi
+Stephen Boulet		stephen@theboulets.net
 Steinar Bang		sb@metis.no
 Stephane Berube		berube@iro.umontreal.ca
 Stephen Grecni		steve@steem.com
 			http://steem.com
+Steve Langasek		vorlon@netexpress.net
 Sumit Bose		bose@physik.tu-berlin.de
 Thomas Gebhardt		gebhardt@hrz.uni-marburg.de
 			http://www.uni-marburg.de/hrz/mitarbeiter/gebhardt.html
