@@ -1,0 +1,47 @@
+Name:    recode
+Version: 3.5d
+Release: 2
+Summary: Converter between charsets and surfaces
+Group:   Utilities/Text
+
+Vendor:    Progiciels Bourbeau-Pinard inc.
+Copyright: GPL, LGPL
+Packager:  Franc,ois Pinard <pinard@iro.umontreal.ca>
+
+Source: http://recode.progiciels-bpi.ca/archives/recode-3.5d.tar.gz
+URL:    http://recode.progiciels-bpi.ca/
+
+Buildroot: /var/tmp/%{name}-rpmroot
+
+%description
+The recode library converts files between character sets and usages.
+It recognises or produces more than 300 different character sets
+and transliterates files between almost any pair.  When exact
+transliteration are not possible, it gets rid of offending characters
+or fall back on approximations.  The recode program is a handy
+front-end to the library.
+
+%prep
+%setup
+
+%build
+./configure --prefix=/usr
+make
+
+%install
+mkdir -p $RPM_BUILD_ROOT/usr
+make prefix=$RPM_BUILD_ROOT/usr install
+
+%changelog
+* Thu Jan 31 2002 Bennett Todd <bet@rahul.net>
+  3.5d-2: started w/ spec file from tarball, made spec portable
+
+%files
+%defattr(-,root,root)
+%doc ABOUT-NLS AUTHORS BACKLOG ChangeLog COPYING COPYING-LIB INSTALL NEWS PATCHES-AC README README-alpha THANKS TODO doc
+/usr/bin/*
+/usr/include/*
+/usr/lib/*
+%doc /usr/info/%{name}*
+%doc /usr/man/*/*
+/usr/share/locale/*/LC_MESSAGES/*

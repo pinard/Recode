@@ -59,10 +59,26 @@ help me at deciding what should be kept and what should go away.
   These makefiles allow building Recode 3.4k on Amiga.  Submitted by
   Stefan Haubenthal, 1998-11.
 
-+ :file:`recode.spec`
++ :file:`recode.spec1`
 
-  RPM spec file to prepare Recode on RedHat.  Submitted by David Lebel,
-  2000-06.
+  RPM spec file to prepare Recode 3.5c on RedHat.  Submitted by David
+  Lebel, 2000-06.
+
++ :file:`recode.spec2`
+
+  RPM spec file to prepare Recode 3.5d on RedHat.  Submitted by Bennett
+  Todd, 2002-01.  Bennett writes (more or less):
+
+    This spec file allows portable building.  Users could download the
+    tar archive and simply ``rpm -ta`` it to build themselves source and
+    binary :code:`rpm`\ s.  If they had their :code:`rpm` directory,
+    they could even do it while not being ``root``.  For example, my
+    :file:`~/.rpmmacros` reads::
+
+      %_topdir    /home/bet/rpm
+
+    without a leading tab. Hence my :file:`/usr/src/redhat/` is still
+    ``root:root``, and yet I can do my :code:`rpm` building as myself.
 
 External pointers
 =================
