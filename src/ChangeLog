@@ -28,10 +28,11 @@
 	* Makefile.am: Replace lib_LTLIBRARIES by noinst_LIBRARIES.
 	Replace librecode.la by libcode.a and librecode_la by librecode_a.
 
-2001-10-08  Andreas Schwab  <schwab@suse.de>
+2001-10-08  François Pinard  <pinard@iro.umontreal.ca>
 
 	* request.c (guarantee_nul_terminator): Fix bound computation for
 	realloc.
+	Reported by Andreas Schwab and Enrik Berkhan.
 
 2001-07-01  Bruno Haible  <haible@clisp.cons.org>
 
