@@ -1,3 +1,7 @@
+2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* README: Tell about contrib/README.
+
 2008-02-21  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* configure.ac (AM_GNU_GETTEXT_VERSION): Bump to 0.16.

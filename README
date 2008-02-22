@@ -43,10 +43,15 @@ front-end to the library.
 The Recode program and library have been written by François Pinard,
 yet it significantly reuses works from Keld Simonsen and Bruno Haible.
 It is an evolving package, and specifications might change in future
-releases.  Option ``-f`` is now fairly implemented, yet not fully.
+releases.
 
-In 1999, I gave a `presentation`__ of Recode in Japan.
+Little notes:
 
++ Option ``-f`` is now fairly implemented, yet not fully.
++ there is a `contrib/`__ directory in the distribution.
++ In 1999, I gave a `presentation`__ of Recode in Japan.
+
+__ contrib.html
 __ m17n99.html
 
 Reports and collaboration
@@ -80,7 +85,7 @@ and development for Recode, do just as above, but this time, use::
 
     subscribe recode-forum
 
-Look into http://recode%(bpi)s/ for releases or pretests, and related
+Visit http://recode%(bpi)s/ for releases or pretests, and related
 files.  In particular, button ``Browse`` gives access to a weekly mirror
 of the current unpackaged work files, while button ``Folders`` gives
 access to saved or pending correspondence.
@@ -193,9 +198,9 @@ following table.  You may also choose to establish a link in your build
   Package name       Current      Minimum      Install after
   ================   ==========   ==========   =============
   :code:`autoconf`   2.61         2.12         :code:`m4`
-  :code:`automake`   1.10         1.4          :code:`Perl`
+  :code:`automake`   1.10         1.9          :code:`Perl`
   :code:`Flex`       2.5.33       2.5.4a
-  :code:`gettext`    0.16         0.14.3
+  :code:`gettext`    0.16         0.16
   :code:`Help2man`   1.36         1.020        :code:`Perl`
   :code:`libtool`    1.5.24       1.3.4
   :code:`m4`         1.4.10       1.4n
