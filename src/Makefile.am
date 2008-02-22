@@ -103,7 +103,9 @@ $(srcdir)/merged.c: mergelex.py $(L_STEPS)
 $(srcdir)/recode.1: recode
 	@if test -r $@ && test ! -w $@; then \
 	  echo "WARNING: Page \`$@' read only, not updated"; \
-	elif $(PERL) $(top_srcdir)/doc/help2man --output=$@ ./recode; then \
+	elif $(PERL) $(top_srcdir)/doc/help2man \
+	    --name="converts files between character sets" \
+	    --output=$@ ./recode; then \
 	  echo "Page \`$@' has been updated"; \
 	else \
 	  echo "WARNING: Page \`$@' has *not* been updated."; \

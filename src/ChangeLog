@@ -1,3 +1,8 @@
+2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (recode.1): Use --name calling help2man.
+	Reported by Dan Jacobson.
+
 2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr.c: Modified by Automake 1.10.
