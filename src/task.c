@@ -1204,6 +1204,8 @@ recode_perform_task (RECODE_TASK task)
       else
 	success = transform_mere_copy (subtask);
 
+      task->output = subtask->output;
+
       if (subtask->input.name && *subtask->input.name)
 	fclose (subtask->input.file);
       if (subtask->output.name && *subtask->output.name)

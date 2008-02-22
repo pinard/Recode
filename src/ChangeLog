@@ -3,6 +3,10 @@
 	* Makefile.am (recode.1): Use --name calling help2man.
 	Reported by Dan Jacobson.
 
+	* task.c (recode_perform_task): Subtask output pointers were
+	not copied into task output.
+	Reported by Enrik Berkhan and Frederic Gobry.
+
 2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* ansi2knr.c: Modified by Automake 1.10.
