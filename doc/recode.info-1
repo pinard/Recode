@@ -2549,7 +2549,7 @@ remove duplications and better merge specificities, as `recode' evolves.
    As implemented, if a recoding request can be satisfied by the
 `recode' library both with and without its `iconv' library part, it is
 likely that the `iconv' library will be used.  To sort out if the
-`iconv' is indeed used of not, just use the `-v' or `--verbose' option,
+`iconv' is indeed used or not, just use the `-v' or `--verbose' option,
 *note Recoding::.
 
    The `:libiconv:' charset represents a conceptual pivot charset
@@ -4922,7 +4922,7 @@ interconnecting it with all others charsets.
 
    If you intend to play seriously at modifying `recode', beware that
 you may need some other GNU tools which were not required when you first
-installing `recode'.  If you modify or create any `.l' file, then you
+installed `recode'.  If you modify or create any `.l' file, then you
 need Flex, and some better `awk' like `mawk', GNU `awk', or `nawk'.  If
 you modify the documentation (and you should!), you need `makeinfo'.
 If you are really audacious, you may also want Perl for modifying

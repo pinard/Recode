@@ -2957,7 +2957,7 @@ remove duplications and better merge specificities, as @code{recode} evolves.
 As implemented, if a recoding request can be satisfied by the @code{recode}
 library both with and without its @code{iconv} library part, it is likely
 that the @code{iconv} library will be used.  To sort out if the @code{iconv}
-is indeed used of not, just use the @samp{-v} or @samp{--verbose} option,
+is indeed used or not, just use the @samp{-v} or @samp{--verbose} option,
 @pxref{Recoding}.
 
 @tindex libiconv
@@ -4580,7 +4580,7 @@ mechanics take care of interconnecting it with all others charsets.
 
 If you intend to play seriously at modifying @code{recode}, beware that
 you may need some other GNU tools which were not required when you first
-installing @code{recode}.  If you modify or create any @file{.l} file,
+installed @code{recode}.  If you modify or create any @file{.l} file,
 then you need Flex, and some better @code{awk} like @code{mawk},
 GNU @code{awk}, or @code{nawk}.  If you modify the documentation (and
 you should!), you need @code{makeinfo}.  If you are really audacious,

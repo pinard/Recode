@@ -29,7 +29,7 @@ translation approved by the Foundation.
 
 Indirect:
 recode.info-1: 1138
-recode.info-2: 244436
+recode.info-2: 244435
 
 Tag Table:
 (Indirect)
@@ -115,14 +115,14 @@ Node: MIME195449
 Node: Dump196640
 Node: Test200834
 Node: Internals203314
-Node: Main flow204553
-Node: New charsets207673
-Node: New surfaces212216
-Node: Design212944
-Ref: Design-Footnote-1222159
-Node: Concept Index222263
-Node: Option Index237006
-Node: Library Index239859
-Node: Charset and Surface Index244436
+Node: Main flow204552
+Node: New charsets207672
+Node: New surfaces212215
+Node: Design212943
+Ref: Design-Footnote-1222158
+Node: Concept Index222262
+Node: Option Index237005
+Node: Library Index239858
+Node: Charset and Surface Index244435
 
 End Tag Table
