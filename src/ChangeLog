@@ -7,6 +7,7 @@
 	put_byte_helper, not only put_byte_helper.
 	* task.c (get_byte_helper) [!INLINE_HARDER]: Compile as well.
 	Properly declare the argument as a subtask, not as a task.
+	Reported by Dagobert Michelsen and Marc Shapiro.
 
 2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
 
