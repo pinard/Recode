@@ -16,7 +16,6 @@ class Test_test7:
 '''
 
     def test_1(self):
-        common.external(True)
         common.request('test7..x,us..count')
         common.validate('', self.output)
 
@@ -30,7 +29,6 @@ class Test_test8:
 '''
 
     def test_1(self):
-        common.external(True)
         common.request('test8..x,us..count')
         common.validate('', self.output)
 
@@ -45,7 +43,6 @@ class Test_test15:
 '''
 
     def test_1(self):
-        common.external(True)
         common.request('test15..x2,us..count')
         common.validate('', self.output)
 
@@ -60,6 +57,5 @@ class Test_test16:
 '''
 
     def test_1(self):
-        common.external(True)
         common.request('test16..x2,us..count')
         common.validate('', self.output)

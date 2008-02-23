@@ -144,6 +144,15 @@ compare_item (const void *void_first, const void *void_second)
   return (*first)->code - (*second)->code;
 }
 
+static void
+put_string (const char *string, RECODE_SUBTASK subtask)
+{
+  const char *cursor;
+
+  for (cursor = string; *cursor; cursor++)
+    put_byte (*cursor, subtask);
+}
+
 static bool
 produce_count (RECODE_SUBTASK subtask)
 {
@@ -229,22 +238,23 @@ produce_count (RECODE_SUBTASK subtask)
 
 	if (column + count_width + non_count_width > 80)
 	  {
-	    putchar ('\n');
+	    put_byte ('\n', subtask);
 	    delayed = 0;
 	    column = 0;
 	  }
 	else
 	  while (delayed)
 	    {
-	      putchar (' ');
+	      put_byte (' ', subtask);
 	      delayed--;
 	    }
 
-	printf ("%*d  %.4X", count_width, (*cursor)->count, character);
+	sprintf (buffer, "%*d  %.4X", count_width, (*cursor)->count, character);
+        put_string (buffer, subtask);
 	if (mnemonic)
 	  {
-	    putchar (' ');
-	    fputs (mnemonic, stdout);
+	    put_byte (' ', subtask);
+	    put_string (mnemonic, subtask);
 	    delayed = 6 - 1 - strlen (mnemonic);
 	  }
 	else
@@ -254,7 +264,7 @@ produce_count (RECODE_SUBTASK subtask)
       }
 
     if (column)
-      putchar ('\n');
+      put_byte ('\n', subtask);
   }
 
   /* Clean-up.  */
@@ -281,6 +291,7 @@ produce_full_dump (RECODE_SUBTASK subtask)
       const char *charname;	/* charname for code */
       bool french;		/* if output should be in French */
       const char *string;	/* environment value */
+      char buffer[50];
 
       /* Decide if we prefer French or English output.  */
 
@@ -295,17 +306,21 @@ produce_full_dump (RECODE_SUBTASK subtask)
 	    french = true;
 	}
 
-      fputs (_("UCS2   Mne   Description\n\n"), stdout);
+      put_string (_("UCS2   Mne   Description\n\n"), subtask);
 
       while (1)
 	{
 	  const char *mnemonic = ucs2_to_rfc1345 (character);
 
-	  printf ("%.4X", character);
+	  sprintf (buffer, "%.4X", character);
+          put_string (buffer, subtask);
 	  if (mnemonic)
-	    printf ("   %-3s", mnemonic);
+            {
+              sprintf (buffer, "   %-3s", mnemonic);
+              put_string (buffer, subtask);
+            }
 	  else
-	    fputs ("      ", stdout);
+	    put_string ("      ", subtask);
 
 	  if (french)
 	    {
@@ -322,10 +337,10 @@ produce_full_dump (RECODE_SUBTASK subtask)
 
 	  if (charname)
 	    {
-	      fputs ("   ", stdout);
-	      fputs (charname, stdout);
+	      put_string ("   ", subtask);
+	      put_string (charname, subtask);
 	    }
-	  printf ("\n");
+	  put_byte ('\n', subtask);
 
 	  if (!get_ucs2 (&character, subtask))
 	    break;

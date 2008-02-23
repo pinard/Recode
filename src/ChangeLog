@@ -1,3 +1,8 @@
+2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* testdump.c (produce_count, produce_full_dump): Output as directed
+	by the subtask, rather than directly on stdout.
+
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	Repair all Flex steps, which were broken since version 3.6.
