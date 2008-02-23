@@ -871,10 +871,11 @@ int yy_flex_debug = 0;
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
 /* This file is generated automatically by `mergelex.py'.  */
-#define YY_NO_UNPUT
 #include "common.h"
 static RECODE_CONST_REQUEST request;
 static RECODE_SUBTASK subtask;
+
+#define YY_INPUT(buf, result, max_size)   {     int c = get_byte (subtask);     result = (c == EOF) ? YY_NULL : (buf[0] = c, 1);   }
 
 
 void texte_latin1_diaeresis PARAMS ((void));
@@ -3052,7 +3053,7 @@ transform_ascii_latin1 (RECODE_SUBTASK subtask_argument)
 {
   subtask = subtask_argument;
   request = subtask->task->request;
-  yy_init = 1;
+  yy_init = 0;
   yyin = subtask->input.file;
   yyout = subtask->output.file;
   BEGIN ascii_latin1;
@@ -3099,7 +3100,7 @@ transform_latex_latin1 (RECODE_SUBTASK subtask_argument)
 {
   subtask = subtask_argument;
   request = subtask->task->request;
-  yy_init = 1;
+  yy_init = 0;
   yyin = subtask->input.file;
   yyout = subtask->output.file;
   BEGIN latex_latin1;
@@ -3146,7 +3147,7 @@ transform_texte_latin1 (RECODE_SUBTASK subtask_argument)
 {
   subtask = subtask_argument;
   request = subtask->task->request;
-  yy_init = 1;
+  yy_init = 0;
   yyin = subtask->input.file;
   yyout = subtask->output.file;
   BEGIN texte_latin1;

@@ -1,3 +1,13 @@
+2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	Repair all Flex steps, which were broken since version 3.6.
+	* mergelex.py: Provide a rather dumb YY_INPUT using get_byte,
+	and set yy_init to zero in all generated routines.
+	* recodext.h: Within Flex, use both get_byte_helper and
+	put_byte_helper, not only put_byte_helper.
+	* task.c (get_byte_helper) [!INLINE_HARDER]: Compile as well.
+	Properly declare the argument as a subtask, not as a task.
+
 2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (recode.1): Use --name calling help2man.

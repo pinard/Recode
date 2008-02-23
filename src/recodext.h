@@ -707,6 +707,13 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
 /* Giving a name to the ASCII character assigned to position 0.  */
 #define NUL '\0'
 
+#ifdef FLEX_SCANNER
+# if !INLINE_HARDER
+#  undef USE_HELPERS
+#  define USE_HELPERS 1
+# endif
+#endif
+
 #if USE_HELPERS
 
 # define get_byte(Subtask) \
@@ -734,14 +741,6 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
 #endif /* not USE_HELPERS */
 
 #ifdef FLEX_SCANNER
-
-# if !INLINE_HARDER
-
-#  undef put_byte
-#  define put_byte(Byte, Subtask) \
-     put_byte_helper ((Byte), (Subtask))
-
-# endif
 
 # define PUT_NON_DIACRITIC_BYTE(Byte, Subtask) \
     if (request->diacritics_only)				\

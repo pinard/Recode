@@ -74,34 +74,35 @@
 | Read one byte from the input text of TASK, or EOF is none remain.  |
 `-------------------------------------------------------------------*/
 
-/* This function is directly called by get_byte whenever USE_HELPERS is
-   defined.  Otherwise, get_byte does everything necessary and this routine
-   is not needed.  */
+/* This function is directly called by get_byte whenever USE_HELPERS
+   is defined, and also from within generated Flex code unless
+   INLINE_HARDER is defined.  Otherwise, get_byte does everything
+   necessary and this routine is not needed.  */
 
-#if USE_HELPERS
+#if USE_HELPERS || !INLINE_HARDER
 
 int
-get_byte_helper (RECODE_TASK task)
+get_byte_helper (RECODE_SUBTASK subtask)
 {
-  if (task->input.file)
-    return getc (task->input.file);
-  else if (task->input.cursor == task->input.limit)
+  if (subtask->input.file)
+    return getc (subtask->input.file);
+  else if (subtask->input.cursor == subtask->input.limit)
     return EOF;
   else
-    return (unsigned char) *task->input.cursor++;
+    return (unsigned char) *subtask->input.cursor++;
 }
 
-#endif /* USE_HELPERS */
+#endif /* USE_HELPERS || !INLINE_HARDER */
 
 /*-----------------------------------------.
 | Write BYTE on the output text for TASK.  |
 `-----------------------------------------*/
 
-/* This function is directly called by put_byte whenever USE_HELPERS is
-   defined.  It is also called when the output buffer needs to be
-   reallocated, which put_byte does not know how to handle itself.  Note
-   that when INLINE_HARDER is not defined, USE_HELPERS is implied for Flex
-   generated code.  */
+/* This function is directly called by put_byte whenever USE_HELPERS
+   is defined, and also from within generated Flex code unless
+   INLINE_HARDER is defined.  It is also called when the output
+   buffer needs to be reallocated, which put_byte does not know
+   how to handle itself.  */
 
 void
 put_byte_helper (int byte, RECODE_SUBTASK subtask)

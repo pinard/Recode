@@ -23,21 +23,34 @@
 import re, sys
 
 # Initial comments.
-section0 = ["/* This file is generated automatically by `mergelex.py'.  */\n"]
+section0 = [
+"/* This file is generated automatically by `mergelex.py'.  */\n"]
+
 # Flex and C declarations.
-section1 = ["\n"
-            "%option noyywrap\n"
-            "%{\n"
-            '#define YY_NO_UNPUT\n'
-            '#include "common.h"\n'
-            "static RECODE_CONST_REQUEST request;\n"
-            "static RECODE_SUBTASK subtask;\n"
-            "%}\n"]
+section1 = '''\
+
+%option noyywrap
+%{
+#include "common.h"
+static RECODE_CONST_REQUEST request;
+static RECODE_SUBTASK subtask;
+
+#define YY_INPUT(buf, result, max_size) \
+  { \
+    int c = get_byte (subtask); \
+    result = (c == EOF) ? YY_NULL : (buf[0] = c, 1); \
+  }
+%}
+'''.splitlines(True)
+
 # Flex rules.
-section2 = ["%%\n"
-            "<<EOF>>			{ return 1; }\n"]
+section2 = '''\
+%%
+<<EOF>>			{ return 1; }
+'''.splitlines(True)
+
 # Rest of C code.
-section3 = ["%%\n"]
+section3 = ['%%\n']
 
 within_C_code = False
 definitions = {}
@@ -56,19 +69,20 @@ while True:
     if match:
         section = 1
         step_name = match.group(1)
-        section3.append(
-            '\n'
-            'static bool\n'
-            'transform_%s (RECODE_SUBTASK subtask_argument)\n'
-            '{\n'
-            '  subtask = subtask_argument;\n'
-            '  request = subtask->task->request;\n'
-            '  yy_init = 1;\n'
-            '  yyin = subtask->input.file;\n'
-            '  yyout = subtask->output.file;\n'
-            '  BEGIN %s;\n'
-            '  return yylex ();\n'
-            '}\n'
+        section3.append('''\
+
+static bool
+transform_%s (RECODE_SUBTASK subtask_argument)
+{
+  subtask = subtask_argument;
+  request = subtask->task->request;
+  yy_init = 0;
+  yyin = subtask->input.file;
+  yyout = subtask->output.file;
+  BEGIN %s;
+  return yylex ();
+}
+'''
             % (step_name, step_name))
         continue
 
