@@ -40,5 +40,6 @@ AM_WITH_DMALLOC
 AM_GNU_GETTEXT(external)
 AM_GNU_GETTEXT_VERSION([0.16])
 
-AC_OUTPUT(Makefile contrib/Makefile doc/Makefile po/Makefile.in
-          lib/Makefile libiconv/Makefile src/Makefile tests/Makefile)
+AC_OUTPUT(Makefile contrib/Makefile doc/Makefile lib/Makefile
+          libiconv/Makefile po/Makefile.in python/Makefile
+          src/Makefile tests/Makefile)

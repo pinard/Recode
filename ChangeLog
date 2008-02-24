@@ -1,3 +1,7 @@
+2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.ac, Makefile.am: Handle python/.
+
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.ac: Delete AT_CONFIG.
