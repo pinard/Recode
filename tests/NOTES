@@ -11,11 +11,8 @@ t40 - Individual charsets.
 Missing tests for atarist, next, ebcdic, tables, applemac, ibmpc, iconqnx,
 cdcnos, bangbang, ascii, flat, html, latex, texinfo, texte and utf16.
 
-t60 - Inter-step mechanics.
+t50 - Inter-step mechanics.
 
-t80 - Big auto tests.
-echo
-echo "WARNING: The \`bigauto' test will be skipped, as it takes a long time to"
-echo "         complete.  To launch it, get into the build \`tests/' directory"
-echo "         and do either \`make bigtest' or \`make bigtest-strict'.  The"
-echo "         later forces \`-s' on all \`recode' calls."
+t70 - Regression tests.
+
+t90 - Special tests.

@@ -1,3 +1,7 @@
+2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
+
+	* t90_bigauto.py: New, replacing bigauto.py.
+
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	Swithching from Autotest to Pytest.
@@ -13,7 +17,7 @@
 	* t40_testdump.py: Rewrite of testdump.m4.
 	* t40_utf7.py: Rewrite of utf7.m4 and utf7-data.
 	* t40_utf8.py: Rewrite of utf8.m4.
-	* t60_methods.py: Rewrite of methods.m4.
+	* t50_methods.py: Rewrite of methods.m4.
 	* Makefile: Adjusted.
 
 2005-03-06  François Pinard  <pinard@iro.umontreal.ca>

@@ -4,6 +4,11 @@
 # François Pinard <pinard@iro.umontreal.ca>, 1997.
 
 """\
+NOTE: This script has not been revised yet as a main program.  Currently,
+it is only meant as a part of the Recode test suite.
+
+--------------------------------------------------------------------------
+
 Produce statistics from the results of the bigauto check.
 
 Usage: bigauto [RECODE_OPTION]... [CHARSET_OPTION]...
@@ -23,6 +28,39 @@ argument, all possible possible recodings are considered.
 """
 
 import os, sys
+import common
+
+class Test:
+    avoid_as_before = 'count-characters', 'dump-with-names', 'flat'
+
+    def test_1(self):
+        if common.Recode is None:
+            raise common.SkipTest
+        self.outer = common.Recode.Outer(strict=False)
+        self.charsets = sorted(self.outer.all_charsets())
+        for before in self.charsets:
+            if before not in self.avoid_as_before:
+                yield self.validate, before
+
+    def test_2(self):
+        if common.Recode is None:
+            raise common.SkipTest
+        self.outer = common.Recode.Outer(strict=True)
+        self.charsets = sorted(self.outer.all_charsets())
+        for before in self.charsets:
+            if before not in self.avoid_as_before:
+                yield self.validate, before
+
+    def validate(self, before):
+        # As a compromise between being too terse or too verbose, we
+        # consider as a single test, one "before" against all "after"s.
+        # However, without a Recode module, we do not know how many
+        # "before"s exist, and the skip count is then be rather small.
+        print before
+        for after in self.charsets:
+            if after is not before:
+                request = common.Recode.Request(self.outer)
+                request.scan('%s..%s' % (before, after))
 
 def main(*arguments):
     recode_options = []
@@ -32,40 +70,9 @@ def main(*arguments):
             recode_options.append(argument)
         else:
             charset_options.append(argument)
-    work_name = '/tmp/bigauto-data'
-    if os.path.exists(work_name):
-        os.remove(work_name)
-    create_data(work_name, recode_options, charset_options)
     report = Report()
     report.digest_data(file(work_name).readline)
     report.produce_report(sys.stdout.write)
-    os.remove(work_name)
-
-def create_data(name, recode_options, charset_options):
-    # Get the list of charsets.
-    if charset_options:
-        charsets = charset_options
-    else:
-        charsets = []
-        for line in os.popen('recode -l'):
-            charset = line.split()[0]
-            if charset[0] in ':/':
-                continue
-            charsets.append(charset)
-    # Do the work, calling a subshell once per `before' value.
-    recode_call = "recode </dev/null -v %s" % ' '.join(recode_options)
-    for before in charsets:
-        if before in ('count-characters', 'dump-with-names',
-                      'flat', 'Texinfo'):
-            continue
-        sys.stderr.write("Before charset: %s\n" % before)
-        write = os.popen('sh >>%s 2>&1' % name, 'w').write
-        write('export LANGUAGE; LANGUAGE=C\n'
-              'export LANG; LANG=C\n'
-              'export LC_ALL; LC_ALL=C\n')
-        for after in charsets:
-            if after != before:
-                write("%s '%s..%s'\n" % (recode_call, before, after))
 
 class Report:
 

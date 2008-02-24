@@ -197,10 +197,11 @@ target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnits
-SUITE = african.m4 base64.m4 combine.m4 dumps.m4 lists.m4 methods.m4 \
-names.m4 quoted.m4 testdump.m4 utf7.m4 utf8.m4
+SUITE = t21_names.py t22_lists.py t25_subsets.py t30_base64.py \
+t30_dumps.py t30_quoted.py t40_african.py t40_combine.py t40_testdump.py \
+t40_utf7.py t40_utf8.py t50_methods.py t90_bigauto.py
 
-EXTRA_DIST = common.py $(SUITE) bigauto.py
+EXTRA_DIST = NOTES pytest common.py $(SUITE)
 PYTHON = python
 all: all-am
 
@@ -304,7 +305,7 @@ maintainer-clean-generic:
 	@echo "it deletes files that may require special tools to rebuild."
 clean: clean-am
 
-clean-am: clean-generic clean-libtool clean-local mostlyclean-am
+clean-am: clean-generic clean-libtool mostlyclean-am
 
 distclean: distclean-am
 	-rm -f Makefile
@@ -359,9 +360,9 @@ uninstall-am:
 .MAKE: install-am install-strip
 
 .PHONY: all all-am check check-am check-local clean clean-generic \
-	clean-libtool clean-local distclean distclean-generic \
-	distclean-libtool distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
+	clean-libtool distclean distclean-generic distclean-libtool \
+	distdir dvi dvi-am html html-am info info-am install \
+	install-am install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am install-man \
 	install-pdf install-pdf-am install-ps install-ps-am \
@@ -374,20 +375,6 @@ uninstall-am:
 check-local:
 	PATH=../src:$$PATH PYTHONPATH=$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
-
-bigtest: warning
-	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py
-
-bigtest-strict: warning
-	PATH=../src:$$PATH $(PYTHON) $(srcdir)/bigauto.py -s
-
-warning:
-	@echo 1>&2 '==============================================='
-	@echo 1>&2 "The \`bigauto' test may take hours.  Be patient."
-	@echo 1>&2 '==============================================='
-
-clean-local:
-	rm -f input output big-s-off.res big-s-on.res
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

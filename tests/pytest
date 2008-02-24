@@ -306,7 +306,7 @@ class Main:
             return
         instance = classe()
         if hasattr(instance, u'setup_class'):
-            self.delayed_setup_module = module.setup_class, classe
+            self.delayed_setup_module = instance.setup_class, classe
         for _, name, method, generator in sorted(collection):
             self.handle_function(prefix + u'/' + name, getattr(instance, name),
                                   generator, instance)
