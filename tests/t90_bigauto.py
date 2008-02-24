@@ -55,7 +55,7 @@ class Test:
         # As a compromise between being too terse or too verbose, we
         # consider as a single test, one "before" against all "after"s.
         # However, without a Recode module, we do not know how many
-        # "before"s exist, and the skip count is then be rather small.
+        # "before"s exist, and the skip count is then rather small.
         print before
         for after in self.charsets:
             if after is not before:

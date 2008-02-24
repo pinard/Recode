@@ -554,9 +554,9 @@ simplify_sequence (RECODE_REQUEST request)
   RECODE_OUTER outer = request->outer;
 
   unsigned saved_steps;		/* number of saved steps */
-  RECODE_STEP in;	/* next studied sequence step */
-  RECODE_STEP out;	/* next rewritten sequence step */
-  RECODE_STEP limit;	/* last value for IN */
+  RECODE_STEP in;               /* next studied sequence step */
+  RECODE_STEP out;              /* next rewritten sequence step */
+  RECODE_STEP limit;            /* last value for IN */
   unsigned char *accum;		/* byte_to_byte accumulated recoding */
   const char **string;		/* byte_to_variable recoding */
   unsigned char temp[256];	/* temporary value for accum array */
@@ -721,7 +721,7 @@ simplify_sequence (RECODE_REQUEST request)
   return true;
 }
 
-/* Decoging step sequence parameters.  */
+/* Decoding step sequence parameters.  */
 
 /*-------------------------------------.
 | Scan next name into SCANNED_STRING.  |

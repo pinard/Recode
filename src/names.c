@@ -645,8 +645,7 @@ list_symbols_walker_2 (void *void_alias, void *void_walk)
 }
 
 bool
-list_all_symbols (RECODE_OUTER outer,
-		   RECODE_CONST_SYMBOL after)
+list_all_symbols (RECODE_OUTER outer, RECODE_CONST_SYMBOL after)
 {
   struct list_symbols_walk walk; /* wanderer's data */
   RECODE_ALIAS alias;		/* cursor into sorted array */

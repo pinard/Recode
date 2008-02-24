@@ -13,6 +13,15 @@ cdef extern from "config.h":
 
 cdef extern from "common.h":
 
+    ## Forwarded declarations.
+
+    cdef struct recode_outer
+    ctypedef recode_outer *RECODE_OUTER
+    ctypedef recode_outer *RECODE_CONST_OUTER
+
+    cdef struct recode_single
+    ctypedef recode_single *RECODE_SINGLE
+
     ## Symbols.
 
     enum recode_symbol_type:
@@ -32,8 +41,8 @@ cdef extern from "common.h":
         char *name
         recode_data_type data_type
         void *data
-        void *resurfacer                # really: recode_single *
-        void *unsurfacer                # really: recode_single *
+        RECODE_SINGLE resurfacer
+        RECODE_SINGLE unsurfacer
         recode_symbol_type type
         bool ignore
     ctypedef recode_symbol *RECODE_SYMBOL
@@ -72,8 +81,8 @@ cdef extern from "common.h":
     ctypedef recode_option_list *RECODE_CONST_OPTION_LIST
 
     #typedef bool (*Recode_init)(RECODE_STEP, RECODE_CONST_REQUEST,
-    #                                RECODE_CONST_OPTION_LIST,
-    #                                RECODE_CONST_OPTION_LIST)
+    #                            RECODE_CONST_OPTION_LIST,
+    #                            RECODE_CONST_OPTION_LIST)
     #typedef bool (*Recode_term)(RECODE_STEP, RECODE_CONST_REQUEST)
     #typedef bool (*Recode_transform)(RECODE_SUBTASK)
     #typedef bool (*Recode_fallback)(RECODE_SUBTASK, unsigned)
@@ -88,7 +97,6 @@ cdef extern from "common.h":
         #Recode_init init_routine
         #Recode_transform transform_routine
         #Recode_fallback fallback_routine
-    ctypedef recode_single *RECODE_SINGLE
 
     enum recode_step_type:
         RECODE_NO_STEP_TABLE
@@ -117,7 +125,7 @@ cdef extern from "common.h":
     ## Requests.
 
     struct recode_request:
-        void *outer                     # really: RECODE_OUTER
+        RECODE_OUTER outer
         bool verbose_flag
         char diaeresis_char
         bool make_header_flag
@@ -156,7 +164,7 @@ cdef extern from "common.h":
         RECODE_SWAP_NO
         RECODE_SWAP_YES
 
-    enum recode_error:
+    enum recode_error_ 'recode_error':
         RECODE_NO_ERROR
         RECODE_NOT_CANONICAL
         RECODE_AMBIGUOUS_OUTPUT
@@ -174,9 +182,9 @@ cdef extern from "common.h":
         recode_sequence_strategy strategy
         bool byte_order_mark
         recode_swap_input swap_input
-        recode_error fail_level
-        recode_error abort_level
-        recode_error error_so_far
+        recode_error_ fail_level
+        recode_error_ abort_level
+        recode_error_ error_so_far
         RECODE_CONST_STEP error_at_step
     ctypedef recode_task *RECODE_TASK
     ctypedef recode_task *RECODE_CONST_TASK
@@ -192,9 +200,9 @@ cdef extern from "common.h":
 
     int get_byte(RECODE_SUBTASK)
     void put_byte(int, RECODE_SUBTASK)
-    void SET_SUBTASK_ERROR(recode_error, RECODE_SUBTASK)
+    void SET_SUBTASK_ERROR(recode_error_, RECODE_SUBTASK)
     bool SUBTASK_RETURN(RECODE_SUBTASK)
-    void RETURN_IF_NOGO(recode_error, RECODE_SUBTASK)
+    void RETURN_IF_NOGO(recode_error_, RECODE_SUBTASK)
     void GOT_CHARACTER(RECODE_SUBTASK)
     void GOT_NEWLINE(RECODE_SUBTASK)
 
@@ -236,8 +244,6 @@ cdef extern from "common.h":
         recode_quality quality_variable_to_byte
         recode_quality quality_variable_to_ucs2
         recode_quality quality_variable_to_variable
-    ctypedef recode_outer *RECODE_OUTER
-    ctypedef recode_outer *RECODE_CONST_OUTER
 
     ## Miscellaneous.
 
@@ -287,8 +293,8 @@ cdef extern from "common.h":
     #                                  (Count) * sizeof(Type)), \
     #   Variable)
 
-    #void recode_error(RECODE_OUTER, char *, ...)
-    #void recode_perror(RECODE_OUTER, char *, ...)
+    void recode_error(RECODE_OUTER, char *, ...)
+    void recode_perror(RECODE_OUTER, char *, ...)
     void *recode_malloc(RECODE_OUTER, size_t)
     void *recode_realloc(RECODE_OUTER, void *, size_t)
 
@@ -327,9 +333,9 @@ cdef extern from "common.h":
 
     # combine.c
 
-    #enum:                               # a few #define's, in fact
-    #    DONE
-    #    ELSE                            # ELSE is reserved in Pyrex
+    enum:                               # a few #define's, in fact
+        DONE
+        ELSE_ 'ELSE'
 
     bool init_explode(RECODE_STEP, RECODE_CONST_REQUEST,
                       RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
@@ -362,8 +368,7 @@ cdef extern from "common.h":
 
     bool reversibility(RECODE_SUBTASK, unsigned)
     #RECODE_SINGLE declare_single
-    # (RECODE_OUTER, char *, char *,
-    #      struct recode_quality,
+    #     (RECODE_OUTER, char *, char *, struct recode_quality,
     #      bool (*) (RECODE_STEP, RECODE_CONST_REQUEST,
     #                RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST),
     #      bool (*) (RECODE_SUBTASK))
@@ -387,7 +392,7 @@ cdef extern from "common.h":
 
     int get_byte_helper(RECODE_SUBTASK)
     void put_byte_helper(int, RECODE_SUBTASK)
-    bool recode_if_nogo(recode_error, RECODE_SUBTASK)
+    bool recode_if_nogo(recode_error_, RECODE_SUBTASK)
     bool transform_byte_to_byte(RECODE_SUBTASK)
     bool transform_byte_to_variable(RECODE_SUBTASK)
 
@@ -538,7 +543,7 @@ cdef class Request:
     def format_table(self, int language, char *charset):
         cdef RECODE_OUTER outer
         cdef bool saved
-        outer = <RECODE_OUTER> self.request[0].outer
+        outer = self.request.outer
         saved = outer.libiconv_pivot.ignore
         outer.libiconv_pivot.ignore = true
         ok = recode_format_table(
@@ -569,7 +574,6 @@ cdef class Request:
 # Lazy, all in one call.
 
 global_outer = Outer()
-#global_outer.set_libiconv(False)
 
 def recode(char *text, char *string):
     request = Request(global_outer)
