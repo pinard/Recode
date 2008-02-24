@@ -1,5 +1,5 @@
 /* Conversion of files between different charsets and surfaces.
-   Copyright © 1999, 2000 Free Software Foundation, Inc.
+   Copyright © 1999, 2000, 2001, 2008 Free Software Foundation, Inc.
    Contributed by François Pinard <pinard@iro.umontreal.ca>, 1999,
    and Bruno Haible <haible@clisp.cons.org>, 2000.
 
@@ -29,158 +29,102 @@
 #define BUFFER_SIZE 2048
 
 static bool
-wrapped_transform (iconv_t conversion, iconv_t conversion_to_utf8,
-		   RECODE_SUBTASK subtask)
+wrapped_transform (iconv_t conversion, RECODE_SUBTASK subtask)
 {
-  int input_char = get_byte (subtask);
-  char input_buffer[BUFFER_SIZE];
   char output_buffer[BUFFER_SIZE];
-  size_t input_left;
-  size_t output_left;
-  char *input;
-  char *output;
-  char *cursor;
-  size_t converted;
-  int saved_errno;
+  char input_buffer[BUFFER_SIZE];
+  int input_char = get_byte (subtask);
+  char *cursor = input_buffer;
+  bool drain_first = false;
 
-  cursor = input_buffer;
-  while (cursor > input_buffer || input_char != EOF)
+  while (true)
     {
-      /* Fill the input buffer as much as possible.  */
-      while (input_char != EOF && cursor < input_buffer + BUFFER_SIZE)
-	{
-	  *cursor++ = input_char;
-	  input_char = get_byte (subtask);
-	}
+      /* The output buffer is fully avaible at this point.  */
 
-      /* We have at least some input.  */
-      assert (cursor > input_buffer);
+      char *input = input_buffer;
+      char *output = output_buffer;
+      size_t input_left = 0;
+      size_t output_left = BUFFER_SIZE;
+      int saved_errno = 0;
+      size_t converted;
 
-      /* Convert accumulated input into the output buffer.  */
-      input_left = cursor - input_buffer;
-      input = input_buffer;
-      output_left = BUFFER_SIZE;
-      output = output_buffer;
-      converted
-	= iconv (conversion, &input, &input_left, &output, &output_left);
+      if (drain_first)
+        {
+          /* Drain all accumulated partial state and emit output
+             to return to the initial shift state.  */
+          converted = iconv (conversion, NULL, NULL, &output, &output_left);
+          if (converted == (size_t) -1)
+            saved_errno = errno;
+        }
 
-      /* Send the converted result, to free the output buffer.  */
-      saved_errno = errno;
+      if (saved_errno == 0)
+        {
+          /* Continue filling the input buffer.  */
+          while (input_char != EOF && cursor < input_buffer + BUFFER_SIZE)
+            {
+              *cursor++ = input_char;
+              input_char = get_byte (subtask);
+            }
+
+          if (cursor == input_buffer)
+            {
+              if (output == output_buffer)
+                {
+                  /* All work has been done, just make sure we drained.  */
+                  if (drain_first)
+                    break;
+                  drain_first = true;
+                  continue;
+                }
+            }
+          else
+            {
+              /* Convert accumulated input and add it to the output buffer.  */
+              input = input_buffer;
+              input_left = cursor - input_buffer;
+              converted = iconv (conversion,
+                                 &input, &input_left,
+                                 &output, &output_left);
+              if (converted == (size_t) -1)
+                saved_errno = errno;
+            }
+        }
+
+      /* Send the converted result, so freeing the output buffer.  */
       for (cursor = output_buffer; cursor < output; cursor++)
-	put_byte (*cursor, subtask);
-      errno = saved_errno;
+        put_byte (*cursor, subtask);
 
-      /* Analyze the iconv return value.  */
-      if (converted == (size_t)(-1) && errno != E2BIG)
-	{
-	  if (errno == EILSEQ)
-	    {
-              /* Fail if the user requested reversible conversions.  */
-              RETURN_IF_NOGO (RECODE_NOT_CANONICAL, subtask);
+      /* Act according to the outcome of the iconv call.  */
 
-              /* An invalid multibyte sequence was encountered in the
-                 input, or a conversion error occurred.  Distinguish the
-                 two cases by use of conversion_to_utf8.  In the first
-                 case, skip one byte.  In the second case, skip the entire
-                 character.
-                 FIXME: This heuristic does not work well with stateful
-                 encodings like ISO-2022-JP.  */
-              char tmp_buf[6];
-              size_t tmp_input_left;
-              size_t tmp_output_left;
-              char *tmp_input;
-              char *tmp_output;
-
+      drain_first = false;
+      if (saved_errno != 0 && saved_errno != E2BIG)
+        if (saved_errno == EILSEQ)
+          {
+            /* Invalid input.  Skip one byte.  */
+            RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+            assert (input_left > 0);
+            input++;
+            input_left--;
+            /* Why is draining required?  */
+            drain_first = true;
+          }
+        else if (saved_errno == EINVAL)
+          {
+            if (input + input_left < input_buffer + BUFFER_SIZE
+                && input_char == EOF)
+              /* Incomplete multibyte sequence at end of input.  */
               RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+          }
+        else
+          {
+            recode_perror (subtask->task->request->outer, "iconv ()");
+            RETURN_IF_NOGO (RECODE_SYSTEM_ERROR, subtask);
+          }
 
-              assert (input_left > 0);
-
-              tmp_input_left = input_left;
-              tmp_input = input;
-              tmp_output_left = sizeof (tmp_buf);
-              tmp_output = tmp_buf;
-              iconv (conversion_to_utf8,
-                     &tmp_input, &tmp_input_left,
-                     &tmp_output, &tmp_output_left);
-              /* Reset conversion_to_utf8 to the initial state.  */
-              iconv (conversion_to_utf8, NULL, NULL, NULL, NULL);
-              if (tmp_input > input)
-                {
-                  /* Conversion error.  Skip the entire character.  */
-                  input = tmp_input;
-                  input_left = tmp_input_left;
-                }
-              else
-                {
-                  /* Invalid input.  Skip one byte.  */
-                  input++;
-                  input_left--;
-                }
-
-              /* Reset conversion state.  (Why?)  */
-              output_left = BUFFER_SIZE;
-              output = output_buffer;
-              converted
-                = iconv (conversion, NULL, NULL, &output, &output_left);
-              /* We don't expect E2BIG here: the buffer is large enough. */
-              assert (converted != (size_t)(-1));
-              for (cursor = output_buffer; cursor < output; cursor++)
-                put_byte (*cursor, subtask);
-	    }
-	  else if (errno == EINVAL)
-	    {
-	      /* Incomplete multibyte sequence.  */
-	      if (input + input_left < input_buffer + BUFFER_SIZE
-		  && input_char == EOF)
-		{
-		  /* Incomplete multibyte sequence at end of input.  */
-		  RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
-		  break;
-		}
-	      /* Otherwise, we shift the remaining input and see whether the
-		 error persists in the next round.  */
-	    }
-	  else
-	    {
-	      recode_perror (subtask->task->request->outer, "iconv ()");
-	      SET_SUBTASK_ERROR (RECODE_SYSTEM_ERROR, subtask);
-	      SUBTASK_RETURN (subtask);
-	    }
-	}
-
-      /* If there was no progress, we have a bug in either iconv or the
-	 above logic.  */
-      if (!(input > input_buffer))
-	{
-	  recode_error (subtask->task->request->outer,
-			"iconv.c internal error 154");
-	  SET_SUBTASK_ERROR (RECODE_INTERNAL_ERROR, subtask);
-	  SUBTASK_RETURN (subtask);
-	}
-      assert (input > input_buffer);
-
-      /* Shift back the unconverted part of the input buffer.
-	 memcpy() doesn't do here, because the regions might overlap.
-	 memmove() isn't worth it, because we rarely have to move more
-	 than 12 bytes.  */
-      if (input > input_buffer && input_left > 0)
-	{
-	  cursor = input_buffer;
-	  do
-	    *cursor++ = *input++;
-	  while (--input_left > 0);
-	}
+      /* Move back any unprocessed part of the input buffer.  */
+      for (cursor = input_buffer; input_left != 0; input_left--)
+        *cursor++ = *input++;
     }
-
-  /* Drain all accumulated partial state and emit output to return to the
-     initial shift state.  */
-  output_left = BUFFER_SIZE;
-  output = output_buffer;
-  converted = iconv (conversion, NULL, NULL, &output, &output_left);
-  /* We don't expect E2BIG here: the buffer is large enough.  */
-  assert (converted != (size_t)(-1));
-  for (cursor = output_buffer; cursor < output; cursor++)
-    put_byte (*cursor, subtask);
 
   SUBTASK_RETURN (subtask);
 }
@@ -190,19 +134,17 @@ transform_with_iconv (RECODE_SUBTASK subtask)
 {
   RECODE_CONST_STEP step = subtask->step;
   iconv_t conversion = iconv_open (step->after->name, step->before->name);
-  iconv_t conversion_to_utf8 = iconv_open ("UTF-8", step->before->name);
   bool status;
 
-  if (conversion == (iconv_t) -1 || conversion_to_utf8 == (iconv_t) -1)
+  if (conversion == (iconv_t) -1)
     {
       SET_SUBTASK_ERROR (RECODE_SYSTEM_ERROR, subtask);
       SUBTASK_RETURN (subtask);
     }
 
-  status = wrapped_transform (conversion, conversion_to_utf8, subtask);
+  status = wrapped_transform (conversion, subtask);
 
   iconv_close (conversion);
-  iconv_close (conversion_to_utf8);
   return status;
 }
 

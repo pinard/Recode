@@ -7,12 +7,13 @@ Recode NEWS - User visible changes
 
 :Copyright: © 1993-1999, 2000, 2001, 2008 Free Software Foundation, Inc.
 
-Version 3.7-beta1
-=================
+Version 3.7
 
-:Author: François Pinard, 2008-02.
+:Author: François Pinard, 2008-03.
 
-+ Changes are mostly internal, and correct reported bugs.
++ Recode does no include libiconv anymore, but uses an external iconv
+  library if one was available at installation time.
++ Many internal changes, for correcting reported bugs.
 
 Version 3.6
 ===========

@@ -624,6 +624,12 @@ cdef class Outer:
         if not ok:
             raise error
 
+    # Lazy, all in one call.
+    def recode(self, char *command, char *input):
+        request = Request(self)
+        request.scan(command)
+        return request.string(input)
+
 # Recode library at REQUEST level.
 
 cdef class Request:
@@ -684,12 +690,3 @@ cdef class Request:
     #bool recode_file_to_buffer(
     #        RECODE_CONST_REQUEST, FILE *, char **, size_t *, size_t *)
     #bool recode_file_to_file(RECODE_CONST_REQUEST, FILE *, FILE *)
-
-# Lazy, all in one call.
-
-global_outer = Outer()
-
-def recode(char *text, char *string):
-    request = Request(global_outer)
-    request.scan(text)
-    return request.string(string)

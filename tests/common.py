@@ -10,7 +10,11 @@ try:
     import Recode
 except ImportError:
     # The Python API has not been installed.
-    Recode = None
+    outer = None
+    outer_iconv = None
+else:
+    outer = Recode.Outer(iconv=False)
+    outer_iconv = Recode.Outer(iconv=True)
 
 class Run(dict):
 
@@ -36,7 +40,7 @@ def setup_module(module):
                      'LC_ALL', 'LC_MESSAGES', 'LC_COLLATE'):
         if variable in os.environ:
             del os.environ[variable]
-    run.external = Recode is None
+    run.external = outer is None
     import tempfile
     run.work = tempfile.mktemp()
 
@@ -65,9 +69,14 @@ def recode_output(input):
     if run.external:
         file(run.work, 'wb').write(input)
         return external_output('$R %s < %s' % (run.request, run.work))
-    if Recode is None:
+    if outer is None:
         py.test.skip()
-    return Recode.recode(run.request, input)
+    return outer.recode(run.request, input)
+
+def recode_iconv_output(input):
+    if run.external or outer_iconv is None:
+        py.test.skip()
+    return outer_iconv.recode(run.request, input)
 
 def recode_back_output(input):
     before, after = run.request.split('..')
@@ -75,10 +84,10 @@ def recode_back_output(input):
         file(run.work, 'wb').write(input)
         external_output('$R %s %s' % (run.request, run.work))
         return external_output('$R %s..%s < %s' % (after, before, run.work))
-    if Recode is None:
+    if outer is None:
         py.test.skip()
-    temp = Recode.recode(run.request, input)
-    return Recode.recode('%s..%s' % (after, before), temp)
+    temp = outer.recode(run.request, input)
+    return outer.recode('%s..%s' % (after, before), temp)
 
 def validate(input, expected):
     output = recode_output(input)
