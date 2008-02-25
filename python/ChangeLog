@@ -1,3 +1,7 @@
+2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Recode.pyx: Adjusted for cleaner.h.in.
+
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am, Recode.pyx, setup.py: New files.

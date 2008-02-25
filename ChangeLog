@@ -1,3 +1,11 @@
+2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	To solve linker namespace pollution:
+	* cleaner.h.in: New file.
+	* configure.ac (AH_BOTTOM): Include it.
+	(AC_OUTPUT): Handle it.
+	Reported by Bruno Haible.
+
 2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.ac, Makefile.am: Handle python/.

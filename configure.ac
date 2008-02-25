@@ -40,6 +40,10 @@ AM_WITH_DMALLOC
 AM_GNU_GETTEXT(external)
 AM_GNU_GETTEXT_VERSION([0.16])
 
-AC_OUTPUT(Makefile contrib/Makefile doc/Makefile lib/Makefile
+AH_BOTTOM([
+#include "cleaner.h"
+])
+
+AC_OUTPUT(Makefile cleaner.h contrib/Makefile doc/Makefile lib/Makefile
           libiconv/Makefile po/Makefile.in python/Makefile
           src/Makefile tests/Makefile)

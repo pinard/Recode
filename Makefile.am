@@ -25,6 +25,10 @@ ACLOCAL_AMFLAGS = -I m4
 EXTRA_DIST = COPYING-LIB aclocal.sh m4/ChangeLog
 SUBDIRS = doc lib libiconv po src tests contrib python
 
+# All object files should depend on cleaner.h as well on as config.h.
+# For now at least, if you modify cleaner.h.in, make twice!
+all-local: cleaner.h
+
 # The following goals for the maintainer of the Recode Web site.
 
 local:

@@ -754,7 +754,8 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
    `subtask' quite systematically, so it may be used as a constant, here.  */
 # define ECHO \
     do {							\
-      const char *cursor = yytext; int counter = yyleng;	\
+      const char *cursor = librecode_yytext;			\
+      int counter = librecode_yyleng;				\
       for (; counter > 0; cursor++, counter--)			\
 	put_byte (*cursor, subtask);				\
     } while (false)

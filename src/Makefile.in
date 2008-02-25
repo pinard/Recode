@@ -914,7 +914,7 @@ outer.o: stamp-steps
 $(srcdir)/merged.c: mergelex.py $(L_STEPS)
 	(cd $(srcdir) && cat $(L_STEPS)) \
 	| $(PYTHON) $(srcdir)/mergelex.py > merged.tm1
-	$(LEX) -t -8 merged.tm1 > merged.tm2
+	$(LEX) -t -8 -Plibrecode_yy merged.tm1 > merged.tm2
 	grep -v '^# *line [0-9]' merged.tm2 > $(srcdir)/merged.c
 	rm merged.tm1 merged.tm2
 

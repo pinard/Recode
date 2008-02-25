@@ -23986,7 +23986,10 @@ _ACEOF
 
 
 
-ac_config_files="$ac_config_files Makefile contrib/Makefile doc/Makefile lib/Makefile libiconv/Makefile po/Makefile.in python/Makefile src/Makefile tests/Makefile"
+
+
+
+ac_config_files="$ac_config_files Makefile cleaner.h contrib/Makefile doc/Makefile lib/Makefile libiconv/Makefile po/Makefile.in python/Makefile src/Makefile tests/Makefile"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -24583,6 +24586,7 @@ do
     "depfiles") CONFIG_COMMANDS="$CONFIG_COMMANDS depfiles" ;;
     "po-directories") CONFIG_COMMANDS="$CONFIG_COMMANDS po-directories" ;;
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
+    "cleaner.h") CONFIG_FILES="$CONFIG_FILES cleaner.h" ;;
     "contrib/Makefile") CONFIG_FILES="$CONFIG_FILES contrib/Makefile" ;;
     "doc/Makefile") CONFIG_FILES="$CONFIG_FILES doc/Makefile" ;;
     "lib/Makefile") CONFIG_FILES="$CONFIG_FILES lib/Makefile" ;;

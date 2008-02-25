@@ -1,3 +1,9 @@
+2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
+
+	* hash.c: Revert last change (2008-02-21).  The renaming of symbols
+	is now mainly driven from file cleaner.h.in at top level.
+	* recodext.h (ECHO): Use librecode_yy instead of yy.
+
 2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
 
 	* testdump.c (produce_count, produce_full_dump): Output as directed

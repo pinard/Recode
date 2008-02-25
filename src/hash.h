@@ -27,11 +27,6 @@
 # include <stdio.h>
 # include <stdbool.h>
 
-# define hash_lookup recode_hash_lookup
-# define hash_delete recode_hash_delete
-# define hash_free   recode_hash_free
-# define hash_insert recode_hash_insert
-
 typedef size_t (*Hash_hasher) (const void *, size_t);
 typedef bool (*Hash_comparator) (const void *, const void *);
 typedef void (*Hash_data_freer) (void *);

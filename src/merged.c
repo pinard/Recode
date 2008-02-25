@@ -132,7 +132,7 @@ typedef unsigned int flex_uint32_t;
 #define YY_STATE_EOF(state) (YY_END_OF_BUFFER + state + 1)
 
 /* Special action meaning "start processing a new file". */
-#define YY_NEW_FILE yyrestart(yyin  )
+#define YY_NEW_FILE librecode_yyrestart(librecode_yyin  )
 
 #define YY_END_OF_BUFFER_CHAR 0
 
@@ -150,9 +150,9 @@ typedef unsigned int flex_uint32_t;
 typedef struct yy_buffer_state *YY_BUFFER_STATE;
 #endif
 
-extern int yyleng;
+extern int librecode_yyleng;
 
-extern FILE *yyin, *yyout;
+extern FILE *librecode_yyin, *librecode_yyout;
 
 #define EOB_ACT_CONTINUE_SCAN 0
 #define EOB_ACT_END_OF_FILE 1
@@ -164,13 +164,13 @@ extern FILE *yyin, *yyout;
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up librecode_yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
 		*yy_cp = (yy_hold_char); \
 		YY_RESTORE_YY_MORE_OFFSET \
 		(yy_c_buf_p) = yy_cp = yy_bp + yyless_macro_arg - YY_MORE_ADJ; \
-		YY_DO_BEFORE_ACTION; /* set up yytext again */ \
+		YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */ \
 		} \
 	while ( 0 )
 
@@ -243,8 +243,8 @@ struct yy_buffer_state
 	 * possible backing-up.
 	 *
 	 * When we actually see the EOF, we change the status to "new"
-	 * (via yyrestart()), so that the user can continue scanning by
-	 * just pointing yyin at a new input file.
+	 * (via librecode_yyrestart()), so that the user can continue scanning by
+	 * just pointing librecode_yyin at a new input file.
 	 */
 #define YY_BUFFER_EOF_PENDING 2
 
@@ -271,51 +271,51 @@ static YY_BUFFER_STATE * yy_buffer_stack = 0; /**< Stack as an array. */
  */
 #define YY_CURRENT_BUFFER_LVALUE (yy_buffer_stack)[(yy_buffer_stack_top)]
 
-/* yy_hold_char holds the character lost when yytext is formed. */
+/* yy_hold_char holds the character lost when librecode_yytext is formed. */
 static char yy_hold_char;
 static int yy_n_chars;		/* number of characters read into yy_ch_buf */
-int yyleng;
+int librecode_yyleng;
 
 /* Points to current character in buffer. */
 static char *yy_c_buf_p = (char *) 0;
 static int yy_init = 0;		/* whether we need to initialize */
 static int yy_start = 0;	/* start state number */
 
-/* Flag which is used to allow yywrap()'s to do buffer switches
- * instead of setting up a fresh yyin.  A bit of a hack ...
+/* Flag which is used to allow librecode_yywrap()'s to do buffer switches
+ * instead of setting up a fresh librecode_yyin.  A bit of a hack ...
  */
 static int yy_did_buffer_switch_on_eof;
 
-void yyrestart (FILE *input_file  );
-void yy_switch_to_buffer (YY_BUFFER_STATE new_buffer  );
-YY_BUFFER_STATE yy_create_buffer (FILE *file,int size  );
-void yy_delete_buffer (YY_BUFFER_STATE b  );
-void yy_flush_buffer (YY_BUFFER_STATE b  );
-void yypush_buffer_state (YY_BUFFER_STATE new_buffer  );
-void yypop_buffer_state (void );
+void librecode_yyrestart (FILE *input_file  );
+void librecode_yy_switch_to_buffer (YY_BUFFER_STATE new_buffer  );
+YY_BUFFER_STATE librecode_yy_create_buffer (FILE *file,int size  );
+void librecode_yy_delete_buffer (YY_BUFFER_STATE b  );
+void librecode_yy_flush_buffer (YY_BUFFER_STATE b  );
+void librecode_yypush_buffer_state (YY_BUFFER_STATE new_buffer  );
+void librecode_yypop_buffer_state (void );
 
-static void yyensure_buffer_stack (void );
-static void yy_load_buffer_state (void );
-static void yy_init_buffer (YY_BUFFER_STATE b,FILE *file  );
+static void librecode_yyensure_buffer_stack (void );
+static void librecode_yy_load_buffer_state (void );
+static void librecode_yy_init_buffer (YY_BUFFER_STATE b,FILE *file  );
 
-#define YY_FLUSH_BUFFER yy_flush_buffer(YY_CURRENT_BUFFER )
+#define YY_FLUSH_BUFFER librecode_yy_flush_buffer(YY_CURRENT_BUFFER )
 
-YY_BUFFER_STATE yy_scan_buffer (char *base,yy_size_t size  );
-YY_BUFFER_STATE yy_scan_string (yyconst char *yy_str  );
-YY_BUFFER_STATE yy_scan_bytes (yyconst char *bytes,int len  );
+YY_BUFFER_STATE librecode_yy_scan_buffer (char *base,yy_size_t size  );
+YY_BUFFER_STATE librecode_yy_scan_string (yyconst char *yy_str  );
+YY_BUFFER_STATE librecode_yy_scan_bytes (yyconst char *bytes,int len  );
 
-void *yyalloc (yy_size_t  );
-void *yyrealloc (void *,yy_size_t  );
-void yyfree (void *  );
+void *librecode_yyalloc (yy_size_t  );
+void *librecode_yyrealloc (void *,yy_size_t  );
+void librecode_yyfree (void *  );
 
-#define yy_new_buffer yy_create_buffer
+#define yy_new_buffer librecode_yy_create_buffer
 
 #define yy_set_interactive(is_interactive) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){ \
-        yyensure_buffer_stack (); \
+        librecode_yyensure_buffer_stack (); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            yy_create_buffer(yyin,YY_BUF_SIZE ); \
+            librecode_yy_create_buffer(librecode_yyin,YY_BUF_SIZE ); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_is_interactive = is_interactive; \
 	}
@@ -323,9 +323,9 @@ void yyfree (void *  );
 #define yy_set_bol(at_bol) \
 	{ \
 	if ( ! YY_CURRENT_BUFFER ){\
-        yyensure_buffer_stack (); \
+        librecode_yyensure_buffer_stack (); \
 		YY_CURRENT_BUFFER_LVALUE =    \
-            yy_create_buffer(yyin,YY_BUF_SIZE ); \
+            librecode_yy_create_buffer(librecode_yyin,YY_BUF_SIZE ); \
 	} \
 	YY_CURRENT_BUFFER_LVALUE->yy_at_bol = at_bol; \
 	}
@@ -334,18 +334,18 @@ void yyfree (void *  );
 
 /* Begin user sect3 */
 
-#define yywrap(n) 1
+#define librecode_yywrap(n) 1
 #define YY_SKIP_YYWRAP
 
 typedef unsigned char YY_CHAR;
 
-FILE *yyin = (FILE *) 0, *yyout = (FILE *) 0;
+FILE *librecode_yyin = (FILE *) 0, *librecode_yyout = (FILE *) 0;
 
 typedef int yy_state_type;
 
-extern int yylineno;
-extern char *yytext;
-#define yytext_ptr yytext
+extern int librecode_yylineno;
+extern char *librecode_yytext;
+#define yytext_ptr librecode_yytext
 
 static yy_state_type yy_get_previous_state (void );
 static yy_state_type yy_try_NUL_trans (yy_state_type current_state  );
@@ -353,11 +353,11 @@ static int yy_get_next_buffer (void );
 static void yy_fatal_error (yyconst char msg[]  );
 
 /* Done after the current pattern has been matched and before the
- * corresponding action - sets up yytext.
+ * corresponding action - sets up librecode_yytext.
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (size_t) (yy_cp - yy_bp); \
+	librecode_yyleng = (size_t) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -859,8 +859,8 @@ static yyconst flex_int16_t yy_chk[1009] =
 static yy_state_type yy_last_accepting_state;
 static char *yy_last_accepting_cpos;
 
-extern int yy_flex_debug;
-int yy_flex_debug = 0;
+extern int librecode_yy_flex_debug;
+int librecode_yy_flex_debug = 0;
 
 /* The intent behind this definition is that it'll catch
  * any uses of REJECT which flex missed.
@@ -869,7 +869,7 @@ int yy_flex_debug = 0;
 #define yymore() yymore_used_but_not_detected
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
-char *yytext;
+char *librecode_yytext;
 /* This file is generated automatically by `mergelex.py'.  */
 #include "common.h"
 static RECODE_CONST_REQUEST request;
@@ -906,9 +906,9 @@ static int yy_init_globals (void );
 
 #ifndef YY_SKIP_YYWRAP
 #ifdef __cplusplus
-extern "C" int yywrap (void );
+extern "C" int librecode_yywrap (void );
 #else
-extern int yywrap (void );
+extern int librecode_yywrap (void );
 #endif
 #endif
 
@@ -942,7 +942,7 @@ static int input (void );
 /* This used to be an fputs(), but since the string might contain NUL's,
  * we now use fwrite().
  */
-#define ECHO (void) fwrite( yytext, yyleng, 1, yyout )
+#define ECHO (void) fwrite( librecode_yytext, librecode_yyleng, 1, librecode_yyout )
 #endif
 
 /* Gets input and stuffs it into "buf".  number of characters read, or YY_NULL,
@@ -955,18 +955,18 @@ static int input (void );
 		int c = '*'; \
 		size_t n; \
 		for ( n = 0; n < max_size && \
-			     (c = getc( yyin )) != EOF && c != '\n'; ++n ) \
+			     (c = getc( librecode_yyin )) != EOF && c != '\n'; ++n ) \
 			buf[n] = (char) c; \
 		if ( c == '\n' ) \
 			buf[n++] = (char) c; \
-		if ( c == EOF && ferror( yyin ) ) \
+		if ( c == EOF && ferror( librecode_yyin ) ) \
 			YY_FATAL_ERROR( "input in flex scanner failed" ); \
 		result = n; \
 		} \
 	else \
 		{ \
 		errno=0; \
-		while ( (result = fread(buf, 1, max_size, yyin))==0 && ferror(yyin)) \
+		while ( (result = fread(buf, 1, max_size, librecode_yyin))==0 && ferror(librecode_yyin)) \
 			{ \
 			if( errno != EINTR) \
 				{ \
@@ -974,7 +974,7 @@ static int input (void );
 				break; \
 				} \
 			errno=0; \
-			clearerr(yyin); \
+			clearerr(librecode_yyin); \
 			} \
 		}\
 \
@@ -1007,12 +1007,12 @@ static int input (void );
 #ifndef YY_DECL
 #define YY_DECL_IS_OURS 1
 
-extern int yylex (void);
+extern int librecode_yylex (void);
 
-#define YY_DECL int yylex (void)
+#define YY_DECL int librecode_yylex (void)
 #endif /* !YY_DECL */
 
-/* Code executed at the beginning of each rule, after yytext and yyleng
+/* Code executed at the beginning of each rule, after librecode_yytext and librecode_yyleng
  * have been set up.
  */
 #ifndef YY_USER_ACTION
@@ -1048,26 +1048,26 @@ YY_DECL
 		if ( ! (yy_start) )
 			(yy_start) = 1;	/* first start state */
 
-		if ( ! yyin )
-			yyin = stdin;
+		if ( ! librecode_yyin )
+			librecode_yyin = stdin;
 
-		if ( ! yyout )
-			yyout = stdout;
+		if ( ! librecode_yyout )
+			librecode_yyout = stdout;
 
 		if ( ! YY_CURRENT_BUFFER ) {
-			yyensure_buffer_stack ();
+			librecode_yyensure_buffer_stack ();
 			YY_CURRENT_BUFFER_LVALUE =
-				yy_create_buffer(yyin,YY_BUF_SIZE );
+				librecode_yy_create_buffer(librecode_yyin,YY_BUF_SIZE );
 		}
 
-		yy_load_buffer_state( );
+		librecode_yy_load_buffer_state( );
 		}
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
 		yy_cp = (yy_c_buf_p);
 
-		/* Support of yytext. */
+		/* Support of librecode_yytext. */
 		*yy_cp = (yy_hold_char);
 
 		/* yy_bp points to the position in yy_ch_buf of the start of
@@ -1734,11 +1734,11 @@ YY_RULE_SETUP
 { put_byte (194, subtask); }
 	YY_BREAK
 case 152:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (196, subtask);
 			  else
 			    ECHO;
@@ -1753,27 +1753,27 @@ YY_RULE_SETUP
 { put_byte (226, subtask); }
 	YY_BREAK
 case 155:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (228, subtask);
 			  else
 			    ECHO;
 			}
 	YY_BREAK
 case 156:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
 { put_byte (199, subtask); }
 	YY_BREAK
 case 157:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
 { put_byte (231, subtask); }
 	YY_BREAK
@@ -1798,11 +1798,11 @@ YY_RULE_SETUP
 { put_byte (202, subtask); }
 	YY_BREAK
 case 163:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (203, subtask);
 			  else
 			    ECHO;
@@ -1829,11 +1829,11 @@ YY_RULE_SETUP
 { put_byte (234, subtask); }
 	YY_BREAK
 case 169:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (235, subtask);
 			  else
 			    ECHO;
@@ -1848,11 +1848,11 @@ YY_RULE_SETUP
 { put_byte (206, subtask); }
 	YY_BREAK
 case 172:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (207, subtask);
 			  else
 			    ECHO;
@@ -1867,11 +1867,11 @@ YY_RULE_SETUP
 { put_byte (238, subtask); }
 	YY_BREAK
 case 175:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (239, subtask);
 			  else
 			    ECHO;
@@ -1886,11 +1886,11 @@ YY_RULE_SETUP
 { put_byte (212, subtask); }
 	YY_BREAK
 case 178:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (214, subtask);
 			  else
 			    ECHO;
@@ -1905,11 +1905,11 @@ YY_RULE_SETUP
 { put_byte (244, subtask); }
 	YY_BREAK
 case 181:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (246, subtask);
 			  else
 			    ECHO;
@@ -1924,11 +1924,11 @@ YY_RULE_SETUP
 { put_byte (219, subtask); }
 	YY_BREAK
 case 184:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (220, subtask);
 			  else
 			    ECHO;
@@ -1943,11 +1943,11 @@ YY_RULE_SETUP
 { put_byte (251, subtask); }
 	YY_BREAK
 case 187:
-*yy_cp = (yy_hold_char); /* undo effects of setting up yytext */
+*yy_cp = (yy_hold_char); /* undo effects of setting up librecode_yytext */
 (yy_c_buf_p) = yy_cp = yy_bp + 2;
-YY_DO_BEFORE_ACTION; /* set up yytext again */
+YY_DO_BEFORE_ACTION; /* set up librecode_yytext again */
 YY_RULE_SETUP
-{ if (yytext[1] == request->diaeresis_char)
+{ if (librecode_yytext[1] == request->diaeresis_char)
 			    put_byte (252, subtask);
 			  else
 			    ECHO;
@@ -2011,7 +2011,7 @@ YY_RULE_SETUP
 case 199:
 /* rule 199 can match eol */
 YY_RULE_SETUP
-{ if (yytext[4] == request->diaeresis_char)
+{ if (librecode_yytext[4] == request->diaeresis_char)
 			    texte_latin1_diaeresis ();
 			  else
 			    ECHO;
@@ -2075,15 +2075,15 @@ ECHO;
 			{
 			/* We're scanning a new file or input source.  It's
 			 * possible that this happened because the user
-			 * just pointed yyin at a new source and called
-			 * yylex().  If so, then we have to assure
+			 * just pointed librecode_yyin at a new source and called
+			 * librecode_yylex().  If so, then we have to assure
 			 * consistency between YY_CURRENT_BUFFER and our
 			 * globals.  Here is the right place to do so, because
 			 * this is the first action (other than possibly a
 			 * back-up) that will match for the new input source.
 			 */
 			(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
-			YY_CURRENT_BUFFER_LVALUE->yy_input_file = yyin;
+			YY_CURRENT_BUFFER_LVALUE->yy_input_file = librecode_yyin;
 			YY_CURRENT_BUFFER_LVALUE->yy_buffer_status = YY_BUFFER_NORMAL;
 			}
 
@@ -2136,11 +2136,11 @@ ECHO;
 				{
 				(yy_did_buffer_switch_on_eof) = 0;
 
-				if ( yywrap( ) )
+				if ( librecode_yywrap( ) )
 					{
 					/* Note: because we've taken care in
 					 * yy_get_next_buffer() to have set up
-					 * yytext, we can now set up
+					 * librecode_yytext, we can now set up
 					 * yy_c_buf_p so that if some total
 					 * hoser (like flex itself) wants to
 					 * call the scanner after we return the
@@ -2189,7 +2189,7 @@ ECHO;
 			"fatal flex scanner internal error--no action found" );
 	} /* end of action switch */
 		} /* end of scanning one token */
-} /* end of yylex */
+} /* end of librecode_yylex */
 
 /* yy_get_next_buffer - try to read in a new buffer
  *
@@ -2267,7 +2267,7 @@ static int yy_get_next_buffer (void)
 
 				b->yy_ch_buf = (char *)
 					/* Include room in for 2 EOB chars. */
-					yyrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
+					librecode_yyrealloc((void *) b->yy_ch_buf,b->yy_buf_size + 2  );
 				}
 			else
 				/* Can't grow it, we don't own it. */
@@ -2299,7 +2299,7 @@ static int yy_get_next_buffer (void)
 		if ( number_to_move == YY_MORE_ADJ )
 			{
 			ret_val = EOB_ACT_END_OF_FILE;
-			yyrestart(yyin  );
+			librecode_yyrestart(librecode_yyin  );
 			}
 
 		else
@@ -2385,7 +2385,7 @@ static int yy_get_next_buffer (void)
     
     yy_cp = (yy_c_buf_p);
 
-	/* undo effects of setting up yytext */
+	/* undo effects of setting up librecode_yytext */
 	*yy_cp = (yy_hold_char);
 
 	if ( yy_cp < YY_CURRENT_BUFFER_LVALUE->yy_ch_buf + 2 )
@@ -2457,13 +2457,13 @@ static int yy_get_next_buffer (void)
 					 */
 
 					/* Reset buffer status. */
-					yyrestart(yyin );
+					librecode_yyrestart(librecode_yyin );
 
 					/*FALLTHROUGH*/
 
 				case EOB_ACT_END_OF_FILE:
 					{
-					if ( yywrap( ) )
+					if ( librecode_yywrap( ) )
 						return EOF;
 
 					if ( ! (yy_did_buffer_switch_on_eof) )
@@ -2483,7 +2483,7 @@ static int yy_get_next_buffer (void)
 		}
 
 	c = *(unsigned char *) (yy_c_buf_p);	/* cast for 8-bit char's */
-	*(yy_c_buf_p) = '\0';	/* preserve yytext */
+	*(yy_c_buf_p) = '\0';	/* preserve librecode_yytext */
 	(yy_hold_char) = *++(yy_c_buf_p);
 
 	return c;
@@ -2495,32 +2495,32 @@ static int yy_get_next_buffer (void)
  * 
  * @note This function does not reset the start condition to @c INITIAL .
  */
-    void yyrestart  (FILE * input_file )
+    void librecode_yyrestart  (FILE * input_file )
 {
     
 	if ( ! YY_CURRENT_BUFFER ){
-        yyensure_buffer_stack ();
+        librecode_yyensure_buffer_stack ();
 		YY_CURRENT_BUFFER_LVALUE =
-            yy_create_buffer(yyin,YY_BUF_SIZE );
+            librecode_yy_create_buffer(librecode_yyin,YY_BUF_SIZE );
 	}
 
-	yy_init_buffer(YY_CURRENT_BUFFER,input_file );
-	yy_load_buffer_state( );
+	librecode_yy_init_buffer(YY_CURRENT_BUFFER,input_file );
+	librecode_yy_load_buffer_state( );
 }
 
 /** Switch to a different input buffer.
  * @param new_buffer The new input buffer.
  * 
  */
-    void yy_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )
+    void librecode_yy_switch_to_buffer  (YY_BUFFER_STATE  new_buffer )
 {
     
 	/* TODO. We should be able to replace this entire function body
 	 * with
-	 *		yypop_buffer_state();
-	 *		yypush_buffer_state(new_buffer);
+	 *		librecode_yypop_buffer_state();
+	 *		librecode_yypush_buffer_state(new_buffer);
      */
-	yyensure_buffer_stack ();
+	librecode_yyensure_buffer_stack ();
 	if ( YY_CURRENT_BUFFER == new_buffer )
 		return;
 
@@ -2533,21 +2533,21 @@ static int yy_get_next_buffer (void)
 		}
 
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
-	yy_load_buffer_state( );
+	librecode_yy_load_buffer_state( );
 
 	/* We don't actually know whether we did this switch during
-	 * EOF (yywrap()) processing, but the only time this flag
-	 * is looked at is after yywrap() is called, so it's safe
+	 * EOF (librecode_yywrap()) processing, but the only time this flag
+	 * is looked at is after librecode_yywrap() is called, so it's safe
 	 * to go ahead and always set it.
 	 */
 	(yy_did_buffer_switch_on_eof) = 1;
 }
 
-static void yy_load_buffer_state  (void)
+static void librecode_yy_load_buffer_state  (void)
 {
     	(yy_n_chars) = YY_CURRENT_BUFFER_LVALUE->yy_n_chars;
 	(yytext_ptr) = (yy_c_buf_p) = YY_CURRENT_BUFFER_LVALUE->yy_buf_pos;
-	yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
+	librecode_yyin = YY_CURRENT_BUFFER_LVALUE->yy_input_file;
 	(yy_hold_char) = *(yy_c_buf_p);
 }
 
@@ -2557,35 +2557,35 @@ static void yy_load_buffer_state  (void)
  * 
  * @return the allocated buffer state.
  */
-    YY_BUFFER_STATE yy_create_buffer  (FILE * file, int  size )
+    YY_BUFFER_STATE librecode_yy_create_buffer  (FILE * file, int  size )
 {
 	YY_BUFFER_STATE b;
     
-	b = (YY_BUFFER_STATE) yyalloc(sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) librecode_yyalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in librecode_yy_create_buffer()" );
 
 	b->yy_buf_size = size;
 
 	/* yy_ch_buf has to be 2 characters longer than the size given because
 	 * we need to put in 2 end-of-buffer characters.
 	 */
-	b->yy_ch_buf = (char *) yyalloc(b->yy_buf_size + 2  );
+	b->yy_ch_buf = (char *) librecode_yyalloc(b->yy_buf_size + 2  );
 	if ( ! b->yy_ch_buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_create_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in librecode_yy_create_buffer()" );
 
 	b->yy_is_our_buffer = 1;
 
-	yy_init_buffer(b,file );
+	librecode_yy_init_buffer(b,file );
 
 	return b;
 }
 
 /** Destroy the buffer.
- * @param b a buffer created with yy_create_buffer()
+ * @param b a buffer created with librecode_yy_create_buffer()
  * 
  */
-    void yy_delete_buffer (YY_BUFFER_STATE  b )
+    void librecode_yy_delete_buffer (YY_BUFFER_STATE  b )
 {
     
 	if ( ! b )
@@ -2595,9 +2595,9 @@ static void yy_load_buffer_state  (void)
 		YY_CURRENT_BUFFER_LVALUE = (YY_BUFFER_STATE) 0;
 
 	if ( b->yy_is_our_buffer )
-		yyfree((void *) b->yy_ch_buf  );
+		librecode_yyfree((void *) b->yy_ch_buf  );
 
-	yyfree((void *) b  );
+	librecode_yyfree((void *) b  );
 }
 
 #ifndef __cplusplus
@@ -2606,20 +2606,20 @@ extern int isatty (int );
     
 /* Initializes or reinitializes a buffer.
  * This function is sometimes called more than once on the same buffer,
- * such as during a yyrestart() or at EOF.
+ * such as during a librecode_yyrestart() or at EOF.
  */
-    static void yy_init_buffer  (YY_BUFFER_STATE  b, FILE * file )
+    static void librecode_yy_init_buffer  (YY_BUFFER_STATE  b, FILE * file )
 
 {
 	int oerrno = errno;
     
-	yy_flush_buffer(b );
+	librecode_yy_flush_buffer(b );
 
 	b->yy_input_file = file;
 	b->yy_fill_buffer = 1;
 
-    /* If b is the current buffer, then yy_init_buffer was _probably_
-     * called from yyrestart() or through yy_get_next_buffer.
+    /* If b is the current buffer, then librecode_yy_init_buffer was _probably_
+     * called from librecode_yyrestart() or through yy_get_next_buffer.
      * In that case, we don't want to reset the lineno or column.
      */
     if (b != YY_CURRENT_BUFFER){
@@ -2636,7 +2636,7 @@ extern int isatty (int );
  * @param b the buffer state to be flushed, usually @c YY_CURRENT_BUFFER.
  * 
  */
-    void yy_flush_buffer (YY_BUFFER_STATE  b )
+    void librecode_yy_flush_buffer (YY_BUFFER_STATE  b )
 {
     	if ( ! b )
 		return;
@@ -2656,7 +2656,7 @@ extern int isatty (int );
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
 	if ( b == YY_CURRENT_BUFFER )
-		yy_load_buffer_state( );
+		librecode_yy_load_buffer_state( );
 }
 
 /** Pushes the new state onto the stack. The new state becomes
@@ -2665,14 +2665,14 @@ extern int isatty (int );
  *  @param new_buffer The new state.
  *  
  */
-void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
+void librecode_yypush_buffer_state (YY_BUFFER_STATE new_buffer )
 {
     	if (new_buffer == NULL)
 		return;
 
-	yyensure_buffer_stack();
+	librecode_yyensure_buffer_stack();
 
-	/* This block is copied from yy_switch_to_buffer. */
+	/* This block is copied from librecode_yy_switch_to_buffer. */
 	if ( YY_CURRENT_BUFFER )
 		{
 		/* Flush out information for old buffer. */
@@ -2686,8 +2686,8 @@ void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
 		(yy_buffer_stack_top)++;
 	YY_CURRENT_BUFFER_LVALUE = new_buffer;
 
-	/* copied from yy_switch_to_buffer. */
-	yy_load_buffer_state( );
+	/* copied from librecode_yy_switch_to_buffer. */
+	librecode_yy_load_buffer_state( );
 	(yy_did_buffer_switch_on_eof) = 1;
 }
 
@@ -2695,18 +2695,18 @@ void yypush_buffer_state (YY_BUFFER_STATE new_buffer )
  *  The next element becomes the new top.
  *  
  */
-void yypop_buffer_state (void)
+void librecode_yypop_buffer_state (void)
 {
     	if (!YY_CURRENT_BUFFER)
 		return;
 
-	yy_delete_buffer(YY_CURRENT_BUFFER );
+	librecode_yy_delete_buffer(YY_CURRENT_BUFFER );
 	YY_CURRENT_BUFFER_LVALUE = NULL;
 	if ((yy_buffer_stack_top) > 0)
 		--(yy_buffer_stack_top);
 
 	if (YY_CURRENT_BUFFER) {
-		yy_load_buffer_state( );
+		librecode_yy_load_buffer_state( );
 		(yy_did_buffer_switch_on_eof) = 1;
 	}
 }
@@ -2714,7 +2714,7 @@ void yypop_buffer_state (void)
 /* Allocates the stack if it does not exist.
  *  Guarantees space for at least one push.
  */
-static void yyensure_buffer_stack (void)
+static void librecode_yyensure_buffer_stack (void)
 {
 	int num_to_alloc;
     
@@ -2725,7 +2725,7 @@ static void yyensure_buffer_stack (void)
 		 * immediate realloc on the next call.
          */
 		num_to_alloc = 1;
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyalloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)librecode_yyalloc
 								(num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
 		
@@ -2742,7 +2742,7 @@ static void yyensure_buffer_stack (void)
 		int grow_size = 8 /* arbitrary grow size */;
 
 		num_to_alloc = (yy_buffer_stack_max) + grow_size;
-		(yy_buffer_stack) = (struct yy_buffer_state**)yyrealloc
+		(yy_buffer_stack) = (struct yy_buffer_state**)librecode_yyrealloc
 								((yy_buffer_stack),
 								num_to_alloc * sizeof(struct yy_buffer_state*)
 								);
@@ -2759,7 +2759,7 @@ static void yyensure_buffer_stack (void)
  * 
  * @return the newly allocated buffer state object. 
  */
-YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
+YY_BUFFER_STATE librecode_yy_scan_buffer  (char * base, yy_size_t  size )
 {
 	YY_BUFFER_STATE b;
     
@@ -2769,9 +2769,9 @@ YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
 		/* They forgot to leave room for the EOB's. */
 		return 0;
 
-	b = (YY_BUFFER_STATE) yyalloc(sizeof( struct yy_buffer_state )  );
+	b = (YY_BUFFER_STATE) librecode_yyalloc(sizeof( struct yy_buffer_state )  );
 	if ( ! b )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_buffer()" );
+		YY_FATAL_ERROR( "out of dynamic memory in librecode_yy_scan_buffer()" );
 
 	b->yy_buf_size = size - 2;	/* "- 2" to take care of EOB's */
 	b->yy_buf_pos = b->yy_ch_buf = base;
@@ -2783,33 +2783,33 @@ YY_BUFFER_STATE yy_scan_buffer  (char * base, yy_size_t  size )
 	b->yy_fill_buffer = 0;
 	b->yy_buffer_status = YY_BUFFER_NEW;
 
-	yy_switch_to_buffer(b  );
+	librecode_yy_switch_to_buffer(b  );
 
 	return b;
 }
 
-/** Setup the input buffer state to scan a string. The next call to yylex() will
+/** Setup the input buffer state to scan a string. The next call to librecode_yylex() will
  * scan from a @e copy of @a str.
  * @param str a NUL-terminated string to scan
  * 
  * @return the newly allocated buffer state object.
  * @note If you want to scan bytes that may contain NUL values, then use
- *       yy_scan_bytes() instead.
+ *       librecode_yy_scan_bytes() instead.
  */
-YY_BUFFER_STATE yy_scan_string (yyconst char * yystr )
+YY_BUFFER_STATE librecode_yy_scan_string (yyconst char * yystr )
 {
     
-	return yy_scan_bytes(yystr,strlen(yystr) );
+	return librecode_yy_scan_bytes(yystr,strlen(yystr) );
 }
 
-/** Setup the input buffer state to scan the given bytes. The next call to yylex() will
+/** Setup the input buffer state to scan the given bytes. The next call to librecode_yylex() will
  * scan from a @e copy of @a bytes.
  * @param bytes the byte buffer to scan
  * @param len the number of bytes in the buffer pointed to by @a bytes.
  * 
  * @return the newly allocated buffer state object.
  */
-YY_BUFFER_STATE yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
+YY_BUFFER_STATE librecode_yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
 {
 	YY_BUFFER_STATE b;
 	char *buf;
@@ -2818,18 +2818,18 @@ YY_BUFFER_STATE yy_scan_bytes  (yyconst char * yybytes, int  _yybytes_len )
     
 	/* Get memory for full buffer, including space for trailing EOB's. */
 	n = _yybytes_len + 2;
-	buf = (char *) yyalloc(n  );
+	buf = (char *) librecode_yyalloc(n  );
 	if ( ! buf )
-		YY_FATAL_ERROR( "out of dynamic memory in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "out of dynamic memory in librecode_yy_scan_bytes()" );
 
 	for ( i = 0; i < _yybytes_len; ++i )
 		buf[i] = yybytes[i];
 
 	buf[_yybytes_len] = buf[_yybytes_len+1] = YY_END_OF_BUFFER_CHAR;
 
-	b = yy_scan_buffer(buf,n );
+	b = librecode_yy_scan_buffer(buf,n );
 	if ( ! b )
-		YY_FATAL_ERROR( "bad buffer in yy_scan_bytes()" );
+		YY_FATAL_ERROR( "bad buffer in librecode_yy_scan_bytes()" );
 
 	/* It's okay to grow etc. this buffer, and we should throw it
 	 * away when we're done.
@@ -2855,14 +2855,14 @@ static void yy_fatal_error (yyconst char* msg )
 #define yyless(n) \
 	do \
 		{ \
-		/* Undo effects of setting up yytext. */ \
+		/* Undo effects of setting up librecode_yytext. */ \
         int yyless_macro_arg = (n); \
         YY_LESS_LINENO(yyless_macro_arg);\
-		yytext[yyleng] = (yy_hold_char); \
-		(yy_c_buf_p) = yytext + yyless_macro_arg; \
+		librecode_yytext[librecode_yyleng] = (yy_hold_char); \
+		(yy_c_buf_p) = librecode_yytext + yyless_macro_arg; \
 		(yy_hold_char) = *(yy_c_buf_p); \
 		*(yy_c_buf_p) = '\0'; \
-		yyleng = yyless_macro_arg; \
+		librecode_yyleng = yyless_macro_arg; \
 		} \
 	while ( 0 )
 
@@ -2871,66 +2871,66 @@ static void yy_fatal_error (yyconst char* msg )
 /** Get the input stream.
  * 
  */
-FILE *yyget_in  (void)
+FILE *librecode_yyget_in  (void)
 {
-        return yyin;
+        return librecode_yyin;
 }
 
 /** Get the output stream.
  * 
  */
-FILE *yyget_out  (void)
+FILE *librecode_yyget_out  (void)
 {
-        return yyout;
+        return librecode_yyout;
 }
 
 /** Get the length of the current token.
  * 
  */
-int yyget_leng  (void)
+int librecode_yyget_leng  (void)
 {
-        return yyleng;
+        return librecode_yyleng;
 }
 
 /** Get the current token.
  * 
  */
 
-char *yyget_text  (void)
+char *librecode_yyget_text  (void)
 {
-        return yytext;
+        return librecode_yytext;
 }
 
 /** Set the input stream. This does not discard the current
  * input buffer.
  * @param in_str A readable stream.
  * 
- * @see yy_switch_to_buffer
+ * @see librecode_yy_switch_to_buffer
  */
-void yyset_in (FILE *  in_str )
+void librecode_yyset_in (FILE *  in_str )
 {
-        yyin = in_str ;
+        librecode_yyin = in_str ;
 }
 
-void yyset_out (FILE *  out_str )
+void librecode_yyset_out (FILE *  out_str )
 {
-        yyout = out_str ;
+        librecode_yyout = out_str ;
 }
 
-int yyget_debug  (void)
+int librecode_yyget_debug  (void)
 {
-        return yy_flex_debug;
+        return librecode_yy_flex_debug;
 }
 
-void yyset_debug (int  bdebug )
+void librecode_yyset_debug (int  bdebug )
 {
-        yy_flex_debug = bdebug ;
+        librecode_yy_flex_debug = bdebug ;
 }
 
 static int yy_init_globals (void)
 {
         /* Initialization is the same as for the non-reentrant scanner.
-     * This function is called from yylex_destroy(), so don't allocate here.
+     * This function is called from librecode_yylex_destroy(), so don't allocate here.
      */
 
     (yy_buffer_stack) = 0;
@@ -2942,36 +2942,36 @@ static int yy_init_globals (void)
 
 /* Defined in main.c */
 #ifdef YY_STDINIT
-    yyin = stdin;
-    yyout = stdout;
+    librecode_yyin = stdin;
+    librecode_yyout = stdout;
 #else
-    yyin = (FILE *) 0;
-    yyout = (FILE *) 0;
+    librecode_yyin = (FILE *) 0;
+    librecode_yyout = (FILE *) 0;
 #endif
 
     /* For future reference: Set errno on error, since we are called by
-     * yylex_init()
+     * librecode_yylex_init()
      */
     return 0;
 }
 
-/* yylex_destroy is for both reentrant and non-reentrant scanners. */
-int yylex_destroy  (void)
+/* librecode_yylex_destroy is for both reentrant and non-reentrant scanners. */
+int librecode_yylex_destroy  (void)
 {
     
     /* Pop the buffer stack, destroying each element. */
 	while(YY_CURRENT_BUFFER){
-		yy_delete_buffer(YY_CURRENT_BUFFER  );
+		librecode_yy_delete_buffer(YY_CURRENT_BUFFER  );
 		YY_CURRENT_BUFFER_LVALUE = NULL;
-		yypop_buffer_state();
+		librecode_yypop_buffer_state();
 	}
 
 	/* Destroy the stack itself. */
-	yyfree((yy_buffer_stack) );
+	librecode_yyfree((yy_buffer_stack) );
 	(yy_buffer_stack) = NULL;
 
     /* Reset the globals. This is important in a non-reentrant scanner so the next time
-     * yylex() is called, initialization will occur. */
+     * librecode_yylex() is called, initialization will occur. */
     yy_init_globals( );
 
     return 0;
@@ -3001,12 +3001,12 @@ static int yy_flex_strlen (yyconst char * s )
 }
 #endif
 
-void *yyalloc (yy_size_t  size )
+void *librecode_yyalloc (yy_size_t  size )
 {
 	return (void *) malloc( size );
 }
 
-void *yyrealloc  (void * ptr, yy_size_t  size )
+void *librecode_yyrealloc  (void * ptr, yy_size_t  size )
 {
 	/* The cast to (char *) in the following accommodates both
 	 * implementations that use char* generic pointers, and those
@@ -3018,9 +3018,9 @@ void *yyrealloc  (void * ptr, yy_size_t  size )
 	return (void *) realloc( (char *) ptr, size );
 }
 
-void yyfree (void * ptr )
+void librecode_yyfree (void * ptr )
 {
-	free( (char *) ptr );	/* see yyrealloc() for (char *) cast */
+	free( (char *) ptr );	/* see librecode_yyrealloc() for (char *) cast */
 }
 
 #define YYTABLES_NAME "yytables"
@@ -3054,10 +3054,10 @@ transform_ascii_latin1 (RECODE_SUBTASK subtask_argument)
   subtask = subtask_argument;
   request = subtask->task->request;
   yy_init = 0;
-  yyin = subtask->input.file;
-  yyout = subtask->output.file;
+  librecode_yyin = subtask->input.file;
+  librecode_yyout = subtask->output.file;
   BEGIN ascii_latin1;
-  return yylex ();
+  return librecode_yylex ();
 }
 
 bool
@@ -3101,10 +3101,10 @@ transform_latex_latin1 (RECODE_SUBTASK subtask_argument)
   subtask = subtask_argument;
   request = subtask->task->request;
   yy_init = 0;
-  yyin = subtask->input.file;
-  yyout = subtask->output.file;
+  librecode_yyin = subtask->input.file;
+  librecode_yyout = subtask->output.file;
   BEGIN latex_latin1;
-  return yylex ();
+  return librecode_yylex ();
 }
 
 bool
@@ -3148,10 +3148,10 @@ transform_texte_latin1 (RECODE_SUBTASK subtask_argument)
   subtask = subtask_argument;
   request = subtask->task->request;
   yy_init = 0;
-  yyin = subtask->input.file;
-  yyout = subtask->output.file;
+  librecode_yyin = subtask->input.file;
+  librecode_yyout = subtask->output.file;
   BEGIN texte_latin1;
-  return yylex ();
+  return librecode_yylex ();
 }
 
 void
@@ -3159,10 +3159,10 @@ texte_latin1_diaeresis (void)
 {
   unsigned counter;
 
-  for (counter = 0; counter < yyleng; counter++)
-    if (yytext[counter+1] == request->diaeresis_char)
+  for (counter = 0; counter < librecode_yyleng; counter++)
+    if (librecode_yytext[counter+1] == request->diaeresis_char)
       {
-	switch (yytext[counter])
+	switch (librecode_yytext[counter])
 	  {
 	    /* The next "case 'A'" line once triggered a `NULL in input'
 	       diagnostic in flex.  This astonishing bug has been hard to
@@ -3179,12 +3179,12 @@ texte_latin1_diaeresis (void)
 	  case 'o': put_byte (246, subtask); break;
 	  case 'u': put_byte (252, subtask); break;
 	  case 'y': put_byte (255, subtask); break;
-	  default:  put_byte (yytext[counter], subtask);
+	  default:  put_byte (librecode_yytext[counter], subtask);
 	  }
 	counter++;
       }
     else
-      put_byte (yytext[counter], subtask);
+      put_byte (librecode_yytext[counter], subtask);
 }
 
 bool
