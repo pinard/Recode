@@ -26,7 +26,7 @@
 
 	* hash.c: Rename some hash_* symbols to recode_hash_* for
 	avoiding collisions between php4-recode and a few others tools.
-	Reported by Jean-Michel Dault, Magnus Määttä, Noel Koethe,
+	Reported by Jean-Michel Dault, Magnus Määttä, Noèl Köthe,
 	Peter Poeml, Stephen Boulet and Steve Langasek.
 
 2008-02-16  François Pinard  <pinard@iro.umontreal.ca>
