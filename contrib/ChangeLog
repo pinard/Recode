@@ -1,3 +1,9 @@
+2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.spec2: New file.
+	* recode.spec1: New name for recode.spec.
+	Reported by Bennett Todd.
+
 2008-02-21  François Pinard  <pinard@iro.umontreal.ca>
 
 	* README: Converted to reST.

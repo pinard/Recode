@@ -22,7 +22,7 @@ AUTOMAKE_OPTIONS = gnits
 ACLOCAL = ./aclocal.sh @ACLOCAL@
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = COPYING-LIB recode.spec aclocal.sh m4/ChangeLog
+EXTRA_DIST = COPYING-LIB aclocal.sh m4/ChangeLog
 SUBDIRS = doc lib libiconv po src tests contrib python
 
 # The following goals for the maintainer of the Recode Web site.
