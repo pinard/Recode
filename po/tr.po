@@ -1,540 +1,563 @@
-# Recode Turkish Translation
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# İrfan Macit <imacit@mail.cu.edu.tr>, 2002.
+# translation of coreutils-5.3.0.tr.po to Turkish
+# Copyright (C) 2003, 2005 Free Software Foundation, Inc.
+# Ali Devin Sezer <Ali_Sezer@brown.edu>, 2002.
+# Nilgün Belma Bugüner <nilgun@superonline.com>, 2001, 2002.
+# Onur Tolga ŞEHİTOĞLU <onur@lcsl.metu.edu.tr>, 1998.
+# Deniz Akkus Kanca <deniz@arayan.com>, 2001,2003, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2002-06-20 11:00EET\n"
-"Last-Translator: İrfan Macit <imacit@mail.cu.edu.tr>\n"
+"Project-Id-Version: coreutils 5.3.0\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2005-09-30 17:42+0300\n"
+"PO-Revision-Date: 2005-03-14 04:17+0200\n"
+"Last-Translator: Deniz Akkus Kanca <deniz@arayan.com>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: KBabel 1.9.1\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Hata yok"
+#: lib/argmatch.c:137
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "%s argümanı `%s' için geçersiz"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "Ana biçem olmayan girdi"
+#: lib/argmatch.c:138
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "%s argümanı `%s' için belirsiz"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Belirsiz çıktı"
+#: lib/argmatch.c:157
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Geçerli argümanlar:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Çevrilemeyen girdi"
-
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "Geçersiz girdi"
-
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Sistem hata buldu"
-
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Yeniden kodlama kitaplığı hatalı kullanılmış"
-
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "İçsel yeniden kodlama hatası"
-
-#: src/main.c:208
+#
+#: lib/argp-help.c:1194
+#, fuzzy
 msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Mandatory or optional arguments to long options are also mandatory or "
+"optional for any corresponding short options."
 msgstr ""
-"Bu bir serbest yazılımdır; Free Software Foundation tarafından yayınlanan\n"
-"GNU Genel Kamu Lisansı'nın 2. veya (sizin tercihinize bağlı olarak) daha\n"
-"sonraki bir sürümü altında yeniden dağıtabilir ve/veya değiştirebilirsiniz\n"
-"\n"
-"Bu yazılım faydalı olacağı umularak dağıtılmaktadır, fakat\n"
-"HİÇ BİR GARANTİSİ YOKTUR; SATILABİLİRLİĞİ veya\n"
-"HERHANGİ BİR AMACA UYGUNLUĞU için dahi zımni bir garanti\n"
-"içermez. Daha fazla bilgi için GNU Genel Kamu Lisansı'na bakın.\n"
-"\n"
-"Bu yazılımla birlikte GNU Genel Kamu Lisansı'nın bir kopyası gelmiş\n"
-"olmalıdır; eğer yok ise, lütfen Free Software Foundation, Inc., 59 Temple\n"
-"Place - Suite 330, Boston, MA 02111-1307, USA/ABD adresine yazın.\n"
+"Uzun seçenekler için zorunlu olan argümanlar kısa seçenekler için de "
+"zorunludur.\n"
 
-#: src/main.c:233
+#: lib/argp-help.c:1597
+#, fuzzy
+msgid " [OPTION...]"
+msgstr "Kullanım: %s [SEÇENEK]...\n"
+
+#: lib/argp-help.c:1624
+#, fuzzy, c-format
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Daha fazla bilgi için `%s --help' yazın.\n"
+
+#: lib/argp-help.c:1652
+#, fuzzy, c-format
+msgid "Report bugs to %s.\n"
+msgstr ""
+"\n"
+"Yazılım hatalarını <%s> adresine,\n"
+"çeviri hatalarını <gnu-tr@belgeler.org> adresine bildirin.\n"
+
+#: lib/argp-help.c:1872 lib/error.c:121
+msgid "Unknown system error"
+msgstr "Bilinmeyen sistem hatası"
+
+#: lib/argp-parse.c:84
+msgid "NAME"
+msgstr "İSİM"
+
+#: lib/argp-parse.c:619
+#, fuzzy, c-format
+msgid "%s: Too many arguments\n"
+msgstr "%s: çok fazla sağlama satırı"
+
+#: lib/c-stack.c:244
+#, fuzzy
+msgid "program error"
+msgstr "okuma hatası"
+
+#: lib/closeout.c:94
+msgid "write error"
+msgstr "yazma hatası"
+
+#: lib/copy-file.c:65
+#, fuzzy, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "%s okumak için açılamadı"
+
+#: lib/copy-file.c:72
+#, fuzzy, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "%s yazmak için açılamadı"
+
+#: lib/copy-file.c:80
+#, fuzzy, c-format
+msgid "error reading \"%s\""
+msgstr "%s'i okunurken hata"
+
+#: lib/copy-file.c:85 lib/copy-file.c:89
+#, fuzzy, c-format
+msgid "error writing \"%s\""
+msgstr "%s'e yazarken hata"
+
+#: lib/copy-file.c:91
+#, fuzzy, c-format
+msgid "error after reading \"%s\""
+msgstr "%s'i okunurken hata"
+
+#: lib/csharpcomp.c:273
+#, fuzzy
+msgid "fdopen() failed"
+msgstr "açma işlemi başarısız"
+
+#: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
+#: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
+#, fuzzy, c-format
+msgid "%s subprocess failed"
+msgstr "%s: arama (seek) başarısız"
+
+#
+#: lib/file-type.c:43
+msgid "regular empty file"
+msgstr "normal boş dosya"
+
+#
+#: lib/file-type.c:43
+msgid "regular file"
+msgstr "normal dosya"
+
+#: lib/file-type.c:46
+msgid "directory"
+msgstr "dizin"
+
+#
+#: lib/file-type.c:49
+msgid "block special file"
+msgstr "blok özel dosyası"
+
+#
+#: lib/file-type.c:52
+msgid "character special file"
+msgstr "karakter özel dosyası"
+
+#
+#: lib/file-type.c:55
+msgid "fifo"
+msgstr "fifo"
+
+#: lib/file-type.c:58
+msgid "symbolic link"
+msgstr "sembolik bağ"
+
+#: lib/file-type.c:61
+msgid "socket"
+msgstr "soket"
+
+#: lib/file-type.c:64
+msgid "message queue"
+msgstr "ileti kuyruğu"
+
+#: lib/file-type.c:67
+msgid "semaphore"
+msgstr "semafor"
+
+#
+#: lib/file-type.c:70
+msgid "shared memory object"
+msgstr "paylaşımlı bellek nesnesi"
+
+#
+#: lib/file-type.c:73
+msgid "typed memory object"
+msgstr "türlenmiş bellek nesnesi"
+
+#
+#: lib/file-type.c:75
+msgid "weird file"
+msgstr "garip dosya"
+
+#: lib/gai_strerror.c:45
+#, fuzzy
+msgid "Address family for hostname not supported"
+msgstr "fifo dosyaları desteklenmiyor"
+
+#: lib/gai_strerror.c:49
+#, fuzzy
+msgid "ai_family not supported"
+msgstr "fifo dosyaları desteklenmiyor"
+
+#: lib/gai_strerror.c:54
+#, fuzzy
+msgid "ai_socktype not supported"
+msgstr "fifo dosyaları desteklenmiyor"
+
+#: lib/gai_strerror.c:55
+#, fuzzy
+msgid "System error"
+msgstr "yazma hatası"
+
+#: lib/gai_strerror.c:74
+#, fuzzy
+msgid "Unknown error"
+msgstr "Bilinmeyen sistem hatası"
+
+#: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Daha fazla bilgi için '%s %s'.\n"
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: `%s' seçeneği belirsiz\n"
 
-#: src/main.c:237
+#: lib/getopt.c:603 lib/getopt.c:607
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: `--%s' seçeneği argümansız kullanılır\n"
+
+#: lib/getopt.c:616 lib/getopt.c:621
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: seçenek `%c%s' argümansız kullanılır\n"
+
+#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: `%s' seçeneği bir argümanla kullanılır\n"
+
+#: lib/getopt.c:727 lib/getopt.c:730
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: `--%s' seçeneği bilinmiyor\n"
+
+#: lib/getopt.c:738 lib/getopt.c:741
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: `%c%s' seçeneği bilinmiyor\n"
+
+#: lib/getopt.c:796 lib/getopt.c:799
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: kuraldışı seçenek -- %c\n"
+
+#: lib/getopt.c:805 lib/getopt.c:808
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: geçersiz seçenek -- %c\n"
+
+#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: seçenek bir argümanla kullanılır -- %c\n"
+
+#: lib/getopt.c:935 lib/getopt.c:954
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: `-W %s' seçeneği belirsiz\n"
+
+#: lib/getopt.c:978 lib/getopt.c:999
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: `-W %s' seçeneği argümansız kullanılır\n"
+
+#: lib/human.c:486
+msgid "block size"
+msgstr "blok uzunluğu"
+
+#: lib/mkdir-p.c:106
+#, c-format
+msgid "%s exists but is not a directory"
+msgstr "%s var ama bir dizin değil"
+
+#: lib/mkdir-p.c:203 lib/mkdir-p.c:294
+#, c-format
+msgid "cannot change owner and/or group of %s"
+msgstr "%s'in sahibi ve/veya grubu değiştirilemiyor"
+
+#: lib/mkdir-p.c:229 lib/mkdir-p.c:266
+#, c-format
+msgid "cannot create directory %s"
+msgstr "%s dizini oluşturulamıyor"
+
+#: lib/mkdir-p.c:240
+#, c-format
+msgid "cannot chdir to directory %s"
+msgstr "%s dizinine geçilemedi"
+
+#: lib/mkdir-p.c:307 lib/mkdir-p.c:332
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "%s'in erişim izinleri değiştirilemiyor"
+
+#: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
+msgid "memory exhausted"
+msgstr "bellek tükendi"
+
+#: lib/openat-die.c:36
+#, fuzzy
+msgid "unable to record current working directory"
+msgstr "openat: çalışılan dizini kaydedemedi"
+
+#: lib/openat-die.c:49
+msgid "failed to return to initial working directory"
+msgstr "başlangıç çalışma dizinine geri dönülemedi"
+
+#: lib/pagealign_alloc.c:143
+#, fuzzy
+msgid "Failed to open /dev/zero for read"
+msgstr "%s: yazmak için açılamadı"
+
+#: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
+#, fuzzy
+msgid "cannot create pipe"
+msgstr "%s bağı oluşturulamadı"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:245
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:246
+msgid "'"
+msgstr "'"
+
+#: lib/regcomp.c:137
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "%s: geçersiz düzenli ifade(regular expression): %s"
+
+#: lib/regcomp.c:143
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "geçersiz karakter sınıfı `%s'"
+
+#: lib/regcomp.c:164
+#, fuzzy
+msgid "Invalid range end"
+msgstr "Geçersiz sayfa aralığı `%s'"
+
+#: lib/regcomp.c:167
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "bellek tükendi"
+
+#: lib/regcomp.c:170
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "%s: geçersiz düzenli ifade(regular expression): %s"
+
+#: lib/regcomp.c:173
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "düzenli ifade (regular expression) aramasında hata oluştu"
+
+#: lib/regcomp.c:176
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "%s: geçersiz düzenli ifade(regular expression): %s"
+
+#: lib/regcomp.c:659
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "düzenli ifade (regular expression) aramasında hata oluştu"
+
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[eE]"
+
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[hH]"
+
+#
+#: lib/unicodeio.c:147
+msgid "iconv function not usable"
+msgstr "iconv işlevi kullanılabilir değil"
+
+#: lib/unicodeio.c:149
+msgid "iconv function not available"
+msgstr "iconv işlevi yok"
+
+#: lib/unicodeio.c:156
+msgid "character out of range"
+msgstr "karakter kapsamdışı"
+
+#: lib/unicodeio.c:219
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "U+%04X yerel karakter kümesine dönüştürülemiyor"
+
+#: lib/unicodeio.c:221
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "U+%04X yerel karakter kümesine dönüştürülemiyor: %s"
+
+#: lib/userspec.c:110
+msgid "invalid user"
+msgstr "kullanıcı geçersiz"
+
+#: lib/userspec.c:111
+msgid "invalid group"
+msgstr "grup geçersiz"
+
+#: lib/userspec.c:113
+msgid "cannot get the login group of a numeric UID"
+msgstr "bir sayısal kullanıcı-kimliğin grubu alınamıyor"
+
+#: lib/version-etc.c:74
+#, fuzzy
 msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+"\n"
+"This is free software.  You may redistribute copies of it under the terms "
+"of\n"
+"the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+"\n"
 msgstr ""
-"Serbest `recode', dosyaları değişik karakter kümeleri ve yüzeylere "
-"dönüştürür.\n"
+"Bu, bir serbest yazılımdır; Free Software Foundation tarafından yayınlanan\n"
+"GNU Genel Kamu Lisansı, 2. sürüm (veya sizin seçiminize bağlı olarak) daha "
+"üst \n"
+"sürüm koşulları altında değişiklik yapabilir ve/veya yeniden "
+"dağıtabilirsiniz. \n"
+"\n"
 
-#: src/main.c:241
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:90
+#, c-format
+msgid "Written by %s.\n"
+msgstr "%s tarafından yazıldı.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:94
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "%s ve %s tarafından yazıldı.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:98
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "%s, %s ve %s tarafından yazıldı.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
 #, c-format
 msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Kullanım: %s [SEÇENEK]...[[KARKÜME] | İSTEK [DOSYA]... ]\n"
+"%s, %s, %s \n"
+"ve %s tarafından yazıldı.\n"
 
-#: src/main.c:244
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Uzun seçenekler için zorunlu olan argümanlar kısa seçenekler için de\n"
-"zorunludur. Aynı şey bütün argümanlar için geçerlidir.\n"
+"%s, %s, %s, %s \n"
+"ve %s tarafından yazıldı.\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:116
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Seçenekler:\n"
-"  -l, --list[=BİÇEM]        bilinen karakter kümeleri ve rumuzların birini "
-"ya da hepsini listeler\n"
-"  -k, --known=ÇİFT          karakter kümelerini bilinen ÇİFT listesine göre "
-"sınırlar.\n"
-"  -h, --header[=[LN/]İSİM]   standart çıktıya LN'i kullanarak tablonun "
-"İSMİ'ni yazar ve çıkar\n"
-"  -F, --freeze-tables        bütün tabloları içeren bir C modülü yazdırır\n"
-"  -T, --find-subsets         bir başka kümenin alt kümesi olan bütün "
-"karakter kümelerini raporlar\n"
-"  -C, --copyright            telif hakkı ve kopyalama koşullarını gösterir\n"
-"      --help                 bu yardımı gösterir ve çıkar\n"
-"      --version              sürüm bilgisini gösterir ve çıkar\n"
+"%s, %s, %s, %s, \n"
+"%s ve %s tarafından yazıldı.\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:123
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Çalışma Kipleri:\n"
-"  -v, --verbose           adım sıralarını anlatır ve durum bilgisi gösterir\n"
-"  -q, --quiet, --silent   geri dönüşsüz yeniden kodlamalar hakkında bilgi "
-"vermez\n"
-"  -f, --force             geri dönüşsüz bile olsa yeniden kodlamaları yapar\n"
-"  -t, --touch             değişiklikten sonra yeniden kodlanmış dosyalara "
-"`touch' uygular\n"
-"  -i, --sequence=files    çevrimleri sıralamak için ara dosyalar kullanır\n"
-"      --sequence=memory   çevrimleri sıralamak için bellek yastıkları "
-"kullanır\n"
+"%s, %s, %s, %s, \n"
+"%s, %s ve %s tarafından yazıldı.\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr ""
-"  -p, --sequence=pipe    çevrimleri sıralamak için veriyolu (pipe) kullanır\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     (bu sistemde) -i ile aynı\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:130
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"İnce ayar:\n"
-"  -s, --strict           kesin olmayan harflerde bile kesin eşlemeler "
-"kullanır\n"
-"  -d, --diacritics       HTML/LaTeX için yalnız aksan v.b.'yi yeniden "
-"kodlar\n"
-"  -S, --source[=LN]      yeniden kodlamayı dizgeler ve LN gibi açıklamalarla "
-"sınırlar\n"
-"  -c, --colons           ö,ü'nin iki noktası için çift tırnak yerine iki "
-"nokta üstüste kullanır\n"
-"  -g, --graphics         IBMPC cetvellerini ASCII grafikleriyle değiştirir\n"
-"  -x, --ignore=KARKÜME  yeniden kodlama seçilirken KARKÜME dikkate alınmaz\n"
+"%s, %s, %s, \n"
+"%s, %s, %s, \n"
+"%s ve %s tarafından yazıldı.\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:138
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"-l seçeneği, BİÇEM veya KARKÜME verilmezse mevcut karakter kümelerini "
-"listeler\n"
-"BİÇEM, `decimal' (onluk), `octal' (sekizlik), `hexadecimal' (onaltılık), \n"
-"`full' (tam) veya `dohf' seçeneklerinden birisi olabilir.\n"
+"%s, %s, %s, \n"
+"%s, %s, %s, \n"
+"%s, %s ve %s tarafından yazıldı.\n"
 
-#: src/main.c:302
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:148
+#, c-format
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
-"Eğer DEFAULT_CHARSET çevre değişkeni atanmamışsa, KARKÜME yerel\n"
-"ayarlarına bağlı kodlama olarak atanır ve LC_ALL, LC_CTYPE, LANG çevre\n"
-"değişkenlerinden etkilenir.\n"
+"%s, %s, %s, \n"
+"%s, %s, %s, \n"
+"%s, %s, %s ve başkaları tarafından yazıldı.\n"
 
-#: src/main.c:307
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
-"-k seçeneği ile, dönüşecek karakter kümeleri, dönüştürülecek karakter "
-"kümeleri\n"
-"ile birlikte ÇİFT'ler halinde listelenir: `ÖNC1:SON1,ÖNC2:SON2,...'\n"
-"ÖNC ve SON karakter kümesi isimleri, ondalık sayı halinde kodlardan oluşur.\n"
+#
+#: lib/xmemcoll.c:50
+msgid "string comparison failed"
+msgstr "dizge karşılaştırması başarısız"
 
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr ""
-"LN bir bilgisayar dilidir, `c', `perl' veya `po' olabilir; öntanımlı: `c'\n"
+#
+#: lib/xmemcoll.c:51
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Problemi devre dışı bırakmak için LC_ALL='C' tanımlayın."
 
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"\n"
-"İSTEK: ALTİSTEK,[ALTİSTEK]...; ALTİSTEK ise KODLAMA[..KODLAMA]...\n"
-"KODLAMA: [KARKÜME][/YÜZEY]]...; İSTEK genelde ÖNCE..SONRA\n"
-"biçeminde olur, ÖNCE ve SONRA karakter kümeleridir. Belirtilmemiş bir\n"
-"karakter kümesi öntanımlı karakter kümesinin kullanılacağına işaret eder.\n"
-"Belirtilmemiş [/YÜZEY]..., o KARKÜME için öntanımlı yüzeyin kullanılacağına\n"
-"işaret eder. Yalnız / kullanılır ve yüzey belirtilmezse, hiç yüzey "
-"kullanılmaz.\n"
-"Lütfen el kitabını inceleyin.\n"
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-"\n"
-"Eğer -i ve -p'nin hiç birisi verilmemiş ve DOSYA yok ise, -p, aksi\n"
-"halde -i varsayılır. Her DOSYA kendi üstüne yeniden kodlanır ve orjinali\n"
-"yok edilir. Eğer DOSYA verilmemişse, bir filtre görevi yapar ve standart\n"
-"girdiyi, standart çıktıya yeniden kodlar.\n"
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Yazılım hatalarını <recode-bugs@iro.umontreal.ca> adresine,\n"
-"Çeviri hatalarını <gnu-tr-u12a@lists.sourceforge.net> adresine yollayın.\n"
-
-#: src/main.c:429
+#: lib/xmemcoll.c:53
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "`%s' sırası belirsiz"
-
-#: src/main.c:433
-#, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "`%s' sırası bilinmiyor"
-
-#: src/main.c:463 src/main.c:521
-#, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "`%s' dili belirsiz"
-
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "`%s' dili bilinmiyor"
-
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "`%s' biçemi belirsiz"
-
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "`%s' biçemi bilinmiyor"
-
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "Yazan: François Pinard <pinard@iro.umontreal.ca>.\n"
-
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Telif Hakkı (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"Bu bir serbest yazılımdır; kopyalama koşulları için kaynak koduna bakınız.\n"
-"HİÇ BİR GARANTİSİ YOKTUR; SATILABİLİRLİĞİ veya\n"
-"HERHANGİ BİR AMACA UYGUNLUĞU için dahi zımni bir garanti\n"
-"içermez.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "`%s' sembolü bilinmiyor"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "`%s' karakter kümesi bilinmiyor veya belirsiz"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Zorunlu argüman eksik"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Biçem eski, lütfen `%s'i tercih edin"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "`%s' isteği hatalı"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "%s yeniden kodlanıyor..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " bitti\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr "başarısız: `%2$s..%3$s' adımında %1$s\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "%1$s başarısız: `%3$s..%4$s' adımında %2$s"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "`%2$s..%3$s' adımında %1$s"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "%s karakter kümesi zaten mevcut ve %s değil"
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr "`%s' listelenemiyor, bu karakter kümesi için isim yok"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "Ond  Sek OnaltıUCS2 Mne %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "`%s' için hiç isim mevcut değil"
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "`%s' için yüzeyleyici birden fazla defa atanmış"
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "`%s' için yüzey yokedici birden fazla defa atanmış"
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "Sanal bellek tükendi"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "%3d ve %3d kodlarının ikisi de %3d'ye yeniden kodluyor"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr "%3d'ye yeniden kodlanan harf yok"
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr "Verilen birebir eşlemeli tablo tersine çevrilemez"
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "`%s'den `%s'e durum bildirimleri inceleniyor"
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "%d no'lu çift <%3d, %3d>, <%3d, %3d> ile çakışıyor"
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr "Tablo bilinen çiftler kümesinden tamamlanamıyor"
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr "Birebir yeniden kodlama, tabloya gerek yok"
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr "Yeniden kodlama bir tablo için fazla karmaşık"
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr ""
-"%sDönüşüm tablosu mekanik olarak Free `%s' %s tarafından oluşturulmuştur"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr "%2$s.%3$s sırası için %1$s"
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Yazdırılacak tablo yok"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "geri dönüşümlü"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s'den %s'e"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "bayt"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "ucs2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "değişken"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*Ulaşılamaz*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*yalnızca kopya*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "Sanal bellek tükendi!"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr "Adım başlangıcı başarısız"
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "Adım başlangıcı başarısız (işlenmemiş seçenekler)"
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "İstek: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "%s'e küçüldü\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Bilinmeyen yüzey adı `%s'"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "`%s'den `%s'e yeniden kodlamanın yolu yok"
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "İstekte `..' bekleniyordu"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "Ast işlem bekleme durumu: 0x%0.2x"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mne   Açıklama\n"
-"\n"
+msgid "The strings compared were %s and %s."
+msgstr "Karşılaştırılan dizgeler %s ve %s idi."

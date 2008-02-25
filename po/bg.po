@@ -1,386 +1,350 @@
-# GNU Mailutils Catalan translation.
-# Copyright © 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
-# This file is distributed under the same license as the mailutils package.
-# Jordi Mallach <jordi@gnu.org>, 2002, 2003, 2004, 2005.
+# translation of coreutils.bg.po to Bulgarian
+# Message catalog for coreutils
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# This file is distributed under the same license as the coreutils package.
+# Anton Zinoviev <zinoviev@debian.org>, 2003,2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailutils 0.6.90\n"
+"Project-Id-Version: coreutils 5.90\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
 "POT-Creation-Date: 2005-09-30 17:42+0300\n"
-"PO-Revision-Date: 2005-05-21 04:10+0200\n"
-"Last-Translator: Jordi Mallach <jordi@gnu.org>\n"
-"Language-Team: Catalan <ca@dodds.net>\n"
+"PO-Revision-Date: 2005-10-12 21:41+0300\n"
+"Last-Translator: Anton Zinoviev <zinoviev@debian.org>\n"
+"Language-Team: Bulgarian <dict@fsa-bg.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-# Usa quote() en els 2 args.  ivb
 #: lib/argmatch.c:137
 #, c-format
 msgid "invalid argument %s for %s"
-msgstr "l'argument %s no és vàlid per %s"
+msgstr "недопустим аргумент %s за %s"
 
-# Usa quote() en els 2 args.  ivb
 #: lib/argmatch.c:138
 #, c-format
 msgid "ambiguous argument %s for %s"
-msgstr "l'argument %s és ambigu per %s"
+msgstr "двусмислен аргумент %s за %s"
 
 #: lib/argmatch.c:157
 #, c-format
 msgid "Valid arguments are:"
-msgstr "Els arguments vàlids són:"
-
-#: lib/argp-help.c:194
-#, c-format
-msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
-msgstr "%.*s: El paràmetre ARGP_HELP_FMT requereix un valor"
-
-#: lib/argp-help.c:203
-#, c-format
-msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
-msgstr "%.*s: El paràmetre d'ARGP_HELP_FMT és desconegut"
-
-# pfft, escombraries... jm
-#: lib/argp-help.c:215
-#, c-format
-msgid "Garbage in ARGP_HELP_FMT: %s"
-msgstr "Hi ha escombraries en ARGP_HELP_FMT: %s"
+msgstr "Допустими аргументи са:"
 
 #: lib/argp-help.c:1194
+#, fuzzy
 msgid ""
 "Mandatory or optional arguments to long options are also mandatory or "
 "optional for any corresponding short options."
 msgstr ""
-"Els arguments necessaris o opcionals per a les opcions llargues també són "
-"necessaris o opcionals per a qualsevol opció curta corresponent."
-
-#: lib/argp-help.c:1581
-msgid "Usage:"
-msgstr "Forma d'ús:"
-
-#: lib/argp-help.c:1585
-msgid "  or: "
-msgstr "  ó: "
+"Аргументите, задължителни за дългите опции, са задължителни и за късите.\n"
 
 #: lib/argp-help.c:1597
+#, fuzzy
 msgid " [OPTION...]"
-msgstr " [OPCIÓ...]"
+msgstr "Използване: %s [ОПЦИЯ]...\n"
 
 #: lib/argp-help.c:1624
-#, c-format
+#, fuzzy, c-format
 msgid "Try `%s --help' or `%s --usage' for more information.\n"
-msgstr "Proveu «%s --help» o «%s --usage» per a obtindre més informació.\n"
+msgstr "Използвайте \"%s --help\" за повече информация.\n"
 
 #: lib/argp-help.c:1652
-#, c-format
+#, fuzzy, c-format
 msgid "Report bugs to %s.\n"
-msgstr "Informeu dels errors a %s.\n"
+msgstr ""
+"\n"
+"Съобщавайте за програмни грешки на <%s>.\n"
 
 #: lib/argp-help.c:1872 lib/error.c:121
 msgid "Unknown system error"
-msgstr "S'ha produït un error desconegut del sistema"
-
-#: lib/argp-parse.c:82
-msgid "Give this help list"
-msgstr "Mostra aquesta llista d'ajuda"
-
-#: lib/argp-parse.c:83
-msgid "Give a short usage message"
-msgstr "Mostra un curt missatge sobre l'ús"
+msgstr "Непозната системна грешка"
 
 #: lib/argp-parse.c:84
 msgid "NAME"
-msgstr "NOM"
-
-#: lib/argp-parse.c:84
-msgid "Set the program name"
-msgstr "Estableix el nom del programa"
-
-#: lib/argp-parse.c:85
-#, fuzzy
-msgid "SECS"
-msgstr "SEGONS"
-
-#: lib/argp-parse.c:86
-msgid "Hang for SECS seconds (default 3600)"
-msgstr "Penja durant SEGS segons (per defecte 3600)"
-
-#: lib/argp-parse.c:147
-msgid "Print program version"
-msgstr "Mostra la versió del programa"
-
-#: lib/argp-parse.c:163
-msgid "(PROGRAM ERROR) No version known!?"
-msgstr "(ERROR DEL PROGRAMA) Cap versió coneguda!?"
+msgstr "ИМЕ"
 
 #: lib/argp-parse.c:619
-#, c-format
+#, fuzzy, c-format
 msgid "%s: Too many arguments\n"
-msgstr "%s: Massa arguments\n"
-
-#: lib/argp-parse.c:762
-msgid "(PROGRAM ERROR) Option should have been recognized!?"
-msgstr "(ERROR DEL PROGRAMA) L'opció s'hauria d'haver reconegut!?"
+msgstr "%s: твърде много редове с контролни суми"
 
 #: lib/c-stack.c:244
 #, fuzzy
 msgid "program error"
-msgstr "error de lectura"
-
-# "underflow", bonico el paraulo.. jm
-#: lib/c-stack.c:245
-#, fuzzy
-msgid "stack overflow"
-msgstr "pila buida"
+msgstr "грешка при четене"
 
 #: lib/closeout.c:94
 msgid "write error"
-msgstr "error d'escriptura"
+msgstr "грешка при запис"
 
-# Usa quote().  ivb
 #: lib/copy-file.c:65
 #, fuzzy, c-format
 msgid "error while opening \"%s\" for reading"
-msgstr "no s'ha pogut obrir %s per llegir"
+msgstr "не може да се отвори %s за четене"
 
-# Usa quote().  ivb
 #: lib/copy-file.c:72
 #, fuzzy, c-format
 msgid "cannot open backup file \"%s\" for writing"
-msgstr "no s'ha pogut obrir %s per a escriure"
+msgstr "не може да се отвори %s за запис"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:80
 #, fuzzy, c-format
 msgid "error reading \"%s\""
-msgstr "error en llegir %s"
+msgstr "грешка при четене на %s"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:85 lib/copy-file.c:89
 #, fuzzy, c-format
 msgid "error writing \"%s\""
-msgstr "error en escriure %s"
+msgstr "грешка при запис в %s"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:91
 #, fuzzy, c-format
 msgid "error after reading \"%s\""
-msgstr "error en llegir %s"
+msgstr "грешка при четене на %s"
 
 #: lib/csharpcomp.c:273
 #, fuzzy
 msgid "fdopen() failed"
-msgstr "no s'ha pogut obrir"
+msgstr "неуспешно отваряне на файл"
 
 #: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
 #: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
 #, fuzzy, c-format
 msgid "%s subprocess failed"
-msgstr "%s: ha fallat el desplaçament"
+msgstr "%s: неуспешно позициониране (seek) във файл"
 
 #: lib/file-type.c:43
 msgid "regular empty file"
-msgstr "fitxer ordinari buit"
+msgstr "обикновеният празен файл"
 
 #: lib/file-type.c:43
 msgid "regular file"
-msgstr "fitxer ordinari"
+msgstr "обикновеният файл"
 
 #: lib/file-type.c:46
 msgid "directory"
-msgstr "directori"
+msgstr "каталогът"
 
 #: lib/file-type.c:49
 msgid "block special file"
-msgstr "fitxer especial de blocs"
+msgstr "специалният блоков файл"
 
 #: lib/file-type.c:52
 msgid "character special file"
-msgstr "fitxer especial de caràcters"
+msgstr "специалният символен файл"
 
 #: lib/file-type.c:55
 msgid "fifo"
-msgstr "cua FIFO"
+msgstr "именуваният канал"
 
 #: lib/file-type.c:58
 msgid "symbolic link"
-msgstr "enllaç simbòlic"
+msgstr "символната връзка"
 
 #: lib/file-type.c:61
 msgid "socket"
-msgstr "connector"
+msgstr "гнездото"
 
 #: lib/file-type.c:64
 msgid "message queue"
-msgstr "cua de missatges"
+msgstr "опашката със съобщения"
 
 #: lib/file-type.c:67
 msgid "semaphore"
-msgstr "semàfor"
+msgstr "семафорът"
 
 #: lib/file-type.c:70
 msgid "shared memory object"
-msgstr "objecte de memòria compartida"
+msgstr "споделеният обект в паметта"
 
 #: lib/file-type.c:73
 msgid "typed memory object"
-msgstr "objecte de memòria amb tipus"
+msgstr "типизираният обект в паметта"
 
 #: lib/file-type.c:75
 msgid "weird file"
-msgstr "fitxer estrany"
+msgstr "странният файл"
 
 #: lib/gai_strerror.c:45
-#, fuzzy
 msgid "Address family for hostname not supported"
-msgstr "els fitxers FIFO no són suportats"
+msgstr "Този тип адреси не се поддържа за името на хоста"
+
+#: lib/gai_strerror.c:46
+msgid "Temporary failure in name resolution"
+msgstr "Временен проблем при намиране IP-адреса на хост"
+
+#: lib/gai_strerror.c:47
+msgid "Bad value for ai_flags"
+msgstr "Неправил на стойност за ai_flags"
+
+#: lib/gai_strerror.c:48
+msgid "Non-recoverable failure in name resolution"
+msgstr "Окончателен неуспех при намиране IP-адреса на хост"
 
 #: lib/gai_strerror.c:49
-#, fuzzy
 msgid "ai_family not supported"
-msgstr "els fitxers FIFO no són suportats"
+msgstr "не се поддържа посочването на тип адреси (ai_family)"
 
 #: lib/gai_strerror.c:50
-#, fuzzy
 msgid "Memory allocation failure"
-msgstr "L'operació ha fallat"
+msgstr "Неуспешно заделяне на памет"
+
+#: lib/gai_strerror.c:51
+msgid "No address associated with hostname"
+msgstr "Няма IP-адрес с посоченото име на хост"
+
+#: lib/gai_strerror.c:52
+msgid "Name or service not known"
+msgstr "Името или услугата са непознати"
+
+#: lib/gai_strerror.c:53
+msgid "Servname not supported for ai_socktype"
+msgstr ""
+"Името на услугата не се поддържа за използваното тип гнездо (ai_socktype)"
 
 #: lib/gai_strerror.c:54
-#, fuzzy
 msgid "ai_socktype not supported"
-msgstr "els fitxers FIFO no són suportats"
+msgstr "не се поддържа посочването на тип гнездо (ai_socktype)"
 
 #: lib/gai_strerror.c:55
-#, fuzzy
 msgid "System error"
-msgstr "error d'escriptura"
+msgstr "грешка в системата"
+
+#: lib/gai_strerror.c:57
+msgid "Processing request in progress"
+msgstr "Заявката е в процес на изпълнение"
+
+#: lib/gai_strerror.c:58
+msgid "Request canceled"
+msgstr "Заявката е отменена"
 
 #: lib/gai_strerror.c:59
-#, fuzzy
 msgid "Request not canceled"
-msgstr "No es troba l'element sol·licitat"
+msgstr "Заявката не е отменена"
+
+#: lib/gai_strerror.c:60
+msgid "All requests done"
+msgstr "Изпълнени са всички заявки"
+
+#: lib/gai_strerror.c:61
+msgid "Interrupted by a signal"
+msgstr "Прекъснат със сигнал"
+
+#: lib/gai_strerror.c:62
+msgid "Parameter string not correctly encoded"
+msgstr "Неправилно кодиран низ на аргумент"
 
 #: lib/gai_strerror.c:74
-#, fuzzy
 msgid "Unknown error"
-msgstr "S'ha produït un error desconegut del sistema"
+msgstr "Непозната грешка"
 
 #: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: l'opció «%s» és ambigua\n"
+msgstr "%s: опцията \"%s\" е двусмислена\n"
 
 #: lib/getopt.c:603 lib/getopt.c:607
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: l'opció «--%s» no accepta arguments\n"
+msgstr "%s: опцията \"--%s\" не допуска аргумент\n"
 
 #: lib/getopt.c:616 lib/getopt.c:621
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: l'opció «%c%s» no accepta arguments\n"
+msgstr "%s: опцията \"%c%s\" не допуска аргумент\n"
 
 #: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: l'opció «%s» requereix un argument\n"
+msgstr "%s: опцията \"%s\" изисква аргумент\n"
 
 #: lib/getopt.c:727 lib/getopt.c:730
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: l'opció «--%s» no es reconeix\n"
+msgstr "%s: непозната опция \"--%s\"\n"
 
 #: lib/getopt.c:738 lib/getopt.c:741
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: l'opció «%c%s» no es reconeix\n"
+msgstr "%s: непозната опция \"%c%s\"\n"
 
 #: lib/getopt.c:796 lib/getopt.c:799
 #, c-format
 msgid "%s: illegal option -- %c\n"
-msgstr "%s: l'opció és il·legal -- %c\n"
+msgstr "%s: неправилна опция -- %c\n"
 
 #: lib/getopt.c:805 lib/getopt.c:808
 #, c-format
 msgid "%s: invalid option -- %c\n"
-msgstr "%s: l'opció no és vàlida -- %c\n"
+msgstr "%s: неправилна опция -- %c\n"
 
 #: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: l'opció requereix un argument -- %c\n"
+msgstr "%s: опция изисква аргумент -- %c\n"
 
 #: lib/getopt.c:935 lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: l'opció «-W %s» és ambigua\n"
+msgstr "%s: опцията \"-W %s\" е двусмислена\n"
 
 #: lib/getopt.c:978 lib/getopt.c:999
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: l'opció «-W %s» no accepta arguments\n"
+msgstr "%s: опцията \"-W %s\" не допуска аргумент\n"
 
-# FIXME: xmalloc.h: _STRTOL_ERROR lacks i18n.  ivb
-# Açò quedarà com «invalid mida de bloc `MIDA'» mentre no ho facen.  ivb
 #: lib/human.c:486
 msgid "block size"
-msgstr "mida de bloc"
+msgstr "блоковият размер"
 
-# Els 4 usen quote().  ivb
 #: lib/mkdir-p.c:106
 #, c-format
 msgid "%s exists but is not a directory"
-msgstr "%s existeix però no és un directori"
+msgstr "%s съществува, но не е каталог"
 
-# Els 3 usen quote().  ivb
 #: lib/mkdir-p.c:203 lib/mkdir-p.c:294
 #, c-format
 msgid "cannot change owner and/or group of %s"
-msgstr "no s'ha pogut canviar el propietari o grup de %s"
+msgstr "не може да се смени собственика и/или групата на %s"
 
-# Els 3 usen quote().  ivb
 #: lib/mkdir-p.c:229 lib/mkdir-p.c:266
 #, c-format
 msgid "cannot create directory %s"
-msgstr "no s'ha pogut crear el directori %s"
+msgstr "не може да се създаде каталог %s"
 
-# Usa quote().  ivb
 #: lib/mkdir-p.c:240
 #, c-format
 msgid "cannot chdir to directory %s"
-msgstr "no s'ha pogut canviar al directori %s"
+msgstr "не може да се влезе в каталога %s"
 
-# Els 2 usen quote().  ivb
 #: lib/mkdir-p.c:307 lib/mkdir-p.c:332
 #, c-format
 msgid "cannot change permissions of %s"
-msgstr "no s'han pogut canviar els permisos de %s"
+msgstr "не може да се сменят правата за достъп до %s"
 
 #: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
 msgid "memory exhausted"
-msgstr "la memòria s'ha exhaurit"
+msgstr "паметта е изчерпана"
 
 #: lib/openat-die.c:36
-#, fuzzy
 msgid "unable to record current working directory"
-msgstr "openat: no s'ha pogut registrar el directori de treball actual"
+msgstr "не може да се запомни текущият работен каталог"
 
 #: lib/openat-die.c:49
 msgid "failed to return to initial working directory"
-msgstr "no s'ha pogut tornar al directori inicial de treball"
+msgstr "невъзможно връщане в първоначалния работен каталог"
 
 #: lib/pagealign_alloc.c:143
 #, fuzzy
 msgid "Failed to open /dev/zero for read"
-msgstr "%s: no s'ha pogut obrir per a escriure"
+msgstr "%s: не може да се отвори в режим за писане"
 
 #: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
 #, fuzzy
 msgid "cannot create pipe"
-msgstr "No es pot crear la llista"
+msgstr "не може да се създаде връзка %s"
 
 #. TRANSLATORS:
 #. Get translations for open and closing quotation marks.
@@ -403,106 +367,114 @@ msgstr "No es pot crear la llista"
 #. and use glyphs suitable for your language.
 #: lib/quotearg.c:245
 msgid "`"
-msgstr "«"
+msgstr "\""
 
 #: lib/quotearg.c:246
 msgid "'"
-msgstr "»"
+msgstr "\""
 
 #: lib/regcomp.c:137
 #, fuzzy
 msgid "Invalid regular expression"
-msgstr "%s: l'expressió regular no és vàlida: %s"
+msgstr "%s: неправилен регулярен израз: %s"
+
+#: lib/regcomp.c:140
+#, fuzzy
+msgid "Invalid collation character"
+msgstr "неправилен клас от символи %s"
 
 #: lib/regcomp.c:143
 #, fuzzy
 msgid "Invalid character class name"
-msgstr "la classe de caràcters «%s» no és vàlida"
+msgstr "неправилен клас от символи %s"
 
 #: lib/regcomp.c:149
 #, fuzzy
 msgid "Invalid back reference"
-msgstr "El número no és vàlid"
-
-#: lib/regcomp.c:161
-#, fuzzy
-msgid "Invalid content of \\{\\}"
-msgstr "L'opció no és vàlida -- %s"
+msgstr "Неправилен диапазон от страници %s"
 
 #: lib/regcomp.c:164
 #, fuzzy
 msgid "Invalid range end"
-msgstr "el rang de pàgines no és vàlid: «%s»"
+msgstr "Неправилен диапазон от страници %s"
 
 #: lib/regcomp.c:167
 #, fuzzy
 msgid "Memory exhausted"
-msgstr "la memòria s'ha exhaurit"
+msgstr "паметта е изчерпана"
 
 #: lib/regcomp.c:170
 #, fuzzy
 msgid "Invalid preceding regular expression"
-msgstr "%s: l'expressió regular no és vàlida: %s"
+msgstr "%s: неправилен регулярен израз: %s"
 
 #: lib/regcomp.c:173
 #, fuzzy
 msgid "Premature end of regular expression"
-msgstr "error en la recerca de l'expressió regular"
+msgstr "грешка при търсене на регулярен израз"
 
 #: lib/regcomp.c:176
 #, fuzzy
 msgid "Regular expression too big"
-msgstr "%s: l'expressió regular no és vàlida: %s"
+msgstr "грешка при пасването на регулярния израз"
 
 #: lib/regcomp.c:659
 #, fuzzy
 msgid "No previous regular expression"
-msgstr "error en la recerca de l'expressió regular"
+msgstr "грешка при търсене на регулярен израз"
 
+# Клавишът О (латинско) генерира "Д" според подредбата по БДС
 #: lib/rpmatch.c:70
 msgid "^[yY]"
-msgstr "^[sS]"
+msgstr "^[дДoOyY]"
 
+# Клавишът K (латинско) генерира "Н" според подредбата по БДС
 #: lib/rpmatch.c:73
 msgid "^[nN]"
-msgstr "^[nN]"
+msgstr "^[нНkKnN]"
 
 #: lib/unicodeio.c:147
 msgid "iconv function not usable"
-msgstr "la funció iconv() no és útil"
+msgstr "функцията iconv не е използваема"
 
 #: lib/unicodeio.c:149
 msgid "iconv function not available"
-msgstr "la funció iconv() no es troba disponible"
+msgstr "функцията iconv е недостъпна"
 
 #: lib/unicodeio.c:156
 msgid "character out of range"
-msgstr "el caràcter es troba fora del rang"
+msgstr "знак извън диапазона"
 
 #: lib/unicodeio.c:219
 #, c-format
 msgid "cannot convert U+%04X to local character set"
-msgstr "no s'ha pogut convertir U+%04X al joc de caràcters local"
+msgstr "не може да се конвертира U+%04X в локалното кодиране"
 
 #: lib/unicodeio.c:221
 #, c-format
 msgid "cannot convert U+%04X to local character set: %s"
-msgstr "no s'ha pogut convertir U+%04X al joc de caràcters local: %s"
+msgstr "не може да се конвертира U+%04X в локалното кодиране: %s"
 
 #: lib/userspec.c:110
 msgid "invalid user"
-msgstr "l'usuari no és vàlid"
+msgstr "несъществуващ потребител"
 
 #: lib/userspec.c:111
 msgid "invalid group"
-msgstr "el grup no és vàlid"
+msgstr "несъществуваща група"
 
 #: lib/userspec.c:113
 msgid "cannot get the login group of a numeric UID"
-msgstr "no s'ha pogut obtenir el grup d'entrada d'un UID numèric"
+msgstr "не може да се получи входящата група по потребителски номер"
+
+#. TRANSLATORS: Translate "(C)" to the copyright symbol
+#. (C-in-a-circle), if this symbol is available in the user's
+#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
+#: lib/version-etc.c:72
+msgid "(C)"
+msgstr "©"
 
 #: lib/version-etc.c:74
-#, fuzzy
 msgid ""
 "\n"
 "This is free software.  You may redistribute copies of it under the terms "
@@ -511,31 +483,29 @@ msgid ""
 "There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
 msgstr ""
-"Aquest és programari lliure; podeu redistribuir-lo i/o modificar-lo sota "
-"els\n"
-"termes de la Llicència Pública General GNU tal i com ha estat publicada per "
-"la\n"
-"Free Software Foundation; bé sota la versió 2 de la Llicència o bé (si ho\n"
-"preferiu) sota qualsevol versió posterior.\n"
 "\n"
+"Това е свободен софтуер.  Можете да разпространявате негови копия съгласно\n"
+"условията на Основната общодостъпна лицензия на ГНУ\n"
+"      <http://www.gnu.org/licenses/gpl.html>.\n"
+"Не се дават НИКАКВИ ГАРАНЦИИ до степента, позволявана от закона.\n"
 
 #. TRANSLATORS: %s denotes an author name.
 #: lib/version-etc.c:90
 #, c-format
 msgid "Written by %s.\n"
-msgstr "Escrit per %s.\n"
+msgstr "Написан от %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:94
 #, c-format
 msgid "Written by %s and %s.\n"
-msgstr "Escrit per %s i %s.\n"
+msgstr "Написан от %s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:98
 #, c-format
 msgid "Written by %s, %s, and %s.\n"
-msgstr "Escrit per %s, %s i %s.\n"
+msgstr "Написан от %s, %s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -546,8 +516,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s\n"
-"i %s.\n"
+"Написан от %s, %s, %s\n"
+"и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -558,8 +528,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s i %s.\n"
+"Написан от %s, %s, %s,\n"
+"%s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -570,8 +540,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, %s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s, %s i %s.\n"
+"Написан от %s, %s, %s,\n"
+"%s, %s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -582,8 +552,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, %s, %s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s, %s, %s i %s.\n"
+"Написан от %s, %s, %s,\n"
+"%s, %s, %s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -595,9 +565,9 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s, %s, %s, %s,\n"
-"i %s.\n"
+"Написан от %s, %s, %s,\n"
+"%s, %s, %s, %s\n"
+"и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -609,9 +579,9 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "%s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
+"Написан от %s, %s, %s,\n"
 "%s, %s, %s, %s,\n"
-"%s i %s.\n"
+"%s и %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -623,20 +593,19 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "%s, %s, and others.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
+"Написан от %s, %s, %s,\n"
 "%s, %s, %s, %s,\n"
-"%s, %s i d'altres.\n"
+"%s, %s и други.\n"
 
 #: lib/xmemcoll.c:50
 msgid "string comparison failed"
-msgstr "ha fallat la comparació de cadenes"
+msgstr "сравнението на низове не успя"
 
 #: lib/xmemcoll.c:51
 msgid "Set LC_ALL='C' to work around the problem."
-msgstr "Establiu la variable LC_ALL a «C» per evitar el problema."
+msgstr "Използвайте LC_ALL='C', за да заобиколите този проблем."
 
-# Usa quote() en les 2.  ivb
 #: lib/xmemcoll.c:53
 #, c-format
 msgid "The strings compared were %s and %s."
-msgstr "Les cadenes comparades eren %s i %s."
+msgstr "Сравняваните низове бяха %s и %s."

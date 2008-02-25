@@ -1,302 +1,316 @@
-# Mesajele �n limba rom�n� pentru pachetul mailutils.
-# Copyright (C) 2003 Free Software Foundation, Inc.
-# Eugen Hoanca <eugenh@urban-grafx.ro>, 2003.
+# Ukrainian messages for GNU mailutils
+# Copyright (C) 2005 Free Software Foundation, Inc.
+# Sergey Poznyakoff <gray@gnu.org>, 2005.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailutils 0.4\n"
+"Project-Id-Version: mailutils 0.6.90\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
 "POT-Creation-Date: 2005-09-30 17:42+0300\n"
-"PO-Revision-Date: 2003-12-10 08:55+0200\n"
-"Last-Translator: Eugen Hoanca <eugenh@urban-grafx.ro>\n"
-"Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
+"PO-Revision-Date: 2005-05-19 11:54+0300\n"
+"Last-Translator: Sergey Poznyakoff <gray@gnu.org>\n"
+"Language-Team: Ukrainian <translation-team-uk@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: lib/argmatch.c:137
 #, fuzzy, c-format
 msgid "invalid argument %s for %s"
-msgstr "nume etichet�(tag) invalid `%s' pentru `%s'"
+msgstr "неправильна назва мітки `%s' для `%s'"
 
 #: lib/argmatch.c:138
 #, fuzzy, c-format
 msgid "ambiguous argument %s for %s"
-msgstr "lipse�te argumentul pentru %s"
+msgstr "Відсутні аргументи для %s"
 
 #: lib/argmatch.c:157
 #, fuzzy, c-format
 msgid "Valid arguments are:"
-msgstr "argumentele if valide sunt: s | r | t"
+msgstr "Дозволені аргументи `if' є: s | r | t"
 
 #: lib/argp-help.c:194
 #, c-format
 msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
-msgstr "%.*s: parametrul ARGP_HELP_FMT necesit� o valoare"
+msgstr "%.*s: параметр ARGP_HELP_FMT вимагає значення"
 
 #: lib/argp-help.c:203
 #, c-format
 msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
-msgstr "%.*s: Parametru ARGP_HELP_FMT necunoscut"
+msgstr "%.*s: Невідомий параметр ARGP_HELP_FMT"
 
 #: lib/argp-help.c:215
 #, c-format
 msgid "Garbage in ARGP_HELP_FMT: %s"
-msgstr "Gunoi(garbage) �n ARGP_HELP_FMT: %s"
+msgstr "Хибні дані в ARGP_HELP_FMT: %s"
 
 #: lib/argp-help.c:1194
 msgid ""
 "Mandatory or optional arguments to long options are also mandatory or "
 "optional for any corresponding short options."
 msgstr ""
-"Argumentele obligatorii sau op�ionale pentru op�iunile lungi sunt de "
-"asemenea obligatorii sau op�ionale pentru toate op�iunile scurte "
-"corespunz�toare."
+"Аргументи, обов'язкові для довгих ключів, є обов'язковими й для коротких."
 
 #: lib/argp-help.c:1581
 msgid "Usage:"
-msgstr "Folosire:"
+msgstr "Використання:"
 
 #: lib/argp-help.c:1585
 msgid "  or: "
-msgstr "  sau: "
+msgstr " чи: "
 
 #: lib/argp-help.c:1597
 msgid " [OPTION...]"
-msgstr " [OP�IUNE...]"
+msgstr " [ОПЦІЯ...]"
 
 #: lib/argp-help.c:1624
 #, c-format
 msgid "Try `%s --help' or `%s --usage' for more information.\n"
-msgstr "�ncerca�i `%s --help' sau `%s --usage' pentru mai multe informa�ii.\n"
+msgstr ""
+"Спробуйте `%s --help' або `%s --usage' для отримання докладнішого опису.\n"
 
 #: lib/argp-help.c:1652
 #, c-format
 msgid "Report bugs to %s.\n"
-msgstr "Raporta�i bug-urile la %s.\n"
+msgstr "Про помилки звітуйте на %s.\n"
 
 #: lib/argp-help.c:1872 lib/error.c:121
-#, fuzzy
 msgid "Unknown system error"
-msgstr "tip de mesaj necunoscut"
+msgstr "Невідомий тип повідомлення"
 
 #: lib/argp-parse.c:82
 msgid "Give this help list"
-msgstr "Afi�eaz� aceast� list� de ajutor"
+msgstr "Вивести цю довідку"
 
 #: lib/argp-parse.c:83
 msgid "Give a short usage message"
-msgstr "Afi�eaz� un mesaj de folosire scurt"
+msgstr "Вивести коротке повідомлення про використання"
 
 #: lib/argp-parse.c:84
 msgid "NAME"
-msgstr "NUME"
+msgstr "НАЗВА"
 
 #: lib/argp-parse.c:84
 msgid "Set the program name"
-msgstr "Seteaz� numele programului"
+msgstr "Встановити текст запрошення"
 
 #: lib/argp-parse.c:85
 #, fuzzy
 msgid "SECS"
-msgstr "SECUNDE"
+msgstr "СЕКУНДИ"
 
 #: lib/argp-parse.c:86
 msgid "Hang for SECS seconds (default 3600)"
-msgstr "�ntrerupe(hang) pentru SECS secunde (implicit 3600)"
+msgstr "Зачекати вказану кількість секунд (типово 3600)"
 
 #: lib/argp-parse.c:147
 msgid "Print program version"
-msgstr "Afi�eaz� versiunea programului"
+msgstr "Вивести версію програми"
 
 #: lib/argp-parse.c:163
 msgid "(PROGRAM ERROR) No version known!?"
-msgstr "(EROARE DE PROGRAM) Nici o versiune cunoscut�!?"
+msgstr "(ПОМИЛКА ПРОГРАМУВАННЯ) Невідома версія!?"
 
 #: lib/argp-parse.c:619
 #, c-format
 msgid "%s: Too many arguments\n"
-msgstr "%s: Prea multe argumente\n"
+msgstr "%s: Забагато аргументів\n"
 
 #: lib/argp-parse.c:762
 msgid "(PROGRAM ERROR) Option should have been recognized!?"
-msgstr "(EROARE DE PROGRAM) Op�iunea ar fi trebuit recunoscut�!?"
+msgstr "(ПОМИЛКА ПРОГРАМУВАННЯ) Опція мала бути розпізнана!?"
 
 #: lib/c-stack.c:244
 #, fuzzy
 msgid "program error"
-msgstr "eroare de interval(range)"
+msgstr "помилка діапазону"
 
 #: lib/c-stack.c:245
 #, fuzzy
 msgid "stack overflow"
-msgstr "subrulare(underflow) a stivei(stack)"
+msgstr "стек пустий"
 
 #: lib/closeout.c:94
 #, fuzzy
 msgid "write error"
-msgstr "eroare regex"
+msgstr "помилка діапазону"
 
 #: lib/copy-file.c:72
 #, fuzzy, c-format
 msgid "cannot open backup file \"%s\" for writing"
-msgstr "nu se poate deschide fi�ierul de ie�ire(output) \"%s\": %s"
+msgstr "Не вдається відкрити файл аудиту %s: %s"
 
 #: lib/copy-file.c:80
 #, fuzzy, c-format
 msgid "error reading \"%s\""
-msgstr "eroare la cititrea din fi�ierul de intrare(input): %s"
+msgstr "Читання %s\n"
 
 #: lib/copy-file.c:85 lib/copy-file.c:89
 #, fuzzy, c-format
 msgid "error writing \"%s\""
-msgstr "eroare �n scrierea �n mailbox: %s"
+msgstr "Помилка запису до скриньки: %s"
 
 #: lib/csharpcomp.c:273
 #, fuzzy
 msgid "fdopen() failed"
-msgstr "fork e�uat"
+msgstr "помилка створення процесу"
 
 #: lib/file-type.c:64
 #, fuzzy
 msgid "message queue"
-msgstr "%d mesaj"
+msgstr "%d повідомлення"
 
 #: lib/gai_strerror.c:50
 #, fuzzy
 msgid "Memory allocation failure"
-msgstr "Opera�iune e�uat�"
+msgstr "Операція не вдалася"
 
 #: lib/gai_strerror.c:55
 #, fuzzy
 msgid "System error"
-msgstr "eroare regex"
+msgstr "Помилка розбору"
+
+#: lib/gai_strerror.c:59
+#, fuzzy
+msgid "Request not canceled"
+msgstr "Потрібний елемент не знайдено"
 
 #: lib/gai_strerror.c:74
 #, fuzzy
 msgid "Unknown error"
-msgstr "Escape necunoscut %s"
+msgstr "Невідомий тип повідомлення"
 
 #: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: op�iunea `%s' este ambigu�\n"
+msgstr "%s: опція `%s' неоднозначна\n"
 
 #: lib/getopt.c:603 lib/getopt.c:607
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: op�iunea `--%s' nu permite argumente\n"
+msgstr "%s: опція `--%s' не може мати аргументу\n"
 
 #: lib/getopt.c:616 lib/getopt.c:621
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: op�iunea `%c%s' nu permite argumente\n"
+msgstr "%s: опція `%c%s' не може мати аргументу\n"
 
 #: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: op�iunea `%s' necesit� un argument\n"
+msgstr "%s: опція `%s' вимагає аргумент\n"
 
 #: lib/getopt.c:727 lib/getopt.c:730
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: op�iune necunoscut� `--%s'\n"
+msgstr "%s: невідома опція `--%s'\n"
 
 #: lib/getopt.c:738 lib/getopt.c:741
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: op�iune necunoscut� `%c%s'\n"
+msgstr "%s: невідома опція `%c%s'\n"
 
 #: lib/getopt.c:796 lib/getopt.c:799
 #, c-format
 msgid "%s: illegal option -- %c\n"
-msgstr "%s: op�iune ilegal� -- %c\n"
+msgstr "%s: недопустима опція -- %c\n"
 
 #: lib/getopt.c:805 lib/getopt.c:808
 #, c-format
 msgid "%s: invalid option -- %c\n"
-msgstr "%s: op�iune invalid� -- %c\n"
+msgstr "%s: невірна опція -- %c\n"
 
 #: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: op�iunea necesit� un argument -- %c\n"
+msgstr "%s: опція вимагає аргумент -- %c\n"
 
 #: lib/getopt.c:935 lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: op�iune `-W %s' este ambigu�\n"
+msgstr "%s: опція `-W %s' неоднозначна\n"
 
 #: lib/getopt.c:978 lib/getopt.c:999
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: op�iune `-W %s' nu permite argumente\n"
+msgstr "%s: опція `-W %s' не може мати аргументу\n"
 
 #: lib/mkdir-p.c:203 lib/mkdir-p.c:294
 #, fuzzy, c-format
 msgid "cannot change owner and/or group of %s"
-msgstr "nu se poate trece �n uid %lu: %m"
+msgstr "Не вдається перейти на uid %lu: %m"
 
 #: lib/mkdir-p.c:229 lib/mkdir-p.c:266
 #, fuzzy, c-format
 msgid "cannot create directory %s"
-msgstr "nu se poate crea iterator: %s"
+msgstr "Не вдається створити каталог %s: %s"
 
 #: lib/mkdir-p.c:240
 #, fuzzy, c-format
 msgid "cannot chdir to directory %s"
-msgstr "nu se poate crea iterator: %s"
+msgstr "Не вдається створити каталог %s: %s"
 
 #: lib/mkdir-p.c:307 lib/mkdir-p.c:332
 #, fuzzy, c-format
 msgid "cannot change permissions of %s"
-msgstr "Permisiuni gre�ite la %s. Seta�i 0600."
+msgstr "Неправильні права для %s. Встановіть 0600"
 
 #: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
 #, fuzzy
 msgid "memory exhausted"
-msgstr "Memorie plin�"
+msgstr "Пам'ять вичерпано"
 
 #: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
 #, fuzzy
 msgid "cannot create pipe"
-msgstr "nu se poate crea mailerul \"%s\""
+msgstr "Не вдається створити перелік"
 
 #: lib/regcomp.c:131
 msgid "Success"
-msgstr "Succes"
+msgstr "Успіх"
+
+#: lib/regcomp.c:143
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "Недійсний заголовок: %s"
 
 #: lib/regcomp.c:149
 #, fuzzy
 msgid "Invalid back reference"
-msgstr "Num�r invalid"
+msgstr "Недійсне число"
+
+#: lib/regcomp.c:161
+#, fuzzy
+msgid "Invalid content of \\{\\}"
+msgstr "Невірна опція -- %s"
 
 #: lib/regcomp.c:164
 #, fuzzy
 msgid "Invalid range end"
-msgstr "Tip de dat� invalid"
+msgstr "Недійсна команда"
 
 #: lib/regcomp.c:167
 msgid "Memory exhausted"
-msgstr "Memorie plin�"
+msgstr "Пам'ять вичерпано"
 
 #: lib/regcomp.c:659
 #, fuzzy
 msgid "No previous regular expression"
-msgstr "Nu exist� fi�ier anterior"
+msgstr "Немає попереднього файлу"
 
 #: lib/userspec.c:110
 #, fuzzy
 msgid "invalid user"
-msgstr "Num�r invalid"
+msgstr "Недійсне число"
 
 #: lib/userspec.c:111
 #, fuzzy
 msgid "invalid group"
-msgstr "Deschide grup"
+msgstr "Відкрити групу"
 
 #: lib/xmemcoll.c:50
 #, fuzzy
 msgid "string comparison failed"
-msgstr "Autentificare e�uat�"
+msgstr "Ідентифікація не вдалася"

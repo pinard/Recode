@@ -1,789 +1,748 @@
-# -*- mode: po; coding: iso-latin-2; -*- Slovenian msg. catalog for GNU recode.
-# Copyright (C) 1996 Free Software Foundation, Inc.
-# Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>, 1996.
-#
-# $Id: recode-3.6.sl.po,v 1.2 2001/06/08 10:41:42 peterlin Exp $
+# -*- mode: po; coding: utf-8; -*- Slovenian message catalog for GNUlib.
+# Copyright (C) 2005, 2007 Free Software Foundation, Inc.
+# Primo≈æ Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>, 2005, 2007.
+# $Id: gnulib-1.1.sl.po,v 1.2 2007/10/16 07:56:20 peterlin Exp $
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2001-06-08 12:41+02:00\n"
-"Last-Translator: Primoz Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>\n"
-"Language-Team: Slovenian <sl@li.org>\n"
+"Project-Id-Version: gnulib 1.1\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2007-07-19 12:19+0300\n"
+"PO-Revision-Date: 2007-10-16 09:56+0200\n"
+"Last-Translator: Primo≈æ Peterlin <primoz.peterlin@biofiz.mf.uni-lj.si>\n"
+"Language-Team: Slovenian <translation-team-sl@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Brez napak"
+#: lib/argmatch.c:134
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "neveljaven argument %s za %s"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "NekanoniËen vhod"
+#: lib/argmatch.c:135
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "dvoumen argument %s za %s"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Dvoumen izhod"
+#: lib/argmatch.c:154
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Veljavni argumenti so:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Neprevedljiv vhod"
+#: lib/argp-help.c:148
+#, c-format
+msgid "ARGP_HELP_FMT: %s value is less than or equal to %s"
+msgstr "ARGP_HELP_FMT: vrednost %s je manj≈°a ali enaka %s"
 
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "Neveljaven vhod"
+#: lib/argp-help.c:221
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
+msgstr "%.*s: ARGP_HELP_FMT parameter zahteva vrednost"
 
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Teæave v sistemu"
+#: lib/argp-help.c:227
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter must be positive"
+msgstr "%.*s: ARGP_HELP_FMT parameter mora biti pozitiven"
 
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Zloraba pretvorne knjiænice"
+#: lib/argp-help.c:236
+#, c-format
+msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
+msgstr "%.*s: Neznan parameter ARGP_HELP_FMT"
 
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "Notranja napaki pri pretvorbi"
+#: lib/argp-help.c:248
+#, c-format
+msgid "Garbage in ARGP_HELP_FMT: %s"
+msgstr "Smetje v ARGP_HELP_FMT: %s"
 
-# POZOR!!!
-# Tole bi nujno moral dobiti v roke pravnik...
-#: src/main.c:208
+#: lib/argp-help.c:1247
+msgid "Mandatory or optional arguments to long options are also mandatory or optional for any corresponding short options."
+msgstr "Argumenti, ki so kot obvezni ali neobvezni navedeni pri dolgi obliki izbire, so obvezni ali neobvezni tudi pri odgovarjajoƒçih kratkih oblikah izbire."
+
+#: lib/argp-help.c:1640
+msgid "Usage:"
+msgstr "Uporaba:"
+
+#: lib/argp-help.c:1644
+msgid "  or: "
+msgstr " ali: "
+
+#: lib/argp-help.c:1656
+msgid " [OPTION...]"
+msgstr " [IZBIRA...]"
+
+#: lib/argp-help.c:1683
+#, c-format
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Poskusite ¬ª%s --help¬´ ali ¬ª%s --usage¬´ za izƒçrpnej≈°a navodila.\n"
+
+#: lib/argp-help.c:1711
+#, c-format
+msgid "Report bugs to %s.\n"
+msgstr "Poroƒçila o napakah javite na %s.\n"
+
+#: lib/argp-help.c:1930 lib/error.c:125
+msgid "Unknown system error"
+msgstr "Neznana sistemska napaka"
+
+#: lib/argp-parse.c:82
+msgid "give this help list"
+msgstr "poda ta seznam pomoƒçi"
+
+#: lib/argp-parse.c:83
+msgid "give a short usage message"
+msgstr "poda kratka navodila"
+
+#: lib/argp-parse.c:84
+msgid "NAME"
+msgstr "IME"
+
+#: lib/argp-parse.c:84
+msgid "set the program name"
+msgstr "nastavi ime programa"
+
+#: lib/argp-parse.c:85
+msgid "SECS"
+msgstr "SEK"
+
+#: lib/argp-parse.c:86
+msgid "hang for SECS seconds (default 3600)"
+msgstr "zastane za SEK sekund (privzeto 3600)"
+
+#: lib/argp-parse.c:143
+msgid "print program version"
+msgstr "izpi≈°e razliƒçico programa"
+
+#: lib/argp-parse.c:159
+msgid "(PROGRAM ERROR) No version known!?"
+msgstr "(PROGRAMSKA NAPAKA) Razliƒçice ni moƒç ugotoviti?!"
+
+#: lib/argp-parse.c:612
+#, c-format
+msgid "%s: Too many arguments\n"
+msgstr "%s: preveƒç argumentov\n"
+
+#: lib/argp-parse.c:755
+msgid "(PROGRAM ERROR) Option should have been recognized!?"
+msgstr "(PROGRAMSKA NAPAKA) Izbire bi morali prepoznati?!"
+
+#: lib/c-stack.c:240
+msgid "program error"
+msgstr "napaka v programu"
+
+#: lib/c-stack.c:241
+msgid "stack overflow"
+msgstr "prekoraƒçitev sklada"
+
+#: lib/closeout.c:74
+msgid "write error"
+msgstr "napaka pri pisanju"
+
+#: lib/copy-file.c:67
+#, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "napaka pri odpiranju datoteke \"%s\" za branje"
+
+#: lib/copy-file.c:74
+#, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "varnostne datoteke \"%s\" ni mogoƒçe odpreti za pisanje"
+
+#: lib/copy-file.c:82
+#, c-format
+msgid "error reading \"%s\""
+msgstr "napaka pri branju \"%s\""
+
+#: lib/copy-file.c:87 lib/copy-file.c:92 lib/copy-file.c:131
+#, c-format
+msgid "error writing \"%s\""
+msgstr "napaka pri pisanju na \"%s\""
+
+#: lib/copy-file.c:94 lib/copy-file.c:133
+#, c-format
+msgid "error after reading \"%s\""
+msgstr "napaka po branju \"%s\""
+
+#: lib/csharpcomp.c:280
+msgid "fdopen() failed"
+msgstr "klic fdopen() ni uspel"
+
+#: lib/csharpcomp.c:540
+msgid "C# compiler not found, try installing pnet"
+msgstr "prevajalnika za C# ni najti, namestite pnet"
+
+#: lib/csharpexec.c:344
+msgid "C# virtual machine not found, try installing pnet"
+msgstr "virtualnega stroja C# ni najti, namestite pnet"
+
+#: lib/execute.c:185 lib/execute.c:261 lib/execute.c:303 lib/pipe.c:230
+#: lib/pipe.c:348 lib/pipe.c:408 lib/wait-process.c:334 lib/wait-process.c:401
+#, c-format
+msgid "%s subprocess failed"
+msgstr "%s podproces ni uspel"
+
+#: lib/file-type.c:39
+msgid "regular empty file"
+msgstr "navadna prazna datoteka"
+
+#: lib/file-type.c:39
+msgid "regular file"
+msgstr "navadna datoteka"
+
+#: lib/file-type.c:42
+msgid "directory"
+msgstr "imenik"
+
+#: lib/file-type.c:45
+msgid "block special file"
+msgstr "bloƒçna enota"
+
+#: lib/file-type.c:48
+msgid "character special file"
+msgstr "znakovna enota"
+
+#: lib/file-type.c:51
+msgid "fifo"
+msgstr "FIFO"
+
+# ! INEXACT
+#: lib/file-type.c:54
+msgid "symbolic link"
+msgstr "simbolna povezava"
+
+#: lib/file-type.c:57
+msgid "socket"
+msgstr "vtiƒçnica"
+
+#: lib/file-type.c:60
+msgid "message queue"
+msgstr "vrsta sporoƒçil"
+
+#: lib/file-type.c:63
+msgid "semaphore"
+msgstr "semafor"
+
+#: lib/file-type.c:66
+msgid "shared memory object"
+msgstr "deljen pomnilni≈°ki predmet"
+
+#: lib/file-type.c:69
+msgid "typed memory object"
+msgstr "tipiziran pomnilni≈°ki predmet"
+
+#: lib/file-type.c:71
+msgid "weird file"
+msgstr "ƒçudna datoteka"
+
+#: lib/gai_strerror.c:44
+msgid "Address family for hostname not supported"
+msgstr "Dru≈æina naslovov za ime gostitelja ni podprta"
+
+#: lib/gai_strerror.c:45
+msgid "Temporary failure in name resolution"
+msgstr "Zaƒçasen neuspeh pri razre≈°evanju imena"
+
+#: lib/gai_strerror.c:46
+msgid "Bad value for ai_flags"
+msgstr "Slaba vrednost ai_flags"
+
+#: lib/gai_strerror.c:47
+msgid "Non-recoverable failure in name resolution"
+msgstr "Nepopravljiv neuspeh pri razre≈°evanju imena"
+
+#: lib/gai_strerror.c:48
+msgid "ai_family not supported"
+msgstr "ai_family ni podprt"
+
+#: lib/gai_strerror.c:49
+msgid "Memory allocation failure"
+msgstr "Neuspeh pri dodelitvi pomnilnika"
+
+#: lib/gai_strerror.c:50
+msgid "No address associated with hostname"
+msgstr "Z imenom gostitelja ni povezan noben naslov"
+
+#: lib/gai_strerror.c:51
+msgid "Name or service not known"
+msgstr "Ime ali storitev ni poznana"
+
+#: lib/gai_strerror.c:52
+msgid "Servname not supported for ai_socktype"
+msgstr "Servname ni podprt za ai_socktype"
+
+#: lib/gai_strerror.c:53
+msgid "ai_socktype not supported"
+msgstr "ai_socktype ni podprt"
+
+#: lib/gai_strerror.c:54
+msgid "System error"
+msgstr "Sistemska napaka"
+
+#: lib/gai_strerror.c:55
+msgid "Argument buffer too small"
+msgstr "Medpomnilnik za argumente je premajhen"
+
+#: lib/gai_strerror.c:57
+msgid "Processing request in progress"
+msgstr "Obdelava zahtevka v teku"
+
+#: lib/gai_strerror.c:58
+msgid "Request canceled"
+msgstr "Zahtevek preklican"
+
+#: lib/gai_strerror.c:59
+msgid "Request not canceled"
+msgstr "Zahtevek ni preklican"
+
+#: lib/gai_strerror.c:60
+msgid "All requests done"
+msgstr "Vsi zahtevki obdelani"
+
+#: lib/gai_strerror.c:61
+msgid "Interrupted by a signal"
+msgstr "Prekinjeno s signalom"
+
+#: lib/gai_strerror.c:62
+msgid "Parameter string not correctly encoded"
+msgstr "Parametriƒçni niz nepravilno kodiran"
+
+#: lib/gai_strerror.c:74
+msgid "Unknown error"
+msgstr "Neznana napaka"
+
+#: lib/getopt.c:531 lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: izbira ¬ª%s¬´ je dvoumna\n"
+
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: izbira ¬ª--%s¬´ ne dovoljuje argumenta\n"
+
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: izbira ¬ª%c%s¬´ ne dovoljuje argumenta\n"
+
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: izbira ¬ª%s¬´ zahteva argument\n"
+
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: neprepoznana izbira ¬ª--%s¬´\n"
+
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: neprepoznana izbira ¬ª%c%s¬´\n"
+
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: nedovoljena izbira -- %c\n"
+
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: neveljavna izbira -- %c\n"
+
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: izbira zahteva argument -- %c\n"
+
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: izbira ¬ª-W %s¬´ je dvoumna\n"
+
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: izbira ¬ª-W %s¬´ ne dovoljuje argumenta\n"
+
+#: lib/human.c:477
+msgid "block size"
+msgstr "velikost bloka"
+
+#: lib/javacomp.c:128 lib/javacomp.c:142 lib/javacomp.c:158
+msgid "invalid source_version argument to compile_java_class"
+msgstr "neveljaven argument source_version za compile_java_class"
+
+#: lib/javacomp.c:173 lib/javacomp.c:194
+msgid "invalid target_version argument to compile_java_class"
+msgstr "neveljaven argument target_version za compile_java_class"
+
+#: lib/javacomp.c:505
+#, c-format
+msgid "failed to create \"%s\""
+msgstr "ustvarjanje \"%s\" ni uspelo"
+
+#: lib/javacomp.c:512
+#, c-format
+msgid "error while writing \"%s\" file"
+msgstr "napaka pri pisanju v datoteko \"%s\""
+
+#: lib/javacomp.c:2343
+msgid "Java compiler not found, try installing gcj or set $JAVAC"
+msgstr "prevajalnika za Javo ni najti, nastavite $JAVAC ali namestite gcj"
+
+#: lib/javaexec.c:418
+msgid "Java virtual machine not found, try installing gij or set $JAVA"
+msgstr "virtualnega stroja za Javo ni najti, nastavite $JAVA ali namestite gij"
+
+#: lib/mkdir-p.c:197
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "dovoljenj %s ni mogoƒçe spremeniti"
+
+#: lib/mkdir-p.c:207
+#, c-format
+msgid "cannot create directory %s"
+msgstr "imenika %s ni mogoƒçe ustvariti"
+
+# ! INEXACT
+#: lib/obstack.c:424 lib/obstack.c:426 lib/xalloc-die.c:35 lib/xsetenv.c:39
+msgid "memory exhausted"
+msgstr "zmanjkalo pomnilnika"
+
+#: lib/openat-die.c:34
+msgid "unable to record current working directory"
+msgstr "ni mogoƒçe zabele≈æiti trenutnega delovnega imenika"
+
+#: lib/openat-die.c:47
+msgid "failed to return to initial working directory"
+msgstr "vrnitev v zaƒçetni delovni imenik neuspe≈°na"
+
+#: lib/pagealign_alloc.c:142
+msgid "Failed to open /dev/zero for read"
+msgstr "Napaka pri odpiranju /dev/zero za branje"
+
+#: lib/pipe.c:156 lib/pipe.c:159 lib/pipe.c:263 lib/pipe.c:266
+msgid "cannot create pipe"
+msgstr "ni mogoƒçe ustvariti cevovoda"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:229
+msgid "`"
+msgstr "¬ª"
+
+#: lib/quotearg.c:230
+msgid "'"
+msgstr "¬´"
+
+#: lib/regcomp.c:131
+msgid "Success"
+msgstr "Uspe≈°no"
+
+#: lib/regcomp.c:134
+msgid "No match"
+msgstr "Brez zadetkov"
+
+#: lib/regcomp.c:137
+msgid "Invalid regular expression"
+msgstr "Neveljaven regularni izraz"
+
+#: lib/regcomp.c:140
+msgid "Invalid collation character"
+msgstr "Neveljaven razvr≈°ƒçevalni znak"
+
+#: lib/regcomp.c:143
+msgid "Invalid character class name"
+msgstr "Neveljavno ime razreda znakov"
+
+#: lib/regcomp.c:146
+msgid "Trailing backslash"
+msgstr "Sledeƒça obrnjena po≈°evnica"
+
+#: lib/regcomp.c:149
+msgid "Invalid back reference"
+msgstr "Neveljaven povratni sklic"
+
+#: lib/regcomp.c:152
+msgid "Unmatched [ or [^"
+msgstr "Nezakljuƒçen [ ali [^"
+
+#: lib/regcomp.c:155
+msgid "Unmatched ( or \\("
+msgstr "Nezakljuƒçen ( ali \\("
+
+#: lib/regcomp.c:158
+msgid "Unmatched \\{"
+msgstr "Nezakljuƒçen \\{"
+
+#: lib/regcomp.c:161
+msgid "Invalid content of \\{\\}"
+msgstr "Neveljavna vsebina \\{\\}"
+
+#: lib/regcomp.c:164
+msgid "Invalid range end"
+msgstr "Neveljaven konec razpon"
+
+# ! INEXACT
+#: lib/regcomp.c:167
+msgid "Memory exhausted"
+msgstr "Zmanjkalo pomnilnika"
+
+#: lib/regcomp.c:170
+msgid "Invalid preceding regular expression"
+msgstr "Neveljaven predhodni regularni izraz"
+
+#: lib/regcomp.c:173
+msgid "Premature end of regular expression"
+msgstr "Nepriƒçakovan konec regularnega izraza"
+
+#: lib/regcomp.c:176
+msgid "Regular expression too big"
+msgstr "Regularni izraz je prevelik"
+
+#: lib/regcomp.c:179
+msgid "Unmatched ) or \\)"
+msgstr "Odveƒçni ) ali \\)"
+
+#: lib/regcomp.c:680
+msgid "No previous regular expression"
+msgstr "Manjkajoƒç predhodni regularni izraz"
+
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[jJdD]"
+
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[nN]"
+
+#: lib/unicodeio.c:141
+msgid "iconv function not usable"
+msgstr "funkcija iconv ne deluje"
+
+#: lib/unicodeio.c:143
+msgid "iconv function not available"
+msgstr "funkcija iconv ni na voljo"
+
+#: lib/unicodeio.c:150
+msgid "character out of range"
+msgstr "koda znaka izven obsega"
+
+#: lib/unicodeio.c:213
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "znaka s kodo U+%04X ni mogoƒçe pretvoriti v lokalni nabor znakov"
+
+#: lib/unicodeio.c:215
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "znaka s kodo U+%04X ni moƒç pretvoriti v lokalni nabor znakov: %s"
+
+#: lib/userspec.c:107
+msgid "invalid user"
+msgstr "neveljavno uporabni≈°ko ime"
+
+#: lib/userspec.c:108
+msgid "invalid group"
+msgstr "neveljavno ime skupine"
+
+#: lib/userspec.c:109
+msgid "invalid spec"
+msgstr "neveljavna specifikacija"
+
+#. TRANSLATORS: Translate "(C)" to the copyright symbol
+#. (C-in-a-circle), if this symbol is available in the user's
+#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
+#: lib/version-etc.c:66
+msgid "(C)"
+msgstr "¬©"
+
+#: lib/version-etc.c:68
 msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
 "\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 msgstr ""
-"Ta program je prosta programska oprema; lahko ga redistribuirate in/ali\n"
-"spreminjate po pogojih, doloËenih v ,,GNU General Public License``, izdani\n"
-"pri Free Software Foundation; 2. izdaja (ali novejπa, Ëe razpolagate z "
-"njo).\n"
 "\n"
-"Ta program se distribuira v upanju, da je uporaben, vendar BREZ "
-"KAKR©NEGAKOLI\n"
-"JAMSTVA; vkljuËno z impliciranim jamstvom prodajnosti ali uporabnosti za\n"
-"izbrani namen.  Za podrobnosti si oglejte ,,GNU General Public License``.\n"
+"GPLv3+: GNU GPL razliƒçica 3 ali kasnej≈°e, http://gnu.org/licences/gpl.html\n"
+"To je prost program; smete ga spreminjati in deliti z drugimi.\n"
+"Za program ni NOBENEGA JAMSTVA do zakonsko podanih omejitev.\n"
 "\n"
-"Izvod ,,GNU General Public License`` bi moral biti priloæen temu programu;\n"
-"Ëe ni, piπite Free Software Foundation, Inc., 59 Temple Place - Suite 330,\n"
-"Boston, MA 02111-1307, USA.\n"
 
-#: src/main.c:233
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:84
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Poskusite ,%s %s` za dodatne informacije.\n"
+msgid "Written by %s.\n"
+msgstr "Avtor(ica): %s.\n"
 
-#: src/main.c:237
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:88
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "Avtorja: %s in %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:92
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "Avtorji: %s, %s in %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:98
+#, c-format
 msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"Prosti ,recode` pretvarja datoteke med razliËnimi kodnimi nabori in "
-"preËrkovanji.\n"
+"Avtorji: %s, %s, %s\n"
+"in %s.\n"
 
-#: src/main.c:241
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
 #, c-format
 msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Uporaba: %s [IZBIRA]... [ [NABOR] | ZAHTEVA [DATOTEKA]... ]\n"
+"Avtorji: %s, %s, %s,\n"
+"%s in %s.\n"
 
-#: src/main.c:244
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"»e je pri dolgi obliki izbire argument naveden kot obvezen, velja\n"
-"obveza tudi za kratko obliko. Podobno tudi za neobvezne argumente.\n"
+"Avtorji: %s, %s, %s,\n"
+"%s, %s in %s.\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:117
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Seznami:\n"
-"  -l, --list[=OBLIKA]        izpiπi enega ali vse kodirane nabore znakov\n"
-"  -k, --known=PARI           izpiπi nabore, ki ustrezajo podanim PAROM "
-"pretvorb\n"
-"  -h, --header[=[JEZIK/]IME] izpiπi pretvorno tabelo z danim IMENOM v prog. "
-"JEZIKU\n"
-"  -F, --freeze-tables        izpiπi modul v C z vsemi pretvornimi tabelami\n"
-"  -T, --find-subsets         poroËaj o vseh naborih, ki so podmnoæica "
-"drugih\n"
-"  -C, --copyright            izpiπi dovoljenje za uporabo in razπirjanje\n"
-"      --help                 ta navodila\n"
-"      --version              razliËica programa\n"
+"Avtorji: %s, %s, %s,\n"
+"%s, %s, %s in %s.\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:124
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"NaËini dela:\n"
-"  -v, --verbose           med potekom razlagaj korake in komentiraj "
-"napredek\n"
-"  -q, --quiet, --silent   brez opozoril o neobrnljivih pretvorbah\n"
-"  -f, --force             pretvorbo izvedi, Ëetudi ni obrnljiva\n"
-"  -t, --touch             pretvorjena datoteka naj nosi datum pretvorbe,\n"
-"                          ne nastanka\n"
-"  -i, --sequence=files    uporabi vmesne datoteke za zaporedne prehode\n"
-"      --sequence=memory   med prehodi hrani besedilo v pomnilniku\n"
+"Avtorji: %s, %s, %s,\n"
+"%s, %s, %s, %s\n"
+"in %s.\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "  -p, --sequence=pipe     uporabi cevovode za nizanje prehodov\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     isto kot -i (na tem sistemu)\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:132
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"NatanËnejπe nastavljanje:\n"
-"  -s, --strict           uporabi strogo pretvorbo, celo na raËun izgube "
-"znakov\n"
-"  -d, --diacritics       pretvori samo preglaπene in podobne znake za HTML/"
-"LaTeX\n"
-"  -S, --source[=JEZIK]   omeji pretvorbe na nize in komentarje, kot v "
-"JEZIKU\n"
-"  -c, --colons           nadomesti dierezo z dvopiËjem, ne z dvojnim "
-"narekovajem\n"
-"  -g, --graphics         semigrafiËne znake s PC pribl. nadomestimo z znaki "
-"ASCII\n"
-"  -x, --ignore=NABOR     pri pretvorbi se izogni navedenemu vmesnemu NABORU\n"
+"Avtorji: %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s in %s.\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:142
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
-"\n"
-"Izbira -l brez podane OBLIKE ali NABORA izpiπe seznam vseh znanih kodnih "
-"naborov\n"
-"in preËrkovalnih shem. OBLIKA je lahko ,decimal` (desetiπka), ,octal` "
-"(osmiπka),\n"
-",hexadecimal` (πestnajstiπka) ali ,full` (polna), ali ena od Ërk ,dohf`.\n"
+"Avtorji: %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s in drugi.\n"
 
-#: src/main.c:302
-msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
-msgstr ""
-"»e ni doloËena spremenljivka DEFAULT_CHARSET, se privzame NABOR,\n"
-"doloËen s spremenljivkami LC_ALL, LC_CTYPE ali LANG.\n"
-
-#: src/main.c:307
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
-"Pri izbiri -k se izpiπejo vsi moæni startni nabori za podani ciljni nabor.\n"
-"Startni in ciljni nabor sta kodirana nabora znakov. PARI naj imajo obliko\n"
-",,START1:CILJ1,START2:CILJ2...``, kjer so STARTn in CILJn desetiπke kode \n"
-"znakov v startnem in ciljnem kodnem naboru.\n"
-
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr "JEZIK je lahko ,c`, ,perl` ali ,po`; privzeto je ,c`.\n"
-
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"\n"
-"ZAHTEVEK ima obliko PODZAHTEVEK[,PODZAHTEVEK]...; PODZAHTEVEK ima obliko\n"
-"KODIRANJE[,KODIRANJE]...; KODIRANJE ima obliko [NABOR][/[SHEMA]]. ZAHTEVEK\n"
-"ima pogosto obliko PREJ..POTEM, kjer sta PREJ in POTEM kodirana nabora "
-"znakov.\n"
-"IzpuπËeni NABOR pomeni privzetega; izpuπËena [/SHEMA] pomeni privzeto\n"
-"preËrkovalno shemo za dani NABOR. Poπevnica / brez sheme pomeni brez "
-"preËrkovalne\n"
-"sheme. Podrobnosti so v priroËniku.\n"
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-"\n"
-"»e nista podana niti -i niti -p, se uporabi -p, kadar ni podana DATOTEKA, \n"
-"sicer pa -i. Pretvorba vsake DATOTEKE se zapiπe prek izvorne razliËice. »e\n"
-"DATOTEKA ni podana, recode deluje kot filter med standardnim vhodom in "
-"izhodom.\n"
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"SporoËila o napakah javite na <recode-bugs@iro.umontreal.ca>.\n"
-
-#: src/main.c:429
+#: lib/wait-process.c:277 lib/wait-process.c:309 lib/wait-process.c:367
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "Zaporedje ,%s` je dvoumno"
+msgid "%s subprocess"
+msgstr "%s podproces"
 
-#: src/main.c:433
+#: lib/wait-process.c:326 lib/wait-process.c:393
 #, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "Zaporedje ,%s` je neznano"
+msgid "%s subprocess got fatal signal %d"
+msgstr "%s podproces je prejel terminalni signal %d"
 
-#: src/main.c:463 src/main.c:521
+#: lib/xmemcoll.c:49
+msgid "string comparison failed"
+msgstr "primerjanje nizov ni uspelo"
+
+#: lib/xmemcoll.c:50
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Nastavite LC_ALL='C', da bi odpravili te≈æavo."
+
+#: lib/xmemcoll.c:52
 #, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "Jezik ,%s` je dvoumen"
+msgid "The strings compared were %s and %s."
+msgstr "Primerjana niza sta bila %s in %s."
 
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "Jezik ,%s` je neznan"
+#~ msgid "%s exists but is not a directory"
+#~ msgstr "%s obstaja, vendar ni imenik"
 
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "Oblika ,%s` je dvoumna"
+# ! INEXACT
+#~ msgid "cannot change owner and/or group of %s"
+#~ msgstr "lastnika in/ali skupine %s ni mogoƒçe spremeniti"
 
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "Oblika ,%s` je neznana"
+#~ msgid "cannot chdir to directory %s"
+#~ msgstr "dostop do imenika %s ni mogoƒç"
 
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "Avtor Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"To je prost program; pogoji, pod katerimi ga lahko uporabljate, "
-"razmnoæujete\n"
-"in razπirjate so navedeni v izvorni kodi. Za program ni NOBENEGA jamstva,\n"
-"niti jamstev USTREZNOSTI ZA PRODAJO ali PRIMERNOSTI ZA UPORABO.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "Znak ,%s` je neznan"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "Nabor znakov ,%s` je neznan ali dvoumen"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Zahtevani argument manjka"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Neodobravana skladnja; prosimo, uporabljajte ,%s`"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "Zahteva ,%s` je napaËna"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "Pretvarjamo %s..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " opravljeno\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr " neuspeπno: %s v koraku ,%s..%s`\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s neuspeπno: %s v koraku ,%s..%s`"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "%s v koraku ,%s..%s`"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "Nabor %s æe obstaja in ni %s"
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr "Izpis ,%s' ni mogoË, imen za ta nabor ni na voljo"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "des  osm Hex   UCS2  Mne  %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "Imena za ,%s` niso na voljo"
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "VeË kot ena preËrkovalna shema uvedena za ,%s`"
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "VeË kot ena preËrkovalna shema preklicana za ,%s`"
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "Virtualni pomnilnik porabljen"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Kodi %3d in %3d se obe preslikata v %3d"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr "Noben znak se ne preslika v %3d"
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr "Dana tabela eden-v-enega ni obrnljiva"
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Sledi diagnostika za pretvorbo iz ,%s' v ,%s'"
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Par πt. %d: <%3d, %3d> je v nesoglasju z <%3d, %3d>"
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr "Iz mnoæice znanih parov ni mogoËe dokonËati tabele"
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr "Pretvorba je trivialna, nevredna tabele"
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr "Pretvorba je prezapletena za tabelo"
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sPretvorna tabela mehaniËno generirana s prostim ,%s` %s"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr "%sza zaporedje %s.%s"
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Tabele ni"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "obrnljivo"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s v %s"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "bajt"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "UCS2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "spremenljivo"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*Nedosegljivo*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*zgolj prepis*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "Virtualni pomnilnik porabljen!"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr "Inicializacija koraka neuspeπna"
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "Inicializacija koraka neuspeπna (nepredelane izbire)"
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "Zahtevek: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "SkrËeno v: %s\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Neprepoznano ime preËrkovalne sheme ,%s`"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Pretvorba iz ,%s` v ,%s` ni izvedljiva"
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "V zahtevku priËakujemo ,..`"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "»akalni status procesa potomca je 0x%0.2x"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mne   Opis\n"
-"\n"
-
-#~ msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
-#~ msgstr ""
-#~ "NABOR nima privzete vrednosti; doloËite spremenljivko okolja "
-#~ "DEFAULT_CHARSET.\n"
-
-#~ msgid "Ambiguous sequence `%s'"
-#~ msgstr "Dvoumno zaporedje ,%s`"
-
-#~ msgid "Unknown sequence `%s'"
-#~ msgstr "Neznano zaporedje ,%s`"
-
-#~ msgid "Ambiguous language `%s'"
-#~ msgstr "Dvoumen jezik ,%s`"
-
-#~ msgid "Unknown language `%s'"
-#~ msgstr "Neznan jezik ,%s`"
-
-#~ msgid "Ambiguous format `%s'"
-#~ msgstr "Dvoumen format ,%s`"
-
-#~ msgid "Unknown format `%s'"
-#~ msgstr "Neznan format ,%s`"
-
-#~ msgid "Erroneous request `%s'"
-#~ msgstr "NapaËen zahtevek ,%s`"
-
-#~ msgid "   Each input char transforms into an output string,\n"
-#~ msgstr "   Vsak vhodni znak se preslika v niz znakov,\n"
-
-#~ msgid "   Each input char transforms into an output string.\n"
-#~ msgstr "   Vsak vhodni znak se preslika v niz znakov.\n"
-
-#~ msgid "   Programming is needed to handle multichar input.\n"
-#~ msgstr "   Nabori z veË kot 8 biti zahtevajo programiranje.\n"
-
-#~ msgid "   The recoding might not be reversible.\n"
-#~ msgstr "   Pretvorba morda ni obrnjiva.\n"
-
-#~ msgid "   The recoding should be reversible.\n"
-#~ msgstr "   Pretvorba bi morala biti obrnljiva.\n"
-
-#~ msgid "   programming is needed to handle multichar input.\n"
-#~ msgstr "   nabori z veË kot 8 biti zahtevajo programiranje.\n"
-
-#~ msgid "  UNACHIEVABLE\n"
-#~ msgstr "  NEIZVEDLJIVO\n"
-
-#~ msgid "%s: Recoding is not reversible"
-#~ msgstr "%s: Pretvorba ni obrnljiva"
-
-#~ msgid ", %d saved by merging"
-#~ msgstr ", %d znakov prihranjenih pri zdruæevanju"
-
-#~ msgid "/* Conversion table from `%s' charset to `%s' charset.\n"
-#~ msgstr "/* Tabela za pretvorbo iz nabora ,%s' v nabor ,%s'.\n"
-
-#~ msgid "Cannot auto check on %s"
-#~ msgstr "Nabora %s ni mogoËe avtomatiËno preveriti"
-
-#~ msgid "Cannot auto check the ignored charset"
-#~ msgstr "IzpuπËenega nabora ni mogoËe avtomatiËno preveriti"
-
-#~ msgid "Currently, -s is ignored when -g is selected"
-#~ msgstr "Za zdaj je izbira -s ignorirana, kadar je izbrano -g"
-
-#~ msgid "Hash stats: %d names using %d buckets out of %d\n"
-#~ msgstr ""
-#~ "Statistika za razprπitveno tabelo: %d imen porabilo %d od %d koπev\n"
-
-#~ msgid "Internal error - strategy undecided"
-#~ msgstr "Interna napaka - neodloËen o strategiji"
-
-#~ msgid "MAX_CHARSETS is too small"
-#~ msgstr "MAX_CHARSETS premajhno"
-
-#~ msgid "MAX_SEQUENCE is too small"
-#~ msgstr "MAX_SEQUENCE premajhno"
-
-#~ msgid "MAX_SINGLE_STEPS is too small"
-#~ msgstr "MAX_SINGLE_STEPS premajhno"
-
-#~ msgid "Mere copy for the trivial recoding\n"
-#~ msgstr "Zgolj kopija za trivialno pretvorbo\n"
-
-#~ msgid "ONE to SAME"
-#~ msgstr "EDEN v ISTEGA"
-
-#~ msgid "Recoding is not reversible"
-#~ msgstr "Pretvorba ni obrnljiva"
-
-#~ msgid "Simplified to: "
-#~ msgstr "Poenostavljeno: "
-
-#~ msgid "UNACHIEVABLE recoding!\n"
-#~ msgstr "NEIZVEDLJIVA pretvorba!\n"
-
-#~ msgid "You may not explicitly recode from RFC 1345"
-#~ msgstr "Eksplicitna pretvorba iz RFC 1345 ni izvedljiva"
-
-#~ msgid "  -o, --sequence=popen    same as -i (on this system)\n"
-#~ msgstr "  -o, --sequence=popen    isto kot -I (na tem sistemu)\n"
-
-#~ msgid ""
-#~ "  -o, --sequence=popen    use popen machinery for sequencing passes\n"
-#~ msgstr "  -o, --sequence=popen    uporabi mehanizem ,popen'\n"
-
-#~ msgid ""
-#~ "  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-#~ "  -s, --strict            use strict mappings, even loose characters\n"
-#~ "  -t, --touch             touch the recoded files after replacement\n"
-#~ "  -v, --verbose           explain sequence of steps and report progress\n"
-#~ "  -x, --ignore=CHARSET    ignore CHARSET while choosing a recoding path\n"
-#~ "\n"
-#~ "If none of -i, -o and -p are given, presume -p if no FILE, else -i.\n"
-#~ "Each FILE is recoded over itself, destroying the original.  If no\n"
-#~ "FILE is specified, then act as a filter and recode stdin to stdout.\n"
-#~ msgstr ""
-#~ "  -q, --quiet, --silent   brez sporoËil o neobrnljivih pretvorbah\n"
-#~ "  -s, --strict            striktna pretvorba, tudi na πkodo izgubljenih "
-#~ "znakov\n"
-#~ "  -t, --touch             konËna datoteka naj nosi datum pretvorbe, ne "
-#~ "nastanka\n"
-#~ "  -v, --verbose           z razlago poteka pretvorbe\n"
-#~ "  -x, --ignore=NABOR      izpusti NABOR pri izbiri poti pretvorbe\n"
-#~ "\n"
-#~ "»e ni podan -i, -o, ali -p, se privzame -p, kadar ni podana DATOTEKA, "
-#~ "sicer -i.\n"
-#~ "Vsaka DATOTEKA se pretvori Ëez samo sebe in uniËi izvirnik.  »e DATOTEKA\n"
-#~ "ni podana, deluje kot filter in pretvarja podatke z vhoda na izhod.\n"
-
-#~ msgid "BEFORE and AFTER both default to `%s' when needed.\n"
-#~ msgstr "»e nabor PREJ ali POTEM ni podan, se nadomesti z ,%s'\n"
-
-# POZOR
-#~ msgid ""
-#~ "Mandatory or optional arguments to long options are mandatory or "
-#~ "optional\n"
-#~ "for short options too.\n"
-#~ "\n"
-#~ "  -C, --copyright       display Copyright and copying conditions\n"
-#~ "  -a, --auto-check      report about some or all recoding paths, then "
-#~ "exit\n"
-#~ "  -l, --list[=FORMAT]   list one or all known charsets\n"
-#~ "  -k, --known=PAIRS     restrict charsets according to known PAIRS list\n"
-#~ "      --help            display this help and exit\n"
-#~ "      --version         output version information and exit\n"
-#~ "\n"
-#~ "FORMAT is a word among decimal, octal, hexadecimal or full (which may be\n"
-#~ "abbreviated to one of `dohf'), it defaults to just the canonical name.\n"
-#~ "With -k, possible before charsets are listed for the given after "
-#~ "CHARSET,\n"
-#~ "both being RFC1345 charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-#~ "AFT2,...\n"
-#~ "and BEFs and AFTs being codes.  All codes are given as decimal numbers.\n"
-#~ msgstr ""
-#~ "Argumenti, ki so obvezni za dolge oblike izbir so obvezni tudi za kratke "
-#~ "oblike,\n"
-#~ "in enako velja za neobvezne argumente.\n"
-#~ "\n"
-#~ "  -C, --copyright       obvestilo avtorskih pravicah\n"
-#~ "  -a, --auto-check      poroËilo o moænih pretvorbah\n"
-#~ "  -l, --list[=FORMAT]   seznam znanih naborov, ali izpis nabora znakov\n"
-#~ "  -k, --known=PARI      omejitev naborov na seznam znanih PAROV\n"
-#~ "      --help            ta navodila\n"
-#~ "      --version         verzija programa\n"
-#~ "\n"
-#~ "FORMAT izpisa je eden od naslednjih: decimal, octal, hexadecimal ali full "
-#~ "(moæna\n"
-#~ "je okrajπava na prvo Ërko: dohf), privzeta izbira je samo kanoniËno ime "
-#~ "nabora.\n"
-#~ "With -k, possible before charsets are listed for the given after "
-#~ "CHARSET,\n"
-#~ "both being RFC1345 charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-#~ "AFT2,...\n"
-#~ "and BEFs and AFTs being codes.  All codes are given as decimal numbers.\n"
-
-#~ msgid ""
-#~ "Option -l with no FORMAT nor CHARSET list all charsets, also see the "
-#~ "Texinfo\n"
-#~ "documentation.  My preferred charsets are (each user has preferences):\n"
-#~ "\n"
-#~ "  ascii-bs   ASCII (7-bit), using backspace to apply diacritics\n"
-#~ "  ibmpc      IBM-PC 8-bit characters, with proper newlines\n"
-#~ "  latex      LaTeX coding of foreign and diacriticized characters\n"
-#~ "  latin1     ISO Latin-1 8-bit extension of ASCII\n"
-#~ "  texte      Easy French convention for transmitting email messages\n"
-#~ msgstr ""
-#~ "Izbira -l brez podanih FORMAT ali NABOR d· seznam vseh naborov, oglejte "
-#~ "si πe\n"
-#~ "dokumentacijo v Texinfo.  Moji priljubljeni nabori (vsak uporabnik ima "
-#~ "svoje):\n"
-#~ "\n"
-#~ "  ascii-bs   7-bitni ASCII, z uporabo Backspace za tisk diakritiËnih "
-#~ "znakov\n"
-#~ "  ibmpc      8-bitni nabor IBM-PC, zakljuËek vrstice CR LF\n"
-#~ "  latex      LaTeX-ov zapis diakritiËnih znakov\n"
-#~ "  latin1     ISO Latin-1 8-bitna razπiritev ASCII\n"
-#~ "  texte      enostavna francoska konvencija za prenos elektronske poπte\n"
+#~ msgid "cannot get the login group of a numeric UID"
+#~ msgstr "imena skupine, ki pripada ≈°tevilƒçnemu UID, ni mogoƒçe ugotoviti"
 
 #~ msgid ""
 #~ "\n"
-#~ "  -c, --colons            use colons instead of double quotes for "
-#~ "diaeresis\n"
-#~ "  -d, --diacritics        limit conversion to diacritics or alike for "
-#~ "LaTeX\n"
-#~ "  -f, --force             force recodings even if they are not "
-#~ "reversible\n"
-#~ "                          (BEWARE: in this version, -f is always "
-#~ "selected)\n"
-#~ "  -g, --graphics          approximate IBMPC rulers by ASCII graphics\n"
-#~ "  -h, --header[=NAME]     write C code with table NAME on stdout, then "
-#~ "exit\n"
-#~ "  -i, --sequence=files    use intermediate files for sequencing passes\n"
+#~ "This is free software.  You may redistribute copies of it under the terms of\n"
+#~ "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+#~ "There is NO WARRANTY, to the extent permitted by law.\n"
+#~ "\n"
 #~ msgstr ""
 #~ "\n"
-#~ "  -c, --colons            dvopiËje namesto narekovajev za preglas\n"
-#~ "  -d, --diacritics        limit conversion to diacritics or alike for "
-#~ "LaTeX\n"
-#~ "  -f, --force             force recodings even if they are not "
-#~ "reversible\n"
-#~ "                          (BEWARE: in this version, -f is always "
-#~ "selected)\n"
-#~ "  -g, --graphics          grafiËne znake IBMPC aproksimiraj z ASCII\n"
-#~ "  -h, --header[=NAME]     write C code with table NAME on stdout, then "
-#~ "exit\n"
-#~ "  -i, --sequence=files    use intermediate files for sequencing passes\n"
-
-#~ msgid ""
-#~ "\n"
-#~ "Usage: %s [OPTION]... [BEFORE]:[AFTER] [FILE]...\n"
-#~ msgstr ""
-#~ "\n"
-#~ "Uporaba: %s [IZBIRA]... [PREJ]:[POTEM] [DATOTEKA]...\n"
-
-#~ msgid "many to many"
-#~ msgstr "veË v veË"
-
-#~ msgid "many to one"
-#~ msgstr "veË v enega"
-
-#~ msgid "one to many"
-#~ msgstr "eden v veË"
-
-#~ msgid "one to one"
-#~ msgstr "eden v enega"
-
-#~ msgid "steps: %d"
-#~ msgstr "korakov: %d"
+#~ "Ta program je prosta programska oprema; lahko ga redistribuirate in/ali\n"
+#~ "spreminjate po pogojih, doloƒçenih v ¬ªGNU General Public License¬´, \n"
+#~ "<http://www.gnu.org/licenses/gpl.html>. Za izdelek ni NOBENEGA JAMSTVA, do\n"
+#~ "z zakonom dovoljene meje.\n"

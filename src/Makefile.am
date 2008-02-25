@@ -43,7 +43,7 @@ C_SURFACES = base64.c dump.c endline.c permut.c quoted.c
 L_SURFACES =
 
 recode_SOURCES = main.c freeze.c mixed.c
-recode_LDADD = librecode.la ../lib/libreco.a
+recode_LDADD = librecode.la ../lib/libgnu.la
 
 librecode_la_SOURCES = argmatch.c charname.c combine.c exitfail.c \
 fr-charname.c hash.c iconv.c libiconv.c localcharset.c merged.c names.c \

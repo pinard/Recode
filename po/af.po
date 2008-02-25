@@ -1,39 +1,34 @@
-# Italian messages for GNU coreutils
-# Copyright (C) 1997, 1998, 1999 Free Software Foundation, Inc.
-# Marco d'Itri <md@linux.it>, 1998, 1999.
-# Giovanni Bortolozzo <borto@dei.unipd.it>, 1998.
+# coreutils-5.2.1.af.po.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Petri Jooste <rkwjpj@puknet.puk.ac.za>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: coreutils 4.5.1\n"
+"Project-Id-Version: coreutils 5.2.1\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
 "POT-Creation-Date: 2005-09-30 17:42+0300\n"
-"PO-Revision-Date: 2002-07-24 18:12+0200\n"
-"Last-Translator: Marco d'Itri <md@linux.it>\n"
-"Language-Team: Italian <tp@lists.linux.it>\n"
+"PO-Revision-Date: 2004-03-17 11:58+0200\n"
+"Last-Translator: Petri Jooste <rkwjpj@puk.ac.za>\n"
+"Language-Team: Afrikaans <i18n@af.org.za>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8-bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
 
 #: lib/argmatch.c:137
 #, c-format
 msgid "invalid argument %s for %s"
-msgstr "argomento %s non valido per %s"
+msgstr "ongeldige parameter %s vir %s"
 
 #: lib/argmatch.c:138
 #, c-format
 msgid "ambiguous argument %s for %s"
-msgstr "argomento %s ambiguo per %s"
+msgstr "dubbelsinnige parameter %s vir %s"
 
 #: lib/argmatch.c:157
-#, fuzzy, c-format
+#, c-format
 msgid "Valid arguments are:"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"Gli argomenti validi sono:\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"Sono caratteri validi:"
+msgstr "Geldige parameters is soos volg:"
 
 #: lib/argp-help.c:1194
 #, fuzzy
@@ -41,139 +36,103 @@ msgid ""
 "Mandatory or optional arguments to long options are also mandatory or "
 "optional for any corresponding short options."
 msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"Gli argomenti obbligatori per le opzioni lunghe lo sono anche per quelle "
-"brevi.\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"Gli argomenti obbligatori per le opzioni lunghe lo sono anche per quelle "
-"corte.\n"
+"Verpligte parameters vir langformaat opsies is ook verpligtend vir "
+"kortformaat opsies.\n"
 
 #: lib/argp-help.c:1597
 #, fuzzy
 msgid " [OPTION...]"
-msgstr "Uso: %s [OPZIONE]...\n"
+msgstr "Gebruik so:  %s [OPSIE]...\n"
 
 #: lib/argp-help.c:1624
 #, fuzzy, c-format
 msgid "Try `%s --help' or `%s --usage' for more information.\n"
-msgstr "Usare `%s --help' per ulteriori informazioni.\n"
+msgstr "Probeer `%s --help' vir meer inligting.\n"
 
 #: lib/argp-help.c:1652
 #, fuzzy, c-format
 msgid "Report bugs to %s.\n"
 msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
 "\n"
-"Segnalare i bug a <%s>.\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"\n"
-"Segnalate i bug a <%s>.\n"
+"Rapporteer foute aan <%s>.\n"
 
 #: lib/argp-help.c:1872 lib/error.c:121
 msgid "Unknown system error"
-msgstr "Errore di sistema sconosciuto"
+msgstr "Onbekende stelselfout"
 
 #: lib/argp-parse.c:84
 msgid "NAME"
-msgstr "NOME"
-
-#: lib/argp-parse.c:147
-#, fuzzy
-msgid "Print program version"
-msgstr "errore del programma"
+msgstr "NAAM"
 
 #: lib/argp-parse.c:619
 #, fuzzy, c-format
 msgid "%s: Too many arguments\n"
-msgstr "troppi argomenti\n"
+msgstr "te veel parameters\n"
 
 #: lib/c-stack.c:244
+#, fuzzy
 msgid "program error"
-msgstr "errore del programma"
-
-#: lib/c-stack.c:245
-msgid "stack overflow"
-msgstr "overflow dello stack"
+msgstr "leesfout"
 
 #: lib/closeout.c:94
 msgid "write error"
-msgstr "errore di scrittura"
+msgstr "skryffout"
 
 #: lib/copy-file.c:65
 #, fuzzy, c-format
 msgid "error while opening \"%s\" for reading"
-msgstr "impossibile aprire %s per la lettura"
+msgstr "kan nie %s oopmaak om te lees nie"
 
 #: lib/copy-file.c:72
 #, fuzzy, c-format
 msgid "cannot open backup file \"%s\" for writing"
-msgstr "impossibile aprire %s per la lettura"
+msgstr "kan nie %s oopmaak om te lees nie"
 
 #: lib/copy-file.c:80
 #, fuzzy, c-format
 msgid "error reading \"%s\""
-msgstr "lettura di %s"
+msgstr "fout met die les van %s"
 
 #: lib/copy-file.c:85 lib/copy-file.c:89
 #, fuzzy, c-format
 msgid "error writing \"%s\""
-msgstr "scrittura di %s"
+msgstr "fout met die skryf na %s"
 
 #: lib/copy-file.c:91
 #, fuzzy, c-format
 msgid "error after reading \"%s\""
-msgstr "lettura di %s"
+msgstr "fout met die les van %s"
 
 #: lib/csharpcomp.c:273
 #, fuzzy
 msgid "fdopen() failed"
-msgstr "strip fallito"
+msgstr "'open' het gefaal"
 
 #: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
 #: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
 #, fuzzy, c-format
 msgid "%s subprocess failed"
-msgstr "%s: process id non valido"
+msgstr "%s: seek het misluk"
 
 #: lib/file-type.c:43
-#, fuzzy
 msgid "regular empty file"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"file regolare vuoto\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"file normale vuoto"
+msgstr "gewone leë lêer"
 
 #: lib/file-type.c:43
-#, fuzzy
 msgid "regular file"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"file regolare\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"file normale"
+msgstr "gewone lêer"
 
 #: lib/file-type.c:46
 msgid "directory"
-msgstr "directory"
+msgstr "lêergids"
 
 #: lib/file-type.c:49
-#, fuzzy
 msgid "block special file"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"file speciale a blocchi\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"file speciali a blocchi"
+msgstr "spesiale bloklêer"
 
 #: lib/file-type.c:52
-#, fuzzy
 msgid "character special file"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"file speciale a caratteri\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"file speciali a caratteri"
+msgstr "spesiale karakterlêer"
 
 #: lib/file-type.c:55
 msgid "fifo"
@@ -181,175 +140,164 @@ msgstr "fifo"
 
 #: lib/file-type.c:58
 msgid "symbolic link"
-msgstr "link simbolico"
+msgstr "simboliese skakel"
 
 #: lib/file-type.c:61
 msgid "socket"
-msgstr "socket"
+msgstr "sok"
 
 #: lib/file-type.c:64
 msgid "message queue"
-msgstr "coda di messaggi"
+msgstr "boodskapwagtou"
 
 #: lib/file-type.c:67
 msgid "semaphore"
-msgstr "semaforo"
+msgstr "semafoor"
 
 #: lib/file-type.c:70
 msgid "shared memory object"
-msgstr "oggetto di memoria condivisa"
+msgstr "gedeeldegeheue-objek"
 
 #: lib/file-type.c:73
 #, fuzzy
 msgid "typed memory object"
-msgstr "oggetto di memoria condivisa"
+msgstr "gedeeldegeheue-objek"
 
 #: lib/file-type.c:75
 msgid "weird file"
-msgstr "file strano"
+msgstr "vreemde lêer"
 
 #: lib/gai_strerror.c:45
 #, fuzzy
 msgid "Address family for hostname not supported"
-msgstr "i file fifo non sono gestiti"
+msgstr "fifo-lêers word nie ondersteun nie"
 
 #: lib/gai_strerror.c:49
 #, fuzzy
 msgid "ai_family not supported"
-msgstr "i file fifo non sono gestiti"
+msgstr "fifo-lêers word nie ondersteun nie"
 
 #: lib/gai_strerror.c:54
 #, fuzzy
 msgid "ai_socktype not supported"
-msgstr "i file fifo non sono gestiti"
+msgstr "fifo-lêers word nie ondersteun nie"
 
 #: lib/gai_strerror.c:55
 #, fuzzy
 msgid "System error"
-msgstr "errore di scrittura"
+msgstr "skryffout"
 
 #: lib/gai_strerror.c:74
 #, fuzzy
 msgid "Unknown error"
-msgstr "Errore di sistema sconosciuto"
+msgstr "Onbekende stelselfout"
 
 #: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: l'opzione `%s' Ã¨ ambigua\n"
+msgstr "%s: opsie `%s' is dubbelsinnig\n"
 
 #: lib/getopt.c:603 lib/getopt.c:607
-#, fuzzy, c-format
+#, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"%s: opzione `--%s' non accetta argomenti\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"%s: l'opzione `--%s' non accetta argomenti\n"
+msgstr "%s: opsie `--%s' laat nie 'n parameter toe nie\n"
 
 #: lib/getopt.c:616 lib/getopt.c:621
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: l'opzione `%c%s' non accetta argomenti\n"
+msgstr "%s: opsie `%c%s' laat nie 'n parameter toe nie\n"
 
 #: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: l'opzione `%s' richiede un argomento\n"
+msgstr "%s: opsie `%s' benodig 'n parameter\n"
 
 #: lib/getopt.c:727 lib/getopt.c:730
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: opzione `--%s' non riconosciuta\n"
+msgstr "%s: onbekende opsie `--%s'\n"
 
 #: lib/getopt.c:738 lib/getopt.c:741
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: opzione `%c%s' non riconosciuta\n"
+msgstr "%s: onbekende opsie `%c%s'\n"
 
 #: lib/getopt.c:796 lib/getopt.c:799
 #, c-format
 msgid "%s: illegal option -- %c\n"
-msgstr "%s: opzione illecita -- %c\n"
+msgstr "%s: onwettige opsie -- %c\n"
 
 #: lib/getopt.c:805 lib/getopt.c:808
 #, c-format
 msgid "%s: invalid option -- %c\n"
-msgstr "%s: opzione non valida -- %c\n"
+msgstr "%s: ongeldige opsie -- %c\n"
 
 #: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: l'opzione richiede un argomento -- %c\n"
+msgstr "%s: opsie benodig 'n parameter -- %c\n"
 
 #: lib/getopt.c:935 lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: l'opzione `-W %s' Ã¨ ambigua\n"
+msgstr "%s: opsie `-W %s' is dubbelsinnig\n"
 
 #: lib/getopt.c:978 lib/getopt.c:999
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: l'opzione `-W %s' non accetta argomenti\n"
+msgstr "%s: opsie `-W %s' laat nie 'n parameter toe nie\n"
 
 #: lib/human.c:486
-#, fuzzy
 msgid "block size"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"dimensioni del blocco\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"dimensioni dei blocchi"
+msgstr "blokgrootte"
 
 #: lib/mkdir-p.c:106
 #, c-format
 msgid "%s exists but is not a directory"
-msgstr "%s esiste ma non Ã¨ una directory"
+msgstr "%s bestaan maar is nie 'n lêergids nie"
 
 #: lib/mkdir-p.c:203 lib/mkdir-p.c:294
 #, c-format
 msgid "cannot change owner and/or group of %s"
-msgstr "impossibile cambiare il proprietario e/o il gruppo di %s"
+msgstr "kan nie die eienaar en/of groep van %s verander nie"
 
 #: lib/mkdir-p.c:229 lib/mkdir-p.c:266
 #, c-format
 msgid "cannot create directory %s"
-msgstr "impossibile creare la directory %s"
+msgstr "Kan nie lêergids %s skep nie."
 
 #: lib/mkdir-p.c:240
-#, fuzzy, c-format
+#, c-format
 msgid "cannot chdir to directory %s"
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"impossibile fare chdir alla directory %s\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"impossibile entrare nella directory %s"
+msgstr "kan nie chdir doen om na gids %s te gaan nie"
 
 #: lib/mkdir-p.c:307 lib/mkdir-p.c:332
 #, c-format
 msgid "cannot change permissions of %s"
-msgstr "impossibile cambiare i permessi di %s"
+msgstr "kan nie toegangsregte van %s verander nie"
 
 #: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
 msgid "memory exhausted"
-msgstr "memoria esaurita"
+msgstr "geheue uitgeput"
 
 #: lib/openat-die.c:36
 #, fuzzy
 msgid "unable to record current working directory"
-msgstr ""
-"Stampa il nome file completo dell'attuale directory di lavoro.\n"
-"\n"
+msgstr "kon nie na aanvanklike werkgids terugkeer nie"
+
+#: lib/openat-die.c:49
+msgid "failed to return to initial working directory"
+msgstr "kon nie na aanvanklike werkgids terugkeer nie"
 
 #: lib/pagealign_alloc.c:143
 #, fuzzy
 msgid "Failed to open /dev/zero for read"
-msgstr "impossibile preservare i permessi di %s"
+msgstr "magtigings vir %s kon nie behou word nie"
 
 #: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
 #, fuzzy
 msgid "cannot create pipe"
-msgstr "impossibile creare il link %s"
+msgstr "kan nie die skakel %s skep nie"
 
 #. TRANSLATORS:
 #. Get translations for open and closing quotation marks.
@@ -381,41 +329,41 @@ msgstr "'"
 #: lib/regcomp.c:137
 #, fuzzy
 msgid "Invalid regular expression"
-msgstr "%s: process id non valido"
+msgstr "%s: ongeldige reëlmatige uitdrukking: %s"
 
 #: lib/regcomp.c:143
 #, fuzzy
 msgid "Invalid character class name"
-msgstr "data `%s' non valida"
+msgstr "ongeldige karakterklas `%s'"
 
 #: lib/regcomp.c:167
 #, fuzzy
 msgid "Memory exhausted"
-msgstr "memoria esaurita"
+msgstr "geheue uitgeput"
 
 #: lib/regcomp.c:170
 #, fuzzy
 msgid "Invalid preceding regular expression"
-msgstr "%s: process id non valido"
+msgstr "%s: ongeldige reëlmatige uitdrukking: %s"
 
 #: lib/regcomp.c:173
 #, fuzzy
 msgid "Premature end of regular expression"
-msgstr "%s: process id non valido"
+msgstr "fout in soektog met reëlmatige uitdrukking"
 
 #: lib/regcomp.c:176
 #, fuzzy
 msgid "Regular expression too big"
-msgstr "%s: process id non valido"
+msgstr "%s: ongeldige reëlmatige uitdrukking: %s"
 
 #: lib/regcomp.c:659
 #, fuzzy
 msgid "No previous regular expression"
-msgstr "%s: process id non valido"
+msgstr "fout in soektog met reëlmatige uitdrukking"
 
 #: lib/rpmatch.c:70
 msgid "^[yY]"
-msgstr "^[sSyY]"
+msgstr "^[jJ]"
 
 #: lib/rpmatch.c:73
 msgid "^[nN]"
@@ -423,89 +371,163 @@ msgstr "^[nN]"
 
 #: lib/unicodeio.c:147
 msgid "iconv function not usable"
-msgstr "la funzione iconv non Ã¨ utilizzabile"
+msgstr "iconv-funksie onbruikbaar"
 
 #: lib/unicodeio.c:149
 msgid "iconv function not available"
-msgstr "la funzione iconv non Ã¨ disponibile"
+msgstr "iconv-funksie is nie beskikbaar nie"
 
 #: lib/unicodeio.c:156
 msgid "character out of range"
-msgstr "carattere fuori dall'intervallo"
+msgstr "karakter is buite die grense"
 
 #: lib/unicodeio.c:219
 #, c-format
 msgid "cannot convert U+%04X to local character set"
-msgstr "impossibile convertire U+%04X nel set di caratteri locale"
+msgstr "kan nie U+%04X omskakel na 'n plaaslike karakterstel nie"
 
 #: lib/unicodeio.c:221
 #, c-format
 msgid "cannot convert U+%04X to local character set: %s"
-msgstr "impossibile convertire U+%04X nel set di caratteri locale: %s"
+msgstr "kan nie U+%04X omskakel na 'n plaaslike karakterstel nie: %s"
 
 #: lib/userspec.c:110
 msgid "invalid user"
-msgstr "utente non valido"
+msgstr "ongeldige gebruiker"
 
 #: lib/userspec.c:111
 msgid "invalid group"
-msgstr "gruppo non valido"
+msgstr "ongeldige groep "
 
 #: lib/userspec.c:113
 msgid "cannot get the login group of a numeric UID"
-msgstr "impossibile ottenere il gruppo di login di un UID numerico"
+msgstr "kan nie die aantekengroep van 'n numeriese UID verkry nie"
 
+#  TRANSLATORS: %s denotes an author name.
+#  TRANSLATORS: %s denotes an author name.
 #. TRANSLATORS: %s denotes an author name.
 #: lib/version-etc.c:90
 #, c-format
 msgid "Written by %s.\n"
-msgstr "Scritto da %s.\n"
+msgstr "Geskryf deur %s.\n"
 
+#  TRANSLATORS: Each %s denotes an author name.
+#  TRANSLATORS: Each %s denotes an author name.
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:94
-#, fuzzy, c-format
+#, c-format
 msgid "Written by %s and %s.\n"
-msgstr "Scritto da %s.\n"
+msgstr "Geskryf deur %s en %s.\n"
 
+#  TRANSLATORS: Each %s denotes an author name.
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:98
-#, fuzzy, c-format
+#, c-format
 msgid "Written by %s, %s, and %s.\n"
-msgstr "Scritto da %s.\n"
+msgstr "Geskryf deur %s, %s en %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
 #. ca. 16 screen columns and that a screen line has ca. 80 columns.
 #: lib/version-etc.c:104
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Written by %s, %s, %s,\n"
 "and %s.\n"
-msgstr "Scritto da %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s \n"
+"en %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
 #. ca. 16 screen columns and that a screen line has ca. 80 columns.
 #: lib/version-etc.c:110
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Written by %s, %s, %s,\n"
 "%s, and %s.\n"
-msgstr "Scritto da %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:116
+#, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s, %s en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:123
+#, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s, %s, %s en %s.\n"
+
+#  TRANSLATORS: Each %s denotes an author name.
+#  You can use line breaks, estimating that each author name occupies
+#  ca. 16 screen columns and that a screen line has ca. 80 columns.
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:130
+#, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s, %s, %s, %s\n"
+"en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:138
+#, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s, %s, %s, %s,\n"
+"%s en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:148
+#, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
+msgstr ""
+"Geskryf deur %s, %s, %s, \n"
+"%s, %s, %s, %s\n"
+"%s, %s en ander.\n"
 
 #: lib/xmemcoll.c:50
 msgid "string comparison failed"
-msgstr "confronto delle stringhe fallito"
+msgstr "stringvergelyking het gefaal"
 
 #: lib/xmemcoll.c:51
 msgid "Set LC_ALL='C' to work around the problem."
-msgstr "Imposta LC_ALL='C' per aggirare il problema."
+msgstr "Stel  LC_ALL='C' om die probleem te systap"
 
 #: lib/xmemcoll.c:53
-#, fuzzy, c-format
+#, c-format
 msgid "The strings compared were %s and %s."
-msgstr ""
-"#-#-#-#-#  trans-it.po (sh-utils 2.0.13)  #-#-#-#-#\n"
-"Le stringhe confrontate erano %s e %s.\n"
-"#-#-#-#-#  trans-it.po (fileutils 4.1.11)  #-#-#-#-#\n"
-"Le stringhe confrontate sono %s e %s."
+msgstr "Die stringe wat vergelyk is, is %s en %s."

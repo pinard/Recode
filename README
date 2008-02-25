@@ -197,15 +197,17 @@ following table.  You may also choose to establish a link in your build
   ================   ==========   ==========   =============
   Package name       Current      Minimum      Install after
   ================   ==========   ==========   =============
-  :code:`autoconf`   2.61         2.12         :code:`m4`
-  :code:`automake`   1.10         1.9          :code:`Perl`
+  :code:`Autoconf`   2.61         2.59         :code:`m4`
+  :code:`Automake`   1.10         1.9          :code:`Perl`
   :code:`Flex`       2.5.33       2.5.4a
   :code:`gettext`    0.16         0.16
+  :code:`Gnulib`
   :code:`Help2man`   1.36         1.020        :code:`Perl`
   :code:`libtool`    1.5.24       1.3.4
   :code:`m4`         1.4.10       1.4n
   :code:`Make`       3.81
   :code:`Perl`       5.8.8        5.005.03
+  :code:`Pyrex`      0.9.6.4                   :code:`Python`
   :code:`Python`     2.5.1        2.2
   :code:`tar`        1.17         1.12
   :code:`wget`       1.10.2

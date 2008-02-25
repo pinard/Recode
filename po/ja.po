@@ -1,386 +1,415 @@
-# GNU Mailutils Catalan translation.
-# Copyright Â© 2002, 2003, 2004, 2005 Free Software Foundation, Inc.
-# This file is distributed under the same license as the mailutils package.
-# Jordi Mallach <jordi@gnu.org>, 2002, 2003, 2004, 2005.
+# Translation of `gnulib' messages to Japanese.
+# Copyright (C) 2000, 2002, 2006 Free Software Foundation, Inc.
+# GOTO Masanori <gotom@debian.or.jp>, 2006.
+# Masahito Yamaga <yamaga@ipc.chiba-u.ac.jp>, 2002.
+#  derived from the version by Yasuyuki Furukawa <yasu@on.cs.keio.ac.jp> 1998
+#                              Jun Nishii <jun@flatout.org> 1999
+#                              Daisuke Yamashita <yamad@mb.infoweb.ne.jp> 1999
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: mailutils 0.6.90\n"
+"Project-Id-Version: gnulib 1.0\n"
 "Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
 "POT-Creation-Date: 2005-09-30 17:42+0300\n"
-"PO-Revision-Date: 2005-05-21 04:10+0200\n"
-"Last-Translator: Jordi Mallach <jordi@gnu.org>\n"
-"Language-Team: Catalan <ca@dodds.net>\n"
+"PO-Revision-Date: 2006-06-10 13:12+0900\n"
+"Last-Translator: GOTO Masanori <gotom@debian.or.jp>\n"
+"Language-Team: Japanese <translation-team-ja@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=EUC-JP\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n!=1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-# Usa quote() en els 2 args.  ivb
 #: lib/argmatch.c:137
 #, c-format
 msgid "invalid argument %s for %s"
-msgstr "l'argument %s no Ã©s vÃ lid per %s"
+msgstr "%2$s ¤ËÂÐ¤¹¤ë°ú¿ô %1$s ¤¬´Ö°ã¤Ã¤Æ¤¤¤Þ¤¹"
 
-# Usa quote() en els 2 args.  ivb
 #: lib/argmatch.c:138
 #, c-format
 msgid "ambiguous argument %s for %s"
-msgstr "l'argument %s Ã©s ambigu per %s"
+msgstr "%2$s ¤ËÂÐ¤¹¤ë°ú¿ô %1$s ¤¬Û£Ëæ¤Ç¤¹"
 
 #: lib/argmatch.c:157
 #, c-format
 msgid "Valid arguments are:"
-msgstr "Els arguments vÃ lids sÃ³n:"
+msgstr "Í­¸ú¤Ê°ú¿ô:"
 
 #: lib/argp-help.c:194
 #, c-format
 msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
-msgstr "%.*s: El parÃ metre ARGP_HELP_FMT requereix un valor"
+msgstr "%.*s: ARGP_HELP_FMT ¥Ñ¥é¥á¡¼¥¿¤Ë¤ÏÃÍ¤¬É¬Í×¤Ç¤¹"
 
 #: lib/argp-help.c:203
 #, c-format
 msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
-msgstr "%.*s: El parÃ metre d'ARGP_HELP_FMT Ã©s desconegut"
+msgstr "%.*s: ÉÔÌÀ¤Ê ARGP_HELP_FMT ¥Ñ¥é¥á¡¼¥¿"
 
-# pfft, escombraries... jm
 #: lib/argp-help.c:215
 #, c-format
 msgid "Garbage in ARGP_HELP_FMT: %s"
-msgstr "Hi ha escombraries en ARGP_HELP_FMT: %s"
+msgstr "ARGP_HELP_FMT Ãæ¤Ë¤´¤ß¤¬¤¢¤ê¤Þ¤¹: %s"
 
 #: lib/argp-help.c:1194
-msgid ""
-"Mandatory or optional arguments to long options are also mandatory or "
-"optional for any corresponding short options."
-msgstr ""
-"Els arguments necessaris o opcionals per a les opcions llargues tambÃ© sÃ³n "
-"necessaris o opcionals per a qualsevol opciÃ³ curta corresponent."
+msgid "Mandatory or optional arguments to long options are also mandatory or optional for any corresponding short options."
+msgstr "¥í¥ó¥°¥ª¥×¥·¥ç¥ó¤ÇÉ¬¿Ü¤Þ¤¿¤ÏÇ¤°Õ¤Î°ú¿ô¤Ï¡¢¤½¤ì¤ËÂÐ±þ¤¹¤ë¥·¥ç¡¼¥È¥ª¥×¥·¥ç¥ó¤Ç¤âÆ±¤¸¤è¤¦¤ËÉ¬¿Ü¤Þ¤¿¤ÏÇ¤°Õ¤Ç¤¹."
 
 #: lib/argp-help.c:1581
 msgid "Usage:"
-msgstr "Forma d'Ãºs:"
+msgstr "»ÈÍÑË¡:"
 
 #: lib/argp-help.c:1585
 msgid "  or: "
-msgstr "  Ã³: "
+msgstr " Ëô¤Ï: "
 
 #: lib/argp-help.c:1597
 msgid " [OPTION...]"
-msgstr " [OPCIÃ“...]"
+msgstr " [¥ª¥×¥·¥ç¥ó...]"
 
 #: lib/argp-help.c:1624
 #, c-format
 msgid "Try `%s --help' or `%s --usage' for more information.\n"
-msgstr "Proveu Â«%s --helpÂ» o Â«%s --usageÂ» per a obtindre mÃ©s informaciÃ³.\n"
+msgstr "¾ÜºÙ¤Ï`%s --help'¤Þ¤¿¤Ï`%s --usage'¤ò¼Â¹Ô¤·¤Æ²¼¤µ¤¤.\n"
 
 #: lib/argp-help.c:1652
 #, c-format
 msgid "Report bugs to %s.\n"
-msgstr "Informeu dels errors a %s.\n"
+msgstr "¥Ð¥°¤òÈ¯¸«¤·¤¿¤é %s °¸¤ËÊó¹ð¤·¤Æ²¼¤µ¤¤.\n"
 
 #: lib/argp-help.c:1872 lib/error.c:121
 msgid "Unknown system error"
-msgstr "S'ha produÃ¯t un error desconegut del sistema"
+msgstr "Ì¤ÃÎ¤Î¥·¥¹¥Æ¥à¥¨¥é¡¼"
 
 #: lib/argp-parse.c:82
 msgid "Give this help list"
-msgstr "Mostra aquesta llista d'ajuda"
+msgstr "¤³¤Î¥Ø¥ë¥×¤ÎÉ½¼¨"
 
 #: lib/argp-parse.c:83
 msgid "Give a short usage message"
-msgstr "Mostra un curt missatge sobre l'Ãºs"
+msgstr "Ã»¤¤»ÈÍÑÊýË¡¤ÎÉ½¼¨"
 
 #: lib/argp-parse.c:84
 msgid "NAME"
-msgstr "NOM"
+msgstr "Ì¾Á°"
 
 #: lib/argp-parse.c:84
 msgid "Set the program name"
-msgstr "Estableix el nom del programa"
+msgstr "¥×¥í¥°¥é¥àÌ¾¤ò¥»¥Ã¥È¤¹¤ë"
 
 #: lib/argp-parse.c:85
-#, fuzzy
 msgid "SECS"
-msgstr "SEGONS"
+msgstr "SECS"
 
 #: lib/argp-parse.c:86
 msgid "Hang for SECS seconds (default 3600)"
-msgstr "Penja durant SEGS segons (per defecte 3600)"
+msgstr "SECS ÉÃ¤Ç¥Ï¥ó¥° (¥Ç¥Õ¥©¥ë¥È 3600)"
 
 #: lib/argp-parse.c:147
 msgid "Print program version"
-msgstr "Mostra la versiÃ³ del programa"
+msgstr "¥×¥í¥°¥é¥à¤Î¥Ð¡¼¥¸¥ç¥ó¤òÉ½¼¨¤¹¤ë"
 
 #: lib/argp-parse.c:163
 msgid "(PROGRAM ERROR) No version known!?"
-msgstr "(ERROR DEL PROGRAMA) Cap versiÃ³ coneguda!?"
+msgstr "(¥×¥í¥°¥é¥à¥¨¥é¡¼) Ì¤ÃÎ¤Î¥Ð¡¼¥¸¥ç¥ó!?"
 
 #: lib/argp-parse.c:619
 #, c-format
 msgid "%s: Too many arguments\n"
-msgstr "%s: Massa arguments\n"
+msgstr "%s: °ú¿ô¤¬Â¿¤¹¤®¤Þ¤¹\n"
 
 #: lib/argp-parse.c:762
 msgid "(PROGRAM ERROR) Option should have been recognized!?"
-msgstr "(ERROR DEL PROGRAMA) L'opciÃ³ s'hauria d'haver reconegut!?"
+msgstr "(¥×¥í¥°¥é¥à¥¨¥é¡¼) ¥ª¥×¥·¥ç¥ó¤ÏÇ§¼±¤µ¤ì¤Æ¤¤¤ë¤Ù¤­¤Ç¤¹!?"
 
 #: lib/c-stack.c:244
-#, fuzzy
 msgid "program error"
-msgstr "error de lectura"
+msgstr "¥×¥í¥°¥é¥à¥¨¥é¡¼"
 
-# "underflow", bonico el paraulo.. jm
 #: lib/c-stack.c:245
-#, fuzzy
 msgid "stack overflow"
-msgstr "pila buida"
+msgstr "¥¹¥¿¥Ã¥¯¥ª¡¼¥Ð¡¼¥Õ¥í¡¼"
 
 #: lib/closeout.c:94
 msgid "write error"
-msgstr "error d'escriptura"
+msgstr "½ñ¤­¹þ¤ß¥¨¥é¡¼"
 
-# Usa quote().  ivb
 #: lib/copy-file.c:65
-#, fuzzy, c-format
+#, c-format
 msgid "error while opening \"%s\" for reading"
-msgstr "no s'ha pogut obrir %s per llegir"
+msgstr "\"%s\"¤òÆÉ¹þ¤à¤¿¤á³«¤¤¤Æ¤¤¤ëºÝ¤Ë¥¨¥é¡¼"
 
-# Usa quote().  ivb
 #: lib/copy-file.c:72
-#, fuzzy, c-format
+#, c-format
 msgid "cannot open backup file \"%s\" for writing"
-msgstr "no s'ha pogut obrir %s per a escriure"
+msgstr "½ñ¹þ¤ßÍÑ¥Ð¥Ã¥¯¥¢¥Ã¥×¥Õ¥¡¥¤¥ë\"%s\"¤ò³«¤¯¤³¤È¤¬¤Ç¤­¤Þ¤»¤ó"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:80
-#, fuzzy, c-format
+#, c-format
 msgid "error reading \"%s\""
-msgstr "error en llegir %s"
+msgstr "\"%s\"¤ÎÆÉ¹þ¤ßÃæ¤Ç¥¨¥é¡¼"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:85 lib/copy-file.c:89
-#, fuzzy, c-format
+#, c-format
 msgid "error writing \"%s\""
-msgstr "error en escriure %s"
+msgstr "\"%s\"¤Î½ñ¹þ¤ßÃæ¤Ç¥¨¥é¡¼"
 
-# uniq no usa quote().  ivb
 #: lib/copy-file.c:91
-#, fuzzy, c-format
+#, c-format
 msgid "error after reading \"%s\""
-msgstr "error en llegir %s"
+msgstr "\"%s\"¤ÎÆÉ¹þ¤ß¸å¤Ë¥¨¥é¡¼"
 
 #: lib/csharpcomp.c:273
-#, fuzzy
 msgid "fdopen() failed"
-msgstr "no s'ha pogut obrir"
+msgstr "fdopen()¤Ë¼ºÇÔ"
+
+#: lib/csharpcomp.c:526
+msgid "C# compiler not found, try installing pnet"
+msgstr "C# ¥³¥ó¥Ñ¥¤¥é¤¬¸«¤Ä¤«¤é¤Ê¤¤¤Î¤Ç pnet ¥¤¥ó¥¹¥È¡¼¥ë¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤"
+
+#: lib/csharpexec.c:251
+msgid "C# virtual machine not found, try installing pnet"
+msgstr "C# ²¾ÁÛ¥Þ¥·¥ó¤¬¸«¤Ä¤«¤é¤Ê¤¤¤Î¤Ç pnet ¤ò¥¤¥ó¥¹¥È¡¼¥ë¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤"
 
 #: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
 #: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
-#, fuzzy, c-format
+#, c-format
 msgid "%s subprocess failed"
-msgstr "%s: ha fallat el desplaÃ§ament"
+msgstr "%s ¥µ¥Ö¥×¥í¥»¥¹¤¬¼ºÇÔ¤·¤Þ¤·¤¿"
 
 #: lib/file-type.c:43
 msgid "regular empty file"
-msgstr "fitxer ordinari buit"
+msgstr "ÄÌ¾ï¤Î¶õ¥Õ¥¡¥¤¥ë"
 
 #: lib/file-type.c:43
 msgid "regular file"
-msgstr "fitxer ordinari"
+msgstr "ÄÌ¾ï¥Õ¥¡¥¤¥ë"
 
 #: lib/file-type.c:46
 msgid "directory"
-msgstr "directori"
+msgstr "¥Ç¥£¥ì¥¯¥È¥ê"
 
 #: lib/file-type.c:49
 msgid "block special file"
-msgstr "fitxer especial de blocs"
+msgstr "¥Ö¥í¥Ã¥¯¥¹¥Ú¥·¥ã¥ë¥Õ¥¡¥¤¥ë"
 
 #: lib/file-type.c:52
 msgid "character special file"
-msgstr "fitxer especial de carÃ cters"
+msgstr "¥­¥ã¥é¥¯¥¿¥¹¥Ú¥·¥ã¥ë¥Õ¥¡¥¤¥ë"
 
 #: lib/file-type.c:55
 msgid "fifo"
-msgstr "cua FIFO"
+msgstr "fifo"
 
 #: lib/file-type.c:58
 msgid "symbolic link"
-msgstr "enllaÃ§ simbÃ²lic"
+msgstr "¥·¥ó¥Ü¥ê¥Ã¥¯¥ê¥ó¥¯"
 
 #: lib/file-type.c:61
 msgid "socket"
-msgstr "connector"
+msgstr "¥½¥±¥Ã¥È"
 
 #: lib/file-type.c:64
 msgid "message queue"
-msgstr "cua de missatges"
+msgstr "¥á¥Ã¥»¡¼¥¸¥­¥å¡¼"
 
 #: lib/file-type.c:67
 msgid "semaphore"
-msgstr "semÃ for"
+msgstr "¥»¥Þ¥Õ¥©"
 
 #: lib/file-type.c:70
 msgid "shared memory object"
-msgstr "objecte de memÃ²ria compartida"
+msgstr "¶¦Í­¥á¥â¥ê¥ª¥Ö¥¸¥§¥¯¥È"
 
 #: lib/file-type.c:73
 msgid "typed memory object"
-msgstr "objecte de memÃ²ria amb tipus"
+msgstr "·¿ÉÕ¤­¥á¥â¥ê¥ª¥Ö¥¸¥§¥¯¥È"
 
 #: lib/file-type.c:75
 msgid "weird file"
-msgstr "fitxer estrany"
+msgstr "ÉÔÌÀ¤Ê¥Õ¥¡¥¤¥ë"
 
 #: lib/gai_strerror.c:45
-#, fuzzy
 msgid "Address family for hostname not supported"
-msgstr "els fitxers FIFO no sÃ³n suportats"
+msgstr "hostname¤Î¥¢¥É¥ì¥¹¥Õ¥¡¥ß¥ê¤Ï¥µ¥Ý¡¼¥È¤µ¤ì¤Æ¤¤¤Þ¤»¤ó"
+
+#: lib/gai_strerror.c:46
+msgid "Temporary failure in name resolution"
+msgstr "Ì¾Á°²ò·è»þ¤Î°ì»þÅª¤Ê¼ºÇÔ"
+
+#: lib/gai_strerror.c:47
+msgid "Bad value for ai_flags"
+msgstr "ai_flags ¤ÎÃÍ¤¬ÉÔÀµ¤Ç¤¹"
+
+#: lib/gai_strerror.c:48
+msgid "Non-recoverable failure in name resolution"
+msgstr "Ì¾Á°¤Î²ò·è»þ¤Ë²óÉüÉÔ²ÄÇ½¤Ê¼ºÇÔ"
 
 #: lib/gai_strerror.c:49
-#, fuzzy
 msgid "ai_family not supported"
-msgstr "els fitxers FIFO no sÃ³n suportats"
+msgstr "ai_family ¤Ï¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤»¤ó"
 
 #: lib/gai_strerror.c:50
-#, fuzzy
 msgid "Memory allocation failure"
-msgstr "L'operaciÃ³ ha fallat"
+msgstr "¥á¥â¥ê³ÎÊÝ¤Ë¼ºÇÔ¤·¤Þ¤·¤¿"
+
+#: lib/gai_strerror.c:51
+msgid "No address associated with hostname"
+msgstr "¥Û¥¹¥ÈÌ¾¤ËÂÐ±þ¤¹¤ë¥¢¥É¥ì¥¹¤¬¤¢¤ê¤Þ¤»¤ó"
+
+#: lib/gai_strerror.c:52
+msgid "Name or service not known"
+msgstr "Ì¾Á°¤Þ¤¿¤Ï¥µ¡¼¥Ó¥¹¤¬ÉÔÌÀ¤Ç¤¹"
+
+#: lib/gai_strerror.c:53
+msgid "Servname not supported for ai_socktype"
+msgstr "¥µ¡¼¥ÐÌ¾¤Ï ai_socktype ¤ËÂÐ¤·¤Æ¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤»¤ó"
 
 #: lib/gai_strerror.c:54
-#, fuzzy
 msgid "ai_socktype not supported"
-msgstr "els fitxers FIFO no sÃ³n suportats"
+msgstr "ai_socktype ¤Ï¥µ¥Ý¡¼¥È¤·¤Æ¤¤¤Þ¤»¤ó"
 
 #: lib/gai_strerror.c:55
-#, fuzzy
 msgid "System error"
-msgstr "error d'escriptura"
+msgstr "¥·¥¹¥Æ¥à¥¨¥é¡¼"
+
+#: lib/gai_strerror.c:57
+msgid "Processing request in progress"
+msgstr "Í×µá¤Ï¤¹¤Ç¤Ë½èÍýÃæ¤Ç¤¹"
+
+#: lib/gai_strerror.c:58
+msgid "Request canceled"
+msgstr "Í×µá¤ÏÃæÃÇ¤µ¤ì¤Þ¤·¤¿"
 
 #: lib/gai_strerror.c:59
-#, fuzzy
 msgid "Request not canceled"
-msgstr "No es troba l'element solÂ·licitat"
+msgstr "Í×µá¤ÏÃæÃÇ¤µ¤ì¤Þ¤»¤ó¤Ç¤·¤¿"
+
+#: lib/gai_strerror.c:60
+msgid "All requests done"
+msgstr "Á´¤Æ¤ÎÍ×µá½èÍý¤Ï´°Î»¤·¤Þ¤·¤¿"
+
+#: lib/gai_strerror.c:61
+msgid "Interrupted by a signal"
+msgstr "¥·¥°¥Ê¥ë¤Ë¤è¤ë³ä¤ê¹þ¤ß"
+
+#: lib/gai_strerror.c:62
+msgid "Parameter string not correctly encoded"
+msgstr "¥Ñ¥é¥á¡¼¥¿Ê¸»úÎó¤ÏÀµ¤·¤¯¥¨¥ó¥³¡¼¥É¤µ¤ì¤Æ¤¤¤Ê¤¤"
 
 #: lib/gai_strerror.c:74
-#, fuzzy
 msgid "Unknown error"
-msgstr "S'ha produÃ¯t un error desconegut del sistema"
+msgstr "Ì¤ÃÎ¤Î¥¨¥é¡¼"
 
 #: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
 msgid "%s: option `%s' is ambiguous\n"
-msgstr "%s: l'opciÃ³ Â«%sÂ» Ã©s ambigua\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`%s'¤ÏÛ£Ëæ¤Ç¤¹\n"
 
 #: lib/getopt.c:603 lib/getopt.c:607
 #, c-format
 msgid "%s: option `--%s' doesn't allow an argument\n"
-msgstr "%s: l'opciÃ³ Â«--%sÂ» no accepta arguments\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`--%s'¤Ï°ú¿ô¤ò¤È¤ê¤Þ¤»¤ó\n"
 
 #: lib/getopt.c:616 lib/getopt.c:621
 #, c-format
 msgid "%s: option `%c%s' doesn't allow an argument\n"
-msgstr "%s: l'opciÃ³ Â«%c%sÂ» no accepta arguments\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`%c%s'¤Ë°ú¿ô¤ÏÉ¬Í×¤¢¤ê¤Þ¤»¤ó\n"
 
 #: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
 #, c-format
 msgid "%s: option `%s' requires an argument\n"
-msgstr "%s: l'opciÃ³ Â«%sÂ» requereix un argument\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`%s'¤Ë¤Ï°ú¿ô¤¬É¬Í×¤Ç¤¹\n"
 
 #: lib/getopt.c:727 lib/getopt.c:730
 #, c-format
 msgid "%s: unrecognized option `--%s'\n"
-msgstr "%s: l'opciÃ³ Â«--%sÂ» no es reconeix\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`--%s'¤òÇ§¼±¤Ç¤­¤Þ¤»¤ó\n"
 
 #: lib/getopt.c:738 lib/getopt.c:741
 #, c-format
 msgid "%s: unrecognized option `%c%s'\n"
-msgstr "%s: l'opciÃ³ Â«%c%sÂ» no es reconeix\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`%c%s'¤òÇ§¼±¤Ç¤­¤Þ¤»¤ó\n"
 
 #: lib/getopt.c:796 lib/getopt.c:799
 #, c-format
 msgid "%s: illegal option -- %c\n"
-msgstr "%s: l'opciÃ³ Ã©s ilÂ·legal -- %c\n"
+msgstr "%s: ÉÔÀµ¤Ê¥ª¥×¥·¥ç¥ó -- %c\n"
 
 #: lib/getopt.c:805 lib/getopt.c:808
 #, c-format
 msgid "%s: invalid option -- %c\n"
-msgstr "%s: l'opciÃ³ no Ã©s vÃ lida -- %c\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó¤¬°ã¤¤¤Þ¤¹ -- %c\n"
 
 #: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
 #, c-format
 msgid "%s: option requires an argument -- %c\n"
-msgstr "%s: l'opciÃ³ requereix un argument -- %c\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó¤Ë¤Ï°ú¿ô¤¬É¬Í×¤Ç¤¹ -- %c\n"
 
 #: lib/getopt.c:935 lib/getopt.c:954
 #, c-format
 msgid "%s: option `-W %s' is ambiguous\n"
-msgstr "%s: l'opciÃ³ Â«-W %sÂ» Ã©s ambigua\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`-W %s'¤ÏÛ£Ëæ¤Ç¤¹\n"
 
 #: lib/getopt.c:978 lib/getopt.c:999
 #, c-format
 msgid "%s: option `-W %s' doesn't allow an argument\n"
-msgstr "%s: l'opciÃ³ Â«-W %sÂ» no accepta arguments\n"
+msgstr "%s: ¥ª¥×¥·¥ç¥ó`-W %s'¤Ï°ú¿ô¤ò¤È¤ê¤Þ¤»¤ó\n"
 
-# FIXME: xmalloc.h: _STRTOL_ERROR lacks i18n.  ivb
-# AÃ§Ã² quedarÃ  com Â«invalid mida de bloc `MIDA'Â» mentre no ho facen.  ivb
 #: lib/human.c:486
 msgid "block size"
-msgstr "mida de bloc"
+msgstr "¥Ö¥í¥Ã¥¯¥µ¥¤¥º"
 
-# Els 4 usen quote().  ivb
+#: lib/javacomp.c:467
+msgid "Java compiler not found, try installing gcj or set $JAVAC"
+msgstr "Java ¥³¥ó¥Ñ¥¤¥é¤¬¸«¤Ä¤«¤é¤Ê¤¤¤Î¤Ç gcj ¤ä set $JAVAC ÀßÄê¤ò»î¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤"
+
+#: lib/javaexec.c:420
+msgid "Java virtual machine not found, try installing gij or set $JAVA"
+msgstr "Java ²¾ÁÛ¥Þ¥·¥ó¤¬¸«¤Ä¤«¤é¤Ê¤¤¤Î¤Ç gij ¤ä set $JAVA ÀßÄê¤ò»î¤·¤Æ¤ß¤Æ¤¯¤À¤µ¤¤"
+
 #: lib/mkdir-p.c:106
 #, c-format
 msgid "%s exists but is not a directory"
-msgstr "%s existeix perÃ² no Ã©s un directori"
+msgstr "%s ¤ÏÂ¸ºß¤·¤Þ¤¹¤¬¥Ç¥£¥ì¥¯¥È¥ê¤Ç¤Ï¤¢¤ê¤Þ¤»¤ó"
 
-# Els 3 usen quote().  ivb
 #: lib/mkdir-p.c:203 lib/mkdir-p.c:294
 #, c-format
 msgid "cannot change owner and/or group of %s"
-msgstr "no s'ha pogut canviar el propietari o grup de %s"
+msgstr "%s ¤Î¥ª¡¼¥Ê¡¼¤È¥°¥ë¡¼¥×¤òÊÑ¹¹¤Ç¤­¤Þ¤»¤ó"
 
-# Els 3 usen quote().  ivb
 #: lib/mkdir-p.c:229 lib/mkdir-p.c:266
 #, c-format
 msgid "cannot create directory %s"
-msgstr "no s'ha pogut crear el directori %s"
+msgstr "¥Ç¥£¥ì¥¯¥È¥ê %s ¤òºîÀ®¤Ç¤­¤Þ¤»¤ó"
 
-# Usa quote().  ivb
 #: lib/mkdir-p.c:240
 #, c-format
 msgid "cannot chdir to directory %s"
-msgstr "no s'ha pogut canviar al directori %s"
+msgstr "¥Ç¥£¥ì¥¯¥È¥ê %s ¤Ë°ÜÆ°¤Ç¤­¤Þ¤»¤ó"
 
-# Els 2 usen quote().  ivb
 #: lib/mkdir-p.c:307 lib/mkdir-p.c:332
 #, c-format
 msgid "cannot change permissions of %s"
-msgstr "no s'han pogut canviar els permisos de %s"
+msgstr "%s ¤ÎÂ°À­¤òÊÑ¹¹¤Ç¤­¤Þ¤»¤ó"
 
 #: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
 msgid "memory exhausted"
-msgstr "la memÃ²ria s'ha exhaurit"
+msgstr "¥á¥â¥ê¤ò»È¤¤²Ì¤¿¤·¤Þ¤·¤¿"
 
 #: lib/openat-die.c:36
-#, fuzzy
 msgid "unable to record current working directory"
-msgstr "openat: no s'ha pogut registrar el directori de treball actual"
+msgstr "¸½ºß¤Îºî¶È¥Ç¥£¥ì¥¯¥È¥ê¤òµ­Ï¿¤Ç¤­¤Þ¤»¤ó"
 
 #: lib/openat-die.c:49
 msgid "failed to return to initial working directory"
-msgstr "no s'ha pogut tornar al directori inicial de treball"
+msgstr "ºÇ½é¤Îºî¶È¥Ç¥£¥ì¥¯¥È¥ê¤ËÌá¤ë¤Î¤Ë¼ºÇÔ¤·¤Þ¤·¤¿"
 
 #: lib/pagealign_alloc.c:143
-#, fuzzy
 msgid "Failed to open /dev/zero for read"
-msgstr "%s: no s'ha pogut obrir per a escriure"
+msgstr "/dev/zero¤òÆÉ¹þ¤ßÍÑ¤Ë³«¤±¤Þ¤»¤ó"
 
 #: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
-#, fuzzy
 msgid "cannot create pipe"
-msgstr "No es pot crear la llista"
+msgstr "¥Ñ¥¤¥×¤òºîÀ®¤Ç¤­¤Þ¤»¤ó"
 
 #. TRANSLATORS:
 #. Get translations for open and closing quotation marks.
@@ -403,65 +432,87 @@ msgstr "No es pot crear la llista"
 #. and use glyphs suitable for your language.
 #: lib/quotearg.c:245
 msgid "`"
-msgstr "Â«"
+msgstr "`"
 
 #: lib/quotearg.c:246
 msgid "'"
-msgstr "Â»"
+msgstr "'"
+
+#: lib/regcomp.c:131
+msgid "Success"
+msgstr "À®¸ù¤Ç¤¹"
+
+#: lib/regcomp.c:134
+msgid "No match"
+msgstr "°ìÃ×¤·¤Þ¤»¤ó"
 
 #: lib/regcomp.c:137
-#, fuzzy
 msgid "Invalid regular expression"
-msgstr "%s: l'expressiÃ³ regular no Ã©s vÃ lida: %s"
+msgstr "Ìµ¸ú¤ÊÀµµ¬É½¸½¤Ç¤¹"
+
+#: lib/regcomp.c:140
+msgid "Invalid collation character"
+msgstr "Ìµ¸ú¤Ê¾È¹çÊ¸»ú¤Ç¤¹"
 
 #: lib/regcomp.c:143
-#, fuzzy
 msgid "Invalid character class name"
-msgstr "la classe de carÃ cters Â«%sÂ» no Ã©s vÃ lida"
+msgstr "Ìµ¸ú¤Ê¥­¥ã¥é¥¯¥¿¥¯¥é¥¹Ì¾¤Ç¤¹"
+
+#: lib/regcomp.c:146
+msgid "Trailing backslash"
+msgstr "¥Ð¥Ã¥¯¥¹¥é¥Ã¥·¥å¤¬»Ä¤Ã¤Æ¤¤¤Þ¤¹"
 
 #: lib/regcomp.c:149
-#, fuzzy
 msgid "Invalid back reference"
-msgstr "El nÃºmero no Ã©s vÃ lid"
+msgstr "Ìµ¸ú¤Ê¸åÊý»²¾È¤Ç¤¹"
+
+#: lib/regcomp.c:152
+msgid "Unmatched [ or [^"
+msgstr "[ ¤â¤·¤¯¤Ï [^ ¤¬°ìÃ×¤·¤Þ¤»¤ó"
+
+#: lib/regcomp.c:155
+msgid "Unmatched ( or \\("
+msgstr "( ¤â¤·¤¯¤Ï \\( ¤¬°ìÃ×¤·¤Þ¤»¤ó"
+
+#: lib/regcomp.c:158
+msgid "Unmatched \\{"
+msgstr "\\{ ¤¬°ìÃ×¤·¤Þ¤»¤ó"
 
 #: lib/regcomp.c:161
-#, fuzzy
 msgid "Invalid content of \\{\\}"
-msgstr "L'opciÃ³ no Ã©s vÃ lida -- %s"
+msgstr "Ìµ¸ú¤Ê \\{\\} ¤ÎÆâÍÆ¤Ç¤¹"
 
 #: lib/regcomp.c:164
-#, fuzzy
 msgid "Invalid range end"
-msgstr "el rang de pÃ gines no Ã©s vÃ lid: Â«%sÂ»"
+msgstr "Ìµ¸ú¤Ê½ªÃ¼ÈÏ°Ï¤Ç¤¹"
 
 #: lib/regcomp.c:167
-#, fuzzy
 msgid "Memory exhausted"
-msgstr "la memÃ²ria s'ha exhaurit"
+msgstr "¥á¥â¥ê¤ò»È¤¤²Ì¤¿¤·¤Þ¤·¤¿"
 
 #: lib/regcomp.c:170
-#, fuzzy
 msgid "Invalid preceding regular expression"
-msgstr "%s: l'expressiÃ³ regular no Ã©s vÃ lida: %s"
+msgstr "Á°½Ð¤ÎÀµµ¬É½¸½¤ÏÌµ¸ú¤Ç¤¹"
 
 #: lib/regcomp.c:173
-#, fuzzy
 msgid "Premature end of regular expression"
-msgstr "error en la recerca de l'expressiÃ³ regular"
+msgstr "Àµµ¬É½¸½¤Î½ªÃ¼¤¬Áá¤¹¤®¤Þ¤¹"
 
 #: lib/regcomp.c:176
-#, fuzzy
 msgid "Regular expression too big"
-msgstr "%s: l'expressiÃ³ regular no Ã©s vÃ lida: %s"
+msgstr "Àµµ¬É½¸½¤¬Ä¹¤¹¤®¤Þ¤¹"
+
+#: lib/regcomp.c:179
+msgid "Unmatched ) or \\)"
+msgstr ") ¤â¤·¤¯¤Ï \\) ¤¬°ìÃ×¤·¤Þ¤»¤ó"
 
 #: lib/regcomp.c:659
-#, fuzzy
 msgid "No previous regular expression"
-msgstr "error en la recerca de l'expressiÃ³ regular"
+msgstr "°ÊÁ°¤ËÀµµ¬É½¸½¤¬ÄêµÁ¤µ¤ì¤Æ¤¤¤Þ¤»¤ó"
 
 #: lib/rpmatch.c:70
 msgid "^[yY]"
-msgstr "^[sS]"
+msgstr "^[yY]"
 
 #: lib/rpmatch.c:73
 msgid "^[nN]"
@@ -469,73 +520,76 @@ msgstr "^[nN]"
 
 #: lib/unicodeio.c:147
 msgid "iconv function not usable"
-msgstr "la funciÃ³ iconv() no Ã©s Ãºtil"
+msgstr "iconv´Ø¿ô¤¬»È¤¨¤Þ¤»¤ó"
 
 #: lib/unicodeio.c:149
 msgid "iconv function not available"
-msgstr "la funciÃ³ iconv() no es troba disponible"
+msgstr "iconv´Ø¿ô¤¬Í­¸ú¤Ç¤Ï¤¢¤ê¤Þ¤»¤ó"
 
 #: lib/unicodeio.c:156
 msgid "character out of range"
-msgstr "el carÃ cter es troba fora del rang"
+msgstr "ÈÏ°Ï³°¤ÎÊ¸»ú"
 
 #: lib/unicodeio.c:219
 #, c-format
 msgid "cannot convert U+%04X to local character set"
-msgstr "no s'ha pogut convertir U+%04X al joc de carÃ cters local"
+msgstr "U+%04X ¤ò¥í¡¼¥«¥ëÊ¸»ú¥»¥Ã¥È¤ËÊÑ´¹¤Ç¤­¤Þ¤»¤ó"
 
 #: lib/unicodeio.c:221
 #, c-format
 msgid "cannot convert U+%04X to local character set: %s"
-msgstr "no s'ha pogut convertir U+%04X al joc de carÃ cters local: %s"
+msgstr "U+%04X ¤ò¥í¡¼¥«¥ëÊ¸»ú¥»¥Ã¥È %s ¤ËÊÑ´¹¤Ç¤­¤Þ¤»¤ó"
 
 #: lib/userspec.c:110
 msgid "invalid user"
-msgstr "l'usuari no Ã©s vÃ lid"
+msgstr "¥æ¡¼¥¶»ØÄê¤¬ÉÔÀµ"
 
 #: lib/userspec.c:111
 msgid "invalid group"
-msgstr "el grup no Ã©s vÃ lid"
+msgstr "¥°¥ë¡¼¥×»ØÄê¤¬ÉÔÀµ"
 
 #: lib/userspec.c:113
 msgid "cannot get the login group of a numeric UID"
-msgstr "no s'ha pogut obtenir el grup d'entrada d'un UID numÃ¨ric"
+msgstr "¿ô»ú¤ÎUID¤Î¥í¥°¥¤¥ó¥°¥ë¡¼¥×¤ò¼èÆÀ¤Ç¤­¤Þ¤»¤ó"
+
+#. TRANSLATORS: Translate "(C)" to the copyright symbol
+#. (C-in-a-circle), if this symbol is available in the user's
+#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
+#: lib/version-etc.c:72
+msgid "(C)"
+msgstr "(C)"
 
 #: lib/version-etc.c:74
-#, fuzzy
 msgid ""
 "\n"
-"This is free software.  You may redistribute copies of it under the terms "
-"of\n"
+"This is free software.  You may redistribute copies of it under the terms of\n"
 "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
 "There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
 msgstr ""
-"Aquest Ã©s programari lliure; podeu redistribuir-lo i/o modificar-lo sota "
-"els\n"
-"termes de la LlicÃ¨ncia PÃºblica General GNU tal i com ha estat publicada per "
-"la\n"
-"Free Software Foundation; bÃ© sota la versiÃ³ 2 de la LlicÃ¨ncia o bÃ© (si ho\n"
-"preferiu) sota qualsevol versiÃ³ posterior.\n"
+"\n"
+"ËÜ¥×¥í¥°¥é¥à¤Ï¥Õ¥ê¡¼¥½¥Õ¥È¥¦¥§¥¢¤Ç¤¹. GNU°ìÈÌ¸øÍ­»ÈÍÑµöÂú\n"
+"<http://www.gnu.org/licenses/gpl.html> ¤ÇÄê¤á¤é¤ì¤¿¾ò¹à¤Î²¼¤ÇËÜ¥×¥í¥°¥é\n"
+"¥à¤Î¥³¥Ô¡¼¤òºÆÇÛÉÛ¤Ç¤­¤Þ¤¹. Å¬ÀÚ¤ÊË¡¤¬Ç§¤ë¸Â¤ê¤Ë¤ª¤¤¤ÆÁ´¤¯¤ÎÌµÊÝ¾Ú¤Ç¤¹.\n"
 "\n"
 
 #. TRANSLATORS: %s denotes an author name.
 #: lib/version-etc.c:90
 #, c-format
 msgid "Written by %s.\n"
-msgstr "Escrit per %s.\n"
+msgstr "ºî¼Ô %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:94
 #, c-format
 msgid "Written by %s and %s.\n"
-msgstr "Escrit per %s i %s.\n"
+msgstr "ºî¼Ô %s ¤È %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #: lib/version-etc.c:98
 #, c-format
 msgid "Written by %s, %s, and %s.\n"
-msgstr "Escrit per %s, %s i %s.\n"
+msgstr "ºî¼Ô %s, %s, %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -546,8 +600,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s\n"
-"i %s.\n"
+"ºî¼Ô %s, %s, %s,\n"
+"¤½¤·¤Æ %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -558,8 +612,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s i %s.\n"
+"ºî¼Ô %s, %s, %s,\n"
+"%s, %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -570,8 +624,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, %s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s, %s i %s.\n"
+"ºî¼Ô %s, %s, %s,\n"
+"%s, %s, %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -582,8 +636,8 @@ msgid ""
 "Written by %s, %s, %s,\n"
 "%s, %s, %s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
-"%s, %s, %s i %s.\n"
+"ºî¼Ô %s, %s, %s,\n"
+"%s, %s, %s, %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -595,9 +649,9 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
+"ºî¼Ô %s, %s, %s,\n"
 "%s, %s, %s, %s,\n"
-"i %s.\n"
+"%s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -609,9 +663,9 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "%s, and %s.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
+"ºî¼Ô %s, %s, %s,\n"
 "%s, %s, %s, %s,\n"
-"%s i %s.\n"
+"%s, %s.\n"
 
 #. TRANSLATORS: Each %s denotes an author name.
 #. You can use line breaks, estimating that each author name occupies
@@ -623,20 +677,29 @@ msgid ""
 "%s, %s, %s, %s,\n"
 "%s, %s, and others.\n"
 msgstr ""
-"Escrit per %s, %s, %s,\n"
+"ºî¼Ô %s, %s, %s,\n"
 "%s, %s, %s, %s,\n"
-"%s, %s i d'altres.\n"
+"%s, %s, Â¾.\n"
+
+#: lib/wait-process.c:279 lib/wait-process.c:311 lib/wait-process.c:369
+#, c-format
+msgid "%s subprocess"
+msgstr "%s ¥µ¥Ö¥×¥í¥»¥¹"
+
+#: lib/wait-process.c:328 lib/wait-process.c:395
+#, c-format
+msgid "%s subprocess got fatal signal %d"
+msgstr "%s ¥µ¥Ö¥×¥í¥»¥¹¤¬Ã×Ì¿Åª¤Ê¥·¥°¥Ê¥ë %d ¤ò¼õ¿®¤·¤Þ¤·¤¿"
 
 #: lib/xmemcoll.c:50
 msgid "string comparison failed"
-msgstr "ha fallat la comparaciÃ³ de cadenes"
+msgstr "Ê¸»úÎó¤ÎÈæ³Ó¤Ë¼ºÇÔ"
 
 #: lib/xmemcoll.c:51
 msgid "Set LC_ALL='C' to work around the problem."
-msgstr "Establiu la variable LC_ALL a Â«CÂ» per evitar el problema."
+msgstr "ÌäÂê¤ò²óÈò¤¹¤ë¤¿¤á¤Ë LC_ALL='C' ¤ò»ØÄê¤·¤Æ¤¯¤À¤µ¤¤."
 
-# Usa quote() en les 2.  ivb
 #: lib/xmemcoll.c:53
 #, c-format
 msgid "The strings compared were %s and %s."
-msgstr "Les cadenes comparades eren %s i %s."
+msgstr "Èæ³Ó¤·¤¿Ê¸»úÎó¤Ï %s ¤È %s ¤Ç¤¹."

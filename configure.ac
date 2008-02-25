@@ -3,11 +3,12 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_INIT(src/recode.c)
-AC_PREREQ(2.12)
+AC_PREREQ(2.59)
 AM_CONFIG_HEADER(config.h)
 AM_INIT_AUTOMAKE(recode, 3.6)
 
 AC_PROG_CC
+gl_EARLY
 AC_AIX
 AC_MINIX
 AC_PROG_LIBTOOL
@@ -17,6 +18,7 @@ AM_C_PROTOTYPES
 AC_C_CONST
 AC_C_INLINE
 AC_PROG_LEX
+gl_INIT
 
 AC_HEADER_STDC
 AC_CHECK_HEADERS(limits.h locale.h memory.h stdbool.h stddef.h stdlib.h string.h unistd.h utime.h)

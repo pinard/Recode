@@ -1,5 +1,6 @@
-# Kinyarwanda translations for recode package.
+# Kinyarwanda translations for mailutils package.
 # Copyright (C) 2005 Free Software Foundation, Inc.
+# This file is distributed under the same license as the mailutils package.
 # Steve Murphy <murf@e-tools.com>, 2005.
 # Steve performed initial rough translation from compendium built from translations provided by the following translators:
 # Philibert Ndandali  <ndandali@yahoo.fr>, 2005.
@@ -13,218 +14,37 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"Project-Id-Version: mailutils 0.6\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2005-09-30 17:42+0300\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Nta kosa"
-
-#: src/main.c:145
-#, fuzzy
-msgid "Non canonical input"
-msgstr "Iyinjiza"
-
-#: src/main.c:148
-#, fuzzy
-msgid "Ambiguous output"
-msgstr "Ibisohoka"
-
-#: src/main.c:151
-#, fuzzy
-msgid "Untranslatable input"
-msgstr "Iyinjiza"
-
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "ibinjizwa bitemewe"
-
-#: src/main.c:157
-msgid "System detected problem"
-msgstr ""
-
-#: src/main.c:160
-#, fuzzy
-msgid "Misuse of recoding library"
-msgstr "Bya Isomero"
-
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr ""
-
-#: src/main.c:208
-#, fuzzy
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
-msgstr ""
-"Porogaramu ni Kigenga Na Cyangwa i Bya i Nka Verisiyo 2. Cyangwa ku Ihitamo "
-"Verisiyo Porogaramu ni in i ATARIIGIHARWE i Cyangwa A kugirango Birenzeho "
-"Birambuye BYAKIRIWE a Gukoporora Bya i Na: iyi Porogaramu NIBA OYA Kwandika "
-"Kuri i"
-
-#: src/main.c:233
+#: lib/argmatch.c:137
 #, fuzzy, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "kugirango Birenzeho Ibisobanuro"
+msgid "invalid argument %s for %s"
+msgstr "Sibyo kugirango"
 
-#: src/main.c:237
-#, fuzzy
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
-msgstr "Idosiye hagati Inyuguti Na Ubuso"
+#: lib/argmatch.c:138
+#, fuzzy, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "kugirango"
 
-#: src/main.c:241
-#, c-format
-msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+#: lib/argmatch.c:157
+#, fuzzy, c-format
+msgid "Valid arguments are:"
+msgstr "ingingo"
+
+#: lib/argp-help.c:194
+#, fuzzy, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
 msgstr ""
-
-#: src/main.c:244
-#, fuzzy
-msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
-msgstr "a Ihitamo Nka Hanyuma ni i Ihitamo kugirango Bitari ngombwa ingingo"
-
-#: src/main.c:250
-#, fuzzy
-msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
-msgstr ""
-"L Urutonde Urutonde Cyangwa Byose Na K Kuri h Umutwempangano Kwandika "
-"imbonerahamwe# ku ikoresha Hanyuma Kugira ndahindurwa Imbonerahamwe Kwandika "
-"Inyuma a C Modire Byose Gushaka Icyegeranyo Byose Itsinda rito Bya C "
-"Uburenganzira bw'umuhimbyi Kugaragaza Na Ifashayobora Kugaragaza iyi "
-"Ifashayobora Na Verisiyo Ibisohoka Verisiyo Ibisobanuro Na"
-
-#: src/main.c:263
-#, fuzzy
-msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
-msgstr ""
-"v Bya Intambwe Na Icyegeranyo Q Ubutumwa Ibyerekeye F ATARIIGIHARWE Ryari: "
-"OYA T i Idosiye Nyuma i Idosiye Gukoresha Idosiye kugirango Ububiko "
-"Gukoresha Ububiko kugirango"
-
-#: src/main.c:275
-#, fuzzy
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "-P Gukoresha kugirango"
-
-#: src/main.c:280
-#, fuzzy
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "-P Nka i ku iyi Sisitemu"
-
-#: src/main.c:285
-#, fuzzy
-msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
-msgstr ""
-"S Gukoresha ATARIIGIHARWE Biregarega D GUHINDURA Cyangwa kugirango Inkomoko "
-"Kuri Ikurikiranyanyuguti Na Ibisobanuro Nka kugirango C Gukoresha Bya "
-"MAHARAKUBIRI kugirango g Ibishushanyo Uducamurongo ku X Kwirengagiza "
-"Kwirengagiza a"
-
-#: src/main.c:296
-#, fuzzy
-msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
-msgstr "L Na: Oya Urutonde Bihari Na Ubuso ni Cyangwa Cyangwa Bya"
-
-#: src/main.c:302
-#, fuzzy
-msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
-msgstr "ni Gushyiraho in Kuri i Imisobekere: ku"
-
-#: src/main.c:307
-#, fuzzy
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
-"K Mbere kugirango i Nyuma Byombi Nyambonerahamwe Na: Bya i Ifishi Na Na Nka "
-"NYACUMI Imibare"
-
-#: src/main.c:312
-#, fuzzy
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr "ni Ururimi Gicurasi Cyangwa ni i Mburabuzi"
-
-#: src/main.c:315
-#, fuzzy
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"Project- Id- Version: basctl\n"
-"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
-"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
-"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
-"Content- Type: text/ plain; charset= UTF- 8\n"
-"Content- Transfer- Encoding: 8bit\n"
-"X- Generator: KBabel 1. 0\n"
-". Project- Id- Version: basctl\n"
+"%.*Project- Id- Version: basctl\n"
 "POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
 "PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
 "Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
@@ -233,114 +53,11 @@ msgstr ""
 "X- Generator: KBabel 1. 0\n"
 "."
 
-#: src/main.c:323
-#, fuzzy
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
+#: lib/argp-help.c:203
+#, fuzzy, c-format
+msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
 msgstr ""
-"Ntacyo Bya i Na P P NIBA Oya Ikindi i ni KURI i Umwimerere ni Hanyuma Nka a "
-"Muyunguruzi... Na Kuri"
-
-#: src/main.c:329
-#, fuzzy
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr "CA."
-
-#: src/main.c:429
-#, fuzzy, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "ni"
-
-#: src/main.c:433
-#, fuzzy, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "ni Kitazwi"
-
-#: src/main.c:463 src/main.c:521
-#, fuzzy, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "ni"
-
-#: src/main.c:467 src/main.c:525
-#, fuzzy, c-format
-msgid "Language `%s' is unknown"
-msgstr "ni Kitazwi"
-
-#: src/main.c:559
-#, fuzzy, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "ni"
-
-#: src/main.c:563
-#, fuzzy, c-format
-msgid "Format `%s' is unknown"
-msgstr "ni Kitazwi"
-
-#: src/main.c:620
-#, fuzzy
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "CA."
-
-#: src/main.c:623
-#, fuzzy
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr "C"
-
-#: src/main.c:627
-#, fuzzy
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"ni Kigenga i Inkomoko kugirango ni OYA ATARIIGIHARWE kugirango Cyangwa A"
-
-#: src/main.c:668
-#, fuzzy, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "ni Kitazwi"
-
-#: src/main.c:708 src/main.c:722
-#, fuzzy, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "ni Kitazwi Cyangwa"
-
-#: src/main.c:753
-#, fuzzy
-msgid "Required argument is missing"
-msgstr "ni Ibuze"
-
-#: src/main.c:796
-#, fuzzy, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "ni Bitemewe."
-
-#: src/main.c:802
-#, fuzzy, c-format
-msgid "Request `%s' is erroneous"
-msgstr "ni"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr ""
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr ""
-
-#: src/main.c:953
-#, fuzzy, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr ""
-"Project- Id- Version: basctl\n"
+"%.*Project- Id- Version: basctl\n"
 "POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
 "PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
 "Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
@@ -349,210 +66,573 @@ msgstr ""
 "X- Generator: KBabel 1. 0\n"
 "."
 
-#: src/main.c:960
+#: lib/argp-help.c:215
 #, fuzzy, c-format
-msgid "%s failed: %s in step `%s..%s'"
+msgid "Garbage in ARGP_HELP_FMT: %s"
+msgstr "in"
+
+#: lib/argp-help.c:1194
+#, fuzzy
+msgid ""
+"Mandatory or optional arguments to long options are also mandatory or "
+"optional for any corresponding short options."
 msgstr ""
-"%sProject- Id- Version: basctl\n"
-"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
-"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
-"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
-"Content- Type: text/ plain; charset= UTF- 8\n"
-"Content- Transfer- Encoding: 8bit\n"
-"X- Generator: KBabel 1. 0\n"
-"."
+"Cyangwa Bitari ngombwa ingingo Kuri Amahitamo Cyangwa Bitari ngombwa "
+"kugirango Amahitamo"
 
-#: src/main.c:983
-#, fuzzy, c-format
-msgid "%s in step `%s..%s'"
-msgstr ""
-"%sProject- Id- Version: basctl\n"
-"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
-"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
-"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
-"Content- Type: text/ plain; charset= UTF- 8\n"
-"Content- Transfer- Encoding: 8bit\n"
-"X- Generator: KBabel 1. 0\n"
-"."
+#: lib/argp-help.c:1581
+msgid "Usage:"
+msgstr "Ikoresha:"
 
-#: src/names.c:335
-#, fuzzy, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "Na ni OYA"
-
-#: src/names.c:831
-#, fuzzy, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr "Urutonde Oya Amazina Bihari kugirango iyi"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr ""
-
-#: src/names.c:1049
-#, fuzzy, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "Oya Amazina Bihari kugirango"
-
-#: src/outer.c:125
-#, fuzzy, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "Gushyiraho Birenzeho Rimwe kugirango"
-
-#: src/outer.c:133
-#, fuzzy, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "Gushyiraho Birenzeho Rimwe kugirango"
-
-#: src/recode.c:115 src/recode.c:127
+#: lib/argp-help.c:1585
 #, fuzzy
-msgid "Virtual memory exhausted"
-msgstr "Ububiko"
+msgid "  or: "
+msgstr "Cyangwa"
 
-#: src/recode.c:155
+#: lib/argp-help.c:1624
 #, fuzzy, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Na Byombi Kuri"
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Cyangwa kugirango Birenzeho Ibisobanuro"
 
-#: src/recode.c:169
+#: lib/argp-help.c:1652
 #, fuzzy, c-format
-msgid "No character recodes to %3d"
-msgstr "Inyuguti Kuri"
-
-#: src/recode.c:170
-#, fuzzy
-msgid "Cannot invert given one-to-one table"
-msgstr "Gucurika Kuri imbonerahamwe#"
-
-#: src/recode.c:224 src/recode.c:236
-#, fuzzy, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "kugirango Kuri"
-
-#: src/recode.c:229 src/recode.c:241
-#, fuzzy, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Oya Na:"
-
-#: src/recode.c:272
-#, fuzzy
-msgid "Cannot complete table from set of known pairs"
-msgstr "Byuzuye imbonerahamwe# Bivuye Gushyiraho Bya"
-
-#: src/recode.c:497
-#, fuzzy
-msgid "Identity recoding, not worth a table"
-msgstr "OYA a imbonerahamwe#"
-
-#: src/recode.c:504
-#, fuzzy
-msgid "Recoding is too complex for a mere table"
-msgstr "ni ITSINDA RY'IMIBARE C kugirango a imbonerahamwe#"
-
-#: src/recode.c:536
-#, fuzzy, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sConversionimbonerahamwe# ku"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr ""
-
-#: src/recode.c:744
-#, fuzzy
-msgid "No table to print"
-msgstr "imbonerahamwe# Kuri Gucapa"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr ""
-
-#: src/request.c:36
-#, fuzzy, c-format
-msgid "%s to %s"
-msgstr "%sKuri"
-
-# setup2/source\ui\dialog\dialog.src:RESID_DLG_OVERWRITE.3.text
-#: src/request.c:37 src/request.c:39
-#, fuzzy
-msgid "byte"
-msgstr "Bayite"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr ""
-
-# officecfg/registry\schema\org\openoffice\Office\Math.xcs:....FontFormat.Pitch..2.text
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "impinduragaciro"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr ""
-
-#: src/request.c:113
-#, fuzzy
-msgid "*mere copy*"
-msgstr "*Gukoporora"
-
-#: src/request.c:246
-#, fuzzy
-msgid "Virtual memory exhausted!"
-msgstr "Ububiko"
-
-#: src/request.c:265
-#, fuzzy
-msgid "Step initialisation failed"
-msgstr "Byanze"
-
-#: src/request.c:272
-#, fuzzy
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "Byanze Amahitamo"
-
-#: src/request.c:568
-#, fuzzy, c-format
-msgid "Request: %s\n"
-msgstr "Kubaza..."
-
-#: src/request.c:720
-#, fuzzy, c-format
-msgid "Shrunk to: %s\n"
+msgid "Report bugs to %s.\n"
 msgstr "Kuri"
 
-#: src/request.c:823 src/request.c:932
-#, fuzzy, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Ubuso Izina:"
-
-#: src/request.c:903
-#, fuzzy, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Kuri Bivuye Kuri"
-
-#: src/request.c:1013
+#: lib/argp-help.c:1872 lib/error.c:121
 #, fuzzy
-msgid "Expecting `..' in request"
-msgstr ""
-"Project- Id- Version: basctl\n"
-"POT- Creation- Date: 2003- 12- 07 17: 13+ 02\n"
-"PO- Revision- Date: 2004- 11- 04 10: 13- 0700\n"
-"Last- Translator: Language- Team:< en@ li. org> MIME- Version: 1. 0\n"
-"Content- Type: text/ plain; charset= UTF- 8\n"
-"Content- Transfer- Encoding: 8bit\n"
-"X- Generator: KBabel 1. 0\n"
-"."
+msgid "Unknown system error"
+msgstr "Sisitemu Ikosa"
 
-#: src/task.c:826 src/task.c:1002
+#: lib/argp-parse.c:82
+#, fuzzy
+msgid "Give this help list"
+msgstr "iyi Ifashayobora Urutonde"
+
+#: lib/argp-parse.c:83
+#, fuzzy
+msgid "Give a short usage message"
+msgstr "a Ikoresha: Ubutumwa"
+
+#: lib/argp-parse.c:84
+#, fuzzy
+msgid "NAME"
+msgstr "Izina"
+
+#: lib/argp-parse.c:84
+#, fuzzy
+msgid "Set the program name"
+msgstr "i Porogaramu Izina:"
+
+# offmgr/source\offapp\dialog\optgdlg.src:OFA_TP_MISC.FT_HELPAGENT_TIME_UNIT.text
+#: lib/argp-parse.c:85
+#, fuzzy
+msgid "SECS"
+msgstr "amasogonda"
+
+#: lib/argp-parse.c:86
+#, fuzzy
+msgid "Hang for SECS seconds (default 3600)"
+msgstr "kugirango amasogonda Mburabuzi"
+
+#: lib/argp-parse.c:147
+#, fuzzy
+msgid "Print program version"
+msgstr "Porogaramu Verisiyo"
+
+#: lib/argp-parse.c:163
+#, fuzzy
+msgid "(PROGRAM ERROR) No version known!?"
+msgstr "(Verisiyo"
+
+#: lib/argp-parse.c:619
 #, fuzzy, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "Tegereza Imimerere ni"
+msgid "%s: Too many arguments\n"
+msgstr "ingingo"
 
-#: src/testdump.c:298
+#: lib/argp-parse.c:762
+#, fuzzy
+msgid "(PROGRAM ERROR) Option should have been recognized!?"
+msgstr "(Verisiyo"
+
+# 4952
+#: lib/c-stack.c:244
+#, fuzzy
+msgid "program error"
+msgstr "Ikosa ryo mu Isoma"
+
+# svtools/source\misc\errtxt.src:RID_ERRHDL.ERRCODE_CLASS_WRITE.text
+#: lib/closeout.c:94
+#, fuzzy
+msgid "write error"
+msgstr "Kwandika ikosa"
+
+#: lib/copy-file.c:65
+#, fuzzy, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "Gufungura kugirango"
+
+#: lib/copy-file.c:72
+#, fuzzy, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "Gufungura kugirango"
+
+#: lib/copy-file.c:80
+#, fuzzy, c-format
+msgid "error reading \"%s\""
+msgstr "Ikosa"
+
+#: lib/copy-file.c:85 lib/copy-file.c:89
+#, fuzzy, c-format
+msgid "error writing \"%s\""
+msgstr "Ikosa"
+
+#: lib/copy-file.c:91
+#, fuzzy, c-format
+msgid "error after reading \"%s\""
+msgstr "Ikosa"
+
+#: lib/csharpcomp.c:273
+#, fuzzy
+msgid "fdopen() failed"
+msgstr "Gufungura Byanze"
+
+#: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
+#: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
+#, fuzzy, c-format
+msgid "%s subprocess failed"
+msgstr "%s:Byanze"
+
+#: lib/file-type.c:43
+#, fuzzy
+msgid "regular empty file"
+msgstr "Ibisanzwe ubusa IDOSIYE"
+
+#: lib/file-type.c:43
+#, fuzzy
+msgid "regular file"
+msgstr "Ibisanzwe IDOSIYE"
+
+# svtools/source\dialogs\filedlg2.src:STR_FILEDLG_DIR.text
+#: lib/file-type.c:46
+#, fuzzy
+msgid "directory"
+msgstr "Ububiko"
+
+#: lib/file-type.c:49
+#, fuzzy
+msgid "block special file"
+msgstr "Funga Bidasanzwe IDOSIYE"
+
+#: lib/file-type.c:52
+#, fuzzy
+msgid "character special file"
+msgstr "Inyuguti Bidasanzwe IDOSIYE"
+
+#: lib/file-type.c:58
+#, fuzzy
+msgid "symbolic link"
+msgstr "Ihuza"
+
+#: lib/file-type.c:64
+#, fuzzy
+msgid "message queue"
+msgstr "Ubutumwa Umurongo"
+
+#: lib/file-type.c:70
+#, fuzzy
+msgid "shared memory object"
+msgstr "Ububiko Igikoresho"
+
+#: lib/file-type.c:73
+#, fuzzy
+msgid "typed memory object"
+msgstr "Ububiko Igikoresho"
+
+#: lib/file-type.c:75
+#, fuzzy
+msgid "weird file"
+msgstr "IDOSIYE"
+
+#: lib/gai_strerror.c:45
+#, fuzzy
+msgid "Address family for hostname not supported"
+msgstr "Idosiye OYA"
+
+#: lib/gai_strerror.c:49
+#, fuzzy
+msgid "ai_family not supported"
+msgstr "Idosiye OYA"
+
+#: lib/gai_strerror.c:50
+#, fuzzy
+msgid "Memory allocation failure"
+msgstr "Byanze"
+
+#: lib/gai_strerror.c:54
+#, fuzzy
+msgid "ai_socktype not supported"
+msgstr "Idosiye OYA"
+
+# svtools/source\misc\errtxt.src:RID_ERRHDL.ERRCODE_CLASS_WRITE.text
+#: lib/gai_strerror.c:55
+#, fuzzy
+msgid "System error"
+msgstr "Kwandika ikosa"
+
+#: lib/gai_strerror.c:59
+#, fuzzy
+msgid "Request not canceled"
+msgstr "Ikintu OYA Byabonetse"
+
+#: lib/gai_strerror.c:74
+#, fuzzy
+msgid "Unknown error"
+msgstr "Sisitemu Ikosa"
+
+#: lib/getopt.c:551 lib/getopt.c:570
+#, fuzzy, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s:Ihitamo ni"
+
+#: lib/getopt.c:603 lib/getopt.c:607
+#, fuzzy, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+#: lib/getopt.c:616 lib/getopt.c:621
+#, fuzzy, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
+#, fuzzy, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:727 lib/getopt.c:730
+#, fuzzy, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:738 lib/getopt.c:741
+#, fuzzy, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:796 lib/getopt.c:799
+#, fuzzy, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:805 lib/getopt.c:808
+#, fuzzy, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s:Sibyo Ihitamo"
+
+#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
+#, fuzzy, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s:Ihitamo"
+
+#: lib/getopt.c:935 lib/getopt.c:954
+#, fuzzy, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s:Ihitamo ni"
+
+#: lib/getopt.c:978 lib/getopt.c:999
+#, fuzzy, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s:Ihitamo Kwemerera"
+
+#: lib/human.c:486
+#, fuzzy
+msgid "block size"
+msgstr "Funga Ingano"
+
+#: lib/mkdir-p.c:106
+#, fuzzy, c-format
+msgid "%s exists but is not a directory"
+msgstr "%sni OYA a bushyinguro"
+
+#: lib/mkdir-p.c:203 lib/mkdir-p.c:294
+#, fuzzy, c-format
+msgid "cannot change owner and/or group of %s"
+msgstr "Guhindura>> Na Cyangwa Itsinda Bya"
+
+#: lib/mkdir-p.c:229 lib/mkdir-p.c:266
+#, fuzzy, c-format
+msgid "cannot create directory %s"
+msgstr "Kurema bushyinguro"
+
+#: lib/mkdir-p.c:240
+#, fuzzy, c-format
+msgid "cannot chdir to directory %s"
+msgstr "Kuri bushyinguro"
+
+#: lib/mkdir-p.c:307 lib/mkdir-p.c:332
+#, fuzzy, c-format
+msgid "cannot change permissions of %s"
+msgstr "Guhindura>> Uruhushya Bya"
+
+#: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
+#, fuzzy
+msgid "memory exhausted"
+msgstr "Ububiko"
+
+#: lib/openat-die.c:36
+#, fuzzy
+msgid "unable to record current working directory"
+msgstr "Kuri Icyabitswe KIGEZWEHO bushyinguro"
+
+#: lib/openat-die.c:49
+#, fuzzy
+msgid "failed to return to initial working directory"
+msgstr "Byanze Kuri Garuka Kuri bushyinguro"
+
+#: lib/pagealign_alloc.c:143
+#, fuzzy
+msgid "Failed to open /dev/zero for read"
+msgstr "%s:Byanze Kuri Gufungura kugirango"
+
+#: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
+#, fuzzy
+msgid "cannot create pipe"
+msgstr "Kurema Ihuza"
+
+# basctl/source\basicide\basidesh.src:RID_IMGBTN_REMOVEWATCH.text
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:245
+#, fuzzy
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:246
+msgid "'"
+msgstr "'"
+
+#: lib/regcomp.c:131
+msgid "Success"
+msgstr "Ibyatunganye"
+
+#: lib/regcomp.c:137
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "%s:Sibyo Ibisanzwe imvugo"
+
+#: lib/regcomp.c:143
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "Sibyo Inyuguti ishuri"
+
+#: lib/regcomp.c:149
+#, fuzzy
+msgid "Invalid back reference"
+msgstr "Umubare utari wo"
+
+#: lib/regcomp.c:164
+#, fuzzy
+msgid "Invalid range end"
+msgstr "Ipaji Urutonde"
+
+#: lib/regcomp.c:167
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "Ububiko"
+
+#: lib/regcomp.c:170
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "%s:Sibyo Ibisanzwe imvugo"
+
+#: lib/regcomp.c:173
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Ikosa in Ibisanzwe imvugo Gushaka"
+
+#: lib/regcomp.c:176
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "%s:Sibyo Ibisanzwe imvugo"
+
+#: lib/regcomp.c:659
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Ikosa in Ibisanzwe imvugo Gushaka"
+
+#: lib/unicodeio.c:147
+#, fuzzy
+msgid "iconv function not usable"
+msgstr "Umumaro OYA"
+
+#: lib/unicodeio.c:149
+#, fuzzy
+msgid "iconv function not available"
+msgstr "Umumaro OYA Bihari"
+
+#: lib/unicodeio.c:156
+#, fuzzy
+msgid "character out of range"
+msgstr "Inyuguti Inyuma Bya Urutonde"
+
+#: lib/unicodeio.c:219
+#, fuzzy, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "GUHINDURA U Kuri Inyuguti Gushyiraho"
+
+#: lib/unicodeio.c:221
+#, fuzzy, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "GUHINDURA U Kuri Inyuguti Gushyiraho"
+
+#: lib/userspec.c:110
+#, fuzzy
+msgid "invalid user"
+msgstr "Sibyo Ukoresha:"
+
+#: lib/userspec.c:111
+#, fuzzy
+msgid "invalid group"
+msgstr "Sibyo Itsinda"
+
+#: lib/userspec.c:113
+#, fuzzy
+msgid "cannot get the login group of a numeric UID"
+msgstr "Kubona i Ifashayinjira Itsinda Bya a Bikurikije umubare"
+
+#: lib/version-etc.c:74
+#, fuzzy
 msgid ""
-"UCS2   Mne   Description\n"
+"\n"
+"This is free software.  You may redistribute copies of it under the terms "
+"of\n"
+"the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
 msgstr ""
+"Porogaramu ni Kigenga Na Cyangwa i Bya i Nka Verisiyo 2. Cyangwa ku Ihitamo "
+"Verisiyo"
+
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:90
+#, fuzzy, c-format
+msgid "Written by %s.\n"
+msgstr "ku"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:94
+#, fuzzy, c-format
+msgid "Written by %s and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:98
+#, fuzzy, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:116
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:123
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:130
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:138
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
+msgstr "ku Na"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:148
+#, fuzzy, c-format
+msgid ""
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
+msgstr "ku Na Ibindi"
+
+#: lib/xmemcoll.c:50
+#, fuzzy
+msgid "string comparison failed"
+msgstr "Ikurikiranyanyuguti Byanze"
+
+#: lib/xmemcoll.c:51
+#, fuzzy
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Kuri Akazi i"
+
+#: lib/xmemcoll.c:53
+#, fuzzy, c-format
+msgid "The strings compared were %s and %s."
+msgstr "Ikurikiranyanyuguti Na"

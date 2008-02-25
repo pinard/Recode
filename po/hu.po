@@ -1,540 +1,495 @@
-# Recode Hungarian po file
-# Copyright (C) 2002 Free Software Foundation, Inc.
-# Andras Timar <timar_a@freemail.hu>, 2002.
+# Hungarian translation of coreutils.
+# Copyright (C) 2002, 2003, 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the coreutils package.
+# Emese Kovacs <emese@instantweb.hu>, 2004.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2003-03-02 18:08+0100\n"
-"Last-Translator: Andras Timar <timar_a@freemail.hu>\n"
+"Project-Id-Version: coreutils 5.2.1\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2005-09-30 17:42+0300\n"
+"PO-Revision-Date: 2004-07-03 22:32+0200\n"
+"Last-Translator: Emese Kovacs <emese@instantweb.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-2\n"
-"Content-Transfer-Encoding: 8-bit\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Hibï¿½tlan"
+#: lib/argmatch.c:137
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "A(z) `%s' argumentum érvénytelen ehhez: %s"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "Nem kanonikus bemenet"
+#: lib/argmatch.c:138
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "`%s' argumentum nem egyértelmû ehhez: `%s'"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Nem egyï¿½rtelmï¿½ kimenet"
+#: lib/argmatch.c:157
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Az érvényes argumentumok a következõk:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Lefordï¿½thatatlan bemenet"
-
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "ï¿½rvï¿½nytelen bemenet"
-
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Rendszerhiba"
-
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Az ï¿½tkï¿½dolï¿½kï¿½nyvtï¿½r tï¿½ves hasznï¿½lata"
-
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "Belsï¿½ ï¿½tkï¿½dolï¿½si hiba"
-
-#: src/main.c:208
+#: lib/argp-help.c:1194
+#, fuzzy
 msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Mandatory or optional arguments to long options are also mandatory or "
+"optional for any corresponding short options."
 msgstr ""
-"Ez a program szabad szoftver; terjeszthetï¿½ ï¿½s/vagy mï¿½dosï¿½thatï¿½ a \n"
-"Free Software Foundation ï¿½ltal kï¿½zzï¿½tett GNU General Public License \n"
-"feltï¿½teleinek megfelelï¿½en. A licencszerzï¿½dï¿½s 2. vagy (szabadon\n"
-"vï¿½laszthatï¿½an) bï¿½rmelyik kï¿½sï¿½bbi vï¿½ltozata hasznï¿½lhatï¿½.\n"
-"\n"
-"A programot abban a remï¿½nyben adjuk kï¿½zre, hogy hasznosnak bizonyul,\n"
-"de NINCS SEMMI GARANCIA; beleï¿½rtve a Kï¿½ZREADHATï¿½Sï¿½GGAL vagy EGY\n"
-"BIZONYOS Cï¿½LRA VALï¿½ ALKALMASSï¿½GGAL kapcsolatos garanciï¿½t is. "
-"Tovï¿½bbi\n"
-"rï¿½szletekï¿½rt olvasd el a GNU General Public License teljes "
-"szï¿½vegï¿½t.\n"
-"\n"
-"A programmal egyï¿½tt meg kellett kapnod a GNU General Public License\n"
-"egy pï¿½ldï¿½nyï¿½t. Ha nem kaptad meg, ï¿½rj a Free Software Foundation-"
-"nek\n"
-"a kï¿½vetkezï¿½ cï¿½mre: \n"
-"59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Ha egy hosszú kapcsolóhoz kötelezõ argumentumot megadni, akkor ez a \n"
+"megfelelõ rövid kapcsolónál is kötelezõ.\n"
 
-#: src/main.c:233
+#: lib/argp-help.c:1597
+#, fuzzy
+msgid " [OPTION...]"
+msgstr "Használat: %s [KAPCSOLÓ]...\n"
+
+#: lib/argp-help.c:1624
+#, fuzzy, c-format
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Próbálja a(z) `%s --help'-et további információkért.\n"
+
+#: lib/argp-help.c:1652
+#, fuzzy, c-format
+msgid "Report bugs to %s.\n"
+msgstr ""
+"\n"
+"A hibákat jelentsd a <bug-fileutils@gnu.org> címen."
+
+#: lib/argp-help.c:1872 lib/error.c:121
+msgid "Unknown system error"
+msgstr "Ismeretlen rendszerhiba"
+
+#: lib/argp-parse.c:619
+#, fuzzy, c-format
+msgid "%s: Too many arguments\n"
+msgstr "túl sok argumentum"
+
+#: lib/c-stack.c:244
+#, fuzzy
+msgid "program error"
+msgstr "olvasási hiba"
+
+#: lib/closeout.c:94
+msgid "write error"
+msgstr "írási hiba"
+
+#: lib/copy-file.c:65
+#, fuzzy, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "%s megnyitása olvasásra sikertelen"
+
+#: lib/copy-file.c:72
+#, fuzzy, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "%s megnyitása olvasásra sikertelen"
+
+#: lib/copy-file.c:80
+#, fuzzy, c-format
+msgid "error reading \"%s\""
+msgstr "hiba %s olvasásakor"
+
+#: lib/copy-file.c:85 lib/copy-file.c:89
+#, fuzzy, c-format
+msgid "error writing \"%s\""
+msgstr "hiba %s írásakor"
+
+#: lib/copy-file.c:91
+#, fuzzy, c-format
+msgid "error after reading \"%s\""
+msgstr "hiba %s olvasásakor"
+
+#: lib/csharpcomp.c:273
+#, fuzzy
+msgid "fdopen() failed"
+msgstr "megnyitás sikertelen"
+
+#: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
+#: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
+#, fuzzy, c-format
+msgid "%s subprocess failed"
+msgstr "strip sikertelen"
+
+#: lib/file-type.c:43
+#, fuzzy
+msgid "regular file"
+msgstr "olvasás sikertelen"
+
+#: lib/file-type.c:46
+msgid "directory"
+msgstr "könyvtár"
+
+#: lib/file-type.c:49
+msgid "block special file"
+msgstr "speciális blokkfájl"
+
+#: lib/file-type.c:52
+msgid "character special file"
+msgstr "speciális karakterfájl"
+
+#: lib/file-type.c:55
+msgid "fifo"
+msgstr "fifo"
+
+#: lib/file-type.c:58
+msgid "symbolic link"
+msgstr "szimbolikus link"
+
+#: lib/file-type.c:75
+#, fuzzy
+msgid "weird file"
+msgstr "olvasás sikertelen"
+
+#: lib/gai_strerror.c:45
+#, fuzzy
+msgid "Address family for hostname not supported"
+msgstr "a fifo fájlok nem támogatottak"
+
+#: lib/gai_strerror.c:49
+#, fuzzy
+msgid "ai_family not supported"
+msgstr "a fifo fájlok nem támogatottak"
+
+#: lib/gai_strerror.c:54
+#, fuzzy
+msgid "ai_socktype not supported"
+msgstr "a fifo fájlok nem támogatottak"
+
+#: lib/gai_strerror.c:55
+#, fuzzy
+msgid "System error"
+msgstr "írási hiba"
+
+#: lib/gai_strerror.c:74
+#, fuzzy
+msgid "Unknown error"
+msgstr "Ismeretlen rendszerhiba"
+
+#: lib/getopt.c:551 lib/getopt.c:570
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Tovï¿½bbi informï¿½ciï¿½ï¿½rt ï¿½rd be: `%s %s'.\n"
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: a(z) `%s' kapcsoló nem egyértelmû\n"
 
-#: src/main.c:237
+#: lib/getopt.c:603 lib/getopt.c:607
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: a(z) `--%s' kapcsoló nem enged meg argumentumot\n"
+
+#: lib/getopt.c:616 lib/getopt.c:621
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: a(z) `%c%s' kapcsoló nem enged meg argumentumot\n"
+
+#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: a(z) `%s' kapcsolóhoz argumentum szükséges\n"
+
+#: lib/getopt.c:727 lib/getopt.c:730
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: a(z) `--%s' kapcsoló ismeretlen\n"
+
+#: lib/getopt.c:738 lib/getopt.c:741
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: a(z) `%c%s' kapcsoló ismeretlen\n"
+
+#: lib/getopt.c:796 lib/getopt.c:799
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: illegális kapcsoló -- %c\n"
+
+#: lib/getopt.c:805 lib/getopt.c:808
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: érvénytelen kapcsoló -- %c\n"
+
+#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: a kapcsolónak szüksége van egy argumentumra -- %c\n"
+
+#: lib/getopt.c:935 lib/getopt.c:954
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: a `-W %s' kapcsoló nem egyértelmû\n"
+
+#: lib/getopt.c:978 lib/getopt.c:999
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: a `-W %s' kapcsoló nem enged meg argumentumot\n"
+
+#: lib/human.c:486
+msgid "block size"
+msgstr "blokkméret"
+
+#: lib/mkdir-p.c:106
+#, c-format
+msgid "%s exists but is not a directory"
+msgstr "%s létezik, de nem könyvtár"
+
+#: lib/mkdir-p.c:203 lib/mkdir-p.c:294
+#, c-format
+msgid "cannot change owner and/or group of %s"
+msgstr "nem lehet %s tulajdonosát és/vagy csoportját megváltoztatni"
+
+#: lib/mkdir-p.c:229 lib/mkdir-p.c:266
+#, c-format
+msgid "cannot create directory %s"
+msgstr "nem lehet létrehozni a(z) %s könyvtárat"
+
+#: lib/mkdir-p.c:240
+#, c-format
+msgid "cannot chdir to directory %s"
+msgstr "nem lehet a következõ könyvtárba lépni: %s"
+
+#: lib/mkdir-p.c:307 lib/mkdir-p.c:332
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "nem lehet %s jogosultságait megváltoztatni"
+
+#: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
+msgid "memory exhausted"
+msgstr "elfogyott a memória"
+
+#: lib/openat-die.c:36
+#, fuzzy
+msgid "unable to record current working directory"
+msgstr "nem lehet az aktuális könyvtárat törölni: %s"
+
+#: lib/pagealign_alloc.c:143
+#, fuzzy
+msgid "Failed to open /dev/zero for read"
+msgstr "%s jogosultságainak visszaállítása sikertelen"
+
+#: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
+#, fuzzy
+msgid "cannot create pipe"
+msgstr "nem lehet a következõ linket létrehozni: %s"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:245
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:246
+msgid "'"
+msgstr "'"
+
+#: lib/regcomp.c:137
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "érvénytelen konverzió: %s"
+
+#: lib/regcomp.c:143
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "érvénytelen karakter (%s) a `%s' módkarakterláncban"
+
+#: lib/regcomp.c:167
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "elfogyott a memória"
+
+#: lib/regcomp.c:170
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "érvénytelen konverzió: %s"
+
+#: lib/regcomp.c:173
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "érvénytelen konverzió: %s"
+
+#: lib/regcomp.c:176
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "érvénytelen konverzió: %s"
+
+#: lib/regcomp.c:659
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "érvénytelen konverzió: %s"
+
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[iIyY]"
+
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[nN]"
+
+#: lib/unicodeio.c:147
+msgid "iconv function not usable"
+msgstr "az iconv függvény nem használható"
+
+#: lib/unicodeio.c:149
+msgid "iconv function not available"
+msgstr "az iconv függvény nem elérhetõ"
+
+#: lib/unicodeio.c:156
+msgid "character out of range"
+msgstr "tartományon kívüli karakter"
+
+#: lib/unicodeio.c:219
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "nem lehet helyi karakterkészletbe átalakítani a következõt: U+%04X"
+
+#: lib/unicodeio.c:221
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "nem lehet U+%04X-t helyi karakterkészletbe átalakítani:  %s"
+
+#: lib/userspec.c:110
+msgid "invalid user"
+msgstr "érvénytelen felhasználó"
+
+#: lib/userspec.c:111
+msgid "invalid group"
+msgstr "érvénytelen csoport"
+
+#: lib/userspec.c:113
+msgid "cannot get the login group of a numeric UID"
+msgstr "az UID-hez tartozó bejelentkezési csoportot nem lehet megállapítani"
+
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:90
+#, c-format
+msgid "Written by %s.\n"
+msgstr "Írta: %s\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:94
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "Írta: %s és %s\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:98
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "Írta: %s, %s és %s\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
+#, c-format
 msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"A `recode' karakterkï¿½szletek ï¿½s felï¿½letek kï¿½zï¿½tti konverziï¿½t "
-"tesz lehetï¿½vï¿½.\n"
+"Írta: %s, %s, %s\n"
+"és %s\n"
 
-#: src/main.c:241
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
 #, c-format
 msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Hasznï¿½lat: %s [KAPCSOLï¿½K]... [ [KARAKTERKï¿½SZLET] | Kï¿½Rï¿½S "
-"[Fï¿½JL]... ]\n"
+"Írta: %s, %s, %s,\n"
+"%s és %s\n"
 
-#: src/main.c:244
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:116
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Ha a hosszï¿½ kapcsolï¿½hoz kï¿½telezï¿½ argumentumot ï¿½rni, akkor az a "
-"megfelelï¿½\n"
-"rï¿½vid kapcsolï¿½ra is vonatkozik. Hasonlï¿½ a helyzet a vï¿½laszthatï¿½ \n"
-"argumentumokkal.\n"
+"Írta: %s, %s, %s,\n"
+"%s, %s és %s\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:123
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Listï¿½k:\n"
-"  -l, --list[=FORMï¿½TUM]      kiï¿½rja az ï¿½sszes ismert "
-"karakterkï¿½szletet\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         kiï¿½rja azokat a karakterkï¿½szleteket, "
-"amelyeket \n"
-"                             mï¿½sok magukba foglalnak\n"
-"  -C, --copyright            kiï¿½rja a copyrightot ï¿½s a mï¿½solï¿½s "
-"feltï¿½teleit\n"
-"      --help                 kiï¿½rja ezt a sï¿½gï¿½t ï¿½s kilï¿½p\n"
-"      --version              kiï¿½rja a verziï¿½informï¿½ciï¿½kat ï¿½s "
-"kilï¿½p\n"
+"Írta: %s, %s, %s,\n"
+"%s, %s, %s és %s\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:130
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Mï¿½kï¿½dï¿½si mï¿½dok:\n"
-"  -v, --verbose           kiï¿½rja a lï¿½pï¿½seket ï¿½s az "
-"elï¿½rehaladï¿½st\n"
-"  -q, --quiet, --silent   nem ï¿½r ki ï¿½zeneteket visszafordï¿½thatatlan\n"
-"                          ï¿½tkï¿½dolï¿½s esetï¿½n\n"
-"  -f, --force             ï¿½tkï¿½dolï¿½s kï¿½nyszerï¿½tï¿½se "
-"visszafordï¿½thatatlan \n"
-"                          esetben is\n"
-"  -t, --touch             az ï¿½tkï¿½dolt fï¿½jlok dï¿½tumï¿½t "
-"mï¿½dosï¿½tja\n"
-"  -i, --sequence=files    kï¿½zbï¿½lsï¿½ fï¿½jlokat hasznï¿½l az egymï¿½st "
-"kï¿½vetï¿½ \n"
-"                          lï¿½pï¿½sekhez\n"
-"      --sequence=memory   memï¿½riï¿½ban elhelyezkedï¿½ tï¿½rolï¿½kat "
-"hasznï¿½l az \n"
-"                          egymï¿½st kï¿½vetï¿½ lï¿½pï¿½sekhez\n"
+"Írta: %s, %s, %s,\n"
+"%s, %s, %s, %s\n"
+"és %s\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr ""
-"  -p, --sequence=pipe     csï¿½vezetï¿½keket hasznï¿½l az egymï¿½st "
-"kï¿½vetï¿½ lï¿½pï¿½sekhez\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     ugyanaz, mint a -i (ezen a rendszeren)\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:138
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Finomhangolï¿½s:\n"
-"  -s, --strict           szigorï¿½ lekï¿½pezï¿½s hasznï¿½lata, akï¿½r "
-"karaktervesztï¿½s \n"
-"                         ï¿½rï¿½n is\n"
-"  -d, --diacritics       csak a nemzeti karaktereket kï¿½dolja ï¿½t HTML/"
-"LaTeX \n"
-"                         formï¿½tumhoz\n"
-"  -S, --source[=NYELV]   csak a NYELV ï¿½ltal meghatï¿½rozott "
-"karakterlï¿½ncokat\n"
-"                         ï¿½s megjegyzï¿½seket kï¿½dolja ï¿½t\n"
-"  -c, --colons           `:' hasznï¿½lata a `\"' helyett a kï¿½tpontos "
-"ï¿½kezet \n"
-"                         jelï¿½lï¿½sï¿½re az Easy French (egyfajta "
-"repï¿½lï¿½ ï¿½kezet)\n"
-"                         kï¿½dolï¿½sban\n"
-"  -g, --graphics         az IBMPC vonalrajzolï¿½ karakterek "
-"helyettesï¿½tï¿½se\n"
-"                         ASCII grafikï¿½val\n"
-"  -x, --ignore=KARKï¿½SZL  a KARKï¿½SZL mellï¿½zï¿½se ï¿½tkï¿½dolï¿½si "
-"ï¿½tvonal vï¿½lasztï¿½sï¿½nï¿½l\n"
+"Írta: %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s és %s\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:148
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
+"Írta: %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s és mások\n"
 
-#: src/main.c:302
-msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
-msgstr ""
+#: lib/xmemcoll.c:50
+msgid "string comparison failed"
+msgstr "karakterlánc-összehasonlítás sikertelen"
 
-#: src/main.c:307
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
+#: lib/xmemcoll.c:51
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Állítsa be az LC_ALL='C' -t a probléma elkerüléséhez."
 
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr ""
-"A NYELV valamilyen programnyelv, lehet `c', `perl' vagy `po'; a `c' az "
-"alap-\n"
-"ï¿½rtelmezett.\n"
-
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"A hibï¿½kat jelentsd a <recode-bugs@iro.umontreal.ca> cï¿½men.\n"
-
-#: src/main.c:429
+#: lib/xmemcoll.c:53
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "A sorozat nem egyï¿½rtelmï¿½: `%s'"
-
-#: src/main.c:433
-#, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "A sorozat ismeretlen: `%s'"
-
-#: src/main.c:463 src/main.c:521
-#, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "A nyelv nem egyï¿½rtelmï¿½: `%s'"
-
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "A nyelv ismeretlen: `%s'"
-
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "A formï¿½tum nem egyï¿½rtelmï¿½: `%s'"
-
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "A formï¿½tum ismeretlen: `%s'"
-
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "ï¿½rta Franï¿½ois Pinard <pinard@iro.umontreal.ca>.\n"
-
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"Ez szabad szoftver; lï¿½sd a forrï¿½st a terjesztï¿½si feltï¿½telekï¿½rt. "
-"Nincs \n"
-"garancia, mï¿½g az eladhatï¿½sï¿½gra vagy egy adott cï¿½lra valï¿½ "
-"megfelelï¿½sre sem.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "A jel ismeretlen: `%s'"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "A karakterkï¿½szlet ismeretlen vagy nem egyï¿½rtelmï¿½: `%s'"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Hiï¿½nyzik egy kï¿½telezï¿½ argumentum"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "A szintaxis elavult, hasznï¿½ld inkï¿½bb ezt: `%s'"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "A kï¿½rï¿½s hibï¿½s: `%s'"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "%s ï¿½tkï¿½dolï¿½sa..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " kï¿½sz\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr " sikertelen: %s a `%s..%s' lï¿½pï¿½sben\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s sikertelen: %s a `%s..%s' lï¿½pï¿½sben"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "%s a `%s..%s' lï¿½pï¿½sben"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "%s karakterkï¿½szlet mï¿½r lï¿½tezik ï¿½s nem %s."
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr ""
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr ""
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr ""
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr ""
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "A virtuï¿½lis memï¿½ria betelt"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "A %3d ï¿½s %3d kï¿½dok egyarï¿½nt %3d kï¿½dra vï¿½ltoznak"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr ""
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr ""
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr ""
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr ""
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr ""
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr ""
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr ""
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr ""
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr ""
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Nincs nyomtathatï¿½ tï¿½blï¿½zat"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "visszafordï¿½thatï¿½"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s -> %s"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "byte"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "ucs2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "vï¿½ltozï¿½"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*lehetetlen*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*egyszerï¿½ mï¿½solï¿½s*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "A virtuï¿½lis memï¿½ria betelt!"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr ""
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr ""
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "Kï¿½rï¿½s: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "Szï¿½kï¿½tve erre: %s\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Ismeretlen felï¿½letnï¿½v `%s'"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Nem lehetsï¿½ges az ï¿½tkï¿½dolï¿½s `%s' ï¿½s `%s' kï¿½zï¿½tt."
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "`..'-t kell megadni a kï¿½rï¿½sben"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "A gyermekfolyamat vï¿½rakozï¿½si ï¿½llapota 0x%0.2x"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mne   leï¿½rï¿½s\n"
-"\n"
+msgid "The strings compared were %s and %s."
+msgstr "Az összehasonlított karakterláncok: %s és %s."

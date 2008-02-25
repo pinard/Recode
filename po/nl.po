@@ -1,545 +1,725 @@
-# Dutch translation of recode.
-# Copyright (C) 2004, 2005 Free Software Foundation, Inc.
-# This file is distributed under the same license as the recode package.
-# Taco Witte <tcwitte@cs.uu.nl>, 2004, 2005.
-# 
-# 
+# Translation of gnulib-1.1 to Dutch.
+# Copyright (C) 1996, 2000, 2004, 2005, 2007 Free Software Foundation, Inc.
+#
+# Erick Branderhorst <branderh@debian.org>, 1996.
+# Ivo Timmermans <ivo@o2w.nl>, 2000.
+# Freek de Kruijf <f.de.kruijf@hetnet.nl>, 2004, 2005.
+# Benno Schulenberg <benno@vertaalt.nl>, 2007.
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2005-04-12 20:14+0200\n"
-"Last-Translator: Taco Witte <tcwitte@cs.uu.nl>\n"
+"Project-Id-Version: gnulib 1.1\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2007-07-19 12:19+0300\n"
+"PO-Revision-Date: 2008-02-10 23:15+0100\n"
+"Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Geen fout"
+#: lib/argmatch.c:134
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "ongeldig argument %s van %s"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "Geen kanonieke invoer"
+#: lib/argmatch.c:135
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "argument %s van %s is niet eenduidig"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Dubbelzinnige uitvoer"
+#: lib/argmatch.c:154
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Geldige argumenten zijn:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Onvertaalbare invoer"
+#: lib/argp-help.c:148
+#, c-format
+msgid "ARGP_HELP_FMT: %s value is less than or equal to %s"
+msgstr "ARGP_HELP_FMT: waarde voor '%s' is kleiner of gelijk aan %s"
 
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "Ongeldige invoer"
+#: lib/argp-help.c:221
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
+msgstr "%.*s: Parameter in ARGP_HELP_FMT vereist een waarde"
 
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Systeem heeft fout gevonden"
+#: lib/argp-help.c:227
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter must be positive"
+msgstr "%.*s: Parameter in ARGP_HELP_FMT moet positief zijn"
 
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Verkeerd gebruik van recode-bibliotheek"
+#: lib/argp-help.c:236
+#, c-format
+msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
+msgstr "%.*s: Onbekende parameter in ARGP_HELP_FMT"
 
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "Interne fout bij hercoderen"
+#: lib/argp-help.c:248
+#, c-format
+msgid "Garbage in ARGP_HELP_FMT: %s"
+msgstr "Rommel in ARGP_HELP_FMT: %s"
 
-#: src/main.c:208
-msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
-"\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
-"\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+#: lib/argp-help.c:1247
+msgid "Mandatory or optional arguments to long options are also mandatory or optional for any corresponding short options."
 msgstr ""
-"Dit programma is vrije software; u kunt het verder verspreiden en/of\n"
-"wijzigen onder de voorwaarden van de GNU General Public License zoals\n"
-"gepubliceerd door de Free Software Foundation; ofwel versie 2, ofwel (als\n"
-"u dat wilt) een nieuwere versie.\n"
-"\n"
-"Dit programma wordt verspreid met de hoop dat het nuttig is, maar\n"
-"ZONDER ENIGE GARANTIE; zelfs zonder de geïmpliceerde garantie van\n"
-"VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.  Zie de\n"
-"GNU General Public License voor meer details.\n"
-"\n"
-"U moet een kopie van de GNU General Public License ontvangen hebben\n"
-"samen met dit programma; schrijf als dit niet zo is aan de Free Software\n"
-"Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Een argument dat verplicht of optioneel is voor een lange optie, is dat\n"
+"ook voor de overeenkomstige korte optie."
 
-#: src/main.c:233
+#: lib/argp-help.c:1640
+msgid "Usage:"
+msgstr "Gebruik: "
+
+#: lib/argp-help.c:1644
+msgid "  or: "
+msgstr "     of: "
+
+#: lib/argp-help.c:1656
+msgid " [OPTION...]"
+msgstr " [OPTIE...]"
+
+#: lib/argp-help.c:1683
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Probeer `%s %s' voor meer informatie.\n"
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Typ '%s --help' of '%s --usage' voor meer informatie.\n"
 
-#: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#: lib/argp-help.c:1711
+#, c-format
+msgid "Report bugs to %s.\n"
 msgstr ""
-"Vrije `recode' converteert bestanden van verschillende tekensets en "
-"oppervlakten.\n"
+"Rapporteer gebreken in het programma aan %s;\n"
+"meld fouten in de vertaling aan <vertaling@vrijschrift.org>.\n"
 
-#: src/main.c:241
+#: lib/argp-help.c:1930 lib/error.c:125
+msgid "Unknown system error"
+msgstr "Onbekende systeemfout"
+
+#: lib/argp-parse.c:82
+msgid "give this help list"
+msgstr "deze hulptekst tonen"
+
+#: lib/argp-parse.c:83
+msgid "give a short usage message"
+msgstr "een korte gebruikssamenvatting tonen"
+
+#: lib/argp-parse.c:84
+msgid "NAME"
+msgstr "NAAM"
+
+#: lib/argp-parse.c:84
+msgid "set the program name"
+msgstr "de programmanaam instellen"
+
+#: lib/argp-parse.c:85
+msgid "SECS"
+msgstr "SECONDEN"
+
+#: lib/argp-parse.c:86
+msgid "hang for SECS seconds (default 3600)"
+msgstr "dit aantal seconden pauzeren (standaard 3600)"
+
+#: lib/argp-parse.c:143
+msgid "print program version"
+msgstr "programmaversie tonen"
+
+#: lib/argp-parse.c:159
+msgid "(PROGRAM ERROR) No version known!?"
+msgstr "**Interne programmafout**: geen versie bekend!?"
+
+#: lib/argp-parse.c:612
 #, c-format
+msgid "%s: Too many arguments\n"
+msgstr "%s: Te veel argumenten\n"
+
+#: lib/argp-parse.c:755
+msgid "(PROGRAM ERROR) Option should have been recognized!?"
+msgstr "**Interne programmafout**: optie had herkend moeten worden!?"
+
+#: lib/c-stack.c:240
+msgid "program error"
+msgstr "programmafout"
+
+#: lib/c-stack.c:241
+msgid "stack overflow"
+msgstr "stack-overloop"
+
+#: lib/closeout.c:74
+msgid "write error"
+msgstr "schrijffout"
+
+#: lib/copy-file.c:67
+#, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "fout bij openen van '%s' voor lezen"
+
+#: lib/copy-file.c:74
+#, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "kan reservebestand '%s' niet openen voor schrijven"
+
+#: lib/copy-file.c:82
+#, c-format
+msgid "error reading \"%s\""
+msgstr "fout bij lezen van '%s'"
+
+#: lib/copy-file.c:87 lib/copy-file.c:92 lib/copy-file.c:131
+#, c-format
+msgid "error writing \"%s\""
+msgstr "fout bij schrijven van '%s'"
+
+#: lib/copy-file.c:94 lib/copy-file.c:133
+#, c-format
+msgid "error after reading \"%s\""
+msgstr "fout na lezen van '%s'"
+
+#: lib/csharpcomp.c:280
+msgid "fdopen() failed"
+msgstr "fdopen() is mislukt"
+
+#: lib/csharpcomp.c:540
+msgid "C# compiler not found, try installing pnet"
+msgstr "C#-compiler is niet gevonden; installeer 'pnet'"
+
+#: lib/csharpexec.c:344
+msgid "C# virtual machine not found, try installing pnet"
+msgstr "virtuele C#-machine is niet gevonden; installeer 'pnet'"
+
+#: lib/execute.c:185 lib/execute.c:261 lib/execute.c:303 lib/pipe.c:230
+#: lib/pipe.c:348 lib/pipe.c:408 lib/wait-process.c:334 lib/wait-process.c:401
+#, c-format
+msgid "%s subprocess failed"
+msgstr "subproces %s is mislukt"
+
+#: lib/file-type.c:39
+msgid "regular empty file"
+msgstr "normaal, leeg bestand"
+
+#: lib/file-type.c:39
+msgid "regular file"
+msgstr "normaal bestand"
+
+#: lib/file-type.c:42
+msgid "directory"
+msgstr "map"
+
+#: lib/file-type.c:45
+msgid "block special file"
+msgstr "blok-apparaat"
+
+#: lib/file-type.c:48
+msgid "character special file"
+msgstr "byte-apparaat"
+
+#: lib/file-type.c:51
+msgid "fifo"
+msgstr "fifo"
+
+#: lib/file-type.c:54
+msgid "symbolic link"
+msgstr "symbolische koppeling"
+
+#: lib/file-type.c:57
+msgid "socket"
+msgstr "socket"
+
+#: lib/file-type.c:60
+msgid "message queue"
+msgstr "berichtenwachtrij"
+
+#: lib/file-type.c:63
+msgid "semaphore"
+msgstr "semafoor"
+
+#: lib/file-type.c:66
+msgid "shared memory object"
+msgstr "gedeeld geheugenobject"
+
+#: lib/file-type.c:69
+msgid "typed memory object"
+msgstr "zelfstandig geheugenobject"
+
+#: lib/file-type.c:71
+msgid "weird file"
+msgstr "merkwaardig bestand"
+
+#: lib/gai_strerror.c:44
+msgid "Address family for hostname not supported"
+msgstr "Adresfamilie voor hostnaam wordt niet ondersteund"
+
+#: lib/gai_strerror.c:45
+msgid "Temporary failure in name resolution"
+msgstr "Tijdelijke storing in naamsherleiding"
+
+#: lib/gai_strerror.c:46
+msgid "Bad value for ai_flags"
+msgstr "Ongeldige waarde voor 'ai_flags'"
+
+#: lib/gai_strerror.c:47
+msgid "Non-recoverable failure in name resolution"
+msgstr "Onherstelbare mislukking in naamsherleiding"
+
+#: lib/gai_strerror.c:48
+msgid "ai_family not supported"
+msgstr "'ai_family' wordt niet ondersteund"
+
+#: lib/gai_strerror.c:49
+msgid "Memory allocation failure"
+msgstr "Onvoldoende geheugen beschikbaar"
+
+#: lib/gai_strerror.c:50
+msgid "No address associated with hostname"
+msgstr "Aan hostnaam is geen adres verbonden"
+
+#: lib/gai_strerror.c:51
+msgid "Name or service not known"
+msgstr "Naam of dienst is niet bekend"
+
+#: lib/gai_strerror.c:52
+msgid "Servname not supported for ai_socktype"
+msgstr "Servicenaam wordt niet ondersteund voor 'ai_socktype'"
+
+#: lib/gai_strerror.c:53
+msgid "ai_socktype not supported"
+msgstr "'ai_socktype' wordt niet ondersteund"
+
+#: lib/gai_strerror.c:54
+msgid "System error"
+msgstr "Systeemfout"
+
+#: lib/gai_strerror.c:55
+msgid "Argument buffer too small"
+msgstr "Argumentenbuffer is te klein"
+
+#: lib/gai_strerror.c:57
+msgid "Processing request in progress"
+msgstr "Bezig met verwerken van verzoek"
+
+#: lib/gai_strerror.c:58
+msgid "Request canceled"
+msgstr "Verzoek is geannuleerd"
+
+#: lib/gai_strerror.c:59
+msgid "Request not canceled"
+msgstr "Verzoek is niet geannuleerd"
+
+#: lib/gai_strerror.c:60
+msgid "All requests done"
+msgstr "Alle verzoeken zijn gedaan"
+
+#: lib/gai_strerror.c:61
+msgid "Interrupted by a signal"
+msgstr "Onderbroken door een signaal"
+
+#: lib/gai_strerror.c:62
+msgid "Parameter string not correctly encoded"
+msgstr "Parametertekst is niet juist gecodeerd"
+
+#: lib/gai_strerror.c:74
+msgid "Unknown error"
+msgstr "Onbekende fout"
+
+#: lib/getopt.c:531 lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: optie '%s' is niet eenduidig\n"
+
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: optie '--%s' staat geen argument toe\n"
+
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: optie '%c%s' staat geen argument toe\n"
+
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: optie '%s' vereist een argument\n"
+
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: onbekende optie '--%s'\n"
+
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: onbekende optie '%c%s'\n"
+
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: ongeldige optie -- %c\n"
+
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: ongeldige optie -- %c\n"
+
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: optie vereist een argument -- %c\n"
+
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: optie '-W %s' is niet eenduidig\n"
+
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: optie '-W %s' staat geen argument toe\n"
+
+#: lib/human.c:477
+msgid "block size"
+msgstr "blokgrootte"
+
+#: lib/javacomp.c:128 lib/javacomp.c:142 lib/javacomp.c:158
+msgid "invalid source_version argument to compile_java_class"
+msgstr "ongeldige waarde voor 'source_version' in compile_java_class()"
+
+#: lib/javacomp.c:173 lib/javacomp.c:194
+msgid "invalid target_version argument to compile_java_class"
+msgstr "ongeldige waarde voor 'target_version' in compile_java_class()"
+
+#: lib/javacomp.c:505
+#, c-format
+msgid "failed to create \"%s\""
+msgstr "aanmaken van '%s' is mislukt"
+
+#: lib/javacomp.c:512
+#, c-format
+msgid "error while writing \"%s\" file"
+msgstr "fout bij schrijven van bestand '%s'"
+
+#: lib/javacomp.c:2343
+msgid "Java compiler not found, try installing gcj or set $JAVAC"
+msgstr "Java-compiler is niet gevonden; installeer 'gcj' of zet $JAVAC"
+
+#: lib/javaexec.c:418
+msgid "Java virtual machine not found, try installing gij or set $JAVA"
+msgstr "Java virtuele machine is niet gevonden; installeer 'gcj' of zet $JAVAC"
+
+#: lib/mkdir-p.c:197
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "kan de toegangsrechten van %s niet veranderen"
+
+#: lib/mkdir-p.c:207
+#, c-format
+msgid "cannot create directory %s"
+msgstr "kan map %s niet aanmaken"
+
+#: lib/obstack.c:424 lib/obstack.c:426 lib/xalloc-die.c:35 lib/xsetenv.c:39
+msgid "memory exhausted"
+msgstr "onvoldoende geheugen beschikbaar"
+
+#: lib/openat-die.c:34
+msgid "unable to record current working directory"
+msgstr "kan de huidige werkmap niet vastleggen"
+
+#: lib/openat-die.c:47
+msgid "failed to return to initial working directory"
+msgstr "kan niet terugkeren naar de initiële werkmap"
+
+#: lib/pagealign_alloc.c:142
+msgid "Failed to open /dev/zero for read"
+msgstr "Openen van /dev/zero voor lezen is mislukt"
+
+#: lib/pipe.c:156 lib/pipe.c:159 lib/pipe.c:263 lib/pipe.c:266
+msgid "cannot create pipe"
+msgstr "kan geen pijp aanmaken"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:229
+msgid "`"
+msgstr "‘"
+
+#: lib/quotearg.c:230
+msgid "'"
+msgstr "’"
+
+#: lib/regcomp.c:131
+msgid "Success"
+msgstr "Gelukt"
+
+#: lib/regcomp.c:134
+msgid "No match"
+msgstr "Geen overeenkomsten"
+
+#: lib/regcomp.c:137
+msgid "Invalid regular expression"
+msgstr "Ongeldige reguliere expressie"
+
+#: lib/regcomp.c:140
+msgid "Invalid collation character"
+msgstr "Ongeldig samengesteld teken"
+
+#: lib/regcomp.c:143
+msgid "Invalid character class name"
+msgstr "Ongeldige tekenklassenaam"
+
+#: lib/regcomp.c:146
+msgid "Trailing backslash"
+msgstr "Backslash aan het eind"
+
+#: lib/regcomp.c:149
+msgid "Invalid back reference"
+msgstr "Ongeldige terugverwijzing"
+
+#: lib/regcomp.c:152
+msgid "Unmatched [ or [^"
+msgstr "Ongepaarde [ of [^"
+
+#: lib/regcomp.c:155
+msgid "Unmatched ( or \\("
+msgstr "Ongepaarde ( of \\("
+
+#: lib/regcomp.c:158
+msgid "Unmatched \\{"
+msgstr "Ongepaarde \\{"
+
+#: lib/regcomp.c:161
+msgid "Invalid content of \\{\\}"
+msgstr "Ongeldige inhoud van \\{\\}"
+
+#: lib/regcomp.c:164
+msgid "Invalid range end"
+msgstr "Ongeldig bereikeinde"
+
+#: lib/regcomp.c:167
+msgid "Memory exhausted"
+msgstr "Onvoldoende geheugen beschikbaar"
+
+#: lib/regcomp.c:170
+msgid "Invalid preceding regular expression"
+msgstr "Ongeldige voorafgaande reguliere expressie"
+
+#: lib/regcomp.c:173
+msgid "Premature end of regular expression"
+msgstr "Voortijdig einde van reguliere expressie"
+
+#: lib/regcomp.c:176
+msgid "Regular expression too big"
+msgstr "Reguliere expressie is te groot"
+
+#: lib/regcomp.c:179
+msgid "Unmatched ) or \\)"
+msgstr "Ongepaarde ) of \\)"
+
+#: lib/regcomp.c:680
+msgid "No previous regular expression"
+msgstr "Geen eerdere reguliere expressie"
+
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[jJ]"
+
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[nN]"
+
+#: lib/unicodeio.c:141
+msgid "iconv function not usable"
+msgstr "de functie iconv() is onbruikbaar"
+
+#: lib/unicodeio.c:143
+msgid "iconv function not available"
+msgstr "de functie iconv() is niet beschikbaar"
+
+#: lib/unicodeio.c:150
+msgid "character out of range"
+msgstr "teken ligt buiten het toegestane bereik"
+
+#: lib/unicodeio.c:213
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "kan U+%04X niet converteren naar de lokale tekenset"
+
+#: lib/unicodeio.c:215
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "kan U+%04X niet converteren naar de lokale tekenset: %s"
+
+#: lib/userspec.c:107
+msgid "invalid user"
+msgstr "ongeldige gebruiker"
+
+#: lib/userspec.c:108
+msgid "invalid group"
+msgstr "ongeldige groep"
+
+#: lib/userspec.c:109
+msgid "invalid spec"
+msgstr "ongeldige aanduiding"
+
+#. TRANSLATORS: Translate "(C)" to the copyright symbol
+#. (C-in-a-circle), if this symbol is available in the user's
+#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
+#: lib/version-etc.c:66
+msgid "(C)"
+msgstr "©"
+
+#: lib/version-etc.c:68
 msgid ""
 "\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
+"\n"
 msgstr ""
 "\n"
-"Gebruik: %s [OPTIE]... [ [TEKENSET] | VERZOEK [BESTAND]... ]\n"
+"Dit is vrije software: u mag het vrijelijk wijzigen en verder verspreiden.\n"
+"De precieze licentie is GPLv3+: GNU GPL versie 3 of later.\n"
+"Zie http://gnu.org/licenses/gpl.html voor de volledige tekst.\n"
+"Er is GEEN GARANTIE, voor zover de wet dit toestaat.\n"
+"\n"
 
-#: src/main.c:244
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:84
+#, c-format
+msgid "Written by %s.\n"
+msgstr "Geschreven door %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:88
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "Geschreven door %s en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:92
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "Geschreven door %s, %s en %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:98
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Als bij een lange optie een argument als verplicht is weergegeven, is het\n"
-"dat ook bij de equivalente korte optie.  Hetzelfde geldt voor optionele\n"
-"argumenten.\n"
+"Geschreven door %s, %s, %s\n"
+"en %s.\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Lijsten:\n"
-"  -l, --list[=SOORT]         één of alle bekende tekensets en aliassen "
-"opsommen\n"
-"  -k, --known=PAREN          beperken tot tekensets volgens bekende PAREN-"
-"lijst\n"
-"  -h, --header[=[LN/]NAAM]   tabel NAAM naar standaarduitvoer schrijven met "
-"taal LN, dan afsluiten\n"
-"  -F, --freeze-tables        een C-module schrijven die alle tabellen bevat\n"
-"  -T, --find-subsets         alle tekensets rapporteren die deelverzameling "
-"van andere zijn\n"
-"  -C, --copyright            auteursrecht en kopieervoorwaarden weergeven\n"
-"      --help                 deze hulp weergeven en afsluiten\n"
-"      --version              versie-informatie weergeven en afsluiten\n"
+"Geschreven door %s, %s, %s,\n"
+"%s en %s.\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Uitvoermodus:\n"
-"  -v, --verbose           reeks van stappen uitleggen en voortgang "
-"rapporteren\n"
-"  -q, --quiet, --silent   berichten over onomkeerbare hercoderingen "
-"onderdrukken\n"
-"  -f, --force             hercoderen afdwingen, ook als ze onomkeerbaar "
-"zijn\n"
-"  -t, --touch             hercodeerde bestanden aanraken na vervanging\n"
-"  -i, --sequence=files    tussenkomende bestanden gebruiken voor stappen\n"
-"      --sequence=memory   geheugenbuffers gebruiken voor stappen\n"
+"Geschreven door %s, %s, %s,\n"
+"%s, %s en %s.\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "  -p, --sequence=pipe     pijpmachinerie gebruiken voor stappen\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     hetzelfde als -i (op dit systeem)\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:117
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Fijnafstelling:\n"
-"  -s, --strict           stricte afbeeldingen gebruiken, zelfs tekens "
-"verliezen\n"
-"  -d, --diacritics       alleen diakritische tekens e.d. converteren voor "
-"HTML/LaTeX\n"
-"  -S, --source[=LN]      hercoderen beperken tot tekenreeksen en commentaar "
-"zoals voor LN\n"
-"  -c, --colons           dubbele punt i.p.v. dubbele aanhalingstekens "
-"gebruiken voor diaeresis\n"
-"  -g, --graphics         IBMPC-lijnen benaderen met ASCII-tekeningen\n"
-"  -x, --ignore=TEKENSET  TEKENSET negeren bij kiezen van hercodeerpad\n"
+"Geschreven door %s, %s, %s,\n"
+"%s, %s, %s en %s.\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:124
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Optie -l zonder SOORT of TEKENSET somt beschikbare tekensets en oppervlakten "
-"op.\n"
-"SOORT is `decimal' (tientallig), `octal' (achttallig), "
-"`hexadecimal' (zestientallig) of `full' (volledig) (of één van `dohf').\n"
+"Geschreven door %s, %s, %s,\n"
+"%s, %s, %s, %s\n"
+"en %s.\n"
 
-#: src/main.c:302
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:132
+#, c-format
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"Tenzij DEFAULT_CHARSET in de omgeving is ingesteld, gebruikt CHARSET "
-"standaard\n"
-"de taalafhankelijke codering, bepaald door LC_ALL, LC_CTYPE, LANG.\n"
+"Geschreven door %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s en %s.\n"
 
-#: src/main.c:307
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:142
+#, c-format
 msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
-"Met optie -k worden voor de gegeven na-tekenset de mogelijke voor-tekensets "
-"opgesomd, beide als tabel met PAREN in de vorm `VOOR1:NA1,VOOR2:NA2,...', "
-"waarbij de VOORs en NAs als decimale getallen gegeven worden.\n"
+"Geschreven door %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s en anderen.\n"
 
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr "LN is een taal, en kan `c', `perl' of `po' zijn; `c' is standaard.\n"
-
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"\n"
-"VERZOEK is DEELVERZOEK[,DEELVERZOEK]...; DEELVERZOEK is CODERING[.."
-"CODERING]...\n"
-"CODERING is [TEKENSET][/[OPPERVLAK]]...; VERZOEK ziet er vaak uit als VOOR.."
-"NA,\n"
-"waarbij VOOR en NA tekensets zijn.  Een weggelaten TEKENSET impliceert "
-"meestal de\n"
-"gebruikelijke tekenset; een weggelaten [/OPPERVLAK]... betekent de "
-"geïmpliceerde\n"
-"oppervlakken voor TEKENSET; een / met een lege oppervlaknaam betekent "
-"helemaal\n"
-"geen oppervlak.  Zie de handleiding.\n"
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-"\n"
-"Als geen van -i en -p gegeven zijn, wordt -p aangenomen als geen BESTAND is\n"
-"gegeven; anders -i. Elk BESTAND wordt over zichzelf hercodeerd, waarbij het\n"
-"origineel wordt overschreven.  Als geen BESTAND is opgegeven, wordt gewerkt\n"
-"als een filter en wordt van standaard invoer naar standaard uitvoer "
-"hercodeerd.\n"
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Rapporteer programmafouten aan <recode-bugs@iro.umontreal.ca>,\n"
-"en fouten in de Nederlandse vertaling aan <vertaling@vrijschrift.org>.\n"
-
-#: src/main.c:429
+#: lib/wait-process.c:277 lib/wait-process.c:309 lib/wait-process.c:367
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "Reeks `%s' is dubbelzinnig"
+msgid "%s subprocess"
+msgstr "subproces %s"
 
-#: src/main.c:433
+#: lib/wait-process.c:326 lib/wait-process.c:393
 #, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "Reeks `%s' is onbekend"
+msgid "%s subprocess got fatal signal %d"
+msgstr "subproces %s ontving het fatale signaal %d"
 
-#: src/main.c:463 src/main.c:521
+#: lib/xmemcoll.c:49
+msgid "string comparison failed"
+msgstr "vergelijking van tekenreeksen is mislukt"
+
+#: lib/xmemcoll.c:50
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Zet LC_ALL='C' om het probleem te omzeilen."
+
+#: lib/xmemcoll.c:52
 #, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "Taal `%s' is dubbelzinnig"
-
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "Taal `%s' is onbekend"
-
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "Formaat `%s' is dubbelzinnig"
-
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "Formaat `%s' is onbekend"
-
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr ""
-"Geschreven door François Pinard <pinard@iro.umontreal.ca>,\n"
-"vertaald door Elros Cyriatan.\n"
-
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"Dit is vrije software; zie de bron voor kopieervoorwaarden.  Er is GEEN\n"
-"garantie; zelfs niet voor VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN\n"
-"BEPAALD DOEL.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "Symbool `%s' is onbekend"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "Tekenset `%s' is onbekend of dubbelzinnig"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Vereist argument ontbreekt"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Syntaxis wordt ontraden, gebruik alstublieft `%s'"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "Verzoek `%s' is foutief"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "Bezig met hercoderen %s..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " voltooid\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr " mislukt: %s in stap `%s..%s'\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s mislukt: %s in stap `%s..%s'"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "%s in stap `%s..%s'"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "Tekenset `%s' bestaat al en is niet %s"
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr "Kan `%s' niet opsommen, geen namen beschikbaar voor deze tekenset"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "Sorry, geen namen beschikbaar voor `%s'"
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "Her-oppervlakker meer dan eens gezet voor `%s'"
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "Ont-oppervlakker meer dan eens gezet voor `%s'"
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "Onvoldoende virtueel geheugen"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Codes %3d en %3d hercoderen beide naar %3d"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr "Geen teken hercodeert naar %3d"
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr "Kan gegeven één-op-één tabel niet omkeren"
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Volgende diagnostiek voor `%s' naar `%s'"
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Paar nummer %d: <%3d, %3d> conflicteert met <%3d, %3d>"
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr "Kan tabel niet afmaken met verzameling bekende paren"
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr "Identiteitshercodering, is geen tabel waard"
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr "Hercoderen is te complex voor slechts een tabel"
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sConversietabel mechanisch gegenereerd door Vrije `%s' %s"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr "%svoor reeks %s.%s"
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Geen tabel om weer te geven"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "omkeerbaar"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s naar %s"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "byte"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "ucs2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "variabel"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*Kan niet*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*slechts kopiëren*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "Onvoldoende virtueel geheugen!"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr "Stap-initialisatie is mislukt"
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "Stap-initialisatie is mislukt (onverwerkte opties)"
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "Verzoek: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "Gekrompen tot: %s\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Onbekende oppervlaknaam `%s'"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Geen manier om te hercoderen van `%s' naar `%s'"
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "`..' verwacht in verzoek"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "Wachtstatus van kindproces is 0x%0.2x"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mne   Omschrijving\n"
-"\n"
+msgid "The strings compared were %s and %s."
+msgstr "De te vergelijken tekenreeksen waren %s en %s."

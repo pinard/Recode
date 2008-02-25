@@ -1,13 +1,13 @@
-# Messages français pour Free recode.
-# Copyright © 2004 Free Software Foundation, Inc.
-# Michel Robitaille <robitail@iro.umontreal.ca>, traduction depuis/since 1996.
+# Messages français pour GNU concernant mailutils.
+# Copyright © 1996 Free Software Foundation, Inc.
+# Michel Robitaille <robitail@IRO.UMontreal.CA>, traducteur depuis/since 1996.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Free recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2004-05-10 08:00-0500\n"
+"Project-Id-Version: GNU mailutils 0.6.1\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2005-09-30 17:42+0300\n"
+"PO-Revision-Date: 2005-04-05 08:00-0500\n"
 "Last-Translator: Michel Robitaille <robitail@IRO.UMontreal.CA>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,598 +15,610 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Pas d'erreur"
+#: lib/argmatch.c:137
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "argument %s invalide pour %s"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "Entrée en forme non canonique"
+#: lib/argmatch.c:138
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "argument %s ambigu pour %s"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Sortie ambiguë"
+#: lib/argmatch.c:157
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Arguments valides sont:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Entrée non traduisible"
+#: lib/argp-help.c:194
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
+msgstr "%.*s: paramètre ARGP_HELP_FMT requiert une valeur"
 
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "Entrée invalide"
+#: lib/argp-help.c:203
+#, c-format
+msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
+msgstr "%.*s: paramètre ARGP_HELP_FMT inconnu"
 
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Problème rapporté par le système"
+#: lib/argp-help.c:215
+#, c-format
+msgid "Garbage in ARGP_HELP_FMT: %s"
+msgstr "Rebut dans ARGP_HELP_FMT: %s"
 
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Mauvais usage de la logithèque de recodage"
-
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "Problème interne durant le recodage"
-
-#: src/main.c:208
+#: lib/argp-help.c:1194
 msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
+"Mandatory or optional arguments to long options are also mandatory or "
+"optional for any corresponding short options."
+msgstr ""
+"Les arguments obligatoires pour la forme longue des options sont "
+"aussiobligatoires pour les formes courtes qui leur correspondent."
+
+#: lib/argp-help.c:1581
+msgid "Usage:"
+msgstr "Usage:"
+
+#: lib/argp-help.c:1585
+msgid "  or: "
+msgstr "  ou: "
+
+#: lib/argp-help.c:1597
+msgid " [OPTION...]"
+msgstr " [OPTION...]"
+
+#: lib/argp-help.c:1624
+#, c-format
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Essayer « %s --help » ou « %s --usage » pour plus d'informations.\n"
+
+#: lib/argp-help.c:1652
+#, c-format
+msgid "Report bugs to %s.\n"
+msgstr "Rapportez toutes anomalies à %s.\n"
+
+#: lib/argp-help.c:1872 lib/error.c:121
+msgid "Unknown system error"
+msgstr "Erreur système inconnue"
+
+#: lib/argp-parse.c:82
+msgid "Give this help list"
+msgstr "Donner cette liste d'aide"
+
+#: lib/argp-parse.c:83
+msgid "Give a short usage message"
+msgstr "Donner une court message sur l'usage"
+
+#: lib/argp-parse.c:84
+msgid "NAME"
+msgstr "NOM"
+
+#: lib/argp-parse.c:84
+msgid "Set the program name"
+msgstr "Initialiser le nom du programme"
+
+#: lib/argp-parse.c:85
+#, fuzzy
+msgid "SECS"
+msgstr "SECONDES"
+
+#: lib/argp-parse.c:86
+msgid "Hang for SECS seconds (default 3600)"
+msgstr "Suspendre pendant N secondes (par défaut 3600)"
+
+#: lib/argp-parse.c:147
+msgid "Print program version"
+msgstr "Afficher la version du programme"
+
+#: lib/argp-parse.c:163
+msgid "(PROGRAM ERROR) No version known!?"
+msgstr "(ERREUR DU PROGRAMME) Pas de version connue!?"
+
+#: lib/argp-parse.c:619
+#, c-format
+msgid "%s: Too many arguments\n"
+msgstr "%s: trop d,arguments\n"
+
+#: lib/argp-parse.c:762
+msgid "(PROGRAM ERROR) Option should have been recognized!?"
+msgstr "(ERREUR DU PROGRAMME) l'option aurait dû être reconnue!?"
+
+#: lib/c-stack.c:244
+#, fuzzy
+msgid "program error"
+msgstr "Erreur de lecture."
+
+#: lib/c-stack.c:245
+#, fuzzy
+msgid "stack overflow"
+msgstr "sous-dépilage de la pile"
+
+#: lib/closeout.c:94
+msgid "write error"
+msgstr "Erreur d'écriture."
+
+#: lib/copy-file.c:65
+#, fuzzy, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "Ne peut ouvrir %s en lecture"
+
+#: lib/copy-file.c:72
+#, fuzzy, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "ne peut ouvrir %s en écriture"
+
+#: lib/copy-file.c:80
+#, fuzzy, c-format
+msgid "error reading \"%s\""
+msgstr "Erreur lors de la lecture %s"
+
+#: lib/copy-file.c:85 lib/copy-file.c:89
+#, fuzzy, c-format
+msgid "error writing \"%s\""
+msgstr "Erreur lors de l'écriture %s"
+
+#: lib/copy-file.c:91
+#, fuzzy, c-format
+msgid "error after reading \"%s\""
+msgstr "Erreur lors de la lecture %s"
+
+#: lib/csharpcomp.c:273
+#, fuzzy
+msgid "fdopen() failed"
+msgstr "Échec d'ouverture"
+
+#: lib/execute.c:186 lib/execute.c:262 lib/execute.c:304 lib/pipe.c:231
+#: lib/pipe.c:349 lib/pipe.c:409 lib/wait-process.c:336 lib/wait-process.c:403
+#, fuzzy, c-format
+msgid "%s subprocess failed"
+msgstr "%s: échec de repérage (seek)"
+
+#: lib/file-type.c:43
+msgid "regular empty file"
+msgstr "fichier régulier vide"
+
+#: lib/file-type.c:43
+msgid "regular file"
+msgstr "fichier régulier"
+
+#: lib/file-type.c:46
+msgid "directory"
+msgstr "répertoire"
+
+#: lib/file-type.c:49
+msgid "block special file"
+msgstr "fichier spécial de bloc"
+
+#: lib/file-type.c:52
+msgid "character special file"
+msgstr "fichier spécial de caractères"
+
+#: lib/file-type.c:55
+msgid "fifo"
+msgstr "PEPS (FIFO)"
+
+#: lib/file-type.c:58
+msgid "symbolic link"
+msgstr "lien symbolique"
+
+#: lib/file-type.c:61
+msgid "socket"
+msgstr "socket"
+
+#: lib/file-type.c:64
+msgid "message queue"
+msgstr "queue de messages"
+
+#: lib/file-type.c:67
+msgid "semaphore"
+msgstr "sémaphore"
+
+#: lib/file-type.c:70
+msgid "shared memory object"
+msgstr "objet de mémoire partagée"
+
+#: lib/file-type.c:73
+msgid "typed memory object"
+msgstr "objet mémoire typée"
+
+#: lib/file-type.c:75
+msgid "weird file"
+msgstr "fichier bizarre"
+
+#: lib/gai_strerror.c:45
+#, fuzzy
+msgid "Address family for hostname not supported"
+msgstr "Les fichiers de type « fifo » n'est pas supporté."
+
+#: lib/gai_strerror.c:49
+#, fuzzy
+msgid "ai_family not supported"
+msgstr "Les fichiers de type « fifo » n'est pas supporté."
+
+#: lib/gai_strerror.c:50
+#, fuzzy
+msgid "Memory allocation failure"
+msgstr "L'opération a échoué"
+
+#: lib/gai_strerror.c:54
+#, fuzzy
+msgid "ai_socktype not supported"
+msgstr "Les fichiers de type « fifo » n'est pas supporté."
+
+#: lib/gai_strerror.c:55
+#, fuzzy
+msgid "System error"
+msgstr "Erreur d'écriture."
+
+#: lib/gai_strerror.c:59
+#, fuzzy
+msgid "Request not canceled"
+msgstr "Item requis n'a pas été retrouvé"
+
+#: lib/gai_strerror.c:74
+#, fuzzy
+msgid "Unknown error"
+msgstr "Erreur système inconnue"
+
+#: lib/getopt.c:551 lib/getopt.c:570
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: l'option « %s » est ambiguë\n"
+
+#: lib/getopt.c:603 lib/getopt.c:607
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: l'option « --%s » ne permet pas d'argument\n"
+
+#: lib/getopt.c:616 lib/getopt.c:621
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: l'options « %c%s » ne permet pas d'argument\n"
+
+#: lib/getopt.c:667 lib/getopt.c:689 lib/getopt.c:1020 lib/getopt.c:1042
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: l'option « %s » requiert un argument\n"
+
+#: lib/getopt.c:727 lib/getopt.c:730
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: option non reconnue « --%s »\n"
+
+#: lib/getopt.c:738 lib/getopt.c:741
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: option non reconnue «  %c%s »\n"
+
+#: lib/getopt.c:796 lib/getopt.c:799
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: option illégale -- %c\n"
+
+#: lib/getopt.c:805 lib/getopt.c:808
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: option invalide -- %c\n"
+
+#: lib/getopt.c:863 lib/getopt.c:882 lib/getopt.c:1095 lib/getopt.c:1116
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: l'option requiert un argument -- %c\n"
+
+#: lib/getopt.c:935 lib/getopt.c:954
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: l'option `-W %s' est ambiguë\n"
+
+#: lib/getopt.c:978 lib/getopt.c:999
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: l'option `-W %s' ne permet par un argument\n"
+
+#: lib/human.c:486
+msgid "block size"
+msgstr "taille de bloc"
+
+#: lib/mkdir-p.c:106
+#, c-format
+msgid "%s exists but is not a directory"
+msgstr "%s existe mais n'est pas un répertoire"
+
+#: lib/mkdir-p.c:203 lib/mkdir-p.c:294
+#, c-format
+msgid "cannot change owner and/or group of %s"
+msgstr "ne peut modifier le propriétraire et/ou le groupe de %s"
+
+#: lib/mkdir-p.c:229 lib/mkdir-p.c:266
+#, c-format
+msgid "cannot create directory %s"
+msgstr "ne peut créer le répertoire %s"
+
+#: lib/mkdir-p.c:240
+#, c-format
+msgid "cannot chdir to directory %s"
+msgstr "ne peut aller vers le répertoire %s"
+
+#: lib/mkdir-p.c:307 lib/mkdir-p.c:332
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "Ne peut changer les permissions de %s"
+
+#: lib/obstack.c:438 lib/obstack.c:441 lib/xalloc-die.c:38 lib/xsetenv.c:40
+msgid "memory exhausted"
+msgstr "Mémoire épuisée"
+
+#: lib/openat-die.c:36
+#, fuzzy
+msgid "unable to record current working directory"
+msgstr "openat: incapable d'enregistrer le répertoire de trvail courant"
+
+#: lib/openat-die.c:49
+msgid "failed to return to initial working directory"
+msgstr "échec de retour au répertoire initial de travail"
+
+#: lib/pagealign_alloc.c:143
+#, fuzzy
+msgid "Failed to open /dev/zero for read"
+msgstr "%s: échec d'ouverture en écriture"
+
+#: lib/pipe.c:157 lib/pipe.c:160 lib/pipe.c:264 lib/pipe.c:267
+#, fuzzy
+msgid "cannot create pipe"
+msgstr "ne peut créer la liste"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:245
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:246
+msgid "'"
+msgstr "'"
+
+#: lib/regcomp.c:137
+#, fuzzy
+msgid "Invalid regular expression"
+msgstr "%s: expression régulière invalide: %s"
+
+#: lib/regcomp.c:143
+#, fuzzy
+msgid "Invalid character class name"
+msgstr "caractère de classe « %s » invalide"
+
+#: lib/regcomp.c:149
+#, fuzzy
+msgid "Invalid back reference"
+msgstr "Numéro invalide"
+
+#: lib/regcomp.c:161
+#, fuzzy
+msgid "Invalid content of \\{\\}"
+msgstr "option invalide -- %s"
+
+#: lib/regcomp.c:164
+#, fuzzy
+msgid "Invalid range end"
+msgstr "Limites invalides des pages « %s »."
+
+#: lib/regcomp.c:167
+#, fuzzy
+msgid "Memory exhausted"
+msgstr "Mémoire épuisée"
+
+#: lib/regcomp.c:170
+#, fuzzy
+msgid "Invalid preceding regular expression"
+msgstr "%s: expression régulière invalide: %s"
+
+#: lib/regcomp.c:173
+#, fuzzy
+msgid "Premature end of regular expression"
+msgstr "Erreur dans l'expression régulière recherchée."
+
+#: lib/regcomp.c:176
+#, fuzzy
+msgid "Regular expression too big"
+msgstr "%s: expression régulière invalide: %s"
+
+#: lib/regcomp.c:659
+#, fuzzy
+msgid "No previous regular expression"
+msgstr "Erreur dans l'expression régulière recherchée."
+
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[yY]"
+
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[nN]"
+
+#: lib/unicodeio.c:147
+msgid "iconv function not usable"
+msgstr "fonction iconv n'est pas utilisable"
+
+#: lib/unicodeio.c:149
+msgid "iconv function not available"
+msgstr "fonction iconv n'est pas disponible"
+
+#: lib/unicodeio.c:156
+msgid "character out of range"
+msgstr "caractère hors limites"
+
+#: lib/unicodeio.c:219
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "ne peut convertir U+%04X à un jeu local de caractères"
+
+#: lib/unicodeio.c:221
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "ne peut convertir U+%04X au jeu local de caractères: %s"
+
+#: lib/userspec.c:110
+msgid "invalid user"
+msgstr "usager invalide"
+
+#: lib/userspec.c:111
+msgid "invalid group"
+msgstr "groupe invalide"
+
+#: lib/userspec.c:113
+msgid "cannot get the login group of a numeric UID"
+msgstr ""
+"ne peut obtenir le groupe d'établissement de session à partir du UID "
+"numérique"
+
+#: lib/version-etc.c:74
+#, fuzzy
+msgid ""
 "\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
+"This is free software.  You may redistribute copies of it under the terms "
+"of\n"
+"the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 msgstr ""
 "Ce programme est un logiciel libre; vous pouvez le redistribuer ou le\n"
 "modifier selon les termes de la License Publique Générale de GNU, publiée\n"
 "par la Free Software Foundation (soit la version 2 ou soit, à votre\n"
 "discrétion, toute version ultérieure).\n"
 "\n"
-"Ce programme est distribué pour être utile, mais SANS AUCUNE GARANTIE;\n"
-"sans même la garantie implicite qu'il est DE QUALITE LOYALE ET MARCHANDE\n"
-"ou APPROPRIE POUR UN BUT PARTICULIER.  Voir la Licence Publique Générale\n"
-"de GNU pour plus de détails.\n"
-"\n"
-"Vous devriez avoir reçu copie de la Licence Publique Générale de GNU\n"
-"avec ce programme; sinon, écrire à la Free Software Foundation, Inc.,\n"
-"59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 
-#: src/main.c:233
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:90
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Pour plus d'information, essayez « %s %s ».\n"
+msgid "Written by %s.\n"
+msgstr "Écrit par %s.\n"
 
-#: src/main.c:237
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:94
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "Écrit par %s et %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:98
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "Écrit par %s, %s et %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
+#, c-format
 msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"« Free recode » transforme les jeux de caractères et les surfaces de "
-"fichiers\n"
+"Écrit par %s, %s, %s,\n"
+"et %s.\n"
 
-#: src/main.c:241
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
 #, c-format
 msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | DEMANDE [FICHIER]... ]\n"
+"Écrit par %s, %s, %s,\n"
+"%s et %s.\n"
 
-#: src/main.c:244
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:116
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Un paramètre obligatoire pour une option de forme longue l'est aussi pour "
-"une\n"
-"option de forme courte.  La même règle s'applique à un paramètre indiqué "
-"comme\n"
-"étant optionnel.\n"
+"Écrit par %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:123
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Listes:\n"
-"  -l, --list[=FORMAT]       afficher un charset donné, ou fournir toute la "
-"liste\n"
-"  -k, --known=PAIRES        choisir les charsets selon quelques PAIRES "
-"connues\n"
-"  -h, --header[=[LN/]NOM]   tabuler NOM sur stdout, utilisant LN, puis "
-"terminer\n"
-"  -F, --freeze-tables       produire un module C contenant toutes les "
-"tables\n"
-"  -T, --find-subsets        lister tout charset qui est sous-ensemble d'un "
-"autre\n"
-"  -C, --copyright           afficher les conditions de copie, puis terminer\n"
-"      --help                fournir ce message d'aide, puis terminer\n"
-"      --version             identifier la programme, puis terminer\n"
+"Écrit par %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:130
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Modes d'opération:\n"
-"  -v, --verbose           afficher les étapes prévues, suivre la "
-"progression\n"
-"  -q, --quiet, --silent   taire les messages sur les recodages "
-"irréversibles\n"
-"  -f, --force             effectuer même les recodages irréversibles\n"
-"  -t, --touch             toucher les fichiers après leur remplacement\n"
-"  -i, --sequence=files    fabriquer des fichiers pour ordonnancer les "
-"passes\n"
-"      --sequence=memory   utiliser des tampons pour ordonnancer les passes\n"
+"Écrit par %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"et %s.\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr ""
-"  -p, --sequence=pipe     utiliser « pipe » pour ordonnancer les passes\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     même chose que -i (sur cette machine)\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:138
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Ajustements fins:\n"
-"  -s, --strict           recoder strictement, perte possible de caractères\n"
-"  -d, --diacritics       se restreindre aux diacritiques pour HTML/LaTeX\n"
-"  -S, --source[=LN]      ne recoder que les chaînes et les commentaires LN\n"
-"  -c, --colons           utiliser « : » plutôt que « \\\" » pour les trémas\n"
-"  -g, --graphics         convertir au mieux possible les « rulers » IBMPC\n"
-"  -x, --ignore=CHARSET   ignorer CHARSET durant le choix des étapes\n"
+"Écrit par %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s et %s.\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:148
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
-"\n"
-"L'option « -l » sans FORMAT ni CHARSET donne les charsets et surfaces "
-"disponibles.\n"
-"FORMAT vaut « decimal », « octal », « hexadecimal » ou « full », ou encore "
-"un caractère\n"
-"dans « dohf ».\n"
+"Écrit par %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s et d'autres.\n"
 
-#: src/main.c:302
-msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
-msgstr ""
-"À moins que DEFAULT_CHARSET ne soit initialisé dans l'environnement,\n"
-"le CHARSET par défaut est locale selon l'encodage, déterminé par LC_ALL, "
-"LC_CTYPE, LANG.\n"
+#: lib/xmemcoll.c:50
+msgid "string comparison failed"
+msgstr "échec de comparaison de chaîne"
 
-#: src/main.c:307
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
-"Avec -k, les charsets antécédents possibles sont listés pour le CHARSET\n"
-"conséquent, tous deux étant des charsets RFC1345, restreints par les PAIRES\n"
-"dites selon la syntaxe « AVANT1:APRÈS1,AVANT2:APRÈS2,... »; chaque code "
-"AVANT\n"
-"et APRÈS est exprimé en décimal.\n"
+#: lib/xmemcoll.c:51
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Définir LC_ALL=« C » pour contourner le problème."
 
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr ""
-"LN est un langage de programmation, valant « c » (implicite), « perl » ou « "
-"po ».\n"
-
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"\n"
-"DEMANDE est SOUS-DEMANDE[,SOUS-DEMANDE]...; SOUS-DEMANDE est CODAGE[.."
-"CODAGE]...\n"
-"CODAGE est [CHARSET][/[SURFACE]]...; DEMANDE ressemble souvent à AVANT.."
-"APRÈs,\n"
-"AVANT et APRÈS étant des charsets.  Un CHARSET omis sous-entend le charset\n"
-"habituel; une [/SURFACE]... omise sous-entend les surfaces habituelles pour\n"
-"CHARSET; un / sans surface indique l'absence de toute surface.  Voir le "
-"manuel!\n"
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-"\n"
-"En l'absence de « -i » ou « -p », choisir « -i » avec FICHIER, sinon « -p "
-"».\n"
-"Chaque FICHIER est recodé sur lui-même, détruisant l'original.  Si aucun\n"
-"FICHIER n'est donné, alors agir comme un filtre et recoder stdin sur "
-"stdout.\n"
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Rapporter toutes anomalies à <recode-bugs@iro.umontreal.ca>.\n"
-
-#: src/main.c:429
+#: lib/xmemcoll.c:53
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "Séquence « %s » est ambiguë"
-
-#: src/main.c:433
-#, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "Séquence « %s » est inconnue"
-
-#: src/main.c:463 src/main.c:521
-#, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "Langage « %s » est ambigu"
-
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "Langage « %s » est inconnu"
-
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "Format « %s » est ambigu"
-
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "Format « %s » est inconnu"
-
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "Écrit par François Pinard <pinard@iro.umontreal.ca>.\n"
-
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Copyright © 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"Ce programme est un logiciel libre; consulter les sources pour connaître\n"
-"les droits de copie.  Il n'y AUCUNE GARANTIE; même pas celle qu'il est\n"
-"DE QUALITÉ LOYALE ET MARCHANDE ou APPROPRIÉ POUR UN BUT PARTICULIER.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "¨Symbole « %s » est inconnu"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "Charset « %s » est inconnu ou ambigu"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Argument requis est manquant"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Syntaxe désuète, veuillez préférer « %s »"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "Requête « %s » est erronée"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "Recodage de « %s »..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " complété\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr " non-réussi: %s dans « %s..%s »\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s non-réussi: %s dans « %s..%s »"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "%s dans « %s..%s »"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "Le charset %s existe déjà, et n'est pas %s"
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr "Incapable de lister « %s »: les noms n'y sont pas disponibles"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "déc  oct hex   UCS2  mné  %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "Désolé, aucun nom disponible pour « %s »"
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "Plus d'un re-surfaceur pour « %s »"
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "Plus d'un dé-surfaceur pour « %s »"
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "Mémoire virtuelle épuisée"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Les codes %3d et %3d s'injectent tous deux dans %3d"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr "Aucun caractère ne peut produire %3d"
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr "Incapable d'inverser une table un-à-un"
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Les diagnostics suivants s'appliquent pour « %s » vers « %s »"
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Paire no. %d: < %3d, %3d > en conflit avec < %3d, %3d >"
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr "Incapable de fermer une table en partant des paires connues"
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr "Le recodage est trivial, une table n'est pas requise"
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr "Recodage plus complexe que ce qu'une table peut décrire"
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sTable de conversion engendrée mécaniquement par Free « %s » %s"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr "%spour séquence « %s ».%s"
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Aucune table à imprimer"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "réversible"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s vers %s"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "octet"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "ucs2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "flottant"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*Irréalisable*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*simple copie*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "Mémoire virtuelle épuisée"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr "L'étape n'a pas été correctement initialisée"
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "L'étape n'a pas été correctement initialisée (options non-traitées)"
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "Demande: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "Réduit à: %s\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Nom de surface inconnu: %s"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Pas moyen de recoder %s vers %s"
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "Chaîne « .. » attendue dans la demande"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "L'état du processus fils en attente est 0x%0.2x"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mné   Description\n"
-"\n"
-
-#~ msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
-#~ msgstr ""
-#~ "CHARSET ne peut être omis, définir DEFAULT_CHARSET dans l'environment.\n"
-
-#~ msgid "Ambiguous sequence `%s'"
-#~ msgstr "La séquence «%s» est ambiguë"
-
-#~ msgid "Unknown sequence `%s'"
-#~ msgstr "Séquence «%s» inconnue"
-
-#~ msgid "Ambiguous language `%s'"
-#~ msgstr "Le langage «%s» est ambigu"
-
-#~ msgid "Unknown language `%s'"
-#~ msgstr "Langage «%s» inconnu"
-
-#~ msgid "Ambiguous format `%s'"
-#~ msgstr "Le format «%s» est ambigu"
-
-#~ msgid "Unknown format `%s'"
-#~ msgstr "Format «%s» inconnu"
-
-#~ msgid "Erroneous request `%s'"
-#~ msgstr "Demande «%s» en erreur"
-
-#~ msgid "   Each input char transforms into an output string,\n"
-#~ msgstr "   Chaque caractère lu devient une chaîne à la sortie,\n"
-
-#~ msgid "   Each input char transforms into an output string.\n"
-#~ msgstr "   Chaque caractère lu devient une chaîne à la sortie.\n"
-
-#~ msgid "   Programming is needed to handle multichar input.\n"
-#~ msgstr "   Il faudra programmer la lecture des multi-caractères.\n"
-
-#~ msgid "   The recoding might not be reversible.\n"
-#~ msgstr "   Ce recodage pourrait être irréversible.\n"
-
-#~ msgid "   The recoding should be reversible.\n"
-#~ msgstr "   Ce recodage est normalement réversible.\n"
-
-#~ msgid "   programming is needed to handle multichar input.\n"
-#~ msgstr "   il faudra programmer la lecture des multi-caractères.\n"
-
-#~ msgid "%s: Recoding is not reversible"
-#~ msgstr "%s: Recodage irréversible"
-
-#~ msgid ", %d saved by merging"
-#~ msgstr ", %d économisés par fusion"
-
-#~ msgid "/* Conversion table from `%s' charset to `%s' charset.\n"
-#~ msgstr "/* Table de conversion du charset «%s» vers le charset «%s».\n"
-
-#~ msgid "Hash stats: %d names using %d buckets out of %d\n"
-#~ msgstr "Statistiques de dispersion: %d noms, dans %d/%d pigeonniers\n"
-
-#~ msgid "Internal error - strategy undecided"
-#~ msgstr "Erreur interne - stragégie non choisie"
-
-#~ msgid "Mere copy for the trivial recoding\n"
-#~ msgstr "Recodage trivial par simple recopie\n"
-
-#~ msgid "Recoding is not reversible"
-#~ msgstr "Recodage irréversible"
-
-#~ msgid "BEFORE and AFTER both default to `%s' when needed.\n"
-#~ msgstr ""
-#~ "AVANT et APRÈS ont implicitement la valeur canonique «%s», "
-#~ "lorsqu'absents.\n"
+msgid "The strings compared were %s and %s."
+msgstr "Les chaînes comparées étaient %s et %s."

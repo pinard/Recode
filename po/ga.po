@@ -1,540 +1,766 @@
-# Irish translations for recode.
-# Copyright (C) 2005 Free Software Foundation, Inc.
-# Kevin Patrick Scannell <scannell@SLU.EDU>, 2005.
+# Irish translations for gnulib.
+# Copyright (C) 2003 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnulib package.
+# Kevin Patrick Scannell <scannell@SLU.EDU>, 2005, 2007.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: recode 3.6\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2005-09-13 18:45-0500\n"
-"Last-Translator: Kevin Patrick Scannell <scannell@SLU.EDU>\n"
-"Language-Team: Irish <ga@li.org>\n"
+"Project-Id-Version: gnulib 1.1\n"
+"Report-Msgid-Bugs-To: bug-gnulib@gnu.org\n"
+"POT-Creation-Date: 2007-07-19 12:19+0300\n"
+"PO-Revision-Date: 2007-07-20 12:24-0600\n"
+"Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
+"Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=5; plural=n==1 ? 0 : n==2 ? 1 : (n>2 && n<7) ? 2 :(n>6 && n<11) ? 3 : 4;\n"
 
-#: src/main.c:142
-msgid "No error"
-msgstr "Ní raibh aon earráid"
+#: lib/argmatch.c:134
+#, c-format
+msgid "invalid argument %s for %s"
+msgstr "argóint neamhbhailí %s chun %s"
 
-#: src/main.c:145
-msgid "Non canonical input"
-msgstr "Ionchur neamhchanónta"
+#: lib/argmatch.c:135
+#, c-format
+msgid "ambiguous argument %s for %s"
+msgstr "argóint dhébhríoch %s chun %s"
 
-#: src/main.c:148
-msgid "Ambiguous output"
-msgstr "Aschur débhríoch"
+#: lib/argmatch.c:154
+#, c-format
+msgid "Valid arguments are:"
+msgstr "Na hargóintí bailí:"
 
-#: src/main.c:151
-msgid "Untranslatable input"
-msgstr "Aschur neamh-inaistrithe"
+#: lib/argp-help.c:148
+#, c-format
+msgid "ARGP_HELP_FMT: %s value is less than or equal to %s"
+msgstr "ARGP_HELP_FMT: luach %s níos lú ná nó cothrom le %s"
 
-#: src/main.c:154
-msgid "Invalid input"
-msgstr "Ionchur neamhbhailí"
+#: lib/argp-help.c:221
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter requires a value"
+msgstr "%.*s: luach de dhíth ar pharaiméadar ARGP_HELP_FMT"
 
-#: src/main.c:157
-msgid "System detected problem"
-msgstr "Bhraith an córas fadhb"
+#: lib/argp-help.c:227
+#, c-format
+msgid "%.*s: ARGP_HELP_FMT parameter must be positive"
+msgstr "%.*s: luach deimhneach de dhíth ar pharaiméadar ARGP_HELP_FMT"
 
-#: src/main.c:160
-msgid "Misuse of recoding library"
-msgstr "Mí-úsáid den leabharlann ath-ionchódaithe"
+#: lib/argp-help.c:236
+#, c-format
+msgid "%.*s: Unknown ARGP_HELP_FMT parameter"
+msgstr "%.*s: Paraiméadar anaithnid ARGP_HELP_FMT"
 
-#: src/main.c:163
-msgid "Internal recoding bug"
-msgstr "Fabht inmheánach ath-ionchódaithe"
+#: lib/argp-help.c:248
+#, c-format
+msgid "Garbage in ARGP_HELP_FMT: %s"
+msgstr "Truflais i ARGP_HELP_FMT: %s"
 
-#: src/main.c:208
+#: lib/argp-help.c:1247
+msgid "Mandatory or optional arguments to long options are also mandatory or optional for any corresponding short options."
+msgstr "Is riachtanach/roghnach le rogha ghearr aon argóint atá riachtanach/roghnach leis an rogha fhada."
+
+#: lib/argp-help.c:1640
+msgid "Usage:"
+msgstr "Úsáid:"
+
+#: lib/argp-help.c:1644
+msgid "  or: "
+msgstr "  nó: "
+
+#: lib/argp-help.c:1656
+msgid " [OPTION...]"
+msgstr " [ROGHA...]"
+
+#: lib/argp-help.c:1683
+#, c-format
+msgid "Try `%s --help' or `%s --usage' for more information.\n"
+msgstr "Bain triail as `%s --help' nó `%s --usage' chun tuilleadh eolais a fháil.\n"
+
+#: lib/argp-help.c:1711
+#, c-format
+msgid "Report bugs to %s.\n"
+msgstr "Seol tuairiscí fabhtanna chuig %s.\n"
+
+#: lib/argp-help.c:1930 lib/error.c:125
+msgid "Unknown system error"
+msgstr "Earráid chórais anaithnid"
+
+#: lib/argp-parse.c:82
+msgid "give this help list"
+msgstr "taispeáin an chabhair seo"
+
+#: lib/argp-parse.c:83
+msgid "give a short usage message"
+msgstr "tabhair teachtaireacht bheag úsáide"
+
+#: lib/argp-parse.c:84
+msgid "NAME"
+msgstr "AINM"
+
+#: lib/argp-parse.c:84
+msgid "set the program name"
+msgstr "socraigh ainm an chláir"
+
+#: lib/argp-parse.c:85
+msgid "SECS"
+msgstr "SOIC"
+
+#: lib/argp-parse.c:86
+msgid "hang for SECS seconds (default 3600)"
+msgstr "déan moill SOIC soicind (réamhshocrú: 3600)"
+
+#: lib/argp-parse.c:143
+msgid "print program version"
+msgstr "taispeáin leagan an chláir"
+
+#: lib/argp-parse.c:159
+msgid "(PROGRAM ERROR) No version known!?"
+msgstr "(EARRÁID CHLÁIR) Leagan anaithnid!?"
+
+#: lib/argp-parse.c:612
+#, c-format
+msgid "%s: Too many arguments\n"
+msgstr "%s: An iomarca argóintí\n"
+
+#: lib/argp-parse.c:755
+msgid "(PROGRAM ERROR) Option should have been recognized!?"
+msgstr "(EARRÁID CHLÁIR) Ba chóir an rogha a aithint!?"
+
+#: lib/c-stack.c:240
+msgid "program error"
+msgstr "earráid chláir"
+
+#: lib/c-stack.c:241
+msgid "stack overflow"
+msgstr "cruach thar maoil"
+
+#: lib/closeout.c:74
+msgid "write error"
+msgstr "earráid sa scríobh"
+
+#: lib/copy-file.c:67
+#, c-format
+msgid "error while opening \"%s\" for reading"
+msgstr "earráid agus \"%s\" á oscailt chun é a léamh"
+
+#: lib/copy-file.c:74
+#, c-format
+msgid "cannot open backup file \"%s\" for writing"
+msgstr "ní féidir comhad cúltaca \"%s\" a oscailt chun scríobh ann"
+
+#: lib/copy-file.c:82
+#, c-format
+msgid "error reading \"%s\""
+msgstr "earráid agus \"%s\" á léamh"
+
+#: lib/copy-file.c:87 lib/copy-file.c:92 lib/copy-file.c:131
+#, c-format
+msgid "error writing \"%s\""
+msgstr "earráid agus \"%s\" á scríobh"
+
+#: lib/copy-file.c:94 lib/copy-file.c:133
+#, c-format
+msgid "error after reading \"%s\""
+msgstr "earráid tar éis \"%s\" á léamh"
+
+#: lib/csharpcomp.c:280
+msgid "fdopen() failed"
+msgstr "theip ar fdopen()"
+
+#: lib/csharpcomp.c:540
+msgid "C# compiler not found, try installing pnet"
+msgstr "Tiomsaitheoir C# gan aimsiú, bain triail as pnet"
+
+#: lib/csharpexec.c:344
+msgid "C# virtual machine not found, try installing pnet"
+msgstr "Meaisín fíorúil C# gan aimsiú, bain triail as pnet"
+
+#: lib/execute.c:185 lib/execute.c:261 lib/execute.c:303 lib/pipe.c:230
+#: lib/pipe.c:348 lib/pipe.c:408 lib/wait-process.c:334 lib/wait-process.c:401
+#, c-format
+msgid "%s subprocess failed"
+msgstr "theip ar fhophróiseas %s"
+
+#: lib/file-type.c:39
+msgid "regular empty file"
+msgstr "gnáthchomhad folamh"
+
+#: lib/file-type.c:39
+msgid "regular file"
+msgstr "gnáthchomhad"
+
+#: lib/file-type.c:42
+msgid "directory"
+msgstr "comhadlann"
+
+#: lib/file-type.c:45
+msgid "block special file"
+msgstr "comhad speisialta den chineál `bloc'"
+
+#: lib/file-type.c:48
+msgid "character special file"
+msgstr "comhad speisialta den chineál `carachtar'"
+
+# `TITA' ?! -KPS
+#: lib/file-type.c:51
+msgid "fifo"
+msgstr "fifo"
+
+#: lib/file-type.c:54
+msgid "symbolic link"
+msgstr "nasc siombalach"
+
+#: lib/file-type.c:57
+msgid "socket"
+msgstr "soicéad"
+
+#: lib/file-type.c:60
+msgid "message queue"
+msgstr "ciú teachtaireachta"
+
+#: lib/file-type.c:63
+msgid "semaphore"
+msgstr "séamafór"
+
+# FARF --KPS
+#: lib/file-type.c:66
+msgid "shared memory object"
+msgstr "comhad comhchuimhne"
+
+#: lib/file-type.c:69
+msgid "typed memory object"
+msgstr "comhad cuimhne le cineál"
+
+#: lib/file-type.c:71
+msgid "weird file"
+msgstr "comhad aisteach"
+
+#: lib/gai_strerror.c:44
+msgid "Address family for hostname not supported"
+msgstr "Aicme sheolta d'óstainm gan tacaíocht"
+
+#: lib/gai_strerror.c:45
+msgid "Temporary failure in name resolution"
+msgstr "Teip shealadach ar réiteach na n-ainmneacha"
+
+#: lib/gai_strerror.c:46
+msgid "Bad value for ai_flags"
+msgstr "Luach neamhbhailí do 'ai_flags'"
+
+#: lib/gai_strerror.c:47
+msgid "Non-recoverable failure in name resolution"
+msgstr "Teip dhocheartaithe ar réiteach na n-ainmneacha"
+
+#: lib/gai_strerror.c:48
+msgid "ai_family not supported"
+msgstr "ní thacaítear le 'ai_family'"
+
+#: lib/gai_strerror.c:49
+msgid "Memory allocation failure"
+msgstr "Theip ar dháil chuimhne"
+
+#: lib/gai_strerror.c:50
+msgid "No address associated with hostname"
+msgstr "Níl seoladh ar bith ceangailte leis an óstainm"
+
+#: lib/gai_strerror.c:51
+msgid "Name or service not known"
+msgstr "Ainm nó seirbhís anaithnid"
+
+#: lib/gai_strerror.c:52
+msgid "Servname not supported for ai_socktype"
+msgstr "Ní thacaítear le hainm freastalaithe do 'ai_socktype'"
+
+#: lib/gai_strerror.c:53
+msgid "ai_socktype not supported"
+msgstr "ní thacaítear le 'ai_socktype'"
+
+#: lib/gai_strerror.c:54
+msgid "System error"
+msgstr "Earráid chórais"
+
+#: lib/gai_strerror.c:55
+msgid "Argument buffer too small"
+msgstr "Tá an argóint mhaoláin róbheag"
+
+#: lib/gai_strerror.c:57
+msgid "Processing request in progress"
+msgstr "Iarratas próiseála ar siúl"
+
+#: lib/gai_strerror.c:58
+msgid "Request canceled"
+msgstr "Cealaíodh an t-iarratas"
+
+#: lib/gai_strerror.c:59
+msgid "Request not canceled"
+msgstr "Níor cealaíodh an t-iarratas"
+
+#: lib/gai_strerror.c:60
+msgid "All requests done"
+msgstr "Cuireadh gach iarratas i gcrích"
+
+#: lib/gai_strerror.c:61
+msgid "Interrupted by a signal"
+msgstr "Idirbhriste ag comhartha"
+
+#: lib/gai_strerror.c:62
+msgid "Parameter string not correctly encoded"
+msgstr "Níl an teaghrán paraiméadair ionchódaithe i gceart"
+
+#: lib/gai_strerror.c:74
+msgid "Unknown error"
+msgstr "Earráid anaithnid"
+
+#: lib/getopt.c:531 lib/getopt.c:547
+#, c-format
+msgid "%s: option `%s' is ambiguous\n"
+msgstr "%s: Tá an rogha `%s' débhríoch\n"
+
+#: lib/getopt.c:580 lib/getopt.c:584
+#, c-format
+msgid "%s: option `--%s' doesn't allow an argument\n"
+msgstr "%s: ní cheadaítear argóint i ndiaidh na rogha `--%s'\n"
+
+#: lib/getopt.c:593 lib/getopt.c:598
+#, c-format
+msgid "%s: option `%c%s' doesn't allow an argument\n"
+msgstr "%s: ní cheadaítear argóint i ndiaidh na rogha `%c%s'\n"
+
+#: lib/getopt.c:641 lib/getopt.c:660 lib/getopt.c:976 lib/getopt.c:995
+#, c-format
+msgid "%s: option `%s' requires an argument\n"
+msgstr "%s: tá argóint de dhíth i ndiaidh na rogha `%s'\n"
+
+#: lib/getopt.c:698 lib/getopt.c:701
+#, c-format
+msgid "%s: unrecognized option `--%s'\n"
+msgstr "%s: rogha anaithnid `--%s'\n"
+
+#: lib/getopt.c:709 lib/getopt.c:712
+#, c-format
+msgid "%s: unrecognized option `%c%s'\n"
+msgstr "%s: rogha anaithnid `%c%s'\n"
+
+#: lib/getopt.c:764 lib/getopt.c:767
+#, c-format
+msgid "%s: illegal option -- %c\n"
+msgstr "%s: rogha neamhcheadaithe -- %c\n"
+
+#: lib/getopt.c:773 lib/getopt.c:776
+#, c-format
+msgid "%s: invalid option -- %c\n"
+msgstr "%s: rogha neamhbhailí -- %c\n"
+
+#: lib/getopt.c:828 lib/getopt.c:844 lib/getopt.c:1048 lib/getopt.c:1066
+#, c-format
+msgid "%s: option requires an argument -- %c\n"
+msgstr "%s: tá argóint de dhíth i ndiaidh na rogha -- %c\n"
+
+#: lib/getopt.c:897 lib/getopt.c:913
+#, c-format
+msgid "%s: option `-W %s' is ambiguous\n"
+msgstr "%s: Tá an rogha `-W %s' débhríoch\n"
+
+#: lib/getopt.c:937 lib/getopt.c:955
+#, c-format
+msgid "%s: option `-W %s' doesn't allow an argument\n"
+msgstr "%s: ní cheadaítear argóint i ndiaidh na rogha `-W %s'\n"
+
+#: lib/human.c:477
+msgid "block size"
+msgstr "méid bloc"
+
+#: lib/javacomp.c:128 lib/javacomp.c:142 lib/javacomp.c:158
+msgid "invalid source_version argument to compile_java_class"
+msgstr "argóint neamhbhailí \"source_version\" ar compile_java_class"
+
+#: lib/javacomp.c:173 lib/javacomp.c:194
+msgid "invalid target_version argument to compile_java_class"
+msgstr "argóint neamhbhailí \"target_version\" ar compile_java_class"
+
+#: lib/javacomp.c:505
+#, c-format
+msgid "failed to create \"%s\""
+msgstr "theip ar chruthú \"%s\""
+
+#: lib/javacomp.c:512
+#, c-format
+msgid "error while writing \"%s\" file"
+msgstr "earráid agus comhad \"%s\" á scríobh"
+
+#: lib/javacomp.c:2343
+msgid "Java compiler not found, try installing gcj or set $JAVAC"
+msgstr "Tiomsaitheoir Java gan aimsiú, bain triail as gcj, nó socraigh $JAVAC"
+
+#: lib/javaexec.c:418
+msgid "Java virtual machine not found, try installing gij or set $JAVA"
+msgstr "Meaisín fíorúil Java gan aimsiú, bain triail as gij, nó socraigh $JAVA"
+
+#: lib/mkdir-p.c:197
+#, c-format
+msgid "cannot change permissions of %s"
+msgstr "ní féidir na ceadanna de %s a athrú"
+
+#: lib/mkdir-p.c:207
+#, c-format
+msgid "cannot create directory %s"
+msgstr "ní féidir comhadlann %s a chruthú"
+
+#: lib/obstack.c:424 lib/obstack.c:426 lib/xalloc-die.c:35 lib/xsetenv.c:39
+msgid "memory exhausted"
+msgstr "cuimhne ídithe"
+
+#: lib/openat-die.c:34
+msgid "unable to record current working directory"
+msgstr "ní féidir an chomhadlann oibre a thaifead"
+
+#: lib/openat-die.c:47
+msgid "failed to return to initial working directory"
+msgstr "níl aon fháil ar an chéad chomhadlann oibre"
+
+#: lib/pagealign_alloc.c:142
+msgid "Failed to open /dev/zero for read"
+msgstr "Theip ar oscailt /dev/zero chun é a léamh"
+
+#: lib/pipe.c:156 lib/pipe.c:159 lib/pipe.c:263 lib/pipe.c:266
+msgid "cannot create pipe"
+msgstr "ní féidir píopa a chruthú"
+
+#. TRANSLATORS:
+#. Get translations for open and closing quotation marks.
+#.
+#. The message catalog should translate "`" to a left
+#. quotation mark suitable for the locale, and similarly for
+#. "'".  If the catalog has no translation,
+#. locale_quoting_style quotes `like this', and
+#. clocale_quoting_style quotes "like this".
+#.
+#. For example, an American English Unicode locale should
+#. translate "`" to U+201C (LEFT DOUBLE QUOTATION MARK), and
+#. should translate "'" to U+201D (RIGHT DOUBLE QUOTATION
+#. MARK).  A British English Unicode locale should instead
+#. translate these to U+2018 (LEFT SINGLE QUOTATION MARK) and
+#. U+2019 (RIGHT SINGLE QUOTATION MARK), respectively.
+#.
+#. If you don't know what to put here, please see
+#. <http://en.wikipedia.org/wiki/Quotation_mark#Glyphs>
+#. and use glyphs suitable for your language.
+#: lib/quotearg.c:229
+msgid "`"
+msgstr "`"
+
+#: lib/quotearg.c:230
+msgid "'"
+msgstr "'"
+
+#: lib/regcomp.c:131
+msgid "Success"
+msgstr "D'éirigh leis"
+
+#: lib/regcomp.c:134
+msgid "No match"
+msgstr "Gan mheaitseáil"
+
+#: lib/regcomp.c:137
+msgid "Invalid regular expression"
+msgstr "Slonn ionadaíochta neamhbhailí"
+
+#: lib/regcomp.c:140
+msgid "Invalid collation character"
+msgstr "Carachtar neamhbhailí comhordaithe"
+
+#: lib/regcomp.c:143
+msgid "Invalid character class name"
+msgstr "Ainm neamhbhailí ar aicme charachtar"
+
+#: lib/regcomp.c:146
+msgid "Trailing backslash"
+msgstr "Cúlslais chun deiridh"
+
+#: lib/regcomp.c:149
+msgid "Invalid back reference"
+msgstr "Cúltagairt neamhbhailí"
+
+#: lib/regcomp.c:152
+msgid "Unmatched [ or [^"
+msgstr "[ nó [^ corr"
+
+#: lib/regcomp.c:155
+msgid "Unmatched ( or \\("
+msgstr "( nó \\( corr"
+
+#: lib/regcomp.c:158
+msgid "Unmatched \\{"
+msgstr "\\{ corr"
+
+#: lib/regcomp.c:161
+msgid "Invalid content of \\{\\}"
+msgstr "Ábhar neamhbhailí idir \\{ agus \\}"
+
+#: lib/regcomp.c:164
+msgid "Invalid range end"
+msgstr "Deireadh raoin neamhbhailí"
+
+#: lib/regcomp.c:167
+msgid "Memory exhausted"
+msgstr "Cuimhne ídithe"
+
+#: lib/regcomp.c:170
+msgid "Invalid preceding regular expression"
+msgstr "Is neamhbhailí an slonn ionadaíochta roimhe seo"
+
+#: lib/regcomp.c:173
+msgid "Premature end of regular expression"
+msgstr "Deireadh le slonn ionadaíochta gan choinne"
+
+#: lib/regcomp.c:176
+msgid "Regular expression too big"
+msgstr "Slonn ionadaíochta rómhór"
+
+#: lib/regcomp.c:179
+msgid "Unmatched ) or \\)"
+msgstr ") nó \\) corr"
+
+#: lib/regcomp.c:680
+msgid "No previous regular expression"
+msgstr "Níl aon slonn ionadaíochta roimhe seo"
+
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# allow yes, but also 'i' as in 'is sea' or 's' for 'sea' -- KPS
+# neither of these letters is near the 'N' on standard keyboard...
+# #-#-#-#-#  sh-utils-2.0.15.ga.po (sh-utils 2.0.15)  #-#-#-#-#
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# allow yes, but also 'i' as in 'is sea' or 's' for 'sea' -- KPS
+# neither of these letters is near the 'N' on standard keyboard...
+# #-#-#-#-#  textutils-2.1.ga.po (textutils 2.1)  #-#-#-#-#
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# allow yes, but also 'i' as in 'is sea' or 's' for 'sea' -- KPS
+# neither of these letters is near the 'N' on standard keyboard...
+#: lib/rpmatch.c:70
+msgid "^[yY]"
+msgstr "^[yYiIsS]"
+
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# fortunately, 'n' for 'no' or 'ní hea' - KPS
+# #-#-#-#-#  sh-utils-2.0.15.ga.po (sh-utils 2.0.15)  #-#-#-#-#
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# fortunately, 'n' for 'no' or 'ní hea' - KPS
+# #-#-#-#-#  textutils-2.1.ga.po (textutils 2.1)  #-#-#-#-#
+# #-#-#-#-#  findutils-4.1.7.ga.po (findutils 4.1.7)  #-#-#-#-#
+# fortunately, 'n' for 'no' or 'ní hea' - KPS
+#: lib/rpmatch.c:73
+msgid "^[nN]"
+msgstr "^[nN]"
+
+#: lib/unicodeio.c:141
+msgid "iconv function not usable"
+msgstr "ní féidir an fheidhm iconv a úsáid"
+
+#: lib/unicodeio.c:143
+msgid "iconv function not available"
+msgstr "níl an fheidhm iconv ar fáil"
+
+#: lib/unicodeio.c:150
+msgid "character out of range"
+msgstr "carachtar as raon"
+
+#: lib/unicodeio.c:213
+#, c-format
+msgid "cannot convert U+%04X to local character set"
+msgstr "ní féidir U+%04X a thiontú chuig an fhoireann carachtar logánta"
+
+#: lib/unicodeio.c:215
+#, c-format
+msgid "cannot convert U+%04X to local character set: %s"
+msgstr "ní féidir U+%04X a thiontú chuig an fhoireann carachtar logánta: %s"
+
+#: lib/userspec.c:107
+msgid "invalid user"
+msgstr "úsáideoir neamhbhailí"
+
+#: lib/userspec.c:108
+msgid "invalid group"
+msgstr "grúpa neamhbhailí"
+
+#: lib/userspec.c:109
+msgid "invalid spec"
+msgstr "sonrú neamhbhailí"
+
+#. TRANSLATORS: Translate "(C)" to the copyright symbol
+#. (C-in-a-circle), if this symbol is available in the user's
+#. locale.  Otherwise, do not translate "(C)"; leave it as-is.
+#: lib/version-etc.c:66
+msgid "(C)"
+msgstr "©"
+
+#: lib/version-etc.c:68
 msgid ""
-"This program is free software; you can redistribute it and/or modify\n"
-"it under the terms of the GNU General Public License as published by\n"
-"the Free Software Foundation; either version 2, or (at your option)\n"
-"any later version.\n"
 "\n"
-"This program is distributed in the hope that it will be useful,\n"
-"but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
-"MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
-"GNU General Public License for more details.\n"
+"License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>\n"
+"This is free software: you are free to change and redistribute it.\n"
+"There is NO WARRANTY, to the extent permitted by law.\n"
 "\n"
-"You should have received a copy of the GNU General Public License\n"
-"along with this program; if not, write to the Free Software Foundation,\n"
-"Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 msgstr ""
-"Is saorbhogearra an ríomhchlár seo; is féidir leat é a scaipeadh agus/nó\n"
-"a athrú de réir na gcoinníollacha den GNU General Public License mar atá\n"
-"foilsithe ag an Free Software Foundation; faoi leagan 2 den cheadúnas,\n"
-"nó (más mian leat) aon leagan níos déanaí.\n"
 "\n"
-"Scaiptear an ríomhchlár seo le súil go mbeidh sé áisiúil,\n"
-"ach GAN AON BARÁNTA; go fiú gan an barántas intuigthe de\n"
-"INDÍOLTACHT nó FEILIÚNACHT DO FHEIDHM AR LEITH.  Féach ar an\n"
-"GNU General Public License chun níos mó sonraí a fháil.\n"
+"Ceadúnas GPLv3+: GNU GPL leagan 3 nó níos nuaí <http://gnu.org/licenses/gpl.html>\n"
+"Is saorbhogearra é seo: ceadaítear duit é a athrú agus a athdháileadh.\n"
+"Níl baránta AR BITH ann, an oiread atá ceadaithe de réir dlí.\n"
 "\n"
-"Ba chomhair go mbeifeá tar éis cóip den GNU General Public License a fháil "
-"in\n"
-"éineacht leis an ríomhchlár seo; mura bhfuair, scríobh chuig an Free "
-"Software\n"
-"Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 
-#: src/main.c:233
+#. TRANSLATORS: %s denotes an author name.
+#: lib/version-etc.c:84
 #, c-format
-msgid "Try `%s %s' for more information.\n"
-msgstr "Bain triail as `%s %s' chun tuilleadh eolais a fháil.\n"
+msgid "Written by %s.\n"
+msgstr "Le %s.\n"
 
-#: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
-msgstr ""
-"Tiontaíonn saorbhogearra `recode' comhaid idir tacair charachtar agus "
-"craicne éagsúla.\n"
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:88
+#, c-format
+msgid "Written by %s and %s.\n"
+msgstr "Le %s agus %s.\n"
 
-#: src/main.c:241
+#. TRANSLATORS: Each %s denotes an author name.
+#: lib/version-etc.c:92
+#, c-format
+msgid "Written by %s, %s, and %s.\n"
+msgstr "Le %s, %s, agus %s.\n"
+
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:98
 #, c-format
 msgid ""
-"\n"
-"Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
+"Written by %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Úsáid: %s [ROGHA]... [ [TACAR] | IARRATAS [COMHAD]... ]\n"
+"Le %s, %s, %s,\n"
+"agus %s.\n"
 
-#: src/main.c:244
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:104
+#, c-format
 msgid ""
-"\n"
-"If a long option shows an argument as mandatory, then it is mandatory\n"
-"for the equivalent short option also.  Similarly for optional arguments.\n"
+"Written by %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Is riachtanach le rogha ghearr aon argóint atá riachtanach\n"
-"leis an rogha fhada, agus ar an nós céanna leis na hargóintí roghnacha.\n"
+"Le %s, %s, %s,\n"
+"%s, agus %s.\n"
 
-#: src/main.c:250
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:110
+#, c-format
 msgid ""
-"\n"
-"Listings:\n"
-"  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
-"  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
-"  -F, --freeze-tables        write out a C module holding all tables\n"
-"  -T, --find-subsets         report all charsets being subset of others\n"
-"  -C, --copyright            display Copyright and copying conditions\n"
-"      --help                 display this help and exit\n"
-"      --version              output version information and exit\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Liostú:\n"
-"  -l, --list[=FORMÁID]       taispeáin tacair charachtar agus ailiasanna ar "
-"eolas\n"
-"  -k, --known=PÉIRÍ          úsáid tacair charachtar ón liosta PÉIRÍ amháin\n"
-"  -h, --header[=[TN/]AINM]   scríobh tábla AINM ar stdout le TN, agus scoir\n"
-"  -F, --freeze-tables        scríobh modúl C le gach tábla ann\n"
-"  -T, --find-subsets         taispeáin gach tacar carachtar atá i gceann "
-"eile\n"
-"  -C, --copyright            taispeáin Cóipcheart agus coinníollacha "
-"cóipeála\n"
-"      --help                 taispeáin an chabhair seo agus scoir\n"
-"      --version              taispeáin eolas faoin leagan agus scoir\n"
+"Le %s, %s, %s,\n"
+"%s, %s, agus %s.\n"
 
-#: src/main.c:263
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:117
+#, c-format
 msgid ""
-"\n"
-"Operation modes:\n"
-"  -v, --verbose           explain sequence of steps and report progress\n"
-"  -q, --quiet, --silent   inhibit messages about irreversible recodings\n"
-"  -f, --force             force recodings even when not reversible\n"
-"  -t, --touch             touch the recoded files after replacement\n"
-"  -i, --sequence=files    use intermediate files for sequencing passes\n"
-"      --sequence=memory   use memory buffers for sequencing passes\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, and %s.\n"
 msgstr ""
-"\n"
-"Móid oibríochta:\n"
-"  -v, --verbose           taispeáin na céimeanna agus dul chun cinn\n"
-"  -q, --quiet, --silent   ná taispeáin teachtaireachtaí maidir le\n"
-"                             ath-ionchóduithe dochúlaithe\n"
-"  -f, --force             fórsáil ath-ionchódú fiú más dochúlaithe é\n"
-"  -t, --touch             teagmháil na comhaid ath-ionchódaithe tar éis\n"
-"                             iad a athshuíomh\n"
-"  -i, --sequence=comhaid  úsáid comhaid idirmheánacha le linn "
-"seicheamhaithe\n"
-"      --sequence=cuimhne  úsáid maoláin chuimhne le linn seicheamhaithe\n"
+"Le %s, %s, %s,\n"
+"%s, %s, %s, agus %s.\n"
 
-#: src/main.c:275
-msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "  -p, --sequence=píopa    úsáid píopa le linn seicheamhaithe\n"
-
-#: src/main.c:280
-msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=píopa    ar comhbhrí le -i (ar an gcóras seo)\n"
-
-#: src/main.c:285
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:124
+#, c-format
 msgid ""
-"\n"
-"Fine tuning:\n"
-"  -s, --strict           use strict mappings, even loose characters\n"
-"  -d, --diacritics       convert only diacritics or alike for HTML/LaTeX\n"
-"  -S, --source[=LN]      limit recoding to strings and comments as for LN\n"
-"  -c, --colons           use colons instead of double quotes for diaeresis\n"
-"  -g, --graphics         approximate IBMPC rulers by ASCII graphics\n"
-"  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"and %s.\n"
 msgstr ""
-"\n"
-"Mionchoigeartú:\n"
-"  -s, --strict           úsáid dianmhapáil, fiú le carachtair neamhchruinn\n"
-"  -d, --diacritics       tiontaigh diaicriticí amháin le haghaidh HTML/"
-"LaTeX\n"
-"  -S, --source[=TN]      ath-ionchódaigh teaghráin agus nótaí amháin, mar le "
-"TN\n"
-"  -c, --colons           úsáid idirstadanna in ionad \" le haghaidh "
-"déiréise\n"
-"  -g, --graphics         neasaigh rialóirí IBMPC le grafaic ASCII\n"
-"  -x, --ignore=TACAR     ná húsáid TACAR agus conair ath-ionchódaithe á "
-"roghnú\n"
+"Le %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"agus %s.\n"
 
-#: src/main.c:296
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:132
+#, c-format
 msgid ""
-"\n"
-"Option -l with no FORMAT nor CHARSET list available charsets and surfaces.\n"
-"FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, and %s.\n"
 msgstr ""
-"\n"
-"Taispeánann rogha -l (gan FORMÁID gan TACAR) gach tacar carachtar agus\n"
-"gach craiceann atá ar fáil.  Is FORMÁID ceann de `decimal', `octal',\n"
-"`hexadecimal' nó `full' (nó ceann de `dohf').\n"
+"Le %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, agus %s.\n"
 
-#: src/main.c:302
+#. TRANSLATORS: Each %s denotes an author name.
+#. You can use line breaks, estimating that each author name occupies
+#. ca. 16 screen columns and that a screen line has ca. 80 columns.
+#: lib/version-etc.c:142
+#, c-format
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
-"dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
+"Written by %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, and others.\n"
 msgstr ""
-"Mura bhfuil DEFAULT_CHARSET socraithe mar athróg thimpeallachta, úsáid an\n"
-"t-ionchódú ón logchaighdeán mar luach réamhshocraithe ar CHARSET;\n"
-"socraítear an t-ionchódú seo leis na hathróga LC_ALL, LC_CTYPE, agus LANG.\n"
+"Le %s, %s, %s,\n"
+"%s, %s, %s, %s,\n"
+"%s, %s, agus daoine eile nach iad.\n"
 
-#: src/main.c:307
-msgid ""
-"With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
-"and BEFs and AFTs being codes are given as decimal numbers.\n"
-msgstr ""
-"Le -k, taispeántar gach tacar tosaithe gur féidir a úsáid leis\n"
-"an TACAR deiridh, gach ina tacar táblach.  Is san fhoirm\n"
-"`TOS1:DEIR1,TOS2:DEIR2,...' iad na PÉIRÍ, agus na cóid TOS1, DEIR1,\n"
-"srl. tugtha mar uimhreacha deachúlacha.\n"
-
-#: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr ""
-"Is teanga í TN, ceann de `c', `perl' nó `po'; is `c' an réamhshocrú é.\n"
-
-#: src/main.c:315
-msgid ""
-"\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
-"with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
-"with an empty surface name means no surfaces at all.  See the manual.\n"
-msgstr ""
-"\n"
-"Is san fhoirm FOIARRATAS[,FOIARRATAS]... é IARRATAS, is san fhoirm\n"
-"IONCHÓDÚ[..IONCHÓDÚ]... é FOIARRATAS, agus is san fhoirm\n"
-"[TACARCARACHTAR][/CRAICEANN]]... é IONCHÓDÚ; is IARRATAS cosúil le\n"
-"TOSACH..DEIREADH go minic, le TOSACH agus DEIREADH ina dtacair\n"
-"charachtar.  Má tá TACAR ligthe ar lár, úsáid an gnáth-thacar;\n"
-"Má tá [/CRAICEANN] ar lár, úsáid an craiceann intuigthe le TACAR;\n"
-"Mura bhfuil ach `/' ann gan chraiceann, ná húsáid craiceann ar chor ar "
-"bith.\n"
-"Féach ar an lámhleabhar.\n"
-
-#: src/main.c:323
-msgid ""
-"\n"
-"If none of -i and -p are given, presume -p if no FILE, else -i.\n"
-"Each FILE is recoded over itself, destroying the original.  If no\n"
-"FILE is specified, then act as a filter and recode stdin to stdout.\n"
-msgstr ""
-"\n"
-"Mura bhfuil -i ná -p ann, glac le -p mura bhfuil COMHAD ann, agus\n"
-"le -i i ngach cás eile.  Ath-ionchódaítear gach COMHAD anuas air féin,\n"
-"agus beidh na bunchóipeanna scriosta.  Mura bhfuil COMHAD sonraithe,\n"
-"oibríonn recode mar scagaire, agus ath-ionchódaítear stdin go stdout.\n"
-
-#: src/main.c:329
-msgid ""
-"\n"
-"Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Seol tuairiscí fabhtanna chuig <recode-bugs@iro.umontreal.ca>.\n"
-
-#: src/main.c:429
+#: lib/wait-process.c:277 lib/wait-process.c:309 lib/wait-process.c:367
 #, c-format
-msgid "Sequence `%s' is ambiguous"
-msgstr "Tá an seicheamh `%s' débhríoch"
+msgid "%s subprocess"
+msgstr "fophróiseas %s"
 
-#: src/main.c:433
+#: lib/wait-process.c:326 lib/wait-process.c:393
 #, c-format
-msgid "Sequence `%s' is unknown"
-msgstr "Tá an seicheamh `%s' anaithnid"
+msgid "%s subprocess got fatal signal %d"
+msgstr "fuair fophróiseas %s comhartha marfach %d"
 
-#: src/main.c:463 src/main.c:521
+#: lib/xmemcoll.c:49
+msgid "string comparison failed"
+msgstr "theip ar chomparáid idir teaghráin"
+
+#: lib/xmemcoll.c:50
+msgid "Set LC_ALL='C' to work around the problem."
+msgstr "Cuir LC_ALL='C' ionas gur féidir an fhadhb seo a sheachaint."
+
+#: lib/xmemcoll.c:52
 #, c-format
-msgid "Language `%s' is ambiguous"
-msgstr "Tá an teanga `%s' débhríoch"
+msgid "The strings compared were %s and %s."
+msgstr "Rinneadh comparáid idir na teaghráin %s agus %s."
 
-#: src/main.c:467 src/main.c:525
-#, c-format
-msgid "Language `%s' is unknown"
-msgstr "Teanga anaithnid `%s'"
+#~ msgid "%s exists but is not a directory"
+#~ msgstr "Tá %s ann cheana, ach ní comhadlann é"
 
-#: src/main.c:559
-#, c-format
-msgid "Format `%s' is ambiguous"
-msgstr "Formáid dhébhríoch `%s'"
+#~ msgid "cannot change owner and/or group of %s"
+#~ msgstr "ní féidir an t-úinéir agus/nó an grúpa de %s a athrú"
 
-#: src/main.c:563
-#, c-format
-msgid "Format `%s' is unknown"
-msgstr "Formáid anaithnid `%s'"
+#~ msgid "cannot chdir to directory %s"
+#~ msgstr "ní féidir chdir a dhéanamh go dtí an chomhadlann %s"
 
-#: src/main.c:620
-msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr "Le François Pinard <pinard@iro.umontreal.ca>.\n"
+#~ msgid "cannot get the login group of a numeric UID"
+#~ msgstr "níl aon fháil ar an ghrúpa don UID uimhriúil seo"
 
-#: src/main.c:623
-msgid ""
-"\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-msgstr ""
-"\n"
-"Copyright © 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
-
-#: src/main.c:627
-msgid ""
-"This is free software; see the source for copying conditions.  There is NO\n"
-"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
-msgstr ""
-"Is saorbhogearra an ríomhchlár seo; féach ar an bhunchód le haghaidh\n"
-"coinníollacha cóipeála.  Níl baránta ar bith ann; go fiú níl baránta ann\n"
-"d'INDÍOLTACHT nó FEILIÚNACHT DO FHEIDHM AR LEITH.\n"
-
-#: src/main.c:668
-#, c-format
-msgid "Symbol `%s' is unknown"
-msgstr "Siombail anaithnid `%s'"
-
-#: src/main.c:708 src/main.c:722
-#, c-format
-msgid "Charset `%s' is unknown or ambiguous"
-msgstr "Tacar carachtar `%s' anaithnid nó débhríoch"
-
-#: src/main.c:753
-msgid "Required argument is missing"
-msgstr "Argóint riachtanach ar iarraidh"
-
-#: src/main.c:796
-#, c-format
-msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Comhréir i léig, úsáid `%s' ina hionad"
-
-#: src/main.c:802
-#, c-format
-msgid "Request `%s' is erroneous"
-msgstr "Iarratas lochtach `%s'"
-
-#: src/main.c:902
-#, c-format
-msgid "Recoding %s..."
-msgstr "%s á ath-ionchódú..."
-
-#: src/main.c:912
-#, c-format
-msgid " done\n"
-msgstr " críochnaithe\n"
-
-#: src/main.c:953
-#, c-format
-msgid " failed: %s in step `%s..%s'\n"
-msgstr " teipthe: %s i gcéim `%s..%s'\n"
-
-#: src/main.c:960
-#, c-format
-msgid "%s failed: %s in step `%s..%s'"
-msgstr "theip ar %s: %s i gcéim `%s..%s'"
-
-#: src/main.c:983
-#, c-format
-msgid "%s in step `%s..%s'"
-msgstr "%s i gcéim `%s..%s'"
-
-#: src/names.c:335
-#, c-format
-msgid "Charset %s already exists and is not %s"
-msgstr "Tá tacar carachtar %s ann cheana, agus ní %s é"
-
-#: src/names.c:831
-#, c-format
-msgid "Cannot list `%s', no names available for this charset"
-msgstr ""
-"Ní féidir `%s' a liostú; níl aon ainm ar fáil le haghaidh an tacair "
-"carachtar seo"
-
-#: src/names.c:984 src/names.c:1030
-#, c-format
-msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
-msgstr "Deach Ocht Heics UCS2 Mne  %s\n"
-
-#: src/names.c:1049
-#, c-format
-msgid "Sorry, no names available for `%s'"
-msgstr "Tá brón orm, níl aon ainm ar fáil le haghaidh `%s'"
-
-#: src/outer.c:125
-#, c-format
-msgid "Resurfacer set more than once for `%s'"
-msgstr "Athchraiceannadóir socraithe níos mó ná uair amháin le haghaidh `%s'"
-
-#: src/outer.c:133
-#, c-format
-msgid "Unsurfacer set more than once for `%s'"
-msgstr "Feannadóir socraithe níos mó ná uair amháin le haghaidh `%s'"
-
-#: src/recode.c:115 src/recode.c:127
-msgid "Virtual memory exhausted"
-msgstr "Cuimhne fhíorúil ídithe"
-
-#: src/recode.c:155
-#, c-format
-msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Ath-ionchódaíonn na cóid %3d agus %3d go dtí %3d"
-
-#: src/recode.c:169
-#, c-format
-msgid "No character recodes to %3d"
-msgstr "Níl aon charachtar a ath-ionchódaítear go dtí %3d"
-
-#: src/recode.c:170
-msgid "Cannot invert given one-to-one table"
-msgstr "Ní féidir an tábla tugtha aon-le-haon a inbhéartú"
-
-#: src/recode.c:224 src/recode.c:236
-#, c-format
-msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Diagnóisic le haghaidh `%s' go `%s'"
-
-#: src/recode.c:229 src/recode.c:241
-#, c-format
-msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Péire uimh. %d: tagann <%3d, %3d> agus <%3d, %3d> salach ar a chéile"
-
-#: src/recode.c:272
-msgid "Cannot complete table from set of known pairs"
-msgstr "Ní féidir an tábla a chur i gcrích le tacar de phéirí atá ar eolas"
-
-#: src/recode.c:497
-msgid "Identity recoding, not worth a table"
-msgstr "Ath-ionchódú ionannais; ní fiú tábla é"
-
-#: src/recode.c:504
-msgid "Recoding is too complex for a mere table"
-msgstr "Is róchasta é an t-ath-ionchódú mura bhfuil ach tábla ann"
-
-#: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sTábla tiontaithe ginte go huathoibríoch ag saorbhogearrá `%s' %s"
-
-#: src/recode.c:538
-#, c-format
-msgid "%sfor sequence %s.%s"
-msgstr "%sle haghaidh sheichimh %s.%s"
-
-#: src/recode.c:744
-msgid "No table to print"
-msgstr "Níl tábla ann le priontáil"
-
-#: src/request.c:34
-msgid "reversible"
-msgstr "inchúlaithe"
-
-#: src/request.c:36
-#, c-format
-msgid "%s to %s"
-msgstr "%s go %s"
-
-#: src/request.c:37 src/request.c:39
-msgid "byte"
-msgstr "beart"
-
-#: src/request.c:38 src/request.c:40
-msgid "ucs2"
-msgstr "ucs2"
-
-#: src/request.c:38 src/request.c:40
-msgid "variable"
-msgstr "athróg"
-
-#: src/request.c:111
-msgid "*Unachievable*"
-msgstr "*Dodhéanta*"
-
-#: src/request.c:113
-msgid "*mere copy*"
-msgstr "*lomchóip*"
-
-#: src/request.c:246
-msgid "Virtual memory exhausted!"
-msgstr "Cuimhne fhíorúil ídithe!"
-
-#: src/request.c:265
-msgid "Step initialisation failed"
-msgstr "Theip ar thúsú na céime"
-
-#: src/request.c:272
-msgid "Step initialisation failed (unprocessed options)"
-msgstr "Theip ar thúsú na céime (roghanna gan phróiseáil)"
-
-#: src/request.c:568
-#, c-format
-msgid "Request: %s\n"
-msgstr "Iarratas: %s\n"
-
-#: src/request.c:720
-#, c-format
-msgid "Shrunk to: %s\n"
-msgstr "Crapadh go: %s\n"
-
-#: src/request.c:823 src/request.c:932
-#, c-format
-msgid "Unrecognised surface name `%s'"
-msgstr "Ainm anaithnid craicinn `%s'"
-
-#: src/request.c:903
-#, c-format
-msgid "No way to recode from `%s' to `%s'"
-msgstr "Ní féidir `%s' a ath-ionchódú mar `%s'"
-
-#: src/request.c:1013
-msgid "Expecting `..' in request"
-msgstr "Bhíothas ag súil le `..' san iarratas"
-
-#: src/task.c:826 src/task.c:1002
-#, c-format
-msgid "Child process wait status is 0x%0.2x"
-msgstr "Is 0x%0.2x é stádas feithimh le haghaidh an mhacphróisis"
-
-#: src/testdump.c:298
-msgid ""
-"UCS2   Mne   Description\n"
-"\n"
-msgstr ""
-"UCS2   Mne   Cur Síos\n"
-"\n"
+#~ msgid ""
+#~ "\n"
+#~ "This is free software.  You may redistribute copies of it under the terms of\n"
+#~ "the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.\n"
+#~ "There is NO WARRANTY, to the extent permitted by law.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "\n"
+#~ "Is saorbhogearra é seo.  Is féidir leat cóipeanna a scaipeadh de réir na\n"
+#~ "gcoinníollacha den GNU General Public License\n"
+#~ "<http://www.gnu.org/licenses/gpl.html>.\n"
+#~ "Níl baránta AR BITH ann, an oiread atá ceadaithe de réir dlí.\n"
+#~ "\n"
