@@ -28,5 +28,5 @@ EXTRA_DIST = NOTES pytest common.py $(SUITE)
 PYTHON = python
 
 check-local:
-	PATH=../src:$$PATH PYTHONPATH=$(srcdir) \
+	RECODE=../src/recode PYTHONPATH=$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py

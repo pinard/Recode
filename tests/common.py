@@ -2,7 +2,9 @@
 
 __metaclass__ = type
 import os
-from __main__ import SkipTest, raises
+from __main__ import py
+
+recode_program = os.environ.get('RECODE')
 
 try:
     import Recode
@@ -54,14 +56,16 @@ def assert_or_diff(output, expected):
         assert False, (len(output), len(expected))
 
 def external_output(command):
-    return os.popen(command.replace('$R', 'recode'), 'rb').read()
+    if not recode_program:
+        py.test.skip()
+    return os.popen(command.replace('$R', recode_program), 'rb').read()
 
 def recode_output(input):
     if run.external:
         file(run.work, 'wb').write(input)
         return external_output('$R %s < %s' % (run.request, run.work))
     if Recode is None:
-        raise SkipTest
+        py.test.skip()
     return Recode.recode(run.request, input)
 
 def recode_back_output(input):
@@ -71,7 +75,7 @@ def recode_back_output(input):
         external_output('$R %s %s' % (run.request, run.work))
         return external_output('$R %s..%s < %s' % (after, before, run.work))
     if Recode is None:
-        raise SkipTest
+        py.test.skip()
     temp = Recode.recode(run.request, input)
     return Recode.recode('%s..%s' % (after, before), temp)
 

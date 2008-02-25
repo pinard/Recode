@@ -46,11 +46,7 @@ from StringIO import StringIO
 # How many displayable characters in an output line.
 WIDTH = 79
 
-class Limit_Reached(Exception):
-    pass
-
-class SkipTest(Exception):
-    pass
+class Limit_Reached(Exception): pass
 
 class Main:
     prefix = 'test_'
@@ -159,18 +155,18 @@ class Main:
                             else:
                                 text = u' ' + text
                             write(text + u'\n')
-            except KeyboardInterrupt:
+            except Exit, exception:
                 if not self.verbose:
                     write(u'\n')
-                write(u'\n*** INTERRUPTION! ***\n')
+                write(u'\n* %s *\n' % str(exception))
             except Limit_Reached:
                 if not self.verbose:
                     write(u'\n')
                 if not self.save:
                     if len(self.failures) == 1:
-                        write(u'\n*** ONE ERROR ALREADY! ***\n')
+                        write(u'\n* One error already! *\n')
                     else:
-                        write(u'\n*** %d ERRORS ALREADY! ***\n' % self.limit)
+                        write(u'\n* %d errors already! *\n' % self.limit)
         finally:
             if self.profiler is not None:
                 stats = lsprof.Stats(self.profiler.getstats())
@@ -291,7 +287,7 @@ class Main:
                     self.handle_class(prefix + u'/' + name, objet)
             else:
                 self.handle_function(prefix + u'/' + name, objet,
-                                      generator, None)
+                                     generator, None)
         if self.did_tests_in_module and hasattr(module, u'teardown_module'):
             module.teardown_module(module)
 
@@ -304,22 +300,30 @@ class Main:
                                    bool(code.co_flags & 32)))
         if not collection:
             return
+        # FIXME: Should likely do module setup here!
         instance = classe()
         if hasattr(instance, u'setup_class'):
             self.delayed_setup_module = instance.setup_class, classe
         for _, name, method, generator in sorted(collection):
             self.handle_function(prefix + u'/' + name, getattr(instance, name),
-                                  generator, instance)
+                                 generator, instance)
         if self.did_tests_in_class and hasattr(instance, u'teardown_class'):
             instance.teardown_class(classe)
 
     def handle_function(self, prefix, function, generator, instance):
+        collection = []
         if generator:
-            for counter, arguments in enumerate(function()):
-                self.launch_test(prefix + u'/' + unicode(counter + 1),
-                                 arguments[0], arguments[1:], instance)
+            # FIXME: Should likely do class setup here.
+            try:
+                for counter, arguments in enumerate(function()):
+                    collection.append((prefix + u'/' + unicode(counter + 1),
+                                       arguments[0], arguments[1:]))
+            except Skipped:
+                return
         else:
-            self.launch_test(prefix, function, (), instance)
+            collection.append((prefix, function, ()))
+        for prefix, function, arguments in collection:
+            self.launch_test(prefix, function, arguments, instance)
 
     def launch_test(self, prefix, function, arguments, instance):
         # Check if this test should be retained.
@@ -346,11 +350,16 @@ class Main:
         try:
             try:
                 function(*arguments)
+            except Exit:
+                success = False
+                raise
+            except Failed:
+                success = False
+            except Skipped:
+                success = None
             except KeyboardInterrupt:
                 success = None
-                raise
-            except SkipTest:
-                success = None
+                raise Exit("Interruption!")
             except:
                 success = False
             else:
@@ -435,19 +444,41 @@ class Friendly_StreamWriter:
 run = Main()
 main = run.main
 
-class ExceptionExpected(Exception):
-    pass
+class Exit(Exception): pass
 
-def raises(expected, *args, **kws):
-    try:
-        if isinstance(args[0], unicode) and not kws:
-            eval(args[0])
-        else:
-            args[0](*args[1:], **kws)
-    except expected:
-        return
-    else:
-        raise ExceptionExpected(u"Exception did not happen.")
+class Failed(Exception): pass
+
+class NotRaised(Exception): pass
+
+class Skipped(Exception): pass
+
+class py:
+
+    class test:
+
+        @staticmethod
+        def exit(message="Unknown reason"):
+            raise Exit(message)
+
+        @staticmethod
+        def fail(message="Unknown reason"):
+            raise Failed(message)
+
+        @staticmethod
+        def skip(message="Unknown reason"):
+            raise Skipped(message)
+
+        @staticmethod
+        def raises(expected, *args, **kws):
+            try:
+                if isinstance(args[0], unicode) and not kws:
+                    eval(args[0])
+                else:
+                    args[0](*args[1:], **kws)
+            except expected:
+                return
+            else:
+                raise NotRaised(u"Exception did not happen.")
 
 if __name__ == u'__main__':
     main(*sys.argv[1:])

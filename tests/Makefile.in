@@ -373,7 +373,7 @@ uninstall-am:
 
 
 check-local:
-	PATH=../src:$$PATH PYTHONPATH=$(srcdir) \
+	RECODE=../src/recode PYTHONPATH=$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.

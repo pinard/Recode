@@ -28,24 +28,25 @@ argument, all possible possible recodings are considered.
 """
 
 import os, sys
-import common
+from common import py, Recode
+from common import setup_module, teardown_module
 
 class Test:
     avoid_as_before = 'count-characters', 'dump-with-names', 'flat'
 
     def test_1(self):
-        if common.Recode is None:
-            raise common.SkipTest
-        self.outer = common.Recode.Outer(strict=False)
+        if Recode is None:
+            py.test.skip()
+        self.outer = Recode.Outer(strict=False)
         self.charsets = sorted(self.outer.all_charsets())
         for before in self.charsets:
             if before not in self.avoid_as_before:
                 yield self.validate, before
 
     def test_2(self):
-        if common.Recode is None:
-            raise common.SkipTest
-        self.outer = common.Recode.Outer(strict=True)
+        if Recode is None:
+            py.test.skip()
+        self.outer = Recode.Outer(strict=True)
         self.charsets = sorted(self.outer.all_charsets())
         for before in self.charsets:
             if before not in self.avoid_as_before:
@@ -59,7 +60,7 @@ class Test:
         print before
         for after in self.charsets:
             if after is not before:
-                request = common.Recode.Request(self.outer)
+                request = Recode.Request(self.outer)
                 request.scan('%s..%s' % (before, after))
 
 def main(*arguments):

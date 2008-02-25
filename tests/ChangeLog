@@ -1,3 +1,14 @@
+2008-02-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* pytest (py.test): New, including the old raises, and the new skip,
+	fail and exit functions, as suggested by Holger Krekel.
+	Interpret a skip() call in a generator routine as a request to skip
+	the whole set of generated tests.
+
+	* Makefile.am (check): Do not set PATH, set RECODE instead.
+	* common.py: Look for RECODE in os.environ to find the program.
+	* t90_bigauto.py: Use the above.
+
 2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
 
 	* t90_bigauto.py: New, replacing bigauto.py.
