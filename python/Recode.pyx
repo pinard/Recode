@@ -13,7 +13,7 @@ cdef extern from "config.h":
 
 cdef extern from "common.h":
 
-    ## Forwarded declarations.
+    ## Forwarded.
 
     cdef struct recode_outer
     ctypedef recode_outer *RECODE_OUTER
@@ -80,12 +80,12 @@ cdef extern from "common.h":
     ctypedef recode_option_list *RECODE_OPTION_LIST
     ctypedef recode_option_list *RECODE_CONST_OPTION_LIST
 
-    #typedef bool (*Recode_init)(RECODE_STEP, RECODE_CONST_REQUEST,
-    #                            RECODE_CONST_OPTION_LIST,
-    #                            RECODE_CONST_OPTION_LIST)
-    #typedef bool (*Recode_term)(RECODE_STEP, RECODE_CONST_REQUEST)
-    #typedef bool (*Recode_transform)(RECODE_SUBTASK)
-    #typedef bool (*Recode_fallback)(RECODE_SUBTASK, unsigned)
+    ctypedef bool (*Recode_init)(RECODE_STEP, RECODE_CONST_REQUEST,
+                                 RECODE_CONST_OPTION_LIST,
+                                 RECODE_CONST_OPTION_LIST)
+    ctypedef bool (*Recode_term)(RECODE_STEP, RECODE_CONST_REQUEST)
+    ctypedef bool (*Recode_transform)(RECODE_SUBTASK)
+    ctypedef bool (*Recode_fallback)(RECODE_SUBTASK, unsigned)
 
     struct recode_single:
         recode_single *next
@@ -94,9 +94,9 @@ cdef extern from "common.h":
         short conversion_cost
         void *initial_step_table
         recode_quality quality
-        #Recode_init init_routine
-        #Recode_transform transform_routine
-        #Recode_fallback fallback_routine
+        Recode_init init_routine
+        Recode_transform transform_routine
+        Recode_fallback fallback_routine
 
     enum recode_step_type:
         RECODE_NO_STEP_TABLE
@@ -116,9 +116,9 @@ cdef extern from "common.h":
         recode_step_type step_type
         void *step_table
         void *local
-        #Recode_transform transform_routine
-        #Recode_fallback fallback_routine
-        #Recode_term term_routine
+        Recode_transform transform_routine
+        Recode_fallback fallback_routine
+        Recode_term term_routine
     ctypedef recode_step *RECODE_STEP
     ctypedef recode_step *RECODE_CONST_STEP
 
@@ -260,14 +260,14 @@ cdef extern from "common.h":
         RECODE_LANGUAGE_PERL
 
     enum:
-        NUL = c'\0'
-        STRIP_SIZE = 8
+        NUL_ 'NUL'
+        STRIP_SIZE_ 'STRIP_SIZE'
 
     ctypedef unsigned short recode_ucs2
 
     struct strip_data:
         recode_ucs2 *pool
-        short offset[256 / STRIP_SIZE]
+        short offset[256 / STRIP_SIZE_]
 
     struct ucs2_to_byte:
         recode_ucs2 code
@@ -281,17 +281,6 @@ cdef extern from "common.h":
     ## Per module declarations.
 
     # recode.c
-
-    ##define ALLOC_SIZE(Variable, Size, Type) \
-    #  (Variable = (Type *) recode_malloc (outer, (Size)), Variable)
-
-    ##define ALLOC(Variable, Count, Type) \
-    #  ALLOC_SIZE (Variable, (Count) * sizeof (Type), Type)
-
-    ##define REALLOC(Variable, Count, Type) \
-    #  (Variable = (Type *) recode_realloc (outer, Variable,            \
-    #                                  (Count) * sizeof(Type)), \
-    #   Variable)
 
     void recode_error(RECODE_OUTER, char *, ...)
     void recode_perror(RECODE_OUTER, char *, ...)
@@ -314,12 +303,12 @@ cdef extern from "common.h":
     # charset.c
 
     enum alias_find_type:
-        SYMBOL_CREATE_CHARSET
-        SYMBOL_CREATE_DATA_SURFACE
-        SYMBOL_CREATE_TREE_SURFACE
-        ALIAS_FIND_AS_CHARSET
-        ALIAS_FIND_AS_SURFACE
-        ALIAS_FIND_AS_EITHER
+        SYMBOL_CREATE_CHARSET_ 'SYMBOL_CREATE_CHARSET'
+        SYMBOL_CREATE_DATA_SURFACE_ 'SYMBOL_CREATE_DATA_SURFACE'
+        SYMBOL_CREATE_TREE_SURFACE_ 'SYMBOL_CREATE_TREE_SURFACE'
+        ALIAS_FIND_AS_CHARSET_ 'ALIAS_FIND_AS_CHARSET'
+        ALIAS_FIND_AS_SURFACE_ 'ALIAS_FIND_AS_SURFACE'
+        ALIAS_FIND_AS_EITHER_ 'ALIAS_FIND_AS_EITHER'
 
     int code_to_ucs2 (RECODE_CONST_SYMBOL, unsigned)
     bool prepare_for_aliases(RECODE_OUTER)
@@ -333,7 +322,7 @@ cdef extern from "common.h":
 
     # combine.c
 
-    enum:                               # a few #define's, in fact
+    enum:
         DONE
         ELSE_ 'ELSE'
 
@@ -366,12 +355,15 @@ cdef extern from "common.h":
 
     # outer.c
 
+    ctypedef bool (*declare_single_Arg5)(
+            RECODE_STEP, RECODE_CONST_REQUEST,
+            RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
+    ctypedef bool (*declare_single_Arg6)(RECODE_SUBTASK)
+
     bool reversibility(RECODE_SUBTASK, unsigned)
-    #RECODE_SINGLE declare_single
-    #     (RECODE_OUTER, char *, char *, struct recode_quality,
-    #      bool (*) (RECODE_STEP, RECODE_CONST_REQUEST,
-    #                RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST),
-    #      bool (*) (RECODE_SUBTASK))
+    RECODE_SINGLE declare_single(
+            RECODE_OUTER, char *, char *, recode_quality,
+            declare_single_Arg5, declare_single_Arg6)
     bool declare_libiconv(RECODE_OUTER, char *)
     bool declare_explode_data(RECODE_OUTER, unsigned short *, char *, char *)
     bool declare_strip_data(RECODE_OUTER, strip_data *, char *)
@@ -398,11 +390,11 @@ cdef extern from "common.h":
 
     # ucs.c
 
-    enum:                               # a few #define's, in fact
-        REPLACEMENT_CHARACTER
-        NOT_A_CHARACTER
-        BYTE_ORDER_MARK
-        BYTE_ORDER_MARK_SWAPPED
+    enum:
+        REPLACEMENT_CHARACTER_ 'REPLACEMENT_CHARACTER'
+        NOT_A_CHARACTER_ 'NOT_A_CHARACTER'
+        BYTE_ORDER_MARK_ 'BYTE_ORDER_MARK'
+        BYTE_ORDER_MARK_SWAPPED_ 'BYTE_ORDER_MARK_SWAPPED'
 
     bool get_ucs2(unsigned *, RECODE_SUBTASK)
     bool get_ucs4(unsigned *, RECODE_SUBTASK)
@@ -447,19 +439,78 @@ cdef extern from "common.h":
 class error(Exception):
     pass
 
-# Description of list formats.
+## Enums repeated for Python.
+
+NO_SYMBOL_TYPE = RECODE_NO_SYMBOL_TYPE
+CHARSET = RECODE_CHARSET
+DATA_SURFACE = RECODE_DATA_SURFACE
+TREE_SURFACE = RECODE_TREE_SURFACE
+
+NO_CHARSET_DATA = RECODE_NO_CHARSET_DATA
+STRIP_DATA = RECODE_STRIP_DATA
+EXPLODE_DATA = RECODE_EXPLODE_DATA
+
+SIZE_1 = RECODE_1
+SIZE_2 = RECODE_2
+SIZE_4 = RECODE_4
+SIZE_N = RECODE_N
+
+NO_STEP_TABLE = RECODE_NO_STEP_TABLE
+BYTE_TO_BYTE = RECODE_BYTE_TO_BYTE
+BYTE_TO_STRING = RECODE_BYTE_TO_STRING
+UCS2_TO_BYTE = RECODE_UCS2_TO_BYTE
+UCS2_TO_STRING = RECODE_UCS2_TO_STRING
+STRING_TO_UCS2 = RECODE_STRING_TO_UCS2
+COMBINE_EXPLODE = RECODE_COMBINE_EXPLODE
+COMBINE_STEP = RECODE_COMBINE_STEP
+EXPLODE_STEP = RECODE_EXPLODE_STEP
+
+STRATEGY_UNDECIDED = RECODE_STRATEGY_UNDECIDED
+SEQUENCE_IN_MEMORY = RECODE_SEQUENCE_IN_MEMORY
+SEQUENCE_WITH_FILES = RECODE_SEQUENCE_WITH_FILES
+SEQUENCE_WITH_PIPE = RECODE_SEQUENCE_WITH_PIPE
+
+SWAP_UNDECIDED = RECODE_SWAP_UNDECIDED
+SWAP_NO = RECODE_SWAP_NO
+SWAP_YES = RECODE_SWAP_YES
+
+NO_ERROR = RECODE_NO_ERROR
+NOT_CANONICAL = RECODE_NOT_CANONICAL
+AMBIGUOUS_OUTPUT = RECODE_AMBIGUOUS_OUTPUT
+UNTRANSLATABLE = RECODE_UNTRANSLATABLE
+INVALID_INPUT = RECODE_INVALID_INPUT
+SYSTEM_ERROR = RECODE_SYSTEM_ERROR
+USER_ERROR = RECODE_USER_ERROR
+INTERNAL_ERROR = RECODE_INTERNAL_ERROR
+MAXIMUM_ERROR = RECODE_MAXIMUM_ERROR
 
 NO_FORMAT = RECODE_NO_FORMAT
-#DECIMAL_FORMAT = RECODE_DECIMAL_FORMAT
-#OCTAL_FORMAT = RECODE_OCTAL_FORMAT
-#HEXADECIMAL_FORMAT = RECODE_HEXADECIMAL_FORMAT
-#FULL_FORMAT = RECODE_FULL_FORMAT
+DECIMAL_FORMAT = RECODE_DECIMAL_FORMAT
+OCTAL_FORMAT = RECODE_OCTAL_FORMAT
+HEXADECIMAL_FORMAT = RECODE_HEXADECIMAL_FORMAT
+FULL_FORMAT = RECODE_FULL_FORMAT
 
-# Description of programming languages.
+NO_LANGUAGE = RECODE_NO_LANGUAGE
+LANGUAGE_C = RECODE_LANGUAGE_C
+LANGUAGE_PERL = RECODE_LANGUAGE_PERL
 
-#NO_LANGUAGE = RECODE_NO_LANGUAGE
-#LANGUAGE_C = RECODE_LANGUAGE_C
-#LANGUAGE_PERL = RECODE_LANGUAGE_PERL
+NUL = NUL_
+STRIP_SIZE = STRIP_SIZE_
+
+SYMBOL_CREATE_CHARSET = SYMBOL_CREATE_CHARSET_
+SYMBOL_CREATE_DATA_SURFACE = SYMBOL_CREATE_DATA_SURFACE_
+SYMBOL_CREATE_TREE_SURFACE = SYMBOL_CREATE_TREE_SURFACE_
+ALIAS_FIND_AS_CHARSET = ALIAS_FIND_AS_CHARSET_
+ALIAS_FIND_AS_SURFACE = ALIAS_FIND_AS_SURFACE_
+ALIAS_FIND_AS_EITHER = ALIAS_FIND_AS_EITHER_
+
+xDONE = DONE
+xELSE = ELSE_
+
+REPLACEMENT_CHARACTER = REPLACEMENT_CHARACTER_
+NOT_A_CHARACTER = NOT_A_CHARACTER_
+BYTE_ORDER_MARK = BYTE_ORDER_MARK_
+BYTE_ORDER_MARK_SWAPPED = BYTE_ORDER_MARK_SWAPPED_
 
 ## Recode library at OUTER level.
 
