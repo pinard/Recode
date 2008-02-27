@@ -113,6 +113,37 @@ least, new features go to Recodec only.
 
 __ http://recodec.progiciels-bpi.ca
 
+Notes for version 3.7-beta1
+---------------------------
+
+The beta 1 pre-test release for the incoming Recode 3.7 has been made
+available for those needing it right away.  While it solves some serious
+bugs and portability problems, others are meant to be addressed only in
+later pre-tests.  In particular, none of charset or surface issues, user
+requests, and various suggestions appear in this pre-test, and will not
+either in later pretests, until all real show-stoppers are solved first.
+So this is in no way a candidate for a Recode 3.7 release.
+
+The test suite is worth more comments:
+
++ The suite is very partial, and may not be thought as a validation
+  suite.  Before it could be used to ascertain confidence, it would need,
+  much more tests than it has already.
+
++ Testing is notably more speedy than it used to be.  For example, the
+  previous :code:`bigauto` test, which was not run by default because it
+  ran for too long, is now executed within the standard test suite, once
+  in non-strict mode, and a second time in strict mode.
+
++ It does not use Autotest anymore, but rather a home grown test driver
+  much inspired from the Codespeak project.  The link between the test and
+  the Recode library is established through a Pyrex interface, so you need
+  to have :code:`python` and :code:`python-devel` installed first.
+
++ Beware that the Pyrex interface to the Recode library is only meant
+  for testing. for now at least.  While you may play with it, it would not
+  be wise relying on it, as the specifications might change at any time.
+
 Installation
 ============
 

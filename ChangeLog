@@ -6,6 +6,8 @@
 	(AC_OUTPUT): Handle it.
 	Reported by Bruno Haible.
 
+	* configure.ac: Version 3.7-beta1.
+
 2008-02-23  François Pinard  <pinard@iro.umontreal.ca>
 
 	* configure.ac, Makefile.am: Handle python/.

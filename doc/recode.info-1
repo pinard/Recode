@@ -40,7 +40,7 @@ sets and is able to convert files between almost any pair.  Most
 RFC 1345 character sets, and all `libiconv' character sets, are
 supported.  The `recode' program is a handy front-end to the library.
 
-   The current `recode' release is 3.6.
+   The current `recode' release is 3.7-beta1.
 
 * Menu:
 
