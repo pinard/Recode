@@ -15,7 +15,7 @@
 @SET_MAKE@
 
 # Makefile for `recode' regression tests.
-# Copyright © 1996, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
+# Copyright © 1996-2000, 2008 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 
 # This program is free software; you can redistribute it and/or modify
@@ -201,7 +201,7 @@ SUITE = t21_names.py t22_lists.py t25_subsets.py t30_base64.py \
 t30_dumps.py t30_quoted.py t40_african.py t40_combine.py t40_testdump.py \
 t40_utf7.py t40_utf8.py t50_methods.py t90_bigauto.py
 
-EXTRA_DIST = NOTES pytest common.py $(SUITE)
+EXTRA_DIST = NOTES Recode.c Recode.pyx pytest common.py $(SUITE)
 PYTHON = python
 all: all-am
 
@@ -277,7 +277,7 @@ distdir: $(DISTFILES)
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
-all-am: Makefile
+all-am: Makefile all-local
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -359,10 +359,10 @@ uninstall-am:
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am check check-am check-local clean clean-generic \
-	clean-libtool distclean distclean-generic distclean-libtool \
-	distdir dvi dvi-am html html-am info info-am install \
-	install-am install-data install-data-am install-dvi \
+.PHONY: all all-am all-local check check-am check-local clean \
+	clean-generic clean-libtool distclean distclean-generic \
+	distclean-libtool distdir dvi dvi-am html html-am info info-am \
+	install install-am install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am install-man \
 	install-pdf install-pdf-am install-ps install-ps-am \
@@ -372,9 +372,21 @@ uninstall-am:
 	uninstall uninstall-am
 
 
+all-local: Recode.so
+
 check-local:
-	RECODE=../src/recode PYTHONPATH=$(srcdir) \
+	RECODE=../src/recode PYTHONPATH=.:$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
+
+Recode.so: Recode.o
+	$(CC) -shared $< -lrecode `python-config --libs` -o $@
+
+Recode.o: Recode.c
+	$(CC) -c -fPIC `python-config --cflags` \
+	  -I $(top_builddir) -I $(top_srcdir)/src $<
+
+Recode.c: Recode.pyx
+	cd $(srcdir) && pyrexc Recode.pyx
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:
