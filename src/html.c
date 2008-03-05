@@ -387,8 +387,8 @@ static struct ucs2_to_string translations [] =
 | Return hash value given TABLE_SIZE.  |
 `-------------------------------------*/
 
-static unsigned
-code_hash (const void *void_data, unsigned table_size)
+static size_t
+code_hash (const void *void_data, size_t table_size)
 {
   struct ucs2_to_string const *data = void_data;
 
@@ -568,8 +568,8 @@ transform_ucs2_html (RECODE_SUBTASK subtask)
 | Return hash value given TABLE_SIZE.  |
 `-------------------------------------*/
 
-static unsigned
-string_hash (const void *void_data, unsigned table_size)
+static size_t
+string_hash (const void *void_data, size_t table_size)
 {
   struct ucs2_to_string const *data = void_data;
 

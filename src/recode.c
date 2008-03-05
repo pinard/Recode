@@ -388,8 +388,8 @@ transform_byte_to_ucs2 (RECODE_SUBTASK subtask)
 | Recode a file from double byte UCS-2 characters to one byte characters.  |
 `-------------------------------------------------------------------------*/
 
-static unsigned
-ucs2_to_byte_hash (const void *void_data, unsigned table_size)
+static size_t
+ucs2_to_byte_hash (const void *void_data, size_t table_size)
 {
   const struct ucs2_to_byte *data = void_data;
 

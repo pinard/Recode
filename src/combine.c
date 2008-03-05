@@ -62,8 +62,8 @@
 | Initialize for exploding.  |
 `---------------------------*/
 
-static unsigned
-combined_hash (const void *void_data, unsigned table_size)
+static size_t
+combined_hash (const void *void_data, size_t table_size)
 {
   const unsigned short *data = void_data;
 
@@ -262,8 +262,8 @@ struct state
 | Initialize for combining.  |
 `---------------------------*/
 
-static unsigned
-state_hash (const void *void_data, unsigned table_size)
+static size_t
+state_hash (const void *void_data, size_t table_size)
 {
   const struct state *data = void_data;
 

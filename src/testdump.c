@@ -118,8 +118,8 @@ struct ucs2_to_count
     unsigned count;		/* corresponding count */
   };
 
-static unsigned
-ucs2_to_count_hash (const void *void_data, unsigned table_size)
+static size_t
+ucs2_to_count_hash (const void *void_data, size_t table_size)
 {
   const struct ucs2_to_count *data = void_data;
 

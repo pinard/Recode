@@ -84,8 +84,8 @@ check_restricted (RECODE_CONST_OUTER outer,
 | Prepare aliases for initialisation.  |
 `-------------------------------------*/
 
-static unsigned
-alias_hasher (const void *void_alias, unsigned limit)
+static size_t
+alias_hasher (const void *void_alias, size_t limit)
 {
   RECODE_CONST_ALIAS alias = void_alias;
 
