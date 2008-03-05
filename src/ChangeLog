@@ -4,6 +4,10 @@
 	various hasher functions according to the prototype in hash.h.
 	Reported by Bruno Haible.
 
+	* mergelex.py: Suppress yyunput.
+	* recodext.h (get_byte_helper): Declare also when !INLINE_HARDER.
+	Reported by Bruno Haible.
+
 2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	* hash.c: Revert last change (2008-02-21).  The renaming of symbols

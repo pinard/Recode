@@ -29,6 +29,7 @@ section0 = [
 # Flex and C declarations.
 section1 = '''\
 
+%option nounput
 %option noyywrap
 %{
 #include "common.h"

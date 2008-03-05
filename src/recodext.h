@@ -671,7 +671,7 @@ const char *ucs2_to_rfc1345 PARAMS ((recode_ucs2));
 
 /* task.c.  */
 
-#if USE_HELPERS
+#if USE_HELPERS || !INLINE_HARDER
 int get_byte_helper PARAMS ((RECODE_SUBTASK));
 #endif
 void put_byte_helper PARAMS ((int, RECODE_SUBTASK));

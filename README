@@ -127,7 +127,7 @@ So this is in no way a candidate for a Recode 3.7 release.
 The test suite is worth more comments:
 
 + The suite is very partial, and may not be thought as a validation
-  suite.  Before it could be used to ascertain confidence, it would need,
+  suite.  Before it could be used to ascertain confidence, it would need
   much more tests than it has already.
 
 + Testing is notably more speedy than it used to be.  For example, the
