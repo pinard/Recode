@@ -51,7 +51,8 @@ POST_UNINSTALL = :
 build_triplet = @build@
 host_triplet = @host@
 subdir = tests
-DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in ChangeLog
+DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in \
+	$(srcdir)/setup.py.in ChangeLog
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
 am__aclocal_m4_deps = $(top_srcdir)/m4/codeset.m4 \
 	$(top_srcdir)/m4/gettext.m4 $(top_srcdir)/m4/glibc21.m4 \
@@ -65,7 +66,7 @@ am__configure_deps = $(am__aclocal_m4_deps) $(CONFIGURE_DEPENDENCIES) \
 	$(ACLOCAL_M4)
 mkinstalldirs = $(SHELL) $(top_srcdir)/mkinstalldirs
 CONFIG_HEADER = $(top_builddir)/config.h
-CONFIG_CLEAN_FILES =
+CONFIG_CLEAN_FILES = setup.py
 SOURCES =
 DIST_SOURCES =
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -203,7 +204,7 @@ t40_utf7.py t40_utf8.py t50_methods.py t90_bigauto.py
 
 EXTRA_DIST = NOTES Recode.c Recode.pyx pytest common.py $(SUITE)
 PYTHON = python
-CLEANFILES = Recode.o Recode.so
+CLEANFILES = Recode.so
 all: all-am
 
 .SUFFIXES:
@@ -236,6 +237,8 @@ $(top_srcdir)/configure:  $(am__configure_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
 $(ACLOCAL_M4):  $(am__aclocal_m4_deps)
 	cd $(top_builddir) && $(MAKE) $(AM_MAKEFLAGS) am--refresh
+setup.py: $(top_builddir)/config.status $(srcdir)/setup.py.in
+	cd $(top_builddir) && $(SHELL) ./config.status $(subdir)/$@
 
 mostlyclean-libtool:
 	-rm -f *.lo
@@ -278,7 +281,7 @@ distdir: $(DISTFILES)
 check-am: all-am
 	$(MAKE) $(AM_MAKEFLAGS) check-local
 check: check-am
-all-am: Makefile all-local
+all-am: Makefile
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -361,10 +364,10 @@ uninstall-am:
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am all-local check check-am check-local clean \
-	clean-generic clean-libtool distclean distclean-generic \
-	distclean-libtool distdir dvi dvi-am html html-am info info-am \
-	install install-am install-data install-data-am install-dvi \
+.PHONY: all all-am check check-am check-local clean clean-generic \
+	clean-libtool distclean distclean-generic distclean-libtool \
+	distdir dvi dvi-am html html-am info info-am install \
+	install-am install-data install-data-am install-dvi \
 	install-dvi-am install-exec install-exec-am install-html \
 	install-html-am install-info install-info-am install-man \
 	install-pdf install-pdf-am install-ps install-ps-am \
@@ -374,18 +377,12 @@ uninstall-am:
 	uninstall uninstall-am
 
 
-all-local: Recode.so
-
-check-local:
+check-local: Recode.so
 	RECODE=../src/recode PYTHONPATH=.:$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
 
-Recode.so: Recode.o
-	$(CC) -shared $< -lrecode `python-config --libs` -o $@
-
-Recode.o: Recode.c
-	$(CC) -c -fPIC `python-config --cflags` \
-	  -I $(top_builddir) -I $(top_srcdir)/src $<
+Recode.so: Recode.c setup.py
+	$(PYTHON) setup.py build
 
 Recode.c: Recode.pyx
 	cd $(srcdir) && pyrexc Recode.pyx

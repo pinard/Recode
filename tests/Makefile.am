@@ -27,21 +27,14 @@ EXTRA_DIST = NOTES Recode.c Recode.pyx pytest common.py $(SUITE)
 
 PYTHON = python
 
-CLEANFILES = Recode.o Recode.so
+CLEANFILES = Recode.so
 
-all-local: Recode.so
-
-check-local:
+check-local: Recode.so
 	RECODE=../src/recode PYTHONPATH=.:$(srcdir) \
 	  $(PYTHON) $(srcdir)/pytest $(srcdir)/t*.py
 
-Recode.so: Recode.o
-	$(CC) -shared $< -lrecode `python-config --libs` -o $@
-
-Recode.o: Recode.c
-	$(CC) -c -fPIC `python-config --cflags` \
-	  -I $(top_builddir) -I $(top_srcdir)/src $<
+Recode.so: Recode.c setup.py
+	$(PYTHON) setup.py build
 
 Recode.c: Recode.pyx
 	cd $(srcdir) && pyrexc Recode.pyx
-

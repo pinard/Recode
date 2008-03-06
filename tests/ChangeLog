@@ -1,3 +1,11 @@
+2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	Increase Recode.so portability, by depending on distutils:
+	* setup.py.in: New file.
+	* Makefile.am (Recode.so): Use it.
+	(all-local, Recode.o): Deleted.
+	Reported by Bruno Haible and Dagobert Michelsen.
+
 2008-03-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (CLEANFILES): Added.
