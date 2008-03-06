@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2002-10-27 12:22+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -312,9 +312,10 @@ msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr "Autorem jest François Pinard <pinard@iro.umontreal.ca>.\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -382,17 +383,17 @@ msgstr "%s w `%s..%s'"
 msgid "Charset %s already exists and is not %s"
 msgstr "Zestaw %s ju¿ istnieje i nie jest %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "Nie mogê wylistowaæ `%s', brak nazw dla tego zestawu znaków"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Okt Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Brak nazw dla `%s'"
@@ -526,12 +527,12 @@ msgstr "Przekodowanie `%s' na `%s' jest niemo¿liwe"
 msgid "Expecting `..' in request"
 msgstr "Oczekiwano `..' w poleceniu"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "Stan oczekiwania procesu potomnego wynosi 0x%0.2x"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

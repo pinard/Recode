@@ -29,6 +29,10 @@ SUBDIRS = doc lib libiconv po src tests contrib
 # For now at least, if you modify cleaner.h.in, make twice!
 all-local: cleaner.h
 
+get-po-files:
+	cd $(top_srcdir) && \
+	  rsync -Lrtvz translationproject.org::tp/latest/recode/ po
+
 # The following goals for the maintainer of the Recode Web site.
 
 local:

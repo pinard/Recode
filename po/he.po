@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Free recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2001-05-27 17:06+0300\n"
 "Last-Translator: Eli Zaretskii <eliz@gnu.org>\n"
 "Language-Team: Hebrew <eliz@gnu.org>\n"
@@ -290,9 +290,10 @@ msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr ".Franc,ois Pinard <pinard@iro.umontreal.ca> י\"ע הבתכנ וז תינכת\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Free Software Foundation-ל תורומש תויוכזה לכ (C) 1990,92,93,94,96,97,99\n"
@@ -362,17 +363,17 @@ msgstr "%s :`%s..%s' הרמתה בלשב"
 msgid "Charset %s already exists and is not %s"
 msgstr "םיוות תצובק לש (alias) יפולח יוניככ %s לש תמדוק הרדגה רטוס %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "םיינקת תומש ןיא וז הצובקמ םיוותל ןכש ,`%s' תא גיצהל ןתינ אל"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "םיינקת תומש ןיא `%s' הצובקמ םיוותל ,םירעטצמ"
@@ -508,12 +509,12 @@ msgstr "`%s'-מ `%s'-ל הרמתה תורשפא ןיא"
 msgid "Expecting `..' in request"
 msgstr "`..' לולכל היה רומא המישמה ןויצ"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "0x%0.2x אוה תב-תינכת םויס דוק"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

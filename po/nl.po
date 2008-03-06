@@ -1,20 +1,22 @@
-# Dutch translation of recode.
-# Copyright (C) 2004, 2005 Free Software Foundation, Inc.
+# Translation of recode-3.6 to Dutch.
+# Copyright (C) 1996, 2004, 2005, 2006, 2007 Free Software Foundation, Inc.
 # This file is distributed under the same license as the recode package.
+#
+# Erick Branderhorst <branderh@debian.org>, 1996.
 # Taco Witte <tcwitte@cs.uu.nl>, 2004, 2005.
-# 
-# 
+# Benno Schulenberg <benno@vertaalt.nl>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
-"PO-Revision-Date: 2005-04-12 20:14+0200\n"
-"Last-Translator: Taco Witte <tcwitte@cs.uu.nl>\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"PO-Revision-Date: 2007-10-16 19:30+0200\n"
+"Last-Translator: Benno Schulenberg <benno@vertaalt.nl>\n"
 "Language-Team: Dutch <vertaling@vrijschrift.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #: src/main.c:142
 msgid "No error"
@@ -22,11 +24,11 @@ msgstr "Geen fout"
 
 #: src/main.c:145
 msgid "Non canonical input"
-msgstr "Geen kanonieke invoer"
+msgstr "Niet-canonieke invoer"
 
 #: src/main.c:148
 msgid "Ambiguous output"
-msgstr "Dubbelzinnige uitvoer"
+msgstr "Niet-eenduidige uitvoer"
 
 #: src/main.c:151
 msgid "Untranslatable input"
@@ -42,11 +44,11 @@ msgstr "Systeem heeft fout gevonden"
 
 #: src/main.c:160
 msgid "Misuse of recoding library"
-msgstr "Verkeerd gebruik van recode-bibliotheek"
+msgstr "Verkeerd gebruik van hercoderings-bibliotheek"
 
 #: src/main.c:163
 msgid "Internal recoding bug"
-msgstr "Interne fout bij hercoderen"
+msgstr "**Interne fout** bij hercoderen"
 
 #: src/main.c:208
 msgid ""
@@ -64,31 +66,32 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation,\n"
 "Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 msgstr ""
-"Dit programma is vrije software; u kunt het verder verspreiden en/of\n"
+"Dit programma is vrije software; u mag het verder verspreiden en/of\n"
 "wijzigen onder de voorwaarden van de GNU General Public License zoals\n"
-"gepubliceerd door de Free Software Foundation; ofwel versie 2, ofwel (als\n"
-"u dat wilt) een nieuwere versie.\n"
+"gepubliceerd door de Free Software Foundation, naar keuze ofwel onder\n"
+"versie 2 ofwel onder een nieuwere versie van die licentie.\n"
 "\n"
-"Dit programma wordt verspreid met de hoop dat het nuttig is, maar\n"
-"ZONDER ENIGE GARANTIE; zelfs zonder de geïmpliceerde garantie van\n"
-"VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.  Zie de\n"
-"GNU General Public License voor meer details.\n"
+"Dit programma wordt uitgegeven in de hoop dat het nuttig is,\n"
+"maar ZONDER ENIGE GARANTIE; zelfs zonder de impliciete garantie\n"
+"van VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN BEPAALD DOEL.\n"
+"Zie de GNU General Public License voor meer details.\n"
 "\n"
-"U moet een kopie van de GNU General Public License ontvangen hebben\n"
-"samen met dit programma; schrijf als dit niet zo is aan de Free Software\n"
-"Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
+"Bij dit programma hoort u een kopie van de GNU General Public License\n"
+"ontvangen te hebben; is dit niet het geval, schrijf dan naar\n"
+"Free Software Foundation, Inc.,  51 Franklin Street, fifth floor,\n"
+"Boston, MA 02110-1301,  USA.\n"
 
 #: src/main.c:233
 #, c-format
 msgid "Try `%s %s' for more information.\n"
-msgstr "Probeer `%s %s' voor meer informatie.\n"
+msgstr "Typ '%s %s' voor meer informatie.\n"
 
 #: src/main.c:237
 msgid ""
 "Free `recode' converts files between various character sets and surfaces.\n"
 msgstr ""
-"Vrije `recode' converteert bestanden van verschillende tekensets en "
-"oppervlakten.\n"
+"'recode' converteert bestanden van en naar allerlei tekensets en "
+"oppervlakken.\n"
 
 #: src/main.c:241
 #, c-format
@@ -97,7 +100,7 @@ msgid ""
 "Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
 msgstr ""
 "\n"
-"Gebruik: %s [OPTIE]... [ [TEKENSET] | VERZOEK [BESTAND]... ]\n"
+"Gebruik:  %s [OPTIE]... [ [TEKENSET] | VERZOEK [BESTAND]... ]\n"
 
 #: src/main.c:244
 msgid ""
@@ -106,9 +109,8 @@ msgid ""
 "for the equivalent short option also.  Similarly for optional arguments.\n"
 msgstr ""
 "\n"
-"Als bij een lange optie een argument als verplicht is weergegeven, is het\n"
-"dat ook bij de equivalente korte optie.  Hetzelfde geldt voor optionele\n"
-"argumenten.\n"
+"Een argument dat verplicht of optioneel is voor een lange optie, is dat\n"
+"ook voor de overeenkomstige korte optie.\n"
 
 #: src/main.c:250
 msgid ""
@@ -125,19 +127,19 @@ msgid ""
 "      --version              output version information and exit\n"
 msgstr ""
 "\n"
-"Lijsten:\n"
-"  -l, --list[=SOORT]         één of alle bekende tekensets en aliassen "
-"opsommen\n"
-"  -k, --known=PAREN          beperken tot tekensets volgens bekende PAREN-"
-"lijst\n"
-"  -h, --header[=[LN/]NAAM]   tabel NAAM naar standaarduitvoer schrijven met "
-"taal LN, dan afsluiten\n"
+"Opsommingen:\n"
+"  -l, --list[=PRESENTATIE]   alle bekende tekensets en aliassen opsommen,\n"
+"                               of een tekenset in tabelvorm presenteren\n"
+"  -k, --known=PAREN          opsomming beperken volgens deze bekende PAREN\n"
+"  -h, --header[=[TL/]NAAM]   tabel NAAM naar standaarduitvoer schrijven\n"
+"                               (in taal TL) en stoppen\n"
 "  -F, --freeze-tables        een C-module schrijven die alle tabellen bevat\n"
-"  -T, --find-subsets         alle tekensets rapporteren die deelverzameling "
-"van andere zijn\n"
-"  -C, --copyright            auteursrecht en kopieervoorwaarden weergeven\n"
-"      --help                 deze hulp weergeven en afsluiten\n"
-"      --version              versie-informatie weergeven en afsluiten\n"
+"  -T, --find-subsets         alle tekensets opsommen die deelverzameling "
+"van\n"
+"                               anderen zijn\n"
+"  -C, --copyright            auteursrecht en kopieervoorwaarden tonen\n"
+"      --help                 deze hulptekst tonen en stoppen\n"
+"      --version              versie-informatie tonen en stoppen\n"
 
 #: src/main.c:263
 msgid ""
@@ -151,20 +153,19 @@ msgid ""
 "      --sequence=memory   use memory buffers for sequencing passes\n"
 msgstr ""
 "\n"
-"Uitvoermodus:\n"
-"  -v, --verbose           reeks van stappen uitleggen en voortgang "
-"rapporteren\n"
-"  -q, --quiet, --silent   berichten over onomkeerbare hercoderingen "
-"onderdrukken\n"
-"  -f, --force             hercoderen afdwingen, ook als ze onomkeerbaar "
-"zijn\n"
-"  -t, --touch             hercodeerde bestanden aanraken na vervanging\n"
-"  -i, --sequence=files    tussenkomende bestanden gebruiken voor stappen\n"
-"      --sequence=memory   geheugenbuffers gebruiken voor stappen\n"
+"Werkingsmodus:\n"
+"  -v, --verbose           tussenstappen uitleggen en voortgang tonen\n"
+"  -q, --quiet, --silent   niets zeggen over onomkeerbare hercoderingen\n"
+"  -f, --force             hercodering afdwingen, ook als deze onomkeerbaar "
+"is\n"
+"  -t, --touch             tijdsstempel van gehercodeerde bestanden "
+"aanpassen\n"
+"  -i, --sequence=files    tijdelijke bestanden gebruiken voor tussenstappen\n"
+"      --sequence=memory   geheugenbuffers gebruiken voor tussenstappen\n"
 
 #: src/main.c:275
 msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "  -p, --sequence=pipe     pijpmachinerie gebruiken voor stappen\n"
+msgstr "  -p, --sequence=pipe     'pipes' gebruiken voor tussenstappen\n"
 
 #: src/main.c:280
 msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
@@ -183,16 +184,17 @@ msgid ""
 msgstr ""
 "\n"
 "Fijnafstelling:\n"
-"  -s, --strict           stricte afbeeldingen gebruiken, zelfs tekens "
-"verliezen\n"
-"  -d, --diacritics       alleen diakritische tekens e.d. converteren voor "
-"HTML/LaTeX\n"
-"  -S, --source[=LN]      hercoderen beperken tot tekenreeksen en commentaar "
-"zoals voor LN\n"
-"  -c, --colons           dubbele punt i.p.v. dubbele aanhalingstekens "
-"gebruiken voor diaeresis\n"
-"  -g, --graphics         IBMPC-lijnen benaderen met ASCII-tekeningen\n"
-"  -x, --ignore=TEKENSET  TEKENSET negeren bij kiezen van hercodeerpad\n"
+"  -s, --strict            strikt converteren, ook als dit tekens verliest\n"
+"  -d, --diacritics        alleen diakritische tekens en dergelijke "
+"converteren\n"
+"                            voor HTML/LaTeX\n"
+"  -S, --source[=TL]       hercoderen beperken tot commentaar en "
+"tekenreeksen\n"
+"                            als in taal TL ('c', 'perl', of 'po')\n"
+"  -c, --colons            voor een trema een dubbele punt in plaats van een\n"
+"                            dubbel aanhalingsteken gebruiken\n"
+"  -g, --graphics          IBMPC-lijntjes benaderen met ASCII-tekens\n"
+"  -x, --ignore=TEKENSET   TEKENSET negeren bij keuze van hercodeertraject\n"
 
 #: src/main.c:296
 msgid ""
@@ -201,10 +203,9 @@ msgid ""
 "FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
 msgstr ""
 "\n"
-"Optie -l zonder SOORT of TEKENSET somt beschikbare tekensets en oppervlakten "
-"op.\n"
-"SOORT is `decimal' (tientallig), `octal' (achttallig), "
-"`hexadecimal' (zestientallig) of `full' (volledig) (of één van `dohf').\n"
+"Optie -l zonder PRESENTATIE of TEKENSET somt de beschikbare tekensets en\n"
+"oppervlakken op.  PRESENTATIE is 'decimal', 'octal', 'hexadecimal' of\n"
+"'full' (volledig), die afgekort mogen worden tot 'd', 'o', 'h' en 'f'.\n"
 
 #: src/main.c:302
 msgid ""
@@ -212,9 +213,9 @@ msgid ""
 "locale\n"
 "dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
 msgstr ""
-"Tenzij DEFAULT_CHARSET in de omgeving is ingesteld, gebruikt CHARSET "
-"standaard\n"
-"de taalafhankelijke codering, bepaald door LC_ALL, LC_CTYPE, LANG.\n"
+"Tenzij omgevingsvariabele DEFAULT_CHARSET is ingesteld, gebruikt TEKENSET\n"
+"standaard de taalafhankelijke codering, bepaald door LC_ALL, LC_CTYPE, "
+"LANG.\n"
 
 #: src/main.c:307
 msgid ""
@@ -223,14 +224,14 @@ msgid ""
 "AFT2,...'\n"
 "and BEFs and AFTs being codes are given as decimal numbers.\n"
 msgstr ""
-"Met optie -k worden voor de gegeven na-tekenset de mogelijke voor-tekensets "
-"opgesomd, beide als tabel met PAREN in de vorm `VOOR1:NA1,VOOR2:NA2,...', "
-"waarbij de VOORs en NAs als decimale getallen gegeven worden.\n"
+"Met optie -k worden voor de gegeven NA-tekenset de mogelijke VOOR-tekensets\n"
+"opgesomd, als tabel van PAREN in de vorm 'VOOR1:NA1,VOOR2:NA2,...', waarbij\n"
+"de VOORs en NAs als decimale getallen gegeven worden.\n"
 
 #: src/main.c:312
 msgid ""
 "LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr "LN is een taal, en kan `c', `perl' of `po' zijn; `c' is standaard.\n"
+msgstr "TL is een taal, en kan 'c', 'perl' of 'po' zijn; 'c' is standaard.\n"
 
 #: src/main.c:315
 msgid ""
@@ -249,13 +250,12 @@ msgstr ""
 "CODERING]...\n"
 "CODERING is [TEKENSET][/[OPPERVLAK]]...; VERZOEK ziet er vaak uit als VOOR.."
 "NA,\n"
-"waarbij VOOR en NA tekensets zijn.  Een weggelaten TEKENSET impliceert "
-"meestal de\n"
+"waarbij VOOR en NA tekensets zijn.  Een weggelaten TEKENSET impliceert de\n"
 "gebruikelijke tekenset; een weggelaten [/OPPERVLAK]... betekent de "
-"geïmpliceerde\n"
+"impliciete\n"
 "oppervlakken voor TEKENSET; een / met een lege oppervlaknaam betekent "
 "helemaal\n"
-"geen oppervlak.  Zie de handleiding.\n"
+"geen oppervlak.  Zie ook de handleiding.\n"
 
 #: src/main.c:323
 msgid ""
@@ -265,11 +265,11 @@ msgid ""
 "FILE is specified, then act as a filter and recode stdin to stdout.\n"
 msgstr ""
 "\n"
-"Als geen van -i en -p gegeven zijn, wordt -p aangenomen als geen BESTAND is\n"
-"gegeven; anders -i. Elk BESTAND wordt over zichzelf hercodeerd, waarbij het\n"
-"origineel wordt overschreven.  Als geen BESTAND is opgegeven, wordt gewerkt\n"
-"als een filter en wordt van standaard invoer naar standaard uitvoer "
-"hercodeerd.\n"
+"Als er geen -i of -p gegeven is, wordt -p aangenomen als er geen BESTAND\n"
+"gegeven is, anders -i.  Elk BESTAND wordt over zichzelf gehercodeerd; het\n"
+"origineel wordt dus overschreven.\n"
+"Als er geen BESTAND gegeven is, functioneert 'recode' als een filter en\n"
+"wordt van standaardinvoer naar standaarduitvoer gehercodeerd.\n"
 
 #: src/main.c:329
 msgid ""
@@ -277,49 +277,48 @@ msgid ""
 "Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
 msgstr ""
 "\n"
-"Rapporteer programmafouten aan <recode-bugs@iro.umontreal.ca>,\n"
-"en fouten in de Nederlandse vertaling aan <vertaling@vrijschrift.org>.\n"
+"Rapporteer gebreken in het programma aan <recode-bugs@iro.umontreal.ca>;\n"
+"meld fouten in de vertaling aan <vertaling@vrijschrift.org>.\n"
 
 #: src/main.c:429
 #, c-format
 msgid "Sequence `%s' is ambiguous"
-msgstr "Reeks `%s' is dubbelzinnig"
+msgstr "Reeks '%s' is niet eenduidig"
 
 #: src/main.c:433
 #, c-format
 msgid "Sequence `%s' is unknown"
-msgstr "Reeks `%s' is onbekend"
+msgstr "Reeks '%s' is onbekend"
 
 #: src/main.c:463 src/main.c:521
 #, c-format
 msgid "Language `%s' is ambiguous"
-msgstr "Taal `%s' is dubbelzinnig"
+msgstr "Taal '%s' is niet eenduidig"
 
 #: src/main.c:467 src/main.c:525
 #, c-format
 msgid "Language `%s' is unknown"
-msgstr "Taal `%s' is onbekend"
+msgstr "Taal '%s' is onbekend"
 
 #: src/main.c:559
 #, c-format
 msgid "Format `%s' is ambiguous"
-msgstr "Formaat `%s' is dubbelzinnig"
+msgstr "Presentatie '%s' is niet eenduidig"
 
 #: src/main.c:563
 #, c-format
 msgid "Format `%s' is unknown"
-msgstr "Formaat `%s' is onbekend"
+msgstr "Presentatie '%s' is onbekend"
 
 #: src/main.c:620
 msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr ""
-"Geschreven door François Pinard <pinard@iro.umontreal.ca>,\n"
-"vertaald door Elros Cyriatan.\n"
+msgstr "Geschreven door François Pinard <pinard@iro.umontreal.ca>.\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -329,38 +328,38 @@ msgid ""
 "This is free software; see the source for copying conditions.  There is NO\n"
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 msgstr ""
-"Dit is vrije software; zie de bron voor kopieervoorwaarden.  Er is GEEN\n"
-"garantie; zelfs niet voor VERKOOPBAARHEID of GESCHIKTHEID VOOR EEN\n"
-"BEPAALD DOEL.\n"
+"Dit is vrije software; zie de programmatekst voor de kopieervoorwaarden.\n"
+"Er is GEEN garantie; zelfs niet voor VERKOOPBAARHEID of GESCHIKTHEID\n"
+"VOOR EEN BEPAALD DOEL.\n"
 
 #: src/main.c:668
 #, c-format
 msgid "Symbol `%s' is unknown"
-msgstr "Symbool `%s' is onbekend"
+msgstr "Symbool '%s' is onbekend"
 
 #: src/main.c:708 src/main.c:722
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
-msgstr "Tekenset `%s' is onbekend of dubbelzinnig"
+msgstr "Tekenset '%s' is onbekend of niet eenduidig"
 
 #: src/main.c:753
 msgid "Required argument is missing"
-msgstr "Vereist argument ontbreekt"
+msgstr "Een vereist argument ontbreekt"
 
 #: src/main.c:796
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Syntaxis wordt ontraden, gebruik alstublieft `%s'"
+msgstr "Deze syntax is verouderd; gebruik liever '%s'"
 
 #: src/main.c:802
 #, c-format
 msgid "Request `%s' is erroneous"
-msgstr "Verzoek `%s' is foutief"
+msgstr "Verzoek '%s' is onjuist"
 
 #: src/main.c:902
 #, c-format
 msgid "Recoding %s..."
-msgstr "Bezig met hercoderen %s..."
+msgstr "Hercoderen van %s..."
 
 #: src/main.c:912
 #, c-format
@@ -370,51 +369,51 @@ msgstr " voltooid\n"
 #: src/main.c:953
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
-msgstr " mislukt: %s in stap `%s..%s'\n"
+msgstr " mislukt: %s in stap '%s..%s'\n"
 
 #: src/main.c:960
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s mislukt: %s in stap `%s..%s'"
+msgstr "%s mislukt: %s in stap '%s..%s'"
 
 #: src/main.c:983
 #, c-format
 msgid "%s in step `%s..%s'"
-msgstr "%s in stap `%s..%s'"
+msgstr "%s in stap '%s..%s'"
 
 #: src/names.c:335
 #, c-format
 msgid "Charset %s already exists and is not %s"
-msgstr "Tekenset `%s' bestaat al en is niet %s"
+msgstr "Tekenset '%s' bestaat al en is niet %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
-msgstr "Kan `%s' niet opsommen, geen namen beschikbaar voor deze tekenset"
+msgstr "Kan '%s' niet opsommen; geen namen beschikbaar voor deze tekenset"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
-msgstr "Sorry, geen namen beschikbaar voor `%s'"
+msgstr "Sorry, geen namen beschikbaar voor '%s'"
 
 #: src/outer.c:125
 #, c-format
 msgid "Resurfacer set more than once for `%s'"
-msgstr "Her-oppervlakker meer dan eens gezet voor `%s'"
+msgstr "Her-oppervlakker is meer dan eens gezet voor '%s'"
 
 #: src/outer.c:133
 #, c-format
 msgid "Unsurfacer set more than once for `%s'"
-msgstr "Ont-oppervlakker meer dan eens gezet voor `%s'"
+msgstr "Ont-oppervlakker is meer dan eens gezet voor '%s'"
 
 #: src/recode.c:115 src/recode.c:127
 msgid "Virtual memory exhausted"
-msgstr "Onvoldoende virtueel geheugen"
+msgstr "Onvoldoende geheugen beschikbaar"
 
 #: src/recode.c:155
 #, c-format
@@ -428,25 +427,25 @@ msgstr "Geen teken hercodeert naar %3d"
 
 #: src/recode.c:170
 msgid "Cannot invert given one-to-one table"
-msgstr "Kan gegeven één-op-één tabel niet omkeren"
+msgstr "Kan de gegeven één-op-één tabel niet omkeren"
 
 #: src/recode.c:224 src/recode.c:236
 #, c-format
 msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Volgende diagnostiek voor `%s' naar `%s'"
+msgstr "Foutmeldingen voor '%s' naar '%s'"
 
 #: src/recode.c:229 src/recode.c:241
 #, c-format
 msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Paar nummer %d: <%3d, %3d> conflicteert met <%3d, %3d>"
+msgstr "Paarnummer %d: <%3d, %3d> conflicteert met <%3d, %3d>"
 
 #: src/recode.c:272
 msgid "Cannot complete table from set of known pairs"
-msgstr "Kan tabel niet afmaken met verzameling bekende paren"
+msgstr "Kan tabel niet afmaken met de verzameling bekende paren"
 
 #: src/recode.c:497
 msgid "Identity recoding, not worth a table"
-msgstr "Identiteitshercodering, is geen tabel waard"
+msgstr "Identiteitshercodering; is geen tabel waard"
 
 #: src/recode.c:504
 msgid "Recoding is too complex for a mere table"
@@ -455,7 +454,7 @@ msgstr "Hercoderen is te complex voor slechts een tabel"
 #: src/recode.c:536
 #, c-format
 msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sConversietabel mechanisch gegenereerd door Vrije `%s' %s"
+msgstr "%sConversietabel gegenereerd door '%s' %s"
 
 #: src/recode.c:538
 #, c-format
@@ -493,11 +492,11 @@ msgstr "*Kan niet*"
 
 #: src/request.c:113
 msgid "*mere copy*"
-msgstr "*slechts kopiëren*"
+msgstr "*simpele kopie*"
 
 #: src/request.c:246
 msgid "Virtual memory exhausted!"
-msgstr "Onvoldoende virtueel geheugen!"
+msgstr "Onvoldoende geheugen beschibaar!"
 
 #: src/request.c:265
 msgid "Step initialisation failed"
@@ -520,23 +519,23 @@ msgstr "Gekrompen tot: %s\n"
 #: src/request.c:823 src/request.c:932
 #, c-format
 msgid "Unrecognised surface name `%s'"
-msgstr "Onbekende oppervlaknaam `%s'"
+msgstr "Onbekende oppervlaknaam '%s'"
 
 #: src/request.c:903
 #, c-format
 msgid "No way to recode from `%s' to `%s'"
-msgstr "Geen manier om te hercoderen van `%s' naar `%s'"
+msgstr "Er is geen manier om te hercoderen van '%s' naar '%s'"
 
 #: src/request.c:1013
 msgid "Expecting `..' in request"
-msgstr "`..' verwacht in verzoek"
+msgstr "'..' werd verwacht in verzoek"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
-msgstr "Wachtstatus van kindproces is 0x%0.2x"
+msgstr "Wachtstatus van dochterproces is 0x%0.2x"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

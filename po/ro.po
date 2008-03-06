@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode-3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2003-05-04 08:45+0300\n"
 "Last-Translator: Eugen Hoanca <eugenh@urban-grafx.ro>\n"
 "Language-Team: Romanian <translation-team-ro@lists.sourceforge.net>\n"
@@ -316,9 +316,10 @@ msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr "Scris de Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -386,18 +387,18 @@ msgstr "%s în pasul `%s..%s'"
 msgid "Charset %s already exists and is not %s"
 msgstr "Setul de caractere %s existã deja ºi nu este %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
 "Nu se poate lista `%s', nici un nume disponibil pentru acest set de caractere"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Zec  Oct  Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Ne pare rãu, nici un nume disponibil pentru `%s'"
@@ -535,12 +536,12 @@ msgstr "Nici o ºansã de recodare din `%s' în `%s'"
 msgid "Expecting `..' in request"
 msgstr "Se aºteaptã `..' în cerere"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "Starea de aºteptare a procesului derivat(child) este 0x%0.2x"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

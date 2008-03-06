@@ -1,3 +1,9 @@
+2008-03-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* de.po, nl.po, pt.po: Updated.
+	* zh_CN.po: New file.
+	* LINGUAS: Adjusted.
+
 2008-02-21  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* Makefile.in.in: Upgrade to gettext-0.16.

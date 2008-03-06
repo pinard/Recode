@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2001-06-06 20:34+01:00\n"
 "Last-Translator: Edmund GRIMLEY EVANS <edmundo@rano.org>\n"
 "Language-Team: Esperanto <eo@li.org>\n"
@@ -293,9 +293,10 @@ msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr "Verkita de François Pinard <pinard@iro.umontreal.ca>.\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Kopirajto (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -362,17 +363,17 @@ msgstr "%s en paþo '%s..%s'"
 msgid "Charset %s already exists and is not %s"
 msgstr "La signaro %s jam ekzistas kaj ne estas %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "Ne povas montri '%s'; neniuj nomoj disponataj por æi tiu signaro"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Pardonu, sed neniaj nomoj disponataj por '%s'"
@@ -506,12 +507,12 @@ msgstr "Mankas eblo por konverti de '%s' al '%s'"
 msgid "Expecting `..' in request"
 msgstr "Atendas '..' en peto"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "Atendostatuso de ido-procezo estas 0x%0.2x"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

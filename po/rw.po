@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2005-04-04 10:55-0700\n"
 "Last-Translator: Steven Michael Murphy <murf@e-tools.com>\n"
 "Language-Team: Kinyarwanda <translation-team-rw@lists.sourceforge.net>\n"
@@ -290,7 +290,7 @@ msgstr "CA."
 #, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr "C"
 
 #: src/main.c:627
@@ -380,17 +380,17 @@ msgstr ""
 msgid "Charset %s already exists and is not %s"
 msgstr "Na ni OYA"
 
-#: src/names.c:831
+#: src/names.c:830
 #, fuzzy, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "Urutonde Oya Amazina Bihari kugirango iyi"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr ""
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, fuzzy, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Oya Amazina Bihari kugirango"
@@ -546,12 +546,12 @@ msgstr ""
 "X- Generator: KBabel 1. 0\n"
 "."
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, fuzzy, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "Tegereza Imimerere ni"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

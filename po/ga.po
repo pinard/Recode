@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2005-09-13 18:45-0500\n"
 "Last-Translator: Kevin Patrick Scannell <scannell@SLU.EDU>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -310,9 +310,10 @@ msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 msgstr "Le François Pinard <pinard@iro.umontreal.ca>.\n"
 
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright © 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -380,19 +381,19 @@ msgstr "%s i gcéim `%s..%s'"
 msgid "Charset %s already exists and is not %s"
 msgstr "Tá tacar carachtar %s ann cheana, agus ní %s é"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
 "Ní féidir `%s' a liostú; níl aon ainm ar fáil le haghaidh an tacair "
 "carachtar seo"
 
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Deach Ocht Heics UCS2 Mne  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Tá brón orm, níl aon ainm ar fáil le haghaidh `%s'"
@@ -526,12 +527,12 @@ msgstr "Ní féidir `%s' a ath-ionchódú mar `%s'"
 msgid "Expecting `..' in request"
 msgstr "Bhíothas ag súil le `..' san iarratas"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "Is 0x%0.2x é stádas feithimh le haghaidh an mhacphróisis"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"

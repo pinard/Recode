@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Free recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2007-08-05 16:29-0400\n"
+"POT-Creation-Date: 2008-03-06 00:31-0500\n"
 "PO-Revision-Date: 2002-09-17 00:28+0200\n"
 "Last-Translator: Santiago Vila Doncel <sanvila@unex.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -333,9 +333,10 @@ msgstr "Escrito por François Pinard <pinard@iro.umontreal.ca>.\n"
 
 # FIXME: Añadir 1998 (?).
 #: src/main.c:623
+#, fuzzy
 msgid ""
 "\n"
-"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
@@ -403,7 +404,7 @@ msgstr "%s en el paso %s..%s"
 msgid "Charset %s already exists and is not %s"
 msgstr "El juego de caracteres %s ya existe y no es %s"
 
-#: src/names.c:831
+#: src/names.c:830
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
@@ -411,12 +412,12 @@ msgstr ""
 "juego de caracteres"
 
 # "Nem" de "Nemónico", supongo.
-#: src/names.c:984 src/names.c:1030
+#: src/names.c:983 src/names.c:1029
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Nem  %s\n"
 
-#: src/names.c:1049
+#: src/names.c:1048
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Lo siento, no hay nombres disponibles para `%s'"
@@ -559,12 +560,12 @@ msgstr "No se puede convertir de `%s' a `%s'"
 msgid "Expecting `..' in request"
 msgstr "Se esperaba `..' en la petición"
 
-#: src/task.c:826 src/task.c:1002
+#: src/task.c:833 src/task.c:1009
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
 msgstr "El estado de espera del proceso hijo es 0x%0.2x"
 
-#: src/testdump.c:298
+#: src/testdump.c:309
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"
