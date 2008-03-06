@@ -27,6 +27,8 @@ EXTRA_DIST = NOTES Recode.c Recode.pyx pytest common.py $(SUITE)
 
 PYTHON = python
 
+CLEANFILES = Recode.o Recode.so
+
 all-local: Recode.so
 
 check-local:

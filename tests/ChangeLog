@@ -1,3 +1,7 @@
+2008-03-05  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Makefile.am (CLEANFILES): Added.
+
 2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Recode.pyx: Adjusted for cleaner.h.in.
