@@ -6,7 +6,7 @@
 
 	* mergelex.py: Suppress yyunput.
 	* recodext.h (get_byte_helper): Declare also when !INLINE_HARDER.
-	Reported by Bruno Haible.
+	Reported by Bruno Haible and Dagobert Michelsen.
 
 2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
 
