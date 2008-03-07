@@ -1,58 +1,57 @@
 # Greek messages for GNU recode
-# Copyright (C) 1999 Free Software Foundation, Inc.
-# Simos Xenitellis <S.Xenitellis@rhbnc.ac.uk>, 1999.
+# Copyright (C) 1999, 2008 Free Software Foundation, Inc.
+# Simos Xenitellis <simos.lists@googlemail.com>, 1999, 2008.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNU recode 3.4r\n"
-"Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
-"PO-Revision-Date: 1999-06-13 01:30+0000\n"
-"Last-Translator: Simos Xenitellis <S.Xenitellis@rhbnc.ac.uk>\n"
-"Language-Team: Greek <nls@tux.hellug.gr>\n"
+"Project-Id-Version: GNU recode 3.6\n"
+"POT-Creation-Date: 2001-01-02 22:35+0100\n"
+"PO-Revision-Date: 2008-02-13 01:30+0000\n"
+"Last-Translator: Simos Xenitellis <simos.lists@googlemail.com>\n"
+"Language-Team: Greek <team@lists.gnome.gr>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-7\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
 # src/main.c:157
 #: src/main.c:142
 msgid "No error"
-msgstr "Κανένα σφάλμα"
+msgstr "ΞΞ±Ξ½Ξ­Ξ½Ξ± ΟƒΟ†Ξ¬Ξ»ΞΌΞ±"
 
 # src/main.c:160
 #: src/main.c:145
 msgid "Non canonical input"
-msgstr "Μη κανονικοποιημένη είσοδος"
+msgstr "ΞΞ· ΞΊΞ±Ξ½ΞΏΞ½ΞΉΞΊΞΏΟ€ΞΏΞΉΞ·ΞΌΞ­Ξ½Ξ· ΞµΞ―ΟƒΞΏΞ΄ΞΏΟ‚"
 
 # src/main.c:163
 #: src/main.c:148
 msgid "Ambiguous output"
-msgstr "Ασαφής έξοδος"
+msgstr "Ξ‘ΟƒΞ±Ο†Ξ®Ο‚ Ξ­ΞΎΞΏΞ΄ΞΏΟ‚"
 
 # src/main.c:166
 #: src/main.c:151
 msgid "Untranslatable input"
-msgstr "Μη μεταφράσιμη είσοδος"
+msgstr "ΞΞ· ΞΌΞµΟ„Ξ±Ο†ΟΞ¬ΟƒΞΉΞΌΞ· ΞµΞ―ΟƒΞΏΞ΄ΞΏΟ‚"
 
 # src/main.c:169
 #: src/main.c:154
 msgid "Invalid input"
-msgstr "Μη έγκυρη είσοδος"
+msgstr "ΞΞ· Ξ­Ξ³ΞΊΟ…ΟΞ· ΞµΞ―ΟƒΞΏΞ΄ΞΏΟ‚"
 
 # src/main.c:172
 #: src/main.c:157
 msgid "System detected problem"
-msgstr "Το σύστημα διαπίστωσε πρόβλημα"
+msgstr "Ξ¤ΞΏ ΟƒΟΟƒΟ„Ξ·ΞΌΞ± Ξ΄ΞΉΞ±Ο€Ξ―ΟƒΟ„Ο‰ΟƒΞµ Ο€ΟΟΞ²Ξ»Ξ·ΞΌΞ±"
 
 # src/main.c:175
 #: src/main.c:160
 msgid "Misuse of recoding library"
-msgstr "Κακή χρήση της βιβλιοθήκης recode"
+msgstr "ΞΞ±ΞΊΞ® Ο‡ΟΞ®ΟƒΞ· Ο„Ξ·Ο‚ Ξ²ΞΉΞ²Ξ»ΞΉΞΏΞΈΞ®ΞΊΞ·Ο‚ recode"
 
 # src/main.c:178
 #: src/main.c:163
 msgid "Internal recoding bug"
-msgstr "Εσωτερικό σφάλμα (recoding)"
+msgstr "Ξ•ΟƒΟ‰Ο„ΞµΟΞΉΞΊΟ ΟƒΟ†Ξ¬Ξ»ΞΌΞ± (recoding)"
 
 # src/main.c:454
 #: src/main.c:208
@@ -71,33 +70,30 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation,\n"
 "Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 msgstr ""
-"Αυτό το πρόγραμμα είναι ελεύθερο λογισμικό μπορείτε να το αναδιανείμετε\n"
-"και/ή να το τροποποιήσετε σύμφωνα με τους κανόνες της Γενικής Δημόσιας\n"
-"¶δειας GNU όπως εκδίδεται από το Free Software Foundation είτε την\n"
-"έκδοση 2 είτε (κατά την προτίμησή σας) οποιασδήποτε μεταγενέστερης έκδοσης.\n"
+"Ξ‘Ο…Ο„Ο Ο„ΞΏ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ± ΞµΞ―Ξ½Ξ±ΞΉ ΞµΞ»ΞµΟΞΈΞµΟΞΏ Ξ»ΞΏΞ³ΞΉΟƒΞΌΞΉΞΊΟΒ· ΞΌΟ€ΞΏΟΞµΞ―Ο„Ξµ Ξ½Ξ± Ο„ΞΏ Ξ±Ξ½Ξ±Ξ΄ΞΉΞ±Ξ½ΞµΞ―ΞΌΞµΟ„Ξµ\n"
+"ΞΊΞ±ΞΉ/Ξ® Ξ½Ξ± Ο„ΞΏ Ο„ΟΞΏΟ€ΞΏΟ€ΞΏΞΉΞ®ΟƒΞµΟ„Ξµ ΟƒΟΞΌΟ†Ο‰Ξ½Ξ± ΞΌΞµ Ο„ΞΏΟ…Ο‚ ΞΊΞ±Ξ½ΟΞ½ΞµΟ‚ Ο„Ξ·Ο‚ Ξ“ΞµΞ½ΞΉΞΊΞ®Ο‚ Ξ”Ξ·ΞΌΟΟƒΞΉΞ±Ο‚\n"
+"Ξ†Ξ΄ΞµΞΉΞ±Ο‚ GNU ΟΟ€Ο‰Ο‚ ΞµΞΊΞ΄Ξ―Ξ΄ΞµΟ„Ξ±ΞΉ Ξ±Ο€Ο Ο„ΞΏ Free Software FoundationΒ· ΞµΞ―Ο„Ξµ Ο„Ξ·Ξ½\n"
+"Ξ­ΞΊΞ΄ΞΏΟƒΞ· 2 ΞµΞ―Ο„Ξµ (ΞΊΞ±Ο„Ξ¬ Ο„Ξ·Ξ½ Ο€ΟΞΏΟ„Ξ―ΞΌΞ·ΟƒΞ® ΟƒΞ±Ο‚) ΞΏΟ€ΞΏΞΉΞ±ΟƒΞ΄Ξ®Ο€ΞΏΟ„Ξµ ΞΌΞµΟ„Ξ±Ξ³ΞµΞ½Ξ­ΟƒΟ„ΞµΟΞ·Ο‚ Ξ­ΞΊΞ΄ΞΏΟƒΞ·Ο‚.\n"
 "\n"
-"Αυτό το πρόγραμμα διανέμεται με την ελπίδα ότι θα είναι χρήσιμο,\n"
-"αλλά ΧΩΡΙΣ ΚΑΜΙΑ ΕΓΓΫΗΣΗ; χωρίς ούτε έμμεση εγγύηση\n"
-"ΛΕΙΤΟΥΡΓΙΚΟΤΗΤΑΣ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑΣ ΓΙΑ ΕΝΑ ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.\n"
-"Αναφερθείτε στο GNU General Public License για περισσότερες λεπτομέρειες.\n"
+"Ξ‘Ο…Ο„Ο Ο„ΞΏ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ± Ξ΄ΞΉΞ±Ξ½Ξ­ΞΌΞµΟ„Ξ±ΞΉ ΞΌΞµ Ο„Ξ·Ξ½ ΞµΞ»Ο€Ξ―Ξ΄Ξ± ΟΟ„ΞΉ ΞΈΞ± ΞµΞ―Ξ½Ξ±ΞΉ Ο‡ΟΞ®ΟƒΞΉΞΌΞΏ,\n"
+"Ξ±Ξ»Ξ»Ξ¬ Ξ§Ξ©Ξ΅Ξ™Ξ£ ΞΞ‘ΞΞ™Ξ‘ Ξ•Ξ“Ξ“Ξ«Ξ—Ξ£Ξ—Β· Ο‡Ο‰ΟΞ―Ο‚ ΞΏΟΟ„Ξµ Ξ­ΞΌΞΌΞµΟƒΞ· ΞµΞ³Ξ³ΟΞ·ΟƒΞ·\n"
+"Ξ›Ξ•Ξ™Ξ¤ΞΞ¥Ξ΅Ξ“Ξ™ΞΞΞ¤Ξ—Ξ¤Ξ‘Ξ£ Ξ® ΞΞ‘Ξ¤Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¤Ξ—Ξ¤Ξ‘Ξ£ Ξ“Ξ™Ξ‘ Ξ•ΞΞ‘ Ξ£Ξ¥Ξ“ΞΞ•ΞΞ΅Ξ™ΞΞ•ΞΞ Ξ£ΞΞΞ Ξ.\n"
+"Ξ‘Ξ½Ξ±Ο†ΞµΟΞΈΞµΞ―Ο„Ξµ ΟƒΟ„ΞΏ GNU General Public License Ξ³ΞΉΞ± Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞµΟ‚ Ξ»ΞµΟ€Ο„ΞΏΞΌΞ­ΟΞµΞΉΞµΟ‚.\n"
 "\n"
-"Θα πρέπει να έχεται λάβει ένα αντίγραφο της Γενικής Δημόσιας ¶δειας GNU\n"
-"μαζί με αυτό το πρόγραμμα εάν όχι, γράψτε στο Free Software Foundation,\n"
+"ΞΞ± Ο€ΟΞ­Ο€ΞµΞΉ Ξ½Ξ± Ξ­Ο‡ΞµΟ„Ξ±ΞΉ Ξ»Ξ¬Ξ²ΞµΞΉ Ξ­Ξ½Ξ± Ξ±Ξ½Ο„Ξ―Ξ³ΟΞ±Ο†ΞΏ Ο„Ξ·Ο‚ Ξ“ΞµΞ½ΞΉΞΊΞ®Ο‚ Ξ”Ξ·ΞΌΟΟƒΞΉΞ±Ο‚ Ξ†Ξ΄ΞµΞΉΞ±Ο‚ GNU\n"
+"ΞΌΞ±Ξ¶Ξ― ΞΌΞµ Ξ±Ο…Ο„Ο Ο„ΞΏ Ο€ΟΟΞ³ΟΞ±ΞΌΞΌΞ± ΞµΞ¬Ξ½ ΟΟ‡ΞΉΒ· Ξ³ΟΞ¬ΟΟ„Ξµ ΟƒΟ„ΞΏ Free Software Foundation,\n"
 "Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n"
 
 # src/main.c:479
 #: src/main.c:233
 #, c-format
 msgid "Try `%s %s' for more information.\n"
-msgstr "Δοκιμάστε `%s %s' για περισσότερες πληροφορίες.\n"
+msgstr "Ξ”ΞΏΞΊΞΉΞΌΞ¬ΟƒΟ„Ξµ `%s %s' Ξ³ΞΉΞ± Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞµΟ‚ Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞ―ΞµΟ‚.\n"
 
 # src/main.c:483
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
-msgstr ""
-"Το ελεύθερο `recode' μετατρέπει αρχεία μεταξύ ποικίλων συνόλων χαρακτήρων "
-"και επιφανειών.\n"
+msgid "Free `recode' converts files between various character sets and surfaces.\n"
+msgstr "Ξ¤ΞΏ ΞµΞ»ΞµΟΞΈΞµΟΞΏ `recode' ΞΌΞµΟ„Ξ±Ο„ΟΞ­Ο€ΞµΞΉ Ξ±ΟΟ‡ΞµΞ―Ξ± ΞΌΞµΟ„Ξ±ΞΎΟ Ο€ΞΏΞΉΞΊΞ―Ξ»Ο‰Ξ½ ΟƒΟ…Ξ½ΟΞ»Ο‰Ξ½ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ ΞΊΞ±ΞΉ ΞµΟ€ΞΉΟ†Ξ±Ξ½ΞµΞΉΟΞ½.\n"
 
 # src/main.c:486
 #: src/main.c:241
@@ -107,7 +103,7 @@ msgid ""
 "Usage: %s [OPTION]... [ [CHARSET] | REQUEST [FILE]... ]\n"
 msgstr ""
 "\n"
-"Χρήση: %s [ΕΠΙΛΟΓΗ]... [ [ΣΥΝΟΛΟΧΑΡΑΚΤΉΡΩΝ] | ΑΙΤΗΣΗ [ΑΡΧΕΙΟ]...\n"
+"Ξ§ΟΞ®ΟƒΞ·: %s [Ξ•Ξ Ξ™Ξ›ΞΞ“Ξ—]... [ [Ξ£Ξ¥ΞΞΞ›ΞΞ§Ξ‘Ξ΅Ξ‘ΞΞ¤Ξ‰Ξ΅Ξ©Ξ] | Ξ‘Ξ™Ξ¤Ξ—Ξ£Ξ— [Ξ‘Ξ΅Ξ§Ξ•Ξ™Ξ]...\n"
 
 # src/main.c:489
 #: src/main.c:244
@@ -117,9 +113,9 @@ msgid ""
 "for the equivalent short option also.  Similarly for optional arguments.\n"
 msgstr ""
 "\n"
-"Αν μια μακρά επιλογή αναφέρει μια παράμετρο σαν υποχρεωτική, τότε είναι\n"
-"υποχρεωτική και για την αντίστοιχη σύντομη επιλογή επίσης. Το ίδιο\n"
-"και για τις προαιρετικές παραμέτρους.\n"
+"Ξ‘Ξ½ ΞΌΞΉΞ± ΞΌΞ±ΞΊΟΞ¬ ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® Ξ±Ξ½Ξ±Ο†Ξ­ΟΞµΞΉ ΞΌΞΉΞ± Ο€Ξ±ΟΞ¬ΞΌΞµΟ„ΟΞΏ ΟƒΞ±Ξ½ Ο…Ο€ΞΏΟ‡ΟΞµΟ‰Ο„ΞΉΞΊΞ®, Ο„ΟΟ„Ξµ ΞµΞ―Ξ½Ξ±ΞΉ\n"
+"Ο…Ο€ΞΏΟ‡ΟΞµΟ‰Ο„ΞΉΞΊΞ® ΞΊΞ±ΞΉ Ξ³ΞΉΞ± Ο„Ξ·Ξ½ Ξ±Ξ½Ο„Ξ―ΟƒΟ„ΞΏΞΉΟ‡Ξ· ΟƒΟΞ½Ο„ΞΏΞΌΞ· ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® ΞµΟ€Ξ―ΟƒΞ·Ο‚. Ξ¤ΞΏ Ξ―Ξ΄ΞΉΞΏ\n"
+"ΞΊΞ±ΞΉ Ξ³ΞΉΞ± Ο„ΞΉΟ‚ Ο€ΟΞΏΞ±ΞΉΟΞµΟ„ΞΉΞΊΞ­Ο‚ Ο€Ξ±ΟΞ±ΞΌΞ­Ο„ΟΞΏΟ…Ο‚.\n"
 
 # src/main.c:494
 #: src/main.c:250
@@ -128,8 +124,7 @@ msgid ""
 "\n"
 "Listings:\n"
 "  -l, --list[=FORMAT]        list one or all known charsets and aliases\n"
-"  -k, --known=PAIRS          restrict charsets according to known PAIRS "
-"list\n"
+"  -k, --known=PAIRS          restrict charsets according to known PAIRS list\n"
 "  -h, --header[=[LN/]NAME]   write table NAME on stdout using LN, then exit\n"
 "  -F, --freeze-tables        write out a C module holding all tables\n"
 "  -T, --find-subsets         report all charsets being subset of others\n"
@@ -138,18 +133,17 @@ msgid ""
 "      --version              output version information and exit\n"
 msgstr ""
 "\n"
-"Εμφανίσεις:\n"
-"  -l, --list[=ΜΟΡΦΗ]         εμφάνιση ένα ή όλα τα γνωστά σύνολα χαρακτήρων\n"
-"  -k, --known=ΖΕΥΓΗ          περιορισμός των συνόλων χαρακτήρων σύμφωνα με\n"
-"                               τη λίστα από γνωστά ΖΕΥΓΗ.  -h, --header[="
-"[LN/]ΟΝΟΜΑ]  εμφάνιση του πίνακα ΟΝΟΜΑ στην κανονική έξοδο\n"
-"                               με χρήση του LN, μετά έξοδος\n"
-"  -F, --freeze-tables        εμφάνιση σε κώδικα C με όλους τους πίνακες\n"
-"  -T, --find-subsets         αναφορά όλων των συνόλων χαρακτήρων που είναι\n"
-"                               υποσύνολα σε άλλα\n"
-"  -C, --copyright            εμφάνιση του Copyright και κανόνων αντιγραφής\n"
-"      --help                 εμφάνιση αυτής της βοήθειας και έξοδος\n"
-"      --version              εμφάνιση πληροφοριών έκδοσης και έξοδος\n"
+"Ξ•ΞΌΟ†Ξ±Ξ½Ξ―ΟƒΞµΞΉΟ‚:\n"
+"  -l, --list[=ΞΞΞ΅Ξ¦Ξ—]         ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ξ­Ξ½Ξ± Ξ® ΟΞ»Ξ± Ο„Ξ± Ξ³Ξ½Ο‰ΟƒΟ„Ξ¬ ΟƒΟΞ½ΞΏΞ»Ξ± Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½\n"
+"  -k, --known=Ξ–Ξ•Ξ¥Ξ“Ξ—          Ο€ΞµΟΞΉΞΏΟΞΉΟƒΞΌΟΟ‚ Ο„Ο‰Ξ½ ΟƒΟ…Ξ½ΟΞ»Ο‰Ξ½ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ ΟƒΟΞΌΟ†Ο‰Ξ½Ξ± ΞΌΞµ\n"
+"                               Ο„Ξ· Ξ»Ξ―ΟƒΟ„Ξ± Ξ±Ο€Ο Ξ³Ξ½Ο‰ΟƒΟ„Ξ¬ Ξ–Ξ•Ξ¥Ξ“Ξ—.  -h, --header[=[LN/]ΞΞΞΞΞ‘]  ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ο„ΞΏΟ… Ο€Ξ―Ξ½Ξ±ΞΊΞ± ΞΞΞΞΞ‘ ΟƒΟ„Ξ·Ξ½ ΞΊΞ±Ξ½ΞΏΞ½ΞΉΞΊΞ® Ξ­ΞΎΞΏΞ΄ΞΏ\n"
+"                               ΞΌΞµ Ο‡ΟΞ®ΟƒΞ· Ο„ΞΏΟ… LN, ΞΌΞµΟ„Ξ¬ Ξ­ΞΎΞΏΞ΄ΞΏΟ‚\n"
+"  -F, --freeze-tables        ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· ΟƒΞµ ΞΊΟΞ΄ΞΉΞΊΞ± C ΞΌΞµ ΟΞ»ΞΏΟ…Ο‚ Ο„ΞΏΟ…Ο‚ Ο€Ξ―Ξ½Ξ±ΞΊΞµΟ‚\n"
+"  -T, --find-subsets         Ξ±Ξ½Ξ±Ο†ΞΏΟΞ¬ ΟΞ»Ο‰Ξ½ Ο„Ο‰Ξ½ ΟƒΟ…Ξ½ΟΞ»Ο‰Ξ½ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ Ο€ΞΏΟ… ΞµΞ―Ξ½Ξ±ΞΉ\n"
+"                               Ο…Ο€ΞΏΟƒΟΞ½ΞΏΞ»Ξ± ΟƒΞµ Ξ¬Ξ»Ξ»Ξ±\n"
+"  -C, --copyright            ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ο„ΞΏΟ… Copyright ΞΊΞ±ΞΉ ΞΊΞ±Ξ½ΟΞ½Ο‰Ξ½ Ξ±Ξ½Ο„ΞΉΞ³ΟΞ±Ο†Ξ®Ο‚\n"
+"      --help                 ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ξ±Ο…Ο„Ξ®Ο‚ Ο„Ξ·Ο‚ Ξ²ΞΏΞ®ΞΈΞµΞΉΞ±Ο‚ ΞΊΞ±ΞΉ Ξ­ΞΎΞΏΞ΄ΞΏΟ‚\n"
+"      --version              ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ· Ο€Ξ»Ξ·ΟΞΏΟ†ΞΏΟΞΉΟΞ½ Ξ­ΞΊΞ΄ΞΏΟƒΞ·Ο‚ ΞΊΞ±ΞΉ Ξ­ΞΎΞΏΞ΄ΞΏΟ‚\n"
 
 # src/main.c:506
 #: src/main.c:263
@@ -164,26 +158,24 @@ msgid ""
 "      --sequence=memory   use memory buffers for sequencing passes\n"
 msgstr ""
 "\n"
-"Καταστάσεις λειτουργίας:\n"
-"  -v, --verbose           αναφορά διαδοχής βημάτων και προόδου\n"
-"  -q, --quiet, --silent   απόκρυψη μηνυμάτων μη-αντιστρεπτών μετατροπών\n"
-"  -f, --force             επιβολή μετατροπών ακόμα και αν είναι μη "
-"αντιστρεπτές\n"
-"  -t, --touch             ενημέρωση της ημερομηνίας των μετατρεπομένων "
-"αρχείων\n"
-"                          μετά την αντικατάσταση\n"
-"  -i, --sequence=files    χρήση ενδιάμεσων αρχείων στα διαδοχικά περάσματα\n"
-"      --sequence=memory   χρήση ενταμιευτών μνήμης στα διαδοχικά περάσματα\n"
+"ΞΞ±Ο„Ξ±ΟƒΟ„Ξ¬ΟƒΞµΞΉΟ‚ Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³Ξ―Ξ±Ο‚:\n"
+"  -v, --verbose           Ξ±Ξ½Ξ±Ο†ΞΏΟΞ¬ Ξ΄ΞΉΞ±Ξ΄ΞΏΟ‡Ξ®Ο‚ Ξ²Ξ·ΞΌΞ¬Ο„Ο‰Ξ½ ΞΊΞ±ΞΉ Ο€ΟΞΏΟΞ΄ΞΏΟ…\n"
+"  -q, --quiet, --silent   Ξ±Ο€ΟΞΊΟΟ…ΟΞ· ΞΌΞ·Ξ½Ο…ΞΌΞ¬Ο„Ο‰Ξ½ ΞΌΞ·-Ξ±Ξ½Ο„ΞΉΟƒΟ„ΟΞµΟ€Ο„ΟΞ½ ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€ΟΞ½\n"
+"  -f, --force             ΞµΟ€ΞΉΞ²ΞΏΞ»Ξ® ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€ΟΞ½ Ξ±ΞΊΟΞΌΞ± ΞΊΞ±ΞΉ Ξ±Ξ½ ΞµΞ―Ξ½Ξ±ΞΉ ΞΌΞ· Ξ±Ξ½Ο„ΞΉΟƒΟ„ΟΞµΟ€Ο„Ξ­Ο‚\n"
+"  -t, --touch             ΞµΞ½Ξ·ΞΌΞ­ΟΟ‰ΟƒΞ· Ο„Ξ·Ο‚ Ξ·ΞΌΞµΟΞΏΞΌΞ·Ξ½Ξ―Ξ±Ο‚ Ο„Ο‰Ξ½ ΞΌΞµΟ„Ξ±Ο„ΟΞµΟ€ΞΏΞΌΞ­Ξ½Ο‰Ξ½ Ξ±ΟΟ‡ΞµΞ―Ο‰Ξ½\n"
+"                          ΞΌΞµΟ„Ξ¬ Ο„Ξ·Ξ½ Ξ±Ξ½Ο„ΞΉΞΊΞ±Ο„Ξ¬ΟƒΟ„Ξ±ΟƒΞ·\n"
+"  -i, --sequence=files    Ο‡ΟΞ®ΟƒΞ· ΞµΞ½Ξ΄ΞΉΞ¬ΞΌΞµΟƒΟ‰Ξ½ Ξ±ΟΟ‡ΞµΞ―Ο‰Ξ½ ΟƒΟ„Ξ± Ξ΄ΞΉΞ±Ξ΄ΞΏΟ‡ΞΉΞΊΞ¬ Ο€ΞµΟΞ¬ΟƒΞΌΞ±Ο„Ξ±\n"
+"      --sequence=memory   Ο‡ΟΞ®ΟƒΞ· ΞµΞ½Ο„Ξ±ΞΌΞΉΞµΟ…Ο„ΟΞ½ ΞΌΞ½Ξ®ΞΌΞ·Ο‚ ΟƒΟ„Ξ± Ξ΄ΞΉΞ±Ξ΄ΞΏΟ‡ΞΉΞΊΞ¬ Ο€ΞµΟΞ¬ΟƒΞΌΞ±Ο„Ξ±\n"
 
 # src/main.c:517
 #: src/main.c:275
 msgid "  -p, --sequence=pipe     use pipe machinery for sequencing passes\n"
-msgstr "  -p, --sequence=pipe     χρήση σωλήνωσης στα διαδοχικά περάσματα\n"
+msgstr "  -p, --sequence=pipe     Ο‡ΟΞ®ΟƒΞ· ΟƒΟ‰Ξ»Ξ®Ξ½Ο‰ΟƒΞ·Ο‚ ΟƒΟ„Ξ± Ξ΄ΞΉΞ±Ξ΄ΞΏΟ‡ΞΉΞΊΞ¬ Ο€ΞµΟΞ¬ΟƒΞΌΞ±Ο„Ξ±\n"
 
 # src/main.c:521
 #: src/main.c:280
 msgid "  -p, --sequence=pipe     same as -i (on this system)\n"
-msgstr "  -p, --sequence=pipe     το ίδιο με -i (σε αυτό το σύστημα)\n"
+msgstr "  -p, --sequence=pipe     Ο„ΞΏ Ξ―Ξ΄ΞΉΞΏ ΞΌΞµ -i (ΟƒΞµ Ξ±Ο…Ο„Ο Ο„ΞΏ ΟƒΟΟƒΟ„Ξ·ΞΌΞ±)\n"
 
 # src/main.c:525
 #: src/main.c:285
@@ -198,18 +190,14 @@ msgid ""
 "  -x, --ignore=CHARSET   ignore CHARSET while choosing a recoding path\n"
 msgstr ""
 "\n"
-"Ρυθμίσεις:\n"
-"  -s, --strict           χρήση αυστηρών συσχετίσεων, ακόμα και ελεύθερων "
-"χαρακτήρων\n"
-"  -d, --diacritics       μετατροπή μόνο διακριτικών ή παρόμοιων για HTML/"
-"LaTeX\n"
-"  -S, --source[=LN]      περιορισμός μετατροπών σε αλφαριθμητικά και σχόλια\n"
-"                           κάτα το LN\n"
-"  -c, --colons           χρήση κολώνων αντί διπλών εισαγωγικών για τη "
-"διαίρεση\n"
-"  -g, --graphics         προσέγγιση κανόνων IBMPC με ASCII γραφικά\n"
-"  -x, --ignore=ΠΙΝΧΑΡ    αγνόηση πίνακα χαρακτήρων (ΠΙΝΧΑΡ) στην επιλογή "
-"μονοπατιού μετατροπών\n"
+"Ξ΅Ο…ΞΈΞΌΞ―ΟƒΞµΞΉΟ‚:\n"
+"  -s, --strict           Ο‡ΟΞ®ΟƒΞ· Ξ±Ο…ΟƒΟ„Ξ·ΟΟΞ½ ΟƒΟ…ΟƒΟ‡ΞµΟ„Ξ―ΟƒΞµΟ‰Ξ½, Ξ±ΞΊΟΞΌΞ± ΞΊΞ±ΞΉ ΞµΞ»ΞµΟΞΈΞµΟΟ‰Ξ½ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½\n"
+"  -d, --diacritics       ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€Ξ® ΞΌΟΞ½ΞΏ Ξ΄ΞΉΞ±ΞΊΟΞΉΟ„ΞΉΞΊΟΞ½ Ξ® Ο€Ξ±ΟΟΞΌΞΏΞΉΟ‰Ξ½ Ξ³ΞΉΞ± HTML/LaTeX\n"
+"  -S, --source[=LN]      Ο€ΞµΟΞΉΞΏΟΞΉΟƒΞΌΟΟ‚ ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€ΟΞ½ ΟƒΞµ Ξ±Ξ»Ο†Ξ±ΟΞΉΞΈΞΌΞ·Ο„ΞΉΞΊΞ¬ ΞΊΞ±ΞΉ ΟƒΟ‡ΟΞ»ΞΉΞ±\n"
+"                           ΞΊΞ¬Ο„Ξ± Ο„ΞΏ LN\n"
+"  -c, --colons           Ο‡ΟΞ®ΟƒΞ· ΞΊΞΏΞ»ΟΞ½Ο‰Ξ½ Ξ±Ξ½Ο„Ξ― Ξ΄ΞΉΟ€Ξ»ΟΞ½ ΞµΞΉΟƒΞ±Ξ³Ο‰Ξ³ΞΉΞΊΟΞ½ Ξ³ΞΉΞ± Ο„Ξ· Ξ΄ΞΉΞ±Ξ―ΟΞµΟƒΞ·\n"
+"  -g, --graphics         Ο€ΟΞΏΟƒΞ­Ξ³Ξ³ΞΉΟƒΞ· ΞΊΞ±Ξ½ΟΞ½Ο‰Ξ½ IBMPC ΞΌΞµ ASCII Ξ³ΟΞ±Ο†ΞΉΞΊΞ¬\n"
+"  -x, --ignore=Ξ Ξ™ΞΞ§Ξ‘Ξ΅    Ξ±Ξ³Ξ½ΟΞ·ΟƒΞ· Ο€Ξ―Ξ½Ξ±ΞΊΞ± Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ (Ξ Ξ™ΞΞ§Ξ‘Ξ΅) ΟƒΟ„Ξ·Ξ½ ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® ΞΌΞΏΞ½ΞΏΟ€Ξ±Ο„ΞΉΞΏΟ ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€ΟΞ½\n"
 
 # src/main.c:294
 #: src/main.c:296
@@ -219,66 +207,54 @@ msgid ""
 "FORMAT is `decimal', `octal', `hexadecimal' or `full' (or one of `dohf').\n"
 msgstr ""
 "\n"
-"Η επιλογή -l χωρίς ΜΟΡΦΗ, ούτε ΠΙΝΧΑΡ, απαριθμεί τους διαθέσιμους πίνακες\n"
-"χαρακτήρων και επιφάνειες. ΜΟΡΦΗ είναι `decimal', `octal', `hexadecimal'\n"
-"ή `full' (ή ένα από τα `dohf').\n"
+"Ξ— ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® -l Ο‡Ο‰ΟΞ―Ο‚ ΞΞΞ΅Ξ¦Ξ—, ΞΏΟΟ„Ξµ Ξ Ξ™ΞΞ§Ξ‘Ξ΅, Ξ±Ο€Ξ±ΟΞΉΞΈΞΌΞµΞ― Ο„ΞΏΟ…Ο‚ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞΏΟ…Ο‚ Ο€Ξ―Ξ½Ξ±ΞΊΞµΟ‚\n"
+"Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ ΞΊΞ±ΞΉ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞµΟ‚. ΞΞΞ΅Ξ¦Ξ— ΞµΞ―Ξ½Ξ±ΞΉ `decimal', `octal', `hexadecimal'\n"
+"Ξ® `full' (Ξ® Ξ­Ξ½Ξ± Ξ±Ο€Ο Ο„Ξ± `dohf').\n"
 
 # src/main.c:302
 #: src/main.c:302
 #, fuzzy
 msgid ""
-"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the "
-"locale\n"
+"Unless DEFAULT_CHARSET is set in environment, CHARSET defaults to the locale\n"
 "dependent encoding, determined by LC_ALL, LC_CTYPE, LANG.\n"
 msgstr ""
-"Εκτός και αν έχει οριστεί η μεταβλητή περιβάλλοντος DEFAULT_CHARSET,\n"
-"ο πίνακας χαρακτήρων (CHARSET) είναι εξ'ορισμού `%s'.\n"
+"Ξ•ΞΊΟ„ΟΟ‚ ΞΊΞ±ΞΉ Ξ±Ξ½ Ξ­Ο‡ΞµΞΉ ΞΏΟΞΉΟƒΟ„ΞµΞ― Ξ· ΞΌΞµΟ„Ξ±Ξ²Ξ»Ξ·Ο„Ξ® Ο€ΞµΟΞΉΞ²Ξ¬Ξ»Ξ»ΞΏΞ½Ο„ΞΏΟ‚ DEFAULT_CHARSET,\n"
+"ΞΏ Ο€Ξ―Ξ½Ξ±ΞΊΞ±Ο‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ (CHARSET) ΞµΞ―Ξ½Ξ±ΞΉ Ο‰Ο‚ Ο€ΟΞΏΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® Ο„ΞΏ `%s'.\n"
 
 # src/main.c:540
 #: src/main.c:307
 msgid ""
 "With -k, possible before charsets are listed for the given after CHARSET,\n"
-"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:"
-"AFT2,...'\n"
+"both being tabular charsets, with PAIRS of the form `BEF1:AFT1,BEF2:AFT2,...'\n"
 "and BEFs and AFTs being codes are given as decimal numbers.\n"
 msgstr ""
-"Με -k, πιθανοί προηγούμενοι πίνακες χαρακτήρων εμφανίζονται για το δοθέν\n"
-"επόμενο πίνακα χαρακτήρων (CHARSET), όντας και τα δύο σε μορφή πεδίων,\n"
-"σε ΖΕΥΓΗ της μορφής `ΠΡΟΗΓ1:ΕΠΟΜΕΝ1,ΠΡΟΗΓ1:ΕΠΟΜΕΝ2,...'\n"
-"και τα ΠΡΟΗΓ και ΕΠΟΜΕΝ, όντας κωδικοί, δίνονται ως αριθμοί.\n"
+"ΞΞµ -k, Ο€ΞΉΞΈΞ±Ξ½ΞΏΞ― Ο€ΟΞΏΞ·Ξ³ΞΏΟΞΌΞµΞ½ΞΏΞΉ Ο€Ξ―Ξ½Ξ±ΞΊΞµΟ‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ ΞµΞΌΟ†Ξ±Ξ½Ξ―Ξ¶ΞΏΞ½Ο„Ξ±ΞΉ Ξ³ΞΉΞ± Ο„ΞΏ Ξ΄ΞΏΞΈΞ­Ξ½\n"
+"ΞµΟ€ΟΞΌΞµΞ½ΞΏ Ο€Ξ―Ξ½Ξ±ΞΊΞ± Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ (CHARSET), ΟΞ½Ο„Ξ±Ο‚ ΞΊΞ±ΞΉ Ο„Ξ± Ξ΄ΟΞΏ ΟƒΞµ ΞΌΞΏΟΟ†Ξ® Ο€ΞµΞ΄Ξ―Ο‰Ξ½,\n"
+"ΟƒΞµ Ξ–Ξ•Ξ¥Ξ“Ξ— Ο„Ξ·Ο‚ ΞΌΞΏΟΟ†Ξ®Ο‚ `Ξ Ξ΅ΞΞ—Ξ“1:Ξ•Ξ ΞΞΞ•Ξ1,Ξ Ξ΅ΞΞ—Ξ“1:Ξ•Ξ ΞΞΞ•Ξ2,...'\n"
+"ΞΊΞ±ΞΉ Ο„Ξ± Ξ Ξ΅ΞΞ—Ξ“ ΞΊΞ±ΞΉ Ξ•Ξ ΞΞΞ•Ξ, ΟΞ½Ο„Ξ±Ο‚ ΞΊΟ‰Ξ΄ΞΉΞΊΞΏΞ―, Ξ΄Ξ―Ξ½ΞΏΞ½Ο„Ξ±ΞΉ Ο‰Ο‚ Ξ±ΟΞΉΞΈΞΌΞΏΞ―.\n"
 
 # src/main.c:318
 #: src/main.c:312
-msgid ""
-"LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
-msgstr ""
-"LN είναι μια γλώσσα, μπορεί να είναι `c', `perl' ή `po' εξ'ορισμού είναι "
-"`c'.\n"
+msgid "LN is some language, it may be `c', `perl' or `po'; `c' is the default.\n"
+msgstr "LN ΞµΞ―Ξ½Ξ±ΞΉ ΞΌΞΉΞ± Ξ³Ξ»ΟΟƒΟƒΞ±, ΞΌΟ€ΞΏΟΞµΞ― Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ `c', `perl' Ξ® `po'Β· Ο€ΟΞΏΞµΟ€ΞΉΞ»ΞΏΞ³Ξ® ΞµΞ―Ξ½Ξ±ΞΉ Ο„ΞΏ `c'.\n"
 
 # src/main.c:321
 #: src/main.c:315
 msgid ""
 "\n"
-"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[.."
-"ENCODING]...\n"
-"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE.."
-"AFTER,\n"
+"REQUEST is SUBREQUEST[,SUBREQUEST]...; SUBREQUEST is ENCODING[..ENCODING]...\n"
+"ENCODING is [CHARSET][/[SURFACE]]...; REQUEST often looks like BEFORE..AFTER,\n"
 "with BEFORE and AFTER being charsets.  An omitted CHARSET implies the usual\n"
-"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; "
-"a /\n"
+"charset; an omitted [/SURFACE]... means the implied surfaces for CHARSET; a /\n"
 "with an empty surface name means no surfaces at all.  See the manual.\n"
 msgstr ""
 "\n"
-"ΑΙΤΗΣΗ είναι ΥΠΟΑΙΤΗΣΗ[,ΥΠΟΑΙΤΗΣΗ]... ΥΠΟΑΙΤΗΣΗ είναι ΚΩΔΙΚΟΠΟΙΗΣΗ[..."
-"ΚΩΔΙΚΟΠΟΙΗΣΗ]...\n"
-"ΚΩΔΙΚΟΠΟΙΗΣΗ είναι [ΠΙΝΧΑΡ][/[ΕΠΙΦΑΝΕΙΑ]]... ΑΙΤΗΣΗ συνήθως μοιάζει με "
-"ΠΡΟΗΓΟΥΜΕΝΟ...ΕΠΟΜΕΝΟ,\n"
-"με ΠΡΟΗΓΟΥΜΕΝΟ και ΕΠΟΜΕΝΟ να είναι πίνακες χαρακτήρων. Ένας ΠΙΝΧΑΡ που\n"
-"έχει παραληφθεί, υποδηλώνει το συνήθες πίνακα χαρακτήρων ένα [/"
-"ΕΠΙΦΑΝΕΙΑ]...\n"
-"που έχει παραληφθεί, σημαίνει τις υποδηλωμένες επιφάνειες του ΠΙΝΧΑΡ ένα /\n"
-"χωρίς όνομα επιφάνειας σημαίνει χωρίς καθόλου επιφάνειες. Κοιτάξτε το "
-"εγχειρίδιο.\n"
+"Ξ‘Ξ™Ξ¤Ξ—Ξ£Ξ— ΞµΞ―Ξ½Ξ±ΞΉ Ξ¥Ξ ΞΞ‘Ξ™Ξ¤Ξ—Ξ£Ξ—[,Ξ¥Ξ ΞΞ‘Ξ™Ξ¤Ξ—Ξ£Ξ—]...Β· Ξ¥Ξ ΞΞ‘Ξ™Ξ¤Ξ—Ξ£Ξ— ΞµΞ―Ξ½Ξ±ΞΉ ΞΞ©Ξ”Ξ™ΞΞΞ ΞΞ™Ξ—Ξ£Ξ—[...ΞΞ©Ξ”Ξ™ΞΞΞ ΞΞ™Ξ—Ξ£Ξ—]...\n"
+"ΞΞ©Ξ”Ξ™ΞΞΞ ΞΞ™Ξ—Ξ£Ξ— ΞµΞ―Ξ½Ξ±ΞΉ [Ξ Ξ™ΞΞ§Ξ‘Ξ΅][/[Ξ•Ξ Ξ™Ξ¦Ξ‘ΞΞ•Ξ™Ξ‘]]...Β· Ξ‘Ξ™Ξ¤Ξ—Ξ£Ξ— ΟƒΟ…Ξ½Ξ®ΞΈΟ‰Ο‚ ΞΌΞΏΞΉΞ¬Ξ¶ΞµΞΉ ΞΌΞµ Ξ Ξ΅ΞΞ—Ξ“ΞΞ¥ΞΞ•ΞΞ...Ξ•Ξ ΞΞΞ•ΞΞ,\n"
+"ΞΌΞµ Ξ Ξ΅ΞΞ—Ξ“ΞΞ¥ΞΞ•ΞΞ ΞΊΞ±ΞΉ Ξ•Ξ ΞΞΞ•ΞΞ Ξ½Ξ± ΞµΞ―Ξ½Ξ±ΞΉ Ο€Ξ―Ξ½Ξ±ΞΊΞµΟ‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½. ΞΞ½Ξ±Ο‚ Ξ Ξ™ΞΞ§Ξ‘Ξ΅ Ο€ΞΏΟ…\n"
+"Ξ­Ο‡ΞµΞΉ Ο€Ξ±ΟΞ±Ξ»Ξ·Ο†ΞΈΞµΞ―, Ο…Ο€ΞΏΞ΄Ξ·Ξ»ΟΞ½ΞµΞΉ Ο„ΞΏ ΟƒΟ…Ξ½Ξ®ΞΈΞµΟ‚ Ο€Ξ―Ξ½Ξ±ΞΊΞ± Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½Β· Ξ­Ξ½Ξ± [/Ξ•Ξ Ξ™Ξ¦Ξ‘ΞΞ•Ξ™Ξ‘]...\n"
+"Ο€ΞΏΟ… Ξ­Ο‡ΞµΞΉ Ο€Ξ±ΟΞ±Ξ»Ξ·Ο†ΞΈΞµΞ―, ΟƒΞ·ΞΌΞ±Ξ―Ξ½ΞµΞΉ Ο„ΞΉΟ‚ Ο…Ο€ΞΏΞ΄Ξ·Ξ»Ο‰ΞΌΞ­Ξ½ΞµΟ‚ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞµΟ‚ Ο„ΞΏΟ… Ξ Ξ™ΞΞ§Ξ‘Ξ΅ Ξ­Ξ½Ξ± /\n"
+"Ο‡Ο‰ΟΞ―Ο‚ ΟΞ½ΞΏΞΌΞ± ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ±Ο‚ ΟƒΞ·ΞΌΞ±Ξ―Ξ½ΞµΞΉ Ο‡Ο‰ΟΞ―Ο‚ ΞΊΞ±ΞΈΟΞ»ΞΏΟ… ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞµΟ‚. ΞΞΏΞΉΟ„Ξ¬ΞΎΟ„Ξµ Ο„ΞΏ ΞµΞ³Ο‡ΞµΞΉΟΞ―Ξ΄ΞΉΞΏ.\n"
 
 # src/main.c:556
 #: src/main.c:323
@@ -289,11 +265,10 @@ msgid ""
 "FILE is specified, then act as a filter and recode stdin to stdout.\n"
 msgstr ""
 "\n"
-"Αν κανένα από τα -i και -p δε δίδονται, θεώρησε -p αν δεν υπάρχει ΑΡΧΕΙΟ, "
-"αλλιώς -i.\n"
-"Κάθε ΑΡΧΕΙΟ μετατρέπεται πάνω στον εαυτό του, καταστρέφοντας το πρωτότυπο.\n"
-"Αν κανένα ΑΡΧΕΙΟ δεν έχει οριστεί, τότε φέρσου σαν φίλτρο και μετέτρεψε\n"
-"την κανονική είσοδο στην κανονική έξοδο.\n"
+"Ξ‘Ξ½ ΞΊΞ±Ξ½Ξ­Ξ½Ξ± Ξ±Ο€Ο Ο„Ξ± -i ΞΊΞ±ΞΉ -p Ξ΄Ξµ Ξ΄Ξ―Ξ΄ΞΏΞ½Ο„Ξ±ΞΉ, ΞΈΞµΟΟΞ·ΟƒΞµ -p Ξ±Ξ½ Ξ΄ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ξ‘Ξ΅Ξ§Ξ•Ξ™Ξ, Ξ±Ξ»Ξ»ΞΉΟΟ‚ -i.\n"
+"ΞΞ¬ΞΈΞµ Ξ‘Ξ΅Ξ§Ξ•Ξ™Ξ ΞΌΞµΟ„Ξ±Ο„ΟΞ­Ο€ΞµΟ„Ξ±ΞΉ Ο€Ξ¬Ξ½Ο‰ ΟƒΟ„ΞΏΞ½ ΞµΞ±Ο…Ο„Ο Ο„ΞΏΟ…, ΞΊΞ±Ο„Ξ±ΟƒΟ„ΟΞ­Ο†ΞΏΞ½Ο„Ξ±Ο‚ Ο„ΞΏ Ο€ΟΟ‰Ο„ΟΟ„Ο…Ο€ΞΏ.\n"
+"Ξ‘Ξ½ ΞΊΞ±Ξ½Ξ­Ξ½Ξ± Ξ‘Ξ΅Ξ§Ξ•Ξ™Ξ Ξ΄ΞµΞ½ Ξ­Ο‡ΞµΞΉ ΞΏΟΞΉΟƒΟ„ΞµΞ―, Ο„ΟΟ„Ξµ Ο†Ξ­ΟΟƒΞΏΟ… ΟƒΞ±Ξ½ Ο†Ξ―Ξ»Ο„ΟΞΏ ΞΊΞ±ΞΉ ΞΌΞµΟ„Ξ­Ο„ΟΞµΟΞµ\n"
+"Ο„Ξ·Ξ½ ΞΊΞ±Ξ½ΞΏΞ½ΞΉΞΊΞ® ΞµΞ―ΟƒΞΏΞ΄ΞΏ ΟƒΟ„Ξ·Ξ½ ΞΊΞ±Ξ½ΞΏΞ½ΞΉΞΊΞ® Ξ­ΞΎΞΏΞ΄ΞΏ.\n"
 
 # src/main.c:562
 #: src/main.c:329
@@ -302,238 +277,234 @@ msgid ""
 "Report bugs to <recode-bugs@iro.umontreal.ca>.\n"
 msgstr ""
 "\n"
-"Αναφέρατε σφάλματα στο <recode-bugs@iro.umontreal.ca>.\n"
+"Ξ‘Ξ½Ξ±Ο†Ξ­ΟΞ±Ο„Ξµ ΟƒΟ†Ξ¬Ξ»ΞΌΞ±Ο„Ξ± ΟƒΟ„ΞΏ <recode-bugs@iro.umontreal.ca>.\n"
 
-#: src/main.c:429
+#: src/main.c:430
 #, c-format
 msgid "Sequence `%s' is ambiguous"
 msgstr ""
 
-#: src/main.c:433
+#: src/main.c:434
 #, c-format
 msgid "Sequence `%s' is unknown"
 msgstr ""
 
-#: src/main.c:463 src/main.c:521
+#: src/main.c:464 src/main.c:522
 #, c-format
 msgid "Language `%s' is ambiguous"
 msgstr ""
 
-#: src/main.c:467 src/main.c:525
+#. -1
+#: src/main.c:468 src/main.c:526
 #, c-format
 msgid "Language `%s' is unknown"
 msgstr ""
 
-#: src/main.c:559
+#: src/main.c:560
 #, c-format
 msgid "Format `%s' is ambiguous"
 msgstr ""
 
-#: src/main.c:563
+#: src/main.c:564
 #, c-format
 msgid "Format `%s' is unknown"
 msgstr ""
 
 # src/main.c:854
-#: src/main.c:620
-#, fuzzy
+#: src/main.c:621
 msgid "Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
-msgstr ""
-"\n"
-"Γραμμένο από τον Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
+msgstr "Ξ“ΟΞ±ΞΌΞΌΞ­Ξ½ΞΏ Ξ±Ο€Ο Ο„ΞΏΞ½ Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"
 
 # src/main.c:622
-#: src/main.c:623
-#, fuzzy
+#: src/main.c:624
 msgid ""
 "\n"
-"Copyright (C) 1990, 92-94, 96, 97, 99, 08 Free Software Foundation, Inc.\n"
+"Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
 msgstr ""
 "\n"
 "Copyright (C) 1990, 92, 93, 94, 96, 97, 99 Free Software Foundation, Inc.\n"
 
 # src/main.c:850
-#: src/main.c:627
+#: src/main.c:628
 msgid ""
 "This is free software; see the source for copying conditions.  There is NO\n"
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"
 msgstr ""
-"Αυτό είναι ελεύθερο λογισμικό δείτε το πηγαίο κώδικα για τους κανόνες "
-"αντιγραφής.\n"
-"ΔΕΝ υπάρχει εγγύηση ούτε ακόμα για ΧΡΗΣΙΜΟΤΗΤΑ ή ΚΑΤΑΛΛΗΛΟΤΗΤΑ ΓΙΑ ΕΝΑ\n"
-"ΣΥΓΚΕΚΡΙΜΕΝΟ ΣΚΟΠΟ.\n"
+"Ξ‘Ο…Ο„Ο ΞµΞ―Ξ½Ξ±ΞΉ ΞµΞ»ΞµΟΞΈΞµΟΞΏ Ξ»ΞΏΞ³ΞΉΟƒΞΌΞΉΞΊΟΒ· Ξ΄ΞµΞ―Ο„Ξµ Ο„ΞΏ Ο€Ξ·Ξ³Ξ±Ξ―ΞΏ ΞΊΟΞ΄ΞΉΞΊΞ± Ξ³ΞΉΞ± Ο„ΞΏΟ…Ο‚ ΞΊΞ±Ξ½ΟΞ½ΞµΟ‚ Ξ±Ξ½Ο„ΞΉΞ³ΟΞ±Ο†Ξ®Ο‚.\n"
+"Ξ”Ξ•Ξ Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ ΞµΞ³Ξ³ΟΞ·ΟƒΞ·Β· ΞΏΟΟ„Ξµ Ξ±ΞΊΟΞΌΞ± Ξ³ΞΉΞ± Ξ§Ξ΅Ξ—Ξ£Ξ™ΞΞΞ¤Ξ—Ξ¤Ξ‘ Ξ® ΞΞ‘Ξ¤Ξ‘Ξ›Ξ›Ξ—Ξ›ΞΞ¤Ξ—Ξ¤Ξ‘ Ξ“Ξ™Ξ‘ Ξ•ΞΞ‘\n"
+"Ξ£Ξ¥Ξ“ΞΞ•ΞΞ΅Ξ™ΞΞ•ΞΞ Ξ£ΞΞΞ Ξ.\n"
 
-#: src/main.c:668
+#: src/main.c:669
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr ""
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:709 src/main.c:723
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr ""
 
-#: src/main.c:753
+#: src/main.c:754
 msgid "Required argument is missing"
 msgstr ""
 
 # src/main.c:999
-#: src/main.c:796
+#: src/main.c:797
 #, fuzzy, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
-msgstr "Μη συνιστώμενη σύνταξη, παρακαλώ προτιμίστε `%s'"
+msgstr "ΞΞ· ΟƒΟ…Ξ½ΞΉΟƒΟ„ΟΞΌΞµΞ½Ξ· ΟƒΟΞ½Ο„Ξ±ΞΎΞ·, Ο€Ξ±ΟΞ±ΞΊΞ±Ξ»Ο Ο€ΟΞΏΟ„ΞΉΞΌΞ―ΟƒΟ„Ξµ `%s'"
 
-#: src/main.c:802
+#: src/main.c:803
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr ""
 
 # src/main.c:1098
-#: src/main.c:902
+#: src/main.c:903
 #, c-format
 msgid "Recoding %s..."
-msgstr "Μετατροπή του %s..."
+msgstr "ΞΞµΟ„Ξ±Ο„ΟΞΏΟ€Ξ® Ο„ΞΏΟ… %s..."
 
 # src/main.c:1108
-#: src/main.c:912
-#, c-format
+#: src/main.c:913
 msgid " done\n"
-msgstr " έγινε\n"
+msgstr " Ξ­Ξ³ΞΉΞ½Ξµ\n"
 
 # src/main.c:1142
-#: src/main.c:953
+#: src/main.c:954
 #, fuzzy, c-format
 msgid " failed: %s in step `%s..%s'\n"
-msgstr " απέτυχε: %s σε %s..%s\n"
+msgstr " Ξ±Ο€Ξ­Ο„Ο…Ο‡Ξµ: %s ΟƒΞµ %s..%s\n"
 
 # src/main.c:1149
-#: src/main.c:960
+#: src/main.c:961
 #, fuzzy, c-format
 msgid "%s failed: %s in step `%s..%s'"
-msgstr "%s απέτυχε: %s σε %s..%s"
+msgstr "%s Ξ±Ο€Ξ­Ο„Ο…Ο‡Ξµ: %s ΟƒΞµ %s..%s"
 
 # src/main.c:1172
-#: src/main.c:983
+#: src/main.c:984
 #, fuzzy, c-format
 msgid "%s in step `%s..%s'"
-msgstr "%s σε %s..%s"
+msgstr "%s ΟƒΞµ %s..%s"
 
 # src/names.c:259
 #: src/names.c:335
 #, c-format
 msgid "Charset %s already exists and is not %s"
-msgstr "Ο πίνακας χαρακτήρων %s υπάρχει ήδη και δεν είναι το %s"
+msgstr "Ξ Ο€Ξ―Ξ½Ξ±ΞΊΞ±Ο‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ %s Ο…Ο€Ξ¬ΟΟ‡ΞµΞΉ Ξ®Ξ΄Ξ· ΞΊΞ±ΞΉ Ξ΄ΞµΞ½ ΞµΞ―Ξ½Ξ±ΞΉ Ο„ΞΏ %s"
 
 # src/names.c:754
-#: src/names.c:830
+#: src/names.c:831
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
-msgstr ""
-"Αδυναμία εμφάνισης του `%s', δεν υπάρχουν ονόματα διαθέσιμα για αυτόν τον "
-"πίνακα χαρακτήρων"
+msgstr "Ξ‘Ξ΄Ο…Ξ½Ξ±ΞΌΞ―Ξ± ΞµΞΌΟ†Ξ¬Ξ½ΞΉΟƒΞ·Ο‚ Ο„ΞΏΟ… `%s', Ξ΄ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ ΞΏΞ½ΟΞΌΞ±Ο„Ξ± Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ± Ξ³ΞΉΞ± Ξ±Ο…Ο„ΟΞ½ Ο„ΞΏΞ½ Ο€Ξ―Ξ½Ξ±ΞΊΞ± Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½"
 
 # src/names.c:974 src/names.c:1020
-#: src/names.c:983 src/names.c:1029
+#. code counter
+#. expected value for code counter
+#. insert a while line before printing
+#. Print the long table according to explode data.
+#: src/names.c:984 src/names.c:1030
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
 
 # src/names.c:847
-#: src/names.c:1048
+#: src/names.c:1049
 #, c-format
 msgid "Sorry, no names available for `%s'"
-msgstr "Συγνώμη, δεν υπάρχουν διαθέσιμα ονόματα για το `%s'"
+msgstr "Ξ£Ο…Ξ³Ξ½ΟΞΌΞ·, Ξ΄ΞµΞ½ Ο…Ο€Ξ¬ΟΟ‡ΞΏΟ…Ξ½ Ξ΄ΞΉΞ±ΞΈΞ­ΟƒΞΉΞΌΞ± ΞΏΞ½ΟΞΌΞ±Ο„Ξ± Ξ³ΞΉΞ± Ο„ΞΏ `%s'"
 
 # src/outer.c:95
 #: src/outer.c:125
 #, c-format
 msgid "Resurfacer set more than once for `%s'"
-msgstr ""
-"Ο επανατοποθετητής επιφάνειας έχει τεθεί περισσότερο από μια φορά για το `%s'"
+msgstr "Ξ ΞµΟ€Ξ±Ξ½Ξ±Ο„ΞΏΟ€ΞΏΞΈΞµΟ„Ξ·Ο„Ξ®Ο‚ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ±Ο‚ Ξ­Ο‡ΞµΞΉ Ο„ΞµΞΈΞµΞ― Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞΏ Ξ±Ο€Ο ΞΌΞΉΞ± Ο†ΞΏΟΞ¬ Ξ³ΞΉΞ± Ο„ΞΏ `%s'"
 
 # src/outer.c:102
 #: src/outer.c:133
 #, c-format
 msgid "Unsurfacer set more than once for `%s'"
-msgstr ""
-"Ο αντιτοποθετητής επιφάνειας έχει τεθεί περισσότερο από μια φορά για το `%s'"
+msgstr "Ξ Ξ±Ξ½Ο„ΞΉΟ„ΞΏΟ€ΞΏΞΈΞµΟ„Ξ·Ο„Ξ®Ο‚ ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ±Ο‚ Ξ­Ο‡ΞµΞΉ Ο„ΞµΞΈΞµΞ― Ο€ΞµΟΞΉΟƒΟƒΟΟ„ΞµΟΞΏ Ξ±Ο€Ο ΞΌΞΉΞ± Ο†ΞΏΟΞ¬ Ξ³ΞΉΞ± Ο„ΞΏ `%s'"
 
 # src/recode.c:117 src/recode.c:129
 #: src/recode.c:115 src/recode.c:127
 msgid "Virtual memory exhausted"
-msgstr "Η ιδεατή μνήμη εξαντλήθηκε"
+msgstr "Ξ— ΞΉΞ΄ΞµΞ±Ο„Ξ® ΞΌΞ½Ξ®ΞΌΞ· ΞµΞΎΞ±Ξ½Ο„Ξ»Ξ®ΞΈΞ·ΞΊΞµ"
 
 # src/recode.c:157
 #: src/recode.c:155
-#, c-format
+#, c-format, ycp-format
 msgid "Codes %3d and %3d both recode to %3d"
-msgstr "Και οι δύο κωδικοί %3d και %3d μετατρέπονται σε %3d"
+msgstr "ΞΞ±ΞΉ ΞΏΞΉ Ξ΄ΟΞΏ ΞΊΟ‰Ξ΄ΞΉΞΊΞΏΞ― %3d ΞΊΞ±ΞΉ %3d ΞΌΞµΟ„Ξ±Ο„ΟΞ­Ο€ΞΏΞ½Ο„Ξ±ΞΉ ΟƒΞµ %3d"
 
 # src/recode.c:171
 #: src/recode.c:169
-#, c-format
+#, c-format, ycp-format
 msgid "No character recodes to %3d"
-msgstr "Κανένας χαρακτήρας δεν μετατρέπεται σε %3d"
+msgstr "ΞΞ±Ξ½Ξ­Ξ½Ξ±Ο‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΞ±Ο‚ Ξ΄ΞµΞ½ ΞΌΞµΟ„Ξ±Ο„ΟΞ­Ο€ΞµΟ„Ξ±ΞΉ ΟƒΞµ %3d"
 
 # src/recode.c:172
 #: src/recode.c:170
 msgid "Cannot invert given one-to-one table"
-msgstr "Αδυναμία αντιστροφής δοθέντος 1-1 πίνακα"
+msgstr "Ξ‘Ξ΄Ο…Ξ½Ξ±ΞΌΞ―Ξ± Ξ±Ξ½Ο„ΞΉΟƒΟ„ΟΞΏΟ†Ξ®Ο‚ Ξ΄ΞΏΞΈΞ­Ξ½Ο„ΞΏΟ‚ 1-1 Ο€Ξ―Ξ½Ξ±ΞΊΞ±"
 
 # src/recode.c:226 src/recode.c:238
 #: src/recode.c:224 src/recode.c:236
 #, c-format
 msgid "Following diagnostics for `%s' to `%s'"
-msgstr "Ακολουθούν διαγνωστικά για `%s' σε `%s'"
+msgstr "Ξ‘ΞΊΞΏΞ»ΞΏΟ…ΞΈΞΏΟΞ½ Ξ΄ΞΉΞ±Ξ³Ξ½Ο‰ΟƒΟ„ΞΉΞΊΞ¬ Ξ³ΞΉΞ± `%s' ΟƒΞµ `%s'"
 
 # src/recode.c:231 src/recode.c:243
 #: src/recode.c:229 src/recode.c:241
 #, c-format
 msgid "Pair no. %d: <%3d, %3d> conflicts with <%3d, %3d>"
-msgstr "Αριθμ. ζεύγους %d: <%3d, %3d> συγκρούεται με <%3d, %3d>"
+msgstr "Ξ‘ΟΞΉΞΈΞΌ. Ξ¶ΞµΟΞ³ΞΏΟ…Ο‚ %d: <%3d, %3d> ΟƒΟ…Ξ³ΞΊΟΞΏΟΞµΟ„Ξ±ΞΉ ΞΌΞµ <%3d, %3d>"
 
 # src/recode.c:274
 #: src/recode.c:272
 msgid "Cannot complete table from set of known pairs"
-msgstr "Αδυναμία συμπλήρωσης πίνακα από το σύνολο γνωστών ζευγών"
+msgstr "Ξ‘Ξ΄Ο…Ξ½Ξ±ΞΌΞ―Ξ± ΟƒΟ…ΞΌΟ€Ξ»Ξ®ΟΟ‰ΟƒΞ·Ο‚ Ο€Ξ―Ξ½Ξ±ΞΊΞ± Ξ±Ο€Ο Ο„ΞΏ ΟƒΟΞ½ΞΏΞ»ΞΏ Ξ³Ξ½Ο‰ΟƒΟ„ΟΞ½ Ξ¶ΞµΟ…Ξ³ΟΞ½"
 
 # src/recode.c:504
 #: src/recode.c:497
 msgid "Identity recoding, not worth a table"
-msgstr "Μηδαμηνή μετατροπή, δεν χρειάζεται πίνακα"
+msgstr "ΞΞ·Ξ΄Ξ±ΞΌΞ·Ξ½Ξ® ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€Ξ®, Ξ΄ΞµΞ½ Ο‡ΟΞµΞΉΞ¬Ξ¶ΞµΟ„Ξ±ΞΉ Ο€Ξ―Ξ½Ξ±ΞΊΞ±"
 
 # src/recode.c:512
 #: src/recode.c:504
 msgid "Recoding is too complex for a mere table"
-msgstr "Η μετατροπή είναι πολύ περίπλοκη για ένα μόνο πίνακα"
+msgstr "Ξ— ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€Ξ® ΞµΞ―Ξ½Ξ±ΞΉ Ο€ΞΏΞ»Ο Ο€ΞµΟΞ―Ο€Ξ»ΞΏΞΊΞ· Ξ³ΞΉΞ± Ξ­Ξ½Ξ± ΞΌΟΞ½ΞΏ Ο€Ξ―Ξ½Ξ±ΞΊΞ±"
 
 # src/recode.c:544
+#. Print the header of the header file.
 #: src/recode.c:536
 #, c-format
 msgid "%sConversion table generated mechanically by Free `%s' %s"
-msgstr "%sΠίνακας μετατροπής δημιουργήθηκε μηχανικά από το Ελεύθερο `%s' %s"
+msgstr "%sΞ Ξ―Ξ½Ξ±ΞΊΞ±Ο‚ ΞΌΞµΟ„Ξ±Ο„ΟΞΏΟ€Ξ®Ο‚ Ξ΄Ξ·ΞΌΞΉΞΏΟ…ΟΞ³Ξ®ΞΈΞ·ΞΊΞµ ΞΌΞ·Ο‡Ξ±Ξ½ΞΉΞΊΞ¬ Ξ±Ο€Ο Ο„ΞΏ Ξ•Ξ»ΞµΟΞΈΞµΟΞΏ `%s' %s"
 
 # src/recode.c:546
 #: src/recode.c:538
 #, c-format
 msgid "%sfor sequence %s.%s"
-msgstr "%sγια διαδοχή %s.%s"
+msgstr "%sΞ³ΞΉΞ± Ξ΄ΞΉΞ±Ξ΄ΞΏΟ‡Ξ® %s.%s"
 
 # src/recode.c:736
 #: src/recode.c:744
 msgid "No table to print"
-msgstr "Κανένας πίνακας για εκτύπωση"
+msgstr "ΞΞ±Ξ½Ξ­Ξ½Ξ±Ο‚ Ο€Ξ―Ξ½Ξ±ΞΊΞ±Ο‚ Ξ³ΞΉΞ± ΞµΞΊΟ„ΟΟ€Ο‰ΟƒΞ·"
 
 # src/request.c:35
 #: src/request.c:34
 msgid "reversible"
-msgstr "αντιστρεπτό"
+msgstr "Ξ±Ξ½Ο„ΞΉΟƒΟ„ΟΞµΟ€Ο„Ο"
 
 # src/request.c:37
 #: src/request.c:36
 #, c-format
 msgid "%s to %s"
-msgstr "%s σε %s"
+msgstr "%s ΟƒΞµ %s"
 
 # src/request.c:38 src/request.c:40
 #: src/request.c:37 src/request.c:39
@@ -548,107 +519,107 @@ msgstr "ucs2"
 # src/request.c:39 src/request.c:41
 #: src/request.c:38 src/request.c:40
 msgid "variable"
-msgstr "μεταβλητή"
+msgstr "ΞΌΞµΟ„Ξ±Ξ²Ξ»Ξ·Ο„Ξ®"
 
 # src/request.c:112
 #: src/request.c:111
 msgid "*Unachievable*"
-msgstr "*Μη κατορθωτό*"
+msgstr "*ΞΞ· ΞΊΞ±Ο„ΞΏΟΞΈΟ‰Ο„Ο*"
 
 # src/request.c:114
 #: src/request.c:113
 msgid "*mere copy*"
-msgstr "*απλή αντιγραφή*"
+msgstr "*Ξ±Ο€Ξ»Ξ® Ξ±Ξ½Ο„ΞΉΞ³ΟΞ±Ο†Ξ®*"
 
 # src/request.c:244
 #: src/request.c:246
 msgid "Virtual memory exhausted!"
-msgstr "Η ιδεατή μνήμη εξαντλήθηκε!"
+msgstr "Ξ— ΞΉΞ΄ΞµΞ±Ο„Ξ® ΞΌΞ½Ξ®ΞΌΞ· ΞµΞΎΞ±Ξ½Ο„Ξ»Ξ®ΞΈΞ·ΞΊΞµ!"
 
 # src/request.c:263
 #: src/request.c:265
 msgid "Step initialisation failed"
-msgstr "Το βήμα αρχικοποίησης απέτυχε"
+msgstr "Ξ¤ΞΏ Ξ²Ξ®ΞΌΞ± Ξ±ΟΟ‡ΞΉΞΊΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ·Ο‚ Ξ±Ο€Ξ­Ο„Ο…Ο‡Ξµ"
 
 # src/request.c:270
 #: src/request.c:272
 msgid "Step initialisation failed (unprocessed options)"
-msgstr "Το βήμα αρχικοποίησης απέτυχε (επιλογές που δεν έχουν επεξεργαστεί)"
+msgstr "Ξ¤ΞΏ Ξ²Ξ®ΞΌΞ± Ξ±ΟΟ‡ΞΉΞΊΞΏΟ€ΞΏΞ―Ξ·ΟƒΞ·Ο‚ Ξ±Ο€Ξ­Ο„Ο…Ο‡Ξµ (ΞµΟ€ΞΉΞ»ΞΏΞ³Ξ­Ο‚ Ο€ΞΏΟ… Ξ΄ΞµΞ½ Ξ­Ο‡ΞΏΟ…Ξ½ ΞµΟ€ΞµΞΎΞµΟΞ³Ξ±ΟƒΟ„ΞµΞ―)"
 
 # src/request.c:566
 #: src/request.c:568
 #, c-format
 msgid "Request: %s\n"
-msgstr "Αίτηση: %s\n"
+msgstr "Ξ‘Ξ―Ο„Ξ·ΟƒΞ·: %s\n"
 
 # src/request.c:702
 #: src/request.c:720
 #, c-format
 msgid "Shrunk to: %s\n"
-msgstr "Συρρίκνωση σε %s\n"
+msgstr "Ξ£Ο…ΟΟΞ―ΞΊΞ½Ο‰ΟƒΞ· ΟƒΞµ %s\n"
 
 # src/request.c:806 src/request.c:912
 #: src/request.c:823 src/request.c:932
 #, c-format
 msgid "Unrecognised surface name `%s'"
-msgstr "Μη αναγνωρίσημο όνομα επιφάνειας `%s'"
+msgstr "ΞΞ· Ξ±Ξ½Ξ±Ξ³Ξ½Ο‰ΟΞ―ΟƒΞ·ΞΌΞΏ ΟΞ½ΞΏΞΌΞ± ΞµΟ€ΞΉΟ†Ξ¬Ξ½ΞµΞΉΞ±Ο‚ `%s'"
 
 # src/request.c:884
 #: src/request.c:903
 #, c-format
 msgid "No way to recode from `%s' to `%s'"
-msgstr "Κανένας τρόπος να μετατραπεί από `%s' σε `%s'"
+msgstr "ΞΞ±Ξ½Ξ­Ξ½Ξ±Ο‚ Ο„ΟΟΟ€ΞΏΟ‚ Ξ½Ξ± ΞΌΞµΟ„Ξ±Ο„ΟΞ±Ο€ΞµΞ― Ξ±Ο€Ο `%s' ΟƒΞµ `%s'"
 
 # src/request.c:992
 #: src/request.c:1013
 msgid "Expecting `..' in request"
-msgstr "Αναμένεται `..' στην αίτηση"
+msgstr "Ξ‘Ξ½Ξ±ΞΌΞ­Ξ½ΞµΟ„Ξ±ΞΉ `..' ΟƒΟ„Ξ·Ξ½ Ξ±Ξ―Ο„Ξ·ΟƒΞ·"
 
 # src/task.c:751 src/task.c:915
-#: src/task.c:833 src/task.c:1009
+#: src/task.c:826 src/task.c:1002
 #, c-format
 msgid "Child process wait status is 0x%0.2x"
-msgstr "Η κατάσταση παραμονής της θυγατρικής διεργασίας είναι 0x%0.2x"
+msgstr "Ξ— ΞΊΞ±Ο„Ξ¬ΟƒΟ„Ξ±ΟƒΞ· Ο€Ξ±ΟΞ±ΞΌΞΏΞ½Ξ®Ο‚ Ο„Ξ·Ο‚ ΞΈΟ…Ξ³Ξ±Ο„ΟΞΉΞΊΞ®Ο‚ Ξ΄ΞΉΞµΟΞ³Ξ±ΟƒΞ―Ξ±Ο‚ ΞµΞ―Ξ½Ξ±ΞΉ 0x%0.2x"
 
 # src/debug.c:287
-#: src/testdump.c:309
+#: src/testdump.c:298
 msgid ""
 "UCS2   Mne   Description\n"
 "\n"
 msgstr ""
-"UCS2   Mne   Περιγραφή\n"
+"UCS2   Mne   Ξ ΞµΟΞΉΞ³ΟΞ±Ο†Ξ®\n"
 "\n"
 
 # src/main.c:308
 #~ msgid "CHARSET has no default, define DEFAULT_CHARSET in the environment.\n"
 #~ msgstr ""
-#~ "O ΠΙΝΧΑΡ (πίνακας χαρακτήρων ή CHARSET) δεν έχει εξ' ορισμού τιμή,\n"
-#~ "ορίστε τη μεταβλητή περιβάλλοντος DEFAULT_CHARSET.\n"
+#~ "O Ξ Ξ™ΞΞ§Ξ‘Ξ΅ (Ο€Ξ―Ξ½Ξ±ΞΊΞ±Ο‚ Ο‡Ξ±ΟΞ±ΞΊΟ„Ξ®ΟΟ‰Ξ½ Ξ® CHARSET) Ξ΄ΞµΞ½ Ξ­Ο‡ΞµΞΉ ΞµΞΎ' ΞΏΟΞΉΟƒΞΌΞΏΟ Ο„ΞΉΞΌΞ®,\n"
+#~ "ΞΏΟΞ―ΟƒΟ„Ξµ Ο„Ξ· ΞΌΞµΟ„Ξ±Ξ²Ξ»Ξ·Ο„Ξ® Ο€ΞµΟΞΉΞ²Ξ¬Ξ»Ξ»ΞΏΞ½Ο„ΞΏΟ‚ DEFAULT_CHARSET.\n"
 
 # src/main.c:659
 #~ msgid "Ambiguous sequence `%s'"
-#~ msgstr "Ασαφής συμβολοσειρά `%s'"
+#~ msgstr "Ξ‘ΟƒΞ±Ο†Ξ®Ο‚ ΟƒΟ…ΞΌΞ²ΞΏΞ»ΞΏΟƒΞµΞΉΟΞ¬ `%s'"
 
 # src/main.c:663
 #~ msgid "Unknown sequence `%s'"
-#~ msgstr "¶γνωστη συμβολοσειρά `%s'"
+#~ msgstr "Ξ†Ξ³Ξ½Ο‰ΟƒΟ„Ξ· ΟƒΟ…ΞΌΞ²ΞΏΞ»ΞΏΟƒΞµΞΉΟΞ¬ `%s'"
 
 # src/main.c:693 src/main.c:747
 #~ msgid "Ambiguous language `%s'"
-#~ msgstr "Ασαφής γλώσσα `%s'"
+#~ msgstr "Ξ‘ΟƒΞ±Ο†Ξ®Ο‚ Ξ³Ξ»ΟΟƒΟƒΞ± `%s'"
 
 # src/main.c:697 src/main.c:751
 #~ msgid "Unknown language `%s'"
-#~ msgstr "¶γνωστη γλώσσα `%s'"
+#~ msgstr "Ξ†Ξ³Ξ½Ο‰ΟƒΟ„Ξ· Ξ³Ξ»ΟΟƒΟƒΞ± `%s'"
 
 # src/main.c:785
 #~ msgid "Ambiguous format `%s'"
-#~ msgstr "Ασαφής μορφή `%s'"
+#~ msgstr "Ξ‘ΟƒΞ±Ο†Ξ®Ο‚ ΞΌΞΏΟΟ†Ξ® `%s'"
 
 # src/main.c:789
 #~ msgid "Unknown format `%s'"
-#~ msgstr "¶γνωστη μορφή `%s'"
+#~ msgstr "Ξ†Ξ³Ξ½Ο‰ΟƒΟ„Ξ· ΞΌΞΏΟΟ†Ξ® `%s'"
 
 # src/main.c:1005
 #~ msgid "Erroneous request `%s'"
-#~ msgstr "Εσφαλμένη αίτηση `%s'"
+#~ msgstr "Ξ•ΟƒΟ†Ξ±Ξ»ΞΌΞ­Ξ½Ξ· Ξ±Ξ―Ο„Ξ·ΟƒΞ· `%s'"
