@@ -22,7 +22,7 @@ AUTOMAKE_OPTIONS = gnits
 ACLOCAL = ./aclocal.sh @ACLOCAL@
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = COPYING-LIB aclocal.sh m4/ChangeLog
+EXTRA_DIST = COPYING-LIB aclocal.sh m4/ChangeLog tables.py
 SUBDIRS = doc lib po src tests contrib
 
 # All object files should depend on cleaner.h as well on as config.h.

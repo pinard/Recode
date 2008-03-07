@@ -30,7 +30,8 @@ EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
 ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
-ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES)
+ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES) \
+merged.c
 OLD_C_STEPS = next.c
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
 
@@ -46,10 +47,17 @@ recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 
 librecode_la_SOURCES = argmatch.c charname.c combine.c exitfail.c \
-fr-charname.c hash.c iconv.c localcharset.c merged.c names.c \
-outer.c quotearg.c recode.c request.c strip-pool.c task.c \
-xalloc-die.c xmalloc.c $(C_STEPS)
+fr-charname.c hash.c iconv.c localcharset.c names.c outer.c quotearg.c \
+recode.c request.c strip-pool.c task.c xalloc-die.c xmalloc.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
+
+# Relative to $(srcdir).
+ALAIN = $(KELD)
+KELD = ../keld
+CHARSETS_DEF = $(KELD)/charsets.def
+MNEMONICS_DS = $(KELD)/iso10646.def $(KELD)/other.def $(KELD)/control.def
+RFC1345_TXT = $(KELD)/rfc1345.txt
+NOMS_CARACS = $(ALAIN)/NomsSeulsfinal.lst
 
 INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 DEFS = -DLIBDIR=\"$(libdir)\" @DEFS@
@@ -64,34 +72,9 @@ TAGS_DEPENDENCIES = $(L_STEPS)
 LEX = @LEX@
 PERL = perl
 PYTHON = python
+TABLES_PY = $(PYTHON) $(top_srcdir)/tables.py
 
-$(srcdir)/decsteps.h: stamp-steps
-$(srcdir)/inisteps.h: stamp-steps
-$(srcdir)/tersteps.h: stamp-steps
-stamp-steps: $(C_STEPS) merged.c
-	@echo "Updating {dec,ini,ter}steps.h"
-	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS) merged.c ) \
-	    | sed 's/ .*//' > liste.tmp
-	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/' \
-	    liste.tmp > decsteps.tmp
-	@sed 's/\(.*\)/void del\1 PARAMS ((struct recode_outer *));/' \
-	    liste.tmp >> decsteps.tmp
-	@sed 's/\(.*\)/  if (!\1 (outer)) return false;/' \
-	    liste.tmp > inisteps.tmp
-	@sed 's/\(.*\)/  del\1 (outer);/' \
-	    liste.tmp > tersteps.tmp
-	@rm liste.tmp
-	@if cmp -s $(srcdir)/decsteps.h decsteps.tmp; then rm decsteps.tmp; \
-	else mv decsteps.tmp $(srcdir)/decsteps.h; fi
-	@if cmp -s $(srcdir)/inisteps.h inisteps.tmp; then rm inisteps.tmp; \
-	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
-	@if cmp -s $(srcdir)/tersteps.h tersteps.tmp; then rm tersteps.tmp; \
-	else mv tersteps.tmp $(srcdir)/tersteps.h; fi
-	@echo timestamp > $(srcdir)/stamp-steps
-
-main.o: main.c ../config.status
-#main.o: common.h recode.h (should be automatic?)
-outer.o: stamp-steps
+CLEANFILES = iconvdecl.h
 
 $(srcdir)/merged.c: mergelex.py $(L_STEPS)
 	(cd $(srcdir) && cat $(L_STEPS)) \
@@ -112,3 +95,51 @@ $(srcdir)/recode.1: recode
 	  echo "         It might be that \`Perl' is missing on your system,"; \
 	  echo "         but you may safely and merely ignore this error."; \
 	fi
+
+main.o: main.c ../config.status
+
+charname$U.lo: rfc1345.h
+charname.h: ../tables.py $(MNEMONICS_DS) $(RFC1345_TXT)
+	$(TABLES_PY) -C $(srcdir) -n $(MNEMONICS_DS) $(RFC1345_TXT)
+
+fr-charname$U.lo: fr-charname.h
+fr-charname.h: ../tables.py $(NOMS_CARACS)
+	$(TABLES_PY) -C $(srcdir) -Fn $(NOMS_CARACS)
+
+iconv$U.lo: iconvdecl.h
+iconvdecl.h: ../tables.py
+	$(TABLES_PY) -i
+
+outer$U.lo: stamp-steps
+stamp-steps: $(C_STEPS)
+	@echo "Updating {dec,ini,ter}steps.h"
+	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS)) \
+	    | sed 's/ .*//' > liste.tmp
+	@sed 's/\(.*\)/bool \1 PARAMS ((struct recode_outer *));/' \
+	    liste.tmp > decsteps.tmp
+	@sed 's/\(.*\)/void del\1 PARAMS ((struct recode_outer *));/' \
+	    liste.tmp >> decsteps.tmp
+	@sed 's/\(.*\)/  if (!\1 (outer)) return false;/' \
+	    liste.tmp > inisteps.tmp
+	@sed 's/\(.*\)/  del\1 (outer);/' \
+	    liste.tmp > tersteps.tmp
+	@rm liste.tmp
+	@if cmp -s $(srcdir)/decsteps.h decsteps.tmp; then rm decsteps.tmp; \
+	else mv decsteps.tmp $(srcdir)/decsteps.h; fi
+	@if cmp -s $(srcdir)/inisteps.h inisteps.tmp; then rm inisteps.tmp; \
+	else mv inisteps.tmp $(srcdir)/inisteps.h; fi
+	@if cmp -s $(srcdir)/tersteps.h tersteps.tmp; then rm tersteps.tmp; \
+	else mv tersteps.tmp $(srcdir)/tersteps.h; fi
+	@echo timestamp > $(srcdir)/$@
+
+rfc1345$U.lo: rfc1345.h
+rfc1345.h: ../tables.py $(MNEMONICS_DS)
+	$(TABLES_PY) -C $(srcdir) -m $(MNEMONICS_DS)
+
+# There is duplication of work with making doc/rfc1345.texi.
+# This used to be combined, but it seems clearer to keep both separate.
+strip-pool.c strip-data.c: stamp-strip
+stamp-strip: ../tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	$(TABLES_PY) -C $(srcdir) -p $(MNEMONICS_DS) $(CHARSETS_DEF)
+	echo timestamp > $(srcdir)/$@
+

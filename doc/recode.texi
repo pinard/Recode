@@ -3010,10 +3010,13 @@ from @code{iconv} (in fact, the portable @code{libiconv} library
 distinguishes a genuine charset names from its aliases, while GNU
 @code{libc} does not give access to such information).  Moreover, the
 @code{recode} library dynamically resolves some conflicts when it
-initialises itself at runtime.  This might explain some discrepancies in
-the table below, as for what is the genuine charset name.
+initialises itself at runtime.
 
-@include iconv.texi
+The external @code{iconv} libraries may offer different sets of charsets
+and aliases, from one library to another, and also between successive
+versions of a single library.  Best is to check the documentation of the
+@code{iconv} library, as of the time Recode was installed, to know what
+charsets and aliases are offered by that library
 
 @node Tabular, ASCII misc, iconv, Top
 @chapter Tabular sources (@w{RFC 1345})

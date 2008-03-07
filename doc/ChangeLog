@@ -1,9 +1,15 @@
+2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py: Moved to top level.
+	* Makemore: Deleted.
+	* Makefile.am: Adjusted.
+	(rfc1345.texi): New goal.
+
 2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Document iconv as an external library, instead
 	of as being integrated as part of the recode library.
 	* iconv.texi: Deleted.
-	* Makemore (BRUNO, ENCODINGS_DEF): Deleted.
 	* Makefile.am: Adjusted.
 
 2008-02-21  François Pinard  <pinard@iro.umontreal.ca>

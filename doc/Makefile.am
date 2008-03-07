@@ -20,9 +20,25 @@ AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
 MAKEINFO = LANG= LANGUAGE= @MAKEINFO@
 
-EXTRA_DIST = rfc1345.texi File-Latin1 help2man Makemore tables.py
+EXTRA_DIST = rfc1345.texi File-Latin1 help2man
+
+# Relative to $(srcdir).
+KELD = ../keld
+CHARSETS_DEF = $(KELD)/charsets.def
+MNEMONICS_DS = $(KELD)/iso10646.def $(KELD)/other.def $(KELD)/control.def
+
+PYTHON = python
+TABLES_PY = $(PYTHON) $(top_srcdir)/tables.py
 
 MOSTLYCLEANFILES = recode.ops
 
-recode.info: rfc1345.texi
+$(srcdir)/recode.info: rfc1345.texi
 recode.dvi: rfc1345.texi
+
+# There is duplication of work with making src/strip-{pool,data}.c.
+# This used to be combined, but it seems clearer to keep both separate.
+rfc1345.texi: ../tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	$(TABLES_PY) -C $(srcdir) -t $(MNEMONICS_DS) $(CHARSETS_DEF)
+
+fr-rfc1345.texi: ../tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
+	$(TABLES_PY) -C $(srcdir) -Ft $(MNEMONICS_DS) $(CHARSETS_DEF)

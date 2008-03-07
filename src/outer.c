@@ -376,7 +376,7 @@ estimate_single_cost (RECODE_OUTER outer, RECODE_SINGLE single)
       break;
 
     case RECODE_2:
-      /* Reading two require a routine call and swapping considerations.  */
+      /* Reading two requires a routine call and swapping considerations.  */
       cost += 25;
       break;
 
@@ -520,6 +520,7 @@ void static
 unregister_all_modules (RECODE_OUTER outer)
 {
 #include "tersteps.h"
+    delmodule_iconv(outer);
 }
 
 /* Library interface.  */

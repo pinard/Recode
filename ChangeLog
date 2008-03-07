@@ -1,3 +1,8 @@
+2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py: Previously in doc/.  Cleanup.  Add -C option.
+	* Makefile.am: Adjusted.
+
 2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile (get-po-files): New.

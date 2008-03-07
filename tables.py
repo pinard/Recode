@@ -23,14 +23,17 @@
 
 Usage: python tables.py [OPTION]... DATA-FILE...
 
-  -e  produce C source file for explode data (explode.c)
-  -l  produce C source file for iconv charsets (iconv.h)
-  -m  produce C inclusion file for short RFC 1345 mnemonics (rfc1345.h)
-  -n  produce C inclusion file for character names (charname.h)
-  -p  produce C source files for strip data (strip-pool.c and strip-data.c)
-  -s  produce Texinfo inclusion file for iconv (iconv.texi)
-  -t  produce Texinfo inclusion file for RFC 1345 (rfc1345.texi)
-  -F  produce French versions for -n, -s or -t
+Output selection:
+  -e   Produce C source file for explode data (explode.c)
+  -i   Produce C source file for iconv charsets (iconvdecl.h)
+  -m   Produce C inclusion file for short RFC 1345 mnemonics (rfc1345.h)
+  -n   Produce C inclusion file for character names (charname.h)
+  -p   Produce C source files for strip data (strip-pool.c and strip-data.c)
+  -t   Produce Texinfo inclusion file for RFC 1345 (rfc1345.texi)
+
+Modality options:
+  -C DIRECTORY   Change to DIRECTORY prior to processing
+  -F             Produce French versions for -n, -s or -t
 
 DATA-FILEs may be rfc1345.txt, mnemonic[.,]ds, Unicode maps, or .def files
 from Keld's chset* packages.  The digesting order is usually important.
@@ -44,118 +47,133 @@ REPLACEMENT_CHARACTER = 0xFFFD
 NOT_A_CHARACTER = 0xFFFF
 
 # Main driver.
-def main(*arguments):
-    import getopt
-    global explodes
-    charnames = explodes = iconv = mnemonics = rfc1345 = strips = None
-    French_option = False
-    options, arguments = getopt.getopt(arguments, 'Felmnpst')
-    for option, value in options:
-        if option == '-F':
-            French_option = True
-        elif option == '-e':
-            if not explodes:
-                explodes = Explodes()
-            explodes.do_sources = True
-        elif option == '-l':
-            if not iconv:
-                iconv = Iconv()
-            iconv.do_sources = True
-        elif option == '-m':
-            if not mnemonics:
-                mnemonics = Mnemonics()
-            mnemonics.do_sources = True
-        elif option == '-n':
-            if not charnames:
-                charnames = Charnames()
-            charnames.do_sources = True
-        elif option == '-p':
-            if not strips:
-                strips = Strips()
-            strips.do_sources = True
-        elif option == '-s':
-            if not iconv:
-                iconv = Iconv()
-            iconv.do_texinfo = True
-        elif option == '-t':
-            if not strips:
-                strips = Strips()
-            strips.do_texinfo = True
-    if not arguments:
-        raise __doc__
 
-    # Read all data tables.
-    for name in arguments:
-        input = Input(name)
-        while True:
-            line = input.readline()
-            if not line:
-                break
-            if line[0] == '\n':
-                continue
-            if line[:2] == '/*':
-                while line.find('*/') < 0:
-                    line = input.readline()
-                continue
-            if input.begins('DEFENCODING'):
-                if not iconv:
-                    iconv = Iconv()
-                iconv.digest(input)
-                break
-            if input.begins('#    Name:'):
-                if not strips:
-                    strips = Strips()
-                strips.digest_unimap(input)
-                break
-            if line[0] == '#':
-                continue
-            if input.begins('escape_char'):
-                if not mnemonics:
-                    mnemonics = Mnemonics()
-                mnemonics.digest_mnemonics_ds(input)
-                break
-            if input.match('Network Working Group +K\. Simonsen$'):
-                if charnames and charnames.do_sources and not French_option:
-                    while not input.begins(
-                        '   3rd field is the long descriptive'):
+class Main:
+    directory = None
+    charnames = None
+    explodes = None
+    iconv = None
+    mnemonics = None
+    strips = None
+
+    def main(self, *arguments):
+        if not arguments:
+            sys.stdout.write(__doc__)
+            return
+        import getopt
+        French_option = False
+        options, arguments = getopt.getopt(arguments, 'C:Feimnpt')
+        for option, value in options:
+            if option == '-C':
+                self.directory = value
+            elif option == '-F':
+                French_option = True
+            elif option == '-e':
+                if not self.explodes:
+                    self.explodes = Explodes()
+                self.explodes.do_sources = True
+            elif option == '-i':
+                if not self.iconv:
+                    self.iconv = Iconv()
+                self.iconv.do_sources = True
+            elif option == '-m':
+                if not self.mnemonics:
+                    self.mnemonics = Mnemonics()
+                self.mnemonics.do_sources = True
+            elif option == '-n':
+                if not self.charnames:
+                    self.charnames = Charnames()
+                self.charnames.do_sources = True
+            elif option == '-p':
+                if not self.strips:
+                    self.strips = Strips()
+                self.strips.do_sources = True
+            elif option == '-t':
+                if not self.strips:
+                    self.strips = Strips()
+                self.strips.do_texinfo = True
+
+        # Read all data tables.
+        if self.directory:
+            import os
+            os.chdir(self.directory)
+        if self.iconv:
+            self.iconv.digest()
+        for name in arguments:
+            input = Input(name)
+            while True:
+                line = input.readline()
+                if not line:
+                    break
+                if line[0] == '\n':
+                    continue
+                if line[:2] == '/*':
+                    while line.find('*/') < 0:
                         line = input.readline()
-                    if not mnemonics:
-                        mnemonics = Mnemonics()
-                    mnemonics.digest_rfc1345(input, charnames)
-                if explodes or strips:
-                    while line != '5.  CHARSET TABLES\n':
+                    continue
+                if input.begins('#    Name:'):
+                    if not self.strips:
+                        self.strips = Strips()
+                    self.strips.digest_unimap(input)
+                    break
+                if line[0] == '#':
+                    continue
+                if input.begins('escape_char'):
+                    if not self.mnemonics:
+                        self.mnemonics = Mnemonics()
+                    self.mnemonics.digest_mnemonics_ds(input)
+                    break
+                if input.match('Network Working Group +K\. Simonsen$'):
+                    if (self.charnames
+                            and self.charnames.do_sources
+                            and not French_option):
+                        while not input.begins(
+                            '   3rd field is the long descriptive'):
+                            line = input.readline()
+                        if not self.mnemonics:
+                            self.mnemonics = Mnemonics()
+                        self.mnemonics.digest_rfc1345(input)
+                    if self.explodes or self.strips:
+                        while line != '5.  CHARSET TABLES\n':
+                            line = input.readline()
+                        if not self.strips:
+                            self.strips = Strips()
+                        self.strips.digest_rfc1345(input)
+                    break
+                if input.begins('@@\t'):
+                    if self.charnames.do_sources and French_option:
+                        self.charnames.digest_french(input)
+                    break
+                if line == '&referenceset\n':
+                    while line != '\n':
                         line = input.readline()
-                    if not strips:
-                        strips = Strips()
-                    strips.digest_rfc1345(input, mnemonics)
-                break
-            if input.begins('@@\t'):
-                if charnames.do_sources and French_option:
-                    charnames.digest_french(input)
-                break
-            if line == '&referenceset\n':
-                while line != '\n':
-                    line = input.readline()
-                if not strips:
-                    strips = Strips()
-                if not mnemonics:
-                    mnemonics = Mnemonics()
-                strips.digest_rfc1345(input, mnemonics)
-                break
-            if line in ('   Repertoire according to ISO/IEC 10646-1:1993\n',
-                        '   Control characters\n',
-                        '   Private use\n'):
-                while line not in ('   Plane 000\n',
-                                   '   plane 000\n'):
-                    line = input.readline()
-                if not mnemonics:
-                    mnemonics = Mnemonics()
-                mnemonics.digest_iso10646_def(input)
-                break
-            input.die("Data file with unknown contents")
-    for instance in explodes, strips, charnames, iconv, mnemonics:
-        if instance:
-            instance.complete(French_option)
+                    if not self.strips:
+                        self.strips = Strips()
+                    if not self.mnemonics:
+                        self.mnemonics = Mnemonics()
+                    self.strips.digest_rfc1345(input)
+                    break
+                if line in ('   Repertoire according to ISO/IEC 10646-1:1993\n',
+                            '   Control characters\n',
+                            '   Private use\n'):
+                    while line not in ('   Plane 000\n',
+                                       '   plane 000\n'):
+                        line = input.readline()
+                    if not self.mnemonics:
+                        self.mnemonics = Mnemonics()
+                    self.mnemonics.digest_iso10646_def(input)
+                    break
+                input.die("Data file with unknown contents")
+        for instance in (self.explodes,
+                         self.strips,
+                         self.charnames,
+                         self.iconv,
+                         self.mnemonics):
+            if instance:
+                instance.complete(French_option)
+
+run = Main()
+main = run.main
 
 class Options:
 
@@ -425,12 +443,11 @@ class Explodes(Options):
 # Iconv.
 
 class Iconv(Options):
-    SOURCES = 'iconv.h'
-    TEXINFO = 'iconv.texi'
+    SOURCES = 'iconvdecl.h'
 
     data = []
 
-    def digest(self, input):
+    def digest(self):
         canonical = {}
         for charset in ('Georgian-Academy', 'Georgian-PS', 'MuleLao-1',
                         'Macintosh', 'MacArabic', 'MacCentralEurope',
@@ -439,50 +456,21 @@ class Iconv(Options):
                         'MacTurkish', 'MacUkraine'):
             canonical[charset.upper()] = charset
 
-        comment = None
         # Read in the encodings.def file.
-        line = input.line
-        while line:
-            if input.begins('DEFENCODING(('):
-                aliases = []
-                match = re.search('"(.*)"', line)
-                if match:
-                    alias = match.group(1)
-                    if alias in canonical:
-                        alias = canonical[alias]
-                    aliases.append(alias)
-                line = input.readline().lstrip()
-                while line != '),\n':
-                    match = re.search('"(.*)"', line)
-                    if match:
-                        alias = match.group(1)
-                        if alias in canonical:
-                            alias = canonical[alias]
-                        aliases.append(alias)
-                    line = input.readline().lstrip()
-                while line and line != '\n':
-                    line = input.readline()
-                self.data.append((comment, aliases[0], aliases[1:]))
-                comment = None
-            else:
-                if input.begins('/*'):
-                    comment = line[3:-4]
-                elif line != '\n':
-                    input.warn("Unrecognised line")
-                line = input.readline()
+        for line in file('/home/pinard/entretien/recode/admin/charset-list-libiconv'):
+            aliases = []
+            for alias in line.split():
+                if alias in canonical:
+                    alias = canonical[alias]
+                aliases.append(alias)
+            self.data.append((aliases[0], aliases[1:]))
 
     def complete(self, french):
-        if self.do_sources:
-            self.complete_sources()
-        if self.do_texinfo:
-            self.complete_texinfo(french)
-
-    def complete_sources(self):
         if not self.do_sources:
             return
         write = Output(self.SOURCES).write
         count = 1
-        for comment, charset, aliases in self.data:
+        for charset, aliases in self.data:
             count = count + 2 + len(aliases)
         write('\n'
               "/* This is derived from Bruno Haible's `libiconv' package.  */"
@@ -490,12 +478,7 @@ class Iconv(Options):
               'static const char *iconv_name_list[%d] =\n'
               '  {\n'
               % count)
-        for comment, charset, aliases in self.data:
-            if comment:
-                write('\n'
-                      '    /* %s.  */\n'
-                      '\n'
-                      % comment)
+        for charset, aliases in self.data:
             if aliases:
                 write('    "%s",\n' % charset)
                 for alias in aliases[:-1]:
@@ -505,47 +488,6 @@ class Iconv(Options):
                 write('    "%s", NULL,\n' % charset)
         write('    NULL\n'
               '  };\n')
-
-    def complete_texinfo(self, french):
-        if not self.do_texinfo:
-            return
-        if french:
-            write = Output('fr-%s' % self.TEXINFO, noheader=True).write
-        else:
-            write = Output(self.TEXINFO, noheader=True).write
-        write('\n'
-              '@itemize @bullet\n')
-        block = None
-        for comment, charset, aliases in self.data:
-            if not block and not comment:
-                comment = 'General character sets'
-            if comment:
-                if block:
-                    write('@end table\n'
-                          '\n')
-                write('@item %s\n'
-                      '@table @code\n'
-                      % comment)
-                block = comment
-            else:
-                write('\n')
-            write('@item %s\n' % charset)
-            if aliases:
-                write('@tindex %s@r{, aliases}\n'
-                      % re.sub(':([0-9]+)', r'(\1)', charset))
-                for alias in aliases:
-                    write('@tindex %s\n' % re.sub(':([0-9]+)', r'(\1)', alias))
-                if len(aliases) == 1:
-                    write('@code{%s} is an alias for this charset.\n'
-                          % aliases[0])
-                else:
-                    write('@code{%s} and @code{%s} are aliases'
-                          ' for this charset.\n'
-                          % ('}, @code{'.join(aliases[:-1]), aliases[-1]))
-            else:
-                write('@tindex %s\n' % re.sub(':([0-9]+)', r'(\1)', charset))
-        write('@end table\n'
-              '@end itemize\n')
 
 # Mnemonics.
 
@@ -617,7 +559,7 @@ class Mnemonics(Options):
             input.warn("Unrecognised line")
 
     # Read the text of RFC 1345, saving all character names it declares.
-    def digest_rfc1345(self, input, charnames):
+    def digest_rfc1345(self, input):
         def read_line(input=input):
             skip = False
             while True:
@@ -656,7 +598,7 @@ class Mnemonics(Options):
                 mnemo = match.group(1)
                 text = match.group(2).lower()
                 if mnemo in self.ucs2_map:
-                    charnames.declare(self.ucs2_map[mnemo], text)
+                    run.charnames.declare(self.ucs2_map[mnemo], text)
                 elif len(mnemo) <= self.MAX_MNEMONIC_LENGTH:
                     input.warn("No known UCS-2 code for `%s'", mnemo)
             elif not re.search(' +e000', line):
@@ -780,7 +722,7 @@ class Strips(Options):
 
     # Read the text of RFC 1345, saving all charsets it declares.
     # UCS-2 mnemonics files should have been read in already.
-    def digest_rfc1345(self, input, mnemonics):
+    def digest_rfc1345(self, input):
         self.init_write_data()
         # Informal canonical order of presentation.
         CHARSET, REM, ALIAS, ESC, BITS, CODE = range(6)
@@ -934,8 +876,8 @@ class Strips(Options):
                     self.table[code] = NOT_A_CHARACTER
                 elif token == '__':
                     self.table[code] = REPLACEMENT_CHARACTER
-                elif token in mnemonics.ucs2_map:
-                    self.table[code] = mnemonics.ucs2_map[token]
+                elif token in run.mnemonics.ucs2_map:
+                    self.table[code] = run.mnemonics.ucs2_map[token]
                     if len(token) > codedim:
                         codedim = len(token)
                 else:
@@ -1025,8 +967,8 @@ class Strips(Options):
             aliases.sort()
             self.aliases_map[charset] = aliases
             self.remark_map[charset] = remark
-        if explodes:
-            write = explodes.write
+        if run.explodes:
+            write = run.explodes.write
             # Make introductory C comments.
             write(self.comment)
             write('*/\n')
@@ -1076,8 +1018,10 @@ class Strips(Options):
 
     # Return the pool index for strip.  Add to the pool as required.
     def pool_index(self, strip):
+
         def format(item):
             return '%04X' % item
+
         self.pool_refs += 1
         text = ''.join(map(format, strip))
         if text not in self.strip_map:
@@ -1239,7 +1183,7 @@ class Output:
         sys.stderr.write("Writing %s\n" % name)
         if not noheader:
             self.write("""\
-/* DO NOT MODIFY THIS FILE!  It was generated by `recode/doc/tables.py'.  */
+/* DO NOT MODIFY THIS FILE!  It was generated by `recode/tables.py'.  */
 
 /* Conversion of files between different charsets and surfaces.
    Copyright © 1999 Free Software Foundation, Inc.

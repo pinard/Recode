@@ -1,3 +1,15 @@
+2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
+
+	* iconvdecl.h: Deleted.  Should be generated at installation time
+	in the build directory.
+	* Makefile.am: Adjusted.
+	(CLEANFILES): New, for iconvdecl.h.
+
+	* Makefile.am (C_STEPS): Include merged.c, simplify elsewhere.
+	(charname.h, fr-charname.h, iconvdecl.h, rfc1345.h): New goals,
+	adapted from those previously in doc/Makemore.
+	(strip-pool.c, strip-data.c): Idem, but go through stamp-strip.
+
 2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconv.c, iconvdecl.h: New names for libiconv.c and libiconv.h.
