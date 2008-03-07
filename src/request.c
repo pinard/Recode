@@ -599,15 +599,15 @@ simplify_sequence (RECODE_REQUEST request)
 	out++;
       }
     else if (in < limit - 1
-	     && in[0].after == outer->libiconv_pivot
-	     && in[1].before == outer->libiconv_pivot)
+	     && in[0].after == outer->iconv_pivot
+	     && in[1].before == outer->iconv_pivot)
       {
-	/* This is a double `libiconv' step.  */
+	/* This is a double `iconv' step.  */
 	out->before = in[0].before;
 	out->after = in[1].after;
 	out->quality = in[0].quality;
 	merge_qualities (&out->quality, in[1].quality);
-	out->transform_routine = transform_with_libiconv;
+	out->transform_routine = transform_with_iconv;
 
 	in += 2;
 	saved_steps++;

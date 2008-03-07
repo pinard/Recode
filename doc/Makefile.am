@@ -20,10 +20,9 @@ AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
 MAKEINFO = LANG= LANGUAGE= @MAKEINFO@
 
-EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore \
-tables.py
+EXTRA_DIST = rfc1345.texi File-Latin1 help2man Makemore tables.py
 
 MOSTLYCLEANFILES = recode.ops
 
-recode.info: libiconv.texi rfc1345.texi
-recode.dvi: libiconv.texi rfc1345.texi
+recode.info: rfc1345.texi
+recode.dvi: rfc1345.texi

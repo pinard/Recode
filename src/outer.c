@@ -172,11 +172,11 @@ declare_tree_surface (RECODE_OUTER outer, const char *name,
 
 #endif
 
-/*---------------------------------------------------------------------------.
-| Declare a charset available through `libiconv', given the NAME of this     |
-| charset (which might already exist as an alias).  Make two single steps in |
-| and out of it.                                                             |
-`---------------------------------------------------------------------------*/
+/*----------------------------------------------------------------.
+| Declare a charset available through `iconv', given the NAME of  |
+| this charset (which might already exist as an alias).  Make two |
+| single steps in and out of it.                                  |
+`----------------------------------------------------------------*/
 
 static bool
 internal_iconv (RECODE_SUBTASK subtask)
@@ -186,7 +186,7 @@ internal_iconv (RECODE_SUBTASK subtask)
 }
 
 bool
-declare_libiconv (RECODE_OUTER outer, const char *name)
+declare_iconv (RECODE_OUTER outer, const char *name)
 {
   RECODE_ALIAS alias;
   RECODE_SINGLE single;
@@ -201,14 +201,14 @@ declare_libiconv (RECODE_OUTER outer, const char *name)
   if (single = new_single_step (outer), !single)
     return false;
   single->before = alias->symbol;
-  single->after = outer->libiconv_pivot;
+  single->after = outer->iconv_pivot;
   single->quality = outer->quality_variable_to_variable;
   single->init_routine = NULL;
   single->transform_routine = internal_iconv;
 
   if (single = new_single_step (outer), !single)
     return false;
-  single->before = outer->libiconv_pivot;
+  single->before = outer->iconv_pivot;
   single->after = alias->symbol;
   single->quality = outer->quality_variable_to_variable;
   single->init_routine = NULL;
@@ -432,8 +432,8 @@ estimate_single_cost (RECODE_OUTER outer, RECODE_SINGLE single)
 `------------------------------------------------------------------------*/
 
 #include "decsteps.h"
-bool module_libiconv PARAMS ((struct recode_outer *));
-void delmodule_libiconv PARAMS ((struct recode_outer *));
+bool module_iconv PARAMS ((struct recode_outer *));
+void delmodule_iconv PARAMS ((struct recode_outer *));
 
 
 static bool
@@ -468,12 +468,12 @@ register_all_modules (RECODE_OUTER outer)
   assert(alias->symbol->type == RECODE_CHARSET);
   outer->ucs2_charset = alias->symbol;
 
-  if (alias = find_alias (outer, ":libiconv:", SYMBOL_CREATE_CHARSET),
+  if (alias = find_alias (outer, ":iconv:", SYMBOL_CREATE_CHARSET),
       !alias)
     return false;
   assert(alias->symbol->type == RECODE_CHARSET);
-  outer->libiconv_pivot = alias->symbol;
-  if (!declare_alias (outer, ":", ":libiconv:"))
+  outer->iconv_pivot = alias->symbol;
+  if (!declare_alias (outer, ":", ":iconv:"))
     return false;
 
   if (alias = find_alias (outer, "CR-LF", SYMBOL_CREATE_CHARSET), !alias)
@@ -507,7 +507,7 @@ register_all_modules (RECODE_OUTER outer)
      confusing some other initialisations that would come after it.  */
   if (!make_argmatch_arrays (outer))
     return false;
-  if (!module_libiconv (outer))
+  if (!module_iconv (outer))
     return false;
 
   for (single = outer->single_list; single; single = single->next)

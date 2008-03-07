@@ -147,6 +147,25 @@ The test suite is worth more comments:
 Installation
 ============
 
+Prerequisites
+-------------
+
+Simple installation of Recode requires the usual tools and facilities as
+those needed for most GNU packages.  If not already bundled with your
+system, you also need to pre-install Python, version 2.2 or better.  You
+may get it from:
+
+  http://www.python.org
+
+It is also convenient to have some :code:`iconv` library already present
+on your system, this much extends Recode capabilities, especially in
+the area of Asiatic character sets.  GNU :code:`libc`, as found on
+Linux systems and a few others, already has such an :code:`iconv`
+library.  Otherwise, you might consider pre-installing the portable
+:code:`libiconv`, written by Bruno Haible.  You may get it from:
+
+  http://www.gnu.org/software/libiconv/
+
 Getting your own copy
 ---------------------
 
@@ -175,6 +194,7 @@ these commands::
 
 (or ``python after-git.py`` if you miss either :code:`sh` or GNU
 :code:`touch`).
+
 
 Once you have an unpacked distribution, see files:
 

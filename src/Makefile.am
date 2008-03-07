@@ -24,7 +24,7 @@ man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h exit.h exitfail.h \
-fr-charname.h hash.h inisteps.h libiconv.h quotearg.h rfc1345.h	tersteps.h \
+fr-charname.h hash.h inisteps.h iconvdecl.h quotearg.h rfc1345.h tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
 
@@ -46,12 +46,12 @@ recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 
 librecode_la_SOURCES = argmatch.c charname.c combine.c exitfail.c \
-fr-charname.c hash.c iconv.c libiconv.c localcharset.c merged.c names.c \
+fr-charname.c hash.c iconv.c localcharset.c merged.c names.c \
 outer.c quotearg.c recode.c request.c strip-pool.c task.c \
 xalloc-die.c xmalloc.c $(C_STEPS)
 librecode_la_LDFLAGS = -version-info 0:0:0
 
-INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
+INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 DEFS = -DLIBDIR=\"$(libdir)\" @DEFS@
 
 ETAGS_ARGS = $(L_STEPS)

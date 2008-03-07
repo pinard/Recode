@@ -134,7 +134,7 @@ Programs
   This comprehensive charset converter library revolves around Unicode,
   and support Asian encodings among many others.  Even Recode uses it!
 
-  + ftp://ftp.ilog.fr/pub/Users/haible/gnu/libiconv-1.3.tar.gz
+  + http://www.gnu.org/software/libiconv/
 
   Bruno Haible <haible@ilog.fr>
 

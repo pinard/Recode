@@ -45,5 +45,4 @@ AH_BOTTOM([
 ])
 
 AC_OUTPUT(Makefile cleaner.h contrib/Makefile doc/Makefile lib/Makefile
-          libiconv/Makefile po/Makefile.in src/Makefile tests/Makefile
-          tests/setup.py)
+          po/Makefile.in src/Makefile tests/Makefile tests/setup.py)

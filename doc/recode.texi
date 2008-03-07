@@ -81,7 +81,8 @@ sets and surface encodings.  When this cannot be achieved exactly, it
 may get rid of the offending characters or fall back on approximations.
 The library recognises or produces more than 300 different character sets
 and is able to convert files between almost any pair.  Most @w{RFC 1345}
-character sets, and all @code{libiconv} character sets, are supported.
+character sets, and all character sets from a pre-installed  @code{iconv}
+library, are supported.
 The @code{recode} program is a handy front-end to the library.
 
 The current @code{recode} release is @value{VERSION}.
@@ -92,7 +93,7 @@ The current @code{recode} release is @value{VERSION}.
 * Invoking recode::     How to use this program
 * Library::             A recoding library
 * Universal::           The universal charset
-* libiconv::            The @code{iconv} library
+* iconv::               The @code{iconv} library
 * Tabular::             Tabular sources (@w{RFC 1345})
 * ASCII misc::          ASCII and some derivatives
 * IBM and MS::          Some IBM or Microsoft charsets
@@ -395,10 +396,11 @@ those of Keld Simonsen and Bruno Haible.
 @section Overview of charsets
 
 @cindex charsets, overview
-Recoding is currently possible between many charsets, the bulk of which is
-described by @w{RFC 1345} tables or available in the @code{iconv} library.
-@xref{Tabular}, and @pxref{libiconv}.  The @code{recode} library also
-handles some charsets in some specialised ways.  These are:
+Recoding is currently possible between many charsets, the bulk of which
+is described by @w{RFC 1345} tables or available in a pre-installed
+external @code{iconv} library. @xref{Tabular}, and @pxref{iconv}.  The
+@code{recode} library also handles some charsets in some specialised
+ways.  These are:
 
 @itemize @bullet
 @item
@@ -436,11 +438,11 @@ now, clashes are avoided, the old and new charsets are kept well separate.
 @tindex count-characters@r{, not as before charset}
 @tindex dump-with-names@r{, not as before charset}
 @tindex data@r{, not with charsets}
-@tindex libiconv@r{, not in requests}
+@tindex iconv@r{, not in requests}
 Conversion is possible between almost any pair of charsets.  Here is a
 list of the exceptions.  One may not recode @emph{from} the @code{flat},
 @code{count-characters} or @code{dump-with-names} charsets, nor @emph{from}
-or @emph{to} the @code{data}, @code{tree} or @code{:libiconv:} charsets.
+or @emph{to} the @code{data}, @code{tree} or @code{:iconv:} charsets.
 Also, if we except the @code{data} and @code{tree} pseudo-charsets, charsets
 and surfaces live in disjoint recoding spaces, one cannot really transform
 a surface into a charset or vice-versa, as surfaces are only meant to be
@@ -1609,7 +1611,7 @@ We could rewrite our recoding call as @samp{recode -v u8..h <nicepage},
 to get something like:
 
 @example
-Request: UTF-8..:libiconv:..ISO-10646-UCS-2..HTML_4.0
+Request: UTF-8..:iconv:..ISO-10646-UCS-2..HTML_4.0
 Shrunk to: UTF-8..ISO-10646-UCS-2..HTML_4.0
 [@dots{}@var{some output}@dots{}]
 recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
@@ -2553,7 +2555,7 @@ or @code{struct recode_task} blocks, yet it makes less sense to me to do
 so in practice.
 @end ignore
 
-@node Universal, libiconv, Library, Top
+@node Universal, iconv, Library, Top
 @chapter The universal charset
 
 @cindex ISO 10646
@@ -2938,7 +2940,7 @@ the title lines.
 echo -n 0x03C6 | recode u2/x2..dump | tail +3
 @end example
 
-@node libiconv, Tabular, Universal, Top
+@node iconv, Tabular, Universal, Top
 @chapter The @code{iconv} library
 
 @cindex @code{iconv} library
@@ -2946,32 +2948,33 @@ echo -n 0x03C6 | recode u2/x2..dump | tail +3
 @cindex @code{libiconv}
 @cindex interface, with @code{iconv} library
 @cindex Haible, Bruno
-The @code{recode} library itself contains most code and tables from the
-portable @code{iconv} library, written by Bruno Haible.  In fact, many
-capabilities of the @code{recode} library are duplicated because of this
-merging, as the older @code{recode} and @code{iconv} libraries share many
-charsets.  We discuss, here, the issues related to this duplication, and
-other peculiarities specific to the @code{iconv} library.  The plan is to
-remove duplications and better merge specificities, as @code{recode} evolves.
+The @code{recode} library is able to use the capabilities of an
+external, pre-installed @code{iconv} library, usually as provided by GNU
+@code{libc} or the portable @code{libiconv} written by Bruno Haible.  In
+fact, many capabilities of the @code{recode} library are duplicated in
+an external @code{iconv} library, as they likely share many charsets.
+We discuss, here, the issues related to this duplication, and other
+peculiarities specific to the @code{iconv} library.
 
-As implemented, if a recoding request can be satisfied by the @code{recode}
-library both with and without its @code{iconv} library part, it is likely
-that the @code{iconv} library will be used.  To sort out if the @code{iconv}
-is indeed used or not, just use the @samp{-v} or @samp{--verbose} option,
-@pxref{Recoding}.
+As implemented, if a recoding request can be satisfied by the
+@code{recode} library both with and without using the @code{iconv}
+library, it is likely that the external @code{iconv} library will be
+used.  To sort out if the @code{iconv} is indeed used or not, just use
+the @samp{-v} or @samp{--verbose} option, @pxref{Recoding}.
 
-@tindex libiconv
-The @code{:libiconv:} charset represents a conceptual pivot charset
-within the @code{iconv} part of the @code{recode} library (in fact,
-this pivot exists, but is not directly reachable).  This charset has a
-mere @code{:} (a colon) for an alias.  It is not allowed to recode from
-or to this charset directly.  But when this charset is selected as an
-intermediate, usually by automatic means, then the @code{iconv} part
-of the @code{recode} library is called to handle the transformations.
-By using an @samp{--ignore=:libiconv:} option on the @code{recode} call
-or equivalently, but more simply, @samp{-x:}, @code{recode} is instructed
-to fully avoid this charset as an intermediate, with the consequence that
-the @code{iconv} part of the library is defeated.  Consider these two calls:
+@tindex iconv
+The @code{:iconv:} charset represents a conceptual pivot charset
+within the external @code{iconv} library (in fact, this pivot exists,
+but is not directly reachable).  This charset has a mere @code{:}
+(a colon) for an alias.  It is not allowed to recode from or to
+this charset directly.  But when this charset is selected as an
+intermediate, usually by automatic means, then the external @code{iconv}
+@code{recode} library is called to handle the transformations.  By
+using an @samp{--ignore=:iconv:} option on the @code{recode} call or
+equivalently, but more simply, @samp{-x:}, @code{recode} is instructed
+to fully avoid this charset as an intermediate, with the consequence
+that the external @code{iconv} library is defeated.  Consider these two
+calls:
 
 @example
 recode l1..1250 < @var{input} > @var{output}
@@ -2979,37 +2982,40 @@ recode -x: l1..1250 < @var{input} > @var{output}
 @end example
 
 @noindent
-Both should transform @var{input} from @code{ISO-8859-1} to @code{CP1250}
-on @var{output}.  The first call uses the @code{iconv} part of the library,
-while the second call avoids it.  Whatever the path used, the results should
-normally be identical.  However, there might be observable differences.
-Most of them might result from reversibility issues, as the @code{iconv}
-engine, which the @code{recode} library directly uses for the time being,
-does not address reversibility.  Even if much less likely, some differences
-might result from slight errors in the tables used, such differences should
-then be reported as bugs.
+Both should transform @var{input} from @code{ISO-8859-1} to
+@code{CP1250} on @var{output}.  The first call uses the external
+@code{iconv} library, while the second call avoids it.  Whatever the
+path used, the results should normally be identical.  However, there
+might be observable differences.  Most of them might result from
+reversibility issues, as the external @code{iconv} engine does not
+necessarily address reversibility.  Even if much less likely, some
+differences might result from slight errors in the tables used, such
+differences should then be reported as bugs.
 
 Other irregularities might be seen in the area of error detection and
 recovery.  The @code{recode} library usually tries to detect canonicity
-errors in input, and production of ambiguous output, but the @code{iconv}
-part of the library currently does not.  Input is always validated, however.
-The @code{recode} library may not always react properly when its @code{iconv}
-part has no translation for a given character.
+errors in input, and production of ambiguous output, but the external
+@code{iconv} library does not necessarily.  Input is usually validated,
+however.  The @code{recode} library may not always react properly when
+the external @code{iconv} has no translation for a given character.
 
 Within a collection of names for a single charset, the @code{recode}
 library distinguishes one of them as being the genuine charset name,
 while the others are said to be aliases.  When @code{recode} lists all
-charsets, for example with the @samp{-l} or @samp{--list} option, the list
-integrates all @code{iconv} library charsets.  The selection of one of the
-aliases as the genuine charset name is an artifact added by @code{recode},
-it does not come from @code{iconv}.  Moreover, the @code{recode} library
-dynamically resolves some conflicts when it initialises itself at runtime.
-This might explain some discrepancies in the table below, as for what is
-the genuine charset name.
+charsets, for example with the @samp{-l} or @samp{--list} option, the
+list integrates all charsets from the external @code{iconv} library.
+The selection of one of the aliases as the genuine charset name is
+an artifact added by @code{recode}, it does not necessarily come
+from @code{iconv} (in fact, the portable @code{libiconv} library
+distinguishes a genuine charset names from its aliases, while GNU
+@code{libc} does not give access to such information).  Moreover, the
+@code{recode} library dynamically resolves some conflicts when it
+initialises itself at runtime.  This might explain some discrepancies in
+the table below, as for what is the genuine charset name.
 
-@include libiconv.texi
+@include iconv.texi
 
-@node Tabular, ASCII misc, libiconv, Top
+@node Tabular, ASCII misc, iconv, Top
 @chapter Tabular sources (@w{RFC 1345})
 
 @cindex RFC 1345

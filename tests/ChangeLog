@@ -6,6 +6,9 @@
 	(all-local, Recode.o): Deleted.
 	Reported by Bruno Haible and Dagobert Michelsen.
 
+	* Recode.pyx, t21_names.py, t50_methods.py:
+	Adjusted for libiconv to iconv renaming.
+
 2008-03-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* Makefile.am (CLEANFILES): Added.

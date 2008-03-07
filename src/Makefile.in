@@ -95,10 +95,9 @@ am__objects_3 = african$U.lo afrtran$U.lo applemac$U.lo atarist$U.lo \
 	$(am__objects_1) $(am__objects_2)
 am_librecode_la_OBJECTS = argmatch$U.lo charname$U.lo combine$U.lo \
 	exitfail$U.lo fr-charname$U.lo hash$U.lo iconv$U.lo \
-	libiconv$U.lo localcharset$U.lo merged$U.lo names$U.lo \
-	outer$U.lo quotearg$U.lo recode$U.lo request$U.lo \
-	strip-pool$U.lo task$U.lo xalloc-die$U.lo xmalloc$U.lo \
-	$(am__objects_3)
+	localcharset$U.lo merged$U.lo names$U.lo outer$U.lo \
+	quotearg$U.lo recode$U.lo request$U.lo strip-pool$U.lo \
+	task$U.lo xalloc-die$U.lo xmalloc$U.lo $(am__objects_3)
 librecode_la_OBJECTS = $(am_librecode_la_OBJECTS)
 librecode_la_LINK = $(LIBTOOL) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(AM_CFLAGS) $(CFLAGS) \
@@ -267,7 +266,7 @@ lib_LTLIBRARIES = librecode.la
 man_MANS = recode.1
 include_HEADERS = recode.h recodext.h
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h exit.h exitfail.h \
-fr-charname.h hash.h inisteps.h libiconv.h quotearg.h rfc1345.h	tersteps.h \
+fr-charname.h hash.h inisteps.h iconvdecl.h quotearg.h rfc1345.h tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
@@ -286,12 +285,12 @@ L_SURFACES =
 recode_SOURCES = main.c freeze.c mixed.c
 recode_LDADD = librecode.la ../lib/libreco.a
 librecode_la_SOURCES = argmatch.c charname.c combine.c exitfail.c \
-fr-charname.c hash.c iconv.c libiconv.c localcharset.c merged.c names.c \
+fr-charname.c hash.c iconv.c localcharset.c merged.c names.c \
 outer.c quotearg.c recode.c request.c strip-pool.c task.c \
 xalloc-die.c xmalloc.c $(C_STEPS)
 
 librecode_la_LDFLAGS = -version-info 0:0:0
-INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib -I$(top_srcdir)/libiconv
+INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 ETAGS_ARGS = $(L_STEPS)
 TAGS_DEPENDENCIES = $(L_STEPS)
 PERL = perl
@@ -446,7 +445,6 @@ mostlyclean-kr:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1asci$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1ltex$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1txte$U.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libiconv$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/localcharset$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/main$U.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/merged$U.Plo@am__quote@
@@ -544,8 +542,6 @@ lat1ltex_.c: lat1ltex.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/lat1ltex.c; then echo $(srcdir)/lat1ltex.c; else echo lat1ltex.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 lat1txte_.c: lat1txte.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/lat1txte.c; then echo $(srcdir)/lat1txte.c; else echo lat1txte.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
-libiconv_.c: libiconv.c $(ANSI2KNR)
-	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/libiconv.c; then echo $(srcdir)/libiconv.c; else echo libiconv.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 localcharset_.c: localcharset.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/localcharset.c; then echo $(srcdir)/localcharset.c; else echo localcharset.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 main_.c: main.c $(ANSI2KNR)
@@ -610,19 +606,19 @@ freeze_.$(OBJEXT) freeze_.lo hash_.$(OBJEXT) hash_.lo html_.$(OBJEXT) \
 html_.lo ibmpc_.$(OBJEXT) ibmpc_.lo iconqnx_.$(OBJEXT) iconqnx_.lo \
 iconv_.$(OBJEXT) iconv_.lo lat1asci_.$(OBJEXT) lat1asci_.lo \
 lat1ltex_.$(OBJEXT) lat1ltex_.lo lat1txte_.$(OBJEXT) lat1txte_.lo \
-libiconv_.$(OBJEXT) libiconv_.lo localcharset_.$(OBJEXT) \
-localcharset_.lo main_.$(OBJEXT) main_.lo merged_.$(OBJEXT) merged_.lo \
-mixed_.$(OBJEXT) mixed_.lo mule_.$(OBJEXT) mule_.lo names_.$(OBJEXT) \
-names_.lo outer_.$(OBJEXT) outer_.lo permut_.$(OBJEXT) permut_.lo \
-quotearg_.$(OBJEXT) quotearg_.lo quoted_.$(OBJEXT) quoted_.lo \
-recode_.$(OBJEXT) recode_.lo request_.$(OBJEXT) request_.lo \
-rfc1345_.$(OBJEXT) rfc1345_.lo strip-data_.$(OBJEXT) strip-data_.lo \
-strip-pool_.$(OBJEXT) strip-pool_.lo task_.$(OBJEXT) task_.lo \
-testdump_.$(OBJEXT) testdump_.lo texinfo_.$(OBJEXT) texinfo_.lo \
-ucs_.$(OBJEXT) ucs_.lo utf16_.$(OBJEXT) utf16_.lo utf7_.$(OBJEXT) \
-utf7_.lo utf8_.$(OBJEXT) utf8_.lo varia_.$(OBJEXT) varia_.lo \
-vn_.$(OBJEXT) vn_.lo xalloc-die_.$(OBJEXT) xalloc-die_.lo \
-xmalloc_.$(OBJEXT) xmalloc_.lo : $(ANSI2KNR)
+localcharset_.$(OBJEXT) localcharset_.lo main_.$(OBJEXT) main_.lo \
+merged_.$(OBJEXT) merged_.lo mixed_.$(OBJEXT) mixed_.lo \
+mule_.$(OBJEXT) mule_.lo names_.$(OBJEXT) names_.lo outer_.$(OBJEXT) \
+outer_.lo permut_.$(OBJEXT) permut_.lo quotearg_.$(OBJEXT) \
+quotearg_.lo quoted_.$(OBJEXT) quoted_.lo recode_.$(OBJEXT) recode_.lo \
+request_.$(OBJEXT) request_.lo rfc1345_.$(OBJEXT) rfc1345_.lo \
+strip-data_.$(OBJEXT) strip-data_.lo strip-pool_.$(OBJEXT) \
+strip-pool_.lo task_.$(OBJEXT) task_.lo testdump_.$(OBJEXT) \
+testdump_.lo texinfo_.$(OBJEXT) texinfo_.lo ucs_.$(OBJEXT) ucs_.lo \
+utf16_.$(OBJEXT) utf16_.lo utf7_.$(OBJEXT) utf7_.lo utf8_.$(OBJEXT) \
+utf8_.lo varia_.$(OBJEXT) varia_.lo vn_.$(OBJEXT) vn_.lo \
+xalloc-die_.$(OBJEXT) xalloc-die_.lo xmalloc_.$(OBJEXT) xmalloc_.lo : \
+$(ANSI2KNR)
 
 mostlyclean-libtool:
 	-rm -f *.lo

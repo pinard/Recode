@@ -24,11 +24,11 @@
 Usage: python tables.py [OPTION]... DATA-FILE...
 
   -e  produce C source file for explode data (explode.c)
-  -l  produce C source file for libiconv charsets (libiconv.h)
+  -l  produce C source file for iconv charsets (iconv.h)
   -m  produce C inclusion file for short RFC 1345 mnemonics (rfc1345.h)
   -n  produce C inclusion file for character names (charname.h)
   -p  produce C source files for strip data (strip-pool.c and strip-data.c)
-  -s  produce Texinfo inclusion file for libiconv (libiconv.texi)
+  -s  produce Texinfo inclusion file for iconv (iconv.texi)
   -t  produce Texinfo inclusion file for RFC 1345 (rfc1345.texi)
   -F  produce French versions for -n, -s or -t
 
@@ -47,7 +47,7 @@ NOT_A_CHARACTER = 0xFFFF
 def main(*arguments):
     import getopt
     global explodes
-    charnames = explodes = libiconv = mnemonics = rfc1345 = strips = None
+    charnames = explodes = iconv = mnemonics = rfc1345 = strips = None
     French_option = False
     options, arguments = getopt.getopt(arguments, 'Felmnpst')
     for option, value in options:
@@ -58,9 +58,9 @@ def main(*arguments):
                 explodes = Explodes()
             explodes.do_sources = True
         elif option == '-l':
-            if not libiconv:
-                libiconv = Libiconv()
-            libiconv.do_sources = True
+            if not iconv:
+                iconv = Iconv()
+            iconv.do_sources = True
         elif option == '-m':
             if not mnemonics:
                 mnemonics = Mnemonics()
@@ -74,9 +74,9 @@ def main(*arguments):
                 strips = Strips()
             strips.do_sources = True
         elif option == '-s':
-            if not libiconv:
-                libiconv = Libiconv()
-            libiconv.do_texinfo = True
+            if not iconv:
+                iconv = Iconv()
+            iconv.do_texinfo = True
         elif option == '-t':
             if not strips:
                 strips = Strips()
@@ -98,9 +98,9 @@ def main(*arguments):
                     line = input.readline()
                 continue
             if input.begins('DEFENCODING'):
-                if not libiconv:
-                    libiconv = Libiconv()
-                libiconv.digest(input)
+                if not iconv:
+                    iconv = Iconv()
+                iconv.digest(input)
                 break
             if input.begins('#    Name:'):
                 if not strips:
@@ -153,7 +153,7 @@ def main(*arguments):
                 mnemonics.digest_iso10646_def(input)
                 break
             input.die("Data file with unknown contents")
-    for instance in explodes, strips, charnames, libiconv, mnemonics:
+    for instance in explodes, strips, charnames, iconv, mnemonics:
         if instance:
             instance.complete(French_option)
 
@@ -422,11 +422,11 @@ class Explodes(Options):
               '{\n'
               '}\n')
 
-# Libiconv.
+# Iconv.
 
-class Libiconv(Options):
-    SOURCES = 'libiconv.h'
-    TEXINFO = 'libiconv.texi'
+class Iconv(Options):
+    SOURCES = 'iconv.h'
+    TEXINFO = 'iconv.texi'
 
     data = []
 

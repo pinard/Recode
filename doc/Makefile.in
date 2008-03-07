@@ -218,9 +218,7 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnits
 info_TEXINFOS = recode.texi
-EXTRA_DIST = libiconv.texi rfc1345.texi File-Latin1 help2man Makemore \
-tables.py
-
+EXTRA_DIST = rfc1345.texi File-Latin1 help2man Makemore tables.py
 MOSTLYCLEANFILES = recode.ops
 all: all-am
 
@@ -636,8 +634,8 @@ uninstall-am: uninstall-dvi-am uninstall-html-am uninstall-info-am \
 	uninstall-pdf-am uninstall-ps-am
 
 
-recode.info: libiconv.texi rfc1345.texi
-recode.dvi: libiconv.texi rfc1345.texi
+recode.info: rfc1345.texi
+recode.dvi: rfc1345.texi
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

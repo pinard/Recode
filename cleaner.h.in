@@ -14,8 +14,8 @@
 #define complete_pairs librecode_complete_pairs
 #define declare_alias librecode_declare_alias
 #define declare_explode_data librecode_declare_explode_data
+#define declare_iconv librecode_declare_iconv
 #define declare_implied_surface librecode_declare_implied_surface
-#define declare_libiconv librecode_declare_libiconv
 #define declare_single librecode_declare_single
 #define declare_strip_data librecode_declare_strip_data
 #define decode_known_pairs librecode_decode_known_pairs
@@ -34,11 +34,11 @@
 #define delmodule_html librecode_delmodule_html
 #define delmodule_ibmpc librecode_delmodule_ibmpc
 #define delmodule_iconqnx librecode_delmodule_iconqnx
+#define delmodule_iconv librecode_delmodule_iconv
 #define delmodule_latex_latin1 librecode_delmodule_latex_latin1
 #define delmodule_latin1_ascii librecode_delmodule_latin1_ascii
 #define delmodule_latin1_latex librecode_delmodule_latin1_latex
 #define delmodule_latin1_texte librecode_delmodule_latin1_texte
-#define delmodule_libiconv librecode_delmodule_libiconv
 #define delmodule_mule librecode_delmodule_mule
 #define delmodule_permutations librecode_delmodule_permutations
 #define delmodule_quoted_printable librecode_delmodule_quoted_printable
@@ -87,10 +87,6 @@
 #define init_explode librecode_init_explode
 #define init_ucs2_to_byte librecode_init_ucs2_to_byte
 #define invert_table librecode_invert_table
-#define libiconv librecode_libiconv
-#define libiconv_close librecode_libiconv_close
-#define libiconv_open librecode_libiconv_open
-#define libiconvctl librecode_libiconvctl
 #define list_all_symbols librecode_list_all_symbols
 #define list_concise_charset librecode_list_concise_charset
 #define list_full_charset librecode_list_full_charset
@@ -111,11 +107,11 @@
 #define module_html librecode_module_html
 #define module_ibmpc librecode_module_ibmpc
 #define module_iconqnx librecode_module_iconqnx
+#define module_iconv librecode_module_iconv
 #define module_latex_latin1 librecode_module_latex_latin1
 #define module_latin1_ascii librecode_module_latin1_ascii
 #define module_latin1_latex librecode_module_latin1_latex
 #define module_latin1_texte librecode_module_latin1_texte
-#define module_libiconv librecode_module_libiconv
 #define module_mule librecode_module_mule
 #define module_permutations librecode_module_permutations
 #define module_quoted_printable librecode_module_quoted_printable
@@ -149,7 +145,7 @@
 #define transform_byte_to_ucs2 librecode_transform_byte_to_ucs2
 #define transform_byte_to_variable librecode_transform_byte_to_variable
 #define transform_ucs2_to_byte librecode_transform_ucs2_to_byte
-#define transform_with_libiconv librecode_transform_with_libiconv
+#define transform_with_iconv librecode_transform_with_iconv
 #define ucs2_to_charname librecode_ucs2_to_charname
 #define ucs2_to_french_charname librecode_ucs2_to_french_charname
 #define ucs2_to_rfc1345 librecode_ucs2_to_rfc1345

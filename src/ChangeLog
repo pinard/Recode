@@ -1,3 +1,11 @@
+2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
+
+	* iconv.c, iconvdecl.h: New names for libiconv.c and libiconv.h.
+	* Makefile.am: Adjusted.  Do not rely anymore on libiconv/.
+	* recodext.h, outer.c, request.c: Adjusted.
+	Use iconv_pivot instead of libiconv_pivot.
+	Use :iconv: instead of :libiconv:.
+
 2008-03-05  François Pinard  <pinard@iro.umontreal.ca>
 
 	* combine.c, html.c, names.c, recode.c, testdump.c: Declare the

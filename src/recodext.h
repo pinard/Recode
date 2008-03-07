@@ -156,7 +156,7 @@ struct recode_outer
     RECODE_SYMBOL data_symbol;/* special charset defining surfaces */
     RECODE_SYMBOL tree_symbol; /* special charset defining structures */
     RECODE_SYMBOL ucs2_charset; /* UCS-2 */
-    RECODE_SYMBOL libiconv_pivot; /* `libiconv' internal UCS */
+    RECODE_SYMBOL iconv_pivot; /* `iconv' internal UCS */
     RECODE_SYMBOL crlf_surface; /* for IBM PC machines */
     RECODE_SYMBOL cr_surface;	/* for Macintosh machines */
 
@@ -633,9 +633,9 @@ bool combine_ucs2_ucs2 PARAMS ((RECODE_SUBTASK));
 
 void recode_freeze_tables PARAMS ((RECODE_OUTER));
 
-/* libiconv.c.  */
+/* iconv.c.  */
 
-bool transform_with_libiconv PARAMS ((RECODE_SUBTASK));
+bool transform_with_iconv PARAMS ((RECODE_SUBTASK));
 
 /* mixed.c.  */
 
@@ -651,7 +651,7 @@ RECODE_SINGLE declare_single
 	   bool (*) (RECODE_STEP, RECODE_CONST_REQUEST,
 		     RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST),
 	   bool (*) (RECODE_SUBTASK)));
-bool declare_libiconv PARAMS ((RECODE_OUTER, const char *));
+bool declare_iconv PARAMS ((RECODE_OUTER, const char *));
 bool declare_explode_data PARAMS ((RECODE_OUTER, const unsigned short *,
 				   const char *, const char *));
 bool declare_strip_data PARAMS ((RECODE_OUTER, struct strip_data *,

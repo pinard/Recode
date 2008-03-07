@@ -40,7 +40,6 @@ include Makefile
 # The following paths are relative to $(srcdir).
 CHSET = $(KELD)/chset32a
 ALAIN = $(KELD)
-BRUNO = ../libiconv
 KELD = ../keld
 
 MNEMONICS_DS = $(KELD)/mnemonic,ds
@@ -55,8 +54,6 @@ CHARSETS_DEF = $(KELD)/charsets.def
 
 RFC1345_TXT = $(KELD)/rfc1345.txt
 
-ENCODINGS_DEF = $(BRUNO)/encodings.def $(wildcard $(BRUNO)/encodings_*.def)
-
 NOMS_CARACS = $(ALAIN)/noms_juc_19981216.txt
 NOMS_CARACS = $(ALAIN)/NomsSeulsfinal.lst
 
@@ -68,11 +65,11 @@ WGET = wget
 MAPURL = ftp://ftp.unicode.org/MAPPINGS
 
 # Merely add our things to standard `all' goal.
-all: $(srcdir)/libiconv.texi $(srcdir)/rfc1345.texi \
-$(top_srcdir)/src/libiconv.h $(top_srcdir)/src/rfc1345.h \
+all: $(srcdir)/iconv.texi $(srcdir)/rfc1345.texi \
+$(top_srcdir)/src/iconv.h $(top_srcdir)/src/rfc1345.h \
 $(top_srcdir)/src/charname.h $(top_srcdir)/src/fr-charname.h
 
-#$(srcdir)/fr-libiconv.texi $(srcdir)/fr-rfc1345.texi \
+#$(srcdir)/fr-iconv.texi $(srcdir)/fr-rfc1345.texi \
 
 # The next rules, when written, for example:
 #rfc1345.texi pool.c tables.c: ...
@@ -87,19 +84,19 @@ $(top_srcdir)/src/fr-charname.h: tables.py $(NOMS_CARACS)
 	cd $(srcdir) && $(PYTHON) tables.py -Fn $(NOMS_CARACS)
 	mv $(srcdir)/fr-charname.h $@
 
-$(top_srcdir)/src/libiconv.h: tables.py $(ENCODINGS_DEF)
-	cd $(srcdir) && $(PYTHON) tables.py -l $(ENCODINGS_DEF)
-	mv $(srcdir)/libiconv.h $@
+$(top_srcdir)/src/iconv.h: tables.py
+	cd $(srcdir) && $(PYTHON) tables.py -l
+	mv $(srcdir)/iconv.h $@
 
 $(top_srcdir)/src/rfc1345.h: tables.py $(MNEMONICS_DS)
 	cd $(srcdir) && $(PYTHON) tables.py -m $(MNEMONICS_DS)
 	mv $(srcdir)/rfc1345.h $@
 
-$(srcdir)/libiconv.texi: tables.py $(ENCODINGS_DEF)
-	cd $(srcdir) && $(PYTHON) tables.py -s $(ENCODINGS_DEF)
+$(srcdir)/iconv.texi: tables.py
+	cd $(srcdir) && $(PYTHON) tables.py -s
 
-$(srcdir)/fr-libiconv.texi: tables.py $(ENCODINGS_DEF)
-	cd $(srcdir) && $(PYTHON) tables.py -Fs $(ENCODINGS_DEF)
+$(srcdir)/fr-iconv.texi: tables.py
+	cd $(srcdir) && $(PYTHON) tables.py -Fs
 
 $(srcdir)/rfc1345.texi: tables.py $(MNEMONICS_DS) $(CHARSETS_DEF)
 	cd $(srcdir) && $(PYTHON) tables.py -pt $(MNEMONICS_DS) $(CHARSETS_DEF)

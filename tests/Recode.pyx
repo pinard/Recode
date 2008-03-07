@@ -232,7 +232,7 @@ cdef extern from "common.h":
         RECODE_SYMBOL data_symbol
         RECODE_SYMBOL tree_symbol
         RECODE_SYMBOL ucs2_charset
-        RECODE_SYMBOL libiconv_pivot
+        RECODE_SYMBOL iconv_pivot
         RECODE_SYMBOL crlf_surface
         RECODE_SYMBOL cr_surface
         recode_quality quality_byte_reversible
@@ -367,9 +367,9 @@ cdef extern from "common.h":
     void recode_freeze_tables 'librecode_recode_freeze_tables' (
             RECODE_OUTER)
 
-    # libiconv.c
+    # iconv.c
 
-    bool transform_with_libiconv 'librecode_transform_with_libiconv' (
+    bool transform_with_iconv 'librecode_transform_with_iconv' (
             RECODE_SUBTASK)
 
     # mixed.c
@@ -391,7 +391,7 @@ cdef extern from "common.h":
     RECODE_SINGLE declare_single 'librecode_declare_single' (
             RECODE_OUTER, char *, char *, recode_quality,
             declare_single_Arg5, declare_single_Arg6)
-    bool declare_libiconv 'librecode_declare_libiconv' (
+    bool declare_iconv 'librecode_declare_iconv' (
             RECODE_OUTER, char *)
     bool declare_explode_data 'librecode_declare_explode_data' (
             RECODE_OUTER, unsigned short *, char *, char *)
@@ -571,7 +571,7 @@ cdef class Outer:
         symbol = self.outer.symbol_list
         while symbol is not NULL:
             if (symbol.type == RECODE_CHARSET
-                    and symbol is not self.outer.libiconv_pivot
+                    and symbol is not self.outer.iconv_pivot
                     and symbol is not self.outer.data_symbol
                     and symbol is not self.outer.tree_symbol):
                 list.append(symbol.name)
@@ -598,9 +598,9 @@ cdef class Outer:
         if not ok:
             raise error
 
-    def set_libiconv(self, flag):
-        previous = self.outer.libiconv_pivot.ignore == 0
-        self.outer.libiconv_pivot.ignore = int(not flag)
+    def set_iconv(self, flag):
+        previous = self.outer.iconv_pivot.ignore == 0
+        self.outer.iconv_pivot.ignore = int(not flag)
         return previous
 
 # Recode library at REQUEST level.
@@ -637,11 +637,11 @@ cdef class Request:
         cdef RECODE_OUTER outer
         cdef bool saved
         outer = self.request.outer
-        saved = outer.libiconv_pivot.ignore
-        outer.libiconv_pivot.ignore = true
+        saved = outer.iconv_pivot.ignore
+        outer.iconv_pivot.ignore = true
         ok = recode_format_table(
                 self.request, <recode_programming_language> language, charset)
-        outer.libiconv_pivot.ignore = saved
+        outer.iconv_pivot.ignore = saved
         if not ok:
             raise error
 

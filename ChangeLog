@@ -4,6 +4,12 @@
 
 	* configure.ac (AC_OUTPUT): Add tests/setup.py.
 
+	* libiconv: Whole subdirectory deleted.
+	* Makefile.am (SUBDIRS): Adjusted.
+	* configure.ac (AC_OUTPUT): Adjusted.
+	* cleaner.h.in: Ajusted for libiconv to iconv renaming.
+	Do not trap libicon, libiconv_open, libiconv_close, libiconvctl.
+
 2008-02-27  François Pinard  <pinard@iro.umontreal.ca>
 
 	To solve linker namespace pollution:

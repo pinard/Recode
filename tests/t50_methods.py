@@ -64,7 +64,7 @@ def test_1():
     yield validate, 'texte..iconqnx', 'pipe', 'filter'
     yield validate, 'texte..iconqnx', 'pipe', 'squash'
 
-    # Four single steps, optimized into three (with libiconv) or two (without).
+    # Four single steps, optimized into three (with iconv) or two (without).
     yield validate, 'ascii-bs..ebcdic', 'memory', 'filter'
     yield validate, 'ascii-bs..ebcdic', 'memory', 'squash'
     yield validate, 'ascii-bs..ebcdic', 'files', 'filter'

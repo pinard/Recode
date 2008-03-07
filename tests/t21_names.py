@@ -24,7 +24,7 @@ expected = '''\
 /test8
 /test15
 /test16
-:libiconv: :
+:iconv: :
 AFRFUL-102-BPI_OCIL bambara bra ewondo fulfulde
 AFRFUL-103-BPI_OCIL t-bambara t-bra t-ewondo t-fulfulde
 AFRL1-101-BPI_OCIL t-fra t-francais

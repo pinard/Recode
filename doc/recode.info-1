@@ -37,8 +37,9 @@ sets and surface encodings.  When this cannot be achieved exactly, it
 may get rid of the offending characters or fall back on approximations.
 The library recognises or produces more than 300 different character
 sets and is able to convert files between almost any pair.  Most
-RFC 1345 character sets, and all `libiconv' character sets, are
-supported.  The `recode' program is a handy front-end to the library.
+RFC 1345 character sets, and all character sets from a pre-installed
+`iconv' library, are supported.  The `recode' program is a handy
+front-end to the library.
 
    The current `recode' release is 3.7-beta1.
 
@@ -49,7 +50,7 @@ supported.  The `recode' program is a handy front-end to the library.
 * Invoking recode::     How to use this program
 * Library::             A recoding library
 * Universal::           The universal charset
-* libiconv::            The `iconv' library
+* iconv::               The `iconv' library
 * Tabular::             Tabular sources (RFC 1345)
 * ASCII misc::          ASCII and some derivatives
 * IBM and MS::          Some IBM or Microsoft charsets
@@ -339,9 +340,10 @@ File: recode.info,  Node: Charset overview,  Next: Surface overview,  Prev: Intr
 ========================
 
 Recoding is currently possible between many charsets, the bulk of which
-is described by RFC 1345 tables or available in the `iconv' library.
-*Note Tabular::, and *note libiconv::.  The `recode' library also
-handles some charsets in some specialised ways.  These are:
+is described by RFC 1345 tables or available in a pre-installed
+external `iconv' library. *Note Tabular::, and *note iconv::.  The
+`recode' library also handles some charsets in some specialised ways.
+These are:
 
    * 6-bit charsets based on CDC display code: 6/12 code from NOS;
      bang-bang code from Universite' de Montre'al;
@@ -367,7 +369,7 @@ separate.
    Conversion is possible between almost any pair of charsets.  Here is
 a list of the exceptions.  One may not recode _from_ the `flat',
 `count-characters' or `dump-with-names' charsets, nor _from_ or _to_
-the `data', `tree' or `:libiconv:' charsets.  Also, if we except the
+the `data', `tree' or `:iconv:' charsets.  Also, if we except the
 `data' and `tree' pseudo-charsets, charsets and surfaces live in
 disjoint recoding spaces, one cannot really transform a surface into a
 charset or vice-versa, as surfaces are only meant to be applied over
@@ -1355,7 +1357,7 @@ replacement mode, *Note Synopsis::.  Another good trick is to use the
 could rewrite our recoding call as `recode -v u8..h <nicepage', to get
 something like:
 
-     Request: UTF-8..:libiconv:..ISO-10646-UCS-2..HTML_4.0
+     Request: UTF-8..:iconv:..ISO-10646-UCS-2..HTML_4.0
      Shrunk to: UTF-8..ISO-10646-UCS-2..HTML_4.0
      [...SOME OUTPUT...]
      recode: Invalid input in step `UTF-8..ISO-10646-UCS-2'
@@ -2189,7 +2191,7 @@ interesting to maintain counters about how many times each kind of
 error occurred.
 
 
-File: recode.info,  Node: Universal,  Next: libiconv,  Prev: Library,  Up: Top
+File: recode.info,  Node: Universal,  Next: iconv,  Prev: Library,  Up: Top
 
 5 The universal charset
 ***********************
@@ -2533,67 +2535,69 @@ lines.
      echo -n 0x03C6 | recode u2/x2..dump | tail +3
 
 
-File: recode.info,  Node: libiconv,  Next: Tabular,  Prev: Universal,  Up: Top
+File: recode.info,  Node: iconv,  Next: Tabular,  Prev: Universal,  Up: Top
 
 6 The `iconv' library
 *********************
 
-The `recode' library itself contains most code and tables from the
-portable `iconv' library, written by Bruno Haible.  In fact, many
-capabilities of the `recode' library are duplicated because of this
-merging, as the older `recode' and `iconv' libraries share many
-charsets.  We discuss, here, the issues related to this duplication, and
-other peculiarities specific to the `iconv' library.  The plan is to
-remove duplications and better merge specificities, as `recode' evolves.
+The `recode' library is able to use the capabilities of an external,
+pre-installed `iconv' library, usually as provided by GNU `libc' or the
+portable `libiconv' written by Bruno Haible.  In fact, many
+capabilities of the `recode' library are duplicated in an external
+`iconv' library, as they likely share many charsets.  We discuss, here,
+the issues related to this duplication, and other peculiarities
+specific to the `iconv' library.
 
    As implemented, if a recoding request can be satisfied by the
-`recode' library both with and without its `iconv' library part, it is
-likely that the `iconv' library will be used.  To sort out if the
-`iconv' is indeed used or not, just use the `-v' or `--verbose' option,
-*note Recoding::.
+`recode' library both with and without using the `iconv' library, it is
+likely that the external `iconv' library will be used.  To sort out if
+the `iconv' is indeed used or not, just use the `-v' or `--verbose'
+option, *note Recoding::.
 
-   The `:libiconv:' charset represents a conceptual pivot charset
-within the `iconv' part of the `recode' library (in fact, this pivot
-exists, but is not directly reachable).  This charset has a mere `:' (a
-colon) for an alias.  It is not allowed to recode from or to this
-charset directly.  But when this charset is selected as an
-intermediate, usually by automatic means, then the `iconv' part of the
-`recode' library is called to handle the transformations.  By using an
-`--ignore=:libiconv:' option on the `recode' call or equivalently, but
-more simply, `-x:', `recode' is instructed to fully avoid this charset
-as an intermediate, with the consequence that the `iconv' part of the
-library is defeated.  Consider these two calls:
+   The `:iconv:' charset represents a conceptual pivot charset within
+the external `iconv' library (in fact, this pivot exists, but is not
+directly reachable).  This charset has a mere `:' (a colon) for an
+alias.  It is not allowed to recode from or to this charset directly.
+But when this charset is selected as an intermediate, usually by
+automatic means, then the external `iconv' `recode' library is called
+to handle the transformations.  By using an `--ignore=:iconv:' option
+on the `recode' call or equivalently, but more simply, `-x:', `recode'
+is instructed to fully avoid this charset as an intermediate, with the
+consequence that the external `iconv' library is defeated.  Consider
+these two calls:
 
      recode l1..1250 < INPUT > OUTPUT
      recode -x: l1..1250 < INPUT > OUTPUT
 
 Both should transform INPUT from `ISO-8859-1' to `CP1250' on OUTPUT.
-The first call uses the `iconv' part of the library, while the second
-call avoids it.  Whatever the path used, the results should normally be
+The first call uses the external `iconv' library, while the second call
+avoids it.  Whatever the path used, the results should normally be
 identical.  However, there might be observable differences.  Most of
-them might result from reversibility issues, as the `iconv' engine,
-which the `recode' library directly uses for the time being, does not
-address reversibility.  Even if much less likely, some differences
-might result from slight errors in the tables used, such differences
-should then be reported as bugs.
+them might result from reversibility issues, as the external `iconv'
+engine does not necessarily address reversibility.  Even if much less
+likely, some differences might result from slight errors in the tables
+used, such differences should then be reported as bugs.
 
    Other irregularities might be seen in the area of error detection and
 recovery.  The `recode' library usually tries to detect canonicity
-errors in input, and production of ambiguous output, but the `iconv'
-part of the library currently does not.  Input is always validated,
-however.  The `recode' library may not always react properly when its
-`iconv' part has no translation for a given character.
+errors in input, and production of ambiguous output, but the external
+`iconv' library does not necessarily.  Input is usually validated,
+however.  The `recode' library may not always react properly when the
+external `iconv' has no translation for a given character.
 
    Within a collection of names for a single charset, the `recode'
 library distinguishes one of them as being the genuine charset name,
 while the others are said to be aliases.  When `recode' lists all
 charsets, for example with the `-l' or `--list' option, the list
-integrates all `iconv' library charsets.  The selection of one of the
-aliases as the genuine charset name is an artifact added by `recode',
-it does not come from `iconv'.  Moreover, the `recode' library
-dynamically resolves some conflicts when it initialises itself at
-runtime.  This might explain some discrepancies in the table below, as
-for what is the genuine charset name.
+integrates all charsets from the external `iconv' library.  The
+selection of one of the aliases as the genuine charset name is an
+artifact added by `recode', it does not necessarily come from `iconv'
+(in fact, the portable `libiconv' library distinguishes a genuine
+charset names from its aliases, while GNU `libc' does not give access
+to such information).  Moreover, the `recode' library dynamically
+resolves some conflicts when it initialises itself at runtime.  This
+might explain some discrepancies in the table below, as for what is the
+genuine charset name.
 
    * General character sets
     `US-ASCII'
@@ -2908,7 +2912,7 @@ for what is the genuine charset name.
           `csISO2022KR' and `ISO2022KR' are aliases for this charset.
 
 
-File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: libiconv,  Up: Top
+File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: iconv,  Up: Top
 
 7 Tabular sources (RFC 1345)
 ****************************
@@ -5311,7 +5315,7 @@ Concept Index
 * combining characters:                  UCS-2.               (line  34)
 * commutativity of surfaces:             Requests.            (line  57)
 * contributing charsets:                 Contributing.        (line   6)
-* conversions, unavailable:              Charset overview.    (line  32)
+* conversions, unavailable:              Charset overview.    (line  33)
 * convert a subset of characters:        Mixed.               (line  20)
 * convert strings and comments:          Mixed.               (line  39)
 * copyright conditions, printing:        Listings.            (line  19)
@@ -5341,14 +5345,14 @@ Concept Index
 * error level threshold:                 Errors.              (line  91)
 * error messages:                        Errors.              (line   6)
 * error messages, suppressing:           Reversibility.       (line  37)
-* exceptions to available conversions:   Charset overview.    (line  32)
+* exceptions to available conversions:   Charset overview.    (line  33)
 * file sequencing:                       Sequencing.          (line  29)
 * file time stamps:                      Recoding.            (line  26)
 * filter operation:                      Synopsis.            (line  27)
 * force recoding:                        Reversibility.       (line  10)
 * French description of charsets:        Listings.            (line 198)
 * guessing charsets:                     Listings.            (line  63)
-* Haible, Bruno:                         libiconv.            (line   6)
+* Haible, Bruno:                         iconv.               (line   6)
 * handling errors:                       Errors.              (line   6)
 * help page, printing:                   Listings.            (line  14)
 * HTML:                                  HTML.                (line   6)
@@ -5356,16 +5360,16 @@ Concept Index
 * IBM codepages:                         IBM and MS.          (line   6)
 * IBM graphics characters:               Recoding.            (line  16)
 * iconv:                                 Design.              (line  98)
-* iconv library:                         libiconv.            (line   6)
+* iconv library:                         iconv.               (line   6)
 * identifying subsets in charsets:       Listings.            (line 210)
 * ignore charsets:                       Recoding.            (line  60)
 * implied surfaces:                      Requests.            (line  70)
-* impossible conversions:                Charset overview.    (line  32)
+* impossible conversions:                Charset overview.    (line  33)
 * information about charsets:            Listings.            (line 153)
 * initialisation functions, outer:       Outer level.         (line  84)
 * initialisation functions, request:     Request level.       (line  42)
 * initialisation functions, task:        Task level.          (line  52)
-* interface, with iconv library:         libiconv.            (line   6)
+* interface, with iconv library:         iconv.               (line   6)
 * intermediate charsets:                 Requests.            (line  23)
 * internal functions:                    Charset level.       (line   6)
 * internal recoding bug, error message:  Errors.              (line  81)
@@ -5379,8 +5383,8 @@ Concept Index
 * Latin charsets:                        ISO 8859.            (line   6)
 * Latin-1 table, recreating with recode: ISO 8859.            (line  45)
 * letter case, in charset and surface names: Requests.        (line  94)
-* libiconv:                              libiconv.            (line   6)
-* library, iconv:                        libiconv.            (line   6)
+* libiconv:                              iconv.               (line   6)
+* library, iconv:                        iconv.               (line   6)
 * listing charsets:                      Listings.            (line 153)
 * Macintosh charset:                     Apple-Mac.           (line   6)
 * map filling:                           Reversibility.       (line  98)
@@ -5406,7 +5410,7 @@ Concept Index
 * pipe sequencing:                       Sequencing.          (line  40)
 * program_name variable:                 Outer level.         (line 122)
 * programming language support:          Listings.            (line  26)
-* pseudo-charsets:                       Charset overview.    (line  32)
+* pseudo-charsets:                       Charset overview.    (line  33)
 * pure charset:                          Surface overview.    (line  17)
 * quality of recoding:                   Recoding.            (line  35)
 * recode internals:                      Internals.           (line   6)
@@ -5462,10 +5466,10 @@ Concept Index
 * time stamps of files:                  Recoding.            (line  26)
 * trivial surface:                       Surfaces.            (line   6)
 * tutorial:                              Tutorial.            (line   6)
-* unavailable conversions:               Charset overview.    (line  32)
+* unavailable conversions:               Charset overview.    (line  33)
 * Unicode:                               UCS-2.               (line   6)
 * unknown charsets:                      Listings.            (line  63)
-* unreachable charsets:                  Charset overview.    (line  32)
+* unreachable charsets:                  Charset overview.    (line  33)
 * untranslatable input, error message:   Errors.              (line  50)
 * valid characters in charset names:     Requests.            (line  10)
 * verbose operation:                     Recoding.            (line  35)
