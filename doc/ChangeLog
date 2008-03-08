@@ -1,3 +1,7 @@
+2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: Better document iconv processing.
+
 2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* tables.py: Moved to top level.

@@ -849,6 +849,18 @@ are not meant to accompany actual file recodings.  These options are:
 
           recode -l | grep -i greek
 
+     Within a collection of names for a single charset, the `recode'
+     library distinguishes one of them as being the genuine charset
+     name, while the others are said to be aliases.  The list normally
+     integrates all charsets from the external `iconv' library, unless
+     this is defeated through options like `--ignore=:iconv:' or `-x:'.
+     The portable `libiconv' library relates its own aliases of a same
+     charset, and for a given set of aliases, if none of them are known
+     to `recode' already, then `recode' will pick one as being the
+     genuine charset.  The `iconv' library within GNU `libc' makes all
+     aliases appear as different charsets, and each will be presented as
+     a charset by `recode', unless it is known otherwise.
+
      There might be one non-option argument, in which case it is
      interpreted as a charset name, possibly abbreviated to any non
      ambiguous prefix.  This particular usage of the `-l' option is
@@ -1467,7 +1479,7 @@ an example of a program which does not really make anything useful.
      main (int argc, char *const *argv)
      {
        program_name = argv[0];
-       RECODE_OUTER outer = recode_new_outer (true);
+       RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
        recode_delete_outer (outer);
        exit (0);
@@ -1524,7 +1536,7 @@ like:
      main (int argc, char *const *argv)
      {
        program_name = argv[0];
-       RECODE_OUTER outer = recode_new_outer (true);
+       RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
        recode_term_outer (outer);
        exit (EXIT_SUCCESS);
@@ -1534,28 +1546,43 @@ but we will not insist on such details in the examples to come.
 
    * Initialisation functions 
 
-          RECODE_OUTER recode_new_outer (AUTO_ABORT);
+          RECODE_OUTER recode_new_outer (FLAGS);
           bool recode_delete_outer (OUTER);
 
      The recoding library absolutely needs to be initialised before
      being used, and `recode_new_outer' has to be called once, first.
      Besides the OUTER it is meant to initialise, the function accepts
-     a Boolean argument whether or not the library should automatically
-     issue diagnostics on standard and abort the whole program on
-     errors.  When AUTO_ABORT is `true', the library later conveniently
-     issues diagnostics itself, and aborts the calling program on
-     errors.  This is merely a convenience, because if this parameter
-     was `false', the calling program should always take care of
-     checking the return value of all other calls to the recoding
-     library functions, and when any error is detected, issue a
-     diagnostic and abort processing itself.
+     an integer value holding zero or more flags.  If no flags, use
+     `0'.  If more than one flag, they should be combined with the
+     bitwise-or (`|') operator.  The possible flags are:
 
-     Regardless of the setting of AUTO_ABORT, all recoding library
-     functions return a success status.  Most functions are geared for
-     returning `false' for an error, and `true' if everything went fine.
-     Functions returning structures or strings return `NULL' instead of
-     the result, when the result cannot be produced.  If AUTO_ABORT is
-     selected, functions either return `true', or do not return at all.
+    `RECODE_AUTO_ABORT_FLAG'
+          When this flag is set, the library later issues diagnostics
+          itself, and aborts the calling program on errors.  This is
+          merely a convenience, because if this flag was not given, the
+          calling program should always take care of checking the
+          return value of all other calls to the recoding library
+          functions, and when any error is detected, issue a diagnostic
+          and abort processing itself.
+
+    `RECODE_NO_ICONV_FLAG'
+          When this flag is set, the library does not initialize nor
+          use the external `iconv' library.  This means that the
+          charsets and aliases provided by the `iconv' external library
+          and not by `recode' itself are not available.
+
+
+     In previous incatations of the `recode' library, FLAGS was a
+     Boolean instead of a collection of flags, meant to set
+     `RECODE_AUTO_ABORT_FLAG'.  This still works, but is deprecated.
+
+     Regardless of the setting of `RECODE_AUTO_ABORT', all recoding
+     library functions return a success status.  Most functions are
+     geared for returning `false' for an error, and `true' if
+     everything went fine.  Functions returning structures or strings
+     return `NULL' instead of the result, when the result cannot be
+     produced.  If RECODE_AUTO_ABORT is selected, functions either
+     return `true', or do not return at all.
 
      As in the example above, `recode_new_outer' is called only once in
      most cases.  Calling `recode_new_outer' implies some overhead, so
@@ -2549,10 +2576,10 @@ the issues related to this duplication, and other peculiarities
 specific to the `iconv' library.
 
    As implemented, if a recoding request can be satisfied by the
-`recode' library both with and without using the `iconv' library, it is
-likely that the external `iconv' library will be used.  To sort out if
-the `iconv' is indeed used or not, just use the `-v' or `--verbose'
-option, *note Recoding::.
+`recode' library both with and without using the `iconv' library, the
+external `iconv' library might be used.  To sort out if the `iconv' is
+indeed used or not, just use the `-v' or `--verbose' option, *note
+Recoding::, and check if `:iconv:' appears as an intermediate charset.
 
    The `:iconv:' charset represents a conceptual pivot charset within
 the external `iconv' library (in fact, this pivot exists, but is not
@@ -2570,38 +2597,35 @@ these two calls:
      recode -x: l1..1250 < INPUT > OUTPUT
 
 Both should transform INPUT from `ISO-8859-1' to `CP1250' on OUTPUT.
-The first call uses the external `iconv' library, while the second call
-avoids it.  Whatever the path used, the results should normally be
-identical.  However, there might be observable differences.  Most of
-them might result from reversibility issues, as the external `iconv'
-engine does not necessarily address reversibility.  Even if much less
-likely, some differences might result from slight errors in the tables
-used, such differences should then be reported as bugs.
+The first call might use the external `iconv' library, while the second
+call surely avoids it.  Whatever the path used, the results should
+normally be identical.  However, there might be observable differences.
+Most of them might result from reversibility issues, as the external
+`iconv' engine does not likely address reversibility in the same way.
+Even if much less likely, some differences might result from slight
+errors in the tables used, such differences should then be reported as
+bugs.
 
-   Other irregularities might be seen in the area of error detection and
+   Discrepancies might be seen in the area of error detection and
 recovery.  The `recode' library usually tries to detect canonicity
 errors in input, and production of ambiguous output, but the external
-`iconv' library does not necessarily.  Input is usually validated,
-however.  The `recode' library may not always react properly when the
+`iconv' library does not necessarily do it the same way.  Moreover, the
+`recode' library may not always recover as nicely as possible when the
 external `iconv' has no translation for a given character.
 
-   Within a collection of names for a single charset, the `recode'
-library distinguishes one of them as being the genuine charset name,
-while the others are said to be aliases.  When `recode' lists all
-charsets, for example with the `-l' or `--list' option, the list
-integrates all charsets from the external `iconv' library.  The
-selection of one of the aliases as the genuine charset name is an
-artifact added by `recode', it does not necessarily come from `iconv'
-(in fact, the portable `libiconv' library distinguishes a genuine
-charset names from its aliases, while GNU `libc' does not give access
-to such information).  Moreover, the `recode' library dynamically
-resolves some conflicts when it initialises itself at runtime.
-
    The external `iconv' libraries may offer different sets of charsets
-and aliases, from one library to another, and also between successive
-versions of a single library.  Best is to check the documentation of the
-`iconv' library, as of the time Recode was installed, to know what
-charsets and aliases are offered by that library
+and aliases from one library to another, and also between successive
+versions of a single library.  Best is to check the documentation of
+the external `iconv' library, as of the time `recode' was installed, to
+know which charsets and aliases are being provided.
+
+   The `--ignore=:iconv:' or `-x:' options might be useful when there
+is a need to make a recoding more exactly repeatable between machines
+or installations, the idea being here to remove the variance possibly
+introduced by the various implementations of an external `iconv'
+library.  These options might also help deciding whether if some
+recoding problem is genuine to `recode', or is induced by the external
+`iconv' library.
 
 
 File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: iconv,  Up: Top
@@ -5042,7 +5066,7 @@ Concept Index
 * file time stamps:                      Recoding.            (line  26)
 * filter operation:                      Synopsis.            (line  27)
 * force recoding:                        Reversibility.       (line  10)
-* French description of charsets:        Listings.            (line 198)
+* French description of charsets:        Listings.            (line 210)
 * guessing charsets:                     Listings.            (line  63)
 * Haible, Bruno:                         iconv.               (line   6)
 * handling errors:                       Errors.              (line   6)
@@ -5053,7 +5077,7 @@ Concept Index
 * IBM graphics characters:               Recoding.            (line  16)
 * iconv:                                 Design.              (line  98)
 * iconv library:                         iconv.               (line   6)
-* identifying subsets in charsets:       Listings.            (line 210)
+* identifying subsets in charsets:       Listings.            (line 222)
 * ignore charsets:                       Recoding.            (line  60)
 * implied surfaces:                      Requests.            (line  70)
 * impossible conversions:                Charset overview.    (line  33)
@@ -5100,7 +5124,7 @@ Concept Index
 * partial conversion:                    Mixed.               (line  20)
 * permutations of groups of bytes:       Permutations.        (line   6)
 * pipe sequencing:                       Sequencing.          (line  40)
-* program_name variable:                 Outer level.         (line 122)
+* program_name variable:                 Outer level.         (line 137)
 * programming language support:          Listings.            (line  26)
 * pseudo-charsets:                       Charset overview.    (line  33)
 * pure charset:                          Surface overview.    (line  17)
@@ -5135,7 +5159,7 @@ Concept Index
 * strict operation:                      Reversibility.       (line  49)
 * string and comments conversion:        Mixed.               (line  39)
 * structural surfaces:                   Surfaces.            (line  36)
-* subsets in charsets:                   Listings.            (line 210)
+* subsets in charsets:                   Listings.            (line 222)
 * super-charsets:                        Mule.                (line   6)
 * supported programming languages:       Listings.            (line  26)
 * suppressing diagnostic messages:       Reversibility.       (line  37)
@@ -5186,7 +5210,7 @@ This is an alphabetical list of all command-line options accepted by
 * --colons:                              Recoding.            (line  11)
 * --copyright:                           Listings.            (line  19)
 * --diacritics:                          Mixed.               (line  20)
-* --find-subsets:                        Listings.            (line 210)
+* --find-subsets:                        Listings.            (line 222)
 * --force:                               Reversibility.       (line  10)
 * --graphics:                            Recoding.            (line  16)
 * --header:                              Listings.            (line  26)
@@ -5216,7 +5240,7 @@ This is an alphabetical list of all command-line options accepted by
 * -S:                                    Mixed.               (line  39)
 * -s:                                    Reversibility.       (line  49)
 * -t:                                    Recoding.            (line  26)
-* -T:                                    Listings.            (line 210)
+* -T:                                    Listings.            (line 222)
 * -v:                                    Recoding.            (line  35)
 * -x:                                    Recoding.            (line  60)
 
@@ -5244,8 +5268,8 @@ and variables in the `recode' library.
 * file_one_to_many:                      New charsets.        (line  71)
 * file_one_to_one:                       New charsets.        (line  59)
 * find_charset:                          Charset level.       (line  15)
-* LANG, when listing charsets:           Listings.            (line 198)
-* LANGUAGE, when listing charsets:       Listings.            (line 198)
+* LANG, when listing charsets:           Listings.            (line 210)
+* LANGUAGE, when listing charsets:       Listings.            (line 210)
 * list_all_charsets:                     Charset level.       (line  15)
 * list_concise_charset:                  Charset level.       (line  15)
 * list_full_charset:                     Charset level.       (line  15)
@@ -6049,81 +6073,81 @@ Ref: Requests-Footnote-129322
 Ref: Requests-Footnote-229389
 Ref: Requests-Footnote-329567
 Node: Listings30026
-Ref: Listings-Footnote-140444
-Node: Recoding40771
-Node: Reversibility43596
-Ref: Reversibility-Footnote-152099
-Node: Sequencing52236
-Node: Mixed54682
-Node: Emacs58075
-Node: Debugging59054
-Node: Library63318
-Node: Outer level64672
-Node: Request level70158
-Node: Task level80627
-Node: Charset level91049
-Node: Errors91891
-Ref: Errors-Footnote-196745
-Ref: Errors-Footnote-296859
-Node: Universal97220
-Ref: Universal-Footnote-1100345
-Ref: Universal-Footnote-2100413
-Node: UCS-2100626
-Node: UCS-4103160
-Node: UTF-7103702
-Node: UTF-8104299
-Node: UTF-16108606
-Node: count-characters109756
-Node: dump-with-names110429
-Node: iconv112982
-Node: Tabular116653
-Node: ASCII misc138916
-Node: ASCII139282
-Node: ISO 8859140102
-Node: ASCII-BS142400
-Node: flat144239
-Node: IBM and MS144912
-Node: EBCDIC145485
-Node: IBM-PC147599
-Ref: IBM-PC-Footnote-1149721
-Node: Icon-QNX149880
-Node: CDC150307
-Node: Display Code152011
-Ref: Display Code-Footnote-1154295
-Node: CDC-NOS154500
-Node: Bang-Bang156464
-Node: Micros158395
-Node: Apple-Mac158780
-Node: AtariST160836
-Node: Miscellaneous161826
-Node: HTML162563
-Node: LaTeX168591
-Node: Texinfo169367
-Node: Vietnamese170147
-Node: African171127
-Node: Others172483
-Node: Texte173941
-Ref: Texte-Footnote-1178496
-Ref: Texte-Footnote-2178576
-Ref: Texte-Footnote-3179051
-Node: Mule179148
-Ref: Mule-Footnote-1180935
-Node: Surfaces181454
-Ref: Surfaces-Footnote-1184442
-Node: Permutations184548
-Node: End lines185393
-Node: MIME187600
-Node: Dump188791
-Node: Test192985
-Node: Internals195465
-Node: Main flow196703
-Node: New charsets199823
-Node: New surfaces204366
-Node: Design205094
-Ref: Design-Footnote-1214309
-Node: Concept Index214413
-Node: Option Index229156
-Node: Library Index232009
-Node: Charset and Surface Index236586
+Ref: Listings-Footnote-141208
+Node: Recoding41535
+Node: Reversibility44360
+Ref: Reversibility-Footnote-152863
+Node: Sequencing53000
+Node: Mixed55446
+Node: Emacs58839
+Node: Debugging59818
+Node: Library64082
+Node: Outer level65436
+Node: Request level71552
+Node: Task level82021
+Node: Charset level92443
+Node: Errors93285
+Ref: Errors-Footnote-198139
+Ref: Errors-Footnote-298253
+Node: Universal98614
+Ref: Universal-Footnote-1101739
+Ref: Universal-Footnote-2101807
+Node: UCS-2102020
+Node: UCS-4104554
+Node: UTF-7105096
+Node: UTF-8105693
+Node: UTF-16110000
+Node: count-characters111150
+Node: dump-with-names111823
+Node: iconv114376
+Node: Tabular117808
+Node: ASCII misc140071
+Node: ASCII140437
+Node: ISO 8859141257
+Node: ASCII-BS143555
+Node: flat145394
+Node: IBM and MS146067
+Node: EBCDIC146640
+Node: IBM-PC148754
+Ref: IBM-PC-Footnote-1150876
+Node: Icon-QNX151035
+Node: CDC151462
+Node: Display Code153166
+Ref: Display Code-Footnote-1155450
+Node: CDC-NOS155655
+Node: Bang-Bang157619
+Node: Micros159550
+Node: Apple-Mac159935
+Node: AtariST161991
+Node: Miscellaneous162981
+Node: HTML163718
+Node: LaTeX169746
+Node: Texinfo170522
+Node: Vietnamese171302
+Node: African172282
+Node: Others173638
+Node: Texte175096
+Ref: Texte-Footnote-1179651
+Ref: Texte-Footnote-2179731
+Ref: Texte-Footnote-3180206
+Node: Mule180303
+Ref: Mule-Footnote-1182090
+Node: Surfaces182609
+Ref: Surfaces-Footnote-1185597
+Node: Permutations185703
+Node: End lines186548
+Node: MIME188755
+Node: Dump189946
+Node: Test194140
+Node: Internals196620
+Node: Main flow197858
+Node: New charsets200978
+Node: New surfaces205521
+Node: Design206249
+Ref: Design-Footnote-1215464
+Node: Concept Index215568
+Node: Option Index230311
+Node: Library Index233164
+Node: Charset and Surface Index237741
 
 End Tag Table

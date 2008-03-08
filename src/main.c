@@ -102,10 +102,10 @@ static bool force_flag = false;
    recoding the most transparent possible to make, and other tools.
    However, selecting the following option inhibit the timestamps handling,
    thus effectively `touching' the file.  */
-bool touch_option = false;
+static bool touch_option = false;
 
 /* With strict mapping, all reversibility fallbacks get defeated.  */
-bool strict_mapping = false;
+static bool strict_mapping = false;
 
 /* The following charset name will be ignored, if given.  */
 static const char *ignored_name = NULL;
@@ -636,9 +636,14 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 
   /* Register all modules and build internal tables.  */
 
-  outer = recode_new_outer (true);
-  if (!outer)
-    abort ();
+  {
+    unsigned flags = RECODE_AUTO_ABORT_FLAG;
+    if (ignored_name && *ignored_name == ':')
+      flags |= RECODE_NO_ICONV_FLAG;
+    outer = recode_new_outer (flags);
+    if (!outer)
+      abort ();
+  }
 
   if (freeze_tables)
     {

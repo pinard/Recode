@@ -426,15 +426,13 @@ estimate_single_cost (RECODE_OUTER outer, RECODE_SINGLE single)
   return;
 }
 
-/*------------------------------------------------------------------------.
-| Initialize all collected single steps.  If STRICT_MAPPING is true, many |
-| recodings loose their reversibility.                                    |
-`------------------------------------------------------------------------*/
+/*----------------------------------------.
+| Initialize all collected single steps.  |
+`----------------------------------------*/
 
 #include "decsteps.h"
 bool module_iconv PARAMS ((struct recode_outer *));
 void delmodule_iconv PARAMS ((struct recode_outer *));
-
 
 static bool
 register_all_modules (RECODE_OUTER outer)
@@ -507,8 +505,9 @@ register_all_modules (RECODE_OUTER outer)
      confusing some other initialisations that would come after it.  */
   if (!make_argmatch_arrays (outer))
     return false;
-  if (!module_iconv (outer))
-    return false;
+  if (outer->use_iconv)
+    if (!module_iconv (outer))
+      return false;
 
   for (single = outer->single_list; single; single = single->next)
     estimate_single_cost (outer, single);
@@ -520,6 +519,7 @@ void static
 unregister_all_modules (RECODE_OUTER outer)
 {
 #include "tersteps.h"
+  if (outer->use_iconv)
     delmodule_iconv(outer);
 }
 
@@ -533,20 +533,21 @@ unregister_all_modules (RECODE_OUTER outer)
 `-------------------------*/
 
 RECODE_OUTER
-recode_new_outer (bool auto_abort)
+recode_new_outer (unsigned flags)
 {
   RECODE_OUTER outer = malloc (sizeof (struct recode_outer));
 
   if (!outer)
     {
       /* Diagnostic?  FIXME!  */
-      if (auto_abort)
+      if (flags & RECODE_AUTO_ABORT_FLAG)
 	exit (1);
       return NULL;
     }
 
   memset (outer, 0, sizeof (struct recode_outer));
-  outer->auto_abort = auto_abort;
+  outer->auto_abort = (flags & RECODE_AUTO_ABORT_FLAG) != 0;
+  outer->use_iconv = (flags & RECODE_NO_ICONV_FLAG) == 0;
 
   if (!register_all_modules (outer) || !make_argmatch_arrays (outer))
     {

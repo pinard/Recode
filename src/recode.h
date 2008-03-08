@@ -62,7 +62,10 @@ extern "C" {
 | Recode library at OUTER level.  |
 `--------------------------------*/
 
-RECODE_OUTER recode_new_outer PARAMS ((bool));
+#define RECODE_AUTO_ABORT_FLAG 1
+#define RECODE_NO_ICONV_FLAG 2
+
+RECODE_OUTER recode_new_outer PARAMS ((unsigned));
 bool recode_delete_outer PARAMS ((RECODE_OUTER));
 
 bool list_all_symbols PARAMS ((RECODE_OUTER, RECODE_CONST_SYMBOL));

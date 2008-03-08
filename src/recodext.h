@@ -118,8 +118,8 @@ struct recode_outer
     /* This flag asks the library to diagnose and abort itself if errors.  */
     bool auto_abort;
 
-    /* If new steps should automatically have reversibility for fallback.  */
-    bool auto_reversibility;
+    /* If the external `iconv' library should be initialized and used.  */
+    bool use_iconv;
 
     /* charset.c */
     /* --------- */

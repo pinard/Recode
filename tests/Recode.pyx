@@ -214,7 +214,7 @@ cdef extern from "common.h":
 
     struct recode_outer:
         bool auto_abort
-        bool auto_reversibility
+        bool use_iconv
         # charset.c:
         recode_known_pair *pair_restriction
         unsigned pair_restrictions
@@ -443,7 +443,11 @@ cdef extern from "common.h":
 
     ## Recode library at OUTER level.
 
-    RECODE_OUTER recode_new_outer(bool)
+    enum:
+        RECODE_AUTO_ABORT_FLAG
+        RECODE_NO_ICONV_FLAG
+
+    RECODE_OUTER recode_new_outer(unsigned)
     bool recode_delete_outer(RECODE_OUTER)
     bool list_all_symbols 'librecode_list_all_symbols' (
             RECODE_OUTER, RECODE_CONST_SYMBOL)
@@ -559,8 +563,20 @@ BYTE_ORDER_MARK_SWAPPED = BYTE_ORDER_MARK_SWAPPED_
 cdef class Outer:
     cdef RECODE_OUTER outer
 
-    def __init__(self, strict=False):
-        self.outer = recode_new_outer(strict)
+    def __init__(self, strict=False, auto_abort=False, no_iconv=False):
+        cdef int flags
+        cdef RECODE_SINGLE single
+        flags = 0
+        if auto_abort:
+            flags = flags | RECODE_AUTO_ABORT_FLAG
+        if no_iconv:
+            flags = flags | RECODE_NO_ICONV_FLAG
+        self.outer = recode_new_outer(flags)
+        if strict:
+            single = self.outer.single_list
+            while single is not NULL:
+                single.fallback_routine = NULL
+                single = single.next
 
     def __dealloc__(self):
         recode_delete_outer(self.outer)
@@ -597,11 +613,6 @@ cdef class Outer:
         ok = list_full_charset(self.outer, NULL)
         if not ok:
             raise error
-
-    def set_iconv(self, flag):
-        previous = self.outer.iconv_pivot.ignore == 0
-        self.outer.iconv_pivot.ignore = int(not flag)
-        return previous
 
 # Recode library at REQUEST level.
 

@@ -1,3 +1,15 @@
+2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.h (RECODE_AUTO_ABORT_FLAG, RECODE_NO_ICONV_FLAG): New.
+	* recodext.h (struct recode_outer): Add use_iconv field.
+	Also remove auto_reversibility, which was unused.
+	* outer.c (register_all_modules, unregister_all_modules):
+	Skip module_iconv or delmodule_iconv unless use_iconv is set.
+	(recode_new_outer): Change auto_abort argument to flags, and
+	initialize auto_abort and use_iconv from flags.
+	* main.c (main): Use them.
+	Add a few missing static specifiers.
+
 2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconvdecl.h: Deleted.  Should be generated at installation time

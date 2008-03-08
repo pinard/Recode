@@ -987,6 +987,18 @@ is over two hundred lines.  It is best used with @samp{grep -i}, as in:
 recode -l | grep -i greek
 @end example
 
+Within a collection of names for a single charset, the @code{recode}
+library distinguishes one of them as being the genuine charset name,
+while the others are said to be aliases.  The list normally integrates
+all charsets from the external @code{iconv} library, unless this is
+defeated through options like @samp{--ignore=:iconv:} or @samp{-x:}.
+The portable @code{libiconv} library relates its own aliases of a same
+charset, and for a given set of aliases, if none of them are known to
+@code{recode} already, then @code{recode} will pick one as being the
+genuine charset.  The @code{iconv} library within GNU @code{libc} makes
+all aliases appear as different charsets, and each will be presented as
+a charset by @code{recode}, unless it is known otherwise.
+
 There might be one non-option argument, in which case it is interpreted
 as a charset name, possibly abbreviated to any non ambiguous prefix.
 This particular usage of the @samp{-l} option is obeyed @emph{only} for
@@ -1723,7 +1735,7 @@ int
 main (int argc, char *const *argv)
 @{
   program_name = argv[0];
-  RECODE_OUTER outer = recode_new_outer (true);
+  RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
   recode_delete_outer (outer);
   exit (0);
@@ -1788,7 +1800,7 @@ int
 main (int argc, char *const *argv)
 @{
   program_name = argv[0];
-  RECODE_OUTER outer = recode_new_outer (true);
+  RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
   recode_term_outer (outer);
   exit (EXIT_SUCCESS);
@@ -1804,7 +1816,7 @@ but we will not insist on such details in the examples to come.
 @cindex initialisation functions, outer
 
 @example
-RECODE_OUTER recode_new_outer (@var{auto_abort});
+RECODE_OUTER recode_new_outer (@var{flags});
 bool recode_delete_outer (@var{outer});
 @end example
 
@@ -1812,22 +1824,41 @@ bool recode_delete_outer (@var{outer});
 @findex recode_delete_outer
 The recoding library absolutely needs to be initialised before being used,
 and @code{recode_new_outer} has to be called once, first.  Besides the
-@var{outer} it is meant to initialise, the function accepts a Boolean
-argument whether or not the library should automatically issue diagnostics
-on standard and abort the whole program on errors.  When @var{auto_abort}
-is @code{true}, the library later conveniently issues diagnostics itself,
-and aborts the calling program on errors.  This is merely a convenience,
-because if this parameter was @code{false}, the calling program should always
-take care of checking the return value of all other calls to the recoding
-library functions, and when any error is detected, issue a diagnostic and
-abort processing itself.
+@var{outer} it is meant to initialise, the function accepts an integer value
+holding zero or more flags.  If no flags, use @samp{0}.  If more than one
+flag, they should be combined with the bitwise-or (@samp{|}) operator.
+The possible flags are:
 
-Regardless of the setting of @var{auto_abort}, all recoding library
-functions return a success status.  Most functions are geared for returning
-@code{false} for an error, and @code{true} if everything went fine.
-Functions returning structures or strings return @code{NULL} instead
-of the result, when the result cannot be produced.  If @var{auto_abort}
-is selected, functions either return @code{true}, or do not return at all.
+@table @code
+@item RECODE_AUTO_ABORT_FLAG
+
+When this flag is set, the library later issues diagnostics itself, and
+aborts the calling program on errors.  This is merely a convenience,
+because if this flag was not given, the calling program should always
+take care of checking the return value of all other calls to the
+recoding library functions, and when any error is detected, issue a
+diagnostic and abort processing itself.
+
+@item RECODE_NO_ICONV_FLAG
+
+When this flag is set, the library does not initialize nor use the
+external @code{iconv} library.  This means that the charsets and aliases
+provided by the @code{iconv} external library and not by @code{recode}
+itself are not available.
+
+@end table
+
+In previous incatations of the @code{recode} library, @var{flags}
+was a Boolean instead of a collection of flags, meant to set
+@code{RECODE_AUTO_ABORT_FLAG}.  This still works, but is deprecated.
+
+Regardless of the setting of @code{RECODE_AUTO_ABORT}, all recoding
+library functions return a success status.  Most functions are
+geared for returning @code{false} for an error, and @code{true} if
+everything went fine.  Functions returning structures or strings return
+@code{NULL} instead of the result, when the result cannot be produced.
+If @var{RECODE_AUTO_ABORT} is selected, functions either return
+@code{true}, or do not return at all.
 
 As in the example above, @code{recode_new_outer} is called only once in
 most cases.  Calling @code{recode_new_outer} implies some overhead, so
@@ -2958,9 +2989,10 @@ peculiarities specific to the @code{iconv} library.
 
 As implemented, if a recoding request can be satisfied by the
 @code{recode} library both with and without using the @code{iconv}
-library, it is likely that the external @code{iconv} library will be
-used.  To sort out if the @code{iconv} is indeed used or not, just use
-the @samp{-v} or @samp{--verbose} option, @pxref{Recoding}.
+library, the external @code{iconv} library might be used.  To sort out
+if the @code{iconv} is indeed used or not, just use the @samp{-v} or
+@samp{--verbose} option, @pxref{Recoding}, and check if @samp{:iconv:}
+appears as an intermediate charset.
 
 @tindex iconv
 The @code{:iconv:} charset represents a conceptual pivot charset
@@ -2983,40 +3015,35 @@ recode -x: l1..1250 < @var{input} > @var{output}
 
 @noindent
 Both should transform @var{input} from @code{ISO-8859-1} to
-@code{CP1250} on @var{output}.  The first call uses the external
-@code{iconv} library, while the second call avoids it.  Whatever the
-path used, the results should normally be identical.  However, there
-might be observable differences.  Most of them might result from
+@code{CP1250} on @var{output}.  The first call might use the external
+@code{iconv} library, while the second call surely avoids it.  Whatever
+the path used, the results should normally be identical.  However,
+there might be observable differences.  Most of them might result from
 reversibility issues, as the external @code{iconv} engine does not
-necessarily address reversibility.  Even if much less likely, some
-differences might result from slight errors in the tables used, such
-differences should then be reported as bugs.
+likely address reversibility in the same way.  Even if much less likely,
+some differences might result from slight errors in the tables used,
+such differences should then be reported as bugs.
 
-Other irregularities might be seen in the area of error detection and
-recovery.  The @code{recode} library usually tries to detect canonicity
-errors in input, and production of ambiguous output, but the external
-@code{iconv} library does not necessarily.  Input is usually validated,
-however.  The @code{recode} library may not always react properly when
+Discrepancies might be seen in the area of error detection and recovery.
+The @code{recode} library usually tries to detect canonicity errors in
+input, and production of ambiguous output, but the external @code{iconv}
+library does not necessarily do it the same way.  Moreover, the
+@code{recode} library may not always recover as nicely as possible when
 the external @code{iconv} has no translation for a given character.
 
-Within a collection of names for a single charset, the @code{recode}
-library distinguishes one of them as being the genuine charset name,
-while the others are said to be aliases.  When @code{recode} lists all
-charsets, for example with the @samp{-l} or @samp{--list} option, the
-list integrates all charsets from the external @code{iconv} library.
-The selection of one of the aliases as the genuine charset name is
-an artifact added by @code{recode}, it does not necessarily come
-from @code{iconv} (in fact, the portable @code{libiconv} library
-distinguishes a genuine charset names from its aliases, while GNU
-@code{libc} does not give access to such information).  Moreover, the
-@code{recode} library dynamically resolves some conflicts when it
-initialises itself at runtime.
-
 The external @code{iconv} libraries may offer different sets of charsets
-and aliases, from one library to another, and also between successive
-versions of a single library.  Best is to check the documentation of the
-@code{iconv} library, as of the time Recode was installed, to know what
-charsets and aliases are offered by that library
+and aliases from one library to another, and also between successive
+versions of a single library.  Best is to check the documentation of
+the external @code{iconv} library, as of the time @code{recode} was
+installed, to know which charsets and aliases are being provided.
+
+The @samp{--ignore=:iconv:} or @samp{-x:} options might be useful when
+there is a need to make a recoding more exactly repeatable between
+machines or installations, the idea being here to remove the variance
+possibly introduced by the various implementations of an external
+@code{iconv} library.  These options might also help deciding whether if
+some recoding problem is genuine to @code{recode}, or is induced by the
+external @code{iconv} library.
 
 @node Tabular, ASCII misc, iconv, Top
 @chapter Tabular sources (@w{RFC 1345})
