@@ -1,4 +1,4 @@
-# Makefile for `recode' regression tests.
+# Makefile for Recode regression tests.
 # Copyright © 1996-2000, 2008 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 

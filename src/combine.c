@@ -13,7 +13,7 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -22,7 +22,7 @@
 
 /* FIXME: Cleanup memory at end of job, and softly report errors.  */
 
-/* The satisfactory aspects are that `recode' is now able to combine a set of
+/* The satisfactory aspects are that Recode is now able to combine a set of
    sequence of UCS-2 characters into single codes, or explode those single
    codes into the original sequence.  It may happen that many sequences reduce
    to the same code, one of them is arbitrarily taken as canonical.  Any

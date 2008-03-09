@@ -13,7 +13,7 @@
    Library General Public License for more details.
 
    You should have received a copy of the GNU Library General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -702,7 +702,7 @@ bool put_ucs4 PARAMS ((unsigned, RECODE_SUBTASK));
 }
 #endif
 
-/* Global macros specifically for `recode'.  */
+/* Global macros specifically for Recode.  */
 
 /* Giving a name to the ASCII character assigned to position 0.  */
 #define NUL '\0'

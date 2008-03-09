@@ -14,7 +14,7 @@
 
 @SET_MAKE@
 
-# Makefile for `recode' (own internal) library.
+# Makefile for Recode (own internal) library.
 # Copyright © 1995, 1996, 1997, 1998, 1999 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 

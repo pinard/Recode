@@ -6,8 +6,8 @@ START-INFO-DIR-ENTRY
 * recode: (recode).     Conversion between character sets and surfaces.
 END-INFO-DIR-ENTRY
 
-   This file documents the `recode' command, which has the purpose of
-converting files between various character sets and surfaces.
+   This file documents the Recode program and library, which has the
+purpose of converting files between various character sets and surfaces.
 
    Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software
 Foundation, Inc.
@@ -29,8 +29,8 @@ translation approved by the Foundation.
 
 File: recode.info,  Node: Top,  Next: Tutorial,  Prev: (dir),  Up: (dir)
 
-`recode'
-********
+Recode
+******
 
 This recoding library converts files between various coded character
 sets and surface encodings.  When this cannot be achieved exactly, it
@@ -41,7 +41,7 @@ RFC 1345 character sets, and all character sets from a pre-installed
 `iconv' library, are supported.  The `recode' program is a handy
 front-end to the library.
 
-   The current `recode' release is 3.7-beta1.
+   The current Recode release is 3.7-beta1.
 
 * Menu:
 
@@ -81,7 +81,7 @@ How to use this program
 * Reversibility::       Reversibility issues
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
-* Emacs::               Using `recode' within Emacs
+* Emacs::               Using Recode within Emacs
 * Debugging::           Debugging considerations
 
 A recoding library
@@ -158,14 +158,13 @@ File: recode.info,  Node: Tutorial,  Next: Introduction,  Prev: Top,  Up: Top
 1 Quick Tutorial
 ****************
 
-So, really, you just are in a hurry to use `recode', and do not feel
-like studying this manual?  Even reading this paragraph slows you down?
-We might have a problem, as you will have to do some guess work, and
-might not become very proficient unless you have a very solid
-intuition....
+So, really, you just are in a hurry to use Recode, and do not feel like
+studying this manual?  Even reading this paragraph slows you down?  We
+might have a problem, as you will have to do some guess work, and might
+not become very proficient unless you have a very solid intuition....
 
    Let me use here, as a quick tutorial, an actual reply of mine to a
-`recode' user, who writes:
+Recode user, who writes:
 
      My situation is this--I occasionally get email with special
      characters in it.  Sometimes this mail is from a user using IBM
@@ -181,18 +180,18 @@ to filter the Emacs region.  This is very convenient for me.  I also
 resort to many other email conversions, yet more rarely than the
 frequent cases above.
 
-     It _seems_ like this should be doable using `recode'.  However,
-     when I try something like `grecode mac macfile.txt' I get nothing
+     It _seems_ like this should be doable using Recode.  However, when
+     I try something like `grecode mac macfile.txt' I get nothing
      out--no error, no output, nothing.
 
-   Presuming you are using some recent version of `recode', the command:
+   Presuming you are using some recent version of Recode, the command:
 
      recode mac macfile.txt
 
 is a request for recoding `macfile.txt' over itself, overwriting the
 original, from Macintosh usual character code and Macintosh end of
 lines, to Latin-1 and Unix end of lines.  This is overwrite mode.  If
-you want to use `recode' as a filter, which is probably what you need,
+you want to use Recode as a filter, which is probably what you need,
 rather do:
 
      recode mac
@@ -266,10 +265,10 @@ for Standardisation) and IETF (Internet Engineering Task Force) have
 their own terminology, this document does not try to stick to either
 one in a strict way, while it does not want to throw more confusion in
 the field.  On the other hand, it would not be efficient using
-paraphrases all the time, so `recode' coins a few short words, which
-are explained below.
+paraphrases all the time, so Recode coins a few short words, which are
+explained below.
 
-   A "charset", in the context of `recode', is a particular association
+   A "charset", in the context of Recode, is a particular association
 between computer codes on one side, and a repertoire of intended
 characters on the other side.  Codes are usually taken from a set of
 consecutive small integers, starting at 0.  Some characters have a
@@ -285,7 +284,7 @@ use all available code positions, while a MIME charset usually tries to
 specify them all.  A MIME charset might be the union of a few disjoint
 coded character sets.
 
-   A "surface" is a term used in `recode' only, and is a short for
+   A "surface" is a term used in Recode only, and is a short for
 surface transformation of a charset stream.  This is any kind of
 mapping, usually reversible, which associates physical bits in some
 medium for a stream of characters taken from one or more charsets
@@ -294,12 +293,12 @@ it fits in actual bits and bytes.  How end of lines are exactly encoded
 is not really pertinent to the charset, and so, there is surface for
 end of lines.  `Base64' is also a surface, as we may encode any charset
 in it.  Other examples would `DES' enciphering, or `gzip' compression
-(even if `recode' does not offer them currently): these are ways to give
+(even if Recode does not offer them currently): these are ways to give
 a real life to theoretical charsets.  The "trivial" surface consists
 into putting characters into fixed width little chunks of bits, usually
 eight such bits per character.  But things are not always that simple.
 
-   This `recode' library, and the program by that name, have the purpose
+   This Recode library, and the program by that name, have the purpose
 of converting files between various charsets and surfaces.  When this
 cannot be done in exact ways, as it is often the case, the program may
 get rid of the offending characters or fall back on approximations.
@@ -308,12 +307,12 @@ names, and handle a dozen surfaces.  Since it can convert each charset
 to almost any other one, many thousands of different conversions are
 possible.
 
-   The `recode' program and library do not usually know how to split and
+   The Recode program and library do not usually know how to split and
 sort out textual and non-textual information which may be mixed in a
 single input file.  For example, there is no surface which currently
 addresses the problem of how lines are blocked into physical records,
 when the blocking information is added as binary markers or counters
-within files.  So, `recode' should be given textual streams which are
+within files.  So, Recode should be given textual streams which are
 rather _pure_.
 
    This tool pays special attention to superimposition of diacritics for
@@ -323,9 +322,9 @@ program.  `recode' is both a French and English word.  For those who
 pay attention to those things, the proper pronunciation is French (that
 is, `racud', with `a' like in `above', and `u' like in `cut').
 
-   The program `recode' has been written by Franc,ois Pinard.  With
-time, it got to reuse works from other contributors, and notably, those
-of Keld Simonsen and Bruno Haible.
+   The Recode program and library has been written by Franc,ois Pinard.
+With time, it got to reuse works from other contributors, and notably,
+those of Keld Simonsen and Bruno Haible.
 
 * Menu:
 
@@ -342,7 +341,7 @@ File: recode.info,  Node: Charset overview,  Next: Surface overview,  Prev: Intr
 Recoding is currently possible between many charsets, the bulk of which
 is described by RFC 1345 tables or available in a pre-installed
 external `iconv' library. *Note Tabular::, and *note iconv::.  The
-`recode' library also handles some charsets in some specialised ways.
+Recode library also handles some charsets in some specialised ways.
 These are:
 
    * 6-bit charsets based on CDC display code: 6/12 code from NOS;
@@ -360,7 +359,7 @@ These are:
    * 16-bit or 31-bit universal characters, and their transfer
      encodings.
 
-   The introduction of RFC 1345 in `recode' has brought with it a few
+   The introduction of RFC 1345 in Recode has brought with it a few
 charsets having the functionality of older ones, but yet being different
 in subtle ways.  The effects have not been fully investigated yet, so
 for now, clashes are avoided, the old and new charsets are kept well
@@ -392,14 +391,14 @@ charset into those practical constraints.  Moreover, similar surfaces
 or tricks may be useful for many unrelated charsets, and many surfaces
 can be used at once over a single charset.
 
-   So, `recode' has machinery to describe a combination of a charset
-with surfaces used over it in a file.  We would use the expression "pure
+   So, Recode has machinery to describe a combination of a charset with
+surfaces used over it in a file.  We would use the expression "pure
 charset" for referring to a charset free of any surface, that is, the
 conceptual association between integer codes and character intents.
 
    It is not always clear if some transformation will yield a charset
 or a surface, especially for those transformations which are only
-meaningful over a single charset.  The `recode' library is not overly
+meaningful over a single charset.  The Recode library is not overly
 picky as identifying surfaces as such: when it is practical to consider
 a specialised surface as if it were a charset, this is preferred, and
 done.
@@ -410,33 +409,32 @@ File: recode.info,  Node: Contributing,  Prev: Surface overview,  Up: Introducti
 2.3 Contributions and bug reports
 =================================
 
-Even being the `recode' author and current maintainer, I am no
-specialist in charset standards.  I only made `recode' along the years
-to solve my own needs, but felt it was applicable for the needs of
-others.  Some FSF people liked the program structure and suggested to
-make it more widely available.  I often rely on `recode' users
-suggestions to decide what is best to be done next.
+Even being the Recode author and current maintainer, I am no specialist
+in charset standards.  I only made Recode along the years to solve my
+own needs, but felt it was applicable for the needs of others.  Some
+FSF people liked the program structure and suggested to make it more
+widely available.  I often rely on Recode users suggestions to decide
+what is best to be done next.
 
-   Properly protecting `recode' about possible copyright fights is a
-pain for me and for contributors, but we cannot avoid addressing the
-issue in the long run.  Besides, the Free Software Foundation, which
-mandates the GNU project, is very sensible to this matter.  GNU
-standards suggest that we stay cautious before looking at copyrighted
-code.  The safest and simplest way for me is to gather ideas and
-reprogram them anew, even if this might slow me down considerably.  For
-contributions going beyond a few lines of code here and there, the FSF
-definitely requires employer disclaimers and copyright assignments in
-writing.
+   Properly protecting Recode about possible copyright fights is a pain
+for me and for contributors, but we cannot avoid addressing the issue
+in the long run.  Besides, the Free Software Foundation, which mandates
+the GNU project, is very sensible to this matter.  GNU standards suggest
+that we stay cautious before looking at copyrighted code.  The safest
+and simplest way for me is to gather ideas and reprogram them anew,
+even if this might slow me down considerably.  For contributions going
+beyond a few lines of code here and there, the FSF definitely requires
+employer disclaimers and copyright assignments in writing.
 
-   When you contribute something to `recode', _please_ explain what it
-is about.  Do not take for granted that I know those charsets which are
+   When you contribute something to Recode, _please_ explain what it is
+about.  Do not take for granted that I know those charsets which are
 familiar to you.  Once again, I'm no expert, and you have to help me.
 Your explanations could well find their way into this documentation,
 too.  Also, for contributing new charsets or new surfaces, as much as
 possible, please provide good, solid, verifiable references for the
 tables you used(1).
 
-   Many users contributed to `recode' already, I am grateful to them for
+   Many users contributed to Recode already, I am grateful to them for
 their interest and involvement.  Some suggestions can be integrated
 quickly while some others have to be delayed, I have to draw a line
 somewhere when time comes to make a new release, about what would go in
@@ -474,7 +472,7 @@ somewhat grouped according to the related functionalities they control.
 * Reversibility::       Reversibility issues
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
-* Emacs::               Using `recode' within Emacs
+* Emacs::               Using Recode within Emacs
 * Debugging::           Debugging considerations
 
 
@@ -487,7 +485,7 @@ The general format of the program call is one of:
 
      recode [OPTION]... [CHARSET | REQUEST [FILE]... ]
 
-   Some calls are used only to obtain lists produced by `recode' itself,
+   Some calls are used only to obtain lists produced by Recode itself,
 without actually recoding any file.  They are recognised through the
 usage of listing options, and these options decide what meaning should
 be given to an optional CHARSET parameter.  *Note Listings::.
@@ -541,7 +539,7 @@ neatly:
 
    ---------- Footnotes ----------
 
-   (1) In previous versions or `recode', a single colon `:' was used
+   (1) In previous versions or Recode, a single colon `:' was used
 instead of the two dots `..' for separating charsets, but this was
 creating problems because colons are allowed in official charset names.
 The old request syntax is still recognised for compatibility purposes,
@@ -557,7 +555,7 @@ In the case where the REQUEST is merely written as BEFORE..AFTER, then
 BEFORE and AFTER specify the start charset and the goal charset for the
 recoding.
 
-   For `recode', charset names may contain any character, besides a
+   For Recode, charset names may contain any character, besides a
 comma, a forward slash, or two periods in a row.  But in practice,
 charset names are currently limited to alphabetic letters (upper or
 lower case), digits, hyphens, underlines, periods, colons or round
@@ -570,17 +568,17 @@ intermediate charsets, like in the following example:
 
      BEFORE..INTERIM1..INTERIM2..AFTER
 
-meaning that `recode' should internally produce the INTERIM1 charset
-from the start charset, then work out of this INTERIM1 charset to
-internally produce INTERIM2, and from there towards the goal charset.
-In fact, `recode' internally combines recipes and automatically uses
-interim charsets, when there is no direct recipe for transforming
-BEFORE into AFTER.  But there might be many ways to do it.  When many
-routes are possible, the above "chaining" syntax may be used to more
-precisely force the program towards a particular route, which it might
-not have naturally selected otherwise.  On the other hand, because
-`recode' tries to choose good routes, chaining is only needed to
-achieve some rare, unusual effects.
+meaning that Recode should internally produce the INTERIM1 charset from
+the start charset, then work out of this INTERIM1 charset to internally
+produce INTERIM2, and from there towards the goal charset.  In fact,
+Recode internally combines recipes and automatically uses interim
+charsets, when there is no direct recipe for transforming BEFORE into
+AFTER.  But there might be many ways to do it.  When many routes are
+possible, the above "chaining" syntax may be used to more precisely
+force the program towards a particular route, which it might not have
+naturally selected otherwise.  On the other hand, because Recode tries
+to choose good routes, chaining is only needed to achieve some rare,
+unusual effects.
 
    Moreover, many such requests (sub-requests, more precisely) may be
 separated with commas (but no spaces at all), indicating a sequence of
@@ -596,8 +594,8 @@ does not have to be so in the general case.  One might wonder what
 would be the meaning of declaring the charset input for a recoding
 sub-request of being of different nature than the charset output by a
 preceding sub-request, when recodings are chained in this way.  Such a
-strange usage might have a meaning and be useful for the `recode'
-expert, but they are quite uncommon in practice.
+strange usage might have a meaning and be useful for the Recode expert,
+but they are quite uncommon in practice.
 
    More useful is the distinction between the concept of charset, and
 the concept of surfaces.  An encoded charset is represented by:
@@ -611,11 +609,10 @@ then SURFACE2 is applied over the result.  Given this request:
 
      BEFORE/SURFACE1/SURFACE2..AFTER/SURFACE3
 
-the `recode' program will understand that the input files should have
-SURFACE2 removed first (because it was applied last), then SURFACE1
-should be removed.  The next step will be to translate the codes from
-charset BEFORE to charset AFTER, prior to applying SURFACE3 over the
-result.
+Recode will understand that the input files should have SURFACE2
+removed first (because it was applied last), then SURFACE1 should be
+removed.  The next step will be to translate the codes from charset
+BEFORE to charset AFTER, prior to applying SURFACE3 over the result.
 
    Some charsets have one or more _implied_ surfaces.  In this case, the
 implied surfaces are automatically handled merely by naming the charset,
@@ -637,13 +634,13 @@ charset and all its aliases may each have its own different set of
 implied surfaces.
 
    Charset names, surface names, or their aliases may always be
-abbreviated to any unambiguous prefix.  Internally in `recode',
+abbreviated to any unambiguous prefix.  Internally in Recode,
 disambiguating tables are kept separate for charset names and surface
 names.
 
    While recognising a charset name or a surface name (or aliases
-thereof), `recode' ignores all characters besides letters and digits,
-so for example, the hyphens and underlines being part of an official
+thereof), Recode ignores all characters besides letters and digits, so
+for example, the hyphens and underlines being part of an official
 charset name may safely be omitted (no need to un-confuse them!).
 There is also no distinction between upper and lower case for charset
 or surface names.
@@ -654,7 +651,7 @@ BEFORE charset.(2)
 
    When a charset name is omitted or left empty, the value of the
 `DEFAULT_CHARSET' variable in the environment is used instead.  If this
-variable is not defined, the `recode' library uses the current locale's
+variable is not defined, the Recode library uses the current locale's
 encoding.  On POSIX compliant systems, this depends on the first
 non-empty value among the environment variables LC_ALL, LC_CTYPE, LANG,
 and can be determined through the command `locale charmap'.
@@ -689,7 +686,7 @@ File: recode.info,  Node: Listings,  Next: Recoding,  Prev: Requests,  Up: Invok
 3.3 Asking for various lists
 ============================
 
-Many options control listing output generated by `recode' itself, they
+Many options control listing output generated by Recode itself, they
 are not meant to accompany actual file recodings.  These options are:
 
 `--version'
@@ -709,9 +706,9 @@ are not meant to accompany actual file recodings.  These options are:
 
 `-h[LANGUAGE/][NAME]'
 `--header[=[LANGUAGE/][NAME]]'
-     Instead of recoding files, `recode' writes a LANGUAGE source file
-     on standard output and exits.  This source is meant to be included
-     in a regular program written in the same programming LANGUAGE: its
+     Instead of recoding files, Recode writes a LANGUAGE source file on
+     standard output and exits.  This source is meant to be included in
+     a regular program written in the same programming LANGUAGE: its
      purpose is to declare and initialise an array, named NAME, which
      represents the requested recoding.  The only acceptable values for
      LANGUAGE are `c' or `perl', and may may be abbreviated.  If
@@ -720,19 +717,19 @@ are not meant to accompany actual file recodings.  These options are:
      AFTER are cleaned before being used according to the syntax of
      LANGUAGE.
 
-     Even if `recode' tries its best, this option does not always
-     succeed in producing the requested source table, it then prints
-     `Recoding is too complex for a mere table'.  It will succeed
-     however, provided the recoding can be internally represented by
-     only one step after the optimisation phase, and if this merged
-     step conveys a one-to-one or a one-to-many explicit table.  Also,
-     when attempting to produce sources tables, `recode' relaxes its
-     checking a tiny bit: it ignores the algorithmic part of some
-     tabular recodings, it also avoids the processing of implied
-     surfaces.  But this is all fairly technical.  Better try and see!
+     Even if Recode tries its best, this option does not always succeed
+     in producing the requested source table, it then prints `Recoding
+     is too complex for a mere table'.  It will succeed however,
+     provided the recoding can be internally represented by only one
+     step after the optimisation phase, and if this merged step conveys
+     a one-to-one or a one-to-many explicit table.  Also, when
+     attempting to produce sources tables, Recode relaxes its checking
+     a tiny bit: it ignores the algorithmic part of some tabular
+     recodings, it also avoids the processing of implied surfaces.  But
+     this is all fairly technical.  Better try and see!
 
      Most tables are produced using decimal numbers to refer to
-     character values(1).  Yet, users who know all `recode' tricks and
+     character values(1).  Yet, users who know all Recode tricks and
      stunts could indeed force octal or hexadecimal output for the
      table contents.  For example:
 
@@ -750,9 +747,9 @@ are not meant to accompany actual file recodings.  These options are:
      charset, using as hints some already identified characters of the
      charset.  Some examples will help introducing the idea.
 
-     Let's presume here that `recode' is run in an ISO-8859-1 locale,
-     and that `DEFAULT_CHARSET' is unset in the environment.  Suppose
-     you have guessed that code 130 (decimal) of the unknown charset
+     Let's presume here that Recode is run in an ISO-8859-1 locale, and
+     that `DEFAULT_CHARSET' is unset in the environment.  Suppose you
+     have guessed that code 130 (decimal) of the unknown charset
      represents a lower case `e' with an acute accent.  That is to say
      that this code should map to code 233 (decimal) in the usual
      charset.  By executing:
@@ -839,7 +836,7 @@ are not meant to accompany actual file recodings.  These options are:
      This option asks for information about all charsets, or about one
      particular charset.  No file will be recoded.
 
-     If there is no non-option arguments, `recode' ignores the FORMAT
+     If there is no non-option arguments, Recode ignores the FORMAT
      value of the option, it writes a sorted list of charset names on
      standard output, one per line.  When a charset name have aliases
      or synonyms, they follow the true charset name on its line, sorted
@@ -849,17 +846,17 @@ are not meant to accompany actual file recodings.  These options are:
 
           recode -l | grep -i greek
 
-     Within a collection of names for a single charset, the `recode'
+     Within a collection of names for a single charset, the Recode
      library distinguishes one of them as being the genuine charset
      name, while the others are said to be aliases.  The list normally
      integrates all charsets from the external `iconv' library, unless
      this is defeated through options like `--ignore=:iconv:' or `-x:'.
      The portable `libiconv' library relates its own aliases of a same
      charset, and for a given set of aliases, if none of them are known
-     to `recode' already, then `recode' will pick one as being the
-     genuine charset.  The `iconv' library within GNU `libc' makes all
-     aliases appear as different charsets, and each will be presented as
-     a charset by `recode', unless it is known otherwise.
+     to Recode already, then Recode will pick one as being the genuine
+     charset.  The `iconv' library within GNU `libc' makes all aliases
+     appear as different charsets, and each will be presented as a
+     charset by Recode, unless it is known otherwise.
 
      There might be one non-option argument, in which case it is
      interpreted as a charset name, possibly abbreviated to any non
@@ -906,11 +903,11 @@ are not meant to accompany actual file recodings.  These options are:
 `-T'
 `--find-subsets'
      This option is a maintainer tool for evaluating the redundancy of
-     those charsets, in `recode', which are internally represented by
-     an `UCS-2' data table.  After the listing has been produced, the
+     those charsets, in Recode, which are internally represented by an
+     `UCS-2' data table.  After the listing has been produced, the
      program exits without doing any recoding.  The output is meant to
      be sorted, like this: `recode -T | sort'.  The option triggers
-     `recode' into comparing all pairs of charsets, seeking those which
+     Recode into comparing all pairs of charsets, seeking those which
      are subsets of others.  The concept and results are better
      explained through a few examples.  Consider these three sample
      lines from `-T' output:
@@ -920,23 +917,22 @@ are not meant to accompany actual file recodings.  These options are:
           [ 12] INVARIANT < CSA_Z243.4-1985-1
 
      The first line means that `IBM891' and `IBM903' are completely
-     identical as far as `recode' is concerned, so one is fully
-     redundant to the other.  The second line says that `IBM1004' is
-     wholly contained within `CP1252', yet there is a single character
-     which is in `CP1252' without being in `IBM1004'.  The third line
-     says that `INVARIANT' is wholly contained within
-     `CSA_Z243.4-1985-1', but twelve characters are in
-     `CSA_Z243.4-1985-1' without being in `INVARIANT'.  The whole
-     output might most probably be reduced and made more significant
-     through a transitivity study.
+     identical as far as Recode is concerned, so one is fully redundant
+     to the other.  The second line says that `IBM1004' is wholly
+     contained within `CP1252', yet there is a single character which is
+     in `CP1252' without being in `IBM1004'.  The third line says that
+     `INVARIANT' is wholly contained within `CSA_Z243.4-1985-1', but
+     twelve characters are in `CSA_Z243.4-1985-1' without being in
+     `INVARIANT'.  The whole output might most probably be reduced and
+     made more significant through a transitivity study.
 
    ---------- Footnotes ----------
 
-   (1) The author of `recode' by far prefer expressing numbers in
-decimal than octal or hexadecimal, as he considers that the current
-state of technology should not force users anymore in such strange
-things.  But Unicode people see things differently, to the point
-`recode' cannot escape being tainted with some hexadecimal.
+   (1) The author of Recode by far prefer expressing numbers in decimal
+than octal or hexadecimal, as he considers that the current state of
+technology should not force users anymore in such strange things.  But
+Unicode people see things differently, to the point Recode cannot
+escape being tainted with some hexadecimal.
 
 
 File: recode.info,  Node: Recoding,  Next: Reversibility,  Prev: Listings,  Up: Invoking recode
@@ -993,7 +989,7 @@ grain control over the recoding operation themselves.
 
           recode -v BEFORE..AFTER < /dev/null
 
-     using the fact that, in `recode', an empty input file produces an
+     using the fact that, in Recode, an empty input file produces an
      empty output file.
 
 `-x CHARSET'
@@ -1001,7 +997,7 @@ grain control over the recoding operation themselves.
      This option tells the program to ignore any recoding path through
      the specified CHARSET, so disabling any single step using this
      charset as a start or end point.  This may be used when the user
-     wants to force `recode' into using an alternate recoding path (yet
+     wants to force Recode into using an alternate recoding path (yet
      using chained requests offers a finer control, *note Requests::).
 
      CHARSET may be abbreviated to any unambiguous prefix.
@@ -1021,7 +1017,7 @@ The following options are somewhat related to reversibility issues:
      status if it would be only because irreversibility matters.  *Note
      Reversibility::.
 
-     Without this option, `recode' tries to protect you against recoding
+     Without this option, Recode tries to protect you against recoding
      a file irreversibly over itself(1).  Whenever an irreversible
      recoding is met, or any other recoding error, `recode' produces a
      warning on standard error.  The current input file does not get
@@ -1034,11 +1030,10 @@ The following options are somewhat related to reversibility issues:
      attempted, and if some recoding has been aborted, `recode' exits
      with a non-zero status.
 
-     In releases of `recode' prior to version 3.5, this option was
-     always selected, so it was rather meaningless.  Nevertheless,
-     users were invited to start using `-f' right away in scripts
-     calling `recode' whenever convenient, in preparation for the
-     current behaviour.
+     In releases of Recode prior to version 3.5, this option was always
+     selected, so it was rather meaningless.  Nevertheless, users were
+     invited to start using `-f' right away in scripts calling Recode
+     whenever convenient, in preparation for the current behaviour.
 
 `-q'
 `--quiet'
@@ -1055,19 +1050,20 @@ The following options are somewhat related to reversibility issues:
 
 `-s'
 `--strict'
-     By using this option, the user requests that `recode' be very
-     strict while recoding a file, merely losing in the transformation
-     any character which is not explicitly mapped from a charset to
-     another.  Such a loss is not reversible and so, will bring
-     `recode' to fail, unless the option `-f' is also given as a kind
-     of counter-measure.
+     By using this option, the user requests that Recode be very strict
+     while recoding a file, merely losing in the transformation any
+     character which is not explicitly mapped from a charset to
+     another.  Such a loss is not reversible and so, will bring Recode
+     to fail, unless the option `-f' is also given as a kind of
+     counter-measure.
 
-     Using `-s' without `-f' might render the `recode' program very
-     susceptible to the slighest file abnormalities.  Despite the fact
-     that it might be irritating to some users, such paranoia is
-     sometimes wanted and useful.
+     Using `-s' without `-f' might render Recode very susceptible to
+     the slighest file abnormalities.  Despite the fact that it might be
+     irritating to some users, such paranoia is sometimes wanted and
+     useful.
 
-   Even if `recode' tries hard to keep the recodings reversible, you
+
+   Even if Recode tries hard to keep the recodings reversible, you
 should not develop an unconditional confidence in its ability to do so.
 You _ought_ to keep only reasonable expectations about reverse
 recodings.  In particular, consider:
@@ -1104,7 +1100,7 @@ recodings.  In particular, consider:
      `\^{\i}'.  Even if the resulting file is equivalent to the
      original one, it is not identical.
 
-   Unless option `-s' is used, `recode' automatically tries to fill
+   Unless option `-s' is used, Recode automatically tries to fill
 mappings with invented correspondences, often making them fully
 reversible.  This filling is not made at random.  The algorithm tries to
 stick to the identity mapping and, when this is not possible, it prefers
@@ -1113,13 +1109,13 @@ codes.
 
    For example, here is how `IBM-PC' code 186 gets translated to
 `control-U' in `Latin-1'.  `Control-U' is 21.  Code 21 is the `IBM-PC'
-section sign, which is 167 in `Latin-1'.  `recode' cannot reciprocate
-167 to 21, because 167 is the masculine ordinal indicator within
-`IBM-PC', which is 186 in `Latin-1'.  Code 186 within `IBM-PC' has no
-`Latin-1' equivalent; by assigning it back to 21, `recode' closes this
-short permutation loop.
+section sign, which is 167 in `Latin-1'.  Recode cannot reciprocate 167
+to 21, because 167 is the masculine ordinal indicator within `IBM-PC',
+which is 186 in `Latin-1'.  Code 186 within `IBM-PC' has no `Latin-1'
+equivalent; by assigning it back to 21, Recode closes this short
+permutation loop.
 
-   As a consequence of this map filling, `recode' may sometimes produce
+   As a consequence of this map filling, Recode may sometimes produce
 _funny_ characters.  They may look annoying, they are nevertheless
 helpful when one changes his (her) mind and wants to revert to the prior
 recoding.  If you cannot stand these, use option `-s', which asks for a
@@ -1128,7 +1124,7 @@ very strict recoding.
    This map filling sometimes has a few surprising consequences, which
 some users wrongly interpreted as bugs.  Here are two examples.
 
-  1. In some cases, `recode' seems to copy a file without recoding it.
+  1. In some cases, Recode seems to copy a file without recoding it.
      But in fact, it does.  Consider a request:
 
           recode l1..us < File-Latin1 > File-ASCII
@@ -1138,16 +1134,16 @@ some users wrongly interpreted as bugs.  Here are two examples.
      `Latin-1' gets correctly recoded to ASCII for charsets
      commonalities (which are the first 128 characters, in this case).
      The remaining last 128 `Latin-1' characters have no ASCII
-     correspondent.  Instead of losing them, `recode' elects to map
-     them to unspecified characters of ASCII, so making the recoding
+     correspondent.  Instead of losing them, Recode elects to map them
+     to unspecified characters of ASCII, so making the recoding
      reversible.  The simplest way of achieving this is merely to keep
      those last 128 characters unchanged.  The overall effect is
      copying the file verbatim.
 
      If you feel this behaviour is too generous and if you do not wish
      to care about reversibility, simply use option `-s'.  By doing so,
-     `recode' will strictly map only those `Latin-1' characters which
-     have an ASCII equivalent, and will merely drop those which do not.
+     Recode will strictly map only those `Latin-1' characters which have
+     an ASCII equivalent, and will merely drop those which do not.
      Then, there is more chance that you will observe a difference
      between the input and the output file.
 
@@ -1163,14 +1159,14 @@ some users wrongly interpreted as bugs.  Here are two examples.
      meaningful.  Yet, if you repeat this step a second time, you might
      notice that many (not all) characters in `Temp2' are identical to
      those in `File-Latin1'.  Sometimes, people try to discover how
-     `recode' works by experimenting a little at random, rather than
+     Recode works by experimenting a little at random, rather than
      reading and understanding the documentation; results such as this
      are surely confusing, as they provide those people with a false
      feeling that they understood something.
 
      Reversible codings have this property that, if applied several
      times in the same direction, they will eventually bring any
-     character back to its original value.  Since `recode' seeks small
+     character back to its original value.  Since Recode seeks small
      permutation cycles when creating reversible codings, besides
      characters unchanged by the recoding, most permutation cycles will
      be of length 2, and fewer of length 3, etc.  So, it is just
@@ -1194,8 +1190,8 @@ File: recode.info,  Node: Sequencing,  Next: Mixed,  Prev: Reversibility,  Up: I
 This program uses a few techniques when it is discovered that many
 passes are needed to comply with the REQUEST.  For example, suppose
 that four elementary steps were selected at recoding path optimisation
-time.  Then `recode' will split itself into four different
-interconnected tasks, logically equivalent to:
+time.  Then Recode will split itself into four different interconnected
+tasks, logically equivalent to:
 
      STEP1 <INPUT | STEP2 | STEP3 | STEP4 >OUTPUT
 
@@ -1249,11 +1245,11 @@ charsets at once.  Some parts of the file encode one charset, while
 other parts encode another charset, and so forth.  Usually, a file does
 not toggle between more than two or three charsets.  The means to
 distinguish which charsets are encoded at various places is not always
-available.  The `recode' program is able to handle only a few simple
-cases of mixed input.
+available.  Recode is able to handle only a few simple cases of mixed
+input.
 
-   The default `recode' behaviour is to expect pure charset files, to
-be recoded as other pure charset files.  However, the following options
+   The default Recode behaviour is to expect pure charset files, to be
+recoded as other pure charset files.  However, the following options
 allow for a few precise kinds of mixed charset files.
 
 `-d'
@@ -1270,7 +1266,7 @@ allow for a few precise kinds of mixed charset files.
 
      While converting to `HTML' or `LaTeX' charset, this option assumes
      that characters not in the said subset are properly coded or
-     protected already, `recode' then transmit them literally.  While
+     protected already, Recode then transmit them literally.  While
      converting the other way, this option prevents translating back
      coded or protected versions of characters not in the said subset.
      *Note HTML::.  *Note LaTeX::.
@@ -1292,10 +1288,9 @@ allow for a few precise kinds of mixed charset files.
 
      Even if `ASCII' is the usual charset for writing programs, some
      compilers are able to directly read other charsets, like `UTF-8',
-     say.  There is currently no provision in `recode' for reading
-     mixed charset sources which are not based on `ASCII'.  It is
-     probable that the need for mixed recoding is not as pressing in
-     such cases.
+     say.  There is currently no provision in Recode for reading mixed
+     charset sources which are not based on `ASCII'.  It is probable
+     that the need for mixed recoding is not as pressing in such cases.
 
      For example, after one does:
 
@@ -1313,12 +1308,13 @@ allow for a few precise kinds of mixed charset files.
 
 File: recode.info,  Node: Emacs,  Next: Debugging,  Prev: Mixed,  Up: Invoking recode
 
-3.8 Using `recode' within Emacs
-===============================
+3.8 Using Recode within Emacs
+=============================
 
-The fact `recode' is a filter makes it quite easy to use from within
-GNU Emacs.  For example, recoding the whole buffer from the `IBM-PC'
-charset to current charset (`Latin-1' on Unix) is easily done with:
+The fact the `recode' program acts as a filter, when given no file
+arguments, makes it quite easy to use from within GNU Emacs.  For
+example, recoding the whole buffer from the `IBM-PC' charset to current
+charset (for example, `UTF-8' on Unix) is easily done with:
 
      C-x h C-u M-| recode ibmpc RET
 
@@ -1343,18 +1339,18 @@ File: recode.info,  Node: Debugging,  Prev: Emacs,  Up: Invoking recode
 3.9 Debugging considerations
 ============================
 
-It is our experience that when `recode' does not provide satisfying
-results, either `recode' was not called properly, correct results
-raised some doubts nevertheless, or files to recode were somewhat
-mangled.  Genuine bugs are surely possible.
+It is our experience that when Recode does not provide satisfying
+results, either the `recode' program was not called properly, correct
+results raised some doubts nevertheless, or files to recode were
+somewhat mangled.  Genuine bugs are surely possible.
 
-   Unless you already are a `recode' expert, it might be a good idea to
+   Unless you already are a Recode expert, it might be a good idea to
 quickly revisit the tutorial (*note Tutorial::) or the prior sections
 in this chapter, to make sure that you properly formatted your recoding
-request.  In the case you intended to use `recode' as a filter, make
-sure that you did not forget to redirect your standard input (through
-using the `<' symbol in the shell, say).  Some `recode' false mysteries
-are also easily explained, *Note Reversibility::.
+request.  In the case you intended to use Recode as a filter, make sure
+that you did not forget to redirect your standard input (through using
+the `<' symbol in the shell, say).  Some Recode false mysteries are also
+easily explained, *Note Reversibility::.
 
    For the other cases, some investigation is needed.  To illustrate
 how to proceed, let's presume that you want to recode the `nicepage'
@@ -1378,15 +1374,15 @@ something like:
 The recoding request is achieved in two steps, the first recodes `UTF-8'
 into `UCS-2', the second recodes `UCS-2' into `HTML'.  The problem
 occurs within the first of these two steps, and since, the input of
-this step is the input file given to `recode', this is this overall
-input file which seems to be invalid.  Also, when used in filter mode,
-`recode' processes as much input as possible before the error occurs
-and sends the result of this processing to standard output.  Since the
-standard output has not been redirected to a file, it is merely
-displayed on the user screen.  By inspecting near the end of the
-resulting `HTML' output, that is, what was recoding a bit before the
-recoding was interrupted, you may infer about where the error stands in
-the real `UTF-8' input file.
+this step is the input file given to Recode, this is this overall input
+file which seems to be invalid.  Also, when used in filter mode, Recode
+processes as much input as possible before the error occurs and sends
+the result of this processing to standard output.  Since the standard
+output has not been redirected to a file, it is merely displayed on the
+user screen.  By inspecting near the end of the resulting `HTML'
+output, that is, what was recoding a bit before the recoding was
+interrupted, you may infer about where the error stands in the real
+`UTF-8' input file.
 
    If you have the proper tools to examine the intermediate recoding
 data, you might also prefer to reduce the problem to a single step to
@@ -1410,17 +1406,17 @@ you, and easier than repairing the input file.  That depends on how
 strict you would like to be about the precision of the recoding process.
 
    If you later see that your HTML file begins with `@lt;html@gt;' when
-you expected `<html>', then `recode' might have done a bit more that
-you wanted.  In this case, your input file was half-`UTF-8',
-half-`HTML' already, that is, a mixed file (*note Mixed::).  There is a
-special `-d' switch for this case.  So, your might be end up calling
-`recode -fd nicepage'.  Until you are quite sure that you accept
-overwriting your input file whatever what, I recommend that you stick
-with filter mode.
+you expected `<html>', then Recode might have done a bit more that you
+wanted.  In this case, your input file was half-`UTF-8', half-`HTML'
+already, that is, a mixed file (*note Mixed::).  There is a special
+`-d' switch for this case.  So, your might be end up calling `recode
+-fd nicepage'.  Until you are quite sure that you accept overwriting
+your input file whatever what, I recommend that you stick with filter
+mode.
 
-   If, after such experiments, you seriously think that the `recode'
-program does not behave properly, there might be a genuine bug in the
-program itself, in which case I invite you to to contribute a bug
+   If, after such experiments, you seriously think that Recode does not
+behave properly, there might be a genuine bug either in the program or
+the library itself, in which case I invite you to to contribute a bug
 report, *Note Contributing::.
 
 
@@ -1569,11 +1565,11 @@ but we will not insist on such details in the examples to come.
           When this flag is set, the library does not initialize nor
           use the external `iconv' library.  This means that the
           charsets and aliases provided by the `iconv' external library
-          and not by `recode' itself are not available.
+          and not by Recode itself are not available.
 
 
-     In previous incatations of the `recode' library, FLAGS was a
-     Boolean instead of a collection of flags, meant to set
+     In previous incatations of the Recode library, FLAGS was a Boolean
+     instead of a collection of flags, meant to set
      `RECODE_AUTO_ABORT_FLAG'.  This still works, but is deprecated.
 
      Regardless of the setting of `RECODE_AUTO_ABORT', all recoding
@@ -1597,9 +1593,9 @@ but we will not insist on such details in the examples to come.
 
    * The `program_name' declaration
 
-     As we just explained, the user may set the `recode' library so
-     that, in case of problems error, it issues the diagnostic itself
-     and aborts the whole processing.  This capability may be quite
+     As we just explained, the user may set the Recode library so that,
+     in case of problems error, it issues the diagnostic itself and
+     aborts the whole processing.  This capability may be quite
      convenient.  When this feature is used, the aborting routine
      includes the name of the running program in the diagnostic.  On
      the other hand, when this feature is not used, the library merely
@@ -1728,7 +1724,7 @@ request level functions, and in most cases, may be considered as opaque.
      The main role of a REQUEST variable is to describe a set of
      recoding transformations.  Function `recode_scan_request' studies
      the given STRING, and stores an internal representation of it into
-     REQUEST.  Note that STRING may be a full-fledged `recode' request,
+     REQUEST.  Note that STRING may be a full-fledged Recode request,
      possibly including surfaces specifications, intermediary charsets,
      sequences, aliases or abbreviations (*note Requests::).
 
@@ -2103,9 +2099,9 @@ File: recode.info,  Node: Errors,  Prev: Charset level,  Up: Library
 4.5 Handling errors
 ===================
 
-The `recode' program, while using the `recode' library, needs to
-control whether recoding problems are reported or not, and then reflect
-these in the exit status.  The program should also instruct the library
+The `recode' program, while using the Recode library, needs to control
+whether recoding problems are reported or not, and then reflect these
+in the exit status.  The program should also instruct the library
 whether the recoding should be abruptly interrupted when an error is
 met (so sparing processing when it is known in advance that a wrong
 result would be discarded anyway), or if it should proceed nevertheless.
@@ -2117,7 +2113,7 @@ of increasing severity.
 
 `RECODE_NOT_CANONICAL'
      The input text was using one of the many alternative codings for
-     some phenomenon, but not the one `recode' would have canonically
+     some phenomenon, but not the one Recode would have canonically
      generated.  So, if the reverse recoding is later attempted, it
      would produce a text having the same _meaning_ as the original
      text, yet not being byte identical.
@@ -2150,7 +2146,7 @@ of increasing severity.
      One or more input character could not be recoded, because there is
      just no representation for this character in the output charset.
 
-     Here are a few examples.  Non-strict mode often allows `recode' to
+     Here are a few examples.  Non-strict mode often allows Recode to
      compute on-the-fly mappings for unrepresentable characters, but
      strict mode prohibits such attribution of reversible translations:
      so strict mode might often trigger such an error.  Most `UCS-2'
@@ -2160,7 +2156,7 @@ of increasing severity.
 `RECODE_INVALID_INPUT'
      The input text does not comply with the coding it is declared to
      hold.  So, there is no way by which a reverse recoding would
-     reproduce this text, because `recode' should never produce invalid
+     reproduce this text, because Recode should never produce invalid
      output.
 
      Here are a few examples.  In strict mode, `ASCII' text is not
@@ -2228,9 +2224,9 @@ encompass in the long run all languages written on this planet.  It is
 based on wide characters, and offer possibilities for two billion
 characters (2^31).
 
-   This charset was to become available in `recode' under the name
-`UCS', with many external surfaces for it.  But in the current version,
-only surfaces of `UCS' are offered, each presented as a genuine charset
+   This charset was to become available in Recode under the name `UCS',
+with many external surfaces for it.  But in the current version, only
+surfaces of `UCS' are offered, each presented as a genuine charset
 rather than a surface.  Such surfaces are only meaningful for the `UCS'
 charset, so it is not that useful to draw a line between the surfaces
 and the only charset to which they may apply.
@@ -2247,25 +2243,25 @@ transmissions limited to 7-bit bytes.  Most often, one might see
 `UTF-8' used for external storage, and `UCS-2' used for internal
 storage.
 
-   When `recode' is producing any representation of `UCS', it uses the
+   When Recode is producing any representation of `UCS', it uses the
 replacement character `U+FFFD' for any _valid_ character which is not
 representable in the goal charset(2).  This happens, for example, when
 `UCS-2' is not capable to echo a wide `UCS-4' character, or for a
 similar reason, an `UTF-8' sequence using more than three bytes.  The
 replacement character is meant to represent an existing character.  So,
 it is never produced to represent an invalid sequence or ill-formed
-character in the input text.  In such cases, `recode' just gets rid of
+character in the input text.  In such cases, Recode just gets rid of
 the noise, while taking note of the error in its usual ways.
 
    Even if `UTF-8' is an encoding, really, it is the encoding of a
 single character set, and nothing else.  It is useful to distinguish
-between an encoding (a _surface_ within `recode') and a charset, but
-only when the surface may be applied to several charsets.  Specifying a
-charset is a bit simpler than specifying a surface in a `recode'
-request.  There would not be a practical advantage at imposing a more
-complex syntax to `recode' users, when it is simple to assimilate
-`UTF-8' to a charset.  Similar considerations apply for `UCS-2',
-`UCS-4', `UTF-16' and `UTF-7'.  These are all considered to be charsets.
+between an encoding (a _surface_ within Recode) and a charset, but only
+when the surface may be applied to several charsets.  Specifying a
+charset is a bit simpler than specifying a surface in a Recode request.
+There would not be a practical advantage at imposing a more complex
+syntax to Recode users, when it is simple to assimilate `UTF-8' to a
+charset.  Similar considerations apply for `UCS-2', `UCS-4', `UTF-16'
+and `UTF-7'.  These are all considered to be charsets.
 
 * Menu:
 
@@ -2279,7 +2275,7 @@ complex syntax to `recode' users, when it is simple to assimilate
 
    ---------- Footnotes ----------
 
-   (1) It is not probable that `recode' will ever support `UTF-1'.
+   (1) It is not probable that Recode will ever support `UTF-1'.
 
    (2) This is when the goal charset allows for 16-bits.  For shorter
 charsets, the `--strict' (`-s') option decides what happens: either the
@@ -2299,14 +2295,14 @@ with it endianness problems.
 
    A non-empty `UCS-2' file normally begins with a so called "byte
 order mark", having value `0xFEFF'.  The value `0xFFFE' is not an `UCS'
-character, so if this value is seen at the beginning of a file,
-`recode' reacts by swapping all pairs of bytes.  The library also
-properly reacts to other occurrences of `0xFEFF' or `0xFFFE' elsewhere
-than at the beginning, because concatenation of `UCS-2' files should
-stay a simple matter, but it might trigger a diagnostic about non
-canonical input.
+character, so if this value is seen at the beginning of a file, Recode
+reacts by swapping all pairs of bytes.  The library also properly
+reacts to other occurrences of `0xFEFF' or `0xFFFE' elsewhere than at
+the beginning, because concatenation of `UCS-2' files should stay a
+simple matter, but it might trigger a diagnostic about non canonical
+input.
 
-   By default, when producing an `UCS-2' file, `recode' always outputs
+   By default, when producing an `UCS-2' file, Recode always outputs
 the high order byte before the low order byte.  But this could be
 easily overridden through the `21-Permutation' surface (*note
 Permutations::).  For example, the command:
@@ -2316,10 +2312,10 @@ Permutations::).  For example, the command:
 asks for an `UTF-8' to `UCS-2' conversion, with swapped byte output.
 
    Use `UCS-2' as a genuine charset.  This charset is available in
-`recode' under the name `ISO-10646-UCS-2'.  Accepted aliases are
-`UCS-2', `BMP', `rune' and `u2'.
+Recode under the name `ISO-10646-UCS-2'.  Accepted aliases are `UCS-2',
+`BMP', `rune' and `u2'.
 
-   The `recode' library is able to combine `UCS-2' some sequences of
+   The Recode library is able to combine `UCS-2' some sequences of
 codes into single code characters, to represent a few diacriticized
 characters, ligatures or diphtongs which have been included to ease
 mapping with other existing charsets.  It is also able to explode such
@@ -2348,7 +2344,7 @@ Another surface of `UCS' uses exactly four bytes per character, and is
 a mere dump of the internal memory representation which is _natural_
 for the whole charset and as such, conveys with it endianness problems.
 
-   Use it as a genuine charset.  This charset is available in `recode'
+   Use it as a genuine charset.  This charset is available in Recode
 under the name `ISO-10646-UCS-4'.  Accepted aliases are `UCS', `UCS-4',
 `ISO_10646', `10646' and `u4'.
 
@@ -2364,7 +2360,7 @@ channels limited to seven bits per byte.  It proceeds from a mix
 between the spirit of `Quoted-Printable' and methods of `Base64',
 adapted to Unicode contexts.
 
-   This charset is available in `recode' under the name
+   This charset is available in Recode under the name
 `UNICODE-1-1-UTF-7'.  Accepted aliases are `UTF-7', `TF-7' and `u7'.
 
 
@@ -2450,7 +2446,7 @@ the remainder of the string in either direction.  In most cases, it is
 faster and easier to convert from `UTF-8' to `UCS-2' or `UCS-4' prior
 to processing.
 
-   This charset is available in `recode' under the name `UTF-8'.
+   This charset is available in Recode under the name `UTF-8'.
 Accepted aliases are `UTF-2', `UTF-FSS', `FSS_UTF', `TF-8' and `u8'.
 
 
@@ -2475,7 +2471,7 @@ defined by the first million characters (17 * 2^16) of `UCS'.
      Plane of ISO 10646 (with just about 63,000 positions available,
      now that 2,000 are gone).
 
-   This charset is available in `recode' under the name `UTF-16'.
+   This charset is available in Recode under the name `UTF-16'.
 Accepted aliases are `Unicode', `TF-16' and `u6'.
 
 
@@ -2489,7 +2485,7 @@ many times each character appears.  Each count is followed by the
 `UCS-2' value of the character and, when known, the RFC 1345 mnemonic
 for that character.
 
-   This charset is available in `recode' under the name
+   This charset is available in Recode under the name
 `count-characters'.
 
    This `count' feature has been implemented as a charset.  This may
@@ -2510,17 +2506,16 @@ comment for that character.  As each input character produces its own
 output line, beware that the output file from this conversion may be
 much, much bigger than the input file.
 
-   This charset is available in `recode' under the name
-`dump-with-names'.
+   This charset is available in Recode under the name `dump-with-names'.
 
    This `dump-with-names' feature has been implemented as a charset
 rather than a surface.  This is surely debatable.  The current
 implementation allows for dumping charsets other than `UCS-2'.  For
 example, the command `recode l2..full < INPUT' implies a necessary
 conversion from `Latin-2' to `UCS-2', as `dump-with-names' is only
-connected out from `UCS-2'.  In such cases, `recode' does not display
-the original `Latin-2' codes in the dump, only the corresponding
-`UCS-2' values.  To give a simpler example, the command
+connected out from `UCS-2'.  In such cases, Recode does not display the
+original `Latin-2' codes in the dump, only the corresponding `UCS-2'
+values.  To give a simpler example, the command
 
      echo 'Hello, world!' | recode us..dump
 
@@ -2567,29 +2562,29 @@ File: recode.info,  Node: iconv,  Next: Tabular,  Prev: Universal,  Up: Top
 6 The `iconv' library
 *********************
 
-The `recode' library is able to use the capabilities of an external,
+The Recode library is able to use the capabilities of an external,
 pre-installed `iconv' library, usually as provided by GNU `libc' or the
 portable `libiconv' written by Bruno Haible.  In fact, many
-capabilities of the `recode' library are duplicated in an external
+capabilities of the Recode library are duplicated in an external
 `iconv' library, as they likely share many charsets.  We discuss, here,
 the issues related to this duplication, and other peculiarities
 specific to the `iconv' library.
 
-   As implemented, if a recoding request can be satisfied by the
-`recode' library both with and without using the `iconv' library, the
-external `iconv' library might be used.  To sort out if the `iconv' is
-indeed used or not, just use the `-v' or `--verbose' option, *note
-Recoding::, and check if `:iconv:' appears as an intermediate charset.
+   As implemented, if a recoding request can be satisfied by the Recode
+library both with and without using the `iconv' library, the external
+`iconv' library might be used.  To sort out if the `iconv' is indeed
+used or not, just use the `-v' or `--verbose' option, *note Recoding::,
+and check if `:iconv:' appears as an intermediate charset.
 
    The `:iconv:' charset represents a conceptual pivot charset within
 the external `iconv' library (in fact, this pivot exists, but is not
 directly reachable).  This charset has a mere `:' (a colon) for an
 alias.  It is not allowed to recode from or to this charset directly.
 But when this charset is selected as an intermediate, usually by
-automatic means, then the external `iconv' `recode' library is called
-to handle the transformations.  By using an `--ignore=:iconv:' option
-on the `recode' call or equivalently, but more simply, `-x:', `recode'
-is instructed to fully avoid this charset as an intermediate, with the
+automatic means, then the external `iconv' Recode library is called to
+handle the transformations.  By using an `--ignore=:iconv:' option on
+the `recode' call or equivalently, but more simply, `-x:', Recode is
+instructed to fully avoid this charset as an intermediate, with the
 consequence that the external `iconv' library is defeated.  Consider
 these two calls:
 
@@ -2607,16 +2602,16 @@ errors in the tables used, such differences should then be reported as
 bugs.
 
    Discrepancies might be seen in the area of error detection and
-recovery.  The `recode' library usually tries to detect canonicity
-errors in input, and production of ambiguous output, but the external
-`iconv' library does not necessarily do it the same way.  Moreover, the
-`recode' library may not always recover as nicely as possible when the
-external `iconv' has no translation for a given character.
+recovery.  The Recode library usually tries to detect canonicity errors
+in input, and production of ambiguous output, but the external `iconv'
+library does not necessarily do it the same way.  Moreover, the Recode
+library may not always recover as nicely as possible when the external
+`iconv' has no translation for a given character.
 
    The external `iconv' libraries may offer different sets of charsets
 and aliases from one library to another, and also between successive
 versions of a single library.  Best is to check the documentation of
-the external `iconv' library, as of the time `recode' was installed, to
+the external `iconv' library, as of the time Recode was installed, to
 know which charsets and aliases are being provided.
 
    The `--ignore=:iconv:' or `-x:' options might be useful when there
@@ -2624,7 +2619,7 @@ is a need to make a recoding more exactly repeatable between machines
 or installations, the idea being here to remove the variance possibly
 introduced by the various implementations of an external `iconv'
 library.  These options might also help deciding whether if some
-recoding problem is genuine to `recode', or is induced by the external
+recoding problem is genuine to Recode, or is induced by the external
 `iconv' library.
 
 
@@ -2633,14 +2628,14 @@ File: recode.info,  Node: Tabular,  Next: ASCII misc,  Prev: iconv,  Up: Top
 7 Tabular sources (RFC 1345)
 ****************************
 
-An important part of the tabular charset knowledge in `recode' comes
-from RFC 1345 or, alternatively, from the `chset' tools, both
-maintained by Keld Simonsen.  The RFC 1345 document:
+An important part of the tabular charset knowledge in Recode comes from
+RFC 1345 or, alternatively, from the `chset' tools, both maintained by
+Keld Simonsen.  The RFC 1345 document:
 
      "Character Mnemonics & Character Sets", K. Simonsen, Request for
      Comments no. 1345, Network Working Group, June 1992.
 
-defines many character mnemonics and character sets.  The `recode'
+defines many character mnemonics and character sets.  The Recode
 library implements most of RFC 1345, however:
 
    * It does not recognise those charsets which overload character
@@ -2667,31 +2662,31 @@ Olle Jaernefors.  Keld typed in almost all of the tables, some have been
 contributed.  A number of people have checked the tables in various
 ways.  The RFC lists a number of people who helped.
 
-   Keld and the `recode' maintainer have an arrangement by which any new
-discovered information submitted by `recode' users, about tabular
+   Keld and the Recode maintainer have an arrangement by which any new
+discovered information submitted by Recode users, about tabular
 charsets, is forwarded to Keld, eventually merged into Keld's work, and
-only then, reimported into `recode'.  Neither the `recode' program nor
-its library try to compete, nor even establish themselves as an
-alternate or diverging reference: RFC 1345 and its new drafts stay the
-genuine source for most tabular information conveyed by `recode'.  Keld
-has been more than collaborative so far, so there is no reason that we
-act otherwise.  In a word, `recode' should be perceived as the
-application of external references, but not as a reference in itself.
+only then, reimported into Recode.  Recode does not try to compete, nor
+even establish itself as an alternate or diverging reference: RFC 1345
+and its new drafts stay the genuine source for most tabular information
+conveyed by Recode.  Keld has been more than collaborative so far, so
+there is no reason that we act otherwise.  In a word, Recode should be
+perceived as the application of external references, but not as a
+reference in itself.
 
    Internally, RFC 1345 associates which each character an unambiguous
 mnemonic of a few characters, taken from ISO 646, which is a minimal
 ASCII subset of 83 characters.  The charset made up by these mnemonics
-is available in `recode' under the name `RFC1345'.  It has `mnemonic'
-and `1345' for aliases.  As implemened, this charset exactly
-corresponds to `mnemonic+ascii+38', using RFC 1345 nomenclature.
-Roughly said, ISO 646 characters represent themselves, except for the
-ampersand (`&') which appears doubled.  A prefix of a single ampersand
-introduces a mnemonic.  For mnemonics using two characters, the prefix
-is immediately by the mnemonic.  For longer mnemonics, the prefix is
+is available in Recode under the name `RFC1345'.  It has `mnemonic' and
+`1345' for aliases.  As implemened, this charset exactly corresponds to
+`mnemonic+ascii+38', using RFC 1345 nomenclature.  Roughly said,
+ISO 646 characters represent themselves, except for the ampersand (`&')
+which appears doubled.  A prefix of a single ampersand introduces a
+mnemonic.  For mnemonics using two characters, the prefix is
+immediately by the mnemonic.  For longer mnemonics, the prefix is
 followed by an underline (`_'), the mmemonic, and another underline.
 Conversions to this charset are usually reversible.
 
-   Currently, `recode' does not offer any of the many other possible
+   Currently, Recode does not offer any of the many other possible
 variations of this family of representations.  They will likely be
 implemented in some future version, however.
 
@@ -3343,11 +3338,11 @@ File: recode.info,  Node: ASCII,  Next: ISO 8859,  Prev: ASCII misc,  Up: ASCII 
 8.1 Usual ASCII
 ===============
 
-This charset is available in `recode' under the name `ASCII'.  In fact,
+This charset is available in Recode under the name `ASCII'.  In fact,
 its true name is `ANSI_X3.4-1968' as per RFC 1345, accepted aliases
 being `ANSI_X3.4-1986', `ASCII', `IBM367', `ISO646-US',
 `ISO_646.irv:1991', `US-ASCII', `cp367', `iso-ir-6' and `us'.  The
-shortest way of specifying it in `recode' is `us'.
+shortest way of specifying it in Recode is `us'.
 
    This documentation used to include ASCII tables.  They have been
 removed since the `recode' program can now recreate these easily:
@@ -3396,11 +3391,11 @@ Lasko <lasko@video.dec.com>, a long while ago:
         * Latin-Hebrew alphabet (right half Hebrew + symbols -
           proposed).
 
-   The ISO Latin Alphabet 1 is available as a charset in `recode' under
+   The ISO Latin Alphabet 1 is available as a charset in Recode under
 the name `Latin-1'.  In fact, its true name is `ISO_8859-1:1987' as per
 RFC 1345, accepted aliases being `CP819', `IBM819', `ISO-8859-1',
 `ISO_8859-1', `iso-ir-100', `l1' and `Latin-1'.  The shortest way of
-specifying it in `recode' is `l1'.
+specifying it in Recode is `l1'.
 
    It is an eight-bit code which coincides with ASCII for the lower
 half.  This documentation used to include Latin-1 tables.  They have
@@ -3417,7 +3412,7 @@ File: recode.info,  Node: ASCII-BS,  Next: flat,  Prev: ISO 8859,  Up: ASCII mis
 8.3 ASCII 7-bits, `BS' to overstrike
 ====================================
 
-This charset is available in `recode' under the name `ASCII-BS', with
+This charset is available in Recode under the name `ASCII-BS', with
 `BS' as an acceptable alias.
 
    The file is straight ASCII, seven bits only.  According to the
@@ -3461,7 +3456,7 @@ File: recode.info,  Node: flat,  Prev: ASCII-BS,  Up: ASCII misc
 8.4 ASCII without diacritics nor underline
 ==========================================
 
-This charset is available in `recode' under the name `flat'.
+This charset is available in Recode under the name `flat'.
 
    This code is ASCII expunged of all diacritics and underlines, as
 long as they are applied using three character sequences, with `BS' in
@@ -3479,9 +3474,9 @@ File: recode.info,  Node: IBM and MS,  Next: CDC,  Prev: ASCII misc,  Up: Top
 9 Some IBM or Microsoft charsets
 ********************************
 
-The `recode' program provides various IBM or Microsoft code pages
-(*note Tabular::).  An easy way to find them all at once out of the
-`recode' program itself is through the command:
+Recode provides various IBM or Microsoft code pages (*note Tabular::).
+An easy way to find them all at once out of Recode itself is through the
+command:
 
      recode -l | egrep -i '(CP|IBM)[0-9]'
 
@@ -3501,24 +3496,24 @@ File: recode.info,  Node: EBCDIC,  Next: IBM-PC,  Prev: IBM and MS,  Up: IBM and
 
 This charset is the IBM's External Binary Coded Decimal for Interchange
 Coding.  This is an eight bits code.  The following three variants were
-implemented in `recode' independently of RFC 1345:
+implemented in Recode independently of RFC 1345:
 
 `EBCDIC'
-     In `recode', the `us..ebcdic' conversion is identical to `dd
-     conv=ebcdic' conversion, and `recode' `ebcdic..us' conversion is
+     In Recode, the `us..ebcdic' conversion is identical to `dd
+     conv=ebcdic' conversion, and Recode `ebcdic..us' conversion is
      identical to `dd conv=ascii' conversion.  This charset also
      represents the way Control Data Corporation relates EBCDIC to
      8-bits ASCII.
 
 `EBCDIC-CCC'
-     In `recode', the `us..ebcdic-ccc' or `ebcdic-ccc..us' conversions
+     In Recode, the `us..ebcdic-ccc' or `ebcdic-ccc..us' conversions
      represent the way Concurrent Computer Corporation (formerly Perkin
      Elmer) relates EBCDIC to 8-bits ASCII.
 
 `EBCDIC-IBM'
-     In `recode', the `us..ebcdic-ibm' conversion is _almost_ identical
+     In Recode, the `us..ebcdic-ibm' conversion is _almost_ identical
      to the GNU `dd conv=ibm' conversion.  Given the exact `dd
-     conv=ibm' conversion table, `recode' once said:
+     conv=ibm' conversion table, Recode once said:
 
           Codes  91 and 213 both recode to 173
           Codes  93 and 229 both recode to 189
@@ -3528,17 +3523,17 @@ implemented in `recode' independently of RFC 1345:
      So I arbitrarily chose to recode 213 by 74 and 229 by 106.  This
      makes the `EBCDIC-IBM' recoding reversible, but this is not
      necessarily the best correction.  In any case, I think that GNU
-     `dd' should be amended.  `dd' and `recode' should ideally agree on
+     `dd' should be amended.  `dd' and Recode should ideally agree on
      the same correction.  So, this table might change once again.
 
-   RFC 1345 brings into `recode' 15 other EBCDIC charsets, and 21 other
+   RFC 1345 brings into Recode 15 other EBCDIC charsets, and 21 other
 charsets having EBCDIC in at least one of their alias names.  You can
 get a list of all these by executing:
 
      recode -l | grep -i ebcdic
 
-   Note that `recode' may convert a pure stream of EBCDIC characters,
-but it does not know how to handle binary data between records which is
+   Note that Recode may convert a pure stream of EBCDIC characters, but
+it does not know how to handle binary data between records which is
 sometimes used to delimit them and build physical blocks.  If end of
 lines are not marked, fixed record size may produce something readable,
 but `VB' or `VBS' blocking is likely to yield some garbage in the
@@ -3550,14 +3545,14 @@ File: recode.info,  Node: IBM-PC,  Next: Icon-QNX,  Prev: EBCDIC,  Up: IBM and M
 9.2 IBM's PC code
 =================
 
-This charset is available in `recode' under the name `IBM-PC', with
+This charset is available in Recode under the name `IBM-PC', with
 `dos', `MSDOS' and `pc' as acceptable aliases.  The shortest way of
-specifying it in `recode' is `pc'.
+specifying it in Recode is `pc'.
 
    The charset is aimed towards a PC microcomputer from IBM or any
 compatible.  This is an eight-bit code.  This charset is fairly old in
-`recode', its tables were produced a long while ago by mere inspection
-of a printed chart of the IBM-PC codes and glyph.
+Recode, its tables were produced a long while ago by mere inspection of
+a printed chart of the IBM-PC codes and glyph.
 
    It has `CR-LF' as its implied surface.  This means that, if the
 original end of lines have to be preserved while going out of `IBM-PC',
@@ -3568,7 +3563,7 @@ for both cases:
      recode pc..l2/cl < INPUT > OUTPUT
      recode pc/..l2 < INPUT > OUTPUT
 
-   RFC 1345 brings into `recode' 44 `IBM' charsets or code pages, and
+   RFC 1345 brings into Recode 44 `IBM' charsets or code pages, and
 also 8 other code pages.  You can get a list of these all these by
 executing:(1)
 
@@ -3606,7 +3601,7 @@ File: recode.info,  Node: Icon-QNX,  Prev: IBM-PC,  Up: IBM and MS
 9.3 Unisys' Icon code
 =====================
 
-This charset is available in `recode' under the name `Icon-QNX', with
+This charset is available in Recode under the name `Icon-QNX', with
 `QNX' as an acceptable alias.
 
    The file is using Unisys' Icon way to represent diacritics with code
@@ -3619,29 +3614,29 @@ File: recode.info,  Node: CDC,  Next: Micros,  Prev: IBM and MS,  Up: Top
 10 Charsets for CDC machines
 ****************************
 
-What is now `recode' evolved out, through many transformations really,
+What is now Recode evolved out, through many transformations really,
 from a set of programs which were originally written in "COMPASS",
 Control Data Corporation's assembler, with bits in FORTRAN, and later
 rewritten in CDC 6000 Pascal.  The CDC heritage shows by the fact some
 old CDC charsets are still supported.
 
-   The `recode' author used to be familiar with CDC Scope-NOS/BE and
+   The Recode author used to be familiar with CDC Scope-NOS/BE and
 Kronos-NOS, and many CDC formats.  Reading CDC tapes directly on other
-machines is often a challenge, and `recode' does not always solve it.
-It helps having tapes created in coded mode instead of binary mode, and
+machines is often a challenge, and Recode does not always solve it.  It
+helps having tapes created in coded mode instead of binary mode, and
 using `S' (Stranger) tapes instead of `I' (Internal) tapes.  ANSI
 labels and multi-file tapes might be the source of trouble.  There are
 ways to handle a few Cyber Record Manager formats, but some of them
 might be quite difficult to decode properly after the transfer is done.
 
-   The `recode' program is usable only for a small subset of NOS text
-formats, and surely not with binary textual formats, like `UPDATE' or
-`MODIFY' sources, for example.  `recode' is not especially suited for
-reading 8/12 or 56/60 packing, yet this could easily arranged if there
-was a demand for it.  It does not have the ability to translate Display
-Code directly, as the ASCII conversion implied by tape drivers or FTP
-does the initial approximation.  `recode' can decode 6/12 caret
-notation over Display Code already mapped to ASCII.
+   Recode is usable only for a small subset of NOS text formats, and
+surely not with binary textual formats, like `UPDATE' or `MODIFY'
+sources, for example.  Recode is not especially suited for reading 8/12
+or 56/60 packing, yet this could easily arranged if there was a demand
+for it.  It does not have the ability to translate Display Code
+directly, as the ASCII conversion implied by tape drivers or FTP does
+the initial approximation.  Recode can decode 6/12 caret notation over
+Display Code already mapped to ASCII.
 
 * Menu:
 
@@ -3655,8 +3650,8 @@ File: recode.info,  Node: Display Code,  Next: CDC-NOS,  Prev: CDC,  Up: CDC
 10.1 Control Data's Display Code
 ================================
 
-This code is not available in `recode', but repeated here for
-reference.  This is a 6-bit code used on CDC mainframes.
+This code is not available in Recode, but repeated here for reference.
+This is a 6-bit code used on CDC mainframes.
 
      Octal display code to graphic       Octal display code to octal ASCII
 
@@ -3703,7 +3698,7 @@ File: recode.info,  Node: CDC-NOS,  Next: Bang-Bang,  Prev: Display Code,  Up: C
 10.2 ASCII 6/12 from NOS
 ========================
 
-This charset is available in `recode' under the name `CDC-NOS', with
+This charset is available in Recode under the name `CDC-NOS', with
 `NOS' as an acceptable alias.
 
    This is one of the charsets in use on CDC Cyber NOS systems to
@@ -3742,7 +3737,7 @@ File: recode.info,  Node: Bang-Bang,  Prev: CDC-NOS,  Up: CDC
 10.3 ASCII "bang bang"
 ======================
 
-This charset is available in `recode' under the name `Bang-Bang'.
+This charset is available in Recode under the name `Bang-Bang'.
 
    This code, in use on Cybers at Universite' de Montre'al mainly,
 served to code a lot of French texts.  The original name of this
@@ -3783,7 +3778,7 @@ File: recode.info,  Node: Micros,  Next: Miscellaneous,  Prev: CDC,  Up: Top
 ********************************
 
 The `NeXT' charset, which used to be especially provided in releases of
-`recode' before 3.5, has been integrated since as one RFC 1345 table.
+Recode before 3.5, has been integrated since as one RFC 1345 table.
 
 * Menu:
 
@@ -3796,14 +3791,14 @@ File: recode.info,  Node: Apple-Mac,  Next: AtariST,  Prev: Micros,  Up: Micros
 11.1 Apple's Macintosh code
 ===========================
 
-This charset is available in `recode' under the name `Apple-Mac'.  The
-shortest way of specifying it in `recode' is `ap'.
+This charset is available in Recode under the name `Apple-Mac'.  The
+shortest way of specifying it in Recode is `ap'.
 
    The charset is aimed towards a Macintosh micro-computer from Apple.
 This is an eight bit code.  The file is the data fork only.  This
-charset is fairly old in `recode', its tables were produced a long
-while ago by mere inspection of a printed chart of the Macintosh codes
-and glyph.
+charset is fairly old in Recode, its tables were produced a long while
+ago by mere inspection of a printed chart of the Macintosh codes and
+glyph.
 
    It has `CR' as its implied surface.  This means that, if the original
 end of lines have to be preserved while going out of `Apple-Mac', they
@@ -3814,7 +3809,7 @@ both cases:
      recode ap..l2/cr < INPUT > OUTPUT
      recode ap/..l2 < INPUT > OUTPUT
 
-   RFC 1345 brings into `recode' 2 other Macintosh charsets.  You can
+   RFC 1345 brings into Recode 2 other Macintosh charsets.  You can
 discover them by using `grep' over the output of `recode -l':
 
      recode -l | grep -i mac
@@ -3836,10 +3831,9 @@ The first command use the charset prior to RFC 1345 introduction.  Both
 methods give different recodings.  These differences are annoying, the
 fuzziness will have to be explained and settle down one day.
 
-   As a side note, some people ask if there is a Macintosh port of the
-`recode' program.  I'm not aware of any.  I presume that if the tool
-fills a need for Macintosh users, someone will port it one of these
-days?
+   As a side note, some people ask if there is a Macintosh port of
+Recode.  I'm not aware of any.  I presume that if the tool fills a need
+for Macintosh users, someone will port it one of these days?
 
 
 File: recode.info,  Node: AtariST,  Prev: Apple-Mac,  Up: Micros
@@ -3847,7 +3841,7 @@ File: recode.info,  Node: AtariST,  Prev: Apple-Mac,  Up: Micros
 11.2 Atari ST code
 ==================
 
-This charset is available in `recode' under the name `AtariST'.
+This charset is available in Recode under the name `AtariST'.
 
    This is the character set used on the Atari ST/TT/Falcon.  This is
 similar to `IBM-PC', but differs in some details: it includes some more
@@ -3861,8 +3855,8 @@ between text and binary input/output; it is up to the application how
 to interpret the data.  In fact, most of the libraries that come with
 compilers can grok both `\r\n' and `\n' as end of lines.  Many of the
 users who also have access to Unix systems prefer `\n' to ease porting
-Unix utilities.  So, for easing reversibility, `recode' tries to let
-`\r' undisturbed through recodings.
+Unix utilities.  So, for easing reversibility, Recode tries to let `\r'
+undisturbed through recodings.
 
 
 File: recode.info,  Node: Miscellaneous,  Next: Surfaces,  Prev: Micros,  Up: Top
@@ -3870,10 +3864,10 @@ File: recode.info,  Node: Miscellaneous,  Next: Surfaces,  Prev: Micros,  Up: To
 12 Various other charsets
 *************************
 
-Even if these charsets were originally added to `recode' for handling
+Even if these charsets were originally added to Recode for handling
 texts written in French, they find other uses.  We did use them a lot
-for writing French diacriticised texts in the past, so `recode' knows
-how to handle these particularly well for French texts.
+for writing French diacriticised texts in the past, so Recode knows how
+to handle these particularly well for French texts.
 
 * Menu:
 
@@ -3904,35 +3898,35 @@ reference".
    The HTML standards have been revised into different HTML levels over
 time, and the list of allowable character entities differ in them.  The
 later XML, meant to simplify many things, has an option
-(`standalone=yes') which much restricts that list.  The `recode'
-library is able to convert character references between their mnemonic
-form and their numeric form, depending on aimed HTML standard level.
-It also can, of course, convert between HTML and various other charsets.
+(`standalone=yes') which much restricts that list.  The Recode library
+is able to convert character references between their mnemonic form and
+their numeric form, depending on aimed HTML standard level.  It also
+can, of course, convert between HTML and various other charsets.
 
-   Here is a list of those HTML variants which `recode' supports.  Some
+   Here is a list of those HTML variants which Recode supports.  Some
 notes have been provided by Franc,ois Yergeau <yergeau@alis.com>.
 
 `XML-standalone'
-     This charset is available in `recode' under the name
+     This charset is available in Recode under the name
      `XML-standalone', with `h0' as an acceptable alias.  It is
      documented in section 4.1 of `http://www.w3.org/TR/REC-xml'.  It
      only knows `&amp;', `&gt;', `&lt;', `&quot;' and `&apos;'.
 
 `HTML_1.1'
-     This charset is available in `recode' under the name `HTML_1.1',
+     This charset is available in Recode under the name `HTML_1.1',
      with `h1' as an acceptable alias.  HTML 1.0 was never really
      documented.
 
 `HTML_2.0'
-     This charset is available in `recode' under the name `HTML_2.0',
-     and has `RFC1866', `1866' and `h2' for aliases.  HTML 2.0 entities
-     are listed in RFC 1866.  Basically, there is an entity for each
+     This charset is available in Recode under the name `HTML_2.0', and
+     has `RFC1866', `1866' and `h2' for aliases.  HTML 2.0 entities are
+     listed in RFC 1866.  Basically, there is an entity for each
      _alphabetical_ character in the right part of ISO 8859-1.  In
      addition, there are four entities for syntax-significant ASCII
      characters: `&amp;', `&gt;', `&lt;' and `&quot;'.
 
 `HTML-i18n'
-     This charset is available in `recode' under the name `HTML-i18n',
+     This charset is available in Recode under the name `HTML-i18n',
      and has `RFC2070' and `2070' for aliases.  RFC 2070 added entities
      to cover the whole right part of ISO 8859-1.  The list is
      conveniently accessible at
@@ -3942,16 +3936,16 @@ notes have been provided by Franc,ois Yergeau <yergeau@alis.com>.
      (`&#8207;').
 
 `HTML_3.2'
-     This charset is available in `recode' under the name `HTML_3.2',
+     This charset is available in Recode under the name `HTML_3.2',
      with `h3' as an acceptable alias.  HTML 3.2
      (http://www.w3.org/TR/REC-html32.html) took up the full Latin-1
      list but not the i18n-related entities from RFC 2070.
 
 `HTML_4.0'
-     This charset is available in `recode' under the name `HTML_4.0',
-     and has `h4' and `h' for aliases.  Beware that the particular
-     alias `h' is not _tied_ to HTML 4.0, but to the highest HTML level
-     supported by `recode'; so it might later represent HTML level 5 if
+     This charset is available in Recode under the name `HTML_4.0', and
+     has `h4' and `h' for aliases.  Beware that the particular alias
+     `h' is not _tied_ to HTML 4.0, but to the highest HTML level
+     supported by Recode; so it might later represent HTML level 5 if
      this is ever created.  HTML 4.0 (http://www.w3.org/TR/REC-html40/)
      has the whole Latin-1 list, a set of entities for symbols,
      mathematical symbols, and Greek letters, and another set for
@@ -3976,27 +3970,27 @@ is pure other charset.  These particular translations can be rather
 inconvenient, they may be specifically inhibited through the command
 option `-d' (*note Mixed::).
 
-   Codes not having a mnemonic entity are output by `recode' using the
+   Codes not having a mnemonic entity are output by Recode using the
 `&#NNN;' notation, where NNN is a decimal representation of the UCS
 code value.  When there is an entity name for a character, it is always
 preferred over a numeric character reference.  ASCII printable
 characters are always generated directly.  So is the newline.  While
-reading HTML, `recode' supports numeric character reference as alternate
+reading HTML, Recode supports numeric character reference as alternate
 writings, even when written as hexadecimal numbers, as in `&#xfffd'.
 This is documented in:
 
      http://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.3
 
-   When `recode' translates to HTML, the translation occurs according to
+   When Recode translates to HTML, the translation occurs according to
 the HTML level as selected by the goal charset.  When translating _from_
-HTML, `recode' not only accepts the character entity references known at
+HTML, Recode not only accepts the character entity references known at
 that level, but also those of all other levels, as well as a few
 alternative special sequences, to be forgiving to files using other
 HTML standards.
 
-   The `recode' program can be used to _normalise_ an HTML file using
-oldish conventions.  For example, it accepts `&AE;', as this once was a
-valid writing, somewhere.  However, it should always produce `&AElig;'
+   Recode can be used to _normalise_ an HTML file using oldish
+conventions.  For example, it accepts `&AE;', as this once was a valid
+writing, somewhere.  However, it should always produce `&AElig;'
 instead of `&AE;'.  Yet, this is not completely true.  If one does:
 
      recode h3..h3 < INPUT
@@ -4015,7 +4009,7 @@ File: recode.info,  Node: LaTeX,  Next: Texinfo,  Prev: HTML,  Up: Miscellaneous
 12.2 LaTeX macro calls
 ======================
 
-This charset is available in `recode' under the name `LaTeX' and has
+This charset is available in Recode under the name `LaTeX' and has
 `ltex' as an alias.  It is used for ASCII files coded to be read by
 LaTeX or, in certain cases, by TeX.
 
@@ -4033,16 +4027,16 @@ File: recode.info,  Node: Texinfo,  Next: Vietnamese,  Prev: LaTeX,  Up: Miscell
 12.3 GNU project documentation files
 ====================================
 
-This charset is available in `recode' under the name `Texinfo' and has
+This charset is available in Recode under the name `Texinfo' and has
 `texi' and `ti' for aliases.  It is used by the GNU project for its
 documentation.  Texinfo files may be converted into Info files by the
 `makeinfo' program and into nice printed manuals by the TeX system.
 
-   Even if `recode' may transform other charsets to Texinfo, it may not
+   Even if Recode may transform other charsets to Texinfo, it may not
 read Texinfo files yet.  In these times, usages are also changing
-between versions of Texinfo, and `recode' only partially succeeds in
+between versions of Texinfo, and Recode only partially succeeds in
 correctly following these changes.  So, for now, Texinfo support in
-`recode' should be considered as work still in progress (!).
+Recode should be considered as work still in progress (!).
 
 
 File: recode.info,  Node: Vietnamese,  Next: African,  Prev: Texinfo,  Up: Miscellaneous
@@ -4050,7 +4044,7 @@ File: recode.info,  Node: Vietnamese,  Next: African,  Prev: Texinfo,  Up: Misce
 12.4 Vietnamese charsets
 ========================
 
-We are currently experimenting the implementation, in `recode', of a few
+We are currently experimenting the implementation, in Recode, of a few
 character sets and transliterated forms to handle the Vietnamese
 language.  They are quite briefly summarised, here.
 
@@ -4074,7 +4068,7 @@ language.  They are quite briefly summarised, here.
      The VNI convention is a 8-bit, `Latin-1' transliteration for
      Vietnamese.
 
-   Still lacking for Vietnamese in `recode', are the charsets `CP1129'
+   Still lacking for Vietnamese in Recode, are the charsets `CP1129'
 and `CP1258'.
 
 
@@ -4088,23 +4082,23 @@ these are heavily used in countries where French is also currently
 spoken.
 
    One African charset is usable for Bambara, Ewondo and Fulfude, as
-well as for French.  This charset is available in `recode' under the
-name `AFRFUL-102-BPI_OCIL'.  Accepted aliases are `bambara', `bra',
-`ewondo' and `fulfude'.  Transliterated forms of the same are available
-under the name `AFRFUL-103-BPI_OCIL'.  Accepted aliases are
-`t-bambara', `t-bra', `t-ewondo' and `t-fulfude'.
+well as for French.  This charset is available in Recode under the name
+`AFRFUL-102-BPI_OCIL'.  Accepted aliases are `bambara', `bra', `ewondo'
+and `fulfude'.  Transliterated forms of the same are available under
+the name `AFRFUL-103-BPI_OCIL'.  Accepted aliases are `t-bambara',
+`t-bra', `t-ewondo' and `t-fulfude'.
 
    Another African charset is usable for Lingala, Sango and Wolof, as
-well as for French.  This charset is available in `recode' under the
-name `AFRLIN-104-BPI_OCIL'.  Accepted aliases are `lingala', `lin',
-`sango' and `wolof'.  Transliterated forms of the same are available
-under the name `AFRLIN-105-BPI_OCIL'.  Accepted aliases are
-`t-lingala', `t-lin', `t-sango' and `t-wolof'.
+well as for French.  This charset is available in Recode under the name
+`AFRLIN-104-BPI_OCIL'.  Accepted aliases are `lingala', `lin', `sango'
+and `wolof'.  Transliterated forms of the same are available under the
+name `AFRLIN-105-BPI_OCIL'.  Accepted aliases are `t-lingala', `t-lin',
+`t-sango' and `t-wolof'.
 
    To ease exchange with `ISO-8859-1', there is a charset conveying
 transliterated forms for Latin-1 in a way which is compatible with the
 other African charsets in this series.  This charset is available in
-`recode' under the name `AFRL1-101-BPI_OCIL'.  Accepted aliases are
+Recode under the name `AFRL1-101-BPI_OCIL'.  Accepted aliases are
 `t-fra' and `t-francais'.
 
 
@@ -4113,8 +4107,8 @@ File: recode.info,  Node: Others,  Next: Texte,  Prev: African,  Up: Miscellaneo
 12.6 Cyrillic and other charsets
 ================================
 
-The following Cyrillic charsets are already available in `recode'
-through RFC 1345 tables: `CP1251' with aliases `1251', ` ms-cyrl' and
+The following Cyrillic charsets are already available in Recode through
+RFC 1345 tables: `CP1251' with aliases `1251', ` ms-cyrl' and
 `windows-1251'; `CSN_369103' with aliases `ISO-IR-139' and `KOI8_L2';
 `ECMA-cyrillic' with aliases `ECMA-113', `ECMA-113:1986' and
 `iso-ir-111', `IBM880' with aliases `880', `CP880' and
@@ -4124,8 +4118,8 @@ with aliases `cyrillic', ` ISO-8859-5:1988' and `iso-ir-144'; `KOI-7';
 `KOI8-U'.
 
    There seems to remain some confusion in Roman charsets for Cyrillic
-languages, and because a few users requested it repeatedly, `recode'
-now offers special services in that area.  Consider these charsets as
+languages, and because a few users requested it repeatedly, Recode now
+offers special services in that area.  Consider these charsets as
 experimental and debatable, as the extraneous tables describing them are
 still a bit fuzzy or non-standard.  Hopefully, in the long run, these
 charsets will be covered in Keld Simonsen's works to the satisfaction of
@@ -4148,7 +4142,7 @@ File: recode.info,  Node: Texte,  Next: Mule,  Prev: Others,  Up: Miscellaneous
 12.7 Easy French conventions
 ============================
 
-This charset is available in `recode' under the name `Texte' and has
+This charset is available in Recode under the name `Texte' and has
 `txte' for an alias.  It is a seven bits code, identical to `ASCII-BS',
 save for French diacritics which are noted using a slightly different
 convention.
@@ -4188,7 +4182,7 @@ the selected convention.  Shortly said, we have:
 There is no attempt at expressing the `ae' and `oe' diphthongs.  French
 also uses tildes over `n' and `a', but seldomly, and this is not
 represented either.  In some countries, `:' is used instead of `"' to
-mark diaeresis.  `recode' supports only one convention per call,
+mark diaeresis.  Recode supports only one convention per call,
 depending on the `-c' option of the `recode' command.  French quotes
 (sometimes called "angle quotes") are noted the same way English quotes
 are noted in TeX, _id est_ by ```' and `'''.  No effort has been put to
@@ -4229,8 +4223,8 @@ systematically obeyed by the various recognisers.
   3. A double quote or colon, depending on `-c' option, which follows a
      vowel is interpreted as diaeresis only if it is followed by
      another letter.  But there are in French several words that _end_
-     with a diaeresis, and the `recode' library is aware of them.
-     There are words ending in "igue", either feminine words without a
+     with a diaeresis, and the Recode library is aware of them.  There
+     are words ending in "igue", either feminine words without a
      relative masculine (besaigue" and cigue"), or feminine words with
      a relative masculine(1) (aigue", ambigue", contigue", exigue",
      subaigue" and suraigue").  There are also words not ending in
@@ -4271,14 +4265,14 @@ File: recode.info,  Node: Mule,  Prev: Texte,  Up: Miscellaneous
 12.8 Mule as a multiplexed charset
 ==================================
 
-This version of `recode' barely starts supporting multiplexed or
+This version of Recode barely starts supporting multiplexed or
 super-charsets, that is, those encoding methods by which a single text
 stream may contain a combination of more than one constituent charset.
-The only multiplexed charset in `recode' is `Mule', and even then, it
-is only very partially implemented: the only correspondence available
-is with `Latin-1'.  The author fastly implemented this only because he
+The only multiplexed charset in Recode is `Mule', and even then, it is
+only very partially implemented: the only correspondence available is
+with `Latin-1'.  The author fastly implemented this only because he
 needed this for himself.  However, it is intended that Mule support to
-become more real in subsequent releases of `recode'.
+become more real in subsequent releases of Recode.
 
    Multiplexed charsets are not to be confused with mixed charset texts
 (*note Mixed::).  For mixed charset input, the rules allowing to
@@ -4331,12 +4325,12 @@ removed in the reverse order of their application.
    Even if surfaces may generally be applied to various charsets, some
 surfaces were specifically designed for a particular charset, and would
 not make much sense if applied to other charsets.  In such cases, these
-conceptual surfaces have been implemented as `recode' charsets, instead
+conceptual surfaces have been implemented as Recode charsets, instead
 of as surfaces.  This choice yields to cleaner syntax and usage.  *Note
 Universal::.
 
-   Surfaces are implemented within `recode' as special charsets which
-may only transform to or from the `data' or `tree' special charsets.
+   Surfaces are implemented within Recode as special charsets which may
+only transform to or from the `data' or `tree' special charsets.
 Clever users may use this knowledge for writing surface names in
 requests exactly as if they were pure charsets, when the only need is
 to change surfaces without any kind of recoding between real charsets.
@@ -4345,18 +4339,18 @@ were some kind of generic, anonymous charset: the request
 `data..SURFACE' merely adds the given SURFACE, while the request
 `SURFACE..data' removes it.
 
-   The `recode' library distinguishes between mere data surfaces, and
+   The Recode library distinguishes between mere data surfaces, and
 structural surfaces, also called tree surfaces for short.  Structural
 surfaces might allow, in the long run, transformations between a few
 specialised representations of structural information like MIME parts,
 Perl or Python initialisers, LISP S-expressions, XML, Emacs outlines,
 etc.
 
-   We are still experimenting with surfaces in `recode'.  The concept
+   We are still experimenting with surfaces in Recode.  The concept
 opens the doors to many avenues; it is not clear yet which ones are
 worth pursuing, and which should be abandoned.  In particular,
 implementation of structural surfaces is barely starting, there is not
-even a commitment that tree surfaces will stay in `recode', if they do
+even a commitment that tree surfaces will stay in Recode, if they do
 prove to be more cumbersome than useful.  This chapter presents all
 surfaces currently available.
 
@@ -4370,8 +4364,8 @@ surfaces currently available.
 
    ---------- Footnotes ----------
 
-   (1) These are mere examples to explain the concept, `recode' only
-has `Base64' and `CR-LF', actually.
+   (1) These are mere examples to explain the concept, Recode only has
+`Base64' and `CR-LF', actually.
 
 
 File: recode.info,  Node: Permutations,  Next: End lines,  Prev: Surfaces,  Up: Surfaces
@@ -4388,11 +4382,11 @@ remaining bytes are nevertheless permuted as _321_ if there are three
 bytes, _21_ if there are two bytes, or merely copied otherwise.
 
 `21'
-     This surface is available in `recode' under the name
+     This surface is available in Recode under the name
      `21-Permutation' and has `swabytes' for an alias.
 
 `4321'
-     This surface is available in `recode' under the name
+     This surface is available in Recode under the name
      `4321-Permutation'.
 
 
@@ -4403,7 +4397,7 @@ File: recode.info,  Node: End lines,  Next: MIME,  Prev: Permutations,  Up: Surf
 
 The same charset might slightly differ, from one system to another, for
 the single fact that end of lines are not represented identically on all
-systems.  The representation for an end of line within `recode' is the
+systems.  The representation for an end of line within Recode is the
 `ASCII' or `UCS' code with value 10, or `LF'.  Other conventions for
 representing end of lines are available through surfaces.
 
@@ -4417,7 +4411,7 @@ representing end of lines are available through surfaces.
      applying the surface, and any `LF' will be copied verbatim while
      removing it.
 
-     This surface is available in `recode' under the name `CR', it does
+     This surface is available in Recode under the name `CR', it does
      not have any aliases.  This is the implied surface for the Apple
      Macintosh related charsets.
 
@@ -4432,8 +4426,8 @@ representing end of lines are available through surfaces.
      `ASCII' value 26, and everything following it in the text.  Adding
      this surface will not, however, append a `C-z' to the result.
 
-     This surface is available in `recode' under the name `CR-LF' and
-     has `cl' for an alias.  This is the implied surface for the IBM or
+     This surface is available in Recode under the name `CR-LF' and has
+     `cl' for an alias.  This is the implied surface for the IBM or
      Microsoft related charsets or code pages.
 
    Some other charsets might have their own representation for an end of
@@ -4454,11 +4448,11 @@ Quoted-Printable is especially usable for text entities, in those case
 the lower 128 characters of the underlying charset coincide with ASCII.
 
 `Base64'
-     This surface is available in `recode' under the name `Base64',
-     with `b64' and `64' as acceptable aliases.
+     This surface is available in Recode under the name `Base64', with
+     `b64' and `64' as acceptable aliases.
 
 `Quoted-Printable'
-     This surface is available in `recode' under the name
+     This surface is available in Recode under the name
      `Quoted-Printable', with `quote-printable' and `QP' as acceptable
      aliases.
 
@@ -4482,7 +4476,7 @@ Dumps are surfaces meant to express, in ways which are a bit more
 readable, the bit patterns used to represent characters.  They allow
 the inspection or debugging of character streams, but also, they may
 assist a bit the production of C source code which, once compiled,
-would hold in memory a copy of the original coding.  However, `recode'
+would hold in memory a copy of the original coding.  However, Recode
 does not attempt, in any way, to produce complete C source files in
 dumps.  User hand editing or `Makefile' trickery is still needed for
 adding missing lines.  Dumps may be given in decimal, hexadecimal and
@@ -4499,57 +4493,57 @@ single type, and so, have identical sizes.
 `Octal-1'
      This surface corresponds to an octal expression of each input byte.
 
-     It is available in `recode' under the name `Octal-1', with `o1'
-     and `o' as acceptable aliases.
+     It is available in Recode under the name `Octal-1', with `o1' and
+     `o' as acceptable aliases.
 
 `Octal-2'
      This surface corresponds to an octal expression of each pair of
      input bytes, except for the last pair, which may be short.
 
-     It is available in `recode' under the name `Octal-2' and has `o2'
+     It is available in Recode under the name `Octal-2' and has `o2'
      for an alias.
 
 `Octal-4'
      This surface corresponds to an octal expression of each quadruple
      of input bytes, except for the last quadruple, which may be short.
 
-     It is available in `recode' under the name `Octal-4' and has `o4'
+     It is available in Recode under the name `Octal-4' and has `o4'
      for an alias.
 
 `Decimal-1'
      This surface corresponds to an decimal expression of each input
      byte.
 
-     It is available in `recode' under the name `Decimal-1', with `d1'
+     It is available in Recode under the name `Decimal-1', with `d1'
      and `d' as acceptable aliases.
 
 `Decimal-2'
      This surface corresponds to an decimal expression of each pair of
      input bytes, except for the last pair, which may be short.
 
-     It is available in `recode' under the name `Decimal-2' and has
-     `d2' for an alias.
+     It is available in Recode under the name `Decimal-2' and has `d2'
+     for an alias.
 
 `Decimal-4'
      This surface corresponds to an decimal expression of each
      quadruple of input bytes, except for the last quadruple, which may
      be short.
 
-     It is available in `recode' under the name `Decimal-4' and has
-     `d4' for an alias.
+     It is available in Recode under the name `Decimal-4' and has `d4'
+     for an alias.
 
 `Hexadecimal-1'
      This surface corresponds to an hexadecimal expression of each
      input byte.
 
-     It is available in `recode' under the name `Hexadecimal-1', with
+     It is available in Recode under the name `Hexadecimal-1', with
      `x1' and `x' as acceptable aliases.
 
 `Hexadecimal-2'
      This surface corresponds to an hexadecimal expression of each pair
      of input bytes, except for the last pair, which may be short.
 
-     It is available in `recode' under the name `Hexadecimal-2', with
+     It is available in Recode under the name `Hexadecimal-2', with
      `x2' for an alias.
 
 `Hexadecimal-4'
@@ -4557,21 +4551,21 @@ single type, and so, have identical sizes.
      quadruple of input bytes, except for the last quadruple, which may
      be short.
 
-     It is available in `recode' under the name `Hexadecimal-4', with
+     It is available in Recode under the name `Hexadecimal-4', with
      `x4' for an alias.
 
    When removing a dump surface, that is, when reading a dump results
 back into a sequence of bytes, the narrower expression for a short last
 chunk is recognised, so dumping is a fully reversible operation.
 However, in case you want to produce dumps by other means than through
-`recode', beware that for decimal dumps, the library has to rely on the
+Recode, beware that for decimal dumps, the library has to rely on the
 number of spaces to establish the original byte size of the chunk.
 
    Although the library might report reversibility errors, removing a
 dump surface is a rather forgiving process: one may mix bases, group a
 variable number of data per source line, or use shorter chunks in
 places other than at the far end.  Also, source lines not beginning
-with a number are skipped.  So, `recode' should often be able to read a
+with a number are skipped.  So, Recode should often be able to read a
 whole C header file, wrapping the results of a previous dump, and
 regenerate the original byte string.
 
@@ -4582,9 +4576,9 @@ File: recode.info,  Node: Test,  Prev: Dump,  Up: Surfaces
 ================================
 
 A few pseudo-surfaces exist to generate debugging data out of thin air.
-These surfaces are only meant for the expert `recode' user, and are
-only useful in a few contexts, like for generating binary permutations
-from the recoding or acting on them.
+These surfaces are only meant for the expert Recode user, and are only
+useful in a few contexts, like for generating binary permutations from
+the recoding or acting on them.
 
    Debugging surfaces, _when removed_, insert their generated data at
 the beginning of the output stream, and copy all the input stream after
@@ -4633,21 +4627,21 @@ File: recode.info,  Node: Internals,  Next: Concept Index,  Prev: Surfaces,  Up:
 14 Internal aspects
 *******************
 
-The incoming explanations of the internals of `recode' should help
-people who want to dive into `recode' sources for adding new charsets.
-Adding new charsets does not require much knowledge about the overall
-organisation of `recode'.  You can rather concentrate of your new
-charset, letting the remainder of the `recode' mechanics take care of
+The incoming explanations of the internals of Recode should help people
+who want to dive into Recode sources for adding new charsets.  Adding
+new charsets does not require much knowledge about the overall
+organisation of Recode.  You can rather concentrate of your new
+charset, letting the remainder of the Recode mechanics take care of
 interconnecting it with all others charsets.
 
-   If you intend to play seriously at modifying `recode', beware that
-you may need some other GNU tools which were not required when you first
-installed `recode'.  If you modify or create any `.l' file, then you
-need Flex, and some better `awk' like `mawk', GNU `awk', or `nawk'.  If
-you modify the documentation (and you should!), you need `makeinfo'.
-If you are really audacious, you may also want Perl for modifying
-tabular processing, then `m4', Autoconf, Automake and `libtool' for
-adjusting configuration matters.
+   If you intend to play seriously at modifying Recode, beware that you
+may need some other GNU tools which were not required when you first
+installed Recode.  If you modify or create any `.l' file, then you need
+Flex, and some better `awk' like `mawk', GNU `awk', or `nawk'.  If you
+modify the documentation (and you should!), you need `makeinfo'.  If
+you are really audacious, you may also want Perl for modifying tabular
+processing, then `m4', Autoconf, Automake and `libtool' for adjusting
+configuration matters.
 
 * Menu:
 
@@ -4662,40 +4656,39 @@ File: recode.info,  Node: Main flow,  Next: New charsets,  Prev: Internals,  Up:
 14.1 Overall organisation
 =========================
 
-The `recode' mechanics slowly evolved for many years, and it would be
+The Recode mechanics slowly evolved for many years, and it would be
 tedious to explain all problems I met and mistakes I did all along,
 yielding the current behaviour.  Surely, one of the key choices was to
 stop trying to do all conversions in memory, one line or one buffer at
 a time.  It has been fruitful to use the character stream paradigm, and
 the elementary recoding steps now convert a whole stream to another.
-Most of the control complexity in `recode' exists so that each
-elementary recoding step stays simple, making easier to add new ones.
-The whole point of `recode', as I see it, is providing a comfortable
-nest for growing new charset conversions.
+Most of the control complexity in Recode exists so that each elementary
+recoding step stays simple, making easier to add new ones.  The whole
+point of Recode, as I see it, is providing a comfortable nest for
+growing new charset conversions.
 
-   The main `recode' driver constructs, while initialising all
-conversion modules, a table giving all the conversion routines
-available ("single step"s) and for each, the starting charset and the
-ending charset.  If we consider these charsets as being the nodes of a
-directed graph, each single step may be considered as oriented arc from
-one node to the other.  A cost is attributed to each arc: for example,
-a high penalty is given to single steps which are prone to losing
-characters, a lower penalty is given to those which need studying more
-than one input character for producing an output character, etc.
+   The main Recode driver constructs, while initialising all conversion
+modules, a table giving all the conversion routines available ("single
+step"s) and for each, the starting charset and the ending charset.  If
+we consider these charsets as being the nodes of a directed graph, each
+single step may be considered as oriented arc from one node to the
+other.  A cost is attributed to each arc: for example, a high penalty
+is given to single steps which are prone to losing characters, a lower
+penalty is given to those which need studying more than one input
+character for producing an output character, etc.
 
-   Given a starting code and a goal code, `recode' computes the most
+   Given a starting code and a goal code, Recode computes the most
 economical route through the elementary recodings, that is, the best
 sequence of conversions that will transform the input charset into the
-final charset.  To speed up execution, `recode' looks for subsequences
-of conversions which are simple enough to be merged, and then
-dynamically creates new single steps to represent these mergings.
+final charset.  To speed up execution, Recode looks for subsequences of
+conversions which are simple enough to be merged, and then dynamically
+creates new single steps to represent these mergings.
 
-   A "double step" in `recode' is a special concept representing a
+   A "double step" in Recode is a special concept representing a
 sequence of two single steps, the output of the first single step being
 the special charset `UCS-2', the input of the second single step being
-also `UCS-2'.  Special `recode' machinery dynamically produces
-efficient, reversible, merge-able single steps out of these double
-steps.
+also `UCS-2'.  Special Recode machinery dynamically produces efficient,
+reversible, merge-able single steps out of these double steps.
 
    I made some statistics about how many internal recoding steps are
 required between any two charsets chosen at random.  The initial
@@ -4705,7 +4698,7 @@ counted as no steps at all.  In other cases, optimisation is unable to
 save any step.  The number of steps after optimisation is currently
 between 0 and 5 steps.  Of course, the _expected_ number of steps is
 affected by optimisation: it drops from 2.8 to 1.8.  This means that
-`recode' uses a theoretical average of a bit less than one step per
+Recode uses a theoretical average of a bit less than one step per
 recoding job.  This looks good.  This was computed using reversible
 recodings.  In strict mode, optimisation might be defeated somewhat.
 Number of steps run between 1 and 6, both before and after
@@ -4718,12 +4711,11 @@ File: recode.info,  Node: New charsets,  Next: New surfaces,  Prev: Main flow,  
 14.2 Adding new charsets
 ========================
 
-The main part of `recode' is written in C, as are most single steps.  A
+The main part of Recode is written in C, as are most single steps.  A
 few single steps need to recognise sequences of multiple characters,
 they are often better written in Flex.  It is easy for a programmer to
-add a new charset to `recode'.  All it requires is making a few
-functions kept in a single `.c' file, adjusting `Makefile.am' and
-remaking `recode'.
+add a new charset to Recode.  All it requires is making a few functions
+kept in a single `.c' file, adjusting `Makefile.am' and remaking Recode.
 
    One of the function should convert from any previous charset to the
 new one.  Any previous charset will do, but try to select it so you will
@@ -4740,18 +4732,18 @@ your C or Flex files after one of those which exist already, so to keep
 the sources uniform.  Besides, at `make' time, all `.l' files are
 automatically merged into a single big one by the script `mergelex.awk'.
 
-   There are a few hidden rules about how to write new `recode'
-modules, for allowing the automatic creation of `decsteps.h' and
-`initsteps.h' at `make' time, or the proper merging of all Flex files.
-Mimetism is a simple approach which relieves me of explaining all these
-rules!  Start with a module closely resembling what you intend to do.
-Here is some advice for picking up a model.  First decide if your new
-charset module is to be be driven by algorithms rather than by tables.
-For algorithmic recodings, see `iconqnx.c' for C code, or `txtelat1.l'
-for Flex code.  For table driven recodings, see `ebcdic.c' for
-one-to-one style recodings, `lat1html.c' for one-to-many style
-recodings, or `atarist.c' for double-step style recodings.  Just select
-an example from the style that better fits your application.
+   There are a few hidden rules about how to write new Recode modules,
+for allowing the automatic creation of `decsteps.h' and `initsteps.h'
+at `make' time, or the proper merging of all Flex files.  Mimetism is a
+simple approach which relieves me of explaining all these rules!  Start
+with a module closely resembling what you intend to do.  Here is some
+advice for picking up a model.  First decide if your new charset module
+is to be be driven by algorithms rather than by tables.  For
+algorithmic recodings, see `iconqnx.c' for C code, or `txtelat1.l' for
+Flex code.  For table driven recodings, see `ebcdic.c' for one-to-one
+style recodings, `lat1html.c' for one-to-many style recodings, or
+`atarist.c' for double-step style recodings.  Just select an example
+from the style that better fits your application.
 
    Each of your source files should have its own initialisation
 function, named `module_CHARSET', which is meant to be executed
@@ -4811,10 +4803,9 @@ transformations: one from the predefined special charset `data' or
 the new surface to the predefined special charset `data' or `tree',
 meant to remove the surface.
 
-   Internally in `recode', function `declare_step' especially
-recognises when a charset is so related to `data' or `tree', and then
-takes appropriate actions so that charset gets indeed installed as a
-surface.
+   Internally in Recode, function `declare_step' especially recognises
+when a charset is so related to `data' or `tree', and then takes
+appropriate actions so that charset gets indeed installed as a surface.
 
 
 File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
@@ -4825,10 +4816,10 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
    * Why a shared library?  
 
      There are many different approaches to reduce system requirements
-     to handle all tables needed in the `recode' library.  One of them
-     is to have the tables in an external format and only read them in
-     on demand.  After having pondered this for a while, I finally
-     decided against it, mainly because it involves its own kind of
+     to handle all tables needed in the Recode library.  One of them is
+     to have the tables in an external format and only read them in on
+     demand.  After having pondered this for a while, I finally decided
+     against it, mainly because it involves its own kind of
      installation complexity, and it is not clear to me that it would
      be as interesting as I first imagined.
 
@@ -4843,35 +4834,35 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
 
      Of course, I would like to later make an exception for only a few
      tables, built locally by users for their own particular needs once
-     `recode' is installed.  `recode' should just go and fetch them.
-     But I do not perceive this as very urgent, yet useful enough to be
-     worth implementing.
+     Recode is installed.  Recode should just go and fetch them.  But I
+     do not perceive this as very urgent, yet useful enough to be worth
+     implementing.
 
      Currently, all tables needed for recoding are precompiled into
      binaries, and all these binaries are then made into a shared
-     library.  As an initial step, I turned `recode' into a main
-     program and a non-shared library, this allowed me to tidy up the
-     API, get rid of all global variables, etc.  It required a
-     surprising amount of program source massaging.  But once this
-     cleaned enough, it was easy to use Gordon Matzigkeit's `libtool'
-     package, and take advantage of the Automake interface to neatly
-     turn the non-shared library into a shared one.
+     library.  As an initial step, I turned Recode into a main program
+     and a non-shared library, this allowed me to tidy up the API, get
+     rid of all global variables, etc.  It required a surprising amount
+     of program source massaging.  But once this cleaned enough, it was
+     easy to use Gordon Matzigkeit's `libtool' package, and take
+     advantage of the Automake interface to neatly turn the non-shared
+     library into a shared one.
 
-     Sites linking with the `recode' library, whose system does not
+     Sites linking with the Recode library, whose system does not
      support any form of shared libraries, might end up with bulky
-     executables.  Surely, the `recode' library will have to be used
+     executables.  Surely, the Recode library will have to be used
      statically, and might not very nicely usable on such systems.  It
      seems that progress has a price for those being slow at it.
 
      There is a locality problem I did not address yet.  Currently, the
-     `recode' library takes many cycles to initialise itself, calling
+     Recode library takes many cycles to initialise itself, calling
      each module in turn for it to set up associated knowledge about
      charsets, aliases, elementary steps, recoding weights, etc.
      _Then_, the recoding sequence is decided out of the command given.
      I would not be surprised if initialisation was taking a
      perceivable fraction of a second on slower machines.  One thing to
      do, most probably not right in version 3.5, but the version after,
-     would have `recode' to pre-load all tables and dump them at
+     would have Recode to pre-load all tables and dump them at
      installation time.  The result would then be compiled and added to
      the library.  This would spare many initialisation cycles, but more
      importantly, would avoid calling all library modules, scattered
@@ -4882,16 +4873,16 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
    * Why not a central charset?
 
      It would be simpler, and I would like, if something like ISO 10646
-     was used as a turning template for all charsets in `recode'.  Even
-     if I think it could help to a certain extent, I'm still not fully
+     was used as a turning template for all charsets in Recode.  Even if
+     I think it could help to a certain extent, I'm still not fully
      sure it would be sufficient in all cases.  Moreover, some people
      disagree about using ISO 10646 as the central charset, to the
-     point I cannot totally ignore them, and surely, `recode' is not a
+     point I cannot totally ignore them, and surely, Recode is not a
      mean for me to force my own opinions on people.  I would like that
-     `recode' be practical more than dogmatic, and reflect usage more
+     Recode be practical more than dogmatic, and reflect usage more
      than religions.
 
-     Currently, if you ask `recode' to go from CHARSET1 to CHARSET2
+     Currently, if you ask Recode to go from CHARSET1 to CHARSET2
      chosen at random, it is highly probable that the best path will be
      quickly found as:
 
@@ -4907,9 +4898,9 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
      intermediate, I plan to study if it could be made so.  But I guess
      some cases will remain where `UCS-2' is not a proper choice.  Even
      if `UCS' is often the good choice, I do not intend to forcefully
-     restrain `recode' around `UCS-2' (nor `UCS-4') for now.  We might
+     restrain Recode around `UCS-2' (nor `UCS-4') for now.  We might
      come to that one day, but it will come out of the natural
-     evolution of `recode'.  It will then reflect a fact, rather than a
+     evolution of Recode.  It will then reflect a fact, rather than a
      preset dogma.
 
    * Why not `iconv'?
@@ -4921,7 +4912,7 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
      cursor set at the position where the conversion could later be
      resumed, and the output cursor set to indicate until where the
      output buffer has been filled.  Despite this scheme is simple and
-     nice, the `recode' library does not offer it currently.  Why not?
+     nice, the Recode library does not offer it currently.  Why not?
 
      When long sequences of decodings, stepwise recodings, and
      re-encodings are involved, as it happens in true life,
@@ -4939,44 +4930,43 @@ File: recode.info,  Node: Design,  Prev: New surfaces,  Up: Internals
      and efficient to just let the output buffer size float a bit.
 
      Of course, if the above problem was solved, the `iconv' library
-     should be easily emulated, given that `recode' has similar
-     knowledge about charsets, of course.  This either solved or not,
-     the `iconv' program remains trivial (given similar knowledge about
-     charsets).  I also presume that the `genxlt' program would be easy
-     too, but I do not have enough detailed specifications of it to be
-     sure.
+     should be easily emulated, given that Recode has similar knowledge
+     about charsets, of course.  This either solved or not, the `iconv'
+     program remains trivial (given similar knowledge about charsets).
+     I also presume that the `genxlt' program would be easy too, but I
+     do not have enough detailed specifications of it to be sure.
 
-     A lot of years ago, `recode' was using a similar scheme, and I
-     found it rather hard to manage for some cases.  I rethought the
-     overall structure of `recode' for getting away from that scheme,
-     and never regretted it.  I perceive `iconv' as an artificial
-     solution which surely has some elegances and virtues, but I do not
-     find it really useful as it stands: one always has to wrap `iconv'
-     into something more refined, extending it for real cases.  From
-     past experience, I think it is unduly hard to fully implement this
-     scheme.  It would be awkward that we do contortions for the sole
-     purpose of implementing exactly its specification, without real,
-     properly grounded reasons (other then the fact some people once
-     thought it was worth standardising).  It is much better to
-     immediately aim for the refinement we need, without uselessly
-     forcing us into the dubious detour `iconv' represents.
+     A lot of years ago, Recode was using a similar scheme, and I found
+     it rather hard to manage for some cases.  I rethought the overall
+     structure of Recode for getting away from that scheme, and never
+     regretted it.  I perceive `iconv' as an artificial solution which
+     surely has some elegances and virtues, but I do not find it really
+     useful as it stands: one always has to wrap `iconv' into something
+     more refined, extending it for real cases.  From past experience,
+     I think it is unduly hard to fully implement this scheme.  It
+     would be awkward that we do contortions for the sole purpose of
+     implementing exactly its specification, without real, properly
+     grounded reasons (other then the fact some people once thought it
+     was worth standardising).  It is much better to immediately aim
+     for the refinement we need, without uselessly forcing us into the
+     dubious detour `iconv' represents.
 
-     Some may argue that if `recode' was using a comprehensive charset
-     as a turning template, as discussed in a previous point, this
-     would make `iconv' easier to implement.  Some may be tempted to
-     say that the cases which are hard to handle are not really needed,
-     nor interesting, anyway.  I feel and fear a bit some pressure
-     wanting that `recode' be split into the part that well fits the
-     `iconv' model, and the part that does not fit, considering this
-     second part less important, with the idea of dropping it one of
-     these days, maybe.  My guess is that users of the `recode'
-     library, whatever its form, would not like to have such arbitrary
+     Some may argue that if Recode was using a comprehensive charset as
+     a turning template, as discussed in a previous point, this would
+     make `iconv' easier to implement.  Some may be tempted to say that
+     the cases which are hard to handle are not really needed, nor
+     interesting, anyway.  I feel and fear a bit some pressure wanting
+     that Recode be split into the part that well fits the `iconv'
+     model, and the part that does not fit, considering this second
+     part less important, with the idea of dropping it one of these
+     days, maybe.  My guess is that users of the Recode library,
+     whatever its form, would not like to have such arbitrary
      limitations.  In the long run, we should not have to explain to
      our users that some recodings may not be made available just
      because they do not fit the simple model we had in mind when we
      did it.  Instead, we should try to stay open to the difficulties
      of real life.  There is still a lot of complex needs for Asian
-     people, say, that `recode' does not currently address, while it
+     people, say, that Recode does not currently address, while it
      should.  Not only the doors should stay open, but we should force
      them wider!
 
@@ -4994,18 +4984,18 @@ Concept Index
  [index ]
 * Menu:
 
-* abbreviated names for charsets and surfaces: Requests.      (line  89)
+* abbreviated names for charsets and surfaces: Requests.      (line  88)
 * adding new charsets:                   New charsets.        (line   6)
 * adding new surfaces:                   New surfaces.        (line   6)
 * African charsets:                      African.             (line   6)
-* aliases:                               Requests.            (line  81)
-* alternate names for charsets and surfaces: Requests.        (line  81)
+* aliases:                               Requests.            (line  80)
+* alternate names for charsets and surfaces: Requests.        (line  80)
 * ambiguous output, error message:       Errors.              (line  31)
-* ASCII table, recreating with recode:   ASCII.               (line  12)
-* average number of recoding steps:      Main flow.           (line  41)
+* ASCII table, recreating with Recode:   ASCII.               (line  12)
+* average number of recoding steps:      Main flow.           (line  40)
 * bool data type:                        Outer level.         (line  31)
 * box-drawing characters:                Recoding.            (line  16)
-* bug reports, where to send:            Contributing.        (line  38)
+* bug reports, where to send:            Contributing.        (line  37)
 * byte order mark:                       UCS-2.               (line  12)
 * byte order swapping:                   Permutations.        (line   6)
 * caret ASCII code:                      CDC-NOS.             (line   9)
@@ -5018,11 +5008,11 @@ Concept Index
 * character streams, description:        dump-with-names.     (line   6)
 * charset level functions:               Charset level.       (line   6)
 * charset names, valid characters:       Requests.            (line  10)
-* charset, default:                      Requests.            (line 105)
+* charset, default:                      Requests.            (line 104)
 * charset, pure:                         Surface overview.    (line  17)
 * charset, what it is:                   Introduction.        (line  15)
 * charsets for CDC machines:             CDC.                 (line   6)
-* charsets, aliases:                     Requests.            (line  81)
+* charsets, aliases:                     Requests.            (line  80)
 * charsets, chaining in a request:       Requests.            (line  23)
 * charsets, guessing:                    Listings.            (line  63)
 * charsets, overview:                    Charset overview.    (line   6)
@@ -5041,14 +5031,14 @@ Concept Index
 * Ctrl-Z, discarding:                    End lines.           (line  32)
 * Cyrillic charsets:                     Others.              (line   6)
 * debugging surfaces:                    Test.                (line  11)
-* default charset:                       Requests.            (line 105)
+* default charset:                       Requests.            (line 104)
 * description of individual characters:  dump-with-names.     (line   6)
 * details about recoding:                Recoding.            (line  35)
 * deviations from RFC 1345:              Tabular.             (line  13)
 * diacritics and underlines, removing:   flat.                (line   8)
 * diacritics, with ASCII-BS charset:     ASCII-BS.            (line   9)
 * diaeresis:                             Recoding.            (line  11)
-* disable map filling:                   Reversibility.       (line  49)
+* disable map filling:                   Reversibility.       (line  48)
 * double step:                           Main flow.           (line  34)
 * dumping characters:                    Dump.                (line   6)
 * dumping characters, with description:  dump-with-names.     (line   6)
@@ -5060,7 +5050,7 @@ Concept Index
 * error handling:                        Errors.              (line   6)
 * error level threshold:                 Errors.              (line  91)
 * error messages:                        Errors.              (line   6)
-* error messages, suppressing:           Reversibility.       (line  37)
+* error messages, suppressing:           Reversibility.       (line  36)
 * exceptions to available conversions:   Charset overview.    (line  33)
 * file sequencing:                       Sequencing.          (line  29)
 * file time stamps:                      Recoding.            (line  26)
@@ -5079,7 +5069,7 @@ Concept Index
 * iconv library:                         iconv.               (line   6)
 * identifying subsets in charsets:       Listings.            (line 222)
 * ignore charsets:                       Recoding.            (line  60)
-* implied surfaces:                      Requests.            (line  70)
+* implied surfaces:                      Requests.            (line  69)
 * impossible conversions:                Charset overview.    (line  33)
 * information about charsets:            Listings.            (line 153)
 * initialisation functions, outer:       Outer level.         (line  84)
@@ -5097,14 +5087,14 @@ Concept Index
 * languages, programming:                Listings.            (line  26)
 * LaTeX files:                           LaTeX.               (line   6)
 * Latin charsets:                        ISO 8859.            (line   6)
-* Latin-1 table, recreating with recode: ISO 8859.            (line  45)
-* letter case, in charset and surface names: Requests.        (line  94)
+* Latin-1 table, recreating with Recode: ISO 8859.            (line  45)
+* letter case, in charset and surface names: Requests.        (line  93)
 * libiconv:                              iconv.               (line   6)
 * library, iconv:                        iconv.               (line   6)
 * listing charsets:                      Listings.            (line 153)
 * Macintosh charset:                     Apple-Mac.           (line   6)
 * map filling:                           Reversibility.       (line  98)
-* map filling, disable:                  Reversibility.       (line  49)
+* map filling, disable:                  Reversibility.       (line  48)
 * markup language:                       HTML.                (line   6)
 * memory sequencing:                     Sequencing.          (line  23)
 * MIME encodings:                        MIME.                (line   6)
@@ -5112,7 +5102,7 @@ Concept Index
 * MS-DOS charsets:                       IBM-PC.              (line   6)
 * MULE, in Emacs:                        Mule.                (line  22)
 * multiplexed charsets:                  Mule.                (line   6)
-* names of charsets and surfaces, abbreviation: Requests.     (line  89)
+* names of charsets and surfaces, abbreviation: Requests.     (line  88)
 * new charsets, how to add:              New charsets.        (line   6)
 * new surfaces, how to add:              New surfaces.        (line   6)
 * NeXT charsets:                         Micros.              (line   6)
@@ -5129,21 +5119,21 @@ Concept Index
 * pseudo-charsets:                       Charset overview.    (line  33)
 * pure charset:                          Surface overview.    (line  17)
 * quality of recoding:                   Recoding.            (line  35)
-* recode internals:                      Internals.           (line   6)
-* recode request syntax:                 Requests.            (line  16)
-* recode use, a tutorial:                Tutorial.            (line   6)
-* recode version, printing:              Listings.            (line  10)
-* recode, a Macintosh port:              Apple-Mac.           (line  46)
-* recode, and RFC 1345:                  Tabular.             (line  40)
-* recode, main flow of operation:        Main flow.           (line   6)
+* Recode internals:                      Internals.           (line   6)
+* Recode request syntax:                 Requests.            (line  16)
+* Recode use, a tutorial:                Tutorial.            (line   6)
+* Recode version, printing:              Listings.            (line  10)
+* Recode, a Macintosh port:              Apple-Mac.           (line  46)
+* Recode, and RFC 1345:                  Tabular.             (line  40)
+* Recode, main flow of operation:        Main flow.           (line   6)
 * recode, operation as filter:           Synopsis.            (line  27)
 * recode, synopsis of invocation:        Synopsis.            (line   6)
 * recoding details:                      Recoding.            (line  35)
 * recoding library:                      Library.             (line   6)
 * recoding path, rejection:              Recoding.            (line  60)
-* recoding steps, statistics:            Main flow.           (line  41)
+* recoding steps, statistics:            Main flow.           (line  40)
 * removing diacritics and underlines:    flat.                (line   8)
-* reporting bugs:                        Contributing.        (line  38)
+* reporting bugs:                        Contributing.        (line  37)
 * request level functions:               Request level.       (line   6)
 * request, syntax:                       Requests.            (line  16)
 * reversibility of recoding:             Reversibility.       (line  61)
@@ -5152,23 +5142,23 @@ Concept Index
 * sequencing:                            Sequencing.          (line   6)
 * SGML:                                  HTML.                (line   6)
 * shared library implementation:         Design.              (line   6)
-* silent operation:                      Reversibility.       (line  37)
+* silent operation:                      Reversibility.       (line  36)
 * single step:                           Main flow.           (line  17)
 * source file generation:                Listings.            (line  26)
 * stdbool.h header:                      Outer level.         (line  31)
-* strict operation:                      Reversibility.       (line  49)
+* strict operation:                      Reversibility.       (line  48)
 * string and comments conversion:        Mixed.               (line  39)
 * structural surfaces:                   Surfaces.            (line  36)
 * subsets in charsets:                   Listings.            (line 222)
 * super-charsets:                        Mule.                (line   6)
 * supported programming languages:       Listings.            (line  26)
-* suppressing diagnostic messages:       Reversibility.       (line  37)
+* suppressing diagnostic messages:       Reversibility.       (line  36)
 * surface, what it is <1>:               Surfaces.            (line   6)
 * surface, what it is:                   Introduction.        (line  31)
-* surfaces, aliases:                     Requests.            (line  81)
+* surfaces, aliases:                     Requests.            (line  80)
 * surfaces, commutativity:               Requests.            (line  57)
-* surfaces, implementation in recode:    Surfaces.            (line  26)
-* surfaces, implied:                     Requests.            (line  70)
+* surfaces, implementation in Recode:    Surfaces.            (line  26)
+* surfaces, implied:                     Requests.            (line  69)
 * surfaces, overview:                    Surface overview.    (line   6)
 * surfaces, structural:                  Surfaces.            (line  36)
 * surfaces, syntax:                      Requests.            (line  52)
@@ -5218,11 +5208,11 @@ This is an alphabetical list of all command-line options accepted by
 * --ignore:                              Recoding.            (line  60)
 * --known=:                              Listings.            (line  63)
 * --list:                                Listings.            (line 153)
-* --quiet:                               Reversibility.       (line  37)
+* --quiet:                               Reversibility.       (line  36)
 * --sequence:                            Sequencing.          (line  23)
-* --silent:                              Reversibility.       (line  37)
+* --silent:                              Reversibility.       (line  36)
 * --source:                              Mixed.               (line  39)
-* --strict:                              Reversibility.       (line  49)
+* --strict:                              Reversibility.       (line  48)
 * --touch:                               Recoding.            (line  26)
 * --verbose:                             Recoding.            (line  35)
 * --version:                             Listings.            (line  10)
@@ -5236,9 +5226,9 @@ This is an alphabetical list of all command-line options accepted by
 * -k:                                    Listings.            (line  63)
 * -l:                                    Listings.            (line 153)
 * -p:                                    Sequencing.          (line  40)
-* -q:                                    Reversibility.       (line  37)
+* -q:                                    Reversibility.       (line  36)
 * -S:                                    Mixed.               (line  39)
-* -s:                                    Reversibility.       (line  49)
+* -s:                                    Reversibility.       (line  48)
 * -t:                                    Recoding.            (line  26)
 * -T:                                    Listings.            (line 222)
 * -v:                                    Recoding.            (line  35)
@@ -5251,7 +5241,7 @@ Library Index
 *************
 
 This is an alphabetical index of important functions, data structures,
-and variables in the `recode' library.
+and variables in the Recode library.
 
  [index ]
 * Menu:
@@ -5260,13 +5250,13 @@ and variables in the `recode' library.
 * ascii_graphics:                        Request level.       (line 101)
 * byte_order_mark:                       Task level.          (line 182)
 * declare_step:                          New surfaces.        (line  13)
-* DEFAULT_CHARSET:                       Requests.            (line 105)
+* DEFAULT_CHARSET:                       Requests.            (line 104)
 * diacritics_only:                       Request level.       (line  92)
 * diaeresis_char:                        Request level.       (line  76)
 * error_so_far:                          Task level.          (line 210)
 * fail_level:                            Task level.          (line 188)
-* file_one_to_many:                      New charsets.        (line  71)
-* file_one_to_one:                       New charsets.        (line  59)
+* file_one_to_many:                      New charsets.        (line  70)
+* file_one_to_one:                       New charsets.        (line  58)
 * find_charset:                          Charset level.       (line  15)
 * LANG, when listing charsets:           Listings.            (line 210)
 * LANGUAGE, when listing charsets:       Listings.            (line 210)
@@ -5323,7 +5313,7 @@ Charset and Surface Index
 *************************
 
 This is an alphabetical list of all the charsets and surfaces supported
-by `recode', and their aliases.
+by Recode, and their aliases.
 
  [index ]
 * Menu:
@@ -5613,7 +5603,7 @@ by `recode', and their aliases.
 * HTML_3.2:                              HTML.                (line  56)
 * hu:                                    Tabular.             (line 596)
 * IBM-PC:                                IBM-PC.              (line   6)
-* IBM-PC charset, and CR-LF surface:     Requests.            (line  70)
+* IBM-PC charset, and CR-LF surface:     Requests.            (line  69)
 * IBM037, aliases and source:            Tabular.             (line 219)
 * IBM038, aliases and source:            Tabular.             (line 224)
 * IBM1004, aliases and source:           Tabular.             (line 228)
@@ -6058,96 +6048,96 @@ by `recode', and their aliases.
 
 
 Tag Table:
-Node: Top1138
-Node: Tutorial5573
-Node: Introduction9810
-Node: Charset overview14049
-Node: Surface overview15858
-Node: Contributing17330
-Ref: Contributing-Footnote-119576
-Node: Invoking recode19710
-Node: Synopsis20667
-Ref: Synopsis-Footnote-123109
-Node: Requests23408
-Ref: Requests-Footnote-129322
-Ref: Requests-Footnote-229389
-Ref: Requests-Footnote-329567
-Node: Listings30026
-Ref: Listings-Footnote-141208
-Node: Recoding41535
-Node: Reversibility44360
-Ref: Reversibility-Footnote-152863
-Node: Sequencing53000
-Node: Mixed55446
-Node: Emacs58839
-Node: Debugging59818
-Node: Library64082
-Node: Outer level65436
-Node: Request level71552
-Node: Task level82021
-Node: Charset level92443
-Node: Errors93285
-Ref: Errors-Footnote-198139
-Ref: Errors-Footnote-298253
-Node: Universal98614
-Ref: Universal-Footnote-1101739
-Ref: Universal-Footnote-2101807
-Node: UCS-2102020
-Node: UCS-4104554
-Node: UTF-7105096
-Node: UTF-8105693
-Node: UTF-16110000
-Node: count-characters111150
-Node: dump-with-names111823
-Node: iconv114376
-Node: Tabular117808
-Node: ASCII misc140071
-Node: ASCII140437
-Node: ISO 8859141257
-Node: ASCII-BS143555
-Node: flat145394
-Node: IBM and MS146067
-Node: EBCDIC146640
-Node: IBM-PC148754
-Ref: IBM-PC-Footnote-1150876
-Node: Icon-QNX151035
-Node: CDC151462
-Node: Display Code153166
-Ref: Display Code-Footnote-1155450
-Node: CDC-NOS155655
-Node: Bang-Bang157619
-Node: Micros159550
-Node: Apple-Mac159935
-Node: AtariST161991
-Node: Miscellaneous162981
-Node: HTML163718
-Node: LaTeX169746
-Node: Texinfo170522
-Node: Vietnamese171302
-Node: African172282
-Node: Others173638
-Node: Texte175096
-Ref: Texte-Footnote-1179651
-Ref: Texte-Footnote-2179731
-Ref: Texte-Footnote-3180206
-Node: Mule180303
-Ref: Mule-Footnote-1182090
-Node: Surfaces182609
-Ref: Surfaces-Footnote-1185597
-Node: Permutations185703
-Node: End lines186548
-Node: MIME188755
-Node: Dump189946
-Node: Test194140
-Node: Internals196620
-Node: Main flow197858
-Node: New charsets200978
-Node: New surfaces205521
-Node: Design206249
-Ref: Design-Footnote-1215464
-Node: Concept Index215568
-Node: Option Index230311
-Node: Library Index233164
-Node: Charset and Surface Index237741
+Node: Top1148
+Node: Tutorial5575
+Node: Introduction9803
+Node: Charset overview14037
+Node: Surface overview15842
+Node: Contributing17310
+Ref: Contributing-Footnote-119544
+Node: Invoking recode19678
+Node: Synopsis20633
+Ref: Synopsis-Footnote-123073
+Node: Requests23370
+Ref: Requests-Footnote-129255
+Ref: Requests-Footnote-229322
+Ref: Requests-Footnote-329500
+Node: Listings29959
+Ref: Listings-Footnote-141108
+Node: Recoding41431
+Node: Reversibility44252
+Ref: Reversibility-Footnote-152707
+Node: Sequencing52844
+Node: Mixed55288
+Node: Emacs58656
+Node: Debugging59690
+Node: Library63960
+Node: Outer level65314
+Node: Request level71424
+Node: Task level81891
+Node: Charset level92313
+Node: Errors93155
+Ref: Errors-Footnote-198001
+Ref: Errors-Footnote-298115
+Node: Universal98476
+Ref: Universal-Footnote-1101588
+Ref: Universal-Footnote-2101654
+Node: UCS-2101867
+Node: UCS-4104393
+Node: UTF-7104933
+Node: UTF-8105528
+Node: UTF-16109833
+Node: count-characters110981
+Node: dump-with-names111652
+Node: iconv114201
+Node: Tabular117615
+Node: ASCII misc139828
+Node: ASCII140194
+Node: ISO 8859141010
+Node: ASCII-BS143304
+Node: flat145141
+Node: IBM and MS145812
+Node: EBCDIC146356
+Node: IBM-PC148452
+Ref: IBM-PC-Footnote-1150566
+Node: Icon-QNX150725
+Node: CDC151150
+Node: Display Code152831
+Ref: Display Code-Footnote-1155112
+Node: CDC-NOS155317
+Node: Bang-Bang157279
+Node: Micros159208
+Node: Apple-Mac159591
+Node: AtariST161625
+Node: Miscellaneous162611
+Node: HTML163344
+Node: LaTeX169333
+Node: Texinfo170107
+Node: Vietnamese170879
+Node: African171855
+Node: Others173205
+Node: Texte174659
+Ref: Texte-Footnote-1179209
+Ref: Texte-Footnote-2179289
+Ref: Texte-Footnote-3179764
+Node: Mule179861
+Ref: Mule-Footnote-1181642
+Node: Surfaces182161
+Ref: Surfaces-Footnote-1185139
+Node: Permutations185243
+Node: End lines186084
+Node: MIME188285
+Node: Dump189472
+Node: Test193642
+Node: Internals196120
+Node: Main flow197348
+Node: New charsets200451
+Node: New surfaces204989
+Node: Design205715
+Ref: Design-Footnote-1214881
+Node: Concept Index214985
+Node: Option Index229728
+Node: Library Index232581
+Node: Charset and Surface Index237156
 
 End Tag Table

@@ -1,4 +1,4 @@
-# Configure template for Free recode.
+# Configure template for Recode.
 # Copyright (C) 1994-1999, 2000, 2001 Free Software Foundation, Inc.
 # Process this file with autoconf to produce a configure script.
 

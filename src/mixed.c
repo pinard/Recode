@@ -286,7 +286,7 @@ transform_c_source (RECODE_TASK task)
 | Transform only strings or comments in an PO source, expected in ASCII.  |
 `------------------------------------------------------------------------*/
 
-/* There is a limitation to -Spo: if `recode' converts some `msgstr' in a way
+/* There is a limitation to -Spo: if Recode converts some `msgstr' in a way
    that might produce quotes (or backslashes), these should then be requoted.
    Doing this would then also require to fully unquote the original `msgstr'
    string.  But it seems that such a need does not occur in most cases I can

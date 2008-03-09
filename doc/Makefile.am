@@ -1,4 +1,4 @@
-# Makefile for `recode' documentation.
+# Makefile for Recode documentation.
 # Copyright © 1994, 95, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>
 

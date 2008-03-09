@@ -412,7 +412,7 @@ hash_string (const char *string, size_t n_buckets)
 
 #else /* not USE_DIFF_HASH */
 
-/* This one comes from `recode', and performs a bit better than the above as
+/* This one comes from Recode, and performs a bit better than the above as
    per a few experiments.  It is inspired from a hashing routine found in the
    very old Cyber `snoop', itself written in typical Greg Mansfield style.
    (By the way, what happened to this excellent man?  Is he still alive?)  */

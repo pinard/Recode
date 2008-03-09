@@ -53,7 +53,7 @@ recode_freeze_tables (RECODE_OUTER outer)
    Lesser General Public License for more details.\n\
 \n\
    You should have received a copy of the GNU Lesser General Public\n\
-   License along with the `recode' Library; see the file `COPYING.LIB'.\n\
+   License along with the Recode Library; see the file `COPYING.LIB'.\n\
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -\n\
    Suite 330, Boston, MA 02111-1307, USA.  */\n\
 \n\

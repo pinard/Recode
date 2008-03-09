@@ -13,7 +13,7 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -394,7 +394,7 @@ perform_memory_sequence (RECODE_TASK task)
 `-------------------------------------------------------------------------*/
 
 /* tmpnam/tmpname/mktemp/tmpfile and the associate logic has been the
-   main portability headache of `recode' :-(.
+   main portability headache of Recode :-(.
 
    People reported that tmpname does not exist everywhere.  Further, on
    OS/2, recode aborts if the prefix has more than five characters.

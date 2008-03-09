@@ -10,6 +10,8 @@
 	* main.c (main): Use them.
 	Add a few missing static specifiers.
 
+	* recode.c (recode_format_table, usage, main): Do not say Free.
+
 2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconvdecl.h: Deleted.  Should be generated at installation time

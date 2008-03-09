@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# Automatically derive `recode' table files from various sources.
+# Automatically derive Recode table files from various sources.
 # Copyright © 1993, 1994, 1997, 1998, 1999, 2000 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1993.
 
@@ -19,7 +19,7 @@
 # Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 """\
-`tables.py' derives `recode' table files from various sources.
+`tables.py' derives Recode table files from various sources.
 
 Usage: python tables.py [OPTION]... DATA-FILE...
 
@@ -1200,7 +1200,7 @@ class Output:
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 """)

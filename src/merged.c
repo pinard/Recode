@@ -3004,7 +3004,7 @@ void librecode_yyfree (void * ptr )
    Library General Public License for more details.
 
    You should have received a copy of the GNU Library General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -3051,7 +3051,7 @@ delmodule_ascii_latin1 (RECODE_OUTER outer)
    Library General Public License for more details.
 
    You should have received a copy of the GNU Library General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -3098,7 +3098,7 @@ delmodule_latex_latin1 (RECODE_OUTER outer)
    Library General Public License for more details.
 
    You should have received a copy of the GNU Library General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 

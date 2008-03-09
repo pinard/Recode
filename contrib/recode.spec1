@@ -5,7 +5,7 @@
 %define sysconfdir /etc
 %define prefix	   /usr
 
-Summary: The `recode' library converts files between character sets and usages.
+Summary: The Recode library converts files between character sets and usages.
 Name:		%nam
 Version:	%ver
 Release:	%rel
@@ -18,7 +18,7 @@ BuildRoot:	/var/tmp/%{nam}-%{ver}-root
 Docdir:		%{prefix}/doc
 
 %description
-The `recode' library converts files between character sets and usages.
+The Recode library converts files between character sets and usages.
 The library recognises or produces nearly 150 different character sets
 and is able to transliterate files between almost any pair.  When
 exact transliteration are not possible, it may get rid of the
@@ -26,17 +26,17 @@ offending characters or fall back on approximations.  Most RFC 1345
 character sets are supported.  The `recode' program is a handy
 front-end to the library.
 
-The `recode' program and library have been written by François Pinard.
+The Recode program and library have been written by François Pinard.
 It is an evolving package, and specifications might change in future
 releases.  Option `-f' is now fairly implemented, yet not fully.
 
 %package devel
-Summary:	Libraries and include files for developing applications using the `recode' library.
+Summary:	Libraries and include files for developing applications using the Recode library.
 Group:		Development/Libraries
 
 %description devel
 This package provides the necessary development libraries and include
-files to allow you to develop applications using the `recode' libraries.
+files to allow you to develop applications using the Recode libraries.
 
 %changelog 
 * Thu Jun 29 2000 David Lebel <lebel@lebel.org>

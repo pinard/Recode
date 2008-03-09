@@ -1,7 +1,7 @@
 \input texinfo        @c -*-texinfo-*-          -*- coding: latin-1 -*-
 @c %**start of header
 @setfilename recode.info
-@settitle The @code{recode} reference manual
+@settitle The Recode reference manual
 
 @c An index for command-line options
 @defcodeindex op
@@ -18,7 +18,7 @@
 @end direntry
 
 @ifinfo
-This file documents the @code{recode} command, which has the purpose of
+This file documents the Recode program and library, which has the purpose of
 converting files between various character sets and surfaces.
 
 Copyright (C) 1990, 93, 94, 96, 97, 98, 99, 00 Free Software Foundation, Inc.
@@ -46,7 +46,7 @@ by the Foundation.
 @end ifinfo
 
 @titlepage
-@title Free recode, version @value{VERSION}
+@title Recode, version @value{VERSION}
 @subtitle The character set converter
 @subtitle Edition @value{EDITION}, @value{UPDATED}
 @author Fran@,{c}ois Pinard
@@ -72,9 +72,9 @@ by the Foundation.
 
 @ifnottex
 @node Top, Tutorial, (dir), (dir)
-@top @code{recode}
+@top Recode
 
-@c @item @b{@code{recode}} @value{hfillkludge} (UtilT, SrcCD)
+@c @item @b{Recode} @value{hfillkludge} (UtilT, SrcCD)
 @c
 This recoding library converts files between various coded character
 sets and surface encodings.  When this cannot be achieved exactly, it
@@ -85,7 +85,7 @@ character sets, and all character sets from a pre-installed  @code{iconv}
 library, are supported.
 The @code{recode} program is a handy front-end to the library.
 
-The current @code{recode} release is @value{VERSION}.
+The current Recode release is @value{VERSION}.
 
 @menu
 * Tutorial::            Quick Tutorial
@@ -125,7 +125,7 @@ How to use this program
 * Reversibility::       Reversibility issues
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
-* Emacs::               Using @code{recode} within Emacs
+* Emacs::               Using Recode within Emacs
 * Debugging::           Debugging considerations
 
 A recoding library
@@ -204,15 +204,15 @@ Internal aspects
 @node Tutorial, Introduction, Top, Top
 @chapter Quick Tutorial
 
-@cindex @code{recode} use, a tutorial
+@cindex Recode use, a tutorial
 @cindex tutorial
-So, really, you just are in a hurry to use @code{recode}, and do not
+So, really, you just are in a hurry to use Recode, and do not
 feel like studying this manual?  Even reading this paragraph slows you down?
 We might have a problem, as you will have to do some guess work, and might
 not become very proficient unless you have a very solid intuition@dots{}.
 
 Let me use here, as a quick tutorial, an actual reply of mine to a
-@code{recode} user, who writes:
+Recode user, who writes:
 
 @quotation
 My situation is this---I occasionally get email with special characters
@@ -229,12 +229,12 @@ the Emacs region.  This is very convenient for me.  I also resort to many
 other email conversions, yet more rarely than the frequent cases above.
 
 @quotation
-It @emph{seems} like this should be doable using @code{recode}.  However,
+It @emph{seems} like this should be doable using Recode.  However,
 when I try something like @samp{grecode mac macfile.txt} I get nothing
 out---no error, no output, nothing.
 @end quotation
 
-Presuming you are using some recent version of @code{recode}, the command:
+Presuming you are using some recent version of Recode, the command:
 
 @example
 recode mac macfile.txt
@@ -244,7 +244,7 @@ recode mac macfile.txt
 is a request for recoding @file{macfile.txt} over itself, overwriting the
 original, from Macintosh usual character code and Macintosh end of lines,
 to @w{Latin-1} and Unix end of lines.  This is overwrite mode.  If you want
-to use @code{recode} as a filter, which is probably what you need, rather do:
+to use Recode as a filter, which is probably what you need, rather do:
 
 @example
 recode mac
@@ -327,10 +327,10 @@ Standardisation) and IETF (Internet Engineering Task Force) have their
 own terminology, this document does not try to stick to either one in a
 strict way, while it does not want to throw more confusion in the field.
 On the other hand, it would not be efficient using paraphrases all the time,
-so @code{recode} coins a few short words, which are explained below.
+so Recode coins a few short words, which are explained below.
 
 @cindex charset, what it is
-A @dfn{charset}, in the context of @code{recode}, is a particular association
+A @dfn{charset}, in the context of Recode, is a particular association
 between computer codes on one side, and a repertoire of intended characters
 on the other side.  Codes are usually taken from a set of consecutive
 small integers, starting at 0.  Some characters have a graphical appearance
@@ -346,7 +346,7 @@ while a MIME charset usually tries to specify them all.  A MIME charset
 might be the union of a few disjoint coded character sets.
 
 @cindex surface, what it is
-A @dfn{surface} is a term used in @code{recode} only, and is a short for
+A @dfn{surface} is a term used in Recode only, and is a short for
 surface transformation of a charset stream.  This is any kind of mapping,
 usually reversible, which associates physical bits in some medium for
 a stream of characters taken from one or more charsets (usually one).
@@ -355,12 +355,12 @@ bits and bytes.  How end of lines are exactly encoded is not really
 pertinent to the charset, and so, there is surface for end of lines.
 @code{Base64} is also a surface, as we may encode any charset in it.
 Other examples would @code{DES} enciphering, or @code{gzip} compression
-(even if @code{recode} does not offer them currently): these are ways to give
+(even if Recode does not offer them currently): these are ways to give
 a real life to theoretical charsets.  The @dfn{trivial} surface consists
 into putting characters into fixed width little chunks of bits, usually
 eight such bits per character.  But things are not always that simple.
 
-This @code{recode} library, and the program by that name, have the purpose
+This Recode library, and the program by that name, have the purpose
 of converting files between various charsets and surfaces.  When this
 cannot be done in exact ways, as it is often the case, the program may
 get rid of the offending characters or fall back on approximations.
@@ -368,12 +368,12 @@ This library recognises or produces around 175 such charsets under 500
 names, and handle a dozen surfaces.  Since it can convert each charset to
 almost any other one, many thousands of different conversions are possible.
 
-The @code{recode} program and library do not usually know how to split and
+The Recode program and library do not usually know how to split and
 sort out textual and non-textual information which may be mixed in a single
 input file.  For example, there is no surface which currently addresses the
 problem of how lines are blocked into physical records, when the blocking
 information is added as binary markers or counters within files.  So,
-@code{recode} should be given textual streams which are rather @emph{pure}.
+Recode should be given textual streams which are rather @emph{pure}.
 
 This tool pays special attention to superimposition of diacritics for
 some French representations.  This orientation is mostly historical, it
@@ -382,7 +382,7 @@ does not impair the usefulness, generality or extensibility of the program.
 to those things, the proper pronunciation is French (that is, @samp{racud},
 with @samp{a} like in @samp{above}, and @samp{u} like in @samp{cut}).
 
-The program @code{recode} has been written by Fran@,{c}ois Pinard.
+The Recode program and library has been written by Fran@,{c}ois Pinard.
 With time, it got to reuse works from other contributors, and notably,
 those of Keld Simonsen and Bruno Haible.
 
@@ -399,7 +399,7 @@ those of Keld Simonsen and Bruno Haible.
 Recoding is currently possible between many charsets, the bulk of which
 is described by @w{RFC 1345} tables or available in a pre-installed
 external @code{iconv} library. @xref{Tabular}, and @pxref{iconv}.  The
-@code{recode} library also handles some charsets in some specialised
+Recode library also handles some charsets in some specialised
 ways.  These are:
 
 @itemize @bullet
@@ -423,7 +423,7 @@ the PC, Apple's code for the Macintosh;
 16-bit or 31-bit universal characters, and their transfer encodings.
 @end itemize
 
-The introduction of @w{RFC 1345} in @code{recode} has brought with it a few
+The introduction of @w{RFC 1345} in Recode has brought with it a few
 charsets having the functionality of older ones, but yet being different
 in subtle ways.  The effects have not been fully investigated yet, so for
 now, clashes are avoided, the old and new charsets are kept well separate.
@@ -465,14 +465,14 @@ once over a single charset.
 
 @cindex pure charset
 @cindex charset, pure
-So, @code{recode} has machinery to describe a combination of a charset with
+So, Recode has machinery to describe a combination of a charset with
 surfaces used over it in a file.  We would use the expression @dfn{pure
 charset} for referring to a charset free of any surface, that is, the
 conceptual association between integer codes and character intents.
 
 It is not always clear if some transformation will yield a charset or a
 surface, especially for those transformations which are only meaningful
-over a single charset.  The @code{recode} library is not overly picky as
+over a single charset.  The Recode library is not overly picky as
 identifying surfaces as such: when it is practical to consider a specialised
 surface as if it were a charset, this is preferred, and done.
 
@@ -480,14 +480,14 @@ surface as if it were a charset, this is preferred, and done.
 @section Contributions and bug reports
 
 @cindex contributing charsets
-Even being the @code{recode} author and current maintainer, I am no
-specialist in charset standards.  I only made @code{recode} along the
+Even being the Recode author and current maintainer, I am no
+specialist in charset standards.  I only made Recode along the
 years to solve my own needs, but felt it was applicable for the needs
 of others.  Some FSF people liked the program structure and suggested
-to make it more widely available.  I often rely on @code{recode} users
+to make it more widely available.  I often rely on Recode users
 suggestions to decide what is best to be done next.
 
-Properly protecting @code{recode} about possible copyright fights is a
+Properly protecting Recode about possible copyright fights is a
 pain for me and for contributors, but we cannot avoid addressing the issue
 in the long run.  Besides, the Free Software Foundation, which mandates
 the GNU project, is very sensible to this matter.  GNU standards suggest
@@ -497,7 +497,7 @@ this might slow me down considerably.  For contributions going beyond a
 few lines of code here and there, the FSF definitely requires employer
 disclaimers and copyright assignments in writing.
 
-When you contribute something to @code{recode}, @emph{please} explain what
+When you contribute something to Recode, @emph{please} explain what
 it is about.  Do not take for granted that I know those charsets which
 are familiar to you.  Once again, I'm no expert, and you have to help me.
 Your explanations could well find their way into this documentation, too.
@@ -506,7 +506,7 @@ please provide good, solid, verifiable references for the tables you
 used@footnote{I'm not prone at accepting a charset you just invented,
 and which nobody uses yet: convince your friends and community first!}.
 
-Many users contributed to @code{recode} already, I am grateful to them for
+Many users contributed to Recode already, I am grateful to them for
 their interest and involvement.  Some suggestions can be integrated quickly
 while some others have to be delayed, I have to draw a line somewhere when
 time comes to make a new release, about what would go in it and what would
@@ -538,7 +538,7 @@ control.
 * Reversibility::       Reversibility issues
 * Sequencing::          Selecting sequencing methods
 * Mixed::               Using mixed charset input
-* Emacs::               Using @code{recode} within Emacs
+* Emacs::               Using Recode within Emacs
 * Debugging::           Debugging considerations
 @end menu
 
@@ -553,7 +553,7 @@ The general format of the program call is one of:
 recode [@var{option}]@dots{} [@var{charset} | @var{request} [@var{file}]@dots{} ]
 @end example
 
-Some calls are used only to obtain lists produced by @code{recode} itself,
+Some calls are used only to obtain lists produced by Recode itself,
 without actually recoding any file.  They are recognised through the
 usage of listing options, and these options decide what meaning should
 be given to an optional @var{charset} parameter.  @xref{Listings}.
@@ -562,7 +562,7 @@ In other calls, the first parameter (@var{request}) always explains which
 transformations are expected on the files.  There are many variations to
 the aspect of this parameter.  We will discuss more complex situations
 later (@pxref{Requests}), but for many simple cases, this parameter
-merely looks like this@footnote{In previous versions or @code{recode}, a single
+merely looks like this@footnote{In previous versions or Recode, a single
 colon @samp{:} was used instead of the two dots @samp{..} for separating
 charsets, but this was creating problems because colons are allowed in
 official charset names.  The old request syntax is still recognised for
@@ -630,13 +630,13 @@ start charset and the goal charset for the recoding.
 
 @cindex charset names, valid characters
 @cindex valid characters in charset names
-For @code{recode}, charset names may contain any character, besides a
+For Recode, charset names may contain any character, besides a
 comma, a forward slash, or two periods in a row.  But in practice, charset
 names are currently limited to alphabetic letters (upper or lower case),
 digits, hyphens, underlines, periods, colons or round parentheses.
 
 @cindex request, syntax
-@cindex @code{recode} request syntax
+@cindex Recode request syntax
 The complete syntax for a valid @var{request} allows for unusual
 things, which might surprise at first.  (Do not pay too much attention
 to these facilities on first reading.)  For example, @var{request}
@@ -650,16 +650,16 @@ may also contain intermediate charsets, like in the following example:
 @cindex intermediate charsets
 @cindex chaining of charsets in a request
 @cindex charsets, chaining in a request
-meaning that @code{recode} should internally produce the @var{interim1}
+meaning that Recode should internally produce the @var{interim1}
 charset from the start charset, then work out of this @var{interim1}
 charset to internally produce @var{interim2}, and from there towards the
-goal charset.  In fact, @code{recode} internally combines recipes and
+goal charset.  In fact, Recode internally combines recipes and
 automatically uses interim charsets, when there is no direct recipe for
 transforming @var{before} into @var{after}.  But there might be many ways
 to do it.  When many routes are possible, the above @dfn{chaining} syntax
 may be used to more precisely force the program towards a particular route,
 which it might not have naturally selected otherwise.  On the other hand,
-because @code{recode} tries to choose good routes, chaining is only needed
+because Recode tries to choose good routes, chaining is only needed
 to achieve some rare, unusual effects.
 
 Moreover, many such requests (sub-requests, more precisely) may be
@@ -679,7 +679,7 @@ to be so in the general case.  One might wonder what would be the meaning
 of declaring the charset input for a recoding sub-request of being of
 different nature than the charset output by a preceding sub-request, when
 recodings are chained in this way.  Such a strange usage might have a
-meaning and be useful for the @code{recode} expert, but they are quite
+meaning and be useful for the Recode expert, but they are quite
 uncommon in practice.
 
 @cindex surfaces, syntax
@@ -703,7 +703,7 @@ then @var{surface2} is applied over the result.  Given this request:
 @end example
 
 @noindent
-the @code{recode} program will understand that the input files should
+Recode will understand that the input files should
 have @var{surface2} removed first (because it was applied last), then
 @var{surface1} should be removed.  The next step will be to translate the
 codes from charset @var{before} to charset @var{after}, prior to applying
@@ -738,12 +738,12 @@ aliases may each have its own different set of implied surfaces.
 @cindex abbreviated names for charsets and surfaces
 @cindex names of charsets and surfaces, abbreviation
 Charset names, surface names, or their aliases may always be abbreviated
-to any unambiguous prefix.  Internally in @code{recode}, disambiguating
+to any unambiguous prefix.  Internally in Recode, disambiguating
 tables are kept separate for charset names and surface names.
 
 @cindex letter case, in charset and surface names
 While recognising a charset name or a surface name (or aliases thereof),
-@code{recode} ignores all characters besides letters and digits, so for
+Recode ignores all characters besides letters and digits, so for
 example, the hyphens and underlines being part of an official charset
 name may safely be omitted (no need to un-confuse them!).  There is also
 no distinction between upper and lower case for charset or surface names.
@@ -759,7 +759,7 @@ not very useful, as the recoding reduces to a mere copy in that case.}
 @vindex DEFAULT_CHARSET
 When a charset name is omitted or left empty, the value of the
 @code{DEFAULT_CHARSET} variable in the environment is used instead.  If this
-variable is not defined, the @code{recode} library uses the current locale's
+variable is not defined, the Recode library uses the current locale's
 encoding.  On POSIX compliant systems, this depends on the first non-empty
 value among the environment variables LC_ALL, LC_CTYPE, LANG, and can be
 determined through the command @samp{locale charmap}.
@@ -781,14 +781,14 @@ surfaces, are described in the remainder of this document.
 @node Listings, Recoding, Requests, Invoking recode
 @section Asking for various lists
 
-Many options control listing output generated by @code{recode} itself,
+Many options control listing output generated by Recode itself,
 they are not meant to accompany actual file recodings.  These options are:
 
 @table @samp
 
 @item --version
 @opindex --version
-@cindex @code{recode} version, printing
+@cindex Recode version, printing
 The program merely prints its version numbers on standard output, and
 exits without doing anything else.
 
@@ -816,7 +816,7 @@ Copyright and copying conditions.
 @cindex programming language support
 @cindex languages, programming
 @cindex supported programming languages
-Instead of recoding files, @code{recode} writes a @var{language} source
+Instead of recoding files, Recode writes a @var{language} source
 file on standard output and exits.  This source is meant to be included
 in a regular program written in the same programming @var{language}:
 its purpose is to declare and initialise an array, named @var{name},
@@ -827,23 +827,23 @@ is not specified, then it defaults to @samp{@var{before}_@var{after}}.
 Strings @var{before} and @var{after} are cleaned before being used according
 to the syntax of @var{language}.
 
-Even if @code{recode} tries its best, this option does not always succeed in
+Even if Recode tries its best, this option does not always succeed in
 producing the requested source table, it then prints @samp{Recoding is too
 complex for a mere table}.  It will succeed however, provided the recoding
 can be internally represented by only one step after the optimisation phase,
 and if this merged step conveys a one-to-one or a one-to-many explicit
-table.  Also, when attempting to produce sources tables, @code{recode}
+table.  Also, when attempting to produce sources tables, Recode
 relaxes its checking a tiny bit: it ignores the algorithmic part of some
 tabular recodings, it also avoids the processing of implied surfaces.
 But this is all fairly technical.  Better try and see!
 
 Most tables are produced using decimal numbers to refer to character
-values@footnote{The author of @code{recode} by far prefer expressing numbers
+values@footnote{The author of Recode by far prefer expressing numbers
 in decimal than octal or hexadecimal, as he considers that the current
 state of technology should not force users anymore in such strange things.
-But Unicode people see things differently, to the point @code{recode}
+But Unicode people see things differently, to the point Recode
 cannot escape being tainted with some hexadecimal.}.  Yet, users who know
-all @code{recode} tricks and stunts could indeed force octal or hexadecimal
+all Recode tricks and stunts could indeed force octal or hexadecimal
 output for the table contents.  For example:
 
 @example
@@ -868,7 +868,7 @@ This particular option is meant to help identifying an unknown charset,
 using as hints some already identified characters of the charset.  Some
 examples will help introducing the idea.
 
-Let's presume here that @code{recode} is run in an ISO-8859-1 locale, and
+Let's presume here that Recode is run in an ISO-8859-1 locale, and
 that @code{DEFAULT_CHARSET} is unset in the environment.
 Suppose you have guessed that code 130 (decimal) of the unknown charset
 represents a lower case @samp{e} with an acute accent.  That is to say
@@ -976,7 +976,7 @@ ambiguous prefix.
 This option asks for information about all charsets, or about one
 particular charset.  No file will be recoded.
 
-If there is no non-option arguments, @code{recode} ignores the @var{format}
+If there is no non-option arguments, Recode ignores the @var{format}
 value of the option, it writes a sorted list of charset names on standard
 output, one per line.  When a charset name have aliases or synonyms,
 they follow the true charset name on its line, sorted from left to right.
@@ -987,17 +987,17 @@ is over two hundred lines.  It is best used with @samp{grep -i}, as in:
 recode -l | grep -i greek
 @end example
 
-Within a collection of names for a single charset, the @code{recode}
+Within a collection of names for a single charset, the Recode
 library distinguishes one of them as being the genuine charset name,
 while the others are said to be aliases.  The list normally integrates
 all charsets from the external @code{iconv} library, unless this is
 defeated through options like @samp{--ignore=:iconv:} or @samp{-x:}.
 The portable @code{libiconv} library relates its own aliases of a same
 charset, and for a given set of aliases, if none of them are known to
-@code{recode} already, then @code{recode} will pick one as being the
+Recode already, then Recode will pick one as being the
 genuine charset.  The @code{iconv} library within GNU @code{libc} makes
 all aliases appear as different charsets, and each will be presented as
-a charset by @code{recode}, unless it is known otherwise.
+a charset by Recode, unless it is known otherwise.
 
 There might be one non-option argument, in which case it is interpreted
 as a charset name, possibly abbreviated to any non ambiguous prefix.
@@ -1050,10 +1050,10 @@ the @var{format} defaults to @code{decimal}.
 @cindex identifying subsets in charsets
 @cindex subsets in charsets
 This option is a maintainer tool for evaluating the redundancy of those
-charsets, in @code{recode}, which are internally represented by an @code{UCS-2}
+charsets, in Recode, which are internally represented by an @code{UCS-2}
 data table.  After the listing has been produced, the program exits
 without doing any recoding.  The output is meant to be sorted, like
-this: @w{@samp{recode -T | sort}}.  The option triggers @code{recode} into
+this: @w{@samp{recode -T | sort}}.  The option triggers Recode into
 comparing all pairs of charsets, seeking those which are subsets of others.
 The concept and results are better explained through a few examples.
 Consider these three sample lines from @samp{-T} output:
@@ -1066,7 +1066,7 @@ Consider these three sample lines from @samp{-T} output:
 
 @noindent
 The first line means that @code{IBM891} and @code{IBM903} are completely
-identical as far as @code{recode} is concerned, so one is fully redundant
+identical as far as Recode is concerned, so one is fully redundant
 to the other.  The second line says that @code{IBM1004} is wholly
 contained within @code{CP1252}, yet there is a single character which is
 in @code{CP1252} without being in @code{IBM1004}.  The third line says
@@ -1150,7 +1150,7 @@ recode -v @var{before}..@var{after} < /dev/null
 @end example
 
 @noindent
-using the fact that, in @code{recode}, an empty input file produces
+using the fact that, in Recode, an empty input file produces
 an empty output file.
 
 @item -x @var{charset}
@@ -1162,7 +1162,7 @@ an empty output file.
 This option tells the program to ignore any recoding path through the
 specified @var{charset}, so disabling any single step using this charset
 as a start or end point.  This may be used when the user wants to force
-@code{recode} into using an alternate recoding path (yet using chained
+Recode into using an alternate recoding path (yet using chained
 requests offers a finer control, @pxref{Requests}).
 
 @var{charset} may be abbreviated to any unambiguous prefix.
@@ -1184,7 +1184,7 @@ With this option, irreversible or otherwise erroneous recodings are run
 to completion, and @code{recode} does not exit with a non-zero status if
 it would be only because irreversibility matters.  @xref{Reversibility}.
 
-Without this option, @code{recode} tries to protect you against recoding
+Without this option, Recode tries to protect you against recoding
 a file irreversibly over itself@footnote{There are still some cases of
 ambiguous output which are rather difficult to detect, and for which
 the protection is not active.}.  Whenever an irreversible recoding is
@@ -1198,9 +1198,9 @@ received a partially recoded copy of standard input, up to the first
 error point.  After all recodings have been done or attempted, and if
 some recoding has been aborted, @code{recode} exits with a non-zero status.
 
-In releases of @code{recode} prior to version 3.5, this option was always
+In releases of Recode prior to version 3.5, this option was always
 selected, so it was rather meaningless.  Nevertheless, users were invited
-to start using @samp{-f} right away in scripts calling @code{recode}
+to start using @samp{-f} right away in scripts calling Recode
 whenever convenient, in preparation for the current behaviour.
 
 @item -q
@@ -1229,20 +1229,20 @@ issued only once by the parent.  See option @samp{-p}.
 @cindex strict operation
 @cindex map filling, disable
 @cindex disable map filling
-By using this option, the user requests that @code{recode} be very strict
+By using this option, the user requests that Recode be very strict
 while recoding a file, merely losing in the transformation any character
 which is not explicitly mapped from a charset to another.  Such a loss is
-not reversible and so, will bring @code{recode} to fail, unless the option
+not reversible and so, will bring Recode to fail, unless the option
 @samp{-f} is also given as a kind of counter-measure.
 
-Using @samp{-s} without @samp{-f} might render the @code{recode} program
-very susceptible to the slighest file abnormalities.  Despite the fact
-that it might be
+Using @samp{-s} without @samp{-f} might render Recode very susceptible
+to the slighest file abnormalities.  Despite the fact that it might be
 irritating to some users, such paranoia is sometimes wanted and useful.
+
 @end table
 
 @cindex reversibility of recoding
-Even if @code{recode} tries hard to keep the recodings reversible,
+Even if Recode tries hard to keep the recodings reversible,
 you should not develop an unconditional confidence in its ability to
 do so.  You @emph{ought} to keep only reasonable expectations about
 reverse recodings.  In particular, consider:
@@ -1290,7 +1290,7 @@ original one, it is not identical.
 @end itemize
 
 @cindex map filling
-Unless option @samp{-s} is used, @code{recode} automatically tries to
+Unless option @samp{-s} is used, Recode automatically tries to
 fill mappings with invented correspondences, often making them fully
 reversible.  This filling is not made at random.  The algorithm tries to
 stick to the identity mapping and, when this is not possible, it prefers
@@ -1299,13 +1299,13 @@ codes.
 
 For example, here is how @code{IBM-PC} code 186 gets translated to
 @kbd{control-U} in @code{Latin-1}.  @kbd{Control-U} is 21.  Code 21 is the
-@code{IBM-PC} section sign, which is 167 in @code{Latin-1}.  @code{recode}
+@code{IBM-PC} section sign, which is 167 in @code{Latin-1}.  Recode
 cannot reciprocate 167 to 21, because 167 is the masculine ordinal indicator
 within @code{IBM-PC}, which is 186 in @code{Latin-1}.  Code 186 within
 @code{IBM-PC} has no @code{Latin-1} equivalent; by assigning it back to 21,
-@code{recode} closes this short permutation loop.
+Recode closes this short permutation loop.
 
-As a consequence of this map filling, @code{recode} may sometimes produce
+As a consequence of this map filling, Recode may sometimes produce
 @emph{funny} characters.  They may look annoying, they are nevertheless
 helpful when one changes his (her) mind and wants to revert to the prior
 recoding.  If you cannot stand these, use option @samp{-s}, which asks
@@ -1316,7 +1316,7 @@ some users wrongly interpreted as bugs.  Here are two examples.
 
 @enumerate
 @item
-In some cases, @code{recode} seems to copy a file without recoding it.
+In some cases, Recode seems to copy a file without recoding it.
 But in fact, it does.  Consider a request:
 
 @example
@@ -1330,14 +1330,14 @@ then @code{cmp} will not report any difference.  This is quite normal.
 (which are the first 128 characters, in this case).  The remaining last
 128 @w{@code{Latin-1}} characters have no ASCII correspondent.  Instead
 of losing
-them, @code{recode} elects to map them to unspecified characters of ASCII, so
+them, Recode elects to map them to unspecified characters of ASCII, so
 making the recoding reversible.  The simplest way of achieving this is
 merely to keep those last 128 characters unchanged.  The overall effect
 is copying the file verbatim.
 
 If you feel this behaviour is too generous and if you do not wish to
 care about reversibility, simply use option @samp{-s}.  By doing so,
-@code{recode} will strictly map only those @w{@code{Latin-1}} characters
+Recode will strictly map only those @w{@code{Latin-1}} characters
 which have
 an ASCII equivalent, and will merely drop those which do not.  Then,
 there is more chance that you will observe a difference between the
@@ -1357,7 +1357,7 @@ so declaring wrongly @file{File-Latin1} to be an IBM-PC file, and
 recoding to @code{Latin-1}.  This is surely ill defined and not meaningful.
 Yet, if you repeat this step a second time, you might notice that
 many (not all) characters in @file{Temp2} are identical to those in
-@file{File-Latin1}.  Sometimes, people try to discover how @code{recode}
+@file{File-Latin1}.  Sometimes, people try to discover how Recode
 works by experimenting a little at random, rather than reading and
 understanding the documentation; results such as this are surely confusing,
 as they provide those people with a false feeling that they understood
@@ -1365,7 +1365,7 @@ something.
 
 Reversible codings have this property that, if applied several times
 in the same direction, they will eventually bring any character back
-to its original value.  Since @code{recode} seeks small permutation
+to its original value.  Since Recode seeks small permutation
 cycles when creating reversible codings, besides characters unchanged
 by the recoding, most permutation cycles will be of length 2, and
 fewer of length 3, etc.  So, it is just expectable that applying the
@@ -1382,7 +1382,7 @@ would recover all characters in cycles of length 1, 2, 3 or 6.
 This program uses a few techniques when it is discovered that many
 passes are needed to comply with the @var{request}.  For example,
 suppose that four elementary steps were selected at recoding path
-optimisation time.  Then @code{recode} will split itself into four
+optimisation time.  Then Recode will split itself into four
 different interconnected tasks, logically equivalent to:
 
 @example
@@ -1444,10 +1444,10 @@ at once.  Some parts of the file encode one charset, while other parts
 encode another charset, and so forth.  Usually, a file does not toggle
 between more than two or three charsets.  The means to distinguish
 which charsets are encoded at various places is not always available.
-The @code{recode} program is able to handle only a few simple cases
+Recode is able to handle only a few simple cases
 of mixed input.
 
-The default @code{recode} behaviour is to expect pure charset files, to
+The default Recode behaviour is to expect pure charset files, to
 be recoded as other pure charset files.  However, the following options
 allow for a few precise kinds of mixed charset files.
 
@@ -1455,30 +1455,34 @@ allow for a few precise kinds of mixed charset files.
 Some notes on transliteration and substitution.
 
 Transliteration is still much study, discussion and work to come, but
-when generic transliteration will be added in @code{recode}, it will be
-added @emph{through} the @code{recode} library.
+when generic transliteration will be added in Recode, it will be
+added @emph{through} the Recode library.
 
-However, I agree that it might be *convenient* that the `latin1..fi'
-conversion works by letting all ASCII characters through, but then, the
-result would be a mix of ASCII and `fi', it would not be pure `fi' anymore.
-It would be convenient because, in practice, people might write programs in
-ASCII, keeping comments or strings directly in `fi', all in the same file.
-The original files are indeed mixed, and people sometimes expect that
-`recode' will do mixed conversions.
+However, I agree that it might be @emph{convenient} that the
+@samp{latin1..fi} conversion works by letting all ASCII characters
+through, but then, the result would be a mix of ASCII and @code{fi}, it
+would not be pure @code{fi} anymore.  It would be convenient because,
+in practice, people might write programs in ASCII, keeping comments or
+strings directly in @code{fi}, all in the same file.  The original files
+are indeed mixed, and people sometimes expect that Recode will do mixed
+conversions.
 
-A conversion does not become *right* because it is altered to be more
-convenient.  And recode is not *wrong* because it does not offer some
-conveniences people would like to have.  As long as `recode' main job is
-producing `fi', than '[' is just not representable in `fi', and recode is
-rather right in not letting `[' through.  It has to do something special
-about it.  The character might be thrown away, transliterated or replaced
-by a substitute, or mapped to some other code for reversibility purposes.
+A conversion does not become @emph{right} because it is altered to be
+more convenient.  And recode is not @emph{wrong} because it does not
+offer some conveniences people would like to have.  As long as Recode
+main job is producing @code{fi}, than @samp{[} is just not representable
+in @code{fi}, and recode is rather right in not letting @samp{[}
+through.  It has to do something special about it.  The character might
+be thrown away, transliterated or replaced by a substitute, or mapped to
+some other code for reversibility purposes.
 
-Transliteration or substitution are currently not implemented in `recode',
+Transliteration or substitution are currently not implemented in Recode,
 yet for the last few years, I've been saving documentation about these
-phenomena.  The transliteration which you are asking for, here, is that the
-'[' character in @w{Latin-1}, for example, be transliterated to A-umlaut in
-`fi', which is a bit non-meaningful.  Remember, there is no `[' in `fi'.
+phenomena.  The transliteration which you are asking for, here, is that
+the '[' character in @w{Latin-1}, for example, be transliterated to
+A-umlaut in @code{fi}, which is a bit non-meaningful.  Remember, there
+is no @samp{[} in @code{fi}.
+
 @end ignore
 
 @table @samp
@@ -1500,7 +1504,7 @@ from the underlying character set.
 
 While converting to @code{HTML} or @code{LaTeX} charset, this option
 assumes that characters not in the said subset are properly coded
-or protected already, @code{recode} then transmit them literally.
+or protected already, Recode then transmit them literally.
 While converting the other way, this option prevents translating back
 coded or protected versions of characters not in the said subset.
 @xref{HTML}.  @xref{LaTeX}.
@@ -1517,7 +1521,7 @@ header line too, and stopping its special work at the first empty line.
 A special combination of both capabilities would be for the recoding of
 PO files, in which the header, and @code{msgid} and @code{msgstr} strings, might
 all use different charsets.  Recoding some PO files currently looks like
-a nightmare, which I would like @code{recode} to repair.
+a nightmare, which I would like Recode to repair.
 @end ignore
 
 @item -S[@var{language}]
@@ -1541,7 +1545,7 @@ where the comment or string ends.
 
 Even if @code{ASCII} is the usual charset for writing programs, some
 compilers are able to directly read other charsets, like @code{UTF-8}, say.
-There is currently no provision in @code{recode} for reading mixed charset
+There is currently no provision in Recode for reading mixed charset
 sources which are not based on @code{ASCII}.  It is probable that the need
 for mixed recoding is not as pressing in such cases.
 
@@ -1562,12 +1566,13 @@ If @var{language} is not specified, @samp{c} is assumed.
 @end table
 
 @node Emacs, Debugging, Mixed, Invoking recode
-@section Using @code{recode} within Emacs
+@section Using Recode within Emacs
 
-The fact @code{recode} is a filter makes it quite easy to use from
-within GNU Emacs.  For example, recoding the whole buffer from
-the @code{IBM-PC} charset to current charset (@w{@code{Latin-1}} on
-Unix) is easily done with:
+The fact the @code{recode} program acts as a filter, when given no
+file arguments, makes it quite easy to use from within GNU Emacs.  For
+example, recoding the whole buffer from the @code{IBM-PC} charset to
+current charset (for example, @w{@code{UTF-8}} on Unix) is easily done
+with:
 
 @example
 C-x h C-u M-| recode ibmpc RET
@@ -1594,17 +1599,17 @@ the current region from Easy French to @w{@code{Latin-1}} (on Unix) and the key
 @node Debugging,  , Emacs, Invoking recode
 @section Debugging considerations
 
-It is our experience that when @code{recode} does not provide satisfying
-results, either @code{recode} was not called properly, correct results
-raised some doubts nevertheless, or files to recode were somewhat mangled.
-Genuine bugs are surely possible.
+It is our experience that when Recode does not provide satisfying
+results, either the @code{recode} program was not called properly,
+correct results raised some doubts nevertheless, or files to recode were
+somewhat mangled.  Genuine bugs are surely possible.
 
-Unless you already are a @code{recode} expert, it might be a good idea to
+Unless you already are a Recode expert, it might be a good idea to
 quickly revisit the tutorial (@pxref{Tutorial}) or the prior sections in this
 chapter, to make sure that you properly formatted your recoding request.
-In the case you intended to use @code{recode} as a filter, make sure that you
+In the case you intended to use Recode as a filter, make sure that you
 did not forget to redirect your standard input (through using the @kbd{<}
-symbol in the shell, say).  Some @code{recode} false mysteries are also
+symbol in the shell, say).  Some Recode false mysteries are also
 easily explained, @xref{Reversibility}.
 
 For the other cases, some investigation is needed.  To illustrate how to
@@ -1633,9 +1638,9 @@ This might help you to better understand what the diagnostic means.  The
 recoding request is achieved in two steps, the first recodes @code{UTF-8}
 into @code{UCS-2}, the second recodes @code{UCS-2} into @code{HTML}.
 The problem occurs within the first of these two steps, and since, the
-input of this step is the input file given to @code{recode}, this is
+input of this step is the input file given to Recode, this is
 this overall input file which seems to be invalid.  Also, when used in
-filter mode, @code{recode} processes as much input as possible before the
+filter mode, Recode processes as much input as possible before the
 error occurs and sends the result of this processing to standard output.
 Since the standard output has not been redirected to a file, it is merely
 displayed on the user screen.  By inspecting near the end of the resulting
@@ -1666,7 +1671,7 @@ for you, and easier than repairing the input file.  That depends on how
 strict you would like to be about the precision of the recoding process.
 
 If you later see that your HTML file begins with @samp{@@lt;html@@gt;} when
-you expected @samp{<html>}, then @code{recode} might have done a bit more
+you expected @samp{<html>}, then Recode might have done a bit more
 that you wanted.  In this case, your input file was half-@code{UTF-8},
 half-@code{HTML} already, that is, a mixed file (@pxref{Mixed}).  There is a
 special @code{-d} switch for this case.  So, your might be end up calling
@@ -1674,10 +1679,10 @@ special @code{-d} switch for this case.  So, your might be end up calling
 overwriting your input file whatever what, I recommend that you stick with
 filter mode.
 
-If, after such experiments, you seriously think that the @code{recode}
-program does not behave properly, there might be a genuine bug in the
-program itself, in which case I invite you to to contribute a bug report,
-@xref{Contributing}.
+If, after such experiments, you seriously think that Recode does not
+behave properly, there might be a genuine bug either in the program or
+the library itself, in which case I invite you to to contribute a bug
+report, @xref{Contributing}.
 
 @node Library, Universal, Invoking recode, Top
 @chapter A recoding library
@@ -1843,12 +1848,12 @@ diagnostic and abort processing itself.
 
 When this flag is set, the library does not initialize nor use the
 external @code{iconv} library.  This means that the charsets and aliases
-provided by the @code{iconv} external library and not by @code{recode}
+provided by the @code{iconv} external library and not by Recode
 itself are not available.
 
 @end table
 
-In previous incatations of the @code{recode} library, @var{flags}
+In previous incatations of the Recode library, @var{flags}
 was a Boolean instead of a collection of flags, meant to set
 @code{RECODE_AUTO_ABORT_FLAG}.  This still works, but is deprecated.
 
@@ -1873,7 +1878,7 @@ when the program ends.  You may spare this terminating call if you prefer.
 @item The @code{program_name} declaration
 
 @cindex @code{program_name} variable
-As we just explained, the user may set the @code{recode} library so that,
+As we just explained, the user may set the Recode library so that,
 in case of problems error, it issues the diagnostic itself and aborts the
 whole processing.  This capability may be quite convenient.  When this
 feature is used, the aborting routine includes the name of the running
@@ -2017,7 +2022,7 @@ bool recode_scan_request (@var{request}, "@var{string}");
 The main role of a @var{request} variable is to describe a set of
 recoding transformations.  Function @code{recode_scan_request} studies
 the given @var{string}, and stores an internal representation of it into
-@var{request}.  Note that @var{string} may be a full-fledged @code{recode}
+@var{request}.  Note that @var{string} may be a full-fledged Recode
 request, possibly including surfaces specifications, intermediary
 charsets, sequences, aliases or abbreviations (@pxref{Requests}).
 
@@ -2431,7 +2436,7 @@ bool list_full_charset (@var{charset});
 @cindex handling errors
 
 @cindex error messages
-The @code{recode} program, while using the @code{recode} library, needs to
+The @code{recode} program, while using the Recode library, needs to
 control whether recoding problems are reported or not, and then reflect
 these in the exit status.  The program should also instruct the library
 whether the recoding should be abruptly interrupted when an error is
@@ -2451,7 +2456,7 @@ No error was met on previous library calls.
 @cindex non canonical input, error message
 
 The input text was using one of the many alternative codings for some
-phenomenon, but not the one @code{recode} would have canonically generated.
+phenomenon, but not the one Recode would have canonically generated.
 So, if the reverse recoding is later attempted, it would produce a text
 having the same @emph{meaning} as the original text, yet not being byte
 identical.
@@ -2487,7 +2492,7 @@ problem to accomplish this detection, or to do it speedily.
 One or more input character could not be recoded, because there is just
 no representation for this character in the output charset.
 
-Here are a few examples.  Non-strict mode often allows @code{recode} to
+Here are a few examples.  Non-strict mode often allows Recode to
 compute on-the-fly mappings for unrepresentable characters, but strict
 mode prohibits such attribution of reversible translations: so strict
 mode might often trigger such an error.  Most @code{UCS-2} codes used to
@@ -2499,7 +2504,7 @@ represent Asian characters cannot be expressed in various Latin charsets.
 
 The input text does not comply with the coding it is declared to hold.  So,
 there is no way by which a reverse recoding would reproduce this text,
-because @code{recode} should never produce invalid output.
+because Recode should never produce invalid output.
 
 Here are a few examples.  In strict mode, @code{ASCII} text is not allowed
 to contain characters with the eight bit set.  @code{UTF-8} encodings
@@ -2596,7 +2601,7 @@ wide characters, and offer possibilities for two billion characters
 (@math{2^31}).
 
 @tindex UCS
-This charset was to become available in @code{recode} under the name
+This charset was to become available in Recode under the name
 @code{UCS}, with many external surfaces for it.  But in the current
 version, only surfaces of @code{UCS} are offered, each presented as a
 genuine charset rather than a surface.  Such surfaces are only meaningful
@@ -2609,7 +2614,7 @@ between the surfaces and the only charset to which they may apply.
 character respectively.  @code{UTF} stands for @code{UCS} Transformation
 Format, and are variable length encodings dedicated to @code{UCS}.
 @code{UTF-1} was based on @w{ISO 2022}, it did not succeed@footnote{It is not
-probable that @code{recode} will ever support @code{UTF-1}.}.  @code{UTF-2}
+probable that Recode will ever support @code{UTF-1}.}.  @code{UTF-2}
 replaced it, it has been called @code{UTF-FSS} (File System Safe) in
 Unicode or Plan9 context, but is better known today as @code{UTF-8}.
 To complete the picture, there is @code{UTF-16} based on 16 bits bytes,
@@ -2618,7 +2623,7 @@ Most often, one might see @code{UTF-8} used for external storage, and
 @code{UCS-2} used for internal storage.
 
 @c FIXME: the manual never explains what the U+NNNN notation means!
-When @code{recode} is producing any representation of @code{UCS},
+When Recode is producing any representation of @code{UCS},
 it uses the replacement character @code{U+FFFD} for any @emph{valid}
 character which is not representable in the goal charset@footnote{This
 is when the goal charset allows for 16-bits.  For shorter charsets,
@@ -2629,16 +2634,16 @@ wide @code{UCS-4} character, or for a similar reason, an @code{UTF-8}
 sequence using more than three bytes.  The replacement character is
 meant to represent an existing character.  So, it is never produced to
 represent an invalid sequence or ill-formed character in the input text.
-In such cases, @code{recode} just gets rid of the noise, while taking note
+In such cases, Recode just gets rid of the noise, while taking note
 of the error in its usual ways.
 
 Even if @code{UTF-8} is an encoding, really, it is the encoding of a single
 character set, and nothing else.  It is useful to distinguish between an
-encoding (a @emph{surface} within @code{recode}) and a charset, but only
+encoding (a @emph{surface} within Recode) and a charset, but only
 when the surface may be applied to several charsets.  Specifying a charset
-is a bit simpler than specifying a surface in a @code{recode} request.
+is a bit simpler than specifying a surface in a Recode request.
 There would not be a practical advantage at imposing a more complex syntax
-to @code{recode} users, when it is simple to assimilate @code{UTF-8} to
+to Recode users, when it is simple to assimilate @code{UTF-8} to
 a charset.  Similar considerations apply for @code{UCS-2}, @code{UCS-4},
 @code{UTF-16} and @code{UTF-7}.  These are all considered to be charsets.
 
@@ -2667,13 +2672,13 @@ conveys with it endianness problems.
 A non-empty @code{UCS-2} file normally begins with a so called @dfn{byte
 order mark}, having value @code{0xFEFF}.  The value @code{0xFFFE} is not an
 @code{UCS} character, so if this value is seen at the beginning of a file,
-@code{recode} reacts by swapping all pairs of bytes.  The library also
+Recode reacts by swapping all pairs of bytes.  The library also
 properly reacts to other occurrences of @code{0xFEFF} or @code{0xFFFE}
 elsewhere than at the beginning, because concatenation of @code{UCS-2}
 files should stay a simple matter, but it might trigger a diagnostic
 about non canonical input.
 
-By default, when producing an @code{UCS-2} file, @code{recode} always
+By default, when producing an @code{UCS-2} file, Recode always
 outputs the high order byte before the low order byte.  But this could be
 easily overridden through the @code{21-Permutation} surface
 (@pxref{Permutations}).  For example, the command:
@@ -2691,12 +2696,12 @@ output.
 @tindex rune
 @tindex u2
 Use @code{UCS-2} as a genuine charset.  This charset is available in
-@code{recode} under the name @code{ISO-10646-UCS-2}.  Accepted aliases
+Recode under the name @code{ISO-10646-UCS-2}.  Accepted aliases
 are @code{UCS-2}, @code{BMP}, @code{rune} and @code{u2}.
 
 @tindex combined-UCS-2
 @cindex combining characters
-The @code{recode} library is able to combine @code{UCS-2} some sequences
+The Recode library is able to combine @code{UCS-2} some sequences
 of codes into single code characters, to represent a few diacriticized
 characters, ligatures or diphtongs which have been included to ease
 mapping with other existing charsets.  It is also able to explode
@@ -2731,7 +2736,7 @@ for the whole charset and as such, conveys with it endianness problems.
 @tindex ISO_10646
 @tindex 10646
 @tindex u4
-Use it as a genuine charset.  This charset is available in @code{recode}
+Use it as a genuine charset.  This charset is available in Recode
 under the name @code{ISO-10646-UCS-4}.  Accepted aliases are @code{UCS},
 @code{UCS-4}, @code{ISO_10646}, @code{10646} and @code{u4}.
 
@@ -2748,7 +2753,7 @@ from a mix between the spirit of @code{Quoted-Printable} and methods of
 @tindex UNICODE-1-1-UTF-7, and aliases
 @tindex TF-7
 @tindex u7
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{UNICODE-1-1-UTF-7}.  Accepted aliases are @code{UTF-7}, @code{TF-7}
 and @code{u7}.
 
@@ -2847,7 +2852,7 @@ from @code{UTF-8} to @code{UCS-2} or @code{UCS-4} prior to processing.
 @tindex FSS_UTF
 @tindex TF-8
 @tindex u8
-This charset is available in @code{recode} under the name @code{UTF-8}.
+This charset is available in Recode under the name @code{UTF-8}.
 Accepted aliases are @code{UTF-2}, @code{UTF-FSS}, @code{FSS_UTF},
 @code{TF-8} and @code{u8}.
 
@@ -2875,7 +2880,7 @@ positions available, now that 2,000 are gone).
 @tindex Unicode, an alias for UTF-16
 @tindex TF-16
 @tindex u6
-This charset is available in @code{recode} under the name @code{UTF-16}.
+This charset is available in Recode under the name @code{UTF-16}.
 Accepted aliases are @code{Unicode}, @code{TF-16} and @code{u6}.
 
 @node count-characters, dump-with-names, UTF-16, Universal
@@ -2888,7 +2893,7 @@ times each character appears.  Each count is followed by the @code{UCS-2}
 value of the character and, when known, the @w{RFC 1345} mnemonic for that
 character.
 
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{count-characters}.
 
 This @code{count} feature has been implemented as a charset.  This may
@@ -2910,7 +2915,7 @@ comment for that character.  As each input character produces its own
 output line, beware that the output file from this conversion may be much,
 much bigger than the input file.
 
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{dump-with-names}.
 
 This @code{dump-with-names} feature has been implemented as a charset rather
@@ -2918,7 +2923,7 @@ than a surface.  This is surely debatable.  The current implementation
 allows for dumping charsets other than @code{UCS-2}.  For example, the
 command @w{@samp{recode l2..full < @var{input}}} implies a necessary
 conversion from @code{Latin-2} to @code{UCS-2}, as @code{dump-with-names}
-is only connected out from @code{UCS-2}.  In such cases, @code{recode}
+is only connected out from @code{UCS-2}.  In such cases, Recode
 does not display the original @code{Latin-2} codes in the dump, only the
 corresponding @code{UCS-2} values.  To give a simpler example, the command
 
@@ -2979,16 +2984,16 @@ echo -n 0x03C6 | recode u2/x2..dump | tail +3
 @cindex @code{libiconv}
 @cindex interface, with @code{iconv} library
 @cindex Haible, Bruno
-The @code{recode} library is able to use the capabilities of an
+The Recode library is able to use the capabilities of an
 external, pre-installed @code{iconv} library, usually as provided by GNU
 @code{libc} or the portable @code{libiconv} written by Bruno Haible.  In
-fact, many capabilities of the @code{recode} library are duplicated in
+fact, many capabilities of the Recode library are duplicated in
 an external @code{iconv} library, as they likely share many charsets.
 We discuss, here, the issues related to this duplication, and other
 peculiarities specific to the @code{iconv} library.
 
 As implemented, if a recoding request can be satisfied by the
-@code{recode} library both with and without using the @code{iconv}
+Recode library both with and without using the @code{iconv}
 library, the external @code{iconv} library might be used.  To sort out
 if the @code{iconv} is indeed used or not, just use the @samp{-v} or
 @samp{--verbose} option, @pxref{Recoding}, and check if @samp{:iconv:}
@@ -3001,9 +3006,9 @@ but is not directly reachable).  This charset has a mere @code{:}
 (a colon) for an alias.  It is not allowed to recode from or to
 this charset directly.  But when this charset is selected as an
 intermediate, usually by automatic means, then the external @code{iconv}
-@code{recode} library is called to handle the transformations.  By
+Recode library is called to handle the transformations.  By
 using an @samp{--ignore=:iconv:} option on the @code{recode} call or
-equivalently, but more simply, @samp{-x:}, @code{recode} is instructed
+equivalently, but more simply, @samp{-x:}, Recode is instructed
 to fully avoid this charset as an intermediate, with the consequence
 that the external @code{iconv} library is defeated.  Consider these two
 calls:
@@ -3025,16 +3030,16 @@ some differences might result from slight errors in the tables used,
 such differences should then be reported as bugs.
 
 Discrepancies might be seen in the area of error detection and recovery.
-The @code{recode} library usually tries to detect canonicity errors in
+The Recode library usually tries to detect canonicity errors in
 input, and production of ambiguous output, but the external @code{iconv}
 library does not necessarily do it the same way.  Moreover, the
-@code{recode} library may not always recover as nicely as possible when
+Recode library may not always recover as nicely as possible when
 the external @code{iconv} has no translation for a given character.
 
 The external @code{iconv} libraries may offer different sets of charsets
 and aliases from one library to another, and also between successive
 versions of a single library.  Best is to check the documentation of
-the external @code{iconv} library, as of the time @code{recode} was
+the external @code{iconv} library, as of the time Recode was
 installed, to know which charsets and aliases are being provided.
 
 The @samp{--ignore=:iconv:} or @samp{-x:} options might be useful when
@@ -3042,7 +3047,7 @@ there is a need to make a recoding more exactly repeatable between
 machines or installations, the idea being here to remove the variance
 possibly introduced by the various implementations of an external
 @code{iconv} library.  These options might also help deciding whether if
-some recoding problem is genuine to @code{recode}, or is induced by the
+some recoding problem is genuine to Recode, or is induced by the
 external @code{iconv} library.
 
 @node Tabular, ASCII misc, iconv, Top
@@ -3051,7 +3056,7 @@ external @code{iconv} library.
 @cindex RFC 1345
 @cindex character mnemonics, documentation
 @cindex @code{chset} tools
-An important part of the tabular charset knowledge in @code{recode}
+An important part of the tabular charset knowledge in Recode
 comes from @w{RFC 1345} or, alternatively, from the @code{chset} tools,
 both maintained by Keld Simonsen.  The @w{RFC 1345} document:
 
@@ -3062,7 +3067,7 @@ Comments no. 1345, Network Working Group, June 1992.
 
 @noindent
 @cindex deviations from RFC 1345
-defines many character mnemonics and character sets.  The @code{recode}
+defines many character mnemonics and character sets.  The Recode
 library implements most of @w{RFC 1345}, however:
 
 @itemize @bullet
@@ -3110,16 +3115,16 @@ Olle Jaernefors.  Keld typed in almost all of the tables, some have been
 contributed.  A number of people have checked the tables in various
 ways.  The RFC lists a number of people who helped.
 
-@cindex @code{recode}, and RFC 1345
-Keld and the @code{recode} maintainer have an arrangement by which any new
-discovered information submitted by @code{recode} users, about tabular
+@cindex Recode, and RFC 1345
+Keld and the Recode maintainer have an arrangement by which any new
+discovered information submitted by Recode users, about tabular
 charsets, is forwarded to Keld, eventually merged into Keld's work,
-and only then, reimported into @code{recode}.  Neither the @code{recode}
-program nor its library try to compete, nor even establish themselves as
+and only then, reimported into Recode.  Recode
+does not try to compete, nor even establish itself as
 an alternate or diverging reference: @w{RFC 1345} and its new drafts stay the
-genuine source for most tabular information conveyed by @code{recode}.
+genuine source for most tabular information conveyed by Recode.
 Keld has been more than collaborative so far, so there is no reason that
-we act otherwise.  In a word, @code{recode} should be perceived as the
+we act otherwise.  In a word, Recode should be perceived as the
 application of external references, but not as a reference in itself.
 
 @tindex RFC1345@r{, a charset, and its aliases}
@@ -3128,7 +3133,7 @@ application of external references, but not as a reference in itself.
 Internally, @w{RFC 1345} associates which each character an unambiguous
 mnemonic of a few characters, taken from @w{ISO 646}, which is a minimal
 ASCII subset of 83 characters.  The charset made up by these mnemonics
-is available in @code{recode} under the name @code{RFC1345}.  It has
+is available in Recode under the name @code{RFC1345}.  It has
 @code{mnemonic} and @code{1345} for aliases.  As implemened, this charset
 exactly corresponds to @code{mnemonic+ascii+38}, using @w{RFC 1345}
 nomenclature.  Roughly said, @w{ISO 646} characters represent themselves,
@@ -3138,7 +3143,7 @@ the prefix is immediately by the mnemonic.  For longer mnemonics, the prefix
 is followed by an underline (@kbd{_}), the mmemonic, and another underline.
 Conversions to this charset are usually reversible.
 
-Currently, @code{recode} does not offer any of the many other possible
+Currently, Recode does not offer any of the many other possible
 variations of this family of representations.  They will likely be
 implemented in some future version, however.
 
@@ -3166,14 +3171,14 @@ implemented in some future version, however.
 @tindex cp367
 @tindex iso-ir-6
 @tindex us
-This charset is available in @code{recode} under the name @code{ASCII}.
+This charset is available in Recode under the name @code{ASCII}.
 In fact, its true name is @code{ANSI_X3.4-1968} as per @w{RFC 1345},
 accepted aliases being @code{ANSI_X3.4-1986}, @code{ASCII},
 @code{IBM367}, @code{ISO646-US}, @code{ISO_646.irv:1991},
 @code{US-ASCII}, @code{cp367}, @code{iso-ir-6} and @code{us}.  The
-shortest way of specifying it in @code{recode} is @code{us}.
+shortest way of specifying it in Recode is @code{us}.
 
-@cindex ASCII table, recreating with @code{recode}
+@cindex ASCII table, recreating with Recode
 This documentation used to include ASCII tables.  They have been removed
 since the @code{recode} program can now recreate these easily:
 
@@ -3222,14 +3227,14 @@ Latin-Hebrew alphabet (right half Hebrew + symbols - proposed).
 @end quotation
 
 @tindex Latin-1
-The ISO Latin Alphabet 1 is available as a charset in @code{recode} under
+The ISO Latin Alphabet 1 is available as a charset in Recode under
 the name @code{Latin-1}.  In fact, its true name is @code{ISO_8859-1:1987}
 as per @w{RFC 1345}, accepted aliases being @code{CP819}, @code{IBM819},
 @code{ISO-8859-1}, @code{ISO_8859-1}, @code{iso-ir-100}, @code{l1}
-and @code{Latin-1}.  The shortest way of specifying it in @code{recode}
+and @code{Latin-1}.  The shortest way of specifying it in Recode
 is @code{l1}.
 
-@cindex Latin-1 table, recreating with @code{recode}
+@cindex Latin-1 table, recreating with Recode
 It is an eight-bit code which coincides with ASCII for the lower half.
 This documentation used to include @w{Latin-1} tables.  They have been removed
 since the @code{recode} program can now recreate these easily:
@@ -3246,7 +3251,7 @@ recode -lh l1                   for concise hexadecimal table
 
 @tindex ASCII-BS@r{, and its aliases}
 @tindex BS@r{, an alias for }ASCII-BS@r{ charset}
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{ASCII-BS}, with @code{BS} as an acceptable alias.
 
 @cindex diacritics, with @code{ASCII-BS} charset
@@ -3295,7 +3300,7 @@ reversibility is still possible, but there might be difficult cases.
 @section ASCII without diacritics nor underline
 @tindex flat@r{, a charset}
 
-This charset is available in @code{recode} under the name @code{flat}.
+This charset is available in Recode under the name @code{flat}.
 
 @cindex diacritics and underlines, removing
 @cindex removing diacritics and underlines
@@ -3313,9 +3318,9 @@ Note that charset @code{flat} is a terminal charset.  We can convert
 
 @cindex IBM codepages
 @cindex codepages
-The @code{recode} program provides various IBM or Microsoft code pages
-(@pxref{Tabular}).  An easy way to find them all at once out of the
-@code{recode} program itself is through the command:
+Recode provides various IBM or Microsoft code pages (@pxref{Tabular}).
+An easy way to find them all at once out of Recode itself is through the
+command:
 
 @example
 recode -l | egrep -i '(CP|IBM)[0-9]'
@@ -3336,27 +3341,27 @@ But also, see few special charsets presented in the incoming sections.
 @cindex EBCDIC charsets
 This charset is the IBM's External Binary Coded Decimal for Interchange
 Coding.  This is an eight bits code.  The following three variants were
-implemented in @code{recode} independently of @w{RFC 1345}:
+implemented in Recode independently of @w{RFC 1345}:
 
 @table @code
 @item EBCDIC
 @tindex EBCDIC@r{, a charset}
-In @code{recode}, the @code{us..ebcdic} conversion is identical to @samp{dd
-conv=ebcdic} conversion, and @code{recode} @code{ebcdic..us} conversion is
+In Recode, the @code{us..ebcdic} conversion is identical to @samp{dd
+conv=ebcdic} conversion, and Recode @code{ebcdic..us} conversion is
 identical to @samp{dd conv=ascii} conversion.  This charset also represents
 the way Control Data Corporation relates EBCDIC to 8-bits ASCII.
 
 @item EBCDIC-CCC
 @tindex EBCDIC-CCC
-In @code{recode}, the @code{us..ebcdic-ccc} or @code{ebcdic-ccc..us}
+In Recode, the @code{us..ebcdic-ccc} or @code{ebcdic-ccc..us}
 conversions represent the way Concurrent Computer Corporation (formerly
 Perkin Elmer) relates EBCDIC to 8-bits ASCII.
 
 @item EBCDIC-IBM
 @tindex EBCDIC-IBM
-In @code{recode}, the @code{us..ebcdic-ibm} conversion is @emph{almost}
+In Recode, the @code{us..ebcdic-ibm} conversion is @emph{almost}
 identical to the GNU @samp{dd conv=ibm} conversion.  Given the exact
-@samp{dd conv=ibm} conversion table, @code{recode} once said:
+@samp{dd conv=ibm} conversion table, Recode once said:
 
 @example
 Codes  91 and 213 both recode to 173
@@ -3368,11 +3373,11 @@ No character recodes to 106
 So I arbitrarily chose to recode 213 by 74 and 229 by 106.  This makes the
 @code{EBCDIC-IBM} recoding reversible, but this is not necessarily the best
 correction.  In any case, I think that GNU @code{dd} should be amended.
-@code{dd} and @code{recode} should ideally agree on the same correction.
+@code{dd} and Recode should ideally agree on the same correction.
 So, this table might change once again.
 @end table
 
-@w{RFC 1345} brings into @code{recode} 15 other EBCDIC charsets, and 21 other
+@w{RFC 1345} brings into Recode 15 other EBCDIC charsets, and 21 other
 charsets having EBCDIC in at least one of their alias names.  You can
 get a list of all these by executing:
 
@@ -3380,7 +3385,7 @@ get a list of all these by executing:
 recode -l | grep -i ebcdic
 @end example
 
-Note that @code{recode} may convert a pure stream of EBCDIC characters,
+Note that Recode may convert a pure stream of EBCDIC characters,
 but it does not know how to handle binary data between records which
 is sometimes used to delimit them and build physical blocks.  If end of
 lines are not marked, fixed record size may produce something readable,
@@ -3395,12 +3400,12 @@ the converted results.
 @tindex MSDOS
 @tindex dos
 @tindex pc
-This charset is available in @code{recode} under the name @code{IBM-PC},
+This charset is available in Recode under the name @code{IBM-PC},
 with @code{dos}, @code{MSDOS} and @code{pc} as acceptable aliases.
-The shortest way of specifying it in @code{recode} is @code{pc}.
+The shortest way of specifying it in Recode is @code{pc}.
 
 The charset is aimed towards a PC microcomputer from IBM or any compatible.
-This is an eight-bit code.  This charset is fairly old in @code{recode},
+This is an eight-bit code.  This charset is fairly old in Recode,
 its tables were produced a long while ago by mere inspection of a printed
 chart of the IBM-PC codes and glyph.
 
@@ -3414,7 +3419,7 @@ recode pc..l2/cl < @var{input} > @var{output}
 recode pc/..l2 < @var{input} > @var{output}
 @end example
 
-@w{RFC 1345} brings into @code{recode} 44 @samp{IBM} charsets or code pages,
+@w{RFC 1345} brings into Recode 44 @samp{IBM} charsets or code pages,
 and also 8 other code pages.  You can get a list of these all these by
 executing:@footnote{On DOS/Windows, stock shells do not know that apostrophes
 quote special characters like @kbd{|}, so one needs to use double quotes
@@ -3456,7 +3461,7 @@ the fuzziness will have to be explained and settle down one day.
 
 @tindex Icon-QNX@r{, and aliases}
 @tindex QNX@r{, an alias for a charset}
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{Icon-QNX}, with @code{QNX} as an acceptable alias.
 
 The file is using Unisys' Icon way to represent diacritics with code 25
@@ -3468,28 +3473,28 @@ if eight-bit codes can flow through as part of IBM-PC charset.
 
 @cindex CDC charsets
 @cindex charsets for CDC machines
-What is now @code{recode} evolved out, through many transformations
+What is now Recode evolved out, through many transformations
 really, from a set of programs which were originally written in
 @dfn{COMPASS}, Control Data Corporation's assembler, with bits in FORTRAN,
 and later rewritten in CDC 6000 Pascal.  The CDC heritage shows by the
 fact some old CDC charsets are still supported.
 
-The @code{recode} author used to be familiar with CDC Scope-NOS/BE and
+The Recode author used to be familiar with CDC Scope-NOS/BE and
 Kronos-NOS, and many CDC formats.  Reading CDC tapes directly on other
-machines is often a challenge, and @code{recode} does not always solve
+machines is often a challenge, and Recode does not always solve
 it.  It helps having tapes created in coded mode instead of binary mode,
 and using @code{S} (Stranger) tapes instead of @code{I} (Internal) tapes.
 ANSI labels and multi-file tapes might be the source of trouble.  There are
 ways to handle a few Cyber Record Manager formats, but some of them might
 be quite difficult to decode properly after the transfer is done.
 
-The @code{recode} program is usable only for a small subset of NOS text
+Recode is usable only for a small subset of NOS text
 formats, and surely not with binary textual formats, like @code{UPDATE}
-or @code{MODIFY} sources, for example.  @code{recode} is not especially
+or @code{MODIFY} sources, for example.  Recode is not especially
 suited for reading 8/12 or 56/60 packing, yet this could easily arranged
 if there was a demand for it.  It does not have the ability to translate
 Display Code directly, as the ASCII conversion implied by tape drivers
-or FTP does the initial approximation.  @code{recode} can decode 6/12
+or FTP does the initial approximation.  Recode can decode 6/12
 caret notation over Display Code already mapped to ASCII.
 
 @menu
@@ -3502,7 +3507,7 @@ caret notation over Display Code already mapped to ASCII.
 @section Control Data's Display Code
 
 @cindex CDC Display Code, a table
-This code is not available in @code{recode}, but repeated here for
+This code is not available in Recode, but repeated here for
 reference.  This is a 6-bit code used on CDC mainframes.
 
 @example
@@ -3547,7 +3552,7 @@ be considered as part of the end of line and not interpreted as @kbd{::}.}.
 
 @tindex CDC-NOS@r{, and its aliases}
 @tindex NOS
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{CDC-NOS}, with @code{NOS} as an acceptable alias.
 
 @cindex NOS 6/12 code
@@ -3588,7 +3593,7 @@ ASCII character.
 @section ASCII ``bang bang''
 
 @tindex Bang-Bang
-This charset is available in @code{recode} under the name @code{Bang-Bang}.
+This charset is available in Recode under the name @code{Bang-Bang}.
 
 This code, in use on Cybers at Universit@'e de Montr@'eal mainly, served
 to code a lot of French texts.  The original name of this charset is
@@ -3629,7 +3634,7 @@ ASCII character.
 
 @cindex NeXT charsets
 The @code{NeXT} charset, which used to be especially provided in releases of
-@code{recode} before 3.5, has been integrated since as one @w{RFC 1345} table.
+Recode before 3.5, has been integrated since as one @w{RFC 1345} table.
 
 @menu
 * Apple-Mac::           Apple's Macintosh code
@@ -3641,12 +3646,12 @@ The @code{NeXT} charset, which used to be especially provided in releases of
 
 @tindex Apple-Mac
 @cindex Macintosh charset
-This charset is available in @code{recode} under the name @code{Apple-Mac}.
-The shortest way of specifying it in @code{recode} is @code{ap}.
+This charset is available in Recode under the name @code{Apple-Mac}.
+The shortest way of specifying it in Recode is @code{ap}.
 
 The charset is aimed towards a Macintosh micro-computer from Apple.
 This is an eight bit code.  The file is the data fork only.  This charset
-is fairly old in @code{recode}, its tables were produced a long while ago
+is fairly old in Recode, its tables were produced a long while ago
 by mere inspection of a printed chart of the Macintosh codes and glyph.
 
 @cindex CR surface, in Macintosh charsets
@@ -3660,7 +3665,7 @@ recode ap..l2/cr < @var{input} > @var{output}
 recode ap/..l2 < @var{input} > @var{output}
 @end example
 
-@w{RFC 1345} brings into @code{recode} 2 other Macintosh charsets.  You can
+@w{RFC 1345} brings into Recode 2 other Macintosh charsets.  You can
 discover them by using @code{grep} over the output of @samp{recode -l}:
 
 @example
@@ -3691,16 +3696,16 @@ The first command use the charset prior to @w{RFC 1345} introduction.
 Both methods give different recodings.  These differences are annoying,
 the fuzziness will have to be explained and settle down one day.
 
-@cindex @code{recode}, a Macintosh port
-As a side note, some people ask if there is a Macintosh port of the
-@code{recode} program.  I'm not aware of any.  I presume that if the tool
+@cindex Recode, a Macintosh port
+As a side note, some people ask if there is a Macintosh port of Recode.
+I'm not aware of any.  I presume that if the tool
 fills a need for Macintosh users, someone will port it one of these days?
 
 @node AtariST,  , Apple-Mac, Micros
 @section Atari ST code
 
 @tindex AtariST
-This charset is available in @code{recode} under the name @code{AtariST}.
+This charset is available in Recode under the name @code{AtariST}.
 
 This is the character set used on the Atari ST/TT/Falcon.  This is similar
 to @code{IBM-PC}, but differs in some details: it includes some more accented
@@ -3714,14 +3719,14 @@ application how to interpret the data.  In fact, most of the libraries
 that come with compilers can grok both @samp{\r\n} and @samp{\n} as end
 of lines.  Many of the users who also have access to Unix systems prefer
 @samp{\n} to ease porting Unix utilities.  So, for easing reversibility,
-@code{recode} tries to let @samp{\r} undisturbed through recodings.
+Recode tries to let @samp{\r} undisturbed through recodings.
 
 @node Miscellaneous, Surfaces, Micros, Top
 @chapter Various other charsets
 
-Even if these charsets were originally added to @code{recode} for
+Even if these charsets were originally added to Recode for
 handling texts written in French, they find other uses.  We did use them
-a lot for writing French diacriticised texts in the past, so @code{recode}
+a lot for writing French diacriticised texts in the past, so Recode
 knows how to handle these particularly well for French texts.
 
 @menu
@@ -3761,12 +3766,12 @@ reference}.
 The HTML standards have been revised into different HTML levels over time,
 and the list of allowable character entities differ in them.  The later XML,
 meant to simplify many things, has an option (@samp{standalone=yes}) which
-much restricts that list.  The @code{recode} library is able to convert
+much restricts that list.  The Recode library is able to convert
 character references between their mnemonic form and their numeric form,
 depending on aimed HTML standard level.  It also can, of course, convert
 between HTML and various other charsets.
 
-Here is a list of those HTML variants which @code{recode}
+Here is a list of those HTML variants which Recode
 supports.  Some notes have been provided by Fran@,{c}ois Yergeau
 @email{yergeau@@alis.com}.
 
@@ -3774,7 +3779,7 @@ supports.  Some notes have been provided by Fran@,{c}ois Yergeau
 @item XML-standalone
 @tindex h0
 @tindex XML-standalone
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{XML-standalone}, with @code{h0} as an acceptable alias.  It is
 documented in section 4.1 of @uref{http://www.w3.org/TR/REC-xml}.
 It only knows @samp{&amp;}, @samp{&gt;}, @samp{&lt;}, @samp{&quot;}
@@ -3783,7 +3788,7 @@ and @samp{&apos;}.
 @item HTML_1.1
 @tindex HTML_1.1
 @tindex h1
-This charset is available in @code{recode} under the name @code{HTML_1.1},
+This charset is available in Recode under the name @code{HTML_1.1},
 with @code{h1} as an acceptable alias.  HTML 1.0 was never really documented.
 
 @item HTML_2.0
@@ -3791,7 +3796,7 @@ with @code{h1} as an acceptable alias.  HTML 1.0 was never really documented.
 @tindex RFC1866
 @tindex 1866
 @tindex h2
-This charset is available in @code{recode} under the name @code{HTML_2.0},
+This charset is available in Recode under the name @code{HTML_2.0},
 and has @code{RFC1866}, @code{1866} and @code{h2} for aliases.  HTML 2.0
 entities are listed in @w{RFC 1866}.  Basically, there is an entity for
 each @emph{alphabetical} character in the right part of @w{ISO 8859-1}.
@@ -3802,7 +3807,7 @@ In addition, there are four entities for syntax-significant ASCII characters:
 @tindex HTML-i18n
 @tindex RFC2070
 @tindex 2070
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{HTML-i18n}, and has @code{RFC2070} and @code{2070} for
 aliases.  @w{RFC 2070} added entities to cover the whole right
 part of @w{ISO 8859-1}.  The list is conveniently accessible at
@@ -3814,7 +3819,7 @@ four i18n-related entities were added: @samp{&zwnj;} (@samp{&#8204;}),
 @item HTML_3.2
 @tindex HTML_3.2
 @tindex h3
-This charset is available in @code{recode} under the name
+This charset is available in Recode under the name
 @code{HTML_3.2}, with @code{h3} as an acceptable alias.
 @uref{http://www.w3.org/TR/REC-html32.html, HTML 3.2} took up the full
 @w{Latin-1} list but not the i18n-related entities from @w{RFC 2070}.
@@ -3822,10 +3827,10 @@ This charset is available in @code{recode} under the name
 @item HTML_4.0
 @tindex h4
 @tindex h
-This charset is available in @code{recode} under the name @code{HTML_4.0},
+This charset is available in Recode under the name @code{HTML_4.0},
 and has @code{h4} and @code{h} for aliases.  Beware that the particular
 alias @code{h} is not @emph{tied} to HTML 4.0, but to the highest HTML
-level supported by @code{recode}; so it might later represent HTML level
+level supported by Recode; so it might later represent HTML level
 5 if this is ever created.  @uref{http://www.w3.org/TR/REC-html40/,
 HTML 4.0} has the whole @w{Latin-1} list, a set of entities for
 symbols, mathematical symbols, and Greek letters, and another set for
@@ -3851,12 +3856,12 @@ other charset.  These particular translations can be rather inconvenient,
 they may be specifically inhibited through the command option @samp{-d}
 (@pxref{Mixed}).
 
-Codes not having a mnemonic entity are output by @code{recode} using the
+Codes not having a mnemonic entity are output by Recode using the
 @samp{&#@var{nnn};} notation, where @var{nnn} is a decimal representation
 of the UCS code value.  When there is an entity name for a character, it
 is always preferred over a numeric character reference.  ASCII printable
 characters are always generated directly.  So is the newline.  While reading
-HTML, @code{recode} supports numeric character reference as alternate
+HTML, Recode supports numeric character reference as alternate
 writings, even when written as hexadecimal numbers, as in @samp{&#xfffd}.
 This is documented in:
 
@@ -3864,15 +3869,15 @@ This is documented in:
 http://www.w3.org/TR/REC-html40/intro/sgmltut.html#h-3.2.3
 @end example
 
-When @code{recode} translates to HTML, the translation occurs according to
+When Recode translates to HTML, the translation occurs according to
 the HTML level as selected by the goal charset.  When translating @emph{from}
-HTML, @code{recode} not only accepts the character entity references known at
+HTML, Recode not only accepts the character entity references known at
 that level, but also those of all other levels, as well as a few alternative
 special sequences, to be forgiving to files using other HTML standards.
 
 @cindex normilise an HTML file
 @cindex HTML normalization
-The @code{recode} program can be used to @emph{normalise} an HTML file using
+Recode can be used to @emph{normalise} an HTML file using
 oldish conventions.  For example, it accepts @samp{&AE;}, as this once was a
 valid writing, somewhere.  However, it should always produce @samp{&AElig;}
 instead of @samp{&AE;}.  Yet, this is not completely true.  If one does:
@@ -3900,7 +3905,7 @@ then @samp{&AE;} should be normalised into @samp{&AElig;} by the operation.
 @tindex ltex
 @cindex La@TeX{} files
 @cindex @TeX{} files
-This charset is available in @code{recode} under the name @code{LaTeX}
+This charset is available in Recode under the name @code{LaTeX}
 and has @code{ltex} as an alias.  It is used for ASCII files coded to be
 read by La@TeX{} or, in certain cases, by @TeX{}.
 
@@ -3919,23 +3924,23 @@ it may be inhibited through the command option @samp{-d} (@pxref{Mixed}).
 @tindex texi
 @tindex ti
 @cindex Texinfo files
-This charset is available in @code{recode} under the name @code{Texinfo}
+This charset is available in Recode under the name @code{Texinfo}
 and has @code{texi} and @code{ti} for aliases.  It is used by the GNU
 project for its documentation.  Texinfo files may be converted into Info
 files by the @code{makeinfo} program and into nice printed manuals by
 the @TeX{} system.
 
-Even if @code{recode} may transform other charsets to Texinfo, it may
+Even if Recode may transform other charsets to Texinfo, it may
 not read Texinfo files yet.  In these times, usages are also changing
-between versions of Texinfo, and @code{recode} only partially succeeds
+between versions of Texinfo, and Recode only partially succeeds
 in correctly following these changes.  So, for now, Texinfo support in
-@code{recode} should be considered as work still in progress (!).
+Recode should be considered as work still in progress (!).
 
 @node Vietnamese, African, Texinfo, Miscellaneous
 @section Vietnamese charsets
 
 @cindex Vietnamese charsets
-We are currently experimenting the implementation, in @code{recode}, of a few
+We are currently experimenting the implementation, in Recode, of a few
 character sets and transliterated forms to handle the Vietnamese language.
 They are quite briefly summarised, here.
 
@@ -3971,7 +3976,7 @@ The VNI convention is a 8-bit, @code{Latin-1} transliteration for Vietnamese.
 @tindex CP1129@r{, not available}
 @tindex 1258@r{, not available}
 @tindex CP1258@r{, not available}
-Still lacking for Vietnamese in @code{recode}, are the charsets @code{CP1129}
+Still lacking for Vietnamese in Recode, are the charsets @code{CP1129}
 and @code{CP1258}.
 
 @node African, Others, Vietnamese, Miscellaneous
@@ -3992,7 +3997,7 @@ are heavily used in countries where French is also currently spoken.
 @tindex t-ewondo
 @tindex t-fulfude
 One African charset is usable for Bambara, Ewondo and Fulfude, as well
-as for French.  This charset is available in @code{recode} under the name
+as for French.  This charset is available in Recode under the name
 @code{AFRFUL-102-BPI_OCIL}.  Accepted aliases are @code{bambara}, @code{bra},
 @code{ewondo} and @code{fulfude}.  Transliterated forms of the same are
 available under the name @code{AFRFUL-103-BPI_OCIL}.  Accepted aliases
@@ -4009,7 +4014,7 @@ are @code{t-bambara}, @code{t-bra}, @code{t-ewondo} and @code{t-fulfude}.
 @tindex t-sango
 @tindex t-wolof
 Another African charset is usable for Lingala, Sango and Wolof, as well
-as for French.  This charset is available in @code{recode} under the
+as for French.  This charset is available in Recode under the
 name @code{AFRLIN-104-BPI_OCIL}.  Accepted aliases are @code{lingala},
 @code{lin}, @code{sango} and @code{wolof}.  Transliterated forms of the same
 are available under the name @code{AFRLIN-105-BPI_OCIL}.  Accepted aliases
@@ -4020,7 +4025,7 @@ are @code{t-lingala}, @code{t-lin}, @code{t-sango} and @code{t-wolof}.
 @tindex t-fra
 To ease exchange with @code{ISO-8859-1}, there is a charset conveying
 transliterated forms for @w{Latin-1} in a way which is compatible with the other
-African charsets in this series.  This charset is available in @code{recode}
+African charsets in this series.  This charset is available in Recode
 under the name @code{AFRL1-101-BPI_OCIL}.  Accepted aliases are @code{t-fra}
 and @code{t-francais}.
 
@@ -4028,7 +4033,7 @@ and @code{t-francais}.
 @section Cyrillic and other charsets
 
 @cindex Cyrillic charsets
-The following Cyrillic charsets are already available in @code{recode}
+The following Cyrillic charsets are already available in Recode
 through @w{RFC 1345} tables: @code{CP1251} with aliases @code{1251}, @code{
 ms-cyrl} and @code{windows-1251}; @code{CSN_369103} with aliases
 @code{ISO-IR-139} and @code{KOI8_L2}; @code{ECMA-cyrillic} with aliases
@@ -4040,7 +4045,7 @@ aliases @code{cyrillic}, @code{ ISO-8859-5:1988} and @code{iso-ir-144};
 @code{KOI8-RU} and finally @code{KOI8-U}.
 
 There seems to remain some confusion in Roman charsets for Cyrillic
-languages, and because a few users requested it repeatedly, @code{recode}
+languages, and because a few users requested it repeatedly, Recode
 now offers special services in that area.  Consider these charsets as
 experimental and debatable, as the extraneous tables describing them are
 still a bit fuzzy or non-standard.  Hopefully, in the long run, these
@@ -4070,7 +4075,7 @@ This charset is available under the name @code{KOI-8_CS2}.
 
 @tindex Texte
 @tindex txte
-This charset is available in @code{recode} under the name @code{Texte}
+This charset is available in Recode under the name @code{Texte}
 and has @code{txte} for an alias.  It is a seven bits code, identical
 to @code{ASCII-BS}, save for French diacritics which are noted using a
 slightly different convention.
@@ -4109,7 +4114,7 @@ for @kbd{c} with a cedilla.
 There is no attempt at expressing the @kbd{ae} and @kbd{oe} diphthongs.
 French also uses tildes over @kbd{n} and @kbd{a}, but seldomly, and this
 is not represented either.  In some countries, @kbd{:} is used instead
-of @kbd{"} to mark diaeresis.  @code{recode} supports only one convention
+of @kbd{"} to mark diaeresis.  Recode supports only one convention
 per call, depending on the @samp{-c} option of the @code{recode} command.
 French quotes (sometimes called ``angle quotes'') are noted the same way
 English quotes are noted in @TeX{}, @emph{id est} by @kbd{``} and @kbd{''}.
@@ -4156,7 +4161,7 @@ contractions and suffix possessives could be mangled.
 A double quote or colon, depending on @samp{-c} option, which follows a
 vowel is interpreted as diaeresis only if it is followed by another letter.
 But there are in French several words that @emph{end} with a diaeresis,
-and the @code{recode} library is aware of them.  There are words ending in
+and the Recode library is aware of them.  There are words ending in
 ``igue'', either feminine words without a relative masculine (besaigu@"e
 and cigu@"e), or feminine words with a relative masculine@footnote{There
 are supposed to be seven words in this case.  So, one is missing.}
@@ -4214,14 +4219,14 @@ intrigue, ligue, prodigue, sarigue and zigue).
 @tindex Mule@r{, a charset}
 @cindex multiplexed charsets
 @cindex super-charsets
-This version of @code{recode} barely starts supporting multiplexed or
+This version of Recode barely starts supporting multiplexed or
 super-charsets, that is, those encoding methods by which a single text
 stream may contain a combination of more than one constituent charset.
-The only multiplexed charset in @code{recode} is @code{Mule}, and even
+The only multiplexed charset in Recode is @code{Mule}, and even
 then, it is only very partially implemented: the only correspondence
 available is with @code{Latin-1}.  The author fastly implemented this
 only because he needed this for himself.  However, it is intended that
-Mule support to become more real in subsequent releases of @code{recode}.
+Mule support to become more real in subsequent releases of Recode.
 
 Multiplexed charsets are not to be confused with mixed charset texts
 (@pxref{Mixed}).  For mixed charset input, the rules allowing to distinguish
@@ -4266,7 +4271,7 @@ For example, surfaces might increase the resistance to channel limits
 privacy (@code{DES}), the conformance to operating system conventions
 (@code{CR-LF}), the blocking into records (@code{VB}), and surely other
 things as well@footnote{These are mere examples to explain the concept,
-@code{recode} only has @code{Base64} and @code{CR-LF}, actually.}.
+Recode only has @code{Base64} and @code{CR-LF}, actually.}.
 Many surfaces may be applied to a stream of characters from a charset,
 the order of application of surfaces is important, and surfaces
 should be removed in the reverse order of their application.
@@ -4274,14 +4279,14 @@ should be removed in the reverse order of their application.
 Even if surfaces may generally be applied to various charsets, some
 surfaces were specifically designed for a particular charset, and would
 not make much sense if applied to other charsets.  In such cases, these
-conceptual surfaces have been implemented as @code{recode} charsets,
+conceptual surfaces have been implemented as Recode charsets,
 instead of as surfaces.  This choice yields to cleaner syntax
 and usage.  @xref{Universal}.
 
-@cindex surfaces, implementation in @code{recode}
+@cindex surfaces, implementation in Recode
 @tindex data@r{, a special charset}
 @tindex tree@r{, a special charset}
-Surfaces are implemented within @code{recode} as special charsets
+Surfaces are implemented within Recode as special charsets
 which may only transform to or from the @code{data} or @code{tree}
 special charsets.  Clever users may use this knowledge for writing
 surface names in requests exactly as if they were pure charsets, when
@@ -4294,17 +4299,17 @@ while the request @samp{@var{surface}..data} removes it.
 @cindex structural surfaces
 @cindex surfaces, structural
 @cindex surfaces, trees
-The @code{recode} library distinguishes between mere data surfaces, and
+The Recode library distinguishes between mere data surfaces, and
 structural surfaces, also called tree surfaces for short.  Structural
 surfaces might allow, in the long run, transformations between a few
 specialised representations of structural information like MIME parts,
 Perl or Python initialisers, LISP S-expressions, XML, Emacs outlines, etc.
 
-We are still experimenting with surfaces in @code{recode}.  The concept opens
+We are still experimenting with surfaces in Recode.  The concept opens
 the doors to many avenues; it is not clear yet which ones are worth pursuing,
 and which should be abandoned.  In particular, implementation of structural
 surfaces is barely starting, there is not even a commitment that tree
-surfaces will stay in @code{recode}, if they do prove to be more cumbersome
+surfaces will stay in Recode, if they do prove to be more cumbersome
 than useful.  This chapter presents all surfaces currently available.
 
 @menu
@@ -4333,12 +4338,12 @@ three bytes, @emph{21} if there are two bytes, or merely copied otherwise.
 @item 21
 @tindex 21-Permutation
 @tindex swabytes
-This surface is available in @code{recode} under the name
+This surface is available in Recode under the name
 @code{21-Permutation} and has @code{swabytes} for an alias.
 
 @item 4321
 @tindex 4321-Permutation
-This surface is available in @code{recode} under the name
+This surface is available in Recode under the name
 @code{4321-Permutation}.
 @end table
 
@@ -4348,7 +4353,7 @@ This surface is available in @code{recode} under the name
 
 The same charset might slightly differ, from one system to another, for
 the single fact that end of lines are not represented identically on all
-systems.  The representation for an end of line within @code{recode}
+systems.  The representation for an end of line within Recode
 is the @code{ASCII} or @code{UCS} code with value 10, or @kbd{LF}.  Other
 conventions for representing end of lines are available through surfaces.
 
@@ -4363,7 +4368,7 @@ adding or removing the surface will in fact @emph{exchange} @kbd{CR} and
 does not happen, any @kbd{CR} will be copied verbatim while applying
 the surface, and any @kbd{LF} will be copied verbatim while removing it.
 
-This surface is available in @code{recode} under the name @code{CR},
+This surface is available in Recode under the name @code{CR},
 it does not have any aliases.  This is the implied surface for the Apple
 Macintosh related charsets.
 
@@ -4381,7 +4386,7 @@ surface will discard the first encountered @kbd{C-z}, which has
 Adding this surface will not, however, append a @kbd{C-z} to the result.
 
 @tindex cl
-This surface is available in @code{recode} under the name @code{CR-LF}
+This surface is available in Recode under the name @code{CR-LF}
 and has @code{cl} for an alias.  This is the implied surface for the IBM
 or Microsoft related charsets or code pages.
 @end table
@@ -4407,14 +4412,14 @@ the lower 128 characters of the underlying charset coincide with ASCII.
 @tindex b64
 @tindex 64
 @item Base64
-This surface is available in @code{recode} under the name @code{Base64},
+This surface is available in Recode under the name @code{Base64},
 with @code{b64} and @code{64} as acceptable aliases.
 
 @item Quoted-Printable
 @tindex Quoted-Printable
 @tindex quote-printable
 @tindex QP
-This surface is available in @code{recode} under the name
+This surface is available in Recode under the name
 @code{Quoted-Printable}, with @code{quote-printable} and @code{QP} as
 acceptable aliases.
 @end table
@@ -4437,7 +4442,7 @@ Dumps are surfaces meant to express, in ways which are a bit more readable,
 the bit patterns used to represent characters.  They allow the inspection
 or debugging of character streams, but also, they may assist a bit the
 production of C source code which, once compiled, would hold in memory a
-copy of the original coding.  However, @code{recode} does not attempt, in
+copy of the original coding.  However, Recode does not attempt, in
 any way, to produce complete C source files in dumps.  User hand editing
 or @file{Makefile} trickery is still needed for adding missing lines.
 Dumps may be given in decimal, hexadecimal and octal, and be based over
@@ -4457,7 +4462,7 @@ type, and so, have identical sizes.
 @tindex o1
 This surface corresponds to an octal expression of each input byte.
 
-It is available in @code{recode} under the name @code{Octal-1},
+It is available in Recode under the name @code{Octal-1},
 with @code{o1} and @code{o} as acceptable aliases.
 
 @item Octal-2
@@ -4466,7 +4471,7 @@ with @code{o1} and @code{o} as acceptable aliases.
 This surface corresponds to an octal expression of each pair of
 input bytes, except for the last pair, which may be short.
 
-It is available in @code{recode} under the name @code{Octal-2}
+It is available in Recode under the name @code{Octal-2}
 and has @code{o2} for an alias.
 
 @item Octal-4
@@ -4475,7 +4480,7 @@ and has @code{o2} for an alias.
 This surface corresponds to an octal expression of each quadruple of
 input bytes, except for the last quadruple, which may be short.
 
-It is available in @code{recode} under the name @code{Octal-4}
+It is available in Recode under the name @code{Octal-4}
 and has @code{o4} for an alias.
 
 @item Decimal-1
@@ -4483,7 +4488,7 @@ and has @code{o4} for an alias.
 @tindex d1
 This surface corresponds to an decimal expression of each input byte.
 
-It is available in @code{recode} under the name @code{Decimal-1},
+It is available in Recode under the name @code{Decimal-1},
 with @code{d1} and @code{d} as acceptable aliases.
 
 @item Decimal-2
@@ -4492,7 +4497,7 @@ with @code{d1} and @code{d} as acceptable aliases.
 This surface corresponds to an decimal expression of each pair of
 input bytes, except for the last pair, which may be short.
 
-It is available in @code{recode} under the name @code{Decimal-2}
+It is available in Recode under the name @code{Decimal-2}
 and has @code{d2} for an alias.
 
 @item Decimal-4
@@ -4501,7 +4506,7 @@ and has @code{d2} for an alias.
 This surface corresponds to an decimal expression of each quadruple of
 input bytes, except for the last quadruple, which may be short.
 
-It is available in @code{recode} under the name @code{Decimal-4}
+It is available in Recode under the name @code{Decimal-4}
 and has @code{d4} for an alias.
 
 @item Hexadecimal-1
@@ -4509,7 +4514,7 @@ and has @code{d4} for an alias.
 @tindex x1
 This surface corresponds to an hexadecimal expression of each input byte.
 
-It is available in @code{recode} under the name @code{Hexadecimal-1},
+It is available in Recode under the name @code{Hexadecimal-1},
 with @code{x1} and @code{x} as acceptable aliases.
 
 @item Hexadecimal-2
@@ -4518,7 +4523,7 @@ with @code{x1} and @code{x} as acceptable aliases.
 This surface corresponds to an hexadecimal expression of each pair of
 input bytes, except for the last pair, which may be short.
 
-It is available in @code{recode} under the name @code{Hexadecimal-2},
+It is available in Recode under the name @code{Hexadecimal-2},
 with @code{x2} for an alias.
 
 @item Hexadecimal-4
@@ -4527,14 +4532,14 @@ with @code{x2} for an alias.
 This surface corresponds to an hexadecimal expression of each quadruple of
 input bytes, except for the last quadruple, which may be short.
 
-It is available in @code{recode} under the name @code{Hexadecimal-4},
+It is available in Recode under the name @code{Hexadecimal-4},
 with @code{x4} for an alias.
 @end table
 
 When removing a dump surface, that is, when reading a dump results back
 into a sequence of bytes, the narrower expression for a short last chunk
 is recognised, so dumping is a fully reversible operation.  However, in
-case you want to produce dumps by other means than through @code{recode},
+case you want to produce dumps by other means than through Recode,
 beware that for decimal dumps, the library has to rely on the number of
 spaces to establish the original byte size of the chunk.
 
@@ -4543,14 +4548,14 @@ surface is a rather forgiving process: one may mix bases, group a variable
 number of data per source line, or use shorter chunks in places other
 than at the
 far end.  Also, source lines not beginning with a number are skipped.  So,
-@code{recode} should often be able to read a whole C header file, wrapping
+Recode should often be able to read a whole C header file, wrapping
 the results of a previous dump, and regenerate the original byte string.
 
 @node Test,  , Dump, Surfaces
 @section Artificial data for testing
 
 A few pseudo-surfaces exist to generate debugging data out of thin air.
-These surfaces are only meant for the expert @code{recode} user, and are
+These surfaces are only meant for the expert Recode user, and are
 only useful in a few contexts, like for generating binary permutations
 from the recoding or acting on them.
 
@@ -4605,18 +4610,18 @@ characters are dumped one per line, accompanied with their explicative name.
 @node Internals, Concept Index, Surfaces, Top
 @chapter Internal aspects
 
-@cindex @code{recode} internals
+@cindex Recode internals
 @cindex internals
-The incoming explanations of the internals of @code{recode} should
-help people who want to dive into @code{recode} sources for adding new
+The incoming explanations of the internals of Recode should
+help people who want to dive into Recode sources for adding new
 charsets.  Adding new charsets does not require much knowledge about
-the overall organisation of @code{recode}.  You can rather concentrate
-of your new charset, letting the remainder of the @code{recode}
+the overall organisation of Recode.  You can rather concentrate
+of your new charset, letting the remainder of the Recode
 mechanics take care of interconnecting it with all others charsets.
 
-If you intend to play seriously at modifying @code{recode}, beware that
+If you intend to play seriously at modifying Recode, beware that
 you may need some other GNU tools which were not required when you first
-installed @code{recode}.  If you modify or create any @file{.l} file,
+installed Recode.  If you modify or create any @file{.l} file,
 then you need Flex, and some better @code{awk} like @code{mawk},
 GNU @code{awk}, or @code{nawk}.  If you modify the documentation (and
 you should!), you need @code{makeinfo}.  If you are really audacious,
@@ -4632,21 +4637,21 @@ Autoconf, Automake and @code{libtool} for adjusting configuration matters.
 
 @node Main flow, New charsets, Internals, Internals
 @section Overall organisation
-@cindex @code{recode}, main flow of operation
+@cindex Recode, main flow of operation
 
-The @code{recode} mechanics slowly evolved for many years, and it
+The Recode mechanics slowly evolved for many years, and it
 would be tedious to explain all problems I met and mistakes I did all
 along, yielding the current behaviour.  Surely, one of the key choices
 was to stop trying to do all conversions in memory, one line or one
 buffer at a time.  It has been fruitful to use the character stream
 paradigm, and the elementary recoding steps now convert a whole stream
-to another.  Most of the control complexity in @code{recode} exists
+to another.  Most of the control complexity in Recode exists
 so that each elementary recoding step stays simple, making easier
-to add new ones.  The whole point of @code{recode}, as I see it, is
+to add new ones.  The whole point of Recode, as I see it, is
 providing a comfortable nest for growing new charset conversions.
 
 @cindex single step
-The main @code{recode} driver constructs, while initialising all
+The main Recode driver constructs, while initialising all
 conversion modules, a table giving all the conversion routines
 available (@dfn{single step}s) and for each, the starting charset and
 the ending charset.  If we consider these charsets as being the nodes
@@ -4657,18 +4662,18 @@ to losing characters, a lower penalty is given to those which need
 studying more than one input character for producing an output
 character, etc.
 
-Given a starting code and a goal code, @code{recode} computes the most
+Given a starting code and a goal code, Recode computes the most
 economical route through the elementary recodings, that is, the best
 sequence of conversions that will transform the input charset into the
-final charset.  To speed up execution, @code{recode} looks for
+final charset.  To speed up execution, Recode looks for
 subsequences of conversions which are simple enough to be merged, and
 then dynamically creates new single steps to represent these mergings.
 
 @cindex double step
-A @dfn{double step} in @code{recode} is a special concept representing a
+A @dfn{double step} in Recode is a special concept representing a
 sequence of two single steps, the output of the first single step being the
 special charset @code{UCS-2}, the input of the second single step being
-also @code{UCS-2}.  Special @code{recode} machinery dynamically produces
+also @code{UCS-2}.  Special Recode machinery dynamically produces
 efficient, reversible, merge-able single steps out of these double steps.
 
 @cindex recoding steps, statistics
@@ -4680,7 +4685,7 @@ sometimes produce mere copies, which are counted as no steps at all.
 In other cases, optimisation is unable to save any step.  The number of
 steps after optimisation is currently between 0 and 5 steps.  Of course,
 the @emph{expected} number of steps is affected by optimisation: it drops
-from 2.8 to 1.8.  This means that @code{recode} uses a theoretical average
+from 2.8 to 1.8.  This means that Recode uses a theoretical average
 of a bit less than one step per recoding job.  This looks good.  This was
 computed using reversible recodings.  In strict mode, optimisation might
 be defeated somewhat.  Number of steps run between 1 and 6, both before
@@ -4692,12 +4697,12 @@ lesser amount, going from 2.2 to 1.3.  This is still manageable.
 @cindex adding new charsets
 @cindex new charsets, how to add
 
-The main part of @code{recode} is written in C, as are most single
+The main part of Recode is written in C, as are most single
 steps.  A few single steps need to recognise sequences of multiple
 characters, they are often better written in Flex.  It is easy for a
-programmer to add a new charset to @code{recode}.  All it requires
+programmer to add a new charset to Recode.  All it requires
 is making a few functions kept in a single @file{.c} file,
-adjusting @file{Makefile.am} and remaking @code{recode}.
+adjusting @file{Makefile.am} and remaking Recode.
 
 One of the function should convert from any previous charset to the
 new one.  Any previous charset will do, but try to select it so you will
@@ -4714,7 +4719,7 @@ C or Flex files after one of those which exist already, so to keep the
 sources uniform.  Besides, at @code{make} time, all @file{.l} files are
 automatically merged into a single big one by the script @file{mergelex.awk}.
 
-There are a few hidden rules about how to write new @code{recode}
+There are a few hidden rules about how to write new Recode
 modules, for allowing the automatic creation of @file{decsteps.h}
 and @file{initsteps.h} at @code{make} time, or the proper merging of
 all Flex files.  Mimetism is a simple approach which relieves me of
@@ -4793,7 +4798,7 @@ to the predefined special charset @code{data} or @code{tree}, meant to
 remove the surface.
 
 @findex declare_step
-Internally in @code{recode}, function @code{declare_step} especially
+Internally in Recode, function @code{declare_step} especially
 recognises when a charset is so related to @code{data} or @code{tree},
 and then takes appropriate actions so that charset gets indeed installed
 as a surface.
@@ -4806,7 +4811,7 @@ as a surface.
 @cindex shared library implementation
 
 There are many different approaches to reduce system requirements to
-handle all tables needed in the @code{recode} library.  One of them is to
+handle all tables needed in the Recode library.  One of them is to
 have the tables in an external format and only read them in on demand.
 After having pondered this for a while, I finally decided against it,
 mainly because it involves its own kind of installation complexity, and
@@ -4821,33 +4826,33 @@ of making various algorithms handily available, right in the same modules
 providing the tables.  This alleviates much the burden of the maintenance.
 
 Of course, I would like to later make an exception for only a few tables,
-built locally by users for their own particular needs once @code{recode}
-is installed.  @code{recode} should just go and fetch them.  But I do not
+built locally by users for their own particular needs once Recode
+is installed.  Recode should just go and fetch them.  But I do not
 perceive this as very urgent, yet useful enough to be worth implementing.
 
 Currently, all tables needed for recoding are precompiled into binaries,
 and all these binaries are then made into a shared library.  As an initial
-step, I turned @code{recode} into a main program and a non-shared library,
+step, I turned Recode into a main program and a non-shared library,
 this allowed me to tidy up the API, get rid of all global variables, etc.
 It required a surprising amount of program source massaging.  But once
 this cleaned enough, it was easy to use Gordon Matzigkeit's @code{libtool}
 package, and take advantage of the Automake interface to neatly turn the
 non-shared library into a shared one.
 
-Sites linking with the @code{recode} library, whose system does not
+Sites linking with the Recode library, whose system does not
 support any form of shared libraries, might end up with bulky executables.
-Surely, the @code{recode} library will have to be used statically, and
+Surely, the Recode library will have to be used statically, and
 might not very nicely usable on such systems.  It seems that progress
 has a price for those being slow at it.
 
 There is a locality problem I did not address yet.  Currently, the
-@code{recode} library takes many cycles to initialise itself, calling
+Recode library takes many cycles to initialise itself, calling
 each module in turn for it to set up associated knowledge about charsets,
 aliases, elementary steps, recoding weights, etc.  @emph{Then}, the
 recoding sequence is decided out of the command given.  I would not be
 surprised if initialisation was taking a perceivable fraction of a second
 on slower machines.  One thing to do, most probably not right in version
-3.5, but the version after, would have @code{recode} to pre-load all tables
+3.5, but the version after, would have Recode to pre-load all tables
 and dump them at installation time.  The result would then be compiled and
 added to the library.  This would spare many initialisation cycles, but more
 importantly, would avoid calling all library modules, scattered through the
@@ -4857,15 +4862,15 @@ time the initialisation is requested, at least once per program execution.
 @item Why not a central charset?
 
 It would be simpler, and I would like, if something like @w{ISO 10646} was
-used as a turning template for all charsets in @code{recode}.  Even if
+used as a turning template for all charsets in Recode.  Even if
 I think it could help to a certain extent, I'm still not fully sure it
 would be sufficient in all cases.  Moreover, some people disagree about
 using @w{ISO 10646} as the central charset, to the point I cannot totally
-ignore them, and surely, @code{recode} is not a mean for me to force my
-own opinions on people.  I would like that @code{recode} be practical
+ignore them, and surely, Recode is not a mean for me to force my
+own opinions on people.  I would like that Recode be practical
 more than dogmatic, and reflect usage more than religions.
 
-Currently, if you ask @code{recode} to go from @var{charset1} to
+Currently, if you ask Recode to go from @var{charset1} to
 @var{charset2} chosen at random, it is highly probable that the best path
 will be quickly found as:
 
@@ -4883,9 +4888,9 @@ be used instead of a permutation.}.
 In those few cases where @code{UCS-2} is not selected as a conceptual
 intermediate, I plan to study if it could be made so.  But I guess some cases
 will remain where @code{UCS-2} is not a proper choice.  Even if @code{UCS} is
-often the good choice, I do not intend to forcefully restrain @code{recode}
+often the good choice, I do not intend to forcefully restrain Recode
 around @code{UCS-2} (nor @code{UCS-4}) for now.  We might come to that
-one day, but it will come out of the natural evolution of @code{recode}.
+one day, but it will come out of the natural evolution of Recode.
 It will then reflect a fact, rather than a preset dogma.
 
 @item Why not @code{iconv}?
@@ -4897,7 +4902,7 @@ buffer cursors.  If the output buffer is not big enough to receive
 all of the conversion, the routine returns with the input cursor set at
 the position where the conversion could later be resumed, and the output
 cursor set to indicate until where the output buffer has been filled.
-Despite this scheme is simple and nice, the @code{recode} library does
+Despite this scheme is simple and nice, the Recode library does
 not offer it currently.  Why not?
 
 When long sequences of decodings, stepwise recodings, and re-encodings
@@ -4914,15 +4919,15 @@ imposing a fixed length to an output buffer.  It makes things so much
 simpler and efficient to just let the output buffer size float a bit.
 
 Of course, if the above problem was solved, the @code{iconv} library
-should be easily emulated, given that @code{recode} has similar knowledge
+should be easily emulated, given that Recode has similar knowledge
 about charsets, of course.  This either solved or not, the @code{iconv}
 program remains trivial (given similar knowledge about charsets).
 I also presume that the @code{genxlt} program would be easy too, but
 I do not have enough detailed specifications of it to be sure.
 
-A lot of years ago, @code{recode} was using a similar scheme, and I found
+A lot of years ago, Recode was using a similar scheme, and I found
 it rather hard to manage for some cases.  I rethought the overall structure
-of @code{recode} for getting away from that scheme, and never regretted it.
+of Recode for getting away from that scheme, and never regretted it.
 I perceive @code{iconv} as an artificial solution which surely has some
 elegances and virtues, but I do not find it really useful as it stands: one
 always has to wrap @code{iconv} into something more refined, extending it
@@ -4934,20 +4939,20 @@ was worth standardising).  It is much better to immediately aim for the
 refinement we need, without uselessly forcing us into the dubious detour
 @code{iconv} represents.
 
-Some may argue that if @code{recode} was using a comprehensive charset
+Some may argue that if Recode was using a comprehensive charset
 as a turning template, as discussed in a previous point, this would make
 @code{iconv} easier to implement.  Some may be tempted to say that the
 cases which are hard to handle are not really needed, nor interesting,
-anyway.  I feel and fear a bit some pressure wanting that @code{recode}
+anyway.  I feel and fear a bit some pressure wanting that Recode
 be split into the part that well fits the @code{iconv} model, and the part
 that does not fit, considering this second part less important, with the
 idea of dropping it one of these days, maybe.  My guess is that users of
-the @code{recode} library, whatever its form, would not like to have such
+the Recode library, whatever its form, would not like to have such
 arbitrary limitations.  In the long run, we should not have to explain
 to our users that some recodings may not be made available just because
 they do not fit the simple model we had in mind when we did it.  Instead,
 we should try to stay open to the difficulties of real life.  There is
-still a lot of complex needs for Asian people, say, that @code{recode}
+still a lot of complex needs for Asian people, say, that Recode
 does not currently address, while it should.  Not only the doors should
 stay open, but we should force them wider!
 @end itemize
@@ -4969,7 +4974,7 @@ This is an alphabetical list of all command-line options accepted by
 @unnumbered Library Index
 
 This is an alphabetical index of important functions, data structures,
-and variables in the @code{recode} library.
+and variables in the Recode library.
 
 @printindex fn
 
@@ -4977,7 +4982,7 @@ and variables in the @code{recode} library.
 @unnumbered Charset and Surface Index
 
 This is an alphabetical list of all the charsets and surfaces supported
-by @code{recode}, and their aliases.
+by Recode, and their aliases.
 
 @printindex tp
 

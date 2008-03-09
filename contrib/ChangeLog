@@ -1,3 +1,7 @@
+2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
+
+	* README, djgpp-README: Write Recode, not Free recode.
+
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.spec2: New file.

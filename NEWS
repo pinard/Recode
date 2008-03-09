@@ -1,6 +1,6 @@
-=======================================
-Free recode NEWS - User visible changes
-=======================================
+==================================
+Recode NEWS - User visible changes
+==================================
 
 .. contents::
 .. sectnum::
@@ -177,7 +177,7 @@ Charsets & aliases
 
   + Deleted charsets
 
-    + dk-us, us-dk (because of &duplicate which `recode' does not handle yet).
+    + dk-us, us-dk (because of &duplicate which Recode does not handle yet).
 
   + New charsets
 
@@ -198,7 +198,7 @@ Charsets & aliases
     + ISO-8859-15 (ISO_8859-15:1998, iso-ir-203, l9, latin9);
     + KOI-7; KOI-8 (GOST_19768-74); KOI8-R; KOI8-RU; KOI8-U;
     + macintosh_ce (macce); mac-is;
-    + NeXTSTEP (next) yet previous `recode' had it outside RFC 1345.
+    + NeXTSTEP (next) yet previous Recode had it outside RFC 1345.
 
   + Alias promoted to charset (with previous charset becoming alias)
 

@@ -13,7 +13,7 @@
    Lesser General Public License for more details.
 
    You should have received a copy of the GNU Lesser General Public
-   License along with the `recode' Library; see the file `COPYING.LIB'.
+   License along with the Recode Library; see the file `COPYING.LIB'.
    If not, write to the Free Software Foundation, Inc., 59 Temple Place -
    Suite 330, Boston, MA 02111-1307, USA.  */
 
@@ -533,7 +533,7 @@ recode_format_table (RECODE_REQUEST request,
 
   /* Print the header of the header file.  */
 
-  printf (_("%sConversion table generated mechanically by Free `%s' %s"),
+  printf (_("%sConversion table generated mechanically by %s %s"),
 	  start_comment, PACKAGE, VERSION);
   printf (_("%sfor sequence %s.%s"),
 	  wrap_comment, edit_sequence (request, 1), end_comment);

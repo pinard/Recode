@@ -2,6 +2,9 @@
 
 	* recode.texi: Better document iconv processing.
 
+	* recode.texi: Write Recode, not Free recode.  Prefer Recode to
+	@code{recode} wherever appropriate.
+
 2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* tables.py: Moved to top level.

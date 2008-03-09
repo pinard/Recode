@@ -1,4 +1,4 @@
-# Makefile for `recode' sources.
+# Makefile for Recode sources.
 # Copyright © 1991,92,93,94,95,96,97,98,99, 00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1988.
 

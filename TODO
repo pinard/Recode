@@ -1,4 +1,4 @@
-* TODO file for Free recode
+* TODO file for Recode
 
 Tell `mailto:recode-bugs@iro.umontreal.ca' if you feel like volunteering
 for any of these ideas, listed more or less in decreasing order
@@ -63,7 +63,7 @@ of priority.  Some TODO items are implicit within received email.
 . + Message headers [RFC 1342]
 . + Mnemonic and Mnemo (maybe?) [RFC 1345]
 . + Integrate -c and -g into charsets.
-. + Find something for `recode -g ibmpc:ibmpc' to do what it suggests
+. + Find something for ``recode -g ibmpc:ibmpc`` to do what it suggests
 . + Option -M (implying -i) to process MIME headers
 
 .* Mechanics

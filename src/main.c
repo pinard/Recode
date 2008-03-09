@@ -235,7 +235,7 @@ usage (int status, bool list)
   else
     {
       fputs (_("\
-Free `recode' converts files between various character sets and surfaces.\n\
+Recode converts files between various character sets and surfaces.\n\
 "),
 	     stdout);
       printf (_("\
@@ -616,7 +616,7 @@ main (int argc, char *const *argv)
 
   if (show_version)
     {
-      printf ("Free %s %s\n", PACKAGE, VERSION);
+      printf ("%s %s\n", PACKAGE, VERSION);
       fputs (_("\
 Written by Franc,ois Pinard <pinard@iro.umontreal.ca>.\n"),
 	     stdout);

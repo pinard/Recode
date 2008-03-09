@@ -1,9 +1,9 @@
 .. role:: code(strong)
 .. role:: file(literal)
 
-===================================
-README file for Free :code:`recode`
-===================================
+======================
+README file for Recode
+======================
 
 .. raw:: html
 
@@ -27,10 +27,10 @@ Introduction
 What is Recode?
 ---------------
 
-Here is version 3.6 for the Free :code:`recode` program and library.
-Hereafter, Recode means the whole package, :code:`recode` means the
-executable program.  Glance through this :file:`README` file before
-starting configuration.  Make sure you read files :file:`ABOUT-NLS` and
+Here is version 3.6 for the Recode program and library.  Hereafter,
+Recode means the whole package, :code:`recode` means the executable
+program.  Glance through this :file:`README` file before starting
+configuration.  Make sure you read files :file:`ABOUT-NLS` and
 :file:`INSTALL` if you are not familiar with them already.
 
 The Recode library converts files between character sets and usages.

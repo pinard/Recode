@@ -191,7 +191,7 @@ Programs
 
 + :code:`PyRecode`
 
-  This wrapper provides Free Recode functionality to Python programs.
+  This wrapper provides Recode functionality to Python programs.
 
   + http://www.suxers.de/PyRecode.tgz
 

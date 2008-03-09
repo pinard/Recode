@@ -1,4 +1,4 @@
-# Main Makefile for Free recode.
+# Main Makefile for Recode.
 # Copyright © 1992,93,94,95,96,97,98,99,00 Free Software Foundation, Inc.
 # François Pinard <pinard@iro.umontreal.ca>, 1992.
 
