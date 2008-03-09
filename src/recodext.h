@@ -637,6 +637,10 @@ void recode_freeze_tables PARAMS ((RECODE_OUTER));
 
 bool transform_with_iconv PARAMS ((RECODE_SUBTASK));
 
+/* localcharset.c.  */
+
+const char *locale_charset PARAMS ((void));
+
 /* mixed.c.  */
 
 bool transform_c_source PARAMS ((RECODE_TASK));

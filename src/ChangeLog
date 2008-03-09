@@ -12,6 +12,11 @@
 
 	* recode.c (recode_format_table, usage, main): Do not say Free.
 
+	* names.c (disambiguate_name): Do not use "char", but either a
+	predefined DEFAULT_CHARSET, or call locale_charset.
+	* recodext.h: Declare locale_charset.
+	* localcharset.c: Use (void) instead of ().
+
 2008-03-07  François Pinard  <pinard@iro.umontreal.ca>
 
 	* iconvdecl.h: Deleted.  Should be generated at installation time

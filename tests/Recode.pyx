@@ -372,6 +372,10 @@ cdef extern from "common.h":
     bool transform_with_iconv 'librecode_transform_with_iconv' (
             RECODE_SUBTASK)
 
+    # localcharset.c
+
+    char *locale_charset 'librecode_locale_charset' ()
+
     # mixed.c
 
     bool transform_c_source 'librecode_transform_c_source' (
@@ -558,18 +562,21 @@ NOT_A_CHARACTER = NOT_A_CHARACTER_
 BYTE_ORDER_MARK = BYTE_ORDER_MARK_
 BYTE_ORDER_MARK_SWAPPED = BYTE_ORDER_MARK_SWAPPED_
 
+AUTO_ABORT_FLAG = RECODE_AUTO_ABORT_FLAG
+NO_ICONV_FLAG = RECODE_NO_ICONV_FLAG
+
 ## Recode library at OUTER level.
 
 cdef class Outer:
     cdef RECODE_OUTER outer
 
-    def __init__(self, strict=False, auto_abort=False, no_iconv=False):
+    def __init__(self, auto_abort=False, iconv=False, strict=False):
         cdef int flags
         cdef RECODE_SINGLE single
         flags = 0
         if auto_abort:
             flags = flags | RECODE_AUTO_ABORT_FLAG
-        if no_iconv:
+        if not iconv:
             flags = flags | RECODE_NO_ICONV_FLAG
         self.outer = recode_new_outer(flags)
         if strict:
@@ -580,6 +587,9 @@ cdef class Outer:
 
     def __dealloc__(self):
         recode_delete_outer(self.outer)
+
+    def default_charset(self):
+        return locale_charset()
 
     def all_charsets(self):
         list = []

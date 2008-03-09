@@ -4,6 +4,12 @@
 	(Outer.__init__): Implement strictness setting.
 	(Outer.set_iconv): Deleted.
 
+	* common.py (external_output): Ignore :iconv:.
+	* Recode.pyx: Declare locale_charset.
+	Transmit AUTO_ABORT_FLAG and NO_ICONV_FLAG to Python.
+	(Outer.__init__): Replace no_iconv by iconv, defaulting to False.
+	* t21_names.py: Adjusted.
+
 2008-03-06  François Pinard  <pinard@iro.umontreal.ca>
 
 	Increase Recode.so portability, by depending on distutils:

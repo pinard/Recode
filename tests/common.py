@@ -58,7 +58,8 @@ def assert_or_diff(output, expected):
 def external_output(command):
     if not recode_program:
         py.test.skip()
-    return os.popen(command.replace('$R', recode_program), 'rb').read()
+    command = command.replace('$R', recode_program + ' --ignore=:iconv:')
+    return os.popen(command, 'rb').read()
 
 def recode_output(input):
     if run.external:
