@@ -3000,18 +3000,18 @@ if the @code{iconv} is indeed used or not, just use the @samp{-v} or
 appears as an intermediate charset.
 
 @tindex iconv
+
 The @code{:iconv:} charset represents a conceptual pivot charset
 within the external @code{iconv} library (in fact, this pivot exists,
-but is not directly reachable).  This charset has a mere @code{:}
-(a colon) for an alias.  It is not allowed to recode from or to
-this charset directly.  But when this charset is selected as an
-intermediate, usually by automatic means, then the external @code{iconv}
-Recode library is called to handle the transformations.  By
+but is not directly reachable).  This charset has a @code{:} (a mere
+colon) and @code{:libiconv:} for aliases.  It is not allowed to recode
+from or to this charset directly.  But when this charset is selected
+as an intermediate, usually by automatic means, then the external
+@code{iconv} Recode library is called to handle the transformations.  By
 using an @samp{--ignore=:iconv:} option on the @code{recode} call or
-equivalently, but more simply, @samp{-x:}, Recode is instructed
-to fully avoid this charset as an intermediate, with the consequence
-that the external @code{iconv} library is defeated.  Consider these two
-calls:
+equivalently, but more simply, @samp{-x:}, Recode is instructed to fully
+avoid this charset as an intermediate, with the consequence that the
+external @code{iconv} library is defeated.  Consider these two calls:
 
 @example
 recode l1..1250 < @var{input} > @var{output}

@@ -2578,15 +2578,15 @@ and check if `:iconv:' appears as an intermediate charset.
 
    The `:iconv:' charset represents a conceptual pivot charset within
 the external `iconv' library (in fact, this pivot exists, but is not
-directly reachable).  This charset has a mere `:' (a colon) for an
-alias.  It is not allowed to recode from or to this charset directly.
-But when this charset is selected as an intermediate, usually by
-automatic means, then the external `iconv' Recode library is called to
-handle the transformations.  By using an `--ignore=:iconv:' option on
-the `recode' call or equivalently, but more simply, `-x:', Recode is
-instructed to fully avoid this charset as an intermediate, with the
-consequence that the external `iconv' library is defeated.  Consider
-these two calls:
+directly reachable).  This charset has a `:' (a mere colon) and
+`:libiconv:' for aliases.  It is not allowed to recode from or to this
+charset directly.  But when this charset is selected as an
+intermediate, usually by automatic means, then the external `iconv'
+Recode library is called to handle the transformations.  By using an
+`--ignore=:iconv:' option on the `recode' call or equivalently, but
+more simply, `-x:', Recode is instructed to fully avoid this charset as
+an intermediate, with the consequence that the external `iconv' library
+is defeated.  Consider these two calls:
 
      recode l1..1250 < INPUT > OUTPUT
      recode -x: l1..1250 < INPUT > OUTPUT
@@ -6090,54 +6090,54 @@ Node: UTF-16109833
 Node: count-characters110981
 Node: dump-with-names111652
 Node: iconv114201
-Node: Tabular117615
-Node: ASCII misc139828
-Node: ASCII140194
-Node: ISO 8859141010
-Node: ASCII-BS143304
-Node: flat145141
-Node: IBM and MS145812
-Node: EBCDIC146356
-Node: IBM-PC148452
-Ref: IBM-PC-Footnote-1150566
-Node: Icon-QNX150725
-Node: CDC151150
-Node: Display Code152831
-Ref: Display Code-Footnote-1155112
-Node: CDC-NOS155317
-Node: Bang-Bang157279
-Node: Micros159208
-Node: Apple-Mac159591
-Node: AtariST161625
-Node: Miscellaneous162611
-Node: HTML163344
-Node: LaTeX169333
-Node: Texinfo170107
-Node: Vietnamese170879
-Node: African171855
-Node: Others173205
-Node: Texte174659
-Ref: Texte-Footnote-1179209
-Ref: Texte-Footnote-2179289
-Ref: Texte-Footnote-3179764
-Node: Mule179861
-Ref: Mule-Footnote-1181642
-Node: Surfaces182161
-Ref: Surfaces-Footnote-1185139
-Node: Permutations185243
-Node: End lines186084
-Node: MIME188285
-Node: Dump189472
-Node: Test193642
-Node: Internals196120
-Node: Main flow197348
-Node: New charsets200451
-Node: New surfaces204989
-Node: Design205715
-Ref: Design-Footnote-1214881
-Node: Concept Index214985
-Node: Option Index229728
-Node: Library Index232581
-Node: Charset and Surface Index237156
+Node: Tabular117632
+Node: ASCII misc139845
+Node: ASCII140211
+Node: ISO 8859141027
+Node: ASCII-BS143321
+Node: flat145158
+Node: IBM and MS145829
+Node: EBCDIC146373
+Node: IBM-PC148469
+Ref: IBM-PC-Footnote-1150583
+Node: Icon-QNX150742
+Node: CDC151167
+Node: Display Code152848
+Ref: Display Code-Footnote-1155129
+Node: CDC-NOS155334
+Node: Bang-Bang157296
+Node: Micros159225
+Node: Apple-Mac159608
+Node: AtariST161642
+Node: Miscellaneous162628
+Node: HTML163361
+Node: LaTeX169350
+Node: Texinfo170124
+Node: Vietnamese170896
+Node: African171872
+Node: Others173222
+Node: Texte174676
+Ref: Texte-Footnote-1179226
+Ref: Texte-Footnote-2179306
+Ref: Texte-Footnote-3179781
+Node: Mule179878
+Ref: Mule-Footnote-1181659
+Node: Surfaces182178
+Ref: Surfaces-Footnote-1185156
+Node: Permutations185260
+Node: End lines186101
+Node: MIME188302
+Node: Dump189489
+Node: Test193659
+Node: Internals196137
+Node: Main flow197365
+Node: New charsets200468
+Node: New surfaces205006
+Node: Design205732
+Ref: Design-Footnote-1214898
+Node: Concept Index215002
+Node: Option Index229745
+Node: Library Index232598
+Node: Charset and Surface Index237173
 
 End Tag Table

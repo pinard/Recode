@@ -1,3 +1,8 @@
+2008-03-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* outer.c (register_all_modules): Add back :libiconv: as an
+	alias for :iconv:.
+
 2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (RECODE_AUTO_ABORT_FLAG, RECODE_NO_ICONV_FLAG): New.

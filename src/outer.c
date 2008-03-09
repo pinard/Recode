@@ -473,6 +473,9 @@ register_all_modules (RECODE_OUTER outer)
   outer->iconv_pivot = alias->symbol;
   if (!declare_alias (outer, ":", ":iconv:"))
     return false;
+  /* Needed for compatibility with Recode 3.6.  */
+  if (!declare_alias (outer, ":libiconv:", ":iconv:"))
+    return false;
 
   if (alias = find_alias (outer, "CR-LF", SYMBOL_CREATE_CHARSET), !alias)
     return false;
@@ -495,7 +498,7 @@ register_all_modules (RECODE_OUTER outer)
     return false;
   if (!declare_alias (outer, "Latin-1", "ISO-8859-1"))
     return false;
-  /* Needed for compatibility with recode version 3.2.  */
+  /* Needed for compatibility with Recode 3.2.  */
   if (!declare_alias (outer, "lat1", "Latin-1"))
     return false;
 
