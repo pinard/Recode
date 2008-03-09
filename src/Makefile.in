@@ -270,6 +270,7 @@ fr-charname.h hash.h inisteps.h iconvdecl.h quotearg.h rfc1345.h tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
+CLEANFILES = iconvdecl.h
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
 ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
 ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES) \
@@ -304,7 +305,6 @@ TAGS_DEPENDENCIES = $(L_STEPS)
 PERL = perl
 PYTHON = python
 TABLES_PY = $(PYTHON) $(top_srcdir)/tables.py
-CLEANFILES = iconvdecl.h
 all: all-am
 
 .SUFFIXES:

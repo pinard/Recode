@@ -21,6 +21,7 @@ info_TEXINFOS = recode.texi
 MAKEINFO = LANG= LANGUAGE= @MAKEINFO@
 
 EXTRA_DIST = rfc1345.texi File-Latin1 help2man
+MOSTLYCLEANFILES = recode.ops
 
 # Relative to $(srcdir).
 KELD = ../keld
@@ -29,8 +30,6 @@ MNEMONICS_DS = $(KELD)/iso10646.def $(KELD)/other.def $(KELD)/control.def
 
 PYTHON = python
 TABLES_PY = $(PYTHON) $(top_srcdir)/tables.py
-
-MOSTLYCLEANFILES = recode.ops
 
 $(srcdir)/recode.info: rfc1345.texi
 recode.dvi: rfc1345.texi

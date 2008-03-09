@@ -26,7 +26,9 @@ include_HEADERS = recode.h recodext.h
 noinst_HEADERS = argmatch.h charname.h common.h decsteps.h exit.h exitfail.h \
 fr-charname.h hash.h inisteps.h iconvdecl.h quotearg.h rfc1345.h tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
+
 EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
+CLEANFILES = iconvdecl.h
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
 ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
@@ -73,8 +75,6 @@ LEX = @LEX@
 PERL = perl
 PYTHON = python
 TABLES_PY = $(PYTHON) $(top_srcdir)/tables.py
-
-CLEANFILES = iconvdecl.h
 
 $(srcdir)/merged.c: mergelex.py $(L_STEPS)
 	(cd $(srcdir) && cat $(L_STEPS)) \
