@@ -457,13 +457,23 @@ class Iconv(Options):
             canonical[charset.upper()] = charset
 
         # Read in the encodings.def file.
-        for line in file('/home/pinard/entretien/recode/admin/charset-list-libiconv'):
-            aliases = []
-            for alias in line.split():
-                if alias in canonical:
-                    alias = canonical[alias]
-                aliases.append(alias)
-            self.data.append((aliases[0], aliases[1:]))
+        #for line in file('/home/pinard/entretien/recode/admin/charset-list-libiconv'):
+        libc = None
+        import os
+        for line in os.popen('iconv -l'):
+            if libc is None:
+                libc = len(line.split('/')) == 3
+            if libc:
+                first, second, empty = line.split('/')
+                assert empty == '\n', repr(line)
+                self.data.append((second or first, ()))
+            else:
+                aliases = []
+                for alias in line.split():
+                    if alias in canonical:
+                        alias = canonical[alias]
+                    aliases.append(alias)
+                self.data.append((aliases[0], aliases[1:]))
 
     def complete(self, french):
         if not self.do_sources:

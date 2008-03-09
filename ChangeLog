@@ -1,3 +1,7 @@
+2008-03-09  François Pinard  <pinard@iro.umontreal.ca>
+
+	* tables.py (Iconv.__init__): Call iconv -l to get information.
+
 2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
 
         * NEWS, README, THANKS, TODO, configure.ac, Makefile.am: Write
