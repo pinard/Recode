@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"POT-Creation-Date: 2008-03-09 20:51-0400\n"
 "PO-Revision-Date: 2005-09-13 18:45-0500\n"
 "Last-Translator: Kevin Patrick Scannell <scannell@SLU.EDU>\n"
 "Language-Team: Irish <ga@li.org>\n"
@@ -84,8 +84,8 @@ msgid "Try `%s %s' for more information.\n"
 msgstr "Bain triail as `%s %s' chun tuilleadh eolais a fháil.\n"
 
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#, fuzzy
+msgid "Recode converts files between various character sets and surfaces.\n"
 msgstr ""
 "Tiontaíonn saorbhogearra `recode' comhaid idir tacair charachtar agus "
 "craicne éagsúla.\n"
@@ -327,73 +327,73 @@ msgstr ""
 "coinníollacha cóipeála.  Níl baránta ar bith ann; go fiú níl baránta ann\n"
 "d'INDÍOLTACHT nó FEILIÚNACHT DO FHEIDHM AR LEITH.\n"
 
-#: src/main.c:668
+#: src/main.c:673
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr "Siombail anaithnid `%s'"
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:713 src/main.c:727
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr "Tacar carachtar `%s' anaithnid nó débhríoch"
 
-#: src/main.c:753
+#: src/main.c:758
 msgid "Required argument is missing"
 msgstr "Argóint riachtanach ar iarraidh"
 
-#: src/main.c:796
+#: src/main.c:801
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "Comhréir i léig, úsáid `%s' ina hionad"
 
-#: src/main.c:802
+#: src/main.c:807
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr "Iarratas lochtach `%s'"
 
-#: src/main.c:902
+#: src/main.c:907
 #, c-format
 msgid "Recoding %s..."
 msgstr "%s á ath-ionchódú..."
 
-#: src/main.c:912
+#: src/main.c:917
 #, c-format
 msgid " done\n"
 msgstr " críochnaithe\n"
 
-#: src/main.c:953
+#: src/main.c:958
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr " teipthe: %s i gcéim `%s..%s'\n"
 
-#: src/main.c:960
+#: src/main.c:965
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr "theip ar %s: %s i gcéim `%s..%s'"
 
-#: src/main.c:983
+#: src/main.c:988
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr "%s i gcéim `%s..%s'"
 
-#: src/names.c:335
+#: src/names.c:342
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "Tá tacar carachtar %s ann cheana, agus ní %s é"
 
-#: src/names.c:830
+#: src/names.c:837
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
 "Ní féidir `%s' a liostú; níl aon ainm ar fáil le haghaidh an tacair "
 "carachtar seo"
 
-#: src/names.c:983 src/names.c:1029
+#: src/names.c:990 src/names.c:1036
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Deach Ocht Heics UCS2 Mne  %s\n"
 
-#: src/names.c:1048
+#: src/names.c:1055
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Tá brón orm, níl aon ainm ar fáil le haghaidh `%s'"
@@ -449,8 +449,8 @@ msgid "Recoding is too complex for a mere table"
 msgstr "Is róchasta é an t-ath-ionchódú mura bhfuil ach tábla ann"
 
 #: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
+#, fuzzy, c-format
+msgid "%sConversion table generated mechanically by %s %s"
 msgstr "%sTábla tiontaithe ginte go huathoibríoch ag saorbhogearrá `%s' %s"
 
 #: src/recode.c:538

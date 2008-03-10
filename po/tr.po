@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"POT-Creation-Date: 2008-03-09 20:51-0400\n"
 "PO-Revision-Date: 2002-06-20 11:00EET\n"
 "Last-Translator: İrfan Macit <imacit@mail.cu.edu.tr>\n"
 "Language-Team: Turkish <gnu-tr-u12a@lists.sourceforge.net>\n"
@@ -81,8 +81,8 @@ msgid "Try `%s %s' for more information.\n"
 msgstr "Daha fazla bilgi için '%s %s'.\n"
 
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#, fuzzy
+msgid "Recode converts files between various character sets and surfaces.\n"
 msgstr ""
 "Serbest `recode', dosyaları değişik karakter kümeleri ve yüzeylere "
 "dönüştürür.\n"
@@ -328,71 +328,71 @@ msgstr ""
 "HERHANGİ BİR AMACA UYGUNLUĞU için dahi zımni bir garanti\n"
 "içermez.\n"
 
-#: src/main.c:668
+#: src/main.c:673
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr "`%s' sembolü bilinmiyor"
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:713 src/main.c:727
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr "`%s' karakter kümesi bilinmiyor veya belirsiz"
 
-#: src/main.c:753
+#: src/main.c:758
 msgid "Required argument is missing"
 msgstr "Zorunlu argüman eksik"
 
-#: src/main.c:796
+#: src/main.c:801
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "Biçem eski, lütfen `%s'i tercih edin"
 
-#: src/main.c:802
+#: src/main.c:807
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr "`%s' isteği hatalı"
 
-#: src/main.c:902
+#: src/main.c:907
 #, c-format
 msgid "Recoding %s..."
 msgstr "%s yeniden kodlanıyor..."
 
-#: src/main.c:912
+#: src/main.c:917
 #, c-format
 msgid " done\n"
 msgstr " bitti\n"
 
-#: src/main.c:953
+#: src/main.c:958
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr "başarısız: `%2$s..%3$s' adımında %1$s\n"
 
-#: src/main.c:960
+#: src/main.c:965
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr "%1$s başarısız: `%3$s..%4$s' adımında %2$s"
 
-#: src/main.c:983
+#: src/main.c:988
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr "`%2$s..%3$s' adımında %1$s"
 
-#: src/names.c:335
+#: src/names.c:342
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "%s karakter kümesi zaten mevcut ve %s değil"
 
-#: src/names.c:830
+#: src/names.c:837
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "`%s' listelenemiyor, bu karakter kümesi için isim yok"
 
-#: src/names.c:983 src/names.c:1029
+#: src/names.c:990 src/names.c:1036
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Ond  Sek OnaltıUCS2 Mne %s\n"
 
-#: src/names.c:1048
+#: src/names.c:1055
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "`%s' için hiç isim mevcut değil"
@@ -448,8 +448,8 @@ msgid "Recoding is too complex for a mere table"
 msgstr "Yeniden kodlama bir tablo için fazla karmaşık"
 
 #: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
+#, fuzzy, c-format
+msgid "%sConversion table generated mechanically by %s %s"
 msgstr ""
 "%sDönüşüm tablosu mekanik olarak Free `%s' %s tarafından oluşturulmuştur"
 

@@ -2290,7 +2290,7 @@ fi
 
 # Define the identity of the package.
  PACKAGE=recode
- VERSION=3.7-beta1
+ VERSION=3.7-beta2
 
 
 cat >>confdefs.h <<_ACEOF

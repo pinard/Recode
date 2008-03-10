@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"POT-Creation-Date: 2008-03-09 20:51-0400\n"
 "PO-Revision-Date: 2003-04-06 23:16+0300\n"
 "Last-Translator: Ales Nyakhaychyk <nab@mail.by>\n"
 "Language-Team: Belarusian <i18n@mova.org>\n"
@@ -82,8 +82,8 @@ msgid "Try `%s %s' for more information.\n"
 msgstr "Паспрабуй `%s %s', каб атрымаць болей інфармацыі.\n"
 
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#, fuzzy
+msgid "Recode converts files between various character sets and surfaces.\n"
 msgstr "Свабодная `recode' зьмяняе знаказбор ці спосаб кадаваньня файла.\n"
 
 #: src/main.c:241
@@ -326,71 +326,71 @@ msgstr ""
 "зыходным кодзе. Няма НІЯКАЕ гарантыі, нават гарантыі КАШТОЎНАСЬЦІ ці\n"
 "ПРЫДАТНАСЬЦІ ДЛЯ КАНКРЭТНАЕ МЭТЫ.\n"
 
-#: src/main.c:668
+#: src/main.c:673
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr "Невядомы знак: `%s'"
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:713 src/main.c:727
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr "Знаказбор `%s' невядомы ці двухсэнсоўны"
 
-#: src/main.c:753
+#: src/main.c:758
 msgid "Required argument is missing"
 msgstr "Прапушчаны патрэбны парамэтар"
 
-#: src/main.c:796
+#: src/main.c:801
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "Сынтаксыс не найлепшы, ужывай, калі ласка, `%s'"
 
-#: src/main.c:802
+#: src/main.c:807
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr "Памылковы запыт: `%s'"
 
-#: src/main.c:902
+#: src/main.c:907
 #, c-format
 msgid "Recoding %s..."
 msgstr "Перакадаваньне %s..."
 
-#: src/main.c:912
+#: src/main.c:917
 #, c-format
 msgid " done\n"
 msgstr " зроблена\n"
 
-#: src/main.c:953
+#: src/main.c:958
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr " няўдалае: %s у кроку `%s..%s'\n"
 
-#: src/main.c:960
+#: src/main.c:965
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr "Няўдалае %s: %s у кроку `%s..%s'"
 
-#: src/main.c:983
+#: src/main.c:988
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr "%s у кроку `%s..%s'"
 
-#: src/names.c:335
+#: src/names.c:342
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "Знаказбор %s ужо існуе і не зьяўляецца %s"
 
-#: src/names.c:830
+#: src/names.c:837
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "Немагчыма адлюстраваць `%s', бо няма імёнаў для гэтага знаказбора"
 
-#: src/names.c:983 src/names.c:1029
+#: src/names.c:990 src/names.c:1036
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Дзес Вас Шасн  UCS2 Мнэма  %s\n"
 
-#: src/names.c:1048
+#: src/names.c:1055
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Нажаль няма імёнаў для `%s'"
@@ -446,8 +446,8 @@ msgid "Recoding is too complex for a mere table"
 msgstr "Перакадаваньне заскладанае для простай табліцы"
 
 #: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
+#, fuzzy, c-format
+msgid "%sConversion table generated mechanically by %s %s"
 msgstr ""
 "%sТабліца перакадаваньня, аўтаматычна створаная з дапамогай GNU `%s' %s"
 

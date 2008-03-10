@@ -41,7 +41,7 @@ RFC 1345 character sets, and all character sets from a pre-installed
 `iconv' library, are supported.  The `recode' program is a handy
 front-end to the library.
 
-   The current Recode release is 3.7-beta1.
+   The current Recode release is 3.7-beta2.
 
 * Menu:
 

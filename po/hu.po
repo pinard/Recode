@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"POT-Creation-Date: 2008-03-09 20:51-0400\n"
 "PO-Revision-Date: 2003-03-02 18:08+0100\n"
 "Last-Translator: Andras Timar <timar_a@freemail.hu>\n"
 "Language-Team: Hungarian <translation-team-hu@lists.sourceforge.net>\n"
@@ -86,8 +86,8 @@ msgid "Try `%s %s' for more information.\n"
 msgstr "Tov�bbi inform�ci��rt �rd be: `%s %s'.\n"
 
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#, fuzzy
+msgid "Recode converts files between various character sets and surfaces.\n"
 msgstr ""
 "A `recode' karakterk�szletek �s fel�letek k�z�tti konverzi�t "
 "tesz lehet�v�.\n"
@@ -329,71 +329,71 @@ msgstr ""
 "garancia, m�g az eladhat�s�gra vagy egy adott c�lra val� "
 "megfelel�sre sem.\n"
 
-#: src/main.c:668
+#: src/main.c:673
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr "A jel ismeretlen: `%s'"
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:713 src/main.c:727
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr "A karakterk�szlet ismeretlen vagy nem egy�rtelm�: `%s'"
 
-#: src/main.c:753
+#: src/main.c:758
 msgid "Required argument is missing"
 msgstr "Hi�nyzik egy k�telez� argumentum"
 
-#: src/main.c:796
+#: src/main.c:801
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "A szintaxis elavult, haszn�ld ink�bb ezt: `%s'"
 
-#: src/main.c:802
+#: src/main.c:807
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr "A k�r�s hib�s: `%s'"
 
-#: src/main.c:902
+#: src/main.c:907
 #, c-format
 msgid "Recoding %s..."
 msgstr "%s �tk�dol�sa..."
 
-#: src/main.c:912
+#: src/main.c:917
 #, c-format
 msgid " done\n"
 msgstr " k�sz\n"
 
-#: src/main.c:953
+#: src/main.c:958
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr " sikertelen: %s a `%s..%s' l�p�sben\n"
 
-#: src/main.c:960
+#: src/main.c:965
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr "%s sikertelen: %s a `%s..%s' l�p�sben"
 
-#: src/main.c:983
+#: src/main.c:988
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr "%s a `%s..%s' l�p�sben"
 
-#: src/names.c:335
+#: src/names.c:342
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "%s karakterk�szlet m�r l�tezik �s nem %s."
 
-#: src/names.c:830
+#: src/names.c:837
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr ""
 
-#: src/names.c:983 src/names.c:1029
+#: src/names.c:990 src/names.c:1036
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Oct Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1048
+#: src/names.c:1055
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr ""
@@ -450,7 +450,7 @@ msgstr ""
 
 #: src/recode.c:536
 #, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
+msgid "%sConversion table generated mechanically by %s %s"
 msgstr ""
 
 #: src/recode.c:538

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: recode 3.6\n"
 "Report-Msgid-Bugs-To: recode-bugs@iro.umontreal.ca\n"
-"POT-Creation-Date: 2008-03-06 00:31-0500\n"
+"POT-Creation-Date: 2008-03-09 20:51-0400\n"
 "PO-Revision-Date: 2002-10-27 12:22+0100\n"
 "Last-Translator: Jakub Bogusz <qboosh@pld-linux.org>\n"
 "Language-Team: Polish <translation-team-pl@lists.sourceforge.net>\n"
@@ -83,8 +83,8 @@ msgid "Try `%s %s' for more information.\n"
 msgstr "Polecenie `%s %s' wy¶wietli wiêcej informacji.\n"
 
 #: src/main.c:237
-msgid ""
-"Free `recode' converts files between various character sets and surfaces.\n"
+#, fuzzy
+msgid "Recode converts files between various character sets and surfaces.\n"
 msgstr ""
 "Program `recode' konwertuje pliki pomiêdzy ró¿nymi zestawami znaków\n"
 "i sposobami kodowania.\n"
@@ -329,71 +329,71 @@ msgstr ""
 "¼ród³owym. Nie podlega ¿adnej gwarancji, nawet gwarancji przydatno¶ci\n"
 "do jakiegokolwiek zastosowania lub sprzeda¿y.\n"
 
-#: src/main.c:668
+#: src/main.c:673
 #, c-format
 msgid "Symbol `%s' is unknown"
 msgstr "Symbol `%s' jest nieznany"
 
-#: src/main.c:708 src/main.c:722
+#: src/main.c:713 src/main.c:727
 #, c-format
 msgid "Charset `%s' is unknown or ambiguous"
 msgstr "Zestaw znaków `%s' jest nieznany lub niejednoznaczny"
 
-#: src/main.c:753
+#: src/main.c:758
 msgid "Required argument is missing"
 msgstr "Brak wymaganego parametru"
 
-#: src/main.c:796
+#: src/main.c:801
 #, c-format
 msgid "Syntax is deprecated, please prefer `%s'"
 msgstr "Odradza siê stosowanie tej sk³adni, proszê u¿ywaæ `%s'"
 
-#: src/main.c:802
+#: src/main.c:807
 #, c-format
 msgid "Request `%s' is erroneous"
 msgstr "Polecenie `%s' jest b³êdne"
 
-#: src/main.c:902
+#: src/main.c:907
 #, c-format
 msgid "Recoding %s..."
 msgstr "Przekodowywanie %s..."
 
-#: src/main.c:912
+#: src/main.c:917
 #, c-format
 msgid " done\n"
 msgstr " skoñczone\n"
 
-#: src/main.c:953
+#: src/main.c:958
 #, c-format
 msgid " failed: %s in step `%s..%s'\n"
 msgstr " nie powiod³o siê: %s w `%s..%s'\n"
 
-#: src/main.c:960
+#: src/main.c:965
 #, c-format
 msgid "%s failed: %s in step `%s..%s'"
 msgstr "%s nie powiod³o siê: %s w `%s..%s'"
 
-#: src/main.c:983
+#: src/main.c:988
 #, c-format
 msgid "%s in step `%s..%s'"
 msgstr "%s w `%s..%s'"
 
-#: src/names.c:335
+#: src/names.c:342
 #, c-format
 msgid "Charset %s already exists and is not %s"
 msgstr "Zestaw %s ju¿ istnieje i nie jest %s"
 
-#: src/names.c:830
+#: src/names.c:837
 #, c-format
 msgid "Cannot list `%s', no names available for this charset"
 msgstr "Nie mogê wylistowaæ `%s', brak nazw dla tego zestawu znaków"
 
-#: src/names.c:983 src/names.c:1029
+#: src/names.c:990 src/names.c:1036
 #, c-format
 msgid "Dec  Oct Hex   UCS2  Mne  %s\n"
 msgstr "Dec  Okt Hex   UCS2  Mne  %s\n"
 
-#: src/names.c:1048
+#: src/names.c:1055
 #, c-format
 msgid "Sorry, no names available for `%s'"
 msgstr "Brak nazw dla `%s'"
@@ -449,8 +449,8 @@ msgid "Recoding is too complex for a mere table"
 msgstr "Przekodowanie jest zbyt skomplikowane na zwyk³± tablicê"
 
 #: src/recode.c:536
-#, c-format
-msgid "%sConversion table generated mechanically by Free `%s' %s"
+#, fuzzy, c-format
+msgid "%sConversion table generated mechanically by %s %s"
 msgstr "%sTablica przekodowañ wygenerowana automatycznie przez GNU `%s' %s."
 
 #: src/recode.c:538

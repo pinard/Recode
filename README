@@ -113,6 +113,47 @@ least, new features go to Recodec only.
 
 __ http://recodec.progiciels-bpi.ca
 
+Notes for version 3.7-beta2
+---------------------------
+
+Here are a few notes related to the beta2 pre-test release for the incoming
+Recode 3.7.  I publish it to ease later exchanges of patches with testers.
+
++ The name has been changed from Free recode to Recode -- as "Free" was
+  a four letter word to some people :-). :code:`recode` (no capital) still
+  names the executable program specifically, or the distribution archive
+  itself.
+
++ Recode does not include :code:`libiconv` anymore.  However, it uses
+  an external :code:`iconv` library if one is available at installation
+  time, like :code:`libiconv` or the one provided within GNU :code:`libc`.
+  The ``-x:`` option to the program, or a new flag to the library
+  :code:`recode_new_outer` function, inhibits the initialisation and
+  usage of :code:`iconv`.
+
++ The bug about loosing a few characters, here and there, when recoding
+  big files in :code:`iconv` context, seems to have been corrected.  A
+  patch for this problem has been floating around for years, but it was
+  not solving all cases.  For this particular problem, I still have to
+  check a few user-submitted data files demonstrating the problem.
+
++ Recode installation now uses Python.  In particular, it creates
+  file :file:`build/src/iconvdecl.h` from local ``iconv -l`` output.
+  Recode testing through ``make check`` also needs what people
+  :code:`python-devel`, providing C header files for Python and
+  :code:`distutils`.  The :file:`Makemore` file has been merged within
+  regular Makefiles and is not distributed separately anymore.
+
++ It is likely that new bugs have been introduced through the above
+  changes.  In particular, not everything is cosy on the side of release
+  engineering.  A few files are either spuriously remade, or remade late.
+  I'm a bit surprised by the difficulty to get this right.
+
++ ``make check`` accepts a ``LIMIT=`` option, for limiting tests to one or
+  a few cases.  See :file:`tests/Makefile` for more information.
+
++ PO files have been updated from the Translation Project.
+
 Notes for version 3.7-beta1
 ---------------------------
 
