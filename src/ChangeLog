@@ -12,6 +12,8 @@
 	Martin Trautmann, Mikko Harjula, Peter Much, Petr Pajas,
 	Stephen Walkauskas, Urban Mueller and Volker Wysk.
 
+	* Makefile.am (EXTRA_DIST): Add stamp-strip.
+
 2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.h (RECODE_AUTO_ABORT_FLAG, RECODE_NO_ICONV_FLAG): New.

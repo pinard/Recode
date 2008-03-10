@@ -27,7 +27,7 @@ noinst_HEADERS = argmatch.h charname.h common.h decsteps.h exit.h exitfail.h \
 fr-charname.h hash.h inisteps.h iconvdecl.h quotearg.h rfc1345.h tersteps.h \
 xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 
-EXTRA_DIST = stamp-steps $(L_STEPS) mergelex.py $(MANS)
+EXTRA_DIST = stamp-steps stamp-strip $(L_STEPS) mergelex.py $(MANS)
 CLEANFILES = iconvdecl.h
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
