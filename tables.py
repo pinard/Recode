@@ -34,6 +34,7 @@ Output selection:
 Modality options:
   -C DIRECTORY   Change to DIRECTORY prior to processing
   -F             Produce French versions for -n, -s or -t
+  -v             Increase verbosity
 
 DATA-FILEs may be rfc1345.txt, mnemonic[.,]ds, Unicode maps, or .def files
 from Keld's chset* packages.  The digesting order is usually important.
@@ -55,6 +56,7 @@ class Main:
     iconv = None
     mnemonics = None
     strips = None
+    verbose = False
 
     def main(self, *arguments):
         if not arguments:
@@ -62,7 +64,7 @@ class Main:
             return
         import getopt
         French_option = False
-        options, arguments = getopt.getopt(arguments, 'C:Feimnpt')
+        options, arguments = getopt.getopt(arguments, 'C:Feimnptv')
         for option, value in options:
             if option == '-C':
                 self.directory = value
@@ -92,6 +94,8 @@ class Main:
                 if not self.strips:
                     self.strips = Strips()
                 self.strips.do_texinfo = True
+            elif option == '-v':
+                self.verbose = True
 
         # Read all data tables.
         if self.directory:
@@ -328,26 +332,30 @@ class Charnames(Options):
         # singles.  All remaining words will be represented by two
         # bytes, the first one running slowly from singles+1 to 255,
         # the second cycling faster from 1 to 255.
-        sys.stderr.write('  sorting words...')
+        if run.verbose:
+            sys.stdout.write('  sorting words...')
         pairs = map(self.presort_word, self.code_map.keys())
         pairs.sort()
         words = map(lambda pair: pair[1], pairs)
         pairs = None
-        sys.stderr.write(' %d of them\n' % len(words))
+        if run.verbose:
+            sys.stdout.write(' %d of them\n' % len(words))
         count = len(words)
         singles = (255 * 255 - count) / 254
         # Transmit a few values for further usage by the C code.
-        sys.stderr.write('  sorting names...')
+        if run.verbose:
+            sys.stdout.write('  sorting names...')
         ucs2_table = self.charname_map.keys()
         ucs2_table.sort()
-        sys.stderr.write(' %d of them\n' % len(ucs2_table))
+        if run.verbose:
+            sys.stdout.write(' %d of them\n' % len(ucs2_table))
         write('\n'
               '#define NUMBER_OF_SINGLES %d\n'
               '#define MAX_CHARNAME_LENGTH %d\n'
               '#define NUMBER_OF_CHARNAMES %d\n'
               % (singles, self.max_length, len(ucs2_table)))
         # Establish a mild compression scheme (one or two bytes per word).
-        sys.stderr.write("  writing words\n")
+        sys.stdout.write("  writing words\n")
         write('\n'
               'static const char *const word[%d] =\n'
               '  {\n'
@@ -371,7 +379,7 @@ class Charnames(Options):
             else:
                 char2 += 1
         write('  };\n')
-        sys.stderr.write("  writing names\n")
+        sys.stdout.write("  writing names\n")
         write('\n'
               'struct charname\n'
               '  {\n'
@@ -391,7 +399,7 @@ class Charnames(Options):
                     else:
                         write('\\%0.3o\\%0.3o' % (code / 256, code % 256))
                 else:
-                    sys.stderr.write('??? %s\n' % word)
+                    sys.stdout.write('??? %s\n' % word)
             write('"},\n')
         write('  };\n')
 
@@ -412,7 +420,7 @@ class Explodes(Options):
         if not self.do_sources:
             return
         # Print the collectable initialization function.
-        sys.stderr.write("Completing %s\n" % self.SOURCES)
+        sys.stdout.write("Completing %s\n" % self.SOURCES)
         write = self.write
         write('\n'
               'bool\n'
@@ -768,8 +776,9 @@ class Strips(Options):
                 # name for further declaration; announce this charset in
                 # the array initialization section; and initialize its
                 # processing.
-                sys.stderr.write("  %d) %s\n"
-                                 % (self.charset_ordinal + 1, charset))
+                if run.verbose:
+                    sys.stdout.write("  %d) %s\n"
+                                     % (self.charset_ordinal + 1, charset))
                 status = CHARSET
                 self.comment = '\n/* %s\n' % charset
                 hashname = re.sub('[^a-z0-9]', '', charset.lower())
@@ -1048,13 +1057,13 @@ class Strips(Options):
 
     def complete_sources(self):
         # Give memory statistics.
-        sys.stderr.write('Table memory = %d bytes (pool %d, refs %d)\n'
+        sys.stdout.write('Table memory = %d bytes (pool %d, refs %d)\n'
                          % (self.pool_size * 2 + self.pool_refs * 2,
                             self.pool_size * 2,
                             self.pool_refs * 2))
 
         # Print the collectable initialization function.
-        sys.stderr.write("Completing %s\n" % self.DATA)
+        sys.stdout.write("Completing %s\n" % self.DATA)
         write = self.write_data
         write('\n'
               'bool\n'
@@ -1160,7 +1169,7 @@ class Input:
         self.name = name
         self.input = file(name)
         self.line_count = 0
-        sys.stderr.write("Reading %s\n" % name)
+        sys.stdout.write("Reading %s\n" % name)
 
     def readline(self):
         self.line = self.input.readline()
@@ -1168,11 +1177,12 @@ class Input:
         return self.line
 
     def warn(self, format, *args):
-        sys.stderr.write('%s:%s: %s\n'
-                         % (self.name, self.line_count, format % args))
+        if run.verbose:
+            sys.stdout.write('%s:%s: %s\n'
+                             % (self.name, self.line_count, format % args))
 
     def die(self, format, *args):
-        sys.stderr.write('%s:%s: %s\n'
+        sys.stdout.write('%s:%s: %s\n'
                          % (self.name, self.line_count, format % args))
         raise 'Fatal'
 
@@ -1190,7 +1200,7 @@ class Output:
     def __init__(self, name, noheader=False):
         self.name = name
         self.write = file(name, 'w').write
-        sys.stderr.write("Writing %s\n" % name)
+        sys.stdout.write("Writing %s\n" % name)
         if not noheader:
             self.write("""\
 /* DO NOT MODIFY THIS FILE!  It was generated by `recode/tables.py'.  */
