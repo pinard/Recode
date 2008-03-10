@@ -9,6 +9,7 @@ Akim Demaille		demaille@inf.enst.fr
 Alain Labonté		alb@riq.qc.ca
 Alain Magloire		alainm@macs.ee.mcgill.ca
 Alan J. Flavell		flavell@a5.ph.gla.ac.uk
+Alexander Kurz		akurz@eddy.uni-duisburg.de
 Alexander L. Belikoff	abel@vallinor4.com
 			http://www.vallinor4.com
 Alexandre Duret-Lutz	duret_g@epita.fr
@@ -46,6 +47,7 @@ Dagobert Michelsen	dam@baltic-online.de
 			http://www.familie-michelsen.de
 Dan Jacobson		jidanni@jidanni.org
 			http://jidanni.org/
+Daniel Pfeiffer		occitan@esperanto.org
 Daniel Quinlan		quinlan@best.com
 Daniel Taupin		taupin@lps.u-psud.fr
 David E. A. Wilson	david_wilson@uow.edu.au
@@ -66,7 +68,7 @@ Eli Zaretskii		eliz@is.elta.co.il
 Enrik Berkhan		Enrik.Berkhan@planb.de
 Eric Backus		eric_backus@hp.com
 			http://www.wolfenet.com/~ericjb
-Eric Bischoff		eric@caldera.de
+Éric Bischoff		eric@caldera.de
 Erick Branderhorst	Erick.Branderhorst@asml.nl
 Erwan Mas		erwanmas@chez.com
 			http://www.chez.com/erwanmas/
@@ -81,6 +83,7 @@ Francois-Xavier Bergot	bergotfx@com.enst.fr
 Françoise Audebrand	audebran@ere.umontreal.ca
 Frederic Albrecht
 Frederic Gobry		frederic.gobry@epfl.ch
+Frederik Fouvry		fouvry@CoLi.Uni-SB.DE
 Frère Roy		roy@taize.fr
 			http://www.taize.fr
 Gabriel P. Silva	gpsilva@geocities.com
@@ -88,6 +91,7 @@ Gabriel P. Silva	gpsilva@geocities.com
 Ghislain Plamondon
 Georg Haefele		haefele@atlas.gis.univie.ac.at
 Greg McGary
+Guillaume Rumeau	rumeau@isty-info.uvsq.fr
 Guy Lapalme		lapalme@iro.umontreal.ca
 			http://www.iro.umontreal.ca/~lapalme
 Harald Falkenberg	harald.falkenberg@desy.de
@@ -102,11 +106,13 @@ Jacques Madelaine	jacques@info.unicaen.fr
 Jacques Richer		Jacques.Richer@CERCA.UMontreal.CA
 			http://www.CERCA.UMontreal.CA/~richer
 Jan Djarv		jan.djarv@mbox200.swipnet.se
+Jean-Christophe Guillain	jcg@adviseo.fr
 Jean-Claude Nadeau	nadeau@jsp.umontreal.ca
 Jean-Michel Dault	jmdault@mandrakesoft.com
 Jens Quade		jens@ronja.dinoco.de
 Jim Meyering		meyering@na-net.ornl.gov
 Joelle Stemp
+John Gorman		jgorman@webbysoft.com
 John van Krieken	John.van.Krieken@ATComputing.nl
 			http://www.ATComputing.nl/images/pasfotos/john.jpg
 Jörg Höhle		Joerg.Hoehle@gmd.de
@@ -139,12 +145,15 @@ Marc Gingold		gingold@spht.saclay.cea.fr
 			http:////www-spht.cea.fr/doc.html
 Marc Shapiro		shapiro@prof.inria.fr
 Marc Verreault
+Marcin Owsiany		marcin@owsiany.pl
+			http://marcin.owsiany.pl/
 Mario Gay		mgay@ti-edu.ch
 Markus Kuhn		Markus.Kuhn@cl.cam.ac.uk
 			http://www.cl.cam.ac.uk/~mgk25/
 Martin J. Dürst		duerst@w3.org
 			http://www.w3.org/People/D%C3%BCrst
 Martin Maechler		maechler@stat.math.ethz.ch
+Martin Trautmann	traut@gmx.de
 Martin Mares		mj@ucw.cz
 			http://atrey.karlin.mff.cuni.cz/~mj/
 Michael Gschwind	mike@vlsivie.tuwien.ac.at
@@ -153,6 +162,7 @@ Michael L. Dowling	M.Dowling@tu-bs.de
 Michael Schmidt		mschmidt@koblenz.fh-rpl.de
 Michael Shields		shields@msrl.com
 			http://www.msrl.com/
+Mikko Harjula		mikko.harjula@gware.com
 Mikko Silvonen		silvonen@iki.fi
 			http://www.iki.fi/silvonen/
 Nathanael Makarevitch
@@ -176,9 +186,11 @@ Per Andersson		perand@stacken.kth.se
 Per Starback		starback@ling.uu.se
 			http://stp.ling.uu.se/~starback/me.html
 Per Steinar Iversen
+Peter Much		pmc@citylink.dinoex.sub.org
 Peter Poeml		poeml@cmdline.net
 			http://www.poeml.de/
 Peter Turcan		peter.turcan@minerva-is.sk
+Petr Pajas		pajas@ufal.ms.mff.cuni.cz
 Phyllis Frankl		phyllis@morph.poly.edu
 			http://ebbets.poly.edu/~pfrankl
 Pierre Gaumond		gaumondp@ere.umontreal.ca
@@ -210,6 +222,7 @@ Stefan Albertz		Stefan.Albertz@rus.uni-stuttgart.de
 Stefan Haubenthal	haubi@geocities.com
 			http://home.pages.de/~haubi
 Stephen Boulet		stephen@theboulets.net
+Stephen Walkauskas	SWalkaus@endeca.com
 Steinar Bang		sb@metis.no
 Stephane Berube		berube@iro.umontreal.ca
 Stephen Grecni		steve@steem.com
@@ -224,11 +237,13 @@ Tom Hageman		tom@basil.icce.rug.nl
 Tom Tromey		tromey@cygnus.com
 			http://cafe.colorado.edu/~tromey/
 Tomasz Kłoczko		kloczek@wun.zie.pg.gda.pl
+Urban Mueller		mueller@iogram.ch
 Ulrich Drepper		drepper@gnu.org
 Ulrich Windl		Ulrich.Windl@rz.uni-regensburg.de
 			http://www.uni-regensburg.de/Einrichtungen/Rechenzentrum/Orientierung/Mitarbeiter/windl.html
 Vern Paxson		vern@ee.lbl.gov
 Vitor Duarte		vad@di.fct.unl.pt
+Volker Wysk		post@volker-wysk.de
 Walter Müller		walt@pi4.informatik.uni-mannheim.de
 Wiel Seuskens		wiel@xs4all.nl
 			http://www.xs4all.nl/~wiel/

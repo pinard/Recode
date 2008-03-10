@@ -343,7 +343,7 @@ calling ``./configure``.  File :file:`INSTALL` explains this.
 
       CFLAGS='-Ml -F2000' LDFLAGS=-Ml ./configure
 
-  Other systems have poor :code:`pipe`/:code:`popen` support or trash
+  Other systems have poor :code:`pipe`/:code:`popen` support or thrash
   heavily when processes fork.  In this case, just before doing
   ``make``, edit :file:`config.h` and ensure :code:`HAVE_PIPE` is
   *not* defined.

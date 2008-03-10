@@ -637,10 +637,10 @@ digits, hyphens, underlines, periods, colons or round parentheses.
 
 @cindex request, syntax
 @cindex Recode request syntax
-The complete syntax for a valid @var{request} allows for unusual
-things, which might surprise at first.  (Do not pay too much attention
-to these facilities on first reading.)  For example, @var{request}
-may also contain intermediate charsets, like in the following example:
+The complete syntax for a valid @var{request} allows for unusual things,
+which might be surprising at first.  (Do not pay too much attention to
+these facilities on first reading.)  For example, @var{request} may also
+contain intermediate charsets, like in the following example:
 
 @example
 @var{before}..@var{interim1}..@var{interim2}..@var{after}
@@ -4259,6 +4259,14 @@ Of course, the publication of @code{EGG} has been delayed many times@dots{}
 @node Surfaces, Internals, Miscellaneous, Top
 @chapter All about surfaces
 @cindex surface, what it is
+
+A @dfn{surface} is the varnish added over a charset so it fits in actual
+bits and bytes.  How end of lines are exactly encoded is not really
+pertinent to the charset, and so, there is surface for end of lines.
+@code{Base64} is also a surface, as we may encode any charset in it.
+Other examples would DES enciphering, or gzip compression (even if
+Recode does not offer them currently): these are ways to give a real
+life to theoretical charsets.
 
 @cindex trivial surface
 The @dfn{trivial surface} consists of using a fixed number of bits
