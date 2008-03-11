@@ -1,3 +1,8 @@
+2008-03-10  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi (Task level): Use name, not file, in example.
+	Reported by Simon Cozens.
+
 2008-03-08  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Better document iconv processing.
@@ -181,7 +186,7 @@
 
 	* recode.texi: Show program_name in the examples for the library
 	usage, and document its purpose.
-	Reported by Kristian Köhntopp and Pawel Krawczyk.
+	Reported by Kristian Köhntopp, Pawel Krawczyk and Simon Cozens.
 
 1999-11-27  François Pinard  <pinard@iro.umontreal.ca>
 

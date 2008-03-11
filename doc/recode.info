@@ -562,9 +562,9 @@ lower case), digits, hyphens, underlines, periods, colons or round
 parentheses.
 
    The complete syntax for a valid REQUEST allows for unusual things,
-which might surprise at first.  (Do not pay too much attention to these
-facilities on first reading.)  For example, REQUEST may also contain
-intermediate charsets, like in the following example:
+which might be surprising at first.  (Do not pay too much attention to
+these facilities on first reading.)  For example, REQUEST may also
+contain intermediate charsets, like in the following example:
 
      BEFORE..INTERIM1..INTERIM2..AFTER
 
@@ -1878,8 +1878,8 @@ a bit differently.
        recode_scan_request (request, "ibmpc..latin1");
 
        task = recode_new_task (request);
-       task->input.file = "";
-       task->output.file = "";
+       task->input.name = "";
+       task->output.name = "";
        success = recode_perform_task (task);
 
        recode_delete_task (task);
@@ -4309,11 +4309,19 @@ File: recode.info,  Node: Surfaces,  Next: Internals,  Prev: Miscellaneous,  Up:
 13 All about surfaces
 *********************
 
-The "trivial surface" consists of using a fixed number of bits (often
-eight) for each character, the bits together hold the integer value of
-the index for the character in its charset table.  There are many kinds
-of surfaces, beyond the trivial one, all having the purpose of
-increasing selected qualities for the storage or transmission.  For
+A "surface" is the varnish added over a charset so it fits in actual
+bits and bytes.  How end of lines are exactly encoded is not really
+pertinent to the charset, and so, there is surface for end of lines.
+`Base64' is also a surface, as we may encode any charset in it.  Other
+examples would DES enciphering, or gzip compression (even if Recode
+does not offer them currently): these are ways to give a real life to
+theoretical charsets.
+
+   The "trivial surface" consists of using a fixed number of bits
+(often eight) for each character, the bits together hold the integer
+value of the index for the character in its charset table.  There are
+many kinds of surfaces, beyond the trivial one, all having the purpose
+of increasing selected qualities for the storage or transmission.  For
 example, surfaces might increase the resistance to channel limits
 (`Base64'), the transmission speed (`gzip'), the information privacy
 (`DES'), the conformance to operating system conventions (`CR-LF'), the
@@ -5148,7 +5156,7 @@ Concept Index
 * stdbool.h header:                      Outer level.         (line  31)
 * strict operation:                      Reversibility.       (line  48)
 * string and comments conversion:        Mixed.               (line  39)
-* structural surfaces:                   Surfaces.            (line  36)
+* structural surfaces:                   Surfaces.            (line  44)
 * subsets in charsets:                   Listings.            (line 222)
 * super-charsets:                        Mule.                (line   6)
 * supported programming languages:       Listings.            (line  26)
@@ -5157,12 +5165,12 @@ Concept Index
 * surface, what it is:                   Introduction.        (line  31)
 * surfaces, aliases:                     Requests.            (line  80)
 * surfaces, commutativity:               Requests.            (line  57)
-* surfaces, implementation in Recode:    Surfaces.            (line  26)
+* surfaces, implementation in Recode:    Surfaces.            (line  34)
 * surfaces, implied:                     Requests.            (line  69)
 * surfaces, overview:                    Surface overview.    (line   6)
-* surfaces, structural:                  Surfaces.            (line  36)
+* surfaces, structural:                  Surfaces.            (line  44)
 * surfaces, syntax:                      Requests.            (line  52)
-* surfaces, trees:                       Surfaces.            (line  36)
+* surfaces, trees:                       Surfaces.            (line  44)
 * system detected problem, error message: Errors.             (line  71)
 * task execution:                        Task level.          (line 215)
 * task level functions:                  Task level.          (line   6)
@@ -5170,7 +5178,7 @@ Concept Index
 * Texinfo files:                         Texinfo.             (line   6)
 * threshold for error reporting:         Errors.              (line  91)
 * time stamps of files:                  Recoding.            (line  26)
-* trivial surface:                       Surfaces.            (line   6)
+* trivial surface:                       Surfaces.            (line  14)
 * tutorial:                              Tutorial.            (line   6)
 * unavailable conversions:               Charset overview.    (line  33)
 * Unicode:                               UCS-2.               (line   6)
@@ -5494,7 +5502,7 @@ by Recode, and their aliases.
 * d1:                                    Dump.                (line  45)
 * d2:                                    Dump.                (line  52)
 * d4:                                    Dump.                (line  59)
-* data, a special charset:               Surfaces.            (line  26)
+* data, a special charset:               Surfaces.            (line  34)
 * data, not with charsets:               Charset overview.    (line  33)
 * de:                                    Tabular.             (line 142)
 * dec:                                   Tabular.             (line 138)
@@ -5996,7 +6004,7 @@ by Recode, and their aliases.
 * TF-7:                                  UTF-7.               (line  12)
 * TF-8:                                  UTF-8.               (line  83)
 * ti:                                    Texinfo.             (line   6)
-* tree, a special charset:               Surfaces.            (line  26)
+* tree, a special charset:               Surfaces.            (line  34)
 * txte:                                  Texte.               (line   6)
 * u2:                                    UCS-2.               (line  30)
 * u4:                                    UCS-4.               (line  10)
@@ -6059,85 +6067,85 @@ Node: Invoking recode19678
 Node: Synopsis20633
 Ref: Synopsis-Footnote-123073
 Node: Requests23370
-Ref: Requests-Footnote-129255
-Ref: Requests-Footnote-229322
-Ref: Requests-Footnote-329500
-Node: Listings29959
-Ref: Listings-Footnote-141108
-Node: Recoding41431
-Node: Reversibility44252
-Ref: Reversibility-Footnote-152707
-Node: Sequencing52844
-Node: Mixed55288
-Node: Emacs58656
-Node: Debugging59690
-Node: Library63960
-Node: Outer level65314
-Node: Request level71424
-Node: Task level81891
-Node: Charset level92313
-Node: Errors93155
-Ref: Errors-Footnote-198001
-Ref: Errors-Footnote-298115
-Node: Universal98476
-Ref: Universal-Footnote-1101588
-Ref: Universal-Footnote-2101654
-Node: UCS-2101867
-Node: UCS-4104393
-Node: UTF-7104933
-Node: UTF-8105528
-Node: UTF-16109833
-Node: count-characters110981
-Node: dump-with-names111652
-Node: iconv114201
-Node: Tabular117632
-Node: ASCII misc139845
-Node: ASCII140211
-Node: ISO 8859141027
-Node: ASCII-BS143321
-Node: flat145158
-Node: IBM and MS145829
-Node: EBCDIC146373
-Node: IBM-PC148469
-Ref: IBM-PC-Footnote-1150583
-Node: Icon-QNX150742
-Node: CDC151167
-Node: Display Code152848
-Ref: Display Code-Footnote-1155129
-Node: CDC-NOS155334
-Node: Bang-Bang157296
-Node: Micros159225
-Node: Apple-Mac159608
-Node: AtariST161642
-Node: Miscellaneous162628
-Node: HTML163361
-Node: LaTeX169350
-Node: Texinfo170124
-Node: Vietnamese170896
-Node: African171872
-Node: Others173222
-Node: Texte174676
-Ref: Texte-Footnote-1179226
-Ref: Texte-Footnote-2179306
-Ref: Texte-Footnote-3179781
-Node: Mule179878
-Ref: Mule-Footnote-1181659
-Node: Surfaces182178
-Ref: Surfaces-Footnote-1185156
-Node: Permutations185260
-Node: End lines186101
-Node: MIME188302
-Node: Dump189489
-Node: Test193659
-Node: Internals196137
-Node: Main flow197365
-Node: New charsets200468
-Node: New surfaces205006
-Node: Design205732
-Ref: Design-Footnote-1214898
-Node: Concept Index215002
-Node: Option Index229745
-Node: Library Index232598
-Node: Charset and Surface Index237173
+Ref: Requests-Footnote-129260
+Ref: Requests-Footnote-229327
+Ref: Requests-Footnote-329505
+Node: Listings29964
+Ref: Listings-Footnote-141113
+Node: Recoding41436
+Node: Reversibility44257
+Ref: Reversibility-Footnote-152712
+Node: Sequencing52849
+Node: Mixed55293
+Node: Emacs58661
+Node: Debugging59695
+Node: Library63965
+Node: Outer level65319
+Node: Request level71429
+Node: Task level81896
+Node: Charset level92318
+Node: Errors93160
+Ref: Errors-Footnote-198006
+Ref: Errors-Footnote-298120
+Node: Universal98481
+Ref: Universal-Footnote-1101593
+Ref: Universal-Footnote-2101659
+Node: UCS-2101872
+Node: UCS-4104398
+Node: UTF-7104938
+Node: UTF-8105533
+Node: UTF-16109838
+Node: count-characters110986
+Node: dump-with-names111657
+Node: iconv114206
+Node: Tabular117637
+Node: ASCII misc139850
+Node: ASCII140216
+Node: ISO 8859141032
+Node: ASCII-BS143326
+Node: flat145163
+Node: IBM and MS145834
+Node: EBCDIC146378
+Node: IBM-PC148474
+Ref: IBM-PC-Footnote-1150588
+Node: Icon-QNX150747
+Node: CDC151172
+Node: Display Code152853
+Ref: Display Code-Footnote-1155134
+Node: CDC-NOS155339
+Node: Bang-Bang157301
+Node: Micros159230
+Node: Apple-Mac159613
+Node: AtariST161647
+Node: Miscellaneous162633
+Node: HTML163366
+Node: LaTeX169355
+Node: Texinfo170129
+Node: Vietnamese170901
+Node: African171877
+Node: Others173227
+Node: Texte174681
+Ref: Texte-Footnote-1179231
+Ref: Texte-Footnote-2179311
+Ref: Texte-Footnote-3179786
+Node: Mule179883
+Ref: Mule-Footnote-1181664
+Node: Surfaces182183
+Ref: Surfaces-Footnote-1185602
+Node: Permutations185706
+Node: End lines186547
+Node: MIME188748
+Node: Dump189935
+Node: Test194105
+Node: Internals196583
+Node: Main flow197811
+Node: New charsets200914
+Node: New surfaces205452
+Node: Design206178
+Ref: Design-Footnote-1215344
+Node: Concept Index215448
+Node: Option Index230191
+Node: Library Index233044
+Node: Charset and Surface Index237619
 
 End Tag Table

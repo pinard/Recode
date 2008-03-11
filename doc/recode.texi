@@ -2190,8 +2190,8 @@ main (int argc, char *const *argv)
   recode_scan_request (request, "ibmpc..latin1");
 
   task = recode_new_task (request);
-  task->input.file = "";
-  task->output.file = "";
+  task->input.name = "";
+  task->output.name = "";
   success = recode_perform_task (task);
 
   recode_delete_task (task);
