@@ -1,3 +1,11 @@
+2008-03-11  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h (struct recode_symbol): Add iconv_name.
+	* names.c (find_alias): Initialize iconv_name to NULL.
+	* outer.c (declare_iconv): Accept an iconv_name argument.
+	* iconv.c (transform_with_iconv): Use iconv_name instead of name.
+	(module_iconv): Pass the first iconv alias to declare_iconv.
+
 2008-03-09  François Pinard  <pinard@iro.umontreal.ca>
 
 	* outer.c (register_all_modules): Add back :libiconv: as an

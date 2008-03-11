@@ -202,6 +202,9 @@ struct recode_symbol
     /* Main name.  */
     const char *name;
 
+    /* Name to use for the iconv library, or NULL.  */
+    const char *iconv_name;
+
     /* Type of table.  */
     enum recode_data_type data_type;
 
@@ -655,7 +658,7 @@ RECODE_SINGLE declare_single
 	   bool (*) (RECODE_STEP, RECODE_CONST_REQUEST,
 		     RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST),
 	   bool (*) (RECODE_SUBTASK)));
-bool declare_iconv PARAMS ((RECODE_OUTER, const char *));
+bool declare_iconv PARAMS ((RECODE_OUTER, const char *, const char *));
 bool declare_explode_data PARAMS ((RECODE_OUTER, const unsigned short *,
 				   const char *, const char *));
 bool declare_strip_data PARAMS ((RECODE_OUTER, struct strip_data *,

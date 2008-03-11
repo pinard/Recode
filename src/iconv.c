@@ -133,7 +133,8 @@ bool
 transform_with_iconv (RECODE_SUBTASK subtask)
 {
   RECODE_CONST_STEP step = subtask->step;
-  iconv_t conversion = iconv_open (step->after->name, step->before->name);
+  iconv_t conversion = iconv_open (step->after->iconv_name,
+                                   step->before->iconv_name);
   bool status;
 
   if (conversion == (iconv_t) -1)
@@ -167,8 +168,8 @@ module_iconv (RECODE_OUTER outer)
 
       while (*cursor)
 	{
-	  RECODE_ALIAS alias
-	    = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
+          RECODE_ALIAS alias
+            = find_alias (outer, *cursor, ALIAS_FIND_AS_CHARSET);
 
 	  if (alias)
 	    {
@@ -178,7 +179,7 @@ module_iconv (RECODE_OUTER outer)
 	  cursor++;
 	}
 
-      if (!declare_iconv (outer, charset_name))
+      if (!declare_iconv (outer, charset_name, *aliases))
 	return false;
 
       /* Declare all aliases, given they bring something we do not already

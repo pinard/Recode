@@ -172,11 +172,12 @@ declare_tree_surface (RECODE_OUTER outer, const char *name,
 
 #endif
 
-/*----------------------------------------------------------------.
-| Declare a charset available through `iconv', given the NAME of  |
-| this charset (which might already exist as an alias).  Make two |
-| single steps in and out of it.                                  |
-`----------------------------------------------------------------*/
+/*---------------------------------------------------------------.
+| Declare a charset available through `iconv', given the NAME of |
+| this charset (which might already exist as an alias), and the  |
+| ICONV_NAME to use when calling `iconv'.  Make two single steps |
+| in and out of it.                                              |
+`---------------------------------------------------------------*/
 
 static bool
 internal_iconv (RECODE_SUBTASK subtask)
@@ -186,7 +187,7 @@ internal_iconv (RECODE_SUBTASK subtask)
 }
 
 bool
-declare_iconv (RECODE_OUTER outer, const char *name)
+declare_iconv (RECODE_OUTER outer, const char *name, const char *iconv_name)
 {
   RECODE_ALIAS alias;
   RECODE_SINGLE single;
@@ -197,6 +198,9 @@ declare_iconv (RECODE_OUTER outer, const char *name)
 	!alias)
       return false;
   assert(alias->symbol->type == RECODE_CHARSET);
+
+  if (!alias->symbol->iconv_name)
+    alias->symbol->iconv_name = iconv_name;
 
   if (single = new_single_step (outer), !single)
     return false;

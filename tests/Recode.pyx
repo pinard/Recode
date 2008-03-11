@@ -39,6 +39,7 @@ cdef extern from "common.h":
         recode_symbol *next
         unsigned ordinal
         char *name
+        char *iconv_name
         recode_data_type data_type
         void *data
         RECODE_SINGLE resurfacer
@@ -396,7 +397,7 @@ cdef extern from "common.h":
             RECODE_OUTER, char *, char *, recode_quality,
             declare_single_Arg5, declare_single_Arg6)
     bool declare_iconv 'librecode_declare_iconv' (
-            RECODE_OUTER, char *)
+            RECODE_OUTER, char *, char *)
     bool declare_explode_data 'librecode_declare_explode_data' (
             RECODE_OUTER, unsigned short *, char *, char *)
     bool declare_strip_data 'librecode_declare_strip_data' (

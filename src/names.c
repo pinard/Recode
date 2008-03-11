@@ -274,9 +274,9 @@ find_alias (RECODE_OUTER outer, const char *name,
 
   /* Search the whole hash bucket and return any match.  */
 
-  lookup.name = name;
-  if (!lookup.name)
+  if (!name)
     return NULL;
+  lookup.name = name;
   if (alias = hash_lookup (outer->alias_table, &lookup), alias)
     return alias;
 
@@ -288,6 +288,7 @@ find_alias (RECODE_OUTER outer, const char *name,
     return NULL;
   symbol->ordinal = outer->number_of_symbols++;
   symbol->name = name;
+  symbol->iconv_name = NULL;
   symbol->type = type;
   symbol->ignore = false;
   symbol->data_type = RECODE_NO_CHARSET_DATA;

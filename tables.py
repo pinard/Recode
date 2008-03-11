@@ -465,7 +465,7 @@ class Iconv(Options):
             canonical[charset.upper()] = charset
 
         # Read in the encodings.def file.
-        #for line in file('/home/pinard/entretien/recode/admin/charset-list-libiconv'):
+        sys.stdout.write("Reading from `iconv -l'\n")
         libc = None
         import os
         for line in os.popen('iconv -l'):
