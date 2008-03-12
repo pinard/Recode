@@ -1,3 +1,8 @@
+2008-03-12  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h: Set bit field with, for ignore, from 2 to 1.
+	Reported by Martin Michlmayr.
+
 2008-03-12  Andreas Schwab  <schwab@suse.de>
 
 	* names.c (alias_free): New function.

@@ -221,7 +221,7 @@ struct recode_symbol
     enum recode_symbol_type type : 3;
 
     /* Non zero if this one should be ignored.  */
-    bool ignore : 2;
+    bool ignore : 1;
   };
 
 struct recode_surface_list
