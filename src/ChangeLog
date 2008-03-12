@@ -1,3 +1,11 @@
+2008-03-12  Andreas Schwab  <schwab@suse.de>
+
+	* names.c (alias_free): New function.
+	(prepare_for_aliases): Pass it to hash_initialize.
+	* outer.c (recode_delete_outer): Free elements of
+	argmatch_charset_array and argmatch_surface_array.
+	Also reported by Gaël Le Mignot and Pawel Krawczyk.
+
 2008-03-11  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h (struct recode_symbol): Add iconv_name.
@@ -267,7 +275,7 @@
 	* recode.c (init_ucs2_to_byte): Free hash table after use.
 	* testdump.c (produce_count): Free hash table entries and the table
 	itself after use.  Fix clean-up code.
-
+
 2000-06-28  François Pinard  <pinard@iro.umontreal.ca>
 
 	* task.c: Insert union wait portability from GNU make.

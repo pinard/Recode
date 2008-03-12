@@ -602,9 +602,6 @@ bool
 recode_delete_outer (RECODE_OUTER outer)
 {
   unregister_all_modules (outer);
-  /* FIXME: Pawel Krawczyk reports that calling new_outer ... delete_outer
-     20000 times in a program has the effect of consuming all virtual memory.
-     So there might be memory leaks should to track down and resolve.  */
   while (outer->number_of_symbols > 0)
     {
       RECODE_SYMBOL symbol = outer->symbol_list;
@@ -626,7 +623,15 @@ recode_delete_outer (RECODE_OUTER outer)
   if (outer->alias_table)
     hash_free (outer->alias_table);
   if (outer->argmatch_charset_array)
-    free (outer->argmatch_charset_array);
+    {
+      char **cursor;
+
+      for (cursor = outer->argmatch_charset_array; *cursor; cursor++)
+       free (*cursor);
+      for (cursor = outer->argmatch_surface_array; *cursor; cursor++)
+       free (*cursor);
+      free (outer->argmatch_charset_array);
+    }
   if (outer->one_to_same)
     free ((void *) outer->one_to_same);
   free (outer);

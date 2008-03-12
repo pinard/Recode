@@ -101,6 +101,20 @@ alias_comparator (const void *void_first, const void *void_second)
   return strcmp (first->name, second->name) == 0;
 }
 
+static void
+alias_free (void *void_alias)
+{
+  RECODE_ALIAS alias = void_alias;
+  struct recode_surface_list *list, *next;
+
+  for (list = alias->implied_surfaces; list; list = next)
+    {
+      next = list->next;
+      free (list);
+    }
+  free (alias);
+}
+
 bool
 prepare_for_aliases (RECODE_OUTER outer)
 {
@@ -108,7 +122,7 @@ prepare_for_aliases (RECODE_OUTER outer)
   outer->number_of_symbols = 0;
 
   outer->alias_table
-    = hash_initialize (800, NULL, alias_hasher, alias_comparator, free);
+    = hash_initialize (800, NULL, alias_hasher, alias_comparator, alias_free);
   if (!outer->alias_table)
     return false;
 

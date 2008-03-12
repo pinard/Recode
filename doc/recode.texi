@@ -1725,6 +1725,7 @@ at outer level, and then, various functions at request level.
 @section Outer level functions
 
 @cindex outer level functions
+
 The outer level functions mainly prepare the whole recoding library for
 use, or do actions which are unrelated to specific recodings.  Here is
 an example of a program which does not really make anything useful.
@@ -1754,6 +1755,22 @@ structure, which the programmer should use for allocating a variable in
 his program (let's assume the programmer is a male, here, no prejudice
 intended).  This @samp{outer} variable is given as a first argument to
 all outer level functions.
+
+@cindex speed considerations
+The @code{RECODE_OUTER} structure is really meant to be initialised only
+once in the life of a program, and terminated with the program itself.
+Program interfaces should pay attention to initialise it only once,
+would it be only for speed considerations.  A good deal of overhead goes
+to outer level initialization, and if the outer level was initialized
+afresh for each and every string translated, say, the Recode library
+would appear immensely much slower that it was meant to be!
+
+@cindex memory leaks
+@cindex leaks, memory
+Because outer level initialization is meant to be done only once, not so
+much attention has been paid to avoid memory leaks at this level within
+Recode.  This is hardly a reason for not plugging such leaks at any
+level: in the long run, they should all be chased and repaired.
 
 @cindex @code{stdbool.h} header
 @cindex @code{bool} data type
@@ -1899,10 +1916,11 @@ may be used by the library @emph{when} the user sets it to diagnose itself.
 @cindex request level functions
 The request level functions are meant to cover most recoding needs
 programmers may have; they should provide all usual functionality.
-Their API is almost stable by now.  To get started with request level
-functions, here is a full example of a program which sole job is to filter
-@code{ibmpc} code on its standard input into @code{latin1} code on its
-standard output.
+Their API is almost stable by now.
+
+To get started with request level functions, here is a full example of
+a program which sole job is to filter @code{ibmpc} code on its standard
+input into @code{latin1} code on its standard output.
 
 @example
 @group
@@ -1937,6 +1955,15 @@ The header file @code{<recode.h>} declares a @code{RECODE_REQUEST} structure,
 which the programmer should use for allocating a variable in his program.
 This @var{request} variable is given as a first argument to all request
 level functions, and in most cases, may be considered as opaque.
+
+@cindex speed considerations
+Suppose an application is doing a lot of recoding using only a few
+different requests.  For speed considerations, the @code{RECODE_REQUEST}
+structure should ideally be cached for each kind of request, so the
+request level initialisation is not redone for each and every string
+translated.  The speedup should be more apparent when Recode is able
+to optimize the work by building on the fly, within the structure, new
+specialized recoding steps and their associated data tables.
 
 @itemize @bullet
 @item Initialisation functions
