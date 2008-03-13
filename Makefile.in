@@ -696,6 +696,7 @@ get-po-files:
 
 local:
 	ajuster-web $(top_srcdir)/web
+	make-manual $(top_srcdir)/doc/recode.texi $(top_srcdir)/web/manual
 
 publish:
 	(cd $(top_srcdir) && \

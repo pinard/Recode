@@ -85,7 +85,7 @@ character sets, and all character sets from a pre-installed  @code{iconv}
 library, are supported.
 The @code{recode} program is a handy front-end to the library.
 
-The current Recode release is @value{VERSION}.
+This manual documents Recode @value{VERSION}.
 
 @menu
 * Tutorial::            Quick Tutorial
@@ -3752,10 +3752,11 @@ Recode tries to let @samp{\r} undisturbed through recodings.
 @node Miscellaneous, Surfaces, Micros, Top
 @chapter Various other charsets
 
-Even if these charsets were originally added to Recode for
-handling texts written in French, they find other uses.  We did use them
-a lot for writing French diacriticised texts in the past, so Recode
-knows how to handle these particularly well for French texts.
+A few charsets do not fit well in the previous chapters, and are grouped
+here.  Some of them were added to Recode long ago, at a time this tool
+was mainly meant for handling texts written in French.  The bias still
+shows when these charsets are linked to @code{Latin-1} instead of the
+wider @code{Unicode}, but this is being corrected as Recode evolves.
 
 @menu
 * HTML::                World Wide Web representations
