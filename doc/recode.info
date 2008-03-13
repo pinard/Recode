@@ -1432,87 +1432,29 @@ programs.  A good way to acquire some familiarity with the recoding
 library is to get acquainted with the `recode' program itself.
 
    To use the recoding library once it is installed, a C program needs
-to have a line:
-
-     #include <recode.h>
-
-near its beginning, and the user should have `-lrecode' on the linking
-call, so modules from the recoding library are found.
-
-   The library is still under development.  As it stands, it contains
-four identifiable sets of routines: the outer level functions, the
-request level functions, the task level functions and the charset level
-functions.  There are discussed in separate sections.
-
-   For effectively using the recoding library in most applications, it
-should be rarely needed to study anything beyond the main
-initialisation function at outer level, and then, various functions at
-request level.
-
-* Menu:
-
-* Outer level::         Outer level functions
-* Request level::       Request level functions
-* Task level::          Task level functions
-* Charset level::       Charset level functions
-* Errors::              Handling errors
-
-
-File: recode.info,  Node: Outer level,  Next: Request level,  Prev: Library,  Up: Library
-
-4.1 Outer level functions
-=========================
-
-The outer level functions mainly prepare the whole recoding library for
-use, or do actions which are unrelated to specific recodings.  Here is
-an example of a program which does not really make anything useful.
+to have the following lines:
 
      #include <stdbool.h>
      #include <recode.h>
 
      const char *program_name;
 
-     int
-     main (int argc, char *const *argv)
-     {
-       program_name = argv[0];
-       RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
+near its beginning, and the user should have `-lrecode' on the linking
+call, so modules from the recoding library are found.
 
-       recode_delete_outer (outer);
-       exit (0);
-     }
-
-   The header file `<recode.h>' declares an opaque `RECODE_OUTER'
-structure, which the programmer should use for allocating a variable in
-his program (let's assume the programmer is a male, here, no prejudice
-intended).  This `outer' variable is given as a first argument to all
-outer level functions.
-
-   The `RECODE_OUTER' structure is really meant to be initialised only
-once in the life of a program, and terminated with the program itself.
-Program interfaces should pay attention to initialise it only once,
-would it be only for speed considerations.  A good deal of overhead goes
-to outer level initialization, and if the outer level was initialized
-afresh for each and every string translated, say, the Recode library
-would appear immensely much slower that it was meant to be!
-
-   Because outer level initialization is meant to be done only once,
-not so much attention has been paid to avoid memory leaks at this level
-within Recode.  This is hardly a reason for not plugging such leaks at
-any level: in the long run, they should all be chased and repaired.
-
-   The `<recode.h>' header file uses the Boolean type setup by the
-system header file `<stdbool.h>'.  But this header file is still fairly
-new in C standards, and likely does not exist everywhere.  If you
-system does not offer this system header file yet, the proper
-compilation of the `<recode.h>' file could be guaranteed through the
-replacement of the inclusion line by:
+   The `recode.h' header file uses the Boolean type setup by the system
+header file `stdbool.h'.  This header file, which is now part of C
+standards, does not likely exist everywhere.  If you system does not
+offer this system header file yet, the proper compilation of the
+`recode.h' file could be guaranteed through the replacement of the
+inclusion line by:
 
      typedef enum {false = 0, true = 1} bool;
 
    People wanting wider portability, or Autoconf lovers, might arrange
-their `configure.in' for being able to write something more general,
-like:
+their `configure.ac' for being able to write something more general.
+In such contexts, a typical beginning of a program using the Recode
+library might look something like:
 
      #if STDC_HEADERS
      # include <stdlib.h>
@@ -1542,17 +1484,70 @@ like:
 
      const char *program_name;
 
+   Yet, for the remainder of the discussion below, we will ignore all
+these configuration matters, and merely presume that both `stdlib.h'
+and `stdbool.h' system header files are available.
+
+   The library is still under development.  As it stands, it contains
+four identifiable sets of routines: the outer level functions, the
+request level functions, the task level functions and the charset level
+functions.  There are discussed in separate sections.  For effectively
+using the recoding library in most applications, it should be rarely
+needed to study anything beyond the main initialisation function at
+outer level, and then, various functions at request level.
+
+* Menu:
+
+* Outer level::         Outer level functions
+* Request level::       Request level functions
+* Task level::          Task level functions
+* Charset level::       Charset level functions
+* Errors::              Handling errors
+
+
+File: recode.info,  Node: Outer level,  Next: Request level,  Prev: Library,  Up: Library
+
+4.1 Outer level functions
+=========================
+
+The outer level functions mainly prepare the whole recoding library for
+use, or do actions which are unrelated to specific recodings.  Here is
+an example of a program which does not really make anything useful.
+
+     #include <stdbool.h>
+     #include <stdlib.h>
+     #include <recode.h>
+
+     const char *program_name;
+
      int
      main (int argc, char *const *argv)
      {
        program_name = argv[0];
        RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
-       recode_term_outer (outer);
+       recode_delete_outer (outer);
        exit (EXIT_SUCCESS);
      }
 
-but we will not insist on such details in the examples to come.
+   The header file `recode.h' declares an opaque `RECODE_OUTER'
+structure, which the programmer should use for allocating a variable in
+his program (let's assume the programmer is a male, here, no prejudice
+intended).  This `outer' variable is given as a first argument to all
+outer level functions.
+
+   The `RECODE_OUTER' structure is really meant to be initialised only
+once in the life of a program, and terminated with the program itself.
+Program interfaces should pay attention to initialise it only once,
+would it be only for speed considerations.  A good deal of overhead goes
+to outer level initialization, and if the outer level was initialized
+afresh for each and every string translated, say, the Recode library
+would appear immensely much slower that it was meant to be!
+
+   Because outer level initialization is meant to be done only once,
+not so much attention has been paid to avoid memory leaks at this level
+within Recode.  This is hardly a reason for not plugging such leaks at
+any level: in the long run, they should all be chased and repaired.
 
    * Initialisation functions 
 
@@ -1638,8 +1633,9 @@ Their API is almost stable by now.
 of a program which sole job is to filter `ibmpc' code on its standard
 input into `latin1' code on its standard output.
 
-     #include <stdio.h>
      #include <stdbool.h>
+     #include <stdio.h>
+     #include <stdlib.h>
      #include <recode.h>
 
      const char *program_name;
@@ -1659,10 +1655,10 @@ input into `latin1' code on its standard output.
        recode_delete_request (request);
        recode_delete_outer (outer);
 
-       exit (success ? 0 : 1);
+       exit (success ? EXIT_SUCCESS : EXIT_FAILURE);
      }
 
-   The header file `<recode.h>' declares a `RECODE_REQUEST' structure,
+   The header file `recode.h' declares a `RECODE_REQUEST' structure,
 which the programmer should use for allocating a variable in his
 program.  This REQUEST variable is given as a first argument to all
 request level functions, and in most cases, may be considered as opaque.
@@ -1883,8 +1879,8 @@ into `latin1' code on its standard output.  That is, this program has
 the same goal as the one from the previous section, but does its things
 a bit differently.
 
-     #include <stdio.h>
      #include <stdbool.h>
+     #include <stdlib.h>
      #include <recodext.h>
 
      const char *program_name;
@@ -1909,14 +1905,18 @@ a bit differently.
        recode_delete_request (request);
        recode_delete_outer (outer);
 
-       exit (success ? 0 : 1);
+       exit (success ? EXIT_SUCCESS : EXIT_FAILURE);
      }
 
-   The header file `<recode.h>' declares a `RECODE_TASK' structure,
-which the programmer should use for allocating a variable in his
-program.  This `task' variable is given as a first argument to all task
-level functions.  The programmer ought to change and possibly consult a
-few fields in this structure, using special functions.
+   Note that in the example above, `recodext.h' header is used instead
+of `recode.h'.  By doing so, the various structures are not opaque
+anymore, and their fields may be accessed by name.
+
+   The header file `recode.h' declares a `RECODE_TASK' structure, which
+the programmer should use for allocating a variable in his program.
+This `task' variable is given as a first argument to all task level
+functions.  The programmer ought to change and possibly consult a few
+fields in this structure, using special functions.
 
    * Initialisation functions 
 
@@ -2032,7 +2032,7 @@ few fields in this structure, using special functions.
           tells how various recoding steps (passes) will be
           interconnected.  Its initial value is
           `RECODE_STRATEGY_UNDECIDED', which is a constant defined in
-          the header file `<recodext.h>'.  Other possible values are:
+          the header file `recodext.h'.  Other possible values are:
 
          `RECODE_SEQUENCE_IN_MEMORY'
                Keep intermediate recodings in memory.
@@ -5043,8 +5043,9 @@ Concept Index
 * alternate names for charsets and surfaces: Requests.        (line  80)
 * ambiguous output, error message:       Errors.              (line  31)
 * ASCII table, recreating with Recode:   ASCII.               (line  12)
+* Autoconf:                              Library.             (line  31)
 * average number of recoding steps:      Main flow.           (line  40)
-* bool data type:                        Outer level.         (line  44)
+* bool data type:                        Library.             (line  22)
 * box-drawing characters:                Recoding.            (line  16)
 * bug reports, where to send:            Contributing.        (line  37)
 * byte order mark:                       UCS-2.               (line  12)
@@ -5071,6 +5072,7 @@ Concept Index
 * codepages:                             IBM and MS.          (line   6)
 * combining characters:                  UCS-2.               (line  34)
 * commutativity of surfaces:             Requests.            (line  57)
+* configure.ac:                          Library.             (line  31)
 * contributing charsets:                 Contributing.        (line   6)
 * conversions, unavailable:              Charset overview.    (line  33)
 * convert a subset of characters:        Mixed.               (line  20)
@@ -5123,9 +5125,9 @@ Concept Index
 * implied surfaces:                      Requests.            (line  69)
 * impossible conversions:                Charset overview.    (line  33)
 * information about charsets:            Listings.            (line 153)
-* initialisation functions, outer:       Outer level.         (line  97)
-* initialisation functions, request:     Request level.       (line  51)
-* initialisation functions, task:        Task level.          (line  52)
+* initialisation functions, outer:       Outer level.         (line  45)
+* initialisation functions, request:     Request level.       (line  52)
+* initialisation functions, task:        Task level.          (line  56)
 * interface, with iconv library:         iconv.               (line   6)
 * intermediate charsets:                 Requests.            (line  23)
 * internal functions:                    Charset level.       (line   6)
@@ -5139,7 +5141,7 @@ Concept Index
 * LaTeX files:                           LaTeX.               (line   6)
 * Latin charsets:                        ISO 8859.            (line   6)
 * Latin-1 table, recreating with Recode: ISO 8859.            (line  45)
-* leaks, memory:                         Outer level.         (line  39)
+* leaks, memory:                         Outer level.         (line  40)
 * letter case, in charset and surface names: Requests.        (line  93)
 * libiconv:                              iconv.               (line   6)
 * library, iconv:                        iconv.               (line   6)
@@ -5148,7 +5150,7 @@ Concept Index
 * map filling:                           Reversibility.       (line  98)
 * map filling, disable:                  Reversibility.       (line  48)
 * markup language:                       HTML.                (line   6)
-* memory leaks:                          Outer level.         (line  39)
+* memory leaks:                          Outer level.         (line  40)
 * memory sequencing:                     Sequencing.          (line  23)
 * MIME encodings:                        MIME.                (line   6)
 * misuse of recoding library, error message: Errors.          (line  76)
@@ -5167,7 +5169,9 @@ Concept Index
 * partial conversion:                    Mixed.               (line  20)
 * permutations of groups of bytes:       Permutations.        (line   6)
 * pipe sequencing:                       Sequencing.          (line  40)
-* program_name variable:                 Outer level.         (line 150)
+* portability:                           Library.             (line  31)
+* program_name variable <1>:             Outer level.         (line  98)
+* program_name variable:                 Library.             (line  11)
 * programming language support:          Listings.            (line  26)
 * pseudo-charsets:                       Charset overview.    (line  33)
 * pure charset:                          Surface overview.    (line  17)
@@ -5181,6 +5185,8 @@ Concept Index
 * Recode, main flow of operation:        Main flow.           (line   6)
 * recode, operation as filter:           Synopsis.            (line  27)
 * recode, synopsis of invocation:        Synopsis.            (line   6)
+* recode.h header:                       Library.             (line  11)
+* recodext.h header:                     Task level.          (line  46)
 * recoding details:                      Recoding.            (line  35)
 * recoding library:                      Library.             (line   6)
 * recoding path, rejection:              Recoding.            (line  60)
@@ -5198,9 +5204,9 @@ Concept Index
 * silent operation:                      Reversibility.       (line  36)
 * single step:                           Main flow.           (line  17)
 * source file generation:                Listings.            (line  26)
-* speed considerations <1>:              Request level.       (line  43)
-* speed considerations:                  Outer level.         (line  31)
-* stdbool.h header:                      Outer level.         (line  44)
+* speed considerations <1>:              Request level.       (line  44)
+* speed considerations:                  Outer level.         (line  32)
+* stdbool.h header:                      Library.             (line  22)
 * strict operation:                      Reversibility.       (line  48)
 * string and comments conversion:        Mixed.               (line  39)
 * structural surfaces:                   Surfaces.            (line  44)
@@ -5219,7 +5225,7 @@ Concept Index
 * surfaces, syntax:                      Requests.            (line  52)
 * surfaces, trees:                       Surfaces.            (line  44)
 * system detected problem, error message: Errors.             (line  71)
-* task execution:                        Task level.          (line 215)
+* task execution:                        Task level.          (line 219)
 * task level functions:                  Task level.          (line   6)
 * TeX files:                             LaTeX.               (line   6)
 * Texinfo files:                         Texinfo.             (line   6)
@@ -5301,15 +5307,15 @@ and variables in the Recode library.
  [index ]
 * Menu:
 
-* abort_level:                           Task level.          (line 198)
-* ascii_graphics:                        Request level.       (line 110)
-* byte_order_mark:                       Task level.          (line 182)
+* abort_level:                           Task level.          (line 202)
+* ascii_graphics:                        Request level.       (line 111)
+* byte_order_mark:                       Task level.          (line 186)
 * declare_step:                          New surfaces.        (line  13)
 * DEFAULT_CHARSET:                       Requests.            (line 104)
-* diacritics_only:                       Request level.       (line 101)
-* diaeresis_char:                        Request level.       (line  85)
-* error_so_far:                          Task level.          (line 210)
-* fail_level:                            Task level.          (line 188)
+* diacritics_only:                       Request level.       (line 102)
+* diaeresis_char:                        Request level.       (line  86)
+* error_so_far:                          Task level.          (line 214)
+* fail_level:                            Task level.          (line 192)
 * file_one_to_many:                      New charsets.        (line  70)
 * file_one_to_one:                       New charsets.        (line  58)
 * find_charset:                          Charset level.       (line  15)
@@ -5318,48 +5324,48 @@ and variables in the Recode library.
 * list_all_charsets:                     Charset level.       (line  15)
 * list_concise_charset:                  Charset level.       (line  15)
 * list_full_charset:                     Charset level.       (line  15)
-* make_header_flag:                      Request level.       (line  92)
+* make_header_flag:                      Request level.       (line  93)
 * RECODE_AMBIGUOUS_OUTPUT:               Errors.              (line  31)
-* recode_buffer_to_buffer:               Request level.       (line 156)
-* recode_buffer_to_file:                 Request level.       (line 156)
-* recode_delete_outer:                   Outer level.         (line 102)
-* recode_delete_request:                 Request level.       (line  56)
-* recode_delete_task:                    Task level.          (line  54)
-* recode_file_to_buffer:                 Request level.       (line 156)
-* recode_file_to_file:                   Request level.       (line 156)
-* recode_filter_close:                   Task level.          (line 217)
-* recode_filter_close, not available:    Request level.       (line 221)
-* recode_filter_open:                    Task level.          (line 217)
-* recode_filter_open, not available:     Request level.       (line 221)
-* recode_format_table:                   Request level.       (line 236)
+* recode_buffer_to_buffer:               Request level.       (line 157)
+* recode_buffer_to_file:                 Request level.       (line 157)
+* recode_delete_outer:                   Outer level.         (line  50)
+* recode_delete_request:                 Request level.       (line  57)
+* recode_delete_task:                    Task level.          (line  58)
+* recode_file_to_buffer:                 Request level.       (line 157)
+* recode_file_to_file:                   Request level.       (line 157)
+* recode_filter_close:                   Task level.          (line 221)
+* recode_filter_close, not available:    Request level.       (line 222)
+* recode_filter_open:                    Task level.          (line 221)
+* recode_filter_open, not available:     Request level.       (line 222)
+* recode_format_table:                   Request level.       (line 237)
 * RECODE_INTERNAL_ERROR:                 Errors.              (line  81)
 * RECODE_INVALID_INPUT:                  Errors.              (line  61)
 * RECODE_MAXIMUM_ERROR <1>:              Errors.              (line  88)
-* RECODE_MAXIMUM_ERROR:                  Task level.          (line 198)
-* recode_new_outer:                      Outer level.         (line 102)
-* recode_new_request:                    Request level.       (line  56)
-* recode_new_task:                       Task level.          (line  54)
+* RECODE_MAXIMUM_ERROR:                  Task level.          (line 202)
+* recode_new_outer:                      Outer level.         (line  50)
+* recode_new_request:                    Request level.       (line  57)
+* recode_new_task:                       Task level.          (line  58)
 * RECODE_NO_ERROR:                       Errors.              (line  16)
 * RECODE_NOT_CANONICAL:                  Errors.              (line  19)
-* RECODE_OUTER structure:                Outer level.         (line  25)
-* recode_perform_task:                   Task level.          (line 217)
-* recode_request structure:              Request level.       (line  68)
-* RECODE_REQUEST structure:              Request level.       (line  38)
-* recode_scan_request:                   Request level.       (line 120)
-* RECODE_SEQUENCE_IN_MEMORY:             Task level.          (line 169)
-* RECODE_SEQUENCE_WITH_FILES:            Task level.          (line 172)
-* RECODE_SEQUENCE_WITH_PIPE:             Task level.          (line 175)
-* RECODE_STRATEGY_UNDECIDED:             Task level.          (line 162)
-* recode_string:                         Request level.       (line 149)
-* recode_string_to_buffer:               Request level.       (line 156)
-* recode_string_to_file:                 Request level.       (line 156)
+* RECODE_OUTER structure:                Outer level.         (line  26)
+* recode_perform_task:                   Task level.          (line 221)
+* recode_request structure:              Request level.       (line  69)
+* RECODE_REQUEST structure:              Request level.       (line  39)
+* recode_scan_request:                   Request level.       (line 121)
+* RECODE_SEQUENCE_IN_MEMORY:             Task level.          (line 173)
+* RECODE_SEQUENCE_WITH_FILES:            Task level.          (line 176)
+* RECODE_SEQUENCE_WITH_PIPE:             Task level.          (line 179)
+* RECODE_STRATEGY_UNDECIDED:             Task level.          (line 166)
+* recode_string:                         Request level.       (line 150)
+* recode_string_to_buffer:               Request level.       (line 157)
+* recode_string_to_file:                 Request level.       (line 157)
 * RECODE_SYSTEM_ERROR:                   Errors.              (line  71)
-* RECODE_TASK structure:                 Task level.          (line  46)
+* RECODE_TASK structure:                 Task level.          (line  50)
 * RECODE_UNTRANSLATABLE:                 Errors.              (line  50)
 * RECODE_USER_ERROR:                     Errors.              (line  76)
-* strategy:                              Task level.          (line 162)
-* task_request structure:                Task level.          (line  81)
-* verbose_flag:                          Request level.       (line  80)
+* strategy:                              Task level.          (line 166)
+* task_request structure:                Task level.          (line  85)
+* verbose_flag:                          Request level.       (line  81)
 
 
 File: recode.info,  Node: Charset and Surface Index,  Prev: Library Index,  Up: Top
@@ -6128,73 +6134,73 @@ Node: Mixed55326
 Node: Emacs58694
 Node: Debugging59728
 Node: Library63998
-Node: Outer level65352
-Node: Request level72226
-Node: Task level83173
-Node: Charset level93595
-Node: Errors94437
-Ref: Errors-Footnote-199283
-Ref: Errors-Footnote-299397
-Node: Universal99758
-Ref: Universal-Footnote-1102870
-Ref: Universal-Footnote-2102936
-Node: UCS-2103149
-Node: UCS-4105675
-Node: UTF-7106215
-Node: UTF-8106810
-Node: UTF-16111115
-Node: count-characters112263
-Node: dump-with-names112934
-Node: iconv115483
-Node: Tabular118914
-Node: ASCII misc141127
-Node: ASCII141493
-Node: ISO 8859142309
-Node: ASCII-BS144603
-Node: flat146440
-Node: IBM and MS147111
-Node: EBCDIC147655
-Node: IBM-PC149751
-Ref: IBM-PC-Footnote-1151865
-Node: Icon-QNX152024
-Node: CDC152449
-Node: Display Code154130
-Ref: Display Code-Footnote-1156411
-Node: CDC-NOS156616
-Node: Bang-Bang158578
-Node: Micros160507
-Node: Apple-Mac160890
-Node: AtariST162924
-Node: Miscellaneous163910
-Node: HTML164829
-Node: LaTeX170818
-Node: Texinfo171592
-Node: Vietnamese172364
-Node: African173340
-Node: Others174690
-Node: Java176143
-Node: Texte176810
-Ref: Texte-Footnote-1181358
-Ref: Texte-Footnote-2181438
-Ref: Texte-Footnote-3181913
-Node: Mule182010
-Ref: Mule-Footnote-1183791
-Node: Surfaces184310
-Ref: Surfaces-Footnote-1187729
-Node: Permutations187833
-Node: End lines188674
-Node: MIME190875
-Node: Dump192062
-Node: Test196232
-Node: Internals198710
-Node: Main flow199938
-Node: New charsets203041
-Node: New surfaces207579
-Node: Design208305
-Ref: Design-Footnote-1217471
-Node: Concept Index217575
-Node: Option Index232610
-Node: Library Index235463
-Node: Charset and Surface Index240038
+Node: Outer level66958
+Node: Request level72307
+Node: Task level83299
+Node: Charset level93929
+Node: Errors94771
+Ref: Errors-Footnote-199617
+Ref: Errors-Footnote-299731
+Node: Universal100092
+Ref: Universal-Footnote-1103204
+Ref: Universal-Footnote-2103270
+Node: UCS-2103483
+Node: UCS-4106009
+Node: UTF-7106549
+Node: UTF-8107144
+Node: UTF-16111449
+Node: count-characters112597
+Node: dump-with-names113268
+Node: iconv115817
+Node: Tabular119248
+Node: ASCII misc141461
+Node: ASCII141827
+Node: ISO 8859142643
+Node: ASCII-BS144937
+Node: flat146774
+Node: IBM and MS147445
+Node: EBCDIC147989
+Node: IBM-PC150085
+Ref: IBM-PC-Footnote-1152199
+Node: Icon-QNX152358
+Node: CDC152783
+Node: Display Code154464
+Ref: Display Code-Footnote-1156745
+Node: CDC-NOS156950
+Node: Bang-Bang158912
+Node: Micros160841
+Node: Apple-Mac161224
+Node: AtariST163258
+Node: Miscellaneous164244
+Node: HTML165163
+Node: LaTeX171152
+Node: Texinfo171926
+Node: Vietnamese172698
+Node: African173674
+Node: Others175024
+Node: Java176477
+Node: Texte177144
+Ref: Texte-Footnote-1181692
+Ref: Texte-Footnote-2181772
+Ref: Texte-Footnote-3182247
+Node: Mule182344
+Ref: Mule-Footnote-1184125
+Node: Surfaces184644
+Ref: Surfaces-Footnote-1188063
+Node: Permutations188167
+Node: End lines189008
+Node: MIME191209
+Node: Dump192396
+Node: Test196566
+Node: Internals199044
+Node: Main flow200272
+Node: New charsets203375
+Node: New surfaces207913
+Node: Design208639
+Ref: Design-Footnote-1217805
+Node: Concept Index217909
+Node: Option Index233382
+Node: Library Index236235
+Node: Charset and Surface Index240810
 
 End Tag Table

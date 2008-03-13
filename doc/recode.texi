@@ -1694,100 +1694,42 @@ library.  The recoding library is available separately for other C
 programs.  A good way to acquire some familiarity with the recoding
 library is to get acquainted with the @code{recode} program itself.
 
+@cindex @code{recode.h} header
+@cindex @code{program_name} variable
 To use the recoding library once it is installed, a C program needs to
-have a line:
+have the following lines:
 
 @example
+#include <stdbool.h>
 #include <recode.h>
+
+const char *program_name;
 @end example
 
 @noindent
 near its beginning, and the user should have @samp{-lrecode} on the
 linking call, so modules from the recoding library are found.
 
-The library is still under development.  As it stands, it contains four
-identifiable sets of routines: the outer level functions, the request
-level functions, the task level functions and the charset level functions.
-There are discussed in separate sections.
-
-For effectively using the recoding library in most applications, it should
-be rarely needed to study anything beyond the main initialisation function
-at outer level, and then, various functions at request level.
-
-@menu
-* Outer level::         Outer level functions
-* Request level::       Request level functions
-* Task level::          Task level functions
-* Charset level::       Charset level functions
-* Errors::              Handling errors
-@end menu
-
-@node Outer level, Request level, Library, Library
-@section Outer level functions
-
-@cindex outer level functions
-
-The outer level functions mainly prepare the whole recoding library for
-use, or do actions which are unrelated to specific recodings.  Here is
-an example of a program which does not really make anything useful.
-
-@example
-@group
-#include <stdbool.h>
-#include <recode.h>
-
-const char *program_name;
-
-int
-main (int argc, char *const *argv)
-@{
-  program_name = argv[0];
-  RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
-
-  recode_delete_outer (outer);
-  exit (0);
-@}
-@end group
-@end example
-
-@vindex RECODE_OUTER structure
-The header file @code{<recode.h>} declares an opaque @code{RECODE_OUTER}
-structure, which the programmer should use for allocating a variable in
-his program (let's assume the programmer is a male, here, no prejudice
-intended).  This @samp{outer} variable is given as a first argument to
-all outer level functions.
-
-@cindex speed considerations
-The @code{RECODE_OUTER} structure is really meant to be initialised only
-once in the life of a program, and terminated with the program itself.
-Program interfaces should pay attention to initialise it only once,
-would it be only for speed considerations.  A good deal of overhead goes
-to outer level initialization, and if the outer level was initialized
-afresh for each and every string translated, say, the Recode library
-would appear immensely much slower that it was meant to be!
-
-@cindex memory leaks
-@cindex leaks, memory
-Because outer level initialization is meant to be done only once, not so
-much attention has been paid to avoid memory leaks at this level within
-Recode.  This is hardly a reason for not plugging such leaks at any
-level: in the long run, they should all be chased and repaired.
-
 @cindex @code{stdbool.h} header
 @cindex @code{bool} data type
-The @code{<recode.h>} header file uses the Boolean type setup by the
-system header file @code{<stdbool.h>}.  But this header file is still
-fairly new in C standards, and likely does not exist everywhere.  If you
-system does not offer this system header file yet, the proper compilation
-of the @code{<recode.h>} file could be guaranteed through the replacement
+The @code{recode.h} header file uses the Boolean type setup by the
+system header file @code{stdbool.h}.  This header file, which is now
+part of C standards, does not likely exist everywhere.  If you system
+does not offer this system header file yet, the proper compilation of
+the @code{recode.h} file could be guaranteed through the replacement
 of the inclusion line by:
 
 @example
 typedef enum @{false = 0, true = 1@} bool;
 @end example
 
-People wanting wider portability, or Autoconf lovers, might arrange their
-@file{configure.in} for being able to write something more general, like:
+@cindex Autoconf
+@cindex portability
+@cindex @file{configure.ac}
+People wanting wider portability, or Autoconf lovers, might arrange
+their @file{configure.ac} for being able to write something more
+general.  In such contexts, a typical beginning of a program using the
+Recode library might look something like:
 
 @example
 @group
@@ -1818,6 +1760,45 @@ typedef enum @{false = 0, true = 1@} bool;
 #include <recode.h>
 
 const char *program_name;
+@end group
+@end example
+
+Yet, for the remainder of the discussion below, we will ignore all these
+configuration matters, and merely presume that both @code{stdlib.h}
+and @code{stdbool.h} system header files are available.
+
+The library is still under development.  As it stands, it contains
+four identifiable sets of routines: the outer level functions, the
+request level functions, the task level functions and the charset level
+functions.  There are discussed in separate sections.  For effectively
+using the recoding library in most applications, it should be rarely
+needed to study anything beyond the main initialisation function at
+outer level, and then, various functions at request level.
+
+@menu
+* Outer level::         Outer level functions
+* Request level::       Request level functions
+* Task level::          Task level functions
+* Charset level::       Charset level functions
+* Errors::              Handling errors
+@end menu
+
+@node Outer level, Request level, Library, Library
+@section Outer level functions
+
+@cindex outer level functions
+
+The outer level functions mainly prepare the whole recoding library for
+use, or do actions which are unrelated to specific recodings.  Here is
+an example of a program which does not really make anything useful.
+
+@example
+@group
+#include <stdbool.h>
+#include <stdlib.h>
+#include <recode.h>
+
+const char *program_name;
 
 int
 main (int argc, char *const *argv)
@@ -1825,14 +1806,34 @@ main (int argc, char *const *argv)
   program_name = argv[0];
   RECODE_OUTER outer = recode_new_outer (RECODE_AUTO_ABORT_FLAG);
 
-  recode_term_outer (outer);
+  recode_delete_outer (outer);
   exit (EXIT_SUCCESS);
 @}
 @end group
 @end example
 
-@noindent
-but we will not insist on such details in the examples to come.
+@vindex RECODE_OUTER structure
+The header file @code{recode.h} declares an opaque @code{RECODE_OUTER}
+structure, which the programmer should use for allocating a variable in
+his program (let's assume the programmer is a male, here, no prejudice
+intended).  This @samp{outer} variable is given as a first argument to
+all outer level functions.
+
+@cindex speed considerations
+The @code{RECODE_OUTER} structure is really meant to be initialised only
+once in the life of a program, and terminated with the program itself.
+Program interfaces should pay attention to initialise it only once,
+would it be only for speed considerations.  A good deal of overhead goes
+to outer level initialization, and if the outer level was initialized
+afresh for each and every string translated, say, the Recode library
+would appear immensely much slower that it was meant to be!
+
+@cindex memory leaks
+@cindex leaks, memory
+Because outer level initialization is meant to be done only once, not so
+much attention has been paid to avoid memory leaks at this level within
+Recode.  This is hardly a reason for not plugging such leaks at any
+level: in the long run, they should all be chased and repaired.
 
 @itemize @bullet
 @item Initialisation functions
@@ -1925,8 +1926,9 @@ input into @code{latin1} code on its standard output.
 
 @example
 @group
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <recode.h>
 
 const char *program_name;
@@ -1946,13 +1948,13 @@ main (int argc, char *const *argv)
   recode_delete_request (request);
   recode_delete_outer (outer);
 
-  exit (success ? 0 : 1);
+  exit (success ? EXIT_SUCCESS : EXIT_FAILURE);
 @}
 @end group
 @end example
 
 @vindex RECODE_REQUEST structure
-The header file @code{<recode.h>} declares a @code{RECODE_REQUEST} structure,
+The header file @code{recode.h} declares a @code{RECODE_REQUEST} structure,
 which the programmer should use for allocating a variable in his program.
 This @var{request} variable is given as a first argument to all request
 level functions, and in most cases, may be considered as opaque.
@@ -2200,8 +2202,8 @@ a bit differently.
 
 @example
 @group
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 #include <recodext.h>
 
 const char *program_name;
@@ -2226,13 +2228,18 @@ main (int argc, char *const *argv)
   recode_delete_request (request);
   recode_delete_outer (outer);
 
-  exit (success ? 0 : 1);
+  exit (success ? EXIT_SUCCESS : EXIT_FAILURE);
 @}
 @end group
 @end example
 
+@cindex @code{recodext.h} header
+Note that in the example above, @code{recodext.h} header is used instead
+of @code{recode.h}.  By doing so, the various structures are not opaque
+anymore, and their fields may be accessed by name.
+
 @vindex RECODE_TASK structure
-The header file @code{<recode.h>} declares a @code{RECODE_TASK}
+The header file @code{recode.h} declares a @code{RECODE_TASK}
 structure, which the programmer should use for allocating a variable in
 his program.  This @code{task} variable is given as a first argument to
 all task level functions.  The programmer ought to change and possibly
@@ -2357,7 +2364,7 @@ situation immediately after a call to @code{recode_new_task}.
 This field, which is of type @code{enum recode_sequence_strategy}, tells
 how various recoding steps (passes) will be interconnected.  Its initial
 value is @code{RECODE_STRATEGY_UNDECIDED}, which is a constant defined in
-the header file @file{<recodext.h>}.  Other possible values are:
+the header file @file{recodext.h}.  Other possible values are:
 
 @table @code
 @item RECODE_SEQUENCE_IN_MEMORY
