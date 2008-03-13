@@ -134,6 +134,7 @@ Various other charsets
 * Vietnamese::          Vietnamese charsets
 * African::             African charsets
 * Others::              Cyrillic and other charsets
+* Java::                Java code
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 
@@ -3896,9 +3897,10 @@ to handle these particularly well for French texts.
 * HTML::                World Wide Web representations
 * LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
-* Vietnamese::
+* Vietnamese::          Vietnamese charsets
 * African::             African charsets
-* Others::
+* Others::              Cyrillic and other charsets
+* Java::                Java code
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 
@@ -4124,7 +4126,7 @@ Recode under the name `AFRL1-101-BPI_OCIL'.  Accepted aliases are
 `t-fra' and `t-francais'.
 
 
-File: recode.info,  Node: Others,  Next: Texte,  Prev: African,  Up: Miscellaneous
+File: recode.info,  Node: Others,  Next: Java,  Prev: African,  Up: Miscellaneous
 
 12.6 Cyrillic and other charsets
 ================================
@@ -4159,9 +4161,27 @@ everybody, and this section will merely disappear.
      This charset is available under the name `KOI-8_CS2'.
 
 
-File: recode.info,  Node: Texte,  Next: Mule,  Prev: Others,  Up: Miscellaneous
+File: recode.info,  Node: Java,  Next: Texte,  Prev: Others,  Up: Miscellaneous
 
-12.7 Easy French conventions
+12.7 Java code
+==============
+
+This charset is available under the name `Java', and should be
+considered experimental for now.
+
+   ASCII characters represent themselves.  Character outside ASCII are
+coded as `\uNNNN', where `NNNN' stands for the four-digit hexadecimal
+value of the character within Unicode.  The canonical representation
+uses lower case for the `u' prefix and for the hexadecimal digits, yet
+Recode also accepts upper case.
+
+   There is currently no attempt to distinguish Java comments from Java
+strings while the recoding goes, and this may be corrected some day.
+
+
+File: recode.info,  Node: Texte,  Next: Mule,  Prev: Java,  Up: Miscellaneous
+
+12.8 Easy French conventions
 ============================
 
 This charset is available in Recode under the name `Texte' and has
@@ -4284,7 +4304,7 @@ as being fairly evident.
 
 File: recode.info,  Node: Mule,  Prev: Texte,  Up: Miscellaneous
 
-12.8 Mule as a multiplexed charset
+12.9 Mule as a multiplexed charset
 ==================================
 
 This version of Recode barely starts supporting multiplexed or
@@ -5872,6 +5892,7 @@ by Recode, and their aliases.
 * isoir91:                               Tabular.             (line  27)
 * isoir92:                               Tabular.             (line  27)
 * IT, aliases and source:                Tabular.             (line 520)
+* Java:                                  Java.                (line   6)
 * JIS_C6220-1969:                        Tabular.             (line 524)
 * JIS_C6220-1969-jp, aliases and source: Tabular.             (line 524)
 * JIS_C6220-1969-ro, aliases and source: Tabular.             (line 528)
@@ -6083,95 +6104,96 @@ by Recode, and their aliases.
 
 Tag Table:
 Node: Top1148
-Node: Tutorial5575
-Node: Introduction9803
-Node: Charset overview14037
-Node: Surface overview15842
-Node: Contributing17310
-Ref: Contributing-Footnote-119544
-Node: Invoking recode19678
-Node: Synopsis20633
-Ref: Synopsis-Footnote-123073
-Node: Requests23370
-Ref: Requests-Footnote-129260
-Ref: Requests-Footnote-229327
-Ref: Requests-Footnote-329505
-Node: Listings29964
-Ref: Listings-Footnote-141113
-Node: Recoding41436
-Node: Reversibility44257
-Ref: Reversibility-Footnote-152712
-Node: Sequencing52849
-Node: Mixed55293
-Node: Emacs58661
-Node: Debugging59695
-Node: Library63965
-Node: Outer level65319
-Node: Request level72193
-Node: Task level83140
-Node: Charset level93562
-Node: Errors94404
-Ref: Errors-Footnote-199250
-Ref: Errors-Footnote-299364
-Node: Universal99725
-Ref: Universal-Footnote-1102837
-Ref: Universal-Footnote-2102903
-Node: UCS-2103116
-Node: UCS-4105642
-Node: UTF-7106182
-Node: UTF-8106777
-Node: UTF-16111082
-Node: count-characters112230
-Node: dump-with-names112901
-Node: iconv115450
-Node: Tabular118881
-Node: ASCII misc141094
-Node: ASCII141460
-Node: ISO 8859142276
-Node: ASCII-BS144570
-Node: flat146407
-Node: IBM and MS147078
-Node: EBCDIC147622
-Node: IBM-PC149718
-Ref: IBM-PC-Footnote-1151832
-Node: Icon-QNX151991
-Node: CDC152416
-Node: Display Code154097
-Ref: Display Code-Footnote-1156378
-Node: CDC-NOS156583
-Node: Bang-Bang158545
-Node: Micros160474
-Node: Apple-Mac160857
-Node: AtariST162891
-Node: Miscellaneous163877
-Node: HTML164610
-Node: LaTeX170599
-Node: Texinfo171373
-Node: Vietnamese172145
-Node: African173121
-Node: Others174471
-Node: Texte175925
-Ref: Texte-Footnote-1180475
-Ref: Texte-Footnote-2180555
-Ref: Texte-Footnote-3181030
-Node: Mule181127
-Ref: Mule-Footnote-1182908
-Node: Surfaces183427
-Ref: Surfaces-Footnote-1186846
-Node: Permutations186950
-Node: End lines187791
-Node: MIME189992
-Node: Dump191179
-Node: Test195349
-Node: Internals197827
-Node: Main flow199055
-Node: New charsets202158
-Node: New surfaces206696
-Node: Design207422
-Ref: Design-Footnote-1216588
-Node: Concept Index216692
-Node: Option Index231727
-Node: Library Index234580
-Node: Charset and Surface Index239155
+Node: Tutorial5609
+Node: Introduction9837
+Node: Charset overview14071
+Node: Surface overview15876
+Node: Contributing17344
+Ref: Contributing-Footnote-119578
+Node: Invoking recode19712
+Node: Synopsis20667
+Ref: Synopsis-Footnote-123107
+Node: Requests23404
+Ref: Requests-Footnote-129294
+Ref: Requests-Footnote-229361
+Ref: Requests-Footnote-329539
+Node: Listings29998
+Ref: Listings-Footnote-141147
+Node: Recoding41470
+Node: Reversibility44291
+Ref: Reversibility-Footnote-152746
+Node: Sequencing52883
+Node: Mixed55327
+Node: Emacs58695
+Node: Debugging59729
+Node: Library63999
+Node: Outer level65353
+Node: Request level72227
+Node: Task level83174
+Node: Charset level93596
+Node: Errors94438
+Ref: Errors-Footnote-199284
+Ref: Errors-Footnote-299398
+Node: Universal99759
+Ref: Universal-Footnote-1102871
+Ref: Universal-Footnote-2102937
+Node: UCS-2103150
+Node: UCS-4105676
+Node: UTF-7106216
+Node: UTF-8106811
+Node: UTF-16111116
+Node: count-characters112264
+Node: dump-with-names112935
+Node: iconv115484
+Node: Tabular118915
+Node: ASCII misc141128
+Node: ASCII141494
+Node: ISO 8859142310
+Node: ASCII-BS144604
+Node: flat146441
+Node: IBM and MS147112
+Node: EBCDIC147656
+Node: IBM-PC149752
+Ref: IBM-PC-Footnote-1151866
+Node: Icon-QNX152025
+Node: CDC152450
+Node: Display Code154131
+Ref: Display Code-Footnote-1156412
+Node: CDC-NOS156617
+Node: Bang-Bang158579
+Node: Micros160508
+Node: Apple-Mac160891
+Node: AtariST162925
+Node: Miscellaneous163911
+Node: HTML164748
+Node: LaTeX170737
+Node: Texinfo171511
+Node: Vietnamese172283
+Node: African173259
+Node: Others174609
+Node: Java176062
+Node: Texte176729
+Ref: Texte-Footnote-1181277
+Ref: Texte-Footnote-2181357
+Ref: Texte-Footnote-3181832
+Node: Mule181929
+Ref: Mule-Footnote-1183710
+Node: Surfaces184229
+Ref: Surfaces-Footnote-1187648
+Node: Permutations187752
+Node: End lines188593
+Node: MIME190794
+Node: Dump191981
+Node: Test196151
+Node: Internals198629
+Node: Main flow199857
+Node: New charsets202960
+Node: New surfaces207498
+Node: Design208224
+Ref: Design-Footnote-1217390
+Node: Concept Index217494
+Node: Option Index232529
+Node: Library Index235382
+Node: Charset and Surface Index239957
 
 End Tag Table

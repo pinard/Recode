@@ -8,6 +8,7 @@
   delmodule_ibmpc (outer);
   delmodule_iconqnx (outer);
   delmodule_latin1_ascii (outer);
+  delmodule_java (outer);
   delmodule_mule (outer);
   delmodule_strips (outer);
   delmodule_testdump (outer);

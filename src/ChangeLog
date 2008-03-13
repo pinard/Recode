@@ -1,3 +1,8 @@
+2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
+
+	* java.c: New.
+	* Makefile.am: Adjusted.
+
 2008-03-12  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h: Set bit field with, for ignore, from 2 to 1.

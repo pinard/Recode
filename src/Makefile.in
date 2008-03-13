@@ -90,9 +90,10 @@ am__objects_2 = base64$U.lo dump$U.lo endline$U.lo permut$U.lo \
 	quoted$U.lo
 am__objects_3 = african$U.lo afrtran$U.lo applemac$U.lo atarist$U.lo \
 	bangbang$U.lo cdcnos$U.lo ebcdic$U.lo ibmpc$U.lo iconqnx$U.lo \
-	lat1asci$U.lo mule$U.lo strip-data$U.lo testdump$U.lo ucs$U.lo \
-	utf16$U.lo utf7$U.lo utf8$U.lo varia$U.lo vn$U.lo \
-	$(am__objects_1) $(am__objects_2) merged$U.lo
+	lat1asci$U.lo java$U.lo mule$U.lo strip-data$U.lo \
+	testdump$U.lo ucs$U.lo utf16$U.lo utf7$U.lo utf8$U.lo \
+	varia$U.lo vn$U.lo $(am__objects_1) $(am__objects_2) \
+	merged$U.lo
 am_librecode_la_OBJECTS = argmatch$U.lo charname$U.lo combine$U.lo \
 	exitfail$U.lo fr-charname$U.lo hash$U.lo iconv$U.lo \
 	localcharset$U.lo names$U.lo outer$U.lo quotearg$U.lo \
@@ -272,9 +273,9 @@ xalloc.h $(H_FALLBACKS) $(H_SURFACES)
 EXTRA_DIST = stamp-steps stamp-strip $(L_STEPS) mergelex.py $(MANS)
 CLEANFILES = iconvdecl.h
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
-ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
-ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES) \
-merged.c
+ebcdic.c ibmpc.c iconqnx.c lat1asci.c java.c mule.c strip-data.c \
+testdump.c ucs.c utf16.c utf7.c utf8.c varia.c vn.c \
+$(C_FALLBACKS) $(C_SURFACES) merged.c
 
 OLD_C_STEPS = next.c
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
@@ -452,6 +453,7 @@ mostlyclean-kr:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/ibmpc$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/iconqnx$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/iconv$U.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/java$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1asci$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1ltex$U.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/lat1txte$U.Plo@am__quote@
@@ -546,6 +548,8 @@ iconqnx_.c: iconqnx.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/iconqnx.c; then echo $(srcdir)/iconqnx.c; else echo iconqnx.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 iconv_.c: iconv.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/iconv.c; then echo $(srcdir)/iconv.c; else echo iconv.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
+java_.c: java.c $(ANSI2KNR)
+	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/java.c; then echo $(srcdir)/java.c; else echo java.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 lat1asci_.c: lat1asci.c $(ANSI2KNR)
 	$(CPP) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) $(CPPFLAGS) `if test -f $(srcdir)/lat1asci.c; then echo $(srcdir)/lat1asci.c; else echo lat1asci.c; fi` | sed 's/^# \([0-9]\)/#line \1/' | $(ANSI2KNR) > $@ || rm -f $@
 lat1ltex_.c: lat1ltex.c $(ANSI2KNR)
@@ -614,21 +618,21 @@ endline_.$(OBJEXT) endline_.lo exitfail_.$(OBJEXT) exitfail_.lo \
 flat_.$(OBJEXT) flat_.lo fr-charname_.$(OBJEXT) fr-charname_.lo \
 freeze_.$(OBJEXT) freeze_.lo hash_.$(OBJEXT) hash_.lo html_.$(OBJEXT) \
 html_.lo ibmpc_.$(OBJEXT) ibmpc_.lo iconqnx_.$(OBJEXT) iconqnx_.lo \
-iconv_.$(OBJEXT) iconv_.lo lat1asci_.$(OBJEXT) lat1asci_.lo \
-lat1ltex_.$(OBJEXT) lat1ltex_.lo lat1txte_.$(OBJEXT) lat1txte_.lo \
-localcharset_.$(OBJEXT) localcharset_.lo main_.$(OBJEXT) main_.lo \
-merged_.$(OBJEXT) merged_.lo mixed_.$(OBJEXT) mixed_.lo \
-mule_.$(OBJEXT) mule_.lo names_.$(OBJEXT) names_.lo outer_.$(OBJEXT) \
-outer_.lo permut_.$(OBJEXT) permut_.lo quotearg_.$(OBJEXT) \
-quotearg_.lo quoted_.$(OBJEXT) quoted_.lo recode_.$(OBJEXT) recode_.lo \
-request_.$(OBJEXT) request_.lo rfc1345_.$(OBJEXT) rfc1345_.lo \
-strip-data_.$(OBJEXT) strip-data_.lo strip-pool_.$(OBJEXT) \
-strip-pool_.lo task_.$(OBJEXT) task_.lo testdump_.$(OBJEXT) \
-testdump_.lo texinfo_.$(OBJEXT) texinfo_.lo ucs_.$(OBJEXT) ucs_.lo \
-utf16_.$(OBJEXT) utf16_.lo utf7_.$(OBJEXT) utf7_.lo utf8_.$(OBJEXT) \
-utf8_.lo varia_.$(OBJEXT) varia_.lo vn_.$(OBJEXT) vn_.lo \
-xalloc-die_.$(OBJEXT) xalloc-die_.lo xmalloc_.$(OBJEXT) xmalloc_.lo : \
-$(ANSI2KNR)
+iconv_.$(OBJEXT) iconv_.lo java_.$(OBJEXT) java_.lo \
+lat1asci_.$(OBJEXT) lat1asci_.lo lat1ltex_.$(OBJEXT) lat1ltex_.lo \
+lat1txte_.$(OBJEXT) lat1txte_.lo localcharset_.$(OBJEXT) \
+localcharset_.lo main_.$(OBJEXT) main_.lo merged_.$(OBJEXT) merged_.lo \
+mixed_.$(OBJEXT) mixed_.lo mule_.$(OBJEXT) mule_.lo names_.$(OBJEXT) \
+names_.lo outer_.$(OBJEXT) outer_.lo permut_.$(OBJEXT) permut_.lo \
+quotearg_.$(OBJEXT) quotearg_.lo quoted_.$(OBJEXT) quoted_.lo \
+recode_.$(OBJEXT) recode_.lo request_.$(OBJEXT) request_.lo \
+rfc1345_.$(OBJEXT) rfc1345_.lo strip-data_.$(OBJEXT) strip-data_.lo \
+strip-pool_.$(OBJEXT) strip-pool_.lo task_.$(OBJEXT) task_.lo \
+testdump_.$(OBJEXT) testdump_.lo texinfo_.$(OBJEXT) texinfo_.lo \
+ucs_.$(OBJEXT) ucs_.lo utf16_.$(OBJEXT) utf16_.lo utf7_.$(OBJEXT) \
+utf7_.lo utf8_.$(OBJEXT) utf8_.lo varia_.$(OBJEXT) varia_.lo \
+vn_.$(OBJEXT) vn_.lo xalloc-die_.$(OBJEXT) xalloc-die_.lo \
+xmalloc_.$(OBJEXT) xmalloc_.lo : $(ANSI2KNR)
 
 mostlyclean-libtool:
 	-rm -f *.lo

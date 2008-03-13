@@ -178,6 +178,7 @@ Various other charsets
 * Vietnamese::          Vietnamese charsets
 * African::             African charsets
 * Others::              Cyrillic and other charsets
+* Java::                Java code
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 
@@ -3760,9 +3761,10 @@ knows how to handle these particularly well for French texts.
 * HTML::                World Wide Web representations
 * LaTeX::               LaTeX macro calls
 * Texinfo::             GNU project documentation files
-* Vietnamese::
+* Vietnamese::          Vietnamese charsets
 * African::             African charsets
-* Others::
+* Others::              Cyrillic and other charsets
+* Java::                Java code
 * Texte::               Easy French conventions
 * Mule::                Mule as a multiplexed charset
 @end menu
@@ -4056,7 +4058,7 @@ African charsets in this series.  This charset is available in Recode
 under the name @code{AFRL1-101-BPI_OCIL}.  Accepted aliases are @code{t-fra}
 and @code{t-francais}.
 
-@node Others, Texte, African, Miscellaneous
+@node Others, Java, African, Miscellaneous
 @section Cyrillic and other charsets
 
 @cindex Cyrillic charsets
@@ -4097,7 +4099,23 @@ as an accepted alias.
 This charset is available under the name @code{KOI-8_CS2}.
 @end table
 
-@node Texte, Mule, Others, Miscellaneous
+@node Java, Texte, Others, Miscellaneous
+@section Java code
+
+@tindex Java
+This charset is available under the name @code{Java}, and should be
+considered experimental for now.
+
+ASCII characters represent themselves.  Character outside ASCII are
+coded as @samp{\uNNNN}, where @samp{NNNN} stands for the four-digit
+hexadecimal value of the character within Unicode.  The canonical
+representation uses lower case for the @samp{u} prefix and for the
+hexadecimal digits, yet Recode also accepts upper case.
+
+There is currently no attempt to distinguish Java comments from Java
+strings while the recoding goes, and this may be corrected some day.
+
+@node Texte, Mule, Java, Miscellaneous
 @section Easy French conventions
 
 @tindex Texte

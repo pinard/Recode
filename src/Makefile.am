@@ -31,10 +31,12 @@ EXTRA_DIST = stamp-steps stamp-strip $(L_STEPS) mergelex.py $(MANS)
 CLEANFILES = iconvdecl.h
 
 C_STEPS = african.c afrtran.c applemac.c atarist.c bangbang.c cdcnos.c \
-ebcdic.c ibmpc.c iconqnx.c lat1asci.c mule.c strip-data.c testdump.c \
-ucs.c utf16.c utf7.c utf8.c varia.c vn.c $(C_FALLBACKS) $(C_SURFACES) \
-merged.c
+ebcdic.c ibmpc.c iconqnx.c lat1asci.c java.c mule.c strip-data.c \
+testdump.c ucs.c utf16.c utf7.c utf8.c varia.c vn.c \
+$(C_FALLBACKS) $(C_SURFACES) merged.c
+
 OLD_C_STEPS = next.c
+
 L_STEPS = ascilat1.l $(L_FALLBACKS) $(L_SURFACES)
 
 H_FALLBACKS =

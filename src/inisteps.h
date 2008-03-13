@@ -8,6 +8,7 @@
   if (!module_ibmpc (outer)) return false;
   if (!module_iconqnx (outer)) return false;
   if (!module_latin1_ascii (outer)) return false;
+  if (!module_java (outer)) return false;
   if (!module_mule (outer)) return false;
   if (!module_strips (outer)) return false;
   if (!module_testdump (outer)) return false;
