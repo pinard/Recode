@@ -794,6 +794,7 @@ class Strips(Options):
                 code = 0
                 aliases = []
                 remark = []
+                #FIXME:match = re.match('(CP|IBM|windows-)([0-9]+)$', charset)
                 match = re.match('(CP|IBM)([0-9]+)$', charset)
                 if match:
                     self.implied_surface[match.group(2)] = 'crlf'
@@ -802,14 +803,6 @@ class Strips(Options):
                     self.declare_alias.append((charset, charset))
                     self.alias_count += 1
                     continue
-                #FIXME:match = re.match('windows-([0-9]+)$', charset)
-                #FIXME:if match:
-                #FIXME:      self.implied_surface[match.group(1)] = 'crlf'
-                #FIXME:      self.implied_surface['CP' + match.group(1)] = 'crlf'
-                #FIXME:      self.implied_surface['IBM' + match.group(1)] = 'crlf'
-                #FIXME:      self.declare_alias.append((charset, charset))
-                #FIXME:      self.alias_count = self.alias_count + 1
-                #FIXME:      continue
                 if charset in ('macintosh', 'macintosh_ce'):
                     self.implied_surface[charset] = 'cr'
                     self.declare_alias.append((charset, charset))
@@ -1141,7 +1134,7 @@ class Strips(Options):
             aliases = self.aliases_map[charset]
             if aliases:
                 if len(aliases) == 1:
-                    if aliases[0]:      # FIXME: pourquoi parfois vide ??
+                    if aliases[0]:      # FIXME: why empty sometimes?
                         write('@tindex %s\n'
                               '@code{%s} is an alias for this charset.\n'
                               % (re.sub(':([0-9]+)', r'(\1)', aliases[0]),
