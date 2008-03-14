@@ -170,6 +170,7 @@ ISO_6937-2-25 iso-ir-152
 ISO_8859-supp iso-ir-154 latin1-2-5
 ISO_10367-box iso-ir-155
 IT ISO646-IT iso-ir-15
+Java
 JIS_C6220-1969-jp iso-ir-13 JIS_C6220-1969 katakana x0201-7
 JIS_C6220-1969-ro ISO646-JP iso-ir-14 jp
 JIS_C6229-1984-a jp-ocr-a
