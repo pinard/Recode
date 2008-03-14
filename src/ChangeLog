@@ -128,8 +128,8 @@
 
 	* task.c (recode_perform_task): Subtask output pointers were
 	not copied into task output.
-	Reported by Enrik Berkhan, Frederic Gobry, Holger Benl and
-	Roman Suzi.
+	Reported by Alexander Kurz, Enrik Berkhan, Frederic Gobry,
+	Holger Benl and Roman Suzi.
 
 	* hash.c: Rename some hash_* symbols to recode_hash_* for
 	avoiding collisions between php4-recode and a few others tools.
