@@ -1,3 +1,8 @@
+2008-03-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* main.c: Inhibit iconv whenever -h is used.
+	Reported by Richard Nault.
+
 2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* java.c: New.

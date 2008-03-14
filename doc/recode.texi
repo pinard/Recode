@@ -829,14 +829,16 @@ Strings @var{before} and @var{after} are cleaned before being used according
 to the syntax of @var{language}.
 
 Even if Recode tries its best, this option does not always succeed in
-producing the requested source table, it then prints @samp{Recoding is too
-complex for a mere table}.  It will succeed however, provided the recoding
-can be internally represented by only one step after the optimisation phase,
-and if this merged step conveys a one-to-one or a one-to-many explicit
-table.  Also, when attempting to produce sources tables, Recode
-relaxes its checking a tiny bit: it ignores the algorithmic part of some
-tabular recodings, it also avoids the processing of implied surfaces.
-But this is all fairly technical.  Better try and see!
+producing the requested source table, it then prints @samp{Recoding
+is too complex for a mere table}.  It will succeed however, provided
+the recoding can be internally represented by only one step after the
+optimisation phase, and if this merged step conveys a one-to-one or
+a one-to-many explicit table.  To increase the probability that this
+happens, @code{iconv} initialisation is currently inhibited whenever
+this option is used.  Also, when attempting to produce sources tables,
+Recode relaxes its checking a tiny bit: it ignores the algorithmic part
+of some tabular recodings, it also avoids the processing of implied
+surfaces.  But this is all fairly technical.  Better try and see!
 
 Most tables are produced using decimal numbers to refer to character
 values@footnote{The author of Recode by far prefer expressing numbers

@@ -723,11 +723,13 @@ are not meant to accompany actual file recodings.  These options are:
      is too complex for a mere table'.  It will succeed however,
      provided the recoding can be internally represented by only one
      step after the optimisation phase, and if this merged step conveys
-     a one-to-one or a one-to-many explicit table.  Also, when
-     attempting to produce sources tables, Recode relaxes its checking
-     a tiny bit: it ignores the algorithmic part of some tabular
-     recodings, it also avoids the processing of implied surfaces.  But
-     this is all fairly technical.  Better try and see!
+     a one-to-one or a one-to-many explicit table.  To increase the
+     probability that this happens, `iconv' initialisation is currently
+     inhibited whenever this option is used.  Also, when attempting to
+     produce sources tables, Recode relaxes its checking a tiny bit: it
+     ignores the algorithmic part of some tabular recodings, it also
+     avoids the processing of implied surfaces.  But this is all fairly
+     technical.  Better try and see!
 
      Most tables are produced using decimal numbers to refer to
      character values(1).  Yet, users who know all Recode tricks and
@@ -5066,7 +5068,7 @@ Concept Index
 * charsets for CDC machines:             CDC.                 (line   6)
 * charsets, aliases:                     Requests.            (line  80)
 * charsets, chaining in a request:       Requests.            (line  23)
-* charsets, guessing:                    Listings.            (line  63)
+* charsets, guessing:                    Listings.            (line  65)
 * charsets, overview:                    Charset overview.    (line   6)
 * chset tools:                           Tabular.             (line   6)
 * codepages:                             IBM and MS.          (line   6)
@@ -5109,8 +5111,8 @@ Concept Index
 * file time stamps:                      Recoding.            (line  26)
 * filter operation:                      Synopsis.            (line  27)
 * force recoding:                        Reversibility.       (line  10)
-* French description of charsets:        Listings.            (line 210)
-* guessing charsets:                     Listings.            (line  63)
+* French description of charsets:        Listings.            (line 212)
+* guessing charsets:                     Listings.            (line  65)
 * Haible, Bruno:                         iconv.               (line   6)
 * handling errors:                       Errors.              (line   6)
 * help page, printing:                   Listings.            (line  14)
@@ -5120,11 +5122,11 @@ Concept Index
 * IBM graphics characters:               Recoding.            (line  16)
 * iconv:                                 Design.              (line  98)
 * iconv library:                         iconv.               (line   6)
-* identifying subsets in charsets:       Listings.            (line 222)
+* identifying subsets in charsets:       Listings.            (line 224)
 * ignore charsets:                       Recoding.            (line  60)
 * implied surfaces:                      Requests.            (line  69)
 * impossible conversions:                Charset overview.    (line  33)
-* information about charsets:            Listings.            (line 153)
+* information about charsets:            Listings.            (line 155)
 * initialisation functions, outer:       Outer level.         (line  45)
 * initialisation functions, request:     Request level.       (line  52)
 * initialisation functions, task:        Task level.          (line  56)
@@ -5145,7 +5147,7 @@ Concept Index
 * letter case, in charset and surface names: Requests.        (line  93)
 * libiconv:                              iconv.               (line   6)
 * library, iconv:                        iconv.               (line   6)
-* listing charsets:                      Listings.            (line 153)
+* listing charsets:                      Listings.            (line 155)
 * Macintosh charset:                     Apple-Mac.           (line   6)
 * map filling:                           Reversibility.       (line  98)
 * map filling, disable:                  Reversibility.       (line  48)
@@ -5210,7 +5212,7 @@ Concept Index
 * strict operation:                      Reversibility.       (line  48)
 * string and comments conversion:        Mixed.               (line  39)
 * structural surfaces:                   Surfaces.            (line  44)
-* subsets in charsets:                   Listings.            (line 222)
+* subsets in charsets:                   Listings.            (line 224)
 * super-charsets:                        Mule.                (line   6)
 * supported programming languages:       Listings.            (line  26)
 * suppressing diagnostic messages:       Reversibility.       (line  36)
@@ -5235,7 +5237,7 @@ Concept Index
 * tutorial:                              Tutorial.            (line   6)
 * unavailable conversions:               Charset overview.    (line  33)
 * Unicode:                               UCS-2.               (line   6)
-* unknown charsets:                      Listings.            (line  63)
+* unknown charsets:                      Listings.            (line  65)
 * unreachable charsets:                  Charset overview.    (line  33)
 * untranslatable input, error message:   Errors.              (line  50)
 * valid characters in charset names:     Requests.            (line  10)
@@ -5261,14 +5263,14 @@ This is an alphabetical list of all command-line options accepted by
 * --colons:                              Recoding.            (line  11)
 * --copyright:                           Listings.            (line  19)
 * --diacritics:                          Mixed.               (line  20)
-* --find-subsets:                        Listings.            (line 222)
+* --find-subsets:                        Listings.            (line 224)
 * --force:                               Reversibility.       (line  10)
 * --graphics:                            Recoding.            (line  16)
 * --header:                              Listings.            (line  26)
 * --help:                                Listings.            (line  14)
 * --ignore:                              Recoding.            (line  60)
-* --known=:                              Listings.            (line  63)
-* --list:                                Listings.            (line 153)
+* --known=:                              Listings.            (line  65)
+* --list:                                Listings.            (line 155)
 * --quiet:                               Reversibility.       (line  36)
 * --sequence:                            Sequencing.          (line  23)
 * --silent:                              Reversibility.       (line  36)
@@ -5284,14 +5286,14 @@ This is an alphabetical list of all command-line options accepted by
 * -g:                                    Recoding.            (line  16)
 * -h:                                    Listings.            (line  26)
 * -i:                                    Sequencing.          (line  29)
-* -k:                                    Listings.            (line  63)
-* -l:                                    Listings.            (line 153)
+* -k:                                    Listings.            (line  65)
+* -l:                                    Listings.            (line 155)
 * -p:                                    Sequencing.          (line  40)
 * -q:                                    Reversibility.       (line  36)
 * -S:                                    Mixed.               (line  39)
 * -s:                                    Reversibility.       (line  48)
 * -t:                                    Recoding.            (line  26)
-* -T:                                    Listings.            (line 222)
+* -T:                                    Listings.            (line 224)
 * -v:                                    Recoding.            (line  35)
 * -x:                                    Recoding.            (line  60)
 
@@ -5319,8 +5321,8 @@ and variables in the Recode library.
 * file_one_to_many:                      New charsets.        (line  70)
 * file_one_to_one:                       New charsets.        (line  58)
 * find_charset:                          Charset level.       (line  15)
-* LANG, when listing charsets:           Listings.            (line 210)
-* LANGUAGE, when listing charsets:       Listings.            (line 210)
+* LANG, when listing charsets:           Listings.            (line 212)
+* LANGUAGE, when listing charsets:       Listings.            (line 212)
 * list_all_charsets:                     Charset level.       (line  15)
 * list_concise_charset:                  Charset level.       (line  15)
 * list_full_charset:                     Charset level.       (line  15)
@@ -6125,82 +6127,82 @@ Ref: Requests-Footnote-129293
 Ref: Requests-Footnote-229360
 Ref: Requests-Footnote-329538
 Node: Listings29997
-Ref: Listings-Footnote-141146
-Node: Recoding41469
-Node: Reversibility44290
-Ref: Reversibility-Footnote-152745
-Node: Sequencing52882
-Node: Mixed55326
-Node: Emacs58694
-Node: Debugging59728
-Node: Library63998
-Node: Outer level66958
-Node: Request level72307
-Node: Task level83299
-Node: Charset level93929
-Node: Errors94771
-Ref: Errors-Footnote-199617
-Ref: Errors-Footnote-299731
-Node: Universal100092
-Ref: Universal-Footnote-1103204
-Ref: Universal-Footnote-2103270
-Node: UCS-2103483
-Node: UCS-4106009
-Node: UTF-7106549
-Node: UTF-8107144
-Node: UTF-16111449
-Node: count-characters112597
-Node: dump-with-names113268
-Node: iconv115817
-Node: Tabular119248
-Node: ASCII misc141461
-Node: ASCII141827
-Node: ISO 8859142643
-Node: ASCII-BS144937
-Node: flat146774
-Node: IBM and MS147445
-Node: EBCDIC147989
-Node: IBM-PC150085
-Ref: IBM-PC-Footnote-1152199
-Node: Icon-QNX152358
-Node: CDC152783
-Node: Display Code154464
-Ref: Display Code-Footnote-1156745
-Node: CDC-NOS156950
-Node: Bang-Bang158912
-Node: Micros160841
-Node: Apple-Mac161224
-Node: AtariST163258
-Node: Miscellaneous164244
-Node: HTML165163
-Node: LaTeX171152
-Node: Texinfo171926
-Node: Vietnamese172698
-Node: African173674
-Node: Others175024
-Node: Java176477
-Node: Texte177144
-Ref: Texte-Footnote-1181692
-Ref: Texte-Footnote-2181772
-Ref: Texte-Footnote-3182247
-Node: Mule182344
-Ref: Mule-Footnote-1184125
-Node: Surfaces184644
-Ref: Surfaces-Footnote-1188063
-Node: Permutations188167
-Node: End lines189008
-Node: MIME191209
-Node: Dump192396
-Node: Test196566
-Node: Internals199044
-Node: Main flow200272
-Node: New charsets203375
-Node: New surfaces207913
-Node: Design208639
-Ref: Design-Footnote-1217805
-Node: Concept Index217909
-Node: Option Index233382
-Node: Library Index236235
-Node: Charset and Surface Index240810
+Ref: Listings-Footnote-141280
+Node: Recoding41603
+Node: Reversibility44424
+Ref: Reversibility-Footnote-152879
+Node: Sequencing53016
+Node: Mixed55460
+Node: Emacs58828
+Node: Debugging59862
+Node: Library64132
+Node: Outer level67092
+Node: Request level72441
+Node: Task level83433
+Node: Charset level94063
+Node: Errors94905
+Ref: Errors-Footnote-199751
+Ref: Errors-Footnote-299865
+Node: Universal100226
+Ref: Universal-Footnote-1103338
+Ref: Universal-Footnote-2103404
+Node: UCS-2103617
+Node: UCS-4106143
+Node: UTF-7106683
+Node: UTF-8107278
+Node: UTF-16111583
+Node: count-characters112731
+Node: dump-with-names113402
+Node: iconv115951
+Node: Tabular119382
+Node: ASCII misc141595
+Node: ASCII141961
+Node: ISO 8859142777
+Node: ASCII-BS145071
+Node: flat146908
+Node: IBM and MS147579
+Node: EBCDIC148123
+Node: IBM-PC150219
+Ref: IBM-PC-Footnote-1152333
+Node: Icon-QNX152492
+Node: CDC152917
+Node: Display Code154598
+Ref: Display Code-Footnote-1156879
+Node: CDC-NOS157084
+Node: Bang-Bang159046
+Node: Micros160975
+Node: Apple-Mac161358
+Node: AtariST163392
+Node: Miscellaneous164378
+Node: HTML165297
+Node: LaTeX171286
+Node: Texinfo172060
+Node: Vietnamese172832
+Node: African173808
+Node: Others175158
+Node: Java176611
+Node: Texte177278
+Ref: Texte-Footnote-1181826
+Ref: Texte-Footnote-2181906
+Ref: Texte-Footnote-3182381
+Node: Mule182478
+Ref: Mule-Footnote-1184259
+Node: Surfaces184778
+Ref: Surfaces-Footnote-1188197
+Node: Permutations188301
+Node: End lines189142
+Node: MIME191343
+Node: Dump192530
+Node: Test196700
+Node: Internals199178
+Node: Main flow200406
+Node: New charsets203509
+Node: New surfaces208047
+Node: Design208773
+Ref: Design-Footnote-1217939
+Node: Concept Index218043
+Node: Option Index233516
+Node: Library Index236369
+Node: Charset and Surface Index240944
 
 End Tag Table

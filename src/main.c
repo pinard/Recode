@@ -640,6 +640,8 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
     unsigned flags = RECODE_AUTO_ABORT_FLAG;
     if (ignored_name && *ignored_name == ':')
       flags |= RECODE_NO_ICONV_FLAG;
+    if (request_option.make_header_flag)
+      flags |= RECODE_NO_ICONV_FLAG;
     outer = recode_new_outer (flags);
     if (!outer)
       abort ();
