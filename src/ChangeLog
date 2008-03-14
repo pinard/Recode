@@ -41,12 +41,12 @@
 	Solve an old bug about loosing a few characters every 2048.
 	* iconv.c (wrapped_transform): Rewritten.
 	(transform_with_iconv): Simplified, use only one iconv_t.
-	Reported by Alexander Kurz, Andrew Green, Daniel Pfeiffer,
-	David Necas, Éric Bischoff, Frederik Fouvry, Guillaume Rumeau,
-	Jean-Christophe Guillain, John Gorman, Luc Maisonobe,
-	Marcin Owsiany, Martin Trautmann, Mikko Harjula, Peter Much,
-	Petr Pajas, Régis Martin, Stephen Walkauskas, Urban Mueller
-	dand Volker Wysk.
+	Reported by Alexander Kurz, Andreas Kunert, Andrew Green, Daniel
+	Pfeiffer, David Necas, Éric Bischoff, Frederik Fouvry, Guillaume
+	Rumeau, Jean-Christophe Guillain, John Gorman, Luc Maisonobe,
+	Marcin Owsiany, Martin Trautmann, Mikko Harjula, Pavel Forsite,
+	Peter Much, Petr Pajas, Régis Martin, Stephen Walkauskas,
+	Urban Mueller and Volker Wysk.
 
 	* Makefile.am (EXTRA_DIST): Add stamp-strip.
 

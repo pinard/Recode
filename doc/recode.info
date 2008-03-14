@@ -182,8 +182,12 @@ resort to many other email conversions, yet more rarely than the
 frequent cases above.
 
      It _seems_ like this should be doable using Recode.  However, when
-     I try something like `grecode mac macfile.txt' I get nothing
+     I try something like `recode mac macfile.txt' I get nothing
      out--no error, no output, nothing.
+
+   *Note_* For the following discussion to be true, you should have
+something like `export LANG=fr_FR.ISO-8859-1' in your environment, the
+important bit here being the specification of an preferred charset.
 
    Presuming you are using some recent version of Recode, the command:
 
@@ -652,10 +656,13 @@ BEFORE charset.(2)
 
    When a charset name is omitted or left empty, the value of the
 `DEFAULT_CHARSET' variable in the environment is used instead.  If this
-variable is not defined, the Recode library uses the current locale's
-encoding.  On POSIX compliant systems, this depends on the first
-non-empty value among the environment variables LC_ALL, LC_CTYPE, LANG,
-and can be determined through the command `locale charmap'.
+variable is not defined, the Recode library (from version 3.6 and up)
+uses the current locale's encoding.  On POSIX compliant systems, this
+depends on the first non-empty value among the environment variables
+LC_ALL, LC_CTYPE, LANG, and can be determined through the command
+`locale charmap'.  If the current locale's encoding may not be
+resolved, then Recode presumes `ASCII' (or, for Recode 3.6 only:
+`CHAR').
 
    If the charset name is omitted but followed by surfaces, the surfaces
 then qualify the usual or default charset.  For example, the request
@@ -5457,7 +5464,8 @@ by Recode, and their aliases.
 * Apple-Mac:                             Apple-Mac.           (line   6)
 * arabic:                                Tabular.             (line 464)
 * arabic7:                               Tabular.             (line  74)
-* ASCII:                                 Tabular.             (line  69)
+* ASCII <1>:                             Tabular.             (line  69)
+* ASCII:                                 Requests.            (line 104)
 * ASCII, an alias for the ANSI_X3.4-1968 charset: ASCII.      (line   6)
 * ASCII-BS, and its aliases:             ASCII-BS.            (line   6)
 * ASMO-708:                              Tabular.             (line 464)
@@ -5475,6 +5483,7 @@ by Recode, and their aliases.
 * BS_viewdata, aliases and source:       Tabular.             (line  82)
 * ca:                                    Tabular.             (line 118)
 * CDC-NOS, and its aliases:              CDC-NOS.             (line   6)
+* CHAR:                                  Requests.            (line 104)
 * cl:                                    End lines.           (line  37)
 * cn:                                    Tabular.             (line 211)
 * combined-UCS-2:                        UCS-2.               (line  34)
@@ -6114,95 +6123,95 @@ by Recode, and their aliases.
 Tag Table:
 Node: Top1148
 Node: Tutorial5608
-Node: Introduction9836
-Node: Charset overview14070
-Node: Surface overview15875
-Node: Contributing17343
-Ref: Contributing-Footnote-119577
-Node: Invoking recode19711
-Node: Synopsis20666
-Ref: Synopsis-Footnote-123106
-Node: Requests23403
-Ref: Requests-Footnote-129293
-Ref: Requests-Footnote-229360
-Ref: Requests-Footnote-329538
-Node: Listings29997
-Ref: Listings-Footnote-141280
-Node: Recoding41603
-Node: Reversibility44424
-Ref: Reversibility-Footnote-152879
-Node: Sequencing53016
-Node: Mixed55460
-Node: Emacs58828
-Node: Debugging59862
-Node: Library64132
-Node: Outer level67092
-Node: Request level72441
-Node: Task level83433
-Node: Charset level94063
-Node: Errors94905
-Ref: Errors-Footnote-199751
-Ref: Errors-Footnote-299865
-Node: Universal100226
-Ref: Universal-Footnote-1103338
-Ref: Universal-Footnote-2103404
-Node: UCS-2103617
-Node: UCS-4106143
-Node: UTF-7106683
-Node: UTF-8107278
-Node: UTF-16111583
-Node: count-characters112731
-Node: dump-with-names113402
-Node: iconv115951
-Node: Tabular119382
-Node: ASCII misc141595
-Node: ASCII141961
-Node: ISO 8859142777
-Node: ASCII-BS145071
-Node: flat146908
-Node: IBM and MS147579
-Node: EBCDIC148123
-Node: IBM-PC150219
-Ref: IBM-PC-Footnote-1152333
-Node: Icon-QNX152492
-Node: CDC152917
-Node: Display Code154598
-Ref: Display Code-Footnote-1156879
-Node: CDC-NOS157084
-Node: Bang-Bang159046
-Node: Micros160975
-Node: Apple-Mac161358
-Node: AtariST163392
-Node: Miscellaneous164378
-Node: HTML165297
-Node: LaTeX171286
-Node: Texinfo172060
-Node: Vietnamese172832
-Node: African173808
-Node: Others175158
-Node: Java176611
-Node: Texte177278
-Ref: Texte-Footnote-1181826
-Ref: Texte-Footnote-2181906
-Ref: Texte-Footnote-3182381
-Node: Mule182478
-Ref: Mule-Footnote-1184259
-Node: Surfaces184778
-Ref: Surfaces-Footnote-1188197
-Node: Permutations188301
-Node: End lines189142
-Node: MIME191343
-Node: Dump192530
-Node: Test196700
-Node: Internals199178
-Node: Main flow200406
-Node: New charsets203509
-Node: New surfaces208047
-Node: Design208773
-Ref: Design-Footnote-1217939
-Node: Concept Index218043
-Node: Option Index233516
-Node: Library Index236369
-Node: Charset and Surface Index240944
+Node: Introduction10043
+Node: Charset overview14277
+Node: Surface overview16082
+Node: Contributing17550
+Ref: Contributing-Footnote-119784
+Node: Invoking recode19918
+Node: Synopsis20873
+Ref: Synopsis-Footnote-123313
+Node: Requests23610
+Ref: Requests-Footnote-129645
+Ref: Requests-Footnote-229712
+Ref: Requests-Footnote-329890
+Node: Listings30349
+Ref: Listings-Footnote-141632
+Node: Recoding41955
+Node: Reversibility44776
+Ref: Reversibility-Footnote-153231
+Node: Sequencing53368
+Node: Mixed55812
+Node: Emacs59180
+Node: Debugging60214
+Node: Library64484
+Node: Outer level67444
+Node: Request level72793
+Node: Task level83785
+Node: Charset level94415
+Node: Errors95257
+Ref: Errors-Footnote-1100103
+Ref: Errors-Footnote-2100217
+Node: Universal100578
+Ref: Universal-Footnote-1103690
+Ref: Universal-Footnote-2103756
+Node: UCS-2103969
+Node: UCS-4106495
+Node: UTF-7107035
+Node: UTF-8107630
+Node: UTF-16111935
+Node: count-characters113083
+Node: dump-with-names113754
+Node: iconv116303
+Node: Tabular119734
+Node: ASCII misc141947
+Node: ASCII142313
+Node: ISO 8859143129
+Node: ASCII-BS145423
+Node: flat147260
+Node: IBM and MS147931
+Node: EBCDIC148475
+Node: IBM-PC150571
+Ref: IBM-PC-Footnote-1152685
+Node: Icon-QNX152844
+Node: CDC153269
+Node: Display Code154950
+Ref: Display Code-Footnote-1157231
+Node: CDC-NOS157436
+Node: Bang-Bang159398
+Node: Micros161327
+Node: Apple-Mac161710
+Node: AtariST163744
+Node: Miscellaneous164730
+Node: HTML165649
+Node: LaTeX171638
+Node: Texinfo172412
+Node: Vietnamese173184
+Node: African174160
+Node: Others175510
+Node: Java176963
+Node: Texte177630
+Ref: Texte-Footnote-1182178
+Ref: Texte-Footnote-2182258
+Ref: Texte-Footnote-3182733
+Node: Mule182830
+Ref: Mule-Footnote-1184611
+Node: Surfaces185130
+Ref: Surfaces-Footnote-1188549
+Node: Permutations188653
+Node: End lines189494
+Node: MIME191695
+Node: Dump192882
+Node: Test197052
+Node: Internals199530
+Node: Main flow200758
+Node: New charsets203861
+Node: New surfaces208399
+Node: Design209125
+Ref: Design-Footnote-1218291
+Node: Concept Index218395
+Node: Option Index233868
+Node: Library Index236721
+Node: Charset and Surface Index241296
 
 End Tag Table

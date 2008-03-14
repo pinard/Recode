@@ -231,9 +231,13 @@ other email conversions, yet more rarely than the frequent cases above.
 
 @quotation
 It @emph{seems} like this should be doable using Recode.  However,
-when I try something like @samp{grecode mac macfile.txt} I get nothing
+when I try something like @samp{recode mac macfile.txt} I get nothing
 out---no error, no output, nothing.
 @end quotation
+
+@strong{Note:} For the following discussion to be true, you should have
+something like @samp{export LANG=fr_FR.ISO-8859-1} in your environment,
+the important bit here being the specification of an preferred charset.
 
 Presuming you are using some recent version of Recode, the command:
 
@@ -758,12 +762,17 @@ not very useful, as the recoding reduces to a mere copy in that case.}
 @cindex default charset
 @cindex charset, default
 @vindex DEFAULT_CHARSET
+@tindex ASCII
+@tindex CHAR
 When a charset name is omitted or left empty, the value of the
-@code{DEFAULT_CHARSET} variable in the environment is used instead.  If this
-variable is not defined, the Recode library uses the current locale's
-encoding.  On POSIX compliant systems, this depends on the first non-empty
-value among the environment variables LC_ALL, LC_CTYPE, LANG, and can be
-determined through the command @samp{locale charmap}.
+@code{DEFAULT_CHARSET} variable in the environment is used instead.
+If this variable is not defined, the Recode library (from version
+3.6 and up) uses the current locale's encoding.  On POSIX compliant
+systems, this depends on the first non-empty value among the environment
+variables LC_ALL, LC_CTYPE, LANG, and can be determined through the
+command @samp{locale charmap}.  If the current locale's encoding may not
+be resolved, then Recode presumes @code{ASCII} (or, for Recode
+3.6 only: @code{CHAR}).
 
 If the charset name is omitted but followed by surfaces, the surfaces
 then qualify the usual or default charset.  For example, the request

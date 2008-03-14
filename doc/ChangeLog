@@ -1,3 +1,8 @@
+2008-03-14  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recode.texi: More about omitted charsets.
+	Reported by Pascal Gourdel.
+
 2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recode.texi: Clarify include files and configuration matters.
