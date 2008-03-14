@@ -4,9 +4,9 @@
 # François Pinard <pinard@iro.umontreal.ca>, 2008.
 
 """\
-After "git clone" or "git checkout", file timestamps may be a bit random,
-and unless you have all maintainer tools handy, it can put you in
-some misery.  This script makes all timestamps to be identical.
+After "patch", "git clone" or "git checkout", file timestamps may be a
+bit random, and unless you have all maintainer tools handy, it can put
+you in some misery.  This script makes all timestamps to be identical.
 """
 
 __metaclass__ = type
@@ -23,8 +23,7 @@ class Main:
         assert not arguments
         # Use a reference file.
         if not os.path.exists('configure.ac'):
-            sys.exit(
-                "You should first cd to the distribution directory first.")
+            sys.exit("You should first cd to the distribution directory.")
         timestamp = os.path.getmtime('configure.ac')
         # Walk all files, changing their timestamp.
         stack = ['.']

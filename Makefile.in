@@ -227,7 +227,8 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnits
 ACLOCAL_AMFLAGS = -I m4
-EXTRA_DIST = COPYING-LIB aclocal.sh m4/ChangeLog tables.py \
+EXTRA_DIST = COPYING-LIB aclocal.sh after-patch.py after-patch.sh \
+m4/ChangeLog tables.py \
 keld/NomsSeulsfinal.lst keld/charsets.def keld/control.def \
 keld/iso10646.def keld/mnemonics,ds keld/other.def keld/rfc1345.txt
 
