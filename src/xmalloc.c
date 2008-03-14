@@ -237,5 +237,5 @@ xmemdup (void const *p, size_t s)
 char *
 xstrdup (char const *string)
 {
-  return xmemdup (string, strlen (string) + 1);
+  return (char *) xmemdup (string, strlen (string) + 1);
 }

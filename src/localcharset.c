@@ -78,6 +78,7 @@ static char * volatile charset_aliases;
 static const char *
 get_charset_aliases (void)
 {
+  static char empty[1] = "";
   char *cp;
 
   cp = charset_aliases;
@@ -106,7 +107,7 @@ get_charset_aliases (void)
 
       if (file_name == NULL || (fp = fopen (file_name, "r")) == NULL)
 	/* Out of memory or file not found, treat it as empty.  */
-	cp = "";
+	cp = empty;
       else
 	{
 	  /* Parse the file's contents.  */
@@ -142,12 +143,12 @@ get_charset_aliases (void)
 	      if (res_size == 0)
 		{
 		  res_size = l1 + 1 + l2 + 1;
-		  res_ptr = malloc (res_size + 1);
+		  res_ptr = (char *) malloc (res_size + 1);
 		}
 	      else
 		{
 		  res_size += l1 + 1 + l2 + 1;
-		  res_ptr = realloc (res_ptr, res_size + 1);
+		  res_ptr = (char *) realloc (res_ptr, res_size + 1);
 		}
 	      if (res_ptr == NULL)
 		{
@@ -160,7 +161,7 @@ get_charset_aliases (void)
 	    }
 	  fclose (fp);
 	  if (res_size == 0)
-	    cp = "";
+	    cp = empty;
 	  else
 	    {
 	      *(res_ptr + res_size) = '\0';

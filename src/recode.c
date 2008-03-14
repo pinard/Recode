@@ -391,7 +391,7 @@ transform_byte_to_ucs2 (RECODE_SUBTASK subtask)
 static size_t
 ucs2_to_byte_hash (const void *void_data, size_t table_size)
 {
-  const struct ucs2_to_byte *data = void_data;
+  const struct ucs2_to_byte *data = (const struct ucs2_to_byte *) void_data;
 
   return data->code % table_size;
 }
@@ -399,8 +399,8 @@ ucs2_to_byte_hash (const void *void_data, size_t table_size)
 static bool
 ucs2_to_byte_compare (const void *void_first, const void *void_second)
 {
-  const struct ucs2_to_byte *first = void_first;
-  const struct ucs2_to_byte *second = void_second;
+  const struct ucs2_to_byte *first = (const struct ucs2_to_byte *) void_first;
+  const struct ucs2_to_byte *second = (const struct ucs2_to_byte *) void_second;
 
   return first->code == second->code;
 }
@@ -449,7 +449,7 @@ init_ucs2_to_byte (RECODE_STEP step,
 bool
 transform_ucs2_to_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->local;
+  Hash_table *table = (Hash_table *) subtask->step->local;
   struct ucs2_to_byte lookup;
   struct ucs2_to_byte *entry;
   unsigned input_value;		/* current UCS-2 character */
@@ -457,7 +457,7 @@ transform_ucs2_to_byte (RECODE_SUBTASK subtask)
   while (get_ucs2 (&input_value, subtask))
     {
       lookup.code = input_value;
-      entry = hash_lookup (table, &lookup);
+      entry = (struct ucs2_to_byte *) hash_lookup (table, &lookup);
       if (entry)
 	put_byte (entry->byte, subtask);
       else
@@ -575,7 +575,7 @@ recode_format_table (RECODE_REQUEST request,
 
   if (step->step_type == RECODE_BYTE_TO_BYTE)
     {
-      const unsigned char *table = step->step_table;
+      const unsigned char *table = (const unsigned char *) step->step_table;
 
       /* Produce a one to one recoding table.  */
 
@@ -617,7 +617,7 @@ recode_format_table (RECODE_REQUEST request,
     }
   else if (step->step_type == RECODE_BYTE_TO_STRING)
     {
-      const char *const *table = step->step_table;
+      const char *const *table = (const char *const *) step->step_table;
 
       /* Produce a one to many recoding table.  */
 

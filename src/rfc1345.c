@@ -92,7 +92,7 @@ struct local
 static bool
 transform_ucs2_rfc1345 (RECODE_SUBTASK subtask)
 {
-  struct local *local = subtask->step->local;
+  struct local *local = (struct local *) subtask->step->local;
   const char intro = local->intro;
   unsigned value;
 
@@ -144,7 +144,7 @@ transform_ucs2_rfc1345 (RECODE_SUBTASK subtask)
 static bool
 transform_rfc1345_ucs2 (RECODE_SUBTASK subtask)
 {
-  struct local *local = subtask->step->local;
+  struct local *local = (struct local *) subtask->step->local;
   const char intro = local->intro;
   int character;
 

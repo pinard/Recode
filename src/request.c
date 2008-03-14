@@ -472,7 +472,7 @@ complete_double_ucs2_step (RECODE_OUTER outer, RECODE_STEP step)
     {
       /* Construct the array of binding items for the charset.  */
 
-      data = side->charset->data;
+      data = (const struct strip_data *) side->charset->data;
       pool = data->pool;
       item_cursor = side->item;
       byte = 0;
@@ -649,7 +649,7 @@ simplify_sequence (RECODE_REQUEST request)
 	while (in < limit
 	       && (table_type (request, in) == RECODE_BYTE_TO_BYTE))
 	  {
-	    const unsigned char *table = in->step_table;
+	    const unsigned char *table = (const unsigned char *) in->step_table;
 
 	    for (counter = 0; counter < 256; counter++)
 	      temp[counter] = table[accum[counter]];
@@ -670,7 +670,7 @@ simplify_sequence (RECODE_REQUEST request)
 
 	    && (ALLOC (string, 256, const char *)))
 	  {
-	    const char *const *table = in->step_table;
+	    const char *const *table = (const char *const *) in->step_table;
 
 	    for (counter = 0; counter < 256; counter++)
 	      string[counter] = table[accum[counter]];
@@ -754,11 +754,11 @@ scan_options (RECODE_REQUEST request)
 
   while (*request->scan_cursor == '+')
     {
-      RECODE_OPTION_LIST new
-	= ALLOC (new, 1, struct recode_option_list);
+      RECODE_OPTION_LIST new_
+	= ALLOC (new_, 1, struct recode_option_list);
       char *copy;
 
-      if (!new)
+      if (!new_)
 	break;			/* FIXME: should interrupt decoding */
 
       request->scan_cursor++;
@@ -768,11 +768,11 @@ scan_options (RECODE_REQUEST request)
 	break;			/* FIXME: should interrupt decoding */
       strcpy (copy, request->scanned_string);
 
-      new->option = copy;
+      new_->option = copy;
       if (!list)
-	list = new;
-      new->next = last;
-      last = new;
+	list = new_;
+      new_->next = last;
+      last = new_;
     }
   return list;
 }

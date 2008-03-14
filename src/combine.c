@@ -65,7 +65,7 @@
 static size_t
 combined_hash (const void *void_data, size_t table_size)
 {
-  const unsigned short *data = void_data;
+  const unsigned short *data = (const unsigned short *) void_data;
 
   return *data % table_size;
 }
@@ -73,8 +73,8 @@ combined_hash (const void *void_data, size_t table_size)
 static bool
 combined_compare (const void *void_first, const void *void_second)
 {
-  const unsigned short *first = void_first;
-  const unsigned short *second = void_second;
+  const unsigned short *first = (const unsigned short *) void_first;
+  const unsigned short *second = (const unsigned short *) void_second;
 
   return *first == *second;
 }
@@ -85,7 +85,7 @@ init_explode (RECODE_STEP step,
 	      RECODE_CONST_OPTION_LIST before_options,
 	      RECODE_CONST_OPTION_LIST after_options)
 {
-  const unsigned short *data = step->step_table;
+  const unsigned short *data = (const unsigned short *) step->step_table;
   Hash_table *table;
 
   if (before_options || after_options)
@@ -121,13 +121,13 @@ init_explode (RECODE_STEP step,
 bool
 explode_byte_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->step_table;
+  Hash_table *table = (Hash_table *) subtask->step->step_table;
   unsigned value;
 
   while (value = get_byte (subtask), value != EOF)
     {
       unsigned short lookup = value;
-      unsigned short *result = hash_lookup (table, &lookup);
+      unsigned short *result = (unsigned short *) hash_lookup (table, &lookup);
 
       if (result)
 	{
@@ -148,13 +148,13 @@ explode_byte_byte (RECODE_SUBTASK subtask)
 bool
 explode_ucs2_byte (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->step_table;
+  Hash_table *table = (Hash_table *) subtask->step->step_table;
   unsigned value;
 
   while (get_ucs2 (&value, subtask))
     {
       unsigned short lookup = value;
-      unsigned short *result = hash_lookup (table, &lookup);
+      unsigned short *result = (unsigned short *) hash_lookup (table, &lookup);
 
       if (result)
 	{
@@ -175,7 +175,7 @@ explode_ucs2_byte (RECODE_SUBTASK subtask)
 bool
 explode_byte_ucs2 (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->step_table;
+  Hash_table *table = (Hash_table *) subtask->step->step_table;
   unsigned value;
 
   if (value = get_byte (subtask), value != EOF)
@@ -186,7 +186,8 @@ explode_byte_ucs2 (RECODE_SUBTASK subtask)
       while (true)
 	{
 	  unsigned short lookup = value;
-	  unsigned short *result = hash_lookup (table, &lookup);
+	  unsigned short *result
+            = (unsigned short *) hash_lookup (table, &lookup);
 
 	  if (result)
 	    {
@@ -208,7 +209,7 @@ explode_byte_ucs2 (RECODE_SUBTASK subtask)
 bool
 explode_ucs2_ucs2 (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->step_table;
+  Hash_table *table = (Hash_table *) subtask->step->step_table;
   unsigned value;
 
   if (get_ucs2 (&value, subtask))
@@ -219,7 +220,8 @@ explode_ucs2_ucs2 (RECODE_SUBTASK subtask)
       while (true)
 	{
 	  unsigned short lookup = value;
-	  unsigned short *result = hash_lookup (table, &lookup);
+	  unsigned short *result
+            = (unsigned short *) hash_lookup (table, &lookup);
 
 	  if (result)
 	    {
@@ -265,7 +267,7 @@ struct state
 static size_t
 state_hash (const void *void_data, size_t table_size)
 {
-  const struct state *data = void_data;
+  const struct state *data = (const struct state *) void_data;
 
   return data->character % table_size;
 }
@@ -273,8 +275,8 @@ state_hash (const void *void_data, size_t table_size)
 static bool
 state_compare (const void *void_first, const void *void_second)
 {
-  const struct state *first = void_first;
-  const struct state *second = void_second;
+  const struct state *first = (const struct state *) void_first;
+  const struct state *second = (const struct state *) void_second;
 
   return first->character == second->character;
 }
@@ -282,8 +284,8 @@ state_compare (const void *void_first, const void *void_second)
 static void
 state_free (void *void_state)
 {
-  struct state *state = void_state;
-  struct state *shift = state->shift;
+  struct state *state = (struct state *) void_state;
+  struct state *shift = (struct state *) state->shift;
 
   while (shift != NULL)
     {
@@ -321,11 +323,11 @@ prepare_shifted_state (struct state *state, unsigned character,
     }
   else
     {
-      Hash_table *table = step->step_table;
+      Hash_table *table = (Hash_table *) step->step_table;
       struct state lookup;
 
       lookup.character = character;
-      state = hash_lookup (table, &lookup);
+      state = (struct state *) hash_lookup (table, &lookup);
       if (!state)
 	{
 	  if (state= (struct state *) malloc (sizeof (struct state)), !state)
@@ -362,11 +364,11 @@ find_shifted_state (struct state *state, unsigned character,
     }
   else
     {
-      Hash_table *table = step->step_table;
+      Hash_table *table = (Hash_table *) step->step_table;
       struct state lookup;
 
       lookup.character = character;
-      return hash_lookup (table, &lookup);
+      return (struct state *) hash_lookup (table, &lookup);
     }
 }
 
@@ -376,7 +378,7 @@ init_combine (RECODE_STEP step,
 	      RECODE_CONST_OPTION_LIST before_options,
 	      RECODE_CONST_OPTION_LIST after_options)
 {
-  const unsigned short *data = step->step_table;
+  const unsigned short *data = (const unsigned short *) step->step_table;
   Hash_table *table;
 
   if (before_options || after_options)

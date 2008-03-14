@@ -3,6 +3,10 @@
 	* main.c: Inhibit iconv whenever -h is used.
 	Reported by Richard Nault.
 
+	* combine.c, hash.c, html.c, ibmpc.c, localcharset.c, names.c,
+	outer.c, quotearg.c, recode.c, request.c, rfc1345.c, task.c,
+	testdump.c, xmalloc.c: Changes in view of C++.
+
 2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* java.c: New.

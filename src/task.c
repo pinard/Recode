@@ -223,7 +223,8 @@ transform_mere_copy (RECODE_SUBTASK subtask)
 bool
 transform_byte_to_byte (RECODE_SUBTASK subtask)
 {
-  unsigned const char *table = subtask->step->step_table;
+  unsigned const char *table
+    = (unsigned const char *) subtask->step->step_table;
   int input_char;
 
   while (input_char = get_byte (subtask), input_char != EOF)
@@ -239,7 +240,7 @@ transform_byte_to_byte (RECODE_SUBTASK subtask)
 bool
 transform_byte_to_variable (RECODE_SUBTASK subtask)
 {
-  const char *const *table = subtask->step->step_table;
+  const char *const *table = (const char *const *) subtask->step->step_table;
   int input_char;
   const char *output_string;
 

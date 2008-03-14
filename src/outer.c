@@ -542,7 +542,7 @@ unregister_all_modules (RECODE_OUTER outer)
 RECODE_OUTER
 recode_new_outer (unsigned flags)
 {
-  RECODE_OUTER outer = malloc (sizeof (struct recode_outer));
+  RECODE_OUTER outer = (RECODE_OUTER) malloc (sizeof (struct recode_outer));
 
   if (!outer)
     {
@@ -621,7 +621,7 @@ recode_delete_outer (RECODE_OUTER outer)
   if (outer->pair_restriction)
     free (outer->pair_restriction);
   if (outer->alias_table)
-    hash_free (outer->alias_table);
+    hash_free ((Hash_table *) outer->alias_table);
   if (outer->argmatch_charset_array)
     {
       char **cursor;

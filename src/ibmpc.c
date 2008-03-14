@@ -164,14 +164,16 @@ static struct recode_known_pair known_pairs[] =
 
     {255, 160},			/* no-break space */
   };
-#define NUMBER_OF_PAIRS (sizeof (known_pairs) / sizeof (struct recode_known_pair))
+#define NUMBER_OF_PAIRS \
+  (sizeof (known_pairs) / sizeof (struct recode_known_pair))
 
 static bool
 transform_latin1_ibmpc (RECODE_SUBTASK subtask)
 {
   if (subtask->step->fallback_routine == reversibility)
     {
-      const unsigned char *table = subtask->step->step_table;
+      const unsigned char *table
+	= (const unsigned char *) subtask->step->step_table;
       int input_char;
 
       while (input_char = get_byte (subtask), input_char != EOF)
@@ -185,7 +187,8 @@ transform_latin1_ibmpc (RECODE_SUBTASK subtask)
     }
   else
     {
-      const char *const *table = subtask->step->step_table;
+      const char *const *table
+	= (const char *const *) subtask->step->step_table;
       int input_char;
 
       while (input_char = get_byte (subtask), input_char != EOF)
@@ -207,7 +210,8 @@ transform_ibmpc_latin1 (RECODE_SUBTASK subtask)
 {
   if (subtask->step->fallback_routine == reversibility)
     {
-      const unsigned char *table = subtask->step->step_table;
+      const unsigned char *table
+	= (const unsigned char *) subtask->step->step_table;
       int input_char = get_byte (subtask);
 
       while (input_char != EOF)
@@ -240,7 +244,8 @@ transform_ibmpc_latin1 (RECODE_SUBTASK subtask)
     }
   else
     {
-      const char *const *table = subtask->step->step_table;
+      const char *const *table
+	= (const char *const *) subtask->step->step_table;
       int input_char = get_byte (subtask);
 
       while (input_char != EOF)

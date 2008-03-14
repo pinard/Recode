@@ -352,7 +352,7 @@ quotearg_n_options (int n, char const *arg,
     if (size <= qsize)
       {
 	slotvec[n].size = size = qsize + 1;
-	slotvec[n].val = val = xrealloc (val, size);
+	slotvec[n].val = val = (char *) xrealloc (val, size);
 	quotearg_buffer (val, size, arg, (size_t) -1, options);
       }
 

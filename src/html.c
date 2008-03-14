@@ -390,7 +390,7 @@ static struct ucs2_to_string translations [] =
 static size_t
 code_hash (const void *void_data, size_t table_size)
 {
-  struct ucs2_to_string const *data = void_data;
+  struct ucs2_to_string const *data = (struct ucs2_to_string const *) void_data;
 
   return data->code % table_size;
 }
@@ -402,8 +402,10 @@ code_hash (const void *void_data, size_t table_size)
 static bool
 code_compare (const void *void_first, const void *void_second)
 {
-  struct ucs2_to_string const *first = void_first;
-  struct ucs2_to_string const *second = void_second;
+  struct ucs2_to_string const *first
+    = (struct ucs2_to_string const *) void_first;
+  struct ucs2_to_string const *second
+    = (struct ucs2_to_string const *) void_second;
 
   return first->code == second->code;
 }
@@ -507,7 +509,7 @@ init_ucs2_html_v40 (RECODE_STEP step,
 static bool
 transform_ucs2_html (RECODE_SUBTASK subtask)
 {
-  Hash_table *table = subtask->step->step_table;
+  Hash_table *table = (Hash_table *) subtask->step->step_table;
   unsigned value;
 
   while (get_ucs2 (&value, subtask))
@@ -516,7 +518,7 @@ transform_ucs2_html (RECODE_SUBTASK subtask)
       struct ucs2_to_string *entry;
 
       lookup.code = value;
-      entry = hash_lookup (table, &lookup);
+      entry = (struct ucs2_to_string *) hash_lookup (table, &lookup);
       if (entry)
 	{
 	  const char *cursor = entry->string;
@@ -571,7 +573,7 @@ transform_ucs2_html (RECODE_SUBTASK subtask)
 static size_t
 string_hash (const void *void_data, size_t table_size)
 {
-  struct ucs2_to_string const *data = void_data;
+  struct ucs2_to_string const *data = (struct ucs2_to_string const *) void_data;
 
   return hash_string (data->string, table_size);
 }
@@ -583,8 +585,8 @@ string_hash (const void *void_data, size_t table_size)
 static bool
 string_compare (const void *void_first, const void *void_second)
 {
-  struct ucs2_to_string const *first = void_first;
-  struct ucs2_to_string const *second = void_second;
+  struct ucs2_to_string const *first = (struct ucs2_to_string const *) void_first;
+  struct ucs2_to_string const *second = (struct ucs2_to_string const *) void_second;
 
   return strcmp (first->string, second->string) == 0;
 }
@@ -825,7 +827,8 @@ transform_html_ucs2 (RECODE_SUBTASK subtask)
 		struct ucs2_to_string *entry;
 
 		lookup.string = buffer;
-		entry = hash_lookup (subtask->step->step_table, &lookup);
+		entry = (struct ucs2_to_string *) hash_lookup
+		  ((const Hash_table *) subtask->step->step_table, &lookup);
 		if (entry)
 		  {
 		    put_ucs2 (entry->code, subtask);

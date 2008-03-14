@@ -29,7 +29,7 @@
 int
 code_to_ucs2 (RECODE_CONST_SYMBOL charset, unsigned code)
 {
-  const struct strip_data *data = charset->data;
+  const struct strip_data *data = (const struct strip_data *) charset->data;
   const recode_ucs2 *pool = data->pool;
   unsigned offset = data->offset[code / STRIP_SIZE];
   unsigned value = pool[offset + code % STRIP_SIZE];
@@ -87,7 +87,7 @@ check_restricted (RECODE_CONST_OUTER outer,
 static size_t
 alias_hasher (const void *void_alias, size_t limit)
 {
-  RECODE_CONST_ALIAS alias = void_alias;
+  RECODE_CONST_ALIAS alias = (RECODE_CONST_ALIAS) void_alias;
 
   return hash_string (alias->name, limit);
 }
@@ -95,8 +95,8 @@ alias_hasher (const void *void_alias, size_t limit)
 static bool
 alias_comparator (const void *void_first, const void *void_second)
 {
-  RECODE_CONST_ALIAS first = void_first;
-  RECODE_CONST_ALIAS second = void_second;
+  RECODE_CONST_ALIAS first = (RECODE_CONST_ALIAS) void_first;
+  RECODE_CONST_ALIAS second = (RECODE_CONST_ALIAS) void_second;
 
   return strcmp (first->name, second->name) == 0;
 }
@@ -104,7 +104,7 @@ alias_comparator (const void *void_first, const void *void_second)
 static void
 alias_free (void *void_alias)
 {
-  RECODE_ALIAS alias = void_alias;
+  RECODE_ALIAS alias = (RECODE_ALIAS) void_alias;
   struct recode_surface_list *list, *next;
 
   for (list = alias->implied_surfaces; list; list = next)
@@ -291,7 +291,8 @@ find_alias (RECODE_OUTER outer, const char *name,
   if (!name)
     return NULL;
   lookup.name = name;
-  if (alias = hash_lookup (outer->alias_table, &lookup), alias)
+  if (alias = (RECODE_ALIAS) hash_lookup
+      ((const Hash_table *) outer->alias_table, &lookup), alias)
     return alias;
 
   /* If we reach this point, find_type is necessarily one of SYMBOL_CREATE_*.
@@ -318,7 +319,7 @@ find_alias (RECODE_OUTER outer, const char *name,
   alias->name = name;
   alias->symbol = symbol;
   alias->implied_surfaces = NULL;
-  if (!hash_insert (outer->alias_table, alias))
+  if (!hash_insert ((Hash_table *) outer->alias_table, alias))
     {
       free (symbol);
       free (alias);
@@ -350,7 +351,8 @@ declare_alias (RECODE_OUTER outer, const char *name, const char *old_name)
   symbol = alias->symbol;
 
   lookup.name = name;
-  if (alias = hash_lookup (outer->alias_table, &lookup), alias)
+  if (alias = (RECODE_ALIAS) hash_lookup
+      ((Hash_table *) outer->alias_table, &lookup), alias)
     {
       if (alias->symbol == symbol)
 	return alias;
@@ -366,7 +368,7 @@ declare_alias (RECODE_OUTER outer, const char *name, const char *old_name)
   alias->name = name;
   alias->symbol = symbol;
   alias->implied_surfaces = NULL;
-  if (!hash_insert (outer->alias_table, alias))
+  if (!hash_insert ((Hash_table *) outer->alias_table, alias))
     {
       free (alias);
       return NULL;
@@ -420,8 +422,8 @@ struct make_argmatch_walk
 static bool
 make_argmatch_walker_1 (void *void_alias, void *void_walk)
 {
-  RECODE_ALIAS alias = void_alias;
-  struct make_argmatch_walk *walk = void_walk;
+  RECODE_ALIAS alias = (RECODE_ALIAS) void_alias;
+  struct make_argmatch_walk *walk = (struct make_argmatch_walk *) void_walk;
 
   if (alias->symbol->type == RECODE_CHARSET)
     walk->charset_counter++;
@@ -434,8 +436,8 @@ make_argmatch_walker_1 (void *void_alias, void *void_walk)
 static bool
 make_argmatch_walker_2 (void *void_alias, void *void_walk)
 {
-  RECODE_ALIAS alias = void_alias;
-  struct make_argmatch_walk *walk = void_walk;
+  RECODE_ALIAS alias = (RECODE_ALIAS) void_alias;
+  struct make_argmatch_walk *walk = (struct make_argmatch_walk *) void_walk;
   RECODE_OUTER outer = walk->outer;
 
   if (alias->symbol->type == RECODE_CHARSET)
@@ -490,7 +492,8 @@ make_argmatch_arrays (RECODE_OUTER outer)
   walk.outer = outer;
   walk.charset_counter = 0;
   walk.surface_counter = 0;
-  hash_do_for_each (outer->alias_table, make_argmatch_walker_1, &walk);
+  hash_do_for_each ((Hash_table *) outer->alias_table,
+	 	    make_argmatch_walker_1, &walk);
 
   /* Allocate the argmatch and realname arrays, each with a NULL sentinel.  */
 
@@ -522,7 +525,8 @@ make_argmatch_arrays (RECODE_OUTER outer)
 
   walk.charset_counter = 0;
   walk.surface_counter = 0;
-  hash_do_for_each (outer->alias_table, make_argmatch_walker_2, &walk);
+  hash_do_for_each ((Hash_table *) outer->alias_table,
+	 	    make_argmatch_walker_2, &walk);
 
   return true;
 }
@@ -645,8 +649,8 @@ struct list_symbols_walk
 static bool
 list_symbols_walker_1 (void *void_alias, void *void_walk)
 {
-  RECODE_ALIAS alias = void_alias;
-  struct list_symbols_walk *walk = void_walk;
+  RECODE_ALIAS alias = (RECODE_ALIAS) void_alias;
+  struct list_symbols_walk *walk = (struct list_symbols_walk *) void_walk;
 
   if (!alias->symbol->ignore)
     walk->number++;
@@ -657,8 +661,8 @@ list_symbols_walker_1 (void *void_alias, void *void_walk)
 static bool
 list_symbols_walker_2 (void *void_alias, void *void_walk)
 {
-  RECODE_ALIAS alias = void_alias;
-  struct list_symbols_walk *walk = void_walk;
+  RECODE_ALIAS alias = (RECODE_ALIAS) void_alias;
+  struct list_symbols_walk *walk = (struct list_symbols_walk *) void_walk;
 
   if (!alias->symbol->ignore)
     walk->array[walk->number++] = *alias;
@@ -676,7 +680,8 @@ list_all_symbols (RECODE_OUTER outer, RECODE_CONST_SYMBOL after)
   /* Count how many symbols we have.  */
 
   walk.number = 0;
-  hash_do_for_each (outer->alias_table, list_symbols_walker_1, &walk);
+  hash_do_for_each ((Hash_table *) outer->alias_table,
+	 	    list_symbols_walker_1, &walk);
 
   /* Allocate a structure to hold them.  */
 
@@ -686,7 +691,8 @@ list_all_symbols (RECODE_OUTER outer, RECODE_CONST_SYMBOL after)
   /* Copy all symbols in it.  */
 
   walk.number = 0;
-  hash_do_for_each (outer->alias_table, list_symbols_walker_2, &walk);
+  hash_do_for_each ((Hash_table *) outer->alias_table,
+	 	    list_symbols_walker_2, &walk);
 
   /* Sort it.  */
 
@@ -995,7 +1001,7 @@ list_full_charset (RECODE_OUTER outer, RECODE_CONST_SYMBOL charset)
     {
     case RECODE_EXPLODE_DATA:
       {
-	const unsigned short *data = charset->data;
+	const unsigned short *data = (const unsigned short *) charset->data;
 	unsigned code;		/* code counter */
 	unsigned expected;	/* expected value for code counter */
 	bool insert_white;	/* insert a while line before printing */
@@ -1088,7 +1094,8 @@ find_and_report_subsets (RECODE_OUTER outer)
        charset1;
        charset1 = charset1->next)
     {
-      const struct strip_data *table1 = charset1->data;
+      const struct strip_data *table1
+	= (const struct strip_data *) charset1->data;
       RECODE_SYMBOL charset2;
 
       if (charset1->ignore || charset1->data_type != RECODE_STRIP_DATA)
@@ -1098,7 +1105,8 @@ find_and_report_subsets (RECODE_OUTER outer)
 	   charset2;
 	   charset2 = charset2->next)
 	{
-	  const struct strip_data *table2 = charset2->data;
+	  const struct strip_data *table2
+	    = (const struct strip_data *) charset2->data;
 
 	  if (charset2->ignore || charset2->data_type != RECODE_STRIP_DATA
 	      || charset2 == charset1)

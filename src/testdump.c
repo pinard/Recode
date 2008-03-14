@@ -121,7 +121,7 @@ struct ucs2_to_count
 static size_t
 ucs2_to_count_hash (const void *void_data, size_t table_size)
 {
-  const struct ucs2_to_count *data = void_data;
+  const struct ucs2_to_count *data = (const struct ucs2_to_count *) void_data;
 
   return data->code % table_size;
 }
@@ -129,8 +129,10 @@ ucs2_to_count_hash (const void *void_data, size_t table_size)
 static bool
 ucs2_to_count_compare (const void *void_first, const void *void_second)
 {
-  const struct ucs2_to_count *first = void_first;
-  const struct ucs2_to_count *second = void_second;
+  const struct ucs2_to_count *first
+    = (const struct ucs2_to_count *) void_first;
+  const struct ucs2_to_count *second
+    = (const struct ucs2_to_count *) void_second;
 
   return first->code == second->code;
 }
@@ -138,8 +140,10 @@ ucs2_to_count_compare (const void *void_first, const void *void_second)
 static int
 compare_item (const void *void_first, const void *void_second)
 {
-  struct ucs2_to_count *const *first = void_first;
-  struct ucs2_to_count *const *second = void_second;
+  struct ucs2_to_count *const *first
+    = (struct ucs2_to_count *const *) void_first;
+  struct ucs2_to_count *const *second
+    = (struct ucs2_to_count *const *) void_second;
 
   return (*first)->code - (*second)->code;
 }
@@ -177,7 +181,7 @@ produce_count (RECODE_SUBTASK subtask)
 	struct ucs2_to_count *entry;
 
 	lookup.code = character;
-	entry = hash_lookup (table, &lookup);
+	entry = (struct ucs2_to_count *) hash_lookup (table, &lookup);
 	if (entry)
 	  entry->count++;
 	else

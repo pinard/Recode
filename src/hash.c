@@ -546,7 +546,7 @@ hash_initialize (size_t candidate, const Hash_tuning *tuning,
   if (hasher == NULL || comparator == NULL)
     return NULL;
 
-  table = malloc (sizeof *table);
+  table = (Hash_table *) malloc (sizeof *table);
   if (table == NULL)
     return NULL;
 
@@ -577,7 +577,8 @@ hash_initialize (size_t candidate, const Hash_tuning *tuning,
   if (xalloc_oversized (table->n_buckets, sizeof *table->bucket))
     goto fail;
 
-  table->bucket = calloc (table->n_buckets, sizeof *table->bucket);
+  table->bucket
+    = (struct hash_entry *) calloc (table->n_buckets, sizeof *table->bucket);
   table->bucket_limit = table->bucket + table->n_buckets;
   table->n_buckets_used = 0;
   table->n_entries = 0;
@@ -704,23 +705,24 @@ hash_free (Hash_table *table)
 static struct hash_entry *
 allocate_entry (Hash_table *table)
 {
-  struct hash_entry *new;
+  struct hash_entry *new_;
 
   if (table->free_entry_list)
     {
-      new = table->free_entry_list;
-      table->free_entry_list = new->next;
+      new_ = table->free_entry_list;
+      table->free_entry_list = new_->next;
     }
   else
     {
 #if USE_OBSTACK
-      new = obstack_alloc (&table->entry_stack, sizeof *new);
+      new_ = (struct hash_entry *) obstack_alloc (&table->entry_stack,
+						  sizeof *new_);
 #else
-      new = malloc (sizeof *new);
+      new_ = (struct hash_entry *) malloc (sizeof *new_);
 #endif
     }
 
-  return new;
+  return new_;
 }
 
 /* Free a hash entry which was part of some bucket overflow,
@@ -742,7 +744,7 @@ free_entry (Hash_table *table, struct hash_entry *entry)
 
 static void *
 hash_find_entry (Hash_table *table, const void *entry,
-		 struct hash_entry **bucket_head, bool delete)
+		 struct hash_entry **bucket_head, bool delete_)
 {
   struct hash_entry *bucket
     = table->bucket + table->hasher (entry, table->n_buckets);
@@ -762,7 +764,7 @@ hash_find_entry (Hash_table *table, const void *entry,
     {
       void *data = bucket->data;
 
-      if (delete)
+      if (delete_)
 	{
 	  if (bucket->next)
 	    {
@@ -789,7 +791,7 @@ hash_find_entry (Hash_table *table, const void *entry,
 	{
 	  void *data = cursor->next->data;
 
-	  if (delete)
+	  if (delete_)
 	    {
 	      struct hash_entry *next = cursor->next;
 
