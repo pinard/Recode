@@ -485,20 +485,35 @@ ports to non-Unix systems not listed here, or for corrections.  Please
 provide the goal system, a complete and stable URL, the maintainer name
 and address, the Recode version used as a base, and your comments.
 
-+ IBM/PC (MSDOS)
++ MSDOS (DJGPP)
 
-  + + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode34b.zip
-    + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode34s.zip
-    + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode34d.zip
+  Juan Manuel Guerrero <juan.guerrero@gmx.de> maintains this port,
+  dated 2001-03 and based on Recode 3.5.  The following archives hold
+  binaries, docs and sources respectively.
 
-    (for binaries, sources and docs respectively) maintained by Wojciech
-    Galazka <wgalazka@chem.uw.edu.pl> Based on Recode 3.4.1.
+  + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35b.zip
+  + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35d.zip
+  + ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35s.zip
 
-  + + http://www.simtel.net/simtel.net/
-    + http://www.leo.org/pub/comp/platforms/pc/gnuish (Germany)
-    + ftp://ftp.simtel.net/simtelnet/gnu
-    + ftp://ftp.leo.org/pub/comp/platforms/pc/gnuish
+  See `contrib/DJGPP/README`__ in the Recode distribution for more
+  information about compiling this port.
 
-    maintained by Darrel Hankerson <hankedr@mail.auburn.edu> You get
-    many GNU tools, not only Recode.  The GNUish project is described in
-    :file:`gnuish_t.htm`.
+  __ /DJGPP.html
+
++ MSDOS (Gnuish)
+
+  Darrel Hankerson <hankedr@mail.auburn.edu> maintains this port, dated
+  1994-11 and based on Recode 3.4.  You get many GNU tools, not only
+  Recode.  The GNUish project is described in :file:`gnuish_t.htm`.
+
+  + http://www.simtel.net/simtel.net/
+  + http://www.leo.org/pub/comp/platforms/pc/gnuish (Germany)
+  + ftp://ftp.simtel.net/simtelnet/gnu
+  + ftp://ftp.leo.org/pub/comp/platforms/pc/gnuish
+
++ OS/2 (using emx/gcc)
+
+  Maintainer unknown (maybe Kai Uwe Rommel <rommel@ars.de>), dated
+  1994-11 and based on Recode 3.4.
+
+  + http://hobbes.nmsu.edu/pub/os2/util/convert/gnurcode.zip

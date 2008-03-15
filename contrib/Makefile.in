@@ -197,12 +197,14 @@ target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 AUTOMAKE_OPTIONS = gnits
-AMIGA_PORT = lib-Makefile.Amiga src-Makefile.Amiga
-DJGPP_PORT = djgpp-README djgpp-diffs
-ELISP_FILES = recode.el utf8.el
-EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) \
-recode.spec1 recode.spec2
+AMIGA_PORT = Amiga/lib-Makefile Amiga/src-Makefile
+DJGPP_PORT = DJGPP/README.in DJGPP/config.site DJGPP/configdj.bat \
+DJGPP/configdj.sed DJGPP/DJGPP/README DJGPP/recodepo.sh
 
+ELISP_FILES = recode.el utf8.el
+SPEC_FILES = recode.spec1 recode.spec2
+EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) $(SPEC_FILES)
+MAINTAINERCLEANFILES = DJGPP/README DJGPP/fnchange.lst
 all: all-am
 
 .SUFFIXES:
@@ -276,7 +278,7 @@ distdir: $(DISTFILES)
 	done
 check-am: all-am
 check: check-am
-all-am: Makefile
+all-am: Makefile all-local
 installdirs:
 install: install-am
 install-exec: install-exec-am
@@ -302,6 +304,7 @@ distclean-generic:
 maintainer-clean-generic:
 	@echo "This command is intended for maintainers to use"
 	@echo "it deletes files that may require special tools to rebuild."
+	-test -z "$(MAINTAINERCLEANFILES)" || rm -f $(MAINTAINERCLEANFILES)
 clean: clean-am
 
 clean-am: clean-generic clean-libtool mostlyclean-am
@@ -358,17 +361,37 @@ uninstall-am:
 
 .MAKE: install-am install-strip
 
-.PHONY: all all-am check check-am clean clean-generic clean-libtool \
-	distclean distclean-generic distclean-libtool distdir dvi \
-	dvi-am html html-am info info-am install install-am \
-	install-data install-data-am install-dvi install-dvi-am \
-	install-exec install-exec-am install-html install-html-am \
-	install-info install-info-am install-man install-pdf \
-	install-pdf-am install-ps install-ps-am install-strip \
-	installcheck installcheck-am installdirs maintainer-clean \
-	maintainer-clean-generic mostlyclean mostlyclean-generic \
-	mostlyclean-libtool pdf pdf-am ps ps-am uninstall uninstall-am
+.PHONY: all all-am all-local check check-am clean clean-generic \
+	clean-libtool distclean distclean-generic distclean-libtool \
+	distdir dvi dvi-am html html-am info info-am install \
+	install-am install-data install-data-am install-dvi \
+	install-dvi-am install-exec install-exec-am install-html \
+	install-html-am install-info install-info-am install-man \
+	install-pdf install-pdf-am install-ps install-ps-am \
+	install-strip installcheck installcheck-am installdirs \
+	maintainer-clean maintainer-clean-generic mostlyclean \
+	mostlyclean-generic mostlyclean-libtool pdf pdf-am ps ps-am \
+	uninstall uninstall-am
 
+
+all-local: DJGPP/README DJGPP/fnchange.lst
+
+$(srcdir)/DJGPP/README: DJGPP/README.in $(top_srcdir)/configure.ac
+	packageversion=`echo "$(VERSION)" | sed 's/\.//g'`; \
+	sed \
+	    -e 's/@V@/$(PACKAGE)-$(VERSION)/g' \
+	    -e 's/@VER@/$(VERSION)/g' \
+	    -e "s/@packageversion@/$$packageversion/g" \
+	    -e "s/@treeversion@/$(VERSION)/g" \
+	  $(srcdir)/DJGPP/README.in > $@-tmp
+	mv $@-tmp $@
+
+$(srcdir)/DJGPP/fnchange.lst: DJGPP/fnchange.in $(top_srcdir)/configure.ac
+	sed \
+	    -e '/^#/d' \
+	    -e 's/@V@/$(PACKAGE)-$(VERSION)/g' \
+	  $(srcdir)/DJGPP/fnchange.in > $@-tmp
+	mv $@-tmp $@
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
 .NOEXPORT:

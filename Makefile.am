@@ -39,6 +39,7 @@ get-po-files:
 # The following goals for the maintainer of the Recode Web site.
 
 local:
+	$(MAKE) -C contrib
 	ajuster-web $(top_srcdir)/web
 	make-manual $(top_srcdir)/doc/recode.texi $(top_srcdir)/web/manual
 

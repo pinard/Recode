@@ -1,0 +1,305 @@
+.. role:: code(strong)
+.. role:: file(literal)
+
+========================================
+README file for the DJGPP port of Recode
+========================================
+
+.. contents::
+.. sectnum::
+
+:Porter: Juan Manuel Guerrero
+:Email: juan.guerrero@gmx.de
+
+This is a port of Recode to MSDOS/DJGPP.  The instructions given here,
+and the port itself, were produced for a pretest yielding to Recode 3.6.
+They might need revision or undusting for later Recode versions.
+
+DJGPP specific changes
+======================
+
+There are no DJGPP specific changes.  The original distribution should
+configure and compile out-of-the-box.  If there are last minute DJGPP
+specific changes, then they will be documented in the diffs file placed
+in the :file:`contrib/DJGPP` subdirectory.  This DJGPP port of recode
+@VER@ offers NLS out-of-the-box.
+
+Installing the binary package
+=============================
+
++ If you are installing Recode on dual DOS/WINDOWS 9X systems, you
+  should first turn off the generation of numeric tails for 8.3 aliases
+  Windows creates for long file names.  For information about how to do
+  this, please read the DJGPP FAQ List V 2.30, chapter 22.19: "How to Set
+  Up a Dual DOS/Windows Installation."
+
+  Please note that you *must* turn off the numeric tail generation
+  for short file names during installation of the binary package if you
+  want to use the recode program on both DOS box on Win9X *and* plain
+  DOS.  If this is not done recode will *not* be able to find the
+  :file:`.mo` files (the catalogs containing the translated strings).
+  After the installation has been finished you can turn on numeric tail
+  generation again if you like.
+
++ Copy the binary distribution into the top DJGPP installation directory.
+  Unzip the binary distribution running *one* of the following commands::
+
+    unzip32 rcode@packageversion@b.zip      or
+    djtarx rcode@packageversion@b.zip       or
+    pkunzip -d rcode@packageversion@b.zip
+
++ Edit the :file:`djgpp.env` file which is located in the top
+  DJGPP installation directory.  Move to the global part of your
+  :file:`djgpp.env` and add the following lines::
+
+    LANG=xx
+    LANGUAGE=yy:zz
+
+  The line must be completely shifted to the left in your
+  :file:`djgpp.env` file.  Please note the plus sign at the beginning of
+  the line.  This plus sign should *not* be omitted or a lot of shell
+  scripts, in this and in other packages, that try to reset this value
+  will stop working.  The LANG entry is obligatory, the LANGUAGE entry
+  is may be omitted.  The LANGUAGE variable allows you to select an
+  alternative catalog than the one stipulated by LANG.  Replace ``xx``,
+  ``yy`` and ``zz`` by the language code of the catalogs you want to
+  use.
+
+  Some examples:
+
+  If you only want to use the catalog containing the translations for
+  your mother tongue (in my case the Spanish translations) the above
+  lines will only use the LANG variable and will look like::
+
+    LANG=es
+
+  If you want to use the Spanish (``es``) and German (``de``) catalogs
+  the above lines will look like::
+
+    LANG=es
+    LANGUAGE=es:de
+
+  In this case a DJGPP binary that has been compiled with NLS support
+  will first search for the Spanish translations.  If this translations
+  can not be found it will search for the German translations and if
+  this can also not been found it will default to the build-in English
+  messages.  If you want to reverse this search order the above lines
+  would look like this one::
+
+    LANG=es
+    LANGUAGE=de:es
+
+  Please note that if you omit the LANG environment variable, the
+  LANGUAGE variable will not be honored at all.  The LANG variable must
+  always be set to your default catalog.  With the aid of LANGUAGE you
+  can select other catalogs apart of the default one.  If for some
+  reason you want to disable NLS, then you should comment out the LANG
+  variable or select ``C`` as your catalog::
+
+    LANG=C
+
++ To create an entry for the recode info docs in your :file:`dir` file,
+  run from the top DJGPP installation directory the command::
+
+    install-info --info-dir=./info ./info/recode.info
+
++ The binaries distributed in this package have NLS support.
+  i.e. run the command::
+
+    recode
+
+  and the binary should talk to you in your mother tongue, if supported.
+  For further information about Recode please read the info docs.
+
+Building the binaries from sources.
+===================================
+
++ To build the binaries you will need the following binary packages:
+  :file:`djdev203.zip` (*not* a prior version),
+  :file:`bsh203b.zip` (*not* a prior version),
+  :file:`gcc2952b.zip`, :file:`bnu2951b.zip`,
+  :file:`mak3791b.zip`, :file:`fil316b.zip`, :file:`shl112b.zip`,
+  :file:`txt20b.zip`, :file:`txi40b.zip`, :file:`grep24b.zip`,
+  :file:`sed302b.zip`, and :file:`gtxt035b.zip`.
+
+  If you want to run the check you will need also
+  :file:`dif272b.zip`, :file:`m4-14b.zip`, and
+  :file:`perl552b.zip`,
+
+  All these packages can be found in the :file:`v2gnu` directory of any
+  Simtel.NET mirror.
+
+  You will need :file:`bsh203b.zip` and *not* a prior version or
+  the build will fail.  The same applies to :file:`djdev203.zip`.
+  You *must* use the updated version of :file:`fil316b.zip`
+  (date: 2000-05-30) and :file:`shl112b.zip` (date: 2000-08-11).
+
+  These updated versions have been recompiled with
+  :file:`djdev203.zip` and know about the file:`/dev/env`
+  functionality introduced with :file:`djdev203.zip`.  All the
+  other packages are the ones I have used to build the binaries
+  from this sources.  Previous versions of this packages may do
+  the job as well but I have not tested this.
+
++ Create a temporary directory and copy the source package into the dir.
+  If you download the source distribution from one of the DJGPP archives,
+  just unzip it preserving the directory structure running *ONE* of the
+  following commands::
+
+    unzip32 rcode@packageversion@s.zip      or
+    djtarx rcode@packageversion@s.zip       or
+    pkunzip -d rcode@packageversion@s.zip
+
+  Source distributions downloaded from one of the GNU FTP sites need
+  some more work to unpack.  First, you *must* use the :code:`djtar`
+  program to unzip the package.  That's because some file names in the
+  official distributions need to be changed to avoid problems on the
+  various platforms supported by DJGPP. :code:`djtar` can rename files
+  on the fly given a file with name mappings.  The distribution includes
+  a file :file:`djgpp/fnchange.lst` with the necessary mappings.  So you
+  need first to retrieve that file, and then invoke :code:`djtar` to
+  unpack the distribution.  Here's how::
+
+    djtar -x -p -o @V@/djgpp/fnchange.lst @V@.tar.gz > lst
+    djtar -x -n lst @V@.tar.gz
+
+  (The name of the distribution archive and the top-level directory will
+  be different for versions other than @VER@.)
+
++ This package is preconfigured for NLS support and :code:`djdev203`.
+  This implies that you *must* install the GNU gettext library
+  (:file:`gtxt035b.zip`) if you want to recompile this package.  Of
+  course, this must be done *before* you start recompiling the
+  package.  The configuration batch file of this package, located in the
+  :file:`contrib/DJGPP` directory, allows you to enable or disable NLS
+  support and to compile from a different partition than from where the
+  sources are located. :file:`configdj.bat` always configures the package
+  for NLS support enabled and for in-place compilation if *no* options are
+  given at all.  The available NLS options are::
+
+    NLS
+    no-NLS
+
+  If for some reason you want a binary with no NLS support you will have
+  to reconfigure the package.  For this purpose cd into the top srcdir
+  (:file:`recode-@treeversion@/`) and run the following commands::
+
+    make distclean
+    contrib\DJGPP\configdj no-NLS
+
+  Please note that you *must* use the ``distclean`` option or the
+  :file:`config.cache` file will *not* be deleted.  In this case you
+  are *not* reconfiguring because the configuration informations
+  is read from the cache file instead of being newly computed.  You
+  *must* specify ``no-NLS`` or :file:`configdj.bat` will default to
+  the ``NLS`` option.  To build the programs in a directory other than
+  where the sources are, you must add the parameter that specifies the
+  source directory, e.g::
+
+    x:\src\gnu\recode-@treeversion@\contrib\DJGPP\configdj x:/src/gnu/recode-@treeversion@ no-NLS
+
+  Lets assume you want to build the binaries in a directory placed on a
+  different drive (:file:`z:\build` in this case) from where the sources
+  are, then you will run the following commands::
+
+    z:
+    md \build
+    cd \build
+    x:\src\gnu\recode-@treeversion@/\contrib\DJGPP\configdj x:/src/gnu/recode-@treeversion@/ no-NLS
+
+  If you want NLS support, just omit the ``no-NLS`` option or replace
+  it by the ``NLS`` option in the above examples.  The order of the NLS
+  option and the srcdir option does *not* matter.  You *must* use
+  forward slashes to specify the source directory.
+
+  This batch file will set same environment variables, make MSDOS
+  specific modifications to the :file:`Makefile.in`\ s and supply all
+  other needed options to the :file:`configure` script.
+
++ To compile the package run from the top srcdir the command::
+
+    make
+
++ Now you can run the tests if you like.  From the top srcdir run
+  the command::
+
+    make check
+
+  No test should fail.
+
++ To install the binaries, header, library, catalogs, and info docs
+  run the following command from the top srcdir::
+
+    make install CATALOGS="xx.gmo yy.gmo zz.gmo"
+
+  This will install the products into your DJGPP installation tree given
+  by the default prefix ``/dev/env/DJDIR``.  If you prefer to install
+  them into some other directory you will have to set prefix to the
+  appropriate value.  Replace ``xx``, ``yy`` and ``zz`` by the language
+  codes of the catalogs you want to install.  Example::
+
+    make install CATALOGS="xx.gmo yy.gmo zz.gmo" prefix=z:/some/other/dir
+
++ Now you have to set the LANG environment variable.  Please refer to
+  the third point in section 2.
+
+Recoding the :file:`.po` files
+==============================
+
+As told above, the :file:`.po` files of this package have already been
+recoded.  The recoding of the :file:`.po` files is one step more of
+the configuration process of the package and does usually not need
+to be repeated by the user.  This step is performed automatically by
+:file:`configdj.bat` running the :file:`recodepo.sh` shell script.  This
+shell scripts uses two arguments:
+
++ the name of the Unix charset that have been used to write the
+  :file:`.po` file.  This information is extracted from the :file:`.po`
+  file by the shell script itself.
+
++ The number of the MSDOS code page corresponding to that particular
+  :file:`.po` file.  This information is stored in the DosCodePage array
+  of the shell script.  The code page numbers have been taken from MS-DOS
+  6.22 :file:`COUNTRY.TXT` file and this code pages are the ones installed
+  during a standard MSDOS installation process.
+
+Because this standard code pages have been used to recode the
+:file:`.po` files, the distributed ones should fit the requirements of
+the majority of the users.  If for some reason this is not true for you,
+you will have to recode the :file:`.po` files manually.  This packages
+supplies the original (not recoded) :file:`.po` files in the po/po.orig
+directory.  Cd into :file:`po/po.orig` and edit the :file:`.po` file you
+want to use.  Search for a line that looks like::
+
+  "Content-Type: text/plain; charset=ISO-8859-1\n"
+
+The Unix charset used in this particular :file:`.po` file is ISO-8859-1.
+If you are using the MSDOS code page 437 you will recode the :file:`.po`
+file running the command::
+
+  recode -Spo ISO-8859-1..cp437 xx.po
+
+where ``xx`` stands for the language code.
+
+If you want to recode all :file:`.po` files you will proceed as follows:
+
++ Cd into the :file:`po` directory.
+
++ Delete all :file:`.po` files and :file:`stamp-po`.
+
++ Copy the original :file:`.po` files from :file:`po.orig` directory into the
+  :file:`po` directory.
+
++ Edit :file:`recodepo.sh`.  Search for the DosCodePage array and make the
+  appropriate changes.
+
++ Run the command::
+
+     sh recodepo.sh
+
+Send recode specific bug reports to <recode-bugs@iro.umontreal.ca>.
+Send suggestions and bug reports concerning the DJGPP port to
+``comp.os.msdos.djgpp`` or <djgpp@delorie.com>.
+
+Enjoy.
+

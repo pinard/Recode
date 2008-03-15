@@ -28,47 +28,56 @@ as the things you usually get from the Free Software Foundation.
 Please drop me a note about what you found to be useful, in here, to
 help me at deciding what should be kept and what should go away.
 
-+ :file:`utf8.el`
++ Emacs Lisp files
 
-  This tool helps Emacs users at inserting UTF-8 encoded ISO-10646 or
-  Unicode characters in an Emacs buffer.  Submitted by Gary Houston
-  <ghouston@actrix.gen.nz> to :code:`gnu.emacs.sources`, 1994-10.
+  + :file:`utf8.el`
 
-+ :file:`recode.el`
+    This tool helps Emacs users at inserting UTF-8 encoded ISO-10646 or
+    Unicode characters in an Emacs buffer.  Submitted by Gary Houston
+    <ghouston@actrix.gen.nz> to :code:`gnu.emacs.sources`, 1994-10.
 
-  This is a miscellaneous collection of tools, documented in French,
-  for using Recode from Emacs, when Latin-1 is in use.  Submitted by
-  François Pinard <pinard@iro.umontreal.ca>, 1994-12.
+  + :file:`recode.el`
 
-+ :file:`djgpp-README`
-+ :file:`djgpp-diffs`
+    This is a miscellaneous collection of tools, documented in French,
+    for using Recode from Emacs, when Latin-1 is in use.  Submitted by
+    François Pinard <pinard@iro.umontreal.ca>, 1994-12.
 
-  These files represent a port of version 3.4.1 of Recode to DJGPP,
-  submitted by Wojciech Galazka <wgalazka@chem.uw.edu.pl>, 1997-11.
++ RPM spec files
 
-+ :file:`Makefile.amiga`
-+ :file:`Makefile.amiga-lib`
+  + :file:`recode.spec1`
 
-  These makefiles allow building Recode 3.4k on Amiga.  Submitted by
-  Stefan Haubenthal, 1998-11.
+    RPM spec file to prepare Recode 3.5c on RedHat.  Submitted by David
+    Lebel, 2000-06.
 
-+ :file:`recode.spec1`
+  + :file:`recode.spec2`
 
-  RPM spec file to prepare Recode 3.5c on RedHat.  Submitted by David
-  Lebel, 2000-06.
+    RPM spec file to prepare Recode 3.5d on RedHat.  Submitted by Bennett
+    Todd, 2002-01.  Bennett writes (more or less):
 
-+ :file:`recode.spec2`
+      This spec file allows portable building.  Users could download the
+      tar archive and simply ``rpm -ta`` it to build themselves source and
+      binary :code:`rpm`\ s.  If they had their :code:`rpm` directory,
+      they could even do it while not being ``root``.  For example, my
+      :file:`~/.rpmmacros` reads::
 
-  RPM spec file to prepare Recode 3.5d on RedHat.  Submitted by Bennett
-  Todd, 2002-01.  Bennett writes (more or less):
+        %_topdir    /home/bet/rpm
 
-    This spec file allows portable building.  Users could download the
-    tar archive and simply ``rpm -ta`` it to build themselves source and
-    binary :code:`rpm`\ s.  If they had their :code:`rpm` directory,
-    they could even do it while not being ``root``.  For example, my
-    :file:`~/.rpmmacros` reads::
+      without a leading tab. Hence my :file:`/usr/src/redhat/` is still
+      ``root:root``, and yet I can do my :code:`rpm` building as myself.
 
-      %_topdir    /home/bet/rpm
++ Amiga port
 
-    without a leading tab. Hence my :file:`/usr/src/redhat/` is still
-    ``root:root``, and yet I can do my :code:`rpm` building as myself.
+  Files in the :file:`Amiga/` directory should allow building Recode on
+  Amiga.  Submitted by Stefan Haubenthal, 1998-11, for version 3.4k.
+
++ DJGPP port
+
+  Files in the :file:`DJGPP/` directory should allow building
+  Recode on MSDOS/DJGPP.  Submitted by Juan Manuel Guerrero
+  <juan.guerrero@gmx.de>, 2001-03, for a pretest towards version 3.6.
+  For this port, there is a `README`__ file.
+
+  __ /DJGPP.html
+
+  For the record, a previous port was submitted by Wojciech Galazka
+  <wgalazka@chem.uw.edu.pl>, 1997-11, for version 3.4.1.

@@ -18,9 +18,31 @@
 
 AUTOMAKE_OPTIONS = gnits
 
-AMIGA_PORT = lib-Makefile.Amiga src-Makefile.Amiga
-DJGPP_PORT = djgpp-README djgpp-diffs
+AMIGA_PORT = Amiga/lib-Makefile Amiga/src-Makefile
+DJGPP_PORT = DJGPP/README.in DJGPP/config.site DJGPP/configdj.bat \
+DJGPP/configdj.sed DJGPP/DJGPP/README DJGPP/recodepo.sh
 ELISP_FILES = recode.el utf8.el
+SPEC_FILES = recode.spec1 recode.spec2
 
-EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) \
-recode.spec1 recode.spec2
+EXTRA_DIST = $(AMIGA_PORT) $(DJGPP_PORT) $(ELISP_FILES) $(SPEC_FILES)
+
+MAINTAINERCLEANFILES = DJGPP/README DJGPP/fnchange.lst
+
+all-local: DJGPP/README DJGPP/fnchange.lst
+
+$(srcdir)/DJGPP/README: DJGPP/README.in $(top_srcdir)/configure.ac
+	packageversion=`echo "$(VERSION)" | sed 's/\.//g'`; \
+	sed \
+	    -e 's/@V@/$(PACKAGE)-$(VERSION)/g' \
+	    -e 's/@VER@/$(VERSION)/g' \
+	    -e "s/@packageversion@/$$packageversion/g" \
+	    -e "s/@treeversion@/$(VERSION)/g" \
+	  $(srcdir)/DJGPP/README.in > $@-tmp
+	mv $@-tmp $@
+
+$(srcdir)/DJGPP/fnchange.lst: DJGPP/fnchange.in $(top_srcdir)/configure.ac
+	sed \
+	    -e '/^#/d' \
+	    -e 's/@V@/$(PACKAGE)-$(VERSION)/g' \
+	  $(srcdir)/DJGPP/fnchange.in > $@-tmp
+	mv $@-tmp $@
