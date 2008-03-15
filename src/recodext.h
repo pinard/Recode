@@ -644,6 +644,10 @@ bool transform_with_iconv PARAMS ((RECODE_SUBTASK));
 
 const char *locale_charset PARAMS ((void));
 
+/* names.c.  */
+
+bool should_prefer_french PARAMS ((void));
+
 /* mixed.c.  */
 
 bool transform_c_source PARAMS ((RECODE_TASK));

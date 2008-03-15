@@ -7,6 +7,11 @@
 	outer.c, quotearg.c, recode.c, request.c, rfc1345.c, task.c,
 	testdump.c, xmalloc.c: Changes in view of C++.
 
+	* names.c (should_prefer_french): New.
+	(list_full_charset): Use it.
+	* testdump.c (produce_full_dump): Use it.
+	Reported by Lionel Elie Mamane.
+
 2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* java.c: New.

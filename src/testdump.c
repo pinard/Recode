@@ -292,8 +292,8 @@ produce_full_dump (RECODE_SUBTASK subtask)
 
   if (get_ucs2 (&character, subtask))
     {
+      bool french = should_prefer_french();
       const char *charname;	/* charname for code */
-      bool french;		/* if output should be in French */
       const char *string;	/* environment value */
       char buffer[50];
 

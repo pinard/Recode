@@ -377,6 +377,10 @@ cdef extern from "common.h":
 
     char *locale_charset 'librecode_locale_charset' ()
 
+    # names.c
+
+    bool should_prefer_french 'librecode_should_prefer_french' ()
+
     # mixed.c
 
     bool transform_c_source 'librecode_transform_c_source' (

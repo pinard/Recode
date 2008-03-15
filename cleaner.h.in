@@ -140,6 +140,7 @@
 #define reversibility librecode_reversibility
 #define set_char_quoting librecode_set_char_quoting
 #define set_quoting_style librecode_set_quoting_style
+#define should_prefer_french librecode_should_prefer_french
 #define texte_latin1_diaeresis librecode_texte_latin1_diaeresis
 #define transform_byte_to_byte librecode_transform_byte_to_byte
 #define transform_byte_to_ucs2 librecode_transform_byte_to_ucs2

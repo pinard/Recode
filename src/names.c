@@ -974,26 +974,22 @@ list_full_charset_line (int code, recode_ucs2 ucs2, bool french)
   putchar ('\n');
 }
 
+/*-----------------------------------------------.
+| Decide if we prefer French or English output.  |
+`-----------------------------------------------*/
+
+bool
+should_prefer_french (void)
+{
+  const char *string = setlocale(LC_MESSAGES, NULL);
+
+  return string && string[0] == 'f' && string[1] == 'r';
+}
+
 bool
 list_full_charset (RECODE_OUTER outer, RECODE_CONST_SYMBOL charset)
 {
-  bool french;			/* if output should be in French */
-
-  /* Decide if we prefer French or English output.  */
-
-  {
-    const char *string = getenv ("LANGUAGE");
-
-    french = false;
-    if (string && string[0] == 'f' && string[1] == 'r')
-      french = true;
-    else
-      {
-	string = getenv ("LANG");
-	if (string && string[0] == 'f' && string[1] == 'r')
-	  french = true;
-      }
-  }
+  bool french = should_prefer_french();
 
   /* See which data is available.  */
 
