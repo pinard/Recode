@@ -1,3 +1,7 @@
+2008-03-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* Recode.pyx: Simplify, now that cleaner.h gets included.
+
 2008-03-13  François Pinard  <pinard@iro.umontreal.ca>
 
 	* t40_java.py: New.

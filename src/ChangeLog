@@ -1,3 +1,8 @@
+2008-03-16  François Pinard  <pinard@iro.umontreal.ca>
+
+	* recodext.h.in: New name for recodext.h.
+	* Makefile.am (recodext.h): New goal.
+
 2008-03-14  François Pinard  <pinard@iro.umontreal.ca>
 
 	* main.c: Inhibit iconv whenever -h is used.
