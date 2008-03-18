@@ -919,7 +919,7 @@ list_concise_charset (RECODE_OUTER outer,
 	    if (ucs2 >= 0)
 	      printf (format, code);
 	    else if (mnemonic || counter2 != 112)
-	      printf (blanks);
+	      fputs (blanks,  stdout);
 
 	    if (mnemonic)
 	      printf (counter2 == 112 ? " %s\n" : " %-3s", mnemonic);

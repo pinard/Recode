@@ -98,28 +98,30 @@ wrapped_transform (iconv_t conversion, RECODE_SUBTASK subtask)
 
       drain_first = false;
       if (saved_errno != 0 && saved_errno != E2BIG)
-        if (saved_errno == EILSEQ)
-          {
-            /* Invalid input.  Skip one byte.  */
-            RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
-            assert (input_left > 0);
-            input++;
-            input_left--;
-            /* Why is draining required?  */
-            drain_first = true;
-          }
-        else if (saved_errno == EINVAL)
-          {
-            if (input + input_left < input_buffer + BUFFER_SIZE
-                && input_char == EOF)
-              /* Incomplete multibyte sequence at end of input.  */
-              RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
-          }
-        else
-          {
-            recode_perror (subtask->task->request->outer, "iconv ()");
-            RETURN_IF_NOGO (RECODE_SYSTEM_ERROR, subtask);
-          }
+	{
+	  if (saved_errno == EILSEQ)
+	    {
+	      /* Invalid input.  Skip one byte.  */
+	      RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	      assert (input_left > 0);
+	      input++;
+	      input_left--;
+	      /* Why is draining required?  */
+	      drain_first = true;
+	    }
+	  else if (saved_errno == EINVAL)
+	    {
+	      if (input + input_left < input_buffer + BUFFER_SIZE
+		  && input_char == EOF)
+		/* Incomplete multibyte sequence at end of input.  */
+		RETURN_IF_NOGO (RECODE_INVALID_INPUT, subtask);
+	    }
+	  else
+	    {
+	      recode_perror (subtask->task->request->outer, "iconv ()");
+	      RETURN_IF_NOGO (RECODE_SYSTEM_ERROR, subtask);
+	    }
+	}
 
       /* Move back any unprocessed part of the input buffer.  */
       for (cursor = input_buffer; input_left != 0; input_left--)

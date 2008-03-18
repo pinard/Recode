@@ -1,3 +1,12 @@
+2008-03-17  Jim Meyering  <meyering@redhat.com>
+
+	Avoid gcc warning about ambiguous `else'.
+	* iconv.c (wrapped_transform): Add braces.
+
+	Avoid a warning from gcc -Wformat-security.
+	* names.c (list_concise_charset): Use fputs to print spaces,
+	not printf.
+
 2008-03-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h.in: New name for recodext.h.
