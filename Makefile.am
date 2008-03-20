@@ -53,8 +53,8 @@ official: publish
 	ln -s recode-$(VERSION).tar.gz $(top_srcdir)/web/archives/recode.tar.gz
 
 synchro: local
-	du -s $(top_srcdir)/.git
-	cd $(top_srcdir) && git gc --prune
-	du -s $(top_srcdir)/.git
+	du -s --si $(top_srcdir)/.git
+	cd $(top_srcdir) && git gc --auto --prune
+	du -s --si $(top_srcdir)/.git
 	find $(top_srcdir) -name '*~' | xargs rm -fv
 	synchro -PD alcyon entretien
