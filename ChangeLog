@@ -1,3 +1,8 @@
+2008-03-24  François Pinard  <pinard@iro.umontreal.ca>
+
+	* configure.ac: Use AM_ICONV rather than checking libiconv.
+	Reported by Bruno Haible.
+
 2008-03-16  François Pinard  <pinard@iro.umontreal.ca>
 
 	* cleaner.h.in: Protect against multiple inclusion.

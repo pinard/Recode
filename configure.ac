@@ -23,7 +23,8 @@ AC_CHECK_HEADERS(limits.h locale.h memory.h stdbool.h stddef.h stdlib.h string.h
 AC_TYPE_SIGNAL
 jm_STRUCT_UTIMBUF
 
-AC_CHECK_LIB(iconv, libiconv)
+AM_ICONV
+LIBS="$LIBICONV $LIBS"
 AC_CHECK_FUNCS(dup2 mbrtowc rename setlocale strerror strndup wcrtomb)
 AC_REPLACE_FUNCS(strtol strtoul)
 AC_FUNC_ALLOCA

@@ -1,7 +1,7 @@
-2008-03-26  François Pinard  <pinard@iro.umontreal.ca>
+2008-03-24  Bruno Haible  <bruno@clisp.org>
 
+	* iconv.m4: Update from gettext-0.17.
 	* lib-link.m4: Update from gettext-0.17.
-	Reported by Bruno Haible.
 
 2008-02-22  François Pinard  <pinard@iro.umontreal.ca>
 
