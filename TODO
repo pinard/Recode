@@ -61,7 +61,7 @@ of priority.  Some TODO items are implicit within received email.
 . : Support VT320 support and related character sets.  (Alain Simon)
 . : Support @code{[nt]roff} diacritics.
 . : Support Universite de Montreal ``accent'' convention.
-. @ ~/entretien/codes/mule/courriel/
+. @ ~/fp/codes/mule/courriel/
 
 .. Surfaces
 . : Implement some invbits over 8, 7 or 6 bits, maybe more.
