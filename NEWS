@@ -127,23 +127,23 @@ Version 3.5
 Incompatible changes
 --------------------
 
-+ A double dot `..' should now be used instead of a colon `:'.
++ A double dot ``..`` should now be used instead of a colon ``:``.
 + Option --force (-f) is needed to pursue recoding despite errors.
 + There is no more quoting for special characters within charsets names.
-+ Auto check (`-a') and popen (`-o') options have been withdrawn.
-+ Some charsets and aliases were deleted, see `Charsets & aliases' below.
++ Auto check (``-a``) and popen (``-o``) options have been withdrawn.
++ Some charsets and aliases were deleted, see `Charsets & aliases`_ below.
 
 Extended features
 -----------------
 
 + Program messages are available in localised form for many languages.
-+ Long character names are available in French, if LANGUAGE is set to `fr'.
++ Long character names are available in French, if LANGUAGE is set to ``fr``.
 + A new request syntax allows for recode chaining, and for surfaces.
 + Option --header-file (-h) accepts a language parameter, and Perl is new.
 + Full charset listings now show the UCS-2 value for characters.
 + Option --known=PAIRS (-k) also accepts octal and hexadecimal numbers.
 + Option --list (-l) better sorts charsets and aliases, also fully written.
-+ Charset `RFC1345' implements mnemonic+ascii+38, and is now reversible.
++ Charset ``RFC1345`` implements mnemonic+ascii+38, and is now reversible.
 + HTML is not limited anymore to Latin-1, HTML 4.0 entities are supported.
 
 New features
@@ -154,7 +154,7 @@ New features
 + Some African charsets and transliterated forms.
 + Conversions for ISO 10646 and Unicode.
 + Combining or explosion of UCS-2 diacriticized characters and ligatures.
-+ Implementation of surfaces, see `Surfaces & aliases' below.
++ Implementation of surfaces, see `Surfaces & aliases`_ below.
 + Mixed mode for recoding only comments and strings in C sources or PO files.
 + A stand-alone recoding library gets installed, often as a shared library.
 + Option --find-subsets (-T) lists charsets which are subsets of another.
@@ -259,7 +259,7 @@ Version 3.4
 
 :Author: François Pinard, 1994-11.
 
-+ Charset HTML is new, it handles `&...;' sequences for Latin-1.
++ Charset HTML is new, it handles ``&...;`` sequences for Latin-1.
 + Charset AtariST handling is more general, --list may be used with it.
 + Charset ASCII-BS overstriking has been extended, mainly for German.
 + Charset RFC1345 may be a goal, to debug or study RFC 1345 short names.
@@ -297,7 +297,7 @@ Version 3.3
 + Many various buglets have been eradicated, portability increased.
 + Charsets may be edited out by modifying the Makefile only.
 + Configuration is made through the use of an external config.h file.
-+ New -d `diacritics_only' option for LaTeX.
++ New -d ``diacritics_only`` option for LaTeX.
 + A few bugs have been corrected.
 + Documentation reorganization and improvements.
 + Increased portability, now uses Autoconf.
