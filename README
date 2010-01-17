@@ -202,8 +202,8 @@ library.  Otherwise, you might consider pre-installing the portable
 
   http://www.gnu.org/software/libiconv/
 
-Getting your own copy
----------------------
+Getting a release
+-----------------
 
 The canonical distribution point for this version is:
 
@@ -214,22 +214,26 @@ distribution point for the last such release is:
 
   ftp://ftp.gnu.org/pub/gnu/recode/recode-3.6.tar.gz
 
-Some older distributions, and maybe beta pre-releases for testers,
-*might* be available in this directory:
+Some older distributions *might* be available in this directory:
 
   http://recode%(bpi)s/archives/
 
-There is a reachable copy of my own sandbox repository for Recode.  I
-experiment with it, and branches may be reset at any time.  The server
-might not even be up (then just tell me!).  To get your own copy, try
-these commands::
+Getting the sandbox
+-------------------
 
-    git clone git://recode%(bpi)s/recode
-    cd recode
-    sh after-patch.sh
+Visit http://github.com/pinard/Recode/tree/dev-3.7 and use the
+*Download* button to get a packaged copy of development sources.  If you
+happen to be a Git lover, you may rather use::
 
-(or ``python after-patch.py`` if you miss either :code:`sh` or GNU
-:code:`touch`).
+  git clone git://github.com/pinard/Recode.git
+  
+and then, checkout branch ``dev-3.7``.  File timestamps after checktou
+may trigger Make difficulties.  As a way to avoid, from the top level of
+the distribution, execute ``sh after-patch.sh``.  If you miss either
+:code:`sh` or GNU :code:`touch`, try ``python after-patch.py`` instead.
+
+Configure options
+-----------------
 
 Once you have an unpacked distribution, see files:
 
@@ -243,9 +247,6 @@ Once you have an unpacked distribution, see files:
   :file:`NEWS`         major changes in the current release
   :file:`THANKS`       partial list of contributors
   ===================  =======================================================
-
-Configure options
------------------
 
 Besides those configure options documented in files :file:`INSTALL`
 and :file:`ABOUT-NLS`, a few extra options may be accepted after
