@@ -34,7 +34,7 @@
 2008-03-12  François Pinard  <pinard@iro.umontreal.ca>
 
 	* recodext.h: Set bit field with, for ignore, from 2 to 1.
-	Reported by Martin Michlmayr.
+	Reported by Martin Michlmayr and Marty Leisner.
 
 2008-03-12  Andreas Schwab  <schwab@suse.de>
 
