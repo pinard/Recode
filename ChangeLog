@@ -92,7 +92,9 @@
 	not GNU Recode.
 
 	* INSTALL, Makefile.in, config.guess, config.sub, depcomp, install-sh,
-	missing, mkinstalldirs: Modified by Automake 1.10.
+	missing, mkinstalldirs: Modified by Automake 1.10.  This should solve
+	configuration problems for Linux on 64 bit systems.
+	Reported by Dennis Veatch and Pavel Pokorny.
 
 	* README: Tell about the maintainer git sandbox.
 	Reformatted from Allout to reST, and reorganised.
