@@ -5,17 +5,6 @@
 README file for Recode
 ======================
 
-.. raw:: html
-
-   <!--: Faire
-       import socket
-       if socket.gethostname() == 'phenix':
-           bpi = ':8080'
-       else:
-           bpi = '.progiciels-bpi.ca'
-   :-->
-   <!-- Traiter! -->
-
 .. contents::
 .. sectnum::
 
@@ -81,7 +70,7 @@ and development for Recode, do just as above, but this time, use::
 
     subscribe recode-forum
 
-Visit http://recode%(bpi)s/ for releases or pretests, and related
+Visit http://recode.progiciels-bpi.ca/ for releases or pretests, and related
 files.  In particular, button ``Browse`` gives access to a weekly mirror
 of the current unpackaged work files, while button ``Folders`` gives
 access to saved or pending correspondence.
@@ -207,7 +196,7 @@ Getting a release
 
 The canonical distribution point for this version is:
 
-  http://recode%(bpi)s/archives/recode.tar.gz
+  http://recode.progiciels-bpi.ca/archives/recode.tar.gz
 
 GNU mirrors usually hold a copy of non-pretest releases, the canonical
 distribution point for the last such release is:
@@ -216,7 +205,7 @@ distribution point for the last such release is:
 
 Some older distributions *might* be available in this directory:
 
-  http://recode%(bpi)s/archives/
+  http://recode.progiciels-bpi.ca/archives/
 
 Getting the sandbox
 -------------------
