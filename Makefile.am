@@ -40,8 +40,18 @@ get-po-files:
 
 local:
 	$(MAKE) -C contrib
-	ajuster-web $(top_srcdir)/web
-	make-manual $(top_srcdir)/doc/recode.texi $(top_srcdir)/web/manual
+	$(MAKE) manual
+
+manual:
+	cd $(top_srcdir) \
+	  && rm -rf web/manual web/manual-tmp \
+	  && mkdir web/manual web/manual-tmp \
+	  && makeinfo --html --output=web/manual-tmp doc/recode.texi \
+	  && cd web/manual-tmp \
+	  && for file in *.html; do \
+	       sed 's,href=",href="/manual/,g' $$file > ../manual/$$file; \
+	     done
+	rm -rf $(top_srcdir)/web/manual-tmp
 
 publish:
 	(cd $(top_srcdir) && \
