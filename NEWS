@@ -8,6 +8,7 @@ Recode NEWS - User visible changes
 :Copyright: © 1993-1999, 2000, 2001, 2008 Free Software Foundation, Inc.
 
 Version 3.7-beta2
+=================
 
 :Author: François Pinard, 2008-03.
 
@@ -48,7 +49,7 @@ New charsets
     JIS_X0212-1990, X0212);
   + SJIS (csShiftJIS, MS_KANJI, SHIFT-JIS).
 
-. + Chinese
++ Chinese
 
   + BIG5 (BIG-5, BIG-FIVE, BIGFIVE, CN-BIG5 csBig5); BIG5HKSCS;
   + EUC-CN (CN-GB, csGB2312, EUC_CN, GB2312); EUC-TW (csEUCTW, EUC_TW);
@@ -57,40 +58,40 @@ New charsets
   + GB_2312-80 (CHINESE, csISO58GB231280, GB2312.1980-0, ISO-IR-58);
   + ISO-IR-165 (CN-GB-ISOIR165).
 
-. + Korean
++ Korean
 
   + JOHAB (CP1361); EUC-KR (csEUCKR, EUC_KR); GBK (CP936);
   + ISO-2022-KR (csISO2022KR);
   + KSC_5601 (CP949, csKSC56011987, ISO-IR-149, KOREAN, KSC5601.1987-0,
     KS_C_5601-1987, KS_C_5601-1989, KSX1001:1992).
 
-. + Vietnamese (independently of libiconv)
++ Vietnamese (independently of libiconv)
 
   + TCVN; VIQR; VISCII; VNI; VPS.
 
-. + Other languages
++ Other languages
 
   + ARMSCII-8; Georgian-Academy; Georgian-PS; WINDOWS-874 (CP874);
   + MuleLao-1; CP1133 (IBM-CP1133); CP1258 (WINDOWS-1258);
   + TIS-620 (ISO-IR-166, TIS620, TIS620.2529-1, TIS620-0, TIS620.2533-0,
     TIS620.2533-1).
 
-. + Apple specifics
++ Apple specifics
 
   + MacArabic; MacCentralEurope; MacCroatian; MacCyrillic; MacGreek;
   + MacHebrew; MacIceland; MacRomania; MacThai; MacTurkish; MacUkraine
 
-. + Unicode
++ Unicode
 
   + JAVA; UCS-2-INTERNAL; UCS-2LE (UnicodeLITTLE); UCS-2-SWAPPED; UCS-4BE;
   + UCS-4-INTERNAL; UCS-4LE; UCS-4-SWAPPED; UTF-16BE; UTF-16LE.
 
-. + Others
++ Others
 
   + CP932; CP949 (UHC); CP950; CP866 (866, csIBM866, IBM866).
   + ISO-8859-16 (ISO-IR-226, ISO_8859-16:2000).
 
-. + Recode internal
++ Recode internal
 
   + :libiconv: (:)   [so option -x: avoids going through libiconv]
 

@@ -5,273 +5,278 @@ people.  Help me keeping it complete and exempt of errors.  See various
 ChangeLogs for a detailed description of contributions.  Santiago Vila
 Doncel deserves a special mention for his dedication and patience!
 
-Akim Demaille		demaille@inf.enst.fr
-Alain Labonté		alb@riq.qc.ca
-Alain Magloire		alainm@macs.ee.mcgill.ca
-Alan J. Flavell		flavell@a5.ph.gla.ac.uk
-Alexander Kurz		akurz@blala.de
-Alexander L. Belikoff	abel@vallinor4.com
-			http://www.vallinor4.com
-Alexandre Duret-Lutz	duret_g@epita.fr
-Alexandre Oliva		oliva@dcc.unicamp.br
-			http://www.dcc.unicamp.br/~oliva
-Andreas Dietrich	quasi@mathematik.uni-marburg.de
-Andreas Frick		afr@aifb.uni-karlsruhe.de
-Andreas Kunert		akunert@main-rheiner.de
-Andreas Mueller		afm@othello.ch
-			http://www.othello.ch
-Andreas Schwab		schwab@suse.de
-Andrew Green		andrew@article7.co.uk
-Andries Brouwer		Andries.Brouwer@cwi.nl
-Arnaldo Mandel		am@ime.usp.br
-Bastian Schlueter	buzz@gmx.de
-			http://home.pages.de/~buzz
-Ben Sittler		bsittler@knownow.com
-Bennett Todd		bet@rahul.net
-			http://bent.latency.net/
-Bernt Guldbrandtsen	bg@rs580.sh.dk
-Bert Schweitzer		b.schweitzer@tu-bs.de
+======================= ======================================================
+Akim Demaille           | demaille at inf dot enst dot fr
+Alain Labonté           | alb at riq dot qc dot ca
+Alain Magloire          | alainm at macs dot ee dot mcgill dot ca
+Alan J. Flavell         | flavell at a5 dot ph dot gla dot ac dot uk
+Alexander Kurz          | akurz at blala dot de
+Alexander L. Belikoff   | abel at vallinor4 dot com
+                        | http://www.vallinor4.com
+Alexandre Duret-Lutz    | duret_g at epita dot fr
+Alexandre Oliva         | oliva at dcc dot unicamp dot br
+                        | http://www.dcc.unicamp.br/~oliva
+Andreas Dietrich        | quasi at mathematik dot uni-marburg dot de
+Andreas Frick           | afr at aifb dot uni-karlsruhe dot de
+Andreas Kunert          | akunert at main-rheiner dot de
+Andreas Mueller         | afm at othello dot ch
+                        | http://www.othello.ch
+Andreas Schwab          | schwab at suse dot de
+Andrew Green            | andrew at article7 dot co dot uk
+Andries Brouwer         | Andries dot Brouwer at cwi dot nl
+Arnaldo Mandel          | am at ime dot usp dot br
+Bastian Schlueter       | buzz at gmx dot de
+                        | http://home.pages.de/~buzz
+Ben Sittler             | bsittler at knownow dot com
+Bennett Todd            | bet at rahul dot net
+                        | http://bent.latency.net/
+Bernt Guldbrandtsen     | bg at rs580 dot sh dot dk
+Bert Schweitzer         | b dot schweitzer at tu-bs dot de
 Branimir Dolicki
-Brendan O'Dea		bod@compusol.com.au
-			http://www.ozemail.com.au/~bod/
-Bruno Haible		haible@ilog.fr
-			http://clisp.cons.org/~haible/
-Christian Limpach	Christian.Limpach@nice.ch
-			http://www.nice.ch/~chris/
-Christian Recktenwald	chris@citecs.de
-			http://www.citecs.de/
+Brendan O'Dea           | bod at compusol dot com dot au
+                        | http://www.ozemail.com.au/~bod/
+Bruno Haible            | haible at ilog dot fr
+                        | http://clisp.cons.org/~haible/
+Christian Limpach       | Christian dot Limpach at nice dot ch
+                        | http://www.nice.ch/~chris/
+Christian Recktenwald   | chris at citecs dot de
+                        | http://www.citecs.de/
 Christian Rolland
-Christian Weisgerber	naddy@mips.inka.de
-			http://home.pages.de/~naddy/
-Claude Goutier		goutier@jsp.umontreal.ca
+Christian Weisgerber    | naddy at mips dot inka dot de
+                        | http://home.pages.de/~naddy/
+Claude Goutier          | goutier at jsp dot umontreal dot ca
 Colin Plumb
-Dagobert Michelsen	dam@baltic-online.de
-			http://www.familie-michelsen.de
-Dan Jacobson		jidanni@jidanni.org
-			http://jidanni.org/
-Daniel Pfeiffer		occitan@esperanto.org
-			http://makepp.sourceforge.net
-Daniel Quinlan		quinlan@best.com
-Daniel Taupin		taupin@lps.u-psud.fr
-David E. A. Wilson	david_wilson@uow.edu.au
-			http://www.uow.edu.au/~david
+Dagobert Michelsen      | dam at baltic-online dot de
+                        | http://www.familie-michelsen.de
+Dan Jacobson            | jidanni at jidanni dot org
+                        | http://jidanni.org/
+Daniel Pfeiffer         | occitan at esperanto dot org
+                        | http://makepp.sourceforge.net
+Daniel Quinlan          | quinlan at best dot com
+Daniel Taupin           | taupin at lps dot u-psud dot fr
+David E. A. Wilson      | david_wilson at uow dot edu dot au
+                        | http://www.uow.edu.au/~david
 David Kastrup
-David Lebel		lebel@lebel.org
+David Lebel             | lebel at lebel dot org
 David Mentre
-David Necas		yeti@monoceros.physics.muni.cz
-			http://physics.muni.cz/~yeti/
+David Necas             | yeti at monoceros dot physics dot muni dot cz
+                        | http://physics.muni.cz/~yeti/
 David van Leeuwen
-Detlev Droege		droege@informatik.uni-koblenz.de
-Dennis Veatch		dennisveatch@bellsouth.net
-Dominique Quatravaux	Dominique.Quatravaux@quatramaran.ens.fr
-			http://www.piren.epita.fr/~dom
-Dominique Schmit	dschmit@tabarly.saclay.cea.fr
-Duane Ellis		duane@franklin.com
-			http://www.franklin.com
-Eli Zaretskii		eliz@is.elta.co.il
-Enrik Berkhan		Enrik.Berkhan@planb.de
-Eric Backus		eric_backus@hp.com
-			http://www.wolfenet.com/~ericjb
-Éric Bischoff		eric@caldera.de
-Erick Branderhorst	Erick.Branderhorst@asml.nl
-Erwan Mas		erwanmas@chez.com
-			http://www.chez.com/erwanmas/
+Detlev Droege           | droege at informatik dot uni-koblenz dot de
+Dennis Veatch           | dennisveatch at bellsouth dot net
+Dominique Quatravaux    | Dominique dot Quatravaux at quatramaran dot ens dot fr
+                        | http://www.piren.epita.fr/~dom
+Dominique Schmit        | dschmit at tabarly dot saclay dot cea dot fr
+Duane Ellis             | duane at franklin dot com
+                        | http://www.franklin.com
+Eli Zaretskii           | eliz at is dot elta dot co dot il
+Enrik Berkhan           | Enrik dot Berkhan at planb dot de
+Eric Backus             | eric_backus at hp dot com
+                        | http://www.wolfenet.com/~ericjb
+Éric Bischoff           | eric at caldera dot de
+Erick Branderhorst      | Erick dot Branderhorst at asml dot nl
+Erwan Mas               | erwanmas at chez dot com
+                        | http://www.chez.com/erwanmas/
 Farzad Farid
-Florian Oelmaier	100265.2501@compuserve.com
-François Pinard		pinard@iro.umontreal.ca
-			http://www.iro.umontreal.ca/~pinard
+Florian Oelmaier        | 100265 dot 2501 at compuserve dot com
+François Pinard         | pinard at iro dot umontreal dot ca
+                        | http://www.iro.umontreal.ca/~pinard
 François Robitaille
-François Yergeau	yergeau@alis.com
-			http://www.alis.com/~yergeau/
-Francois-Xavier Bergot	bergotfx@com.enst.fr
-Françoise Audebrand	audebran@ere.umontreal.ca
+François Yergeau        | yergeau at alis dot com
+                        | http://www.alis.com/~yergeau/
+Francois-Xavier Bergot  | bergotfx at com dot enst dot fr
+Françoise Audebrand     | audebran at ere dot umontreal dot ca
 Frederic Albrecht
-Frederic Gobry		frederic.gobry@epfl.ch
-Frederik Fouvry		fouvry@CoLi.Uni-SB.DE
-Frère Roy		roy@taize.fr
-			http://www.taize.fr
-Gabriel P. Silva	gpsilva@geocities.com
-			http://www.nce.ufrj.br/~gabriel
-Gaël Le Mignot		kilobug@freesurf.fr
+Frederic Gobry          | frederic dot gobry at epfl dot ch
+Frederik Fouvry         | fouvry at CoLi dot Uni-SB dot DE
+Frère Roy               | roy at taize dot fr
+                        | http://www.taize.fr
+Gabriel P. Silva        | gpsilva at geocities dot com
+                        | http://www.nce.ufrj.br/~gabriel
+Gaël Le Mignot          | kilobug at freesurf dot fr
 Ghislain Plamondon
-Georg Haefele		haefele@atlas.gis.univie.ac.at
+Georg Haefele           | haefele at atlas dot gis dot univie dot ac dot at
 Greg McGary
-Guillaume Rumeau	rumeau@isty-info.uvsq.fr
-Guy Lapalme		lapalme@iro.umontreal.ca
-			http://www.iro.umontreal.ca/~lapalme
-Harald Falkenberg	harald.falkenberg@desy.de
-Harald Koenig		koenig@tat.physik.uni-tuebingen.de
-Hermann Hueni		hueni@iam.unibe.ch
+Guillaume Rumeau        | rumeau at isty-info dot uvsq dot fr
+Guy Lapalme             | lapalme at iro dot umontreal dot ca
+                        | http://www.iro.umontreal.ca/~lapalme
+Harald Falkenberg       | harald dot falkenberg at desy dot de
+Harald Koenig           | koenig at tat dot physik dot uni-tuebingen dot de
+Hermann Hueni           | hueni at iam dot unibe dot ch
 Hennus Bergman
-Hilmar Schlegel		hs@semic.ag-berlin.mpg.de
-Holger Benl		benl@websphere.de
-Hrvoje Niksic		hniksic@srce.hr
-Jacques Madelaine	jacques@info.unicaen.fr
-			http://www.info.unicaen.r/~jacques
-Jacques Richer		Jacques.Richer@CERCA.UMontreal.CA
-			http://www.CERCA.UMontreal.CA/~richer
-Jan Djarv		jan.djarv@mbox200.swipnet.se
-Jean-Christophe Guillain	jcg@adviseo.fr
-Jean-Claude Nadeau	nadeau@jsp.umontreal.ca
-Jean-Michel Dault	jmdault@mandrakesoft.com
-Jens Quade		jens@ronja.dinoco.de
-Jim Meyering		meyering@na-net.ornl.gov
+Hilmar Schlegel         | hs at semic dot ag-berlin dot mpg dot de
+Holger Benl             | benl at websphere dot de
+Hrvoje Niksic           | hniksic at srce dot hr
+Jacques Madelaine       | jacques at info dot unicaen dot fr
+                        | http://www.info.unicaen.r/~jacques
+Jacques Richer          | Jacques dot Richer at CERCA dot UMontreal dot CA
+                        | http://www.CERCA.UMontreal.CA/~richer
+Jan Djarv               | jan dot djarv at mbox200 dot swipnet dot se
+Jean-Christophe
+Guillain                | jcg at adviseo dot fr
+Jean-Claude Nadeau      | nadeau at jsp dot umontreal dot ca
+Jean-Michel Dault       | jmdault at mandrakesoft dot com
+Jens Quade              | jens at ronja dot dinoco dot de
+Jim Meyering            | meyering at na-net dot ornl dot gov
 Joelle Stemp
-John Gorman		jgorman@webbysoft.com
-John van Krieken	John.van.Krieken@ATComputing.nl
-			http://www.ATComputing.nl/images/pasfotos/john.jpg
-Jörg Höhle		Joerg.Hoehle@gmd.de
-			http://fit.gmd.de/~hoehle/
-Jose Joao Almeida	jj@di.uminho.pt
-			http://www.di.uminho.pt/~jj
-Juan Manuel Guerrero	juan.guerrero@gmx.de
-Julio Sanchez		jsanchez@gmv.es
-Juliusz Chroboczek	jch@clipper.ens.fr
-Juergen Zeller		zet@rupert.franken.de
+John Gorman             | jgorman at webbysoft dot com
+John van Krieken        | John dot van dot Krieken at ATComputing dot nl
+                        | http://www.ATComputing.nl/images/pasfotos/john.jpg
+Jörg Höhle              | Joerg dot Hoehle at gmd dot de
+                        | http://fit.gmd.de/~hoehle/
+Jose Joao Almeida       | jj at di dot uminho dot pt
+                        | http://www.di.uminho.pt/~jj
+Juan Manuel Guerrero    | juan dot guerrero at gmx dot de
+Julio Sanchez           | jsanchez at gmv dot es
+Juliusz Chroboczek      | jch at clipper dot ens dot fr
+Juergen Zeller          | zet at rupert dot franken dot de
 Kai Uwe Rommel
-Karl Berry		karl@cs.umb.edu
-			http://www.cs.umb.edu/~karl/
-Keld Jørn Simonsen	keld@dkuug.dk
-Kester Habermann	kester@unix-ag.uni-kl.de
-			http://www.unix-ag.uni-kl.de/~kester/
-Kevin Stuckless		kevins@stuck.warped.com
-			http://stuck.warped.com/~kevins
-Konstantin Osipov	rabid@spylog.ru
-Kristian Köhntopp	kk@netuse.de
-Laurent Bourbeau	bourbeau@progiciels-bpi.ca
-Larry W. Virden		lvirden@cas.org
-			http://purl.org/net/lvirden/
-Liisa R{ih{		lr@cs.uta.fi
-Lionel Elie Mamane	lionel@mamane.lu
+Karl Berry              | karl at cs dot umb dot edu
+                        | http://www.cs.umb.edu/~karl/
+Keld Jørn Simonsen      | keld at dkuug dot dk
+Kester Habermann        | kester at unix-ag dot uni-kl dot de
+                        | http://www.unix-ag.uni-kl.de/~kester/
+Kevin Stuckless         | kevins at stuck dot warped dot com
+                        | http://stuck.warped.com/~kevins
+Konstantin Osipov       | rabid at spylog dot ru
+Kristian Köhntopp       | kk at netuse dot de
+Laurent Bourbeau        | bourbeau at progiciels-bpi dot ca
+Larry W. Virden         | lvirden at cas dot org
+                        | http://purl.org/net/lvirden/
+Liisa R{ih{             | lr at cs dot uta dot fi
+Lionel Elie Mamane      | lionel at mamane dot lu
 Loic Dachary
-Luc Maisonobe		Luc.Maisonobe@free.fr
-			http://www.spaceroots.org/
+Luc Maisonobe           | Luc dot Maisonobe at free dot fr
+                        | http://www.spaceroots.org/
 Lukas Petrlik
-Mac Pigman		gwp@dido.caltech.edu
-Magnus Määttä		novell@kiruna.nu
-			http://novell.stoldgods.nu
-Marc Gingold		gingold@spht.saclay.cea.fr
-			http:////www-spht.cea.fr/doc.html
-Marc Shapiro		shapiro@prof.inria.fr
+Mac Pigman              | gwp at dido dot caltech dot edu
+Magnus Määttä           | novell at kiruna dot nu
+                        | http://novell.stoldgods.nu
+Marc Gingold            | gingold at spht dot saclay dot cea dot fr
+                        | http:////www-spht.cea.fr/doc.html
+Marc Shapiro            | shapiro at prof dot inria dot fr
 Marc Verreault
-Marcin Owsiany		marcin@owsiany.pl
-			http://marcin.owsiany.pl/
-Mario Gay		mgay@ti-edu.ch
-Markus Kuhn		Markus.Kuhn@cl.cam.ac.uk
-			http://www.cl.cam.ac.uk/~mgk25/
-Martin J. Dürst		duerst@w3.org
-			http://www.w3.org/People/D%C3%BCrst
-Martin Maechler		maechler@stat.math.ethz.ch
-Martin Michlmayr	tbm@cyrius.com
-                        http://www.cyrius.com/
-Martin Trautmann	traut@gmx.de
-Martin Mares		mj@ucw.cz
-			http://atrey.karlin.mff.cuni.cz/~mj/
-Marty Leisner		martyleisner@yahoo.com
-Michael Gschwind	mike@vlsivie.tuwien.ac.at
-Michael L. Dowling	M.Dowling@tu-bs.de
-			http://www.mathematik.tu-bs.de
-Michael Schmidt		mschmidt@koblenz.fh-rpl.de
-Michael Shields		shields@msrl.com
-			http://www.msrl.com/
-Mikko Harjula		mikko.harjula@gware.com
-Mikko Silvonen		silvonen@iki.fi
-			http://www.iki.fi/silvonen/
+Marcin Owsiany          | marcin at owsiany dot pl
+                        | http://marcin.owsiany.pl/
+Mario Gay               | mgay at ti-edu dot ch
+Markus Kuhn             | Markus dot Kuhn at cl dot cam dot ac dot uk
+                        | http://www.cl.cam.ac.uk/~mgk25/
+Martin J. Dürst         | duerst at w3 dot org
+                        | http://www.w3.org/People/D%C3%BCrst
+Martin Maechler         | maechler at stat dot math dot ethz dot ch
+Martin Michlmayr        | tbm at cyrius dot com
+                        | http://www.cyrius.com/
+Martin Trautmann        | traut at gmx dot de
+Martin Mares            | mj at ucw dot cz
+                        | http://atrey.karlin.mff.cuni.cz/~mj/
+Marty Leisner           | martyleisner at yahoo dot com
+Michael Gschwind        | mike at vlsivie dot tuwien dot ac dot at
+Michael L. Dowling      | M dot Dowling at tu-bs dot de
+                        | http://www.mathematik.tu-bs.de
+Michael Schmidt         | mschmidt at koblenz dot fh-rpl dot de
+Michael Shields         | shields at msrl dot com
+                        | http://www.msrl.com/
+Mikko Harjula           | mikko dot harjula at gware dot com
+Mikko Silvonen          | silvonen at iki dot fi
+                        | http://www.iki.fi/silvonen/
 Nathanael Makarevitch
-Nathaniel Borenstein	nsb@aa.fv.com
-Neal McBurnett		http://bcn.boulder.co.us/~neal/
-Nguyên-Ðai Quý		daiquy.nguyen@ulg.ac.be
+Nathaniel Borenstein    | nsb at aa dot fv dot com
+Neal McBurnett          | http://bcn.boulder.co.us/~neal/
+Nguyên-Ðai Quý          | daiquy dot nguyen at ulg dot ac dot be
 Nicolas Anquetil
-Nicolas Thiery		Nicolas.Thiery@jonas.univ-lyon1.fr
-			http://www.lmd.univ-lyon1.fr/home/nthiery/
-Niels Kr. Bech Jensen	nkbj@image.dk
-			http://www.image.dk/~nkbj/
-Noèl Köthe		noel@debian.org
-			http://www.koethe.net/
-Olivier Lecarme		Olivier.Lecarme@unice.fr
-Olivier Tharan		olive@laria.u-picardie.fr
-			http://www.laria.u-picardie.fr/~olive/
-Pascal Gourdel		gourdel@univ-paris1.fr
-Patrick Andries		pandries@iti.qc.ca
-Pavel Osipov		forsite@spamtest.ru
-			http://forsite.ibch.ru/
-Pavel Pokorny		Pavel.Pokorny@vscht.cz
-			http://www.vscht.cz/mat/Pavel.Pokorny
-Pawel Krawczyk		kravietz@ceti.pl
-			http://ceti.pl/~kravietz/
-Per Andersson		perand@stacken.kth.se
-Per Starback		starback@ling.uu.se
-			http://stp.ling.uu.se/~starback/me.html
+Nicolas Thiery          | Nicolas dot Thiery at jonas dot univ-lyon1 dot fr
+                        | http://www.lmd.univ-lyon1.fr/home/nthiery/
+Niels Kr. Bech Jensen   | nkbj at image dot dk
+                        | http://www.image.dk/~nkbj/
+Noèl Köthe              | noel at debian dot org
+                        | http://www.koethe.net/
+Olivier Lecarme         | Olivier dot Lecarme at unice dot fr
+Olivier Tharan          | olive at laria dot u-picardie dot fr
+                        | http://www.laria.u-picardie.fr/~olive/
+Pascal Gourdel          | gourdel at univ-paris1 dot fr
+Patrick Andries         | pandries at iti dot qc dot ca
+Pavel Osipov            | forsite at spamtest dot ru
+                        | http://forsite.ibch.ru/
+Pavel Pokorny           | Pavel dot Pokorny at vscht dot cz
+                        | http://www.vscht.cz/mat/Pavel.Pokorny
+Pawel Krawczyk          | kravietz at ceti dot pl
+                        | http://ceti.pl/~kravietz/
+Per Andersson           | perand at stacken dot kth dot se
+Per Starback            | starback at ling dot uu dot se
+                        | http://stp.ling.uu.se/~starback/me.html
 Per Steinar Iversen
-Peter Much		pmc@citylink.dinoex.sub.org
-Peter Poeml		poeml@cmdline.net
-			http://www.poeml.de/
-Peter Turcan		peter.turcan@minerva-is.sk
-Petr Pajas		pajas@ufal.ms.mff.cuni.cz
-			http://pajas.matfyz.cz
-Phyllis Frankl		phyllis@morph.poly.edu
-			http://ebbets.poly.edu/~pfrankl
-Pierre Gaumond		gaumondp@ere.umontreal.ca
-Pierre Girard		pierreg@crt.umontreal.ca
-Pierre Mathieu		mathieu@geod.emr.ca
-Povl H. Pedersen	pope@netguide.dk
-Primož Peterlin		primoz.peterlin@biofiz.mf.uni-lj.si
-			http://sizif.mf.uni-lj.si/~peterlin/
-Régis Martin		contact@interloc.ca
-Réjean Payette		rejean.payette@rtsq.qc.ca
-Reuben Thomas		rrt@sc3d.org
-			http://rrt.sc3d.org/
-Ricard Torres		torres@upf.es
-Richard Nault		rnfc@videotron.ca
-			www.RichardNault.com
-Richard Plasun		plasun@iue.tuwien.ac.at
-Richard Stallman	rms@gnu.org
-Robert Joop		rj@rainbow.in-berlin.de
-Roman Czyborra		roman@czyborra.com
-			http://czyborra.com/
-Roman Suzi		rnd@onego.ru
-Ronald C.F. Antony	rcfa@cubiculum.com
-			http://www.cubiculum.com/~rcfa
-Santiago Vila Doncel	sanvila@unex.es
-Saverio Pangoli		saverio@mystere.sci.sns.it
-Sebastian Huebner	cyco@baud.de
-			http://www.baud.de/cyco/
-Scott Schwartz		schwartz@bio.cse.psu.edu
-Simon Cozens		simon@cozens.net
-Slaven Rezic		eserte@cs.tu-berlin.de
-			http://user.cs.tu-berlin.de/~eserte
-Stefan Albertz		Stefan.Albertz@rus.uni-stuttgart.de
-Stefan Haubenthal	haubi@geocities.com
-			http://home.pages.de/~haubi
-Stephen Boulet		stephen@theboulets.net
-Stephen Walkauskas	SWalkaus@endeca.com
-Steinar Bang		sb@metis.no
-Stephane Berube		berube@iro.umontreal.ca
-Stephen Grecni		steve@steem.com
-			http://steem.com
-Steve Langasek		vorlon@netexpress.net
-Sumit Bose		bose@physik.tu-berlin.de
-Thomas Gebhardt		gebhardt@hrz.uni-marburg.de
-			http://www.uni-marburg.de/hrz/mitarbeiter/gebhardt.html
+Peter Much              | pmc at citylink dot dinoex dot sub dot org
+Peter Poeml             | poeml at cmdline dot net
+                        | http://www.poeml.de/
+Peter Turcan            | peter dot turcan at minerva-is dot sk
+Petr Pajas              | pajas at ufal dot ms dot mff dot cuni dot cz
+                        | http://pajas.matfyz.cz
+Phyllis Frankl          | phyllis at morph dot poly dot edu
+                        | http://ebbets.poly.edu/~pfrankl
+Pierre Gaumond          | gaumondp at ere dot umontreal dot ca
+Pierre Girard           | pierreg at crt dot umontreal dot ca
+Pierre Mathieu          | mathieu at geod dot emr dot ca
+Povl H. Pedersen        | pope at netguide dot dk
+Primož Peterlin         | primoz dot peterlin at biofiz dot mf dot uni-lj dot si
+                        | http://sizif.mf.uni-lj.si/~peterlin/
+Régis Martin            | contact at interloc dot ca
+Réjean Payette          | rejean dot payette at rtsq dot qc dot ca
+Reuben Thomas           | rrt at sc3d dot org
+                        | http://rrt.sc3d.org/
+Ricard Torres           | torres at upf dot es
+Richard Nault           | rnfc at videotron dot ca
+                        | www.RichardNault.com
+Richard Plasun          | plasun at iue dot tuwien dot ac dot at
+Richard Stallman        | rms at gnu dot org
+Robert Joop             | rj at rainbow dot in-berlin dot de
+Roman Czyborra          | roman at czyborra dot com
+                        | http://czyborra.com/
+Roman Suzi              | rnd at onego dot ru
+Ronald C.F. Antony      | rcfa at cubiculum dot com
+                        | http://www.cubiculum.com/~rcfa
+Santiago Vila Doncel    | sanvila at unex dot es
+Saverio Pangoli         | saverio at mystere dot sci dot sns dot it
+Sebastian Huebner       | cyco at baud dot de
+                        | http://www.baud.de/cyco/
+Scott Schwartz          | schwartz at bio dot cse dot psu dot edu
+Simon Cozens            | simon at cozens dot net
+Slaven Rezic            | eserte at cs dot tu-berlin dot de
+                        | http://user.cs.tu-berlin.de/~eserte
+Stefan Albertz          | Stefan dot Albertz at rus dot uni-stuttgart dot de
+Stefan Haubenthal       | haubi at geocities dot com
+                        | http://home.pages.de/~haubi
+Stephen Boulet          | stephen at theboulets dot net
+Stephen Walkauskas      | SWalkaus at endeca dot com
+Steinar Bang            | sb at metis dot no
+Stephane Berube         | berube at iro dot umontreal dot ca
+Stephen Grecni          | steve at steem dot com
+                        | http://steem.com
+Steve Langasek          | vorlon at netexpress dot net
+Sumit Bose              | bose at physik dot tu-berlin dot de
+Thomas Gebhardt         | gebhardt at hrz dot uni-marburg dot de
+                        | http://www.uni-marburg.de/hrz/mitarbeiter
+                          /gebhardt.html
 Thomas M. Ott
 Thomas Seeling
-Tom Hageman		tom@basil.icce.rug.nl
-Tom Tromey		tromey@cygnus.com
-			http://cafe.colorado.edu/~tromey/
-Tomasz Kłoczko		kloczek@wun.zie.pg.gda.pl
-Urban Mueller		mueller@iogram.ch
-Ulrich Drepper		drepper@gnu.org
-Ulrich Windl		Ulrich.Windl@rz.uni-regensburg.de
-			http://www.uni-regensburg.de/Einrichtungen/Rechenzentrum/Orientierung/Mitarbeiter/windl.html
-Vern Paxson		vern@ee.lbl.gov
-Vitor Duarte		vad@di.fct.unl.pt
-Volker Wysk		post@volker-wysk.de
-Walter Müller		walt@pi4.informatik.uni-mannheim.de
-Wiel Seuskens		wiel@xs4all.nl
-			http://www.xs4all.nl/~wiel/
-Wilhelm Zadrapa		wfz@aon.at
-William Bader		wbader@scarecrow.csee.lehigh.edu
-Wolfgang Boerner	Wolfgang.Boerner@rz.uni-regensburg.de
-Wolfgang Wander		wwc@hermes.desy.de
-Xabier Rodriguez Calvar	xrcalvar@igalia.com
+Tom Hageman             | tom at basil dot icce dot rug dot nl
+Tom Tromey              | tromey at cygnus dot com
+                        | http://cafe.colorado.edu/~tromey/
+Tomasz Kłoczko          | kloczek at wun dot zie dot pg dot gda dot pl
+Urban Mueller           | mueller at iogram dot ch
+Ulrich Drepper          | drepper at gnu dot org
+Ulrich Windl            | Ulrich dot Windl at rz dot uni-regensburg dot de
+                        | http://www.uni-regensburg.de/Einrichtungen
+                          /Rechenzentrum/Orientierung/Mitarbeiter/windl.html
+Vern Paxson             | vern at ee dot lbl dot gov
+Vitor Duarte            | vad at di dot fct dot unl dot pt
+Volker Wysk             | post at volker-wysk dot de
+Walter Müller           | walt at pi4 dot informatik dot uni-mannheim dot de
+Wiel Seuskens           | wiel at xs4all dot nl
+                        | http://www.xs4all.nl/~wiel/
+Wilhelm Zadrapa         | wfz at aon dot at
+William Bader           | wbader at scarecrow dot csee dot lehigh dot edu
+Wolfgang Boerner        | Wolfgang dot Boerner at rz dot uni-regensburg dot de
+Wolfgang Wander         | wwc at hermes dot desy dot de
+Xabier Rodriguez Calvar | xrcalvar at igalia dot com
 Yves Arrouye
+======================= ======================================================

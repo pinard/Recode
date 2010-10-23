@@ -1,96 +1,129 @@
-* TODO file for Recode
+====================
+TODO file for Recode
+====================
 
-Tell `mailto:recode-bugs@iro.umontreal.ca' if you feel like volunteering
+Tell recode-bugs@iro.umontreal.ca if you feel like volunteering
 for any of these ideas, listed more or less in decreasing order
 of priority.  Some TODO items are implicit within received email.
 
-.. Before next official release
-. : Revise everything about explodes.
-. : Update NEWS for latest libiconv and latest Keld tables.
-. : Remove TeX edition warnings, rephrase whatever required.
-. : Complete inter-node and menu references, as necessary.
-. : See make and configure HAVE_UNION_WAIT, see `lr /conf-wait-'.
+Before next official release
+============================
 
-.. Memory control
-. : Dig
-.  , ALLOC, ALLOC_SIZE, REALLOC
-.  , edit_sequence, init_ucs2_to_byte
-. : Revise for leaks
-.  , combine.c
-.  , localcharset.c
-.  , names.c (for aliases)
-.  , html.c
-.  , testdump.c
-.  , recode.c
-. : Solve
-.  , src/xalloc.h + src/xmalloc.c .vs. lib/xstrdup.c
-.  , xstrdup unused
++ Revise everything about explodes.
++ Update NEWS for latest libiconv and latest Keld tables.
++ Remove TeX edition warnings, rephrase whatever required.
++ Complete inter-node and menu references, as necessary.
++ See make and configure HAVE_UNION_WAIT, see ``lr /conf-wait-``.
 
-.. Keld
-. : recode
-.  , New tables from Keld
-.  , Revise diagnostics
-. : Standards aspects
-.  , Wait for PostScript
-.   ; charset in 14652
-.   ; transliteration in 14652
-.   ; API in 15435
-.   ; recoding/iconv APIs (->Handa)
-. : Miscellaneous
-.  , African tables
-.  , Unicode/W3C short-comings
-.   ; Lithuanian
+Memory control
+==============
 
-.. Linus
-. @ ~/méthodes/rtf/
++ Dig
 
-.. Particular notes
-. : feuille Tamil
-. : Autoconf and DOSWIN
-. : New RFC 1345 tables, still some diagnostics
-. : Check notes from ORA
-. @ ~/libit/rmail/m4
-. @ ~/libit/rmail/gettext
+  + ALLOC, ALLOC_SIZE, REALLOC
+  + edit_sequence, init_ucs2_to_byte
 
-.@ ChangeLog
++ Revise for leaks
 
-.. Charsets
-. : Clean up applemac vs macintosh and ibmpc vs ibm437.
-. : Implement RFC1345 more fully.
-. : Generalize older charsets (latex, texte, etc.) to RFC 1345 mnemonics.
-. : Support VT320 support and related character sets.  (Alain Simon)
-. : Support @code{[nt]roff} diacritics.
-. : Support Universite de Montreal ``accent'' convention.
-. @ ~/fp/codes/mule/courriel/
+  + combine.c
+  + localcharset.c
+  + names.c (for aliases)
+  + html.c
+  + testdump.c
+  + recode.c
 
-.. Surfaces
-. : Implement some invbits over 8, 7 or 6 bits, maybe more.
-. : CR-LF, in ibmpc.c (implied by IBMPC?)
-. : CR, in applemac.c (implied by Apple-Mac?)
-. : Message headers [RFC 1342]
-. : Mnemonic and Mnemo (maybe?) [RFC 1345]
-. : Integrate -c and -g into charsets.
-. : Find something for ``recode -g ibmpc:ibmpc`` to do what it suggests
-. : Option -M (implying -i) to process MIME headers
++ Solve
 
-.. Mechanics
-. : Intercept signals to cleanup the temporary files in any event.
-. : Revise --sequence=pipe thoroughly.
-. : Rewrite execute_pipe_sequence for having only one child per parent.
-. : Revise --force thoroughly.
-. : Rewrite .l converses for lat1{asci,ltex,txte}, for --force.
-. : Optimize/merge all one-to-many cases.
-. : Write a better `make check', not as partial and forgiving.
-. : Modify recode so I can get rid of diacrit.[ch] (elsewhere).
-. : Have -l know which output charset to use (Martin Maechler, 93-12-07).
-. : Take note that ->RFC1345 recodings are non reversible.
+  + src/xalloc.h + src/xmalloc.c .vs. lib/xstrdup.c
+  + xstrdup unused
 
-.. Notes about MSDOS port
-. : I had to `touch stamp-h'.
-. : @PRODUCT@ and @VERSION@ were not substituted.
-. : Replace PRODUCT by PACKAGE within config_h.*.
-. : One should have -DHAVE_CONFIG_H=1 (the `=1' is required).
-. : charset.c:637: Maybe incorrect assignment in init_table_for_rfc1345().
-. : LIBINTL.OBJ and LOCALE.OBJ were not compiled.
-. : Rule to compile LIBINTL.OBJ was missing.
-. : readme.tcc should become README.DOS as things go.
+Keld
+====
+
++ recode
+
+  + New tables from Keld
+  + Revise diagnostics
+
++ Standards aspects
+
+  + Wait for PostScript
+
+    + charset in 14652
+    + transliteration in 14652
+    + API in 15435
+    + recoding/iconv APIs (->Handa)
+
++ Miscellaneous
+
+  + African tables
+  + Unicode/W3C short-comings
+
+    + Lithuanian
+
+Linus
+=====
+
++ ~/méthodes/rtf/
+
+Particular notes
+================
+
++ feuille Tamil
++ Autoconf and DOSWIN
++ New RFC 1345 tables, still some diagnostics
++ Check notes from ORA
++ ~/libit/rmail/m4
++ ~/libit/rmail/gettext
+
+ChangeLog
+=========
+
+Charsets
+========
+
++ Clean up applemac vs macintosh and ibmpc vs ibm437.
++ Implement RFC1345 more fully.
++ Generalize older charsets (latex, texte, etc.) to RFC 1345 mnemonics.
++ Support VT320 support and related character sets.  (Alain Simon)
++ Support @code{[nt]roff} diacritics.
++ Support Universite de Montreal *accent* convention.
++ ~/fp/codes/mule/courriel/
+
+Surfaces
+========
+
++ Implement some invbits over 8, 7 or 6 bits, maybe more.
++ CR-LF, in ibmpc.c (implied by IBMPC?)
++ CR, in applemac.c (implied by Apple-Mac?)
++ Message headers [RFC 1342]
++ Mnemonic and Mnemo (maybe?) [RFC 1345]
++ Integrate -c and -g into charsets.
++ Find something for ``recode -g ibmpc:ibmpc`` to do what it suggests
++ Option -M (implying -i) to process MIME headers
+
+Mechanics
+=========
+
++ Intercept signals to cleanup the temporary files in any event.
++ Revise --sequence=pipe thoroughly.
++ Rewrite execute_pipe_sequence for having only one child per parent.
++ Revise --force thoroughly.
++ Rewrite .l converses for lat1{asci,ltex,txte}, for --force.
++ Optimize/merge all one-to-many cases.
++ Write a better ``make check``, not as partial and forgiving.
++ Modify recode so I can get rid of diacrit.[ch] (elsewhere).
++ Have -l know which output charset to use (Martin Maechler, 93-12-07).
++ Take note that ->RFC1345 recodings are non reversible.
+
+Notes about MSDOS port
+======================
+
++ I had to ``touch stamp-h``.
++ @PRODUCT@ and @VERSION@ were not substituted.
++ Replace PRODUCT by PACKAGE within config_h.*.
++ One should have -DHAVE_CONFIG_H=1 (the ``=1`` is required).
++ charset.c:637: Maybe incorrect assignment in init_table_for_rfc1345().
++ LIBINTL.OBJ and LOCALE.OBJ were not compiled.
++ Rule to compile LIBINTL.OBJ was missing.
++ readme.tcc should become README.DOS as things go.
