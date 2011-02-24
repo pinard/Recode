@@ -1,5 +1,5 @@
 @echo off
-echo Configuring Free Recode for DJGPP v2.x...
+echo Configuring Recode for DJGPP v2.x...
 
 Rem The SmallEnv tests protect against fixed and too small size
 Rem of the environment in stock DOS shell.
