@@ -166,7 +166,7 @@ The test suite is worth more comments:
   to have :code:`python` and :code:`python-devel` installed first.
 
 + Beware that the Pyrex interface to the Recode library is only meant
-  for testing. for now at least.  While you may play with it, it would not
+  for testing, for now at least.  While you may play with it, it would not
   be wise relying on it, as the specifications might change at any time.
 
 Installation
@@ -194,32 +194,15 @@ library.  Otherwise, you might consider pre-installing the portable
 Getting a release
 -----------------
 
-The canonical distribution point for this version is:
+Source files and various distributions (either latest, prestest, or
+archive) are available through:
 
-  http://recode.progiciels-bpi.ca/archives/recode.tar.gz
-
-GNU mirrors usually hold a copy of non-pretest releases, the canonical
-distribution point for the last such release is:
-
-  ftp://ftp.gnu.org/pub/gnu/recode/recode-3.6.tar.gz
-
-Some older distributions *might* be available in this directory:
-
-  http://recode.progiciels-bpi.ca/archives/
-
-Getting the sandbox
--------------------
-
-Visit http://github.com/pinard/Recode/tree/dev-3.7 and use the
-*Download* button to get a packaged copy of development sources.  If you
-happen to be a Git lover, you may rather use::
-
-  git clone git://github.com/pinard/Recode.git
+  https://github.com/pinard/Recode/
   
-and then, checkout branch ``dev-3.7``.  File timestamps after checktou
-may trigger Make difficulties.  As a way to avoid, from the top level of
-the distribution, execute ``sh after-patch.sh``.  If you miss either
-:code:`sh` or GNU :code:`touch`, try ``python after-patch.py`` instead.
+File timestamps after checkout may trigger Make difficulties.  As a way
+to avoid these, from the top level of the distribution, execute ``sh
+after-patch.sh`` before configuring.  If you miss either :code:`sh` or
+GNU :code:`touch`, try ``python after-patch.py`` instead.
 
 Configure options
 -----------------
