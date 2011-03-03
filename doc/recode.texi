@@ -626,6 +626,30 @@ recode -d l1..tex <datum.txt >datum.tex
 This example also shows that @code{l1} could be used instead of
 @code{Latin-1}; charset names often have such aliases.
 
+@cindex exit status
+@cindex status code
+Recode has three modes are for when to set the exit status to non-zero:
+
+@itemize @bullet
+@item
+The most lenient setting is activated with option @samp{-f}, in which
+case only system errors or library mis-usage causes the exit status to
+be set.
+
+@item
+By default, without @samp{-f} nor @samp{-s}, Recode sets the exit
+status as above, and also in case of invalid or untranslatable input.
+It also tries (but not always succeed) to detect if output is going to
+be ambiguous at some later recode-back time.
+
+@item
+The stricter setting is activated with @samp{-s}, Recode then sets the
+exit status as above, or if input is not canonically coded (and it also
+prevents itself from *completing* recoding tables for making the
+recoding reversible).
+
+@end itemize
+
 @node Requests, Listings, Synopsis, Invoking recode
 @section The @var{request} parameter
 
