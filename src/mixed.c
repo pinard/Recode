@@ -61,7 +61,7 @@ open_mixed (struct mixed *mixed, RECODE_TASK task)
 	   !task->output.file)
     {
       recode_perror (NULL, "fopen (%s)", task->output.name);
-      if (*(task->input.name))
+      if (task->input.file != stdin)
 	fclose (task->input.file);
       return false;
     }
