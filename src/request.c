@@ -765,7 +765,10 @@ scan_options (RECODE_REQUEST request)
       scan_identifier (request);
       ALLOC (copy, strlen (request->scanned_string) + 1, char);
       if (!copy)
-	break;			/* FIXME: should interrupt decoding */
+	{
+	  free (new);
+	  break;		/* FIXME: should interrupt decoding */
+	}
       strcpy (copy, request->scanned_string);
 
       new_->option = copy;

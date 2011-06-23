@@ -435,7 +435,10 @@ init_ucs2_html (RECODE_STEP step,
     if (cursor->flags & mask
 	&& (!request->diacritics_only || cursor->code > 128))
       if (!hash_insert (table, cursor))
-	return false;
+	{
+	  hash_free (table);
+	  return false;
+	}
 
   step->step_type = RECODE_UCS2_TO_STRING;
   step->step_table = table;
@@ -616,7 +619,10 @@ init_html_ucs2 (RECODE_STEP step,
     if (cursor->flags & mask
 	&& (!request->diacritics_only || cursor->code > 128))
       if (!hash_insert (table, cursor))
-	return false;
+	{
+	  hash_free (table);
+	  return false;
+	}
 
   step->step_type = RECODE_STRING_TO_UCS2;
   step->step_table = table;
