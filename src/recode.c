@@ -206,6 +206,8 @@ complete_pairs (RECODE_OUTER outer, RECODE_STEP step,
 
   memset (left_flag, 0, 256);
   memset (right_flag, 0, 256);
+  memset (left_table, 0, 256);
+  memset (right_table, 0, 256);
   table_error = false;
 
   /* Establish known data.  */
