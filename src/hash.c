@@ -860,7 +860,10 @@ hash_rehash (Hash_table *table, size_t candidate)
 		  struct hash_entry *new_entry = allocate_entry (new_table);
 
 		  if (new_entry == NULL)
-		    return false;
+		    {
+		      hash_free (new_table);
+		      return false;
+		    }
 
 		  new_entry->data = data;
 		  new_entry->next = new_bucket->next;
