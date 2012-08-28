@@ -1,6 +1,7 @@
 *.[oa]
 *.l[oa]
 *.pyc
+GNUmakefile
 Makefile
 /cleaner.h
 /config.h
