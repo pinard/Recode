@@ -365,6 +365,8 @@ thought; I stay really admirative and grateful for Greg Ewing's work.
   Python; standard Python codecs might even be cythonized in Recode.
 - Program and library initialization get revised to spare disk
   accesses and building descriptive structures, whenever possible.
+- The main program directly links to the Python API rather than
+  through the C API, while the C API becomes a separate facility.
 
 I once thought about resorting to kludges, within a Python API
 interface, so the Python interpreter would not be required at all at
