@@ -1,0 +1,482 @@
+#+TITLE: README for Recode
+#+OPTIONS: H:2 toc:2
+
+* Introduction
+** What is Recode?
+Here is version 3.6 for the Recode program and library.  Hereafter,
+Recode means the whole package, *recode* means the executable program.
+Glance through this =README= file before starting configuration.  Make
+sure you read files =ABOUT-NLS= and =INSTALL= if you are not familiar with
+them already.
+
+The Recode library converts files between character sets and usages.
+It recognises or produces over 200 different character sets (or about
+300 if combined with an *iconv* library) and transliterates files
+between almost any pair.  When exact transliteration are not possible,
+it gets rid of offending characters or falls back on approximations.
+The *recode* program is a handy front-end to the library.
+
+The Recode program and library have been written by François Pinard,
+yet it significantly reuses tabular works from Keld Simonsen.  It is
+an evolving package, and specifications might change in future
+releases.
+
+On various Unix systems, Recode is usually compiled from sources, see
+the [[Installation]] section below.  On Linux, it often comes bundled.
+Recode had been ported to other popular systems.  See both
+[[http:/contrib.html][contrib/README]] and the [[Non-Unix ports]] section below, to find some more
+information about these.
+
+** Reports and collaboration
+Send bug reports to [[mailto:recode-bugs@iro.umontreal.ca][this address]], or if you are comfortable with
+GitHub facilities, through [[https://github.com/pinard/Recode/issues][GitHub Issues]]. A bug report is an adequate
+description of the problem: your input, what you expected, what you
+got, and why this is wrong.  Diffs are welcome, but they only describe
+a solution, from which the problem might be uneasy to infer.  If
+needed, submit actual data files with your report.  Small data files
+are preferred.  Big files may sometimes be necessary, but do not send
+them on the mailing list; rather take special arrangement with the
+maintainer.
+
+Your feedback will help us to make a better and more portable package.
+Consider documentation errors as bugs, and report them as such.  If
+you develop anything pertaining to Recode or have suggestions, let us
+know and share your findings by writing at [[mailto:recode-forum@iro.umontreal.ca][Recode forum]]. You may also
+choose to directly write to [[mailto:pinard@iro.umontreal.ca][the author]], yet be warned that such
+correspondence is often visible for a while through the Recode Web
+site.
+
+If you feel like receiving releases and pretest announcements for the
+Recode package, send a message to [[mailto:majordomo@iro.umontreal.ca][this Majordomo]] having, in its body,
+a line saying:
+
+  #+BEGIN_EXAMPLE
+    subscribe recode-announce
+  #+END_EXAMPLE
+
+If you rather want to participate actively in discussions, pretesting
+and development for Recode, do just as above, but this time, use:
+
+  #+BEGIN_EXAMPLE
+    subscribe recode-forum
+  #+END_EXAMPLE
+
+The [[https://github.com/pinard/Recode][Git repository]] for Recode gives access, through the magic of Git
+and GitHub, to all distribution releases, would they be actual or
+past, pretest or official, as well as individual files.
+
+Please /do not/ widely redistribute releases having a letter after the
+version numbers, as these are meant for pretesting only, and might not
+be stable enough for other usages.
+
+* Release notes
+** Notes for version 3.7-beta2
+Here are a few notes related to the *beta2* pre-test release for the
+incoming Recode 3.7.  I publish it to ease later exchanges of patches
+with testers.
+
+- Long ago, I renamed /GNU recode/ to /Free recode/: the permission for
+  using the /GNU/ prefix mandated a level of obedience to the FSF that
+  once went overboard, in my opinion.  After that change, I realized
+  that some people read /Free/ as a four letter word!  To be peaceful,
+  this version changes the name again, from /Free recode/ to merely
+  /Recode/.  *recode* (no capital) still names the executable program
+  specifically, or the distribution archive itself.
+
+- Recode does not itself include *libiconv* anymore.  However, it uses
+  an external *iconv* library if one is available at installation time,
+  like *libiconv* or the one provided within GNU *libc*.  The =-x:= option
+  to the program, or a new flag to the library *recode_new_outer*
+  function, inhibits the initialisation and usage of *iconv*.
+
+- The bug about loosing a few characters, here and there, when
+  recoding big files in *iconv* context, seems to have been corrected.
+  A patch for this problem has been floating around for years, but it
+  was not solving all cases.
+
+- Recode installation now uses Python.  In particular, it creates file
+  =build/src/iconvdecl.h= from local =iconv -l= output.  Recode testing
+  through =make check= also needs what people *python-devel*, providing C
+  header files for Python and *distutils*.  The =Makemore= file has been
+  merged within regular Makefiles and is not distributed separately
+  anymore.
+
+- It is likely that new bugs have been introduced through the above
+  changes.  In particular, not everything is cosy on the side of
+  release engineering.  A few files are either spuriously remade, or
+  remade late.  I'm a bit surprised by the difficulty to get this
+  right.
+
+- =make check= accepts a =LIMIT== option, for limiting tests to one or a
+  few cases.  See =tests/Makefile= for more information.
+
+- PO files have been updated from the Translation Project.
+
+** Notes for version 3.7-beta1
+The beta 1 pre-test release for the incoming Recode 3.7 has been made
+available for those needing it right away.  While it solves some
+serious bugs and portability problems, others are meant to be
+addressed only in later pre-tests.  In particular, none of charset or
+surface issues, user requests, and various suggestions appear in this
+pre-test, and will not either in later pretests, until all real
+show-stoppers are solved first.  So this is in no way a candidate for
+a Recode 3.7 release.
+
+The test suite is worth more comments:
+
+- The suite is very partial, and may not be thought as a validation
+  suite.  Before it could be used to ascertain confidence, it would
+  need much more tests than it has already.
+
+- Testing is notably more speedy than it used to be.  For example, the
+  previous *bigauto* test, which was not run by default because it ran
+  for too long, is now executed within the standard test suite, once
+  in non-strict mode, and a second time in strict mode.
+
+- It does not use Autotest anymore, but rather a home grown test
+  driver much inspired from the Codespeak project.  The link between
+  the test and the Recode library is established through a Pyrex
+  interface, so you need to have *python* and *python-devel* installed
+  first.
+
+- Beware that the Pyrex interface to the Recode library is only meant
+  for testing, for now at least.  While you may play with it, it would
+  not be wise relying on it, as the specifications might change at any
+  time.
+
+** Non-Unix ports
+Please [[mailto:recode-bugs@iro.umontreal.ca][inform us]] if you are aware of various ports to non-Unix systems
+not listed here, or for corrections.  Please provide the goal system,
+a complete and stable URL, the maintainer name and address, the Recode
+version used as a base, and your comments.
+
+- MSDOS (DJGPP) :: [[mailto:juan.guerrero@gmx.de][Juan Manuel Guerrero]] maintains this port, dated
+                   2001-03 and based on Recode 3.5.  The following
+                   archives hold binaries, docs and sources
+                   respectively.  See [[ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35b.zip][rcode35b]], [[ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35d.zip][rcode35d]] and [[ftp://ftp.simtel.net/pub/simtelnet/gnu/djgpp/v2gnu/rcode35s.zip][rcode35s]].
+                   Also see [[http:/DJGPP.html][contrib/DJGPP/README]] in the Recode
+                   distribution for more information about compiling
+                   this port.
+- MSDOS (Gnuish) :: [[mailto:hankedr@mail.auburn.edu][Darrel Hankerson]] maintains this port, dated
+                    1994-11 and based on Recode 3.4.  You get many GNU
+                    tools, not only Recode.  The GNUish project is
+                    described in =gnuish_t.htm=.  See [[http://www.simtel.net/simtel.net/][simtel]] and [[http://www.leo.org/pub/comp/platforms/pc/gnuish][gnuish]]
+                    (Germany), or for the FTP versions: [[ftp://ftp.simtel.net/simtelnet/gnu][simtel]] and
+                    [[ftp://ftp.leo.org/pub/comp/platforms/pc/gnuish][gnuish]].
+- OS/2 (using emx/gcc) :: Maintainer unknown (maybe [[mailto:rommel@ars.de][Kai Uwe Rommel]]),
+     dated 1994-11 and based on Recode 3.4.  See [[http://hobbes.nmsu.edu/pub/os2/util/convert/gnurcode.zip][gnurcode]].
+* Installation
+** Prerequisites
+
+Simple installation of Recode requires the usual tools and facilities
+as those needed for most GNU packages.  If not already bundled with
+your system, you also need to pre-install [[http://www.python.org][Python]], version 2.2 or
+better.
+
+It is also convenient to have some *iconv* library already present on
+your system, this much extends Recode capabilities, especially in the
+area of Asiatic character sets.  GNU *libc*, as found on Linux systems
+and a few others, already has such an *iconv* library.  Otherwise, you
+might consider pre-installing the [[http://www.gnu.org/software/libiconv/][portable libiconv]], written by Bruno
+Haible.
+
+** Getting a release
+Source files and various distributions (either latest, prestest, or
+archive) are available through [[https://github.com/pinard/Recode/][GitHub]].
+
+File timestamps after checkout may trigger Make difficulties.  As a
+way to avoid these, from the top level of the distribution, execute =sh
+after-patch.sh= before configuring.  If you miss either *sh* or GNU
+*touch*, try =python after-patch.py= instead.
+
+** Configure options
+Once you have an unpacked distribution, see files:
+
+  |-------------+------------------------------------------------|
+  | File name   | Description                                    |
+  |-------------+------------------------------------------------|
+  | =ABOUT-NLS=   | how to customise this program to your language |
+  | =COPYING=     | copying conditions for the program             |
+  | =COPYING.LIB= | copying conditions for the library             |
+  | =INSTALL=     | compilation and installation instructions      |
+  | =NEWS=        | major changes in the current release           |
+  | =THANKS=      | partial list of contributors                   |
+  |-------------+------------------------------------------------|
+
+Besides those configure options documented in files =INSTALL= and
+=ABOUT-NLS=, a few extra options may be accepted after =./configure=:
+
+- Options =--disable-shared= or =--disable-static=
+
+  to inhibit the building of shared libraries or static libraries; the
+  default is to always build static libraries, and to attempt building
+  shared libraries if there is some known recipe for this.
+
+- Option =--with-gnu-ld=
+
+  to force the assumption that the C compiler uses GNU *ld*.
+
+- Option =--with-dmalloc=
+
+  to trigger a debugging feature for looking at memory management
+  problems, it pre-requires Gray Watson's [[ftp://ftp.letters.com/src/dmalloc/dmalloc.tar.gz][dmalloc package]].
+
+** Maintenance tools
+For simple modifications to Recode, you should not need special tools
+beyond those usual for installing GNU packages.  However, if you
+modify any =.l= source file, Python and Flex are both needed for
+remaking =merged.c=.
+
+For more comprehensive modifications, you might need more tools.  If
+not done already, make sure you have a copy of the packages listed in
+the following table.  You may also choose to establish a link in your
+build =doc/= directory, as explained within =doc/Makemore=.
+
+  |--------------+---------+----------+---------------|
+  | Package name | Current |  Minimum | Install after |
+  |--------------+---------+----------+---------------|
+  | *autoconf*     |    2.61 |     2.12 | *m4*            |
+  | *automake*     |    1.10 |      1.9 | *Perl*          |
+  | *Flex*         |  2.5.33 |   2.5.4a |               |
+  | *gettext*      |    0.16 |     0.16 |               |
+  | *Help2man*     |    1.36 |    1.020 | *Perl*          |
+  | *libtool*      |  1.5.24 |    1.3.4 |               |
+  | *m4*           |  1.4.10 |     1.4n |               |
+  | *Make*         |    3.81 |          |               |
+  | *Perl*         |   5.8.8 | 5.005.03 |               |
+  | *Python*       |   2.5.1 |      2.2 |               |
+  | *tar*          |    1.17 |     1.12 |               |
+  | *wget*         |  1.10.2 |          |               |
+  |--------------+---------+----------+---------------|
+
+The /current/ version numbers just happen to be those used for
+development, it is often likely that older versions would work just as
+well.  The /minimum/ version numbers were once acceptable, they might
+not be anymore, this has not been verified; any updating information
+is welcome!
+
+** Installation hints
+Here are a few hints which might help installing Recode on some
+systems.  Many may be applied by temporary presetting environment
+variables while calling =./configure=.  File =INSTALL= explains this.
+
+- Compilation time
+
+  Some C compilers, like Apollo's, have a hard time compiling
+  =merged.c=.  If this is your case, avoid compiler optimisation.  From
+  within the Bourne shell, you may use:
+
+    #+BEGIN_EXAMPLE
+      CFLAGS= ./configure
+    #+END_EXAMPLE
+
+  But if you want to give a real hard time to your C optimiser on
+  =merged.c=, to get code that runs only a bit faster, merely try:
+
+    #+BEGIN_EXAMPLE
+      CPPFLAGS=-DINLINE_HARDER ./configure
+    #+END_EXAMPLE
+
+- Smallish systems
+
+  For 80286 based systems (do some still exist?!), it has been
+  reported that some compilers generate wrong code while optimising
+  for /small/ models.  So, from within the Bourne shell, do:
+
+    #+BEGIN_EXAMPLE
+      CFLAGS=-Ml LDFLAGS=-Ml ./configure
+    #+END_EXAMPLE
+
+  to force large memory model.  For 80286 Xenix compiler, the last
+  time it was tried a while ago, one ought to use:
+
+    #+BEGIN_EXAMPLE
+      CFLAGS='-Ml -F2000' LDFLAGS=-Ml ./configure
+    #+END_EXAMPLE
+
+  Other systems have poor *pipe* / *popen* support or thrash heavily when
+  processes fork.  In this case, just before doing =make=, edit =config.h=
+  and ensure *HAVE_PIPE* is /not/ defined.
+
+* The future of Recode
+** Motivation
+Recode is due for a major ovehaul.  My plan is to end the 3.x series
+of this package, rather aiming 4.0 as a major internal rewrite.
+
+For one thing, I want to explore some new avenues.  It does not seem
+natural anymore, to me at least, using C code for exploring or
+prototyping new ideas requiring complex internal structures:
+encompassing changes are stretchy, work overhead is just too high.  I
+want to add a run-time dependency between Recode and Python, with the
+admitted goal of shifting the internals of Recode from C to Python.
+
+Another thing is that Recode should reuse more of the work of many
+competent people in the recoding area.  I was brought into the
+business of character set conversion issues by a random set of
+coincidences and needs, but have never been a character set specialist
+myself.  I rely on users to help me sketch what needs to be done.
+There are other tools and other maintainers who address these matters
+more competently than me.  Recode might well rely on their work and
+better concentrate on user functionalities and on an overall picture.
+
+For experimenting what Recode might become and experimenting new
+concepts more easily, I created a subsidiary and standalone Python
+project named [[https://github.com/pinard/Recodec][Recodec]], which reproduces a good part of Recode
+functionality.  My goal is now to merge Recodec back into Recode soon,
+rather than slowly stretching the distance between Recode and Recodec.
+Recode is going to be a mix of Python, C and either Pyrex or Cython.
+
+** Overall plan
+The release 3.6 for Recode was likely the last in the 3.x series.  As
+there is still a long way before 4.0 gets ready, and /especially/
+because some of my good collaborators insisted that I do so, there
+will likely be other Recode 3.X releases on the way to 4.0, at least
+to provide a selection of user-contributed patches.  Also, the next
+releases of Recode will progressively implement the base mechanics for
+the transition, through a list of development steps similar to the
+following.  By principle, the implementation should be working and
+usable at each devewlopment step.  Moreover, for better
+maintainability, refactoring shall occur all along the way.
+
+I'll likely select Cython over Pyrex, the main arguments being
+Unicode, Python 3 and pragmatic support, and a wide and active user
+base.  Pyrex, the inspiration behind Cython, is amazingly well
+thought; I stay really admirative and grateful for Greg Ewing's work.
+
+- The main program is written in Python, and through a Cython
+  interface, calls the existing C API for doing the real work.
+- The C API gets merely able to use Cython written steps internally,
+  besides the actual C steps, but with no Cython steps yet.
+- New Cython steps wrap many standard Python codecs, with some
+  trickery to force Python codecs over actual, older Recode steps.
+- Recode library initialization is moved from C to Python, and gets
+  called through Cython from the C API.
+- Initialization is extended to cover the Recodec Python API, which
+  uses different tables and descriptive data.
+- More steps from Recodec get moved into Recode, either coexisting
+  with or taking over the previous wrapping of Python codecs.
+- The remaining code from the Recodec engine gets moved into Recode,
+  replacing C code having the same fonctionality.
+- Special care is given to GNU *libc* or *libiconv* support, maybe going
+  from the C side to the Python side.
+- Proper documentation and decisions follow extensive comparison and
+  diagnostic of multiple implementations of same charsets or surfaces.
+- Profiling allows to fine tune when and how Cython gets used over
+  Python; standard Python codecs might even be cythonized in Recode.
+- Program and library initialization get revised to spare disk
+  accesses and building descriptive structures, whenever possible.
+
+I once thought about resorting to kludges, within a Python API
+interface, so the Python interpreter would not be required at all at
+run-time.  Today, I doubt this is doable in practice, or that the
+implied restrictions on Cython code would be bearable.  By the time, I
+may come to think that this is not worth the effort, anyway.
+
+** Speed and memory
+Historically, Recode has always been oriented towards some generality
+in specifications, combined with good execution speed.  Generality is
+granted through providing recoding steps either as tables or fuller
+algorithms expressed as C code.  Speed surely results from careful C
+coding of individual steps, and using Flex for more difficult
+recognition problems.  Speed also comes from the monolithic design of
+an executable holding all tables at once, relying on system paging
+instead of run-time opening of external data files.  The automatic
+selection among step sequencing methods also play a role in the speed
+area.
+
+Rewriting a character shuffling engine in Python is going to have
+consequences on both speed and memory: Python is inherently much
+slower than C for such problems, program startup requires many disk
+accesses to load all required modules, and the size of the Python
+interpreter is not negligible.  On the other hand, Recode is not small
+as it stands.
+
+For prototyping various experiments, the slowdown is likely to be
+bearable, especially considering the development speedup that might
+result from using Python instead of C.  It is fairly tedious to make
+encompassing structural changes in the C version of Recode, while
+similar changes are going to be rather easy in Python.  I expect that
+the shorter development cycle will counter-weight some duplication in
+the maintenance of Recode both in Python and C afterwards.
+
+** Planned differences
+Whenever the Python library offers a charset or a surface which Recode
+also has, the Python library codec is used.  In some cases, this
+introduces differences, those will have to be resolved one by one,
+either by accepting that the Python library does better, getting the
+Python team to improve some codecs, or overriding these from Recodec.
+
+Other differences may occur, especially in the Asian charset area,
+from the fact *libiconv*, GNU *libc* recoding facilities, and various
+contributors to the Python codecs project, do not fully agree on how
+things should be done.  Recodec is likely to offer configuration
+mechanisms to choose among various possibilities, but will not likely
+attempt to rule out who is right and who is wrong! ☺
+
+Issues about reversibility and canonicity, which were much present in
+Recode 3.X, are fading out.  While some of these were moderately easy
+to implement, other cases stayed pending as fairly difficult to solve
+without a significant loss of efficiency.  I think these issues are
+better abandoned than forever kept as half-hearted and not wholly
+dependable.  Any user concerned about such things might try the
+reverse coding to find out if the original file is recoverable, some
+new option might automate a (costly) reversibility test.
+
+One drawback of the whole move is that the Global Interpreter Lock in
+Python gets in the way of parallel execution of the code.  This would
+have been more of a concern if GNU *libc* recoding facilities were
+relying on the Recode library, but as things stand by now, I'm
+guessing that users will not be much impacted in practice.
+
+* Other pointers
+** Documentation
+- IETF references
+
+  - [[ftp://nic.ddn.mil/rfc/rfc1345.txt][Character Mnemonics & Character Sets]], by [[mailto:keld@dkuug.dk][Keld Simonsen]], 1992-06.
+  - [[ftp://nic.ddn.mil/rfc/rfc1642.txt][UTF-7 - A Mail-Safe Transformation Format of Unicode]], by [[mailto:david_goldsmith@taligent.com][David
+    Goldsmith]] and [[mailto:mark_davis@taligent.com][Mark Davis]], 1994-07.
+  - [[ftp://nic.ddn.mil/rfc/rfc2044.txt][UTF-8, a transformation format of Unicode and ISO 10646]], by [[mailto:yergeau@alis.com][François Yergeau]], 1997-10.
+
+- Various references
+
+  - [[ftp://ftp.unicode.org:/Public/MAPPINGS/][Unicode charset mappings]].  The Unicode consortium makes available
+    plenty of charset mappings for converting /legacy/ charsets to
+    Unicode.
+  - [[ftp://ftp.iro.umontreal.ca/pub/contrib/pinard/accents/oqil-tome1.ps.gz][Normalisation et internationalisation: Inventaire et prospectives
+    des normes clefs pour le traitement informatique du français.]]
+    (392p.) or [[http://www.ceveil.qc.ca/Normes][this other copy]].  This is a report, written in French,
+    discussing charset issues and many other topics as well.  [[mailto:bourbeau@progiciels-bpi.ca][Laurent
+    Bourbeau]] and [[mailto:pinard@iro.umontreal.ca][François Pinard]], 1995-10.
+
+- Recode specific
+
+  - ETL presentation
+
+    In 1999, the organisers of the [[http://www.m17n.org/conference/m17n99_all_but_registration/welcome.en.html][m17n99 conference]] in Tsukuba,
+    Japan, were kind enough to invite me.  This has been for me a
+    fabulous trip and experience, and I met many extraordinary people
+    in there.  At the conference, I presented the Translation Project,
+    and Recode.  The Recode [[http:/m17n99.html][presentation slides]] are available.
+
+** Programs
+- libiconv :: This comprehensive [[http://www.gnu.org/software/libiconv/][charset converter library]], by [[mailto:haible@ilog.fr][Bruno
+              Haible]], revolves around Unicode, and support Asian
+              encodings among many others.  Even Recode uses it!
+- tcs :: Here is the [[ftp://research.att.com/dist/tcs.shar.Z][main recoding tool]] from the Plan9 project.
+- yuedit :: This [[ftp://sunsite.unc.edu/pub/Linux/apps/editors/X/yudit-1.2.tar.gz][GUI editor]], by [[mailto:gsinai@iname.com][Gaspar Sinai]], 1999-01, handles many
+            encodings, among which UTF-8.  It also installs *uniconv*, a
+            recoding program, and *uniprint*, a printing tool.
+- ucs-fonts :: These [[http://www.cl.cam.ac.uk/~mgk25/download/ucs-fonts.tar.gz][6x13 fonts]], by [[mailto:Markus.Kuhn@cl.cam.ac.uk][Markus Kuhn]], 1998-11, covering
+               Unicode characters besides the Asian sets, merely
+               replace the Linux fixed 6x13 font.  Works nicely with
+               *yudit*.
+- MtRecode :: This [[http://www.lpl.univ-aix.fr/projects/multext/MtRecode/][charset converter]] is oriented towards SGML text
+              manipulation.  It may be freely downloaded for
+              non-commercial, non-military use.  Pointer given by [[mailto:veronis@univ-aix.fr][Jean
+              Véronis]], 1996-06.
+- sp :: This quite nice SGML [[ftp://ftp.jclark.com/pub/sp/sp-1.3.tar.gz][structure analyser]], by [[mailto:jjc@jclark.com][James Clark]],
+        contains internal C++ modules for handling many charsets.
+- b2c :: This [[http://research.de.uu.net:8080/~gnu/b2c/b2c-2.1.tar.gz][program]], by [[mailto:Joerg.Heitkoetter@de.uu.net][Jörg Heitkötter]], 1997-11, is able to
+         generate interpreted character dumps, but properly embedded
+         within complete C header files.
+- PyRecode :: This [[http://www.suxers.de/PyRecode.tgz][wrapper]], by [[mailto:ajung@server.python.net][Andreas Jung]], provides Recode functionality to Python programs.  Also see [[http://www.vex.net/parnassus/apyllo.py?find%3Drecode][this link]] and [[http://www.suxers.de/python/pyrecode.htm][this other link]].
