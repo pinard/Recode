@@ -57,7 +57,7 @@ class Test:
         # consider as a single test, one "before" against all "after"s.
         # However, without a Recode module, we do not know how many
         # "before"s exist, and the skip count is then rather small.
-        print before
+        print(before)
         for after in self.charsets:
             if after is not before:
                 request = Recode.Request(self.outer)
@@ -97,7 +97,7 @@ class Report:
                 line = readline()
                 if line:
                     if len(line[:-lensep].split(':', 1)) != 2:
-                        print '*', line,
+                        print('*', line, end=' ')
                     type, shrunk_to = line[:-lensep].split(':', 1)
                     if type == 'Shrunk to':
                         steps = self.get_steps(shrunk_to)

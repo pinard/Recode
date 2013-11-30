@@ -42,4 +42,4 @@ Recode.so: Recode.c setup.py
 	rm -fr build
 
 Recode.c: Recode.pyx
-	cd $(srcdir) && cython Recode.pyx
+	cd $(srcdir) && cython -3 Recode.pyx

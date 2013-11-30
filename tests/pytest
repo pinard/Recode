@@ -3,7 +3,7 @@
 # Copyright © 2005 Progiciels Bourbeau-Pinard inc.
 # François Pinard <pinard@iro.umontreal.ca>, 2005.
 
-u"""\
+"""\
 Execute a validation suite built in pylib's py.test style.
 
 Usage: pytest [OPTION]... [PATH]...
@@ -39,9 +39,8 @@ least one such failed test, the return status of this program is non-zero.
 # excellent Codespeak's py.test, at a time I really needed py.test to be
 # more Unicode-aware.
 
-__metaclass__ = type
 import inspect, os, sys, time, traceback
-from StringIO import StringIO
+from io import StringIO
 
 # How many displayable characters in an output line.
 WIDTH = 79
@@ -70,40 +69,40 @@ class Main:
             sys.stdout = Friendly_StreamWriter(sys.stdout)
             sys.stderr = Friendly_StreamWriter(sys.stderr)
         import getopt
-        options, arguments = getopt.getopt(arguments, u'f:hk:l:no:ps:vx:')
+        options, arguments = getopt.getopt(arguments, 'f:hk:l:no:ps:vx:')
         for option, value in options:
-            if option == u'-f':
+            if option == '-f':
                 self.prefix = value
-            elif option == u'-h':
+            elif option == '-h':
                 sys.stdout.write(__doc__)
                 return
-            elif option == u'-k':
+            elif option == '-k':
                 self.pattern.append(value)
-            elif option == u'-l':
+            elif option == '-l':
                 self.limit = int(value)
-            elif option == u'-n':
+            elif option == '-n':
                 self.capture = False
-            elif option == u'-o':
+            elif option == '-o':
                 self.ordinals += [
-                    int(text) for text in value.replace(u',', u' ').split()]
-            elif option == u'-p':
+                    int(text) for text in value.replace(',', ' ').split()]
+            elif option == '-p':
                 self.profile = True
-            elif option == u'-s':
+            elif option == '-s':
                 self.save = value
-            elif option == u'-v':
+            elif option == '-v':
                 self.verbose = True
-            elif option == u'-x':
+            elif option == '-x':
                 self.exclusion.append(value)
         if not arguments:
-            arguments = u'.',
+            arguments = '.',
         if self.pattern:
             import re
-            self.pattern = re.compile(u'|'.join(self.pattern))
+            self.pattern = re.compile('|'.join(self.pattern))
         else:
             self.pattern = None
         if self.exclusion:
             import re
-            self.exclusion = re.compile(u'|'.join(self.exclusion))
+            self.exclusion = re.compile('|'.join(self.exclusion))
         else:
             self.exclusion = None
         write = sys.stderr.write
@@ -115,7 +114,7 @@ class Main:
             try:
                 import lsprof
             except ImportError:
-                write(u"WARNING: profiler unavailable.\n")
+                write("WARNING: profiler unavailable.\n")
                 self.profiler = None
             else:
                 self.profiler = lsprof.Profiler()
@@ -149,92 +148,92 @@ class Main:
                         finally:
                             del sys.path[0]
                         if self.counter and not self.verbose:
-                            text = u'(%d)' % self.counter
+                            text = '(%d)' % self.counter
                             if self.column + 1 + len(text) >= WIDTH:
-                                write(u'\n%5d ' % self.counter)
+                                write('\n%5d ' % self.counter)
                             else:
-                                text = u' ' + text
-                            write(text + u'\n')
-            except Exit, exception:
+                                text = ' ' + text
+                            write(text + '\n')
+            except Exit as exception:
                 if not self.verbose:
-                    write(u'\n')
-                write(u'\n* %s *\n' % str(exception))
+                    write('\n')
+                write('\n* %s *\n' % str(exception))
             except Limit_Reached:
                 if not self.verbose:
-                    write(u'\n')
+                    write('\n')
                 if not self.save:
                     if len(self.failures) == 1:
-                        write(u'\n* One error already! *\n')
+                        write('\n* One error already! *\n')
                     else:
-                        write(u'\n* %d errors already! *\n' % self.limit)
+                        write('\n* %d errors already! *\n' % self.limit)
         finally:
             if self.profiler is not None:
                 stats = lsprof.Stats(self.profiler.getstats())
-                stats.sort(u'inlinetime')
-                write(u'\n')
+                stats.sort('inlinetime')
+                write('\n')
                 stats.pprint(15)
             if self.failures:
                 if len(self.failures) == 1:
-                    text = u"one FAILED test"
+                    text = "one FAILED test"
                 else:
-                    text = u"%d FAILED tests" % len(self.failures)
+                    text = "%d FAILED tests" % len(self.failures)
                 first = False
             else:
-                text = u''
+                text = ''
                 first = True
             good_count = (self.total_count - self.skip_count
                           - len(self.failures))
             if good_count:
                 if first:
                     if good_count == 1:
-                        text += u"one good test"
+                        text += "one good test"
                     else:
-                        text += u"%d good tests" % good_count
+                        text += "%d good tests" % good_count
                     first = False
                 else:
                     if good_count == 1:
-                        text += u", one good"
+                        text += ", one good"
                     else:
-                        text += u", %d good" % good_count
+                        text += ", %d good" % good_count
             if self.skip_count:
                 if first:
                     if self.skip_count == 1:
-                        text += u"one skipped test"
+                        text += "one skipped test"
                     else:
-                        text += u"%d skipped tests" % self.skip_count
+                        text += "%d skipped tests" % self.skip_count
                     first = False
                 else:
                     if self.skip_count == 1:
-                        text += u", one skipped"
+                        text += ", one skipped"
                     else:
-                        text += u", %d skipped" % self.skip_count
+                        text += ", %d skipped" % self.skip_count
             if first:
-                text = u"No test"
-            summary = (u"\nSummary: %s in %.2f seconds.\n"
+                text = "No test"
+            summary = ("\nSummary: %s in %.2f seconds.\n"
                        % (text, time.time() - start_time))
             write(summary)
         if self.save:
-            write = file(self.save, u'w').write
+            write = file(self.save, 'w').write
             for ordinal in self.failures:
-                write(u'%d\n' % ordinal)
+                write('%d\n' % ordinal)
         else:
             write = sys.stdout.write
             for (ordinal, prefix, function, arguments, stdout, stderr,
                  tracing) in self.failures:
-                write(u'\n' + u'=' * WIDTH + u'\n')
-                write(u'%d. %s\n' % (ordinal, prefix))
+                write('\n' + '=' * WIDTH + '\n')
+                write('%d. %s\n' % (ordinal, prefix))
                 if function and function.__name__ != os.path.basename(prefix):
-                    write(u"    Fonction %s\n" % function.__name__)
+                    write("    Fonction %s\n" % function.__name__)
                 if arguments:
                     for counter, argument in enumerate(arguments):
-                        write(u"    Arg %d = %r\n" % (counter + 1, argument))
-                for buffer, titre in ((stdout, u'STDOUT'), (stderr, u'STDERR')):
+                        write("    Arg %d = %r\n" % (counter + 1, argument))
+                for buffer, titre in ((stdout, 'STDOUT'), (stderr, 'STDERR')):
                     if buffer:
-                        write(u'\n' + titre + u' >>>\n')
+                        write('\n' + titre + ' >>>\n')
                         write(buffer)
-                        if not buffer.endswith(u'\n'):
-                            write(u'\n')
-                write(u'-' * WIDTH + u'\n')
+                        if not buffer.endswith('\n'):
+                            write('\n')
+                write('-' * WIDTH + '\n')
                 write(tracing)
             if self.failures:
                 write(summary)
@@ -247,67 +246,67 @@ class Main:
                 directory = stack.pop(0)
                 for base in sorted(os.listdir(directory)):
                     file_name = os.path.join(directory, base)
-                    if base.startswith(self.prefix) and base.endswith(u'.py'):
+                    if base.startswith(self.prefix) and base.endswith('.py'):
                         yield file_name
                     elif os.path.isdir(file_name):
                         stack.append(file_name)
         else:
-            if not path.endswith(u'.py'):
+            if not path.endswith('.py'):
                 sys.exit("%s: Should have a `.py' suffix." % path)
             yield path
 
     def handle_module(self, prefix, module):
         collection = []
         for name, objet in inspect.getmembers(module):
-            if name.startswith(u'Test') and inspect.isclass(objet):
-                if getattr(object, u'disabled', False):
+            if name.startswith('Test') and inspect.isclass(objet):
+                if getattr(object, 'disabled', False):
                     continue
                 minimum = None
                 for _, method in inspect.getmembers(objet, inspect.ismethod):
-                    number = method.im_func.func_code.co_firstlineno
+                    number = method.__func__.__code__.co_firstlineno
                     if minimum is None or number < minimum:
                         minimum = number
                 if minimum is not None:
                     collection.append((minimum, name, objet, False))
-            elif name.startswith(u'test_') and inspect.isfunction(objet):
-                code = objet.func_code
+            elif name.startswith('test_') and inspect.isfunction(objet):
+                code = objet.__code__
                 collection.append((code.co_firstlineno, name, objet,
                                    bool(code.co_flags & 32)))
         if not collection:
             return
         self.delayed_setup_module = None
         self.did_tests_in_module = False
-        if hasattr(module, u'setup_module'):
+        if hasattr(module, 'setup_module'):
             self.delayed_setup_module = module.setup_module, module
         for _, name, objet, generator in sorted(collection):
             self.delayed_setup_class = None
             self.did_tests_in_class = False
             if inspect.isclass(objet):
-                if not getattr(object, u'disabled', False):
-                    self.handle_class(prefix + u'/' + name, objet)
+                if not getattr(object, 'disabled', False):
+                    self.handle_class(prefix + '/' + name, objet)
             else:
-                self.handle_function(prefix + u'/' + name, objet,
+                self.handle_function(prefix + '/' + name, objet,
                                      generator, None)
-        if self.did_tests_in_module and hasattr(module, u'teardown_module'):
+        if self.did_tests_in_module and hasattr(module, 'teardown_module'):
             module.teardown_module(module)
 
     def handle_class(self, prefix, classe):
         collection = []
         for name, method in inspect.getmembers(classe, inspect.ismethod):
-            if name.startswith(u'test_'):
-                code = method.im_func.func_code
+            if name.startswith('test_'):
+                code = method.__func__.__code__
                 collection.append((code.co_firstlineno, name, method,
                                    bool(code.co_flags & 32)))
         if not collection:
             return
         # FIXME: Should likely do module setup here!
         instance = classe()
-        if hasattr(instance, u'setup_class'):
+        if hasattr(instance, 'setup_class'):
             self.delayed_setup_module = instance.setup_class, classe
         for _, name, method, generator in sorted(collection):
-            self.handle_function(prefix + u'/' + name, getattr(instance, name),
+            self.handle_function(prefix + '/' + name, getattr(instance, name),
                                  generator, instance)
-        if self.did_tests_in_class and hasattr(instance, u'teardown_class'):
+        if self.did_tests_in_class and hasattr(instance, 'teardown_class'):
             instance.teardown_class(classe)
 
     def handle_function(self, prefix, function, generator, instance):
@@ -316,7 +315,7 @@ class Main:
             # FIXME: Should likely do class setup here.
             try:
                 for counter, arguments in enumerate(function()):
-                    collection.append((prefix + u'/' + unicode(counter + 1),
+                    collection.append((prefix + '/' + str(counter + 1),
                                        arguments[0], arguments[1:]))
             except Skipped:
                 return
@@ -339,7 +338,7 @@ class Main:
         if self.delayed_setup_class is not None:
             self.delayed_setup_class[0](self.delayed_setup_class[1])
             self.delayed_setup_class = None
-        if instance is not None and hasattr(instance, u'setup_method'):
+        if instance is not None and hasattr(instance, 'setup_method'):
             instance.setup_method(function)
         if self.capture:
             saved_stdout = sys.stdout
@@ -384,7 +383,7 @@ class Main:
                     self.failures.append(
                         (self.total_count, prefix, function, arguments,
                          stdout, stderr, str(tracing.getvalue())))
-            if instance is not None and hasattr(instance, u'teardown_method'):
+            if instance is not None and hasattr(instance, 'teardown_method'):
                 instance.teardown_method(function)
             self.did_tests_in_class = True
             self.did_tests_in_module = True
@@ -396,28 +395,28 @@ class Main:
         if self.verbose:
             if success is None:
                 self.skip_count += 1
-                mark = u"skipped"
+                mark = "skipped"
             elif success:
-                mark = u"ok"
+                mark = "ok"
             else:
-                mark = u"FAILED"
-            sys.stderr.write(u'%5d. [%s] %s\n' % (self.total_count, prefix, mark))
+                mark = "FAILED"
+            sys.stderr.write('%5d. [%s] %s\n' % (self.total_count, prefix, mark))
         else:
             if success is None:
                 self.skip_count += 1
-                mark = u's'
+                mark = 's'
             elif success:
-                mark = u'.'
+                mark = '.'
             else:
                 mark = 'E'
             if self.column == WIDTH:
-                sys.stderr.write(u'\n')
+                sys.stderr.write('\n')
                 self.column = 0
             if not self.column:
                 if self.counter:
-                    text = u'%5d ' % (self.counter + 1)
+                    text = '%5d ' % (self.counter + 1)
                 else:
-                    text = self.identifier + u' '
+                    text = self.identifier + ' '
                 sys.stderr.write(text)
                 self.column = len(text)
             sys.stderr.write(mark)
@@ -447,8 +446,8 @@ class Friendly_StreamWriter:
         self.stream.flush()
 
     def write(self, text):
-        if not isinstance(text, unicode):
-            text = unicode(text, 'UTF-8')
+        if not isinstance(text, str):
+            text = str(text, 'UTF-8')
         self.stream.write(text)
 
     def writelines(self, lines):
@@ -485,14 +484,14 @@ class py:
         @staticmethod
         def raises(expected, *args, **kws):
             try:
-                if isinstance(args[0], unicode) and not kws:
+                if isinstance(args[0], str) and not kws:
                     eval(args[0])
                 else:
                     args[0](*args[1:], **kws)
             except expected:
                 return
             else:
-                raise NotRaised(u"Exception did not happen.")
+                raise NotRaised("Exception did not happen.")
 
-if __name__ == u'__main__':
+if __name__ == '__main__':
     main(*sys.argv[1:])

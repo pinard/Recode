@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 import os
 from distutils.core import setup, Extension
@@ -12,8 +11,8 @@ top_srcdir = '@top_srcdir@'
 try:
 
     if srcdir != '.':
-        buffer = file(os.path.join(srcdir, 'Recode.c')).read()
-        file('Recode.c', 'w').write(buffer)
+        buffer = open(os.path.join(srcdir, 'Recode.c')).read()
+        open('Recode.c', 'w').write(buffer)
 
     setup(ext_modules=[
         Extension('Recode', ['Recode.c'],

@@ -4,7 +4,7 @@ from common import setup_module, teardown_module
 
 import os, sys
 input_name = '%s/../COPYING' % os.path.dirname(sys.argv[0])
-input = file(input_name, 'rb').read()
+input = open(input_name).read()
 
 def test_1():
 
@@ -78,20 +78,16 @@ def validate(request, sequence, mode):
         command = ('$R --quiet --force --sequence=%s < %s %s'
                    '| $R --quiet --force --sequence=%s %s..%s'
                    % (sequence, input_name, request, sequence, after, before))
-        print command
         output = common.external_output(command)
     elif mode == 'squash':
-        file(common.run.work, 'wb').write(input)
+        open(common.run.work, 'w').write(input)
         command1 = ('$R --quiet --force --sequence=%s %s %s'
                     % (sequence, request, common.run.work))
         command2 = ('$R --quiet --force --sequence=%s %s..%s %s'
                     % (sequence, after, before, common.run.work))
-
-        print command1
-        print command2
         common.external_output(command1)
         common.external_output(command2)
-        output = file(common.run.work, 'rb').read()
+        output = open(common.run.work).read()
     else:
         assert False, mode
     common.assert_or_diff(output, input)

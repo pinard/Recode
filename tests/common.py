@@ -1,6 +1,23 @@
-# -*- coding: utf-8 -*-
+# Common code for testing the Recode C library.
+# Copyright © 1996-2000, 2008 Free Software Foundation, Inc.
+# François Pinard <pinard@iro.umontreal.ca>, 1988.
 
-__metaclass__ = type
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
+# 02111-1307, USA.
+
+
 import os
 from __main__ import py
 
@@ -57,11 +74,11 @@ def external_output(command):
     if not recode_program:
         py.test.skip()
     command = command.replace('$R', recode_program + ' --ignore=:iconv:')
-    return os.popen(command, 'rb').read()
+    return os.popen(command).read()
 
 def recode_output(input):
     if run.external:
-        file(run.work, 'wb').write(input)
+        open(run.work, 'w').write(input)
         return external_output('$R %s < %s' % (run.request, run.work))
     if outer is None:
         py.test.skip()
@@ -75,7 +92,7 @@ def recode_iconv_output(input):
 def recode_back_output(input):
     before, after = run.request.split('..')
     if run.external:
-        file(run.work, 'wb').write(input)
+        open(run.work, 'w').write(input)
         external_output('$R %s %s' % (run.request, run.work))
         return external_output('$R %s..%s < %s' % (after, before, run.work))
     if outer is None:
