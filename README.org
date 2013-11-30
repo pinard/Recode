@@ -166,8 +166,21 @@ version used as a base, and your comments.
 - OS/2 (using emx/gcc) :: Maintainer unknown (maybe [[mailto:rommel@ars.de][Kai Uwe Rommel]]),
      dated 1994-11 and based on Recode 3.4.  See [[http://hobbes.nmsu.edu/pub/os2/util/convert/gnurcode.zip][gnurcode]].
 * Installation
-** Prerequisites
+** In a hurry?
+You may then try:
 
+#+BEGIN_SRC sh
+  git clone https://github.com/pinard/Recode.git
+  cd Recode
+  sh after-git.sh
+  ./configure
+  make
+  make install
+#+END_SRC
+
+More fine-grained instructions follow.
+
+** Prerequisites
 Simple installation of Recode requires the usual tools and facilities
 as those needed for most GNU packages.  If not already bundled with
 your system, you also need to pre-install [[http://www.python.org][Python]], version 2.2 or
