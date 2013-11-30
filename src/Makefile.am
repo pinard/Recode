@@ -17,7 +17,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA
 # 02111-1307, USA.
 
-AUTOMAKE_OPTIONS = gnits ansi2knr
+AUTOMAKE_OPTIONS = gnits
 bin_PROGRAMS = recode
 lib_LTLIBRARIES = librecode.la
 man_MANS = recode.1
@@ -65,7 +65,7 @@ MNEMONICS_DS = $(KELD)/iso10646.def $(KELD)/other.def $(KELD)/control.def
 RFC1345_TXT = $(KELD)/rfc1345.txt
 NOMS_CARACS = $(ALAIN)/NomsSeulsfinal.lst
 
-INCLUDES = -I.. -I$(srcdir) -I$(top_srcdir)/lib
+AM_CPPFLAGS = -I.. -I$(srcdir) -I$(top_srcdir)/lib
 DEFS = -DLIBDIR=\"$(libdir)\" @DEFS@
 
 ETAGS_ARGS = $(L_STEPS)

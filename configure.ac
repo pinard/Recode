@@ -2,19 +2,17 @@
 # Copyright (C) 1994-1999, 2000, 2001 Free Software Foundation, Inc.
 # Process this file with autoconf to produce a configure script.
 
-AC_INIT(src/recode.c)
-AC_PREREQ(2.12)
+AC_PREREQ(2.69)
+AC_INIT(recode, 3.7-beta2)
+AC_CONFIG_SRCDIR(src/recode.c)
+AM_INIT_AUTOMAKE
+AC_CONFIG_MACRO_DIR(m4)
+LT_INIT
 AM_CONFIG_HEADER(config.h)
-AM_INIT_AUTOMAKE(recode, 3.7-beta2)
-AC_CONFIG_MACRO_DIR([m4])
 
 AC_PROG_CC
-AC_AIX
-AC_MINIX
-AM_PROG_LIBTOOL
-
+AC_FUNC_ALLOCA
 AC_ISC_POSIX
-AM_C_PROTOTYPES
 AC_C_CONST
 AC_C_INLINE
 AC_PROG_LEX
@@ -26,6 +24,7 @@ jm_STRUCT_UTIMBUF
 
 AM_ICONV
 LIBS="$LIBICONV $LIBS"
+
 AC_CHECK_FUNCS(dup2 mbrtowc rename setlocale strerror strndup wcrtomb)
 AC_REPLACE_FUNCS(strtol strtoul)
 AC_FUNC_ALLOCA
@@ -34,14 +33,14 @@ AC_FUNC_VPRINTF
 jm_FUNC_MALLOC
 jm_FUNC_REALLOC
 
-dnl AC_CANONICAL_HOST
+AC_CANONICAL_HOST
 jm_LANGINFO_CODESET
 jm_GLIBC21
 
 AM_WITH_DMALLOC
 
+AM_GNU_GETTEXT_VERSION(0.18)
 AM_GNU_GETTEXT(external)
-AM_GNU_GETTEXT_VERSION([0.16])
 
 AH_BOTTOM([
 #include "cleaner.h"

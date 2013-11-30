@@ -25,6 +25,6 @@ libreco_a_SOURCES = error.c getopt.c getopt1.c xstrdup.c
 
 EXTRA_DIST = alloca.c malloc.c realloc.c strtol.c strtoul.c
 
-INCLUDES = -I.. -I$(srcdir)
+AM_CPPFLAGS = -I.. -I$(srcdir)
 
 libreco_a_LIBADD = @ALLOCA@ @LIBOBJS@
