@@ -40,4 +40,4 @@ Recode.so: Recode.c setup.py
 	$(PYTHON) setup.py build
 
 Recode.c: Recode.pyx
-	cd $(srcdir) && pyrexc Recode.pyx
+	cd $(srcdir) && cython Recode.pyx
