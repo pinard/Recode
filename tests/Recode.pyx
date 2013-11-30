@@ -199,8 +199,8 @@ cdef extern from "common.h":
         unsigned character_count
     ctypedef recode_subtask *RECODE_SUBTASK
 
-    int get_byte (RECODE_SUBTASK)
-    void put_byte (int, RECODE_SUBTASK)
+    int get_byte(RECODE_SUBTASK)
+    void put_byte(int, RECODE_SUBTASK)
     void SET_SUBTASK_ERROR(recode_error_, RECODE_SUBTASK)
     bool SUBTASK_RETURN(RECODE_SUBTASK)
     void RETURN_IF_NOGO(recode_error_, RECODE_SUBTASK)
@@ -288,18 +288,18 @@ cdef extern from "common.h":
     void *recode_malloc(RECODE_OUTER, size_t)
     void *recode_realloc(RECODE_OUTER, void *, size_t)
 
-    unsigned char *invert_table (RECODE_OUTER, unsigned char *)
-    bool complete_pairs (RECODE_OUTER, RECODE_STEP,
-                         recode_known_pair *, unsigned, bool, bool)
-    bool transform_byte_to_ucs2 (RECODE_SUBTASK)
-    bool init_ucs2_to_byte (RECODE_STEP, RECODE_CONST_REQUEST,
-                            RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
-    bool transform_ucs2_to_byte (RECODE_SUBTASK)
+    unsigned char *invert_table(RECODE_OUTER, unsigned char *)
+    bool complete_pairs(RECODE_OUTER, RECODE_STEP,
+                        recode_known_pair *, unsigned, bool, bool)
+    bool transform_byte_to_ucs2(RECODE_SUBTASK)
+    bool init_ucs2_to_byte(RECODE_STEP, RECODE_CONST_REQUEST,
+                           RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
+    bool transform_ucs2_to_byte(RECODE_SUBTASK)
 
     # charname.c and fr-charname.c
 
-    char *ucs2_to_charname (int)
-    char *ucs2_to_french_charname (int)
+    char *ucs2_to_charname(int)
+    char *ucs2_to_french_charname(int)
 
     # charset.c
 
@@ -311,15 +311,15 @@ cdef extern from "common.h":
         ALIAS_FIND_AS_SURFACE_ 'ALIAS_FIND_AS_SURFACE'
         ALIAS_FIND_AS_EITHER_ 'ALIAS_FIND_AS_EITHER'
 
-    int code_to_ucs2 (RECODE_CONST_SYMBOL, unsigned)
-    bool prepare_for_aliases (RECODE_OUTER)
-    RECODE_ALIAS declare_alias (RECODE_OUTER, char *, char *)
-    bool declare_implied_surface (RECODE_OUTER, RECODE_ALIAS,
-                                  RECODE_CONST_SYMBOL)
-    bool make_argmatch_arrays (RECODE_OUTER)
-    RECODE_ALIAS find_alias (RECODE_OUTER, char *, alias_find_type)
-    bool find_and_report_subsets (RECODE_OUTER)
-    bool decode_known_pairs (RECODE_OUTER, char *)
+    int code_to_ucs2(RECODE_CONST_SYMBOL, unsigned)
+    bool prepare_for_aliases(RECODE_OUTER)
+    RECODE_ALIAS declare_alias(RECODE_OUTER, char *, char *)
+    bool declare_implied_surface(RECODE_OUTER, RECODE_ALIAS,
+                                 RECODE_CONST_SYMBOL)
+    bool make_argmatch_arrays(RECODE_OUTER)
+    RECODE_ALIAS find_alias(RECODE_OUTER, char *, alias_find_type)
+    bool find_and_report_subsets(RECODE_OUTER)
+    bool decode_known_pairs(RECODE_OUTER, char *)
 
     # combine.c
 
@@ -327,40 +327,40 @@ cdef extern from "common.h":
         DONE
         ELSE_ 'ELSE'
 
-    bool init_explode (RECODE_STEP, RECODE_CONST_REQUEST,
-                       RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
-    bool explode_byte_byte (RECODE_SUBTASK)
-    bool explode_ucs2_byte (RECODE_SUBTASK)
-    bool explode_byte_ucs2 (RECODE_SUBTASK)
-    bool explode_ucs2_ucs2 (RECODE_SUBTASK)
+    bool init_explode(RECODE_STEP, RECODE_CONST_REQUEST,
+                      RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
+    bool explode_byte_byte(RECODE_SUBTASK)
+    bool explode_ucs2_byte(RECODE_SUBTASK)
+    bool explode_byte_ucs2(RECODE_SUBTASK)
+    bool explode_ucs2_ucs2(RECODE_SUBTASK)
 
-    bool init_combine (RECODE_STEP, RECODE_CONST_REQUEST,
-                       RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
-    bool combine_byte_byte (RECODE_SUBTASK)
-    bool combine_ucs2_byte (RECODE_SUBTASK)
-    bool combine_byte_ucs2 (RECODE_SUBTASK)
-    bool combine_ucs2_ucs2 (RECODE_SUBTASK)
+    bool init_combine(RECODE_STEP, RECODE_CONST_REQUEST,
+                      RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
+    bool combine_byte_byte(RECODE_SUBTASK)
+    bool combine_ucs2_byte(RECODE_SUBTASK)
+    bool combine_byte_ucs2(RECODE_SUBTASK)
+    bool combine_ucs2_ucs2(RECODE_SUBTASK)
 
     # freeze.c
 
-    void recode_freeze_tables (RECODE_OUTER)
+    void recode_freeze_tables(RECODE_OUTER)
 
     # iconv.c
 
-    bool transform_with_iconv (RECODE_SUBTASK)
+    bool transform_with_iconv(RECODE_SUBTASK)
 
     # localcharset.c
 
-    char *locale_charset ()
+    char *locale_charset()
 
     # names.c
 
-    bool should_prefer_french ()
+    bool should_prefer_french()
 
     # mixed.c
 
-    bool transform_c_source (RECODE_TASK)
-    bool transform_po_source (RECODE_TASK)
+    bool transform_c_source(RECODE_TASK)
+    bool transform_po_source(RECODE_TASK)
 
     # outer.c
 
@@ -369,13 +369,13 @@ cdef extern from "common.h":
             RECODE_CONST_OPTION_LIST, RECODE_CONST_OPTION_LIST)
     ctypedef bool (*declare_single_Arg6)(RECODE_SUBTASK)
 
-    bool reversibility (RECODE_SUBTASK, unsigned)
-    RECODE_SINGLE declare_single (
+    bool reversibility(RECODE_SUBTASK, unsigned)
+    RECODE_SINGLE declare_single(
             RECODE_OUTER, char *, char *, recode_quality,
             declare_single_Arg5, declare_single_Arg6)
-    bool declare_iconv (RECODE_OUTER, char *, char *)
-    bool declare_explode_data (RECODE_OUTER, unsigned short *, char *, char *)
-    bool declare_strip_data (RECODE_OUTER, strip_data *, char *)
+    bool declare_iconv(RECODE_OUTER, char *, char *)
+    bool declare_explode_data(RECODE_OUTER, unsigned short *, char *, char *)
+    bool declare_strip_data(RECODE_OUTER, strip_data *, char *)
 
     # pool.c
 
@@ -383,19 +383,19 @@ cdef extern from "common.h":
 
     # request.c
 
-    char *edit_sequence (RECODE_REQUEST, bool)
+    char *edit_sequence(RECODE_REQUEST, bool)
 
     # rfc1345.c
 
-    char *ucs2_to_rfc1345 (recode_ucs2)
+    char *ucs2_to_rfc1345(recode_ucs2)
 
     # task.c
 
-    int get_byte_helper (RECODE_SUBTASK)
-    void put_byte_helper (int, RECODE_SUBTASK)
+    int get_byte_helper(RECODE_SUBTASK)
+    void put_byte_helper(int, RECODE_SUBTASK)
     bool recode_if_nogo(recode_error_, RECODE_SUBTASK)
-    bool transform_byte_to_byte (RECODE_SUBTASK)
-    bool transform_byte_to_variable (RECODE_SUBTASK)
+    bool transform_byte_to_byte(RECODE_SUBTASK)
+    bool transform_byte_to_variable(RECODE_SUBTASK)
 
     # ucs.c
 
@@ -405,10 +405,10 @@ cdef extern from "common.h":
         BYTE_ORDER_MARK_ 'BYTE_ORDER_MARK'
         BYTE_ORDER_MARK_SWAPPED_ 'BYTE_ORDER_MARK_SWAPPED'
 
-    bool get_ucs2 (unsigned *, RECODE_SUBTASK)
-    bool get_ucs4 (unsigned *, RECODE_SUBTASK)
-    bool put_ucs2 (unsigned, RECODE_SUBTASK)
-    bool put_ucs4 (unsigned, RECODE_SUBTASK)
+    bool get_ucs2(unsigned *, RECODE_SUBTASK)
+    bool get_ucs4(unsigned *, RECODE_SUBTASK)
+    bool put_ucs2(unsigned, RECODE_SUBTASK)
+    bool put_ucs4(unsigned, RECODE_SUBTASK)
 
     ## Recode library at OUTER level.
 
@@ -418,10 +418,10 @@ cdef extern from "common.h":
 
     RECODE_OUTER recode_new_outer(unsigned)
     bool recode_delete_outer(RECODE_OUTER)
-    bool list_all_symbols (RECODE_OUTER, RECODE_CONST_SYMBOL)
-    bool list_concise_charset (RECODE_OUTER, RECODE_CONST_SYMBOL,
-                               recode_list_format)
-    bool list_full_charset (RECODE_OUTER, RECODE_CONST_SYMBOL)
+    bool list_all_symbols(RECODE_OUTER, RECODE_CONST_SYMBOL)
+    bool list_concise_charset(RECODE_OUTER, RECODE_CONST_SYMBOL,
+                              recode_list_format)
+    bool list_full_charset(RECODE_OUTER, RECODE_CONST_SYMBOL)
 
     # Recode library at REQUEST level.
 
