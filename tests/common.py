@@ -6,15 +6,9 @@ from __main__ import py
 
 recode_program = os.environ.get('RECODE')
 
-try:
-    import Recode
-except ImportError:
-    # The Python API has not been installed.
-    outer = None
-    outer_iconv = None
-else:
-    outer = Recode.Outer(iconv=False)
-    outer_iconv = Recode.Outer(iconv=True)
+import Recode
+outer = Recode.Outer(iconv=False)
+outer_iconv = Recode.Outer(iconv=True)
 
 class Run(dict):
 
