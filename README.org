@@ -234,40 +234,6 @@ Besides those configure options documented in files =INSTALL= and
   to trigger a debugging feature for looking at memory management
   problems, it pre-requires Gray Watson's [[ftp://ftp.letters.com/src/dmalloc/dmalloc.tar.gz][dmalloc package]].
 
-** Maintenance tools
-For simple modifications to Recode, you should not need special tools
-beyond those usual for installing GNU packages.  However, if you
-modify any =.l= source file, Python and Flex are both needed for
-remaking =merged.c=.
-
-For more comprehensive modifications, you might need more tools.  If
-not done already, make sure you have a copy of the packages listed in
-the following table.  You may also choose to establish a link in your
-build =doc/= directory, as explained within =doc/Makemore=.
-
-  |--------------+---------+----------+---------------|
-  | Package name | Current |  Minimum | Install after |
-  |--------------+---------+----------+---------------|
-  | *autoconf*     |    2.61 |     2.12 | *m4*            |
-  | *automake*     |    1.10 |      1.9 | *Perl*          |
-  | *Flex*         |  2.5.33 |   2.5.4a |               |
-  | *gettext*      |    0.16 |     0.16 |               |
-  | *Help2man*     |    1.36 |    1.020 | *Perl*          |
-  | *libtool*      |  1.5.24 |    1.3.4 |               |
-  | *m4*           |  1.4.10 |     1.4n |               |
-  | *Make*         |    3.81 |          |               |
-  | *Perl*         |   5.8.8 | 5.005.03 |               |
-  | *Python*       |   2.5.1 |      2.2 |               |
-  | *tar*          |    1.17 |     1.12 |               |
-  | *wget*         |  1.10.2 |          |               |
-  |--------------+---------+----------+---------------|
-
-The /current/ version numbers just happen to be those used for
-development, it is often likely that older versions would work just as
-well.  The /minimum/ version numbers were once acceptable, they might
-not be anymore, this has not been verified; any updating information
-is welcome!
-
 ** Installation hints
 Here are a few hints which might help installing Recode on some
 systems.  Many may be applied by temporary presetting environment
@@ -311,7 +277,19 @@ variables while calling =./configure=.  File =INSTALL= explains this.
   processes fork.  In this case, just before doing =make=, edit =config.h=
   and ensure *HAVE_PIPE* is /not/ defined.
 
-* The future of Recode
+** Maintenance tools
+Beyond the usual Unix programs needed for configuring and installing
+any GNU package, you need Cython, Flex and Python to achieve simple
+modifications to Recode.
+
+For more encompassing modifications, you might also need recent
+versions of Autoconf, automake, Flex, Gettext, Help2man, libtool, m4,
+GNU Make, Perl, tar and wget.  Just make sure you install m4 before
+Autoconf, and Perl before automake or Help2man.  You may also choose
+to establish a link in your build =doc/= directory, as explained within
+=doc/Makemore=.
+
+* The future
 ** Motivation
 Recode is due for a major ovehaul.  My plan is to end the 3.x series
 of this package, rather aiming 4.0 as a major internal rewrite.
