@@ -329,7 +329,7 @@ class Main:
         # Check if this test should be retained.
         if (self.exclusion is not None and self.exclusion.search(prefix)
               or self.pattern is not None and not self.pattern.search(prefix)
-              or self.ordinals and self.total_count+1 not in self.ordinals):
+              or self.ordinals and self.total_count + 1 not in self.ordinals):
             self.mark_progression(prefix, None)
             return
         # This test should definitely be executed.
@@ -391,29 +391,40 @@ class Main:
         if success is not None and len(self.failures) == self.limit:
             raise Limit_Reached
 
-    def mark_progression(self, prefix, succes):
+    def mark_progression(self, prefix, success):
         self.total_count += 1
-        if succes is None:
-            self.skip_count += 1
-        else:
-            write = sys.stderr.write
-            if self.verbose:
-                write(u'%5d. [%s] %s\n' % (self.total_count, prefix,
-                                           (u'FAILED', u'ok')[succes]))
+        if self.verbose:
+            if success is None:
+                self.skip_count += 1
+                mark = u"skipped"
+            elif success:
+                mark = u"ok"
             else:
-                if self.column == WIDTH:
-                    write(u'\n')
-                    self.column = 0
-                if not self.column:
-                    if self.counter:
-                        text = u'%5d ' % (self.counter + 1)
-                    else:
-                        text = self.identifier + u' '
-                    write(text)
-                    self.column = len(text)
-                write(u'E·'[succes])
-                self.column += 1
-                self.counter += 1
+                mark = u"FAILED"
+            sys.stderr.write(u'%5d. [%s] %s\n' % (self.total_count, prefix, mark))
+        else:
+            if success is None:
+                self.skip_count += 1
+                mark = u's'
+            elif success:
+                mark = u'.'
+            else:
+                mark = 'E'
+            if self.column == WIDTH:
+                sys.stderr.write(u'\n')
+                self.column = 0
+            if not self.column:
+                if self.counter:
+                    text = u'%5d ' % (self.counter + 1)
+                else:
+                    text = self.identifier + u' '
+                sys.stderr.write(text)
+                self.column = len(text)
+            sys.stderr.write(mark)
+            sys.stderr.flush()
+            self.column += 1
+            self.counter += 1
+        sys.stderr.flush()
 
     def activate_profiling(self):
         if self.profiler is not None:
@@ -431,6 +442,9 @@ class Friendly_StreamWriter:
         import codecs, locale
         writer = codecs.getwriter(locale.getpreferredencoding())
         self.stream = writer(stream, 'backslashreplace')
+
+    def flush(self):
+        self.stream.flush()
 
     def write(self, text):
         if not isinstance(text, unicode):
