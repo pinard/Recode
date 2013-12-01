@@ -366,31 +366,34 @@ implied restrictions on Cython code would be bearable.  By the time, I
 may come to think that this is not worth the effort, anyway.
 
 ** Speed and memory
-Historically, Recode has always been oriented towards some generality
-in specifications, combined with good execution speed.  Generality is
+So far, Recode has always been oriented towards some generality in
+specifications, combined with good execution speed.  Generality is
 granted through providing recoding steps either as tables or fuller
 algorithms expressed as C code.  Speed surely results from careful C
 coding of individual steps, and using Flex for more difficult
 recognition problems.  Speed also comes from the monolithic design of
-an executable holding all tables at once, relying on system paging
-instead of run-time opening of external data files.  The automatic
-selection among step sequencing methods also play a role in the speed
-area.
+a single Python-free, big executable executable holding all tables at
+once, relying on system paging instead of run-time opening of external
+data files.
 
 Rewriting a character shuffling engine in Python is going to have
-consequences on both speed and memory: Python is inherently much
-slower than C for such problems, program startup requires many disk
-accesses to load all required modules, and the size of the Python
-interpreter is not negligible.  On the other hand, Recode is not small
-as it stands.
+consequences on both speed and memory.  Python is inherently much
+slower than C for such problems, and program startup requires many
+disk accesses to load all required modules.  The size of the Python
+interpreter is not negligible, yet Recode is not small as it stands.
 
-For prototyping various experiments, the slowdown is likely to be
-bearable, especially considering the development speedup that might
-result from using Python instead of C.  It is fairly tedious to make
-encompassing structural changes in the C version of Recode, while
-similar changes are going to be rather easy in Python.  I expect that
-the shorter development cycle will counter-weight some duplication in
-the maintenance of Recode both in Python and C afterwards.
+Depending on how to declare things and the way to code on the Cython
+side, by relying less on the Python library, one may have some control
+over the compromise between speed and ease.  With enough discipline,
+resisting the temptation to use many Python facilities, one can
+displace the equilibrium.  I once dreamed of many stub or minimal
+routines for representing the Python library to the point of avoiding
+it, yet I now think it would imply too stringent limitations.
+
+After much hesitation, I merely /decided/ that the slowdown is bearable!
+It was fairly tedious to make encompassing structural changes in the C
+version of Recode.  Such changes are going to be significantly easier
+in Python.  This might translate into shorter development cycles.
 
 ** Planned differences
 Whenever the Python library offers a charset or a surface which Recode
