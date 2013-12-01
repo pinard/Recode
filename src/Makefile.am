@@ -105,19 +105,19 @@ $(srcdir)/recodext.h: $(top_srcdir)/cleaner.h.in $(srcdir)/recodext.h.in
 
 main.o: main.c ../config.status
 
-charname$U.lo: rfc1345.h
+charname.lo: rfc1345.h
 charname.h: ../tables.py $(MNEMONICS_DS) $(RFC1345_TXT)
 	$(TABLES_PY) -C $(srcdir) -n $(MNEMONICS_DS) $(RFC1345_TXT)
 
-fr-charname$U.lo: fr-charname.h
+fr-charname.lo: fr-charname.h
 fr-charname.h: ../tables.py $(NOMS_CARACS)
 	$(TABLES_PY) -C $(srcdir) -Fn $(NOMS_CARACS)
 
-iconv$U.lo: iconvdecl.h
+iconv.lo: iconvdecl.h
 iconvdecl.h: ../tables.py
 	$(TABLES_PY) -i
 
-outer$U.lo: stamp-steps
+outer.lo: stamp-steps
 stamp-steps: $(C_STEPS)
 	@echo "Updating {dec,ini,ter}steps.h"
 	@(cd $(srcdir) && grep -h '^module_' $(C_STEPS)) \
@@ -139,7 +139,7 @@ stamp-steps: $(C_STEPS)
 	else mv tersteps.tmp $(srcdir)/tersteps.h; fi
 	@echo timestamp > $(srcdir)/$@
 
-rfc1345$U.lo: rfc1345.h
+rfc1345.lo: rfc1345.h
 rfc1345.h: ../tables.py $(MNEMONICS_DS)
 	$(TABLES_PY) -C $(srcdir) -m $(MNEMONICS_DS)
 
