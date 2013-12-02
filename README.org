@@ -96,10 +96,10 @@ with testers.
 
 - Recode installation now uses Python.  In particular, it creates file
   =build/src/iconvdecl.h= from local =iconv -l= output.  Recode testing
-  through =make check= also needs what people *python-devel*, providing C
-  header files for Python and *distutils*.  The =Makemore= file has been
-  merged within regular Makefiles and is not distributed separately
-  anymore.
+  through =make check= also needs what people usually find as the
+  *python-devel* package, which provides C header files for Python and
+  *distutils*.  The =Makemore= file has been merged within regular
+  Makefiles and is not distributed separately anymore.
 
 - It is likely that new bugs have been introduced through the above
   changes.  In particular, not everything is cosy on the side of
