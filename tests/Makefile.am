@@ -37,7 +37,9 @@ check-local: Recode.so
 	  $(PYTHON) $(srcdir)/pytest $(LIMIT) $(srcdir)/t*.py
 
 Recode.so: Recode.c setup.py
-	$(PYTHON) setup.py build
+	rm -f *.so
+	$(PYTHON) setup.py build_ext --inplace
+	rm -fr build
 
 Recode.c: Recode.pyx
 	cd $(srcdir) && cython Recode.pyx

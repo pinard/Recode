@@ -26,17 +26,3 @@ finally:
     if srcdir != '.':
         if os.path.exists('Recode.c'):
             os.remove('Recode.c')
-
-def extract_and_clean(directory):
-    for base in os.listdir(directory):
-        name = os.path.join(directory, base)
-        if base == 'Recode.so':
-            buffer = file(name, 'rb').read()
-            file('Recode.so', 'wb').write(buffer)
-        if os.path.isdir(name):
-            extract_and_clean(name)
-        else:
-            os.remove(name)
-    os.rmdir(directory)
-
-extract_and_clean(build)
