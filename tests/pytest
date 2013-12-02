@@ -347,6 +347,10 @@ class Main:
             stderr = sys.stderr = StringIO()
         self.activate_profiling()
         try:
+            function(*arguments)
+        except Skipped:
+            pass
+        try:
             try:
                 function(*arguments)
             except Exit:
