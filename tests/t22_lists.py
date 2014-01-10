@@ -44,7 +44,9 @@ ISO-8859-1
 143 S3   159 AC   175 'm   191 ?I   207 I:   223 ss   239 i:   255 y:
 '''
 
+
     def test_1(self):
+        print('*1')
         output = common.external_output('$R -ld latin-1')
         common.assert_or_diff(output, self.expected)
 
