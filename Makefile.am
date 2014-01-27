@@ -68,3 +68,23 @@ synchro: local
 	du -s --si $(top_srcdir)/.git
 	find $(top_srcdir) -name '*~' | xargs rm -fv
 	synchro -PD alcyon entretien
+
+ifneq "$(wildcard ~/etc/mes-sites/site.mk)" ""
+
+site: site-all
+
+package_name = recode
+mgp_base = http://pinard.progiciels-bpi.ca/fp-etc/dist/mgp
+margin_color = "\#ff896c"
+caption_color = "\#ffffb7"
+
+LOGOURL = "/logo.gif"
+GOALS = $(wildcard manual/*.html)
+
+include ~/etc/mes-sites/site.mk
+
+$(htmldir)/manual/%.html: manual/%.html
+	@[ -d $(htmldir)/manual ] || mkdir -v $(htmldir)/manual
+	@$(xsl-html)
+
+endif
