@@ -853,7 +853,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 	  for (; optind < argc; optind++)
 	    {
 	      const char *input_name;
-	      char output_name[200]; /* FIXME: dangerous limit */
+	      char output_name[PATH_MAX];
 	      FILE *file;
 	      struct stat file_stat;
 	      struct utimbuf file_utime;
@@ -877,7 +877,12 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n"),
 
 		/* FIXME: Scott Schwartz <schwartz@bio.cse.psu.edu> writes:
 		   "There's no reason to think that that name is unique."  */
-
+        // To avoid overflows, the size of the array pointed by destination (output_name)
+        // shall be long enough to contain the same C string as source
+        // (including the terminating null character).
+        if (strlen(input_name) >= PATH_MAX) {
+            error (EXIT_FAILURE, 0, "input_name reach the PATH_MAX limit");
+        }
 		strcpy (output_name, input_name);
 #if DOSWIN_OR_OS2
 		for (cursor = output_name + strlen (output_name);
