@@ -56,13 +56,14 @@ typedef enum {false = 0, true = 1} bool;
 # define RETSIGTYPE void
 #endif
 
-#if DIFF_HASH
-# ifdef HAVE_LIMITS_H
-#  include <limits.h>
-# endif
-# ifndef CHAR_BIT
-#  define CHAR_BIT 8
-# endif
+#ifdef HAVE_LIMITS_H
+# include <limits.h>
+#endif
+#ifndef CHAR_BIT
+# define CHAR_BIT 8
+#endif
+#ifndef PATH_MAX
+# define PATH_MAX 4096
 #endif
 
 /* Some systems do not define EXIT_*, even with STDC_HEADERS.  */
