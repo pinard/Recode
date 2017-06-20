@@ -233,7 +233,7 @@ my ($help_text, $version_text) = map {
 	    $_, $ARGV[0]
 } $help_option, $version_option;
 
-my $date = strftime "%B %Y", localtime;
+my $date = strftime "%B %Y", gmtime($ENV{SOURCE_DATE_EPOCH} || time);
 (my $program = $ARGV[0]) =~ s!.*/!!;
 my $package = $program;
 my $version;
