@@ -172,7 +172,7 @@ You may then try:
 #+BEGIN_SRC sh
   git clone https://github.com/pinard/Recode.git
   cd Recode
-  sh after-git.sh
+  sh after-patch.sh
   ./configure
   make
   make install
